@@ -6,18 +6,13 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class Role
+    public class TeacherCategory
     {
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string Name { get; set; }
-
-        public virtual List<User> Users { get; set; }
-
-        public Role()
-        { 
-        }
+        public virtual List<Teacher> Teachers { get; set; }
     }
 }

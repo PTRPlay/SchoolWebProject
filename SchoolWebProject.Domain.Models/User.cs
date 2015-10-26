@@ -34,21 +34,20 @@ namespace SchoolWebProject.Domain.Models
         public int SchoolId { get; set; }
         public virtual School School { get; set; }
 
-        public virtual ICollection<Announcement> Announcements { get; set; }
+        public virtual List<Announcement> Announcements { get; set; }
 
-        public virtual ICollection<Topic> Topics { get; set; }
+        public virtual List<Topic> Topics { get; set; }
 
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual List<Post> Posts { get; set; }
 
+        public int LogInDataId { get; set; }
         public virtual LogInData LogInData { get; set; }
 
+        public int OnlineId { get; set; }
         public virtual Online Online { get; set; }
 
         public User()
         {
-            Announcements = new HashSet<Announcement>();
-            Topics = new HashSet<Topic>();
-            Posts = new HashSet<Post>();
         }
     }
 }

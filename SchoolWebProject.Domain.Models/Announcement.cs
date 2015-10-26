@@ -14,9 +14,9 @@ namespace SchoolWebProject.Domain.Models
         [MaxLength(50)]
         public string Title { get; set; }
         [Required]
-        [MaxLength(50)]
+        [MaxLength(200)]
         public string Message { get; set; }
-        [MaxLength(50)]
+        [MaxLength(3000)]
         public string MessageDetails { get; set; }
 
         public int UserId { get; set; }
@@ -24,6 +24,8 @@ namespace SchoolWebProject.Domain.Models
 
         public int SchoolId { get; set; }
         public virtual School School { get; set; }
+
+        public DateTime DataPublished { get; set; }
 
         public Announcement()
         {

@@ -20,6 +20,11 @@ namespace SchoolWebProject.Controllers
         
         public ActionResult Index()
         {
+              SchoolContext mdc = new SchoolContext();
+           {
+
+               int i = mdc.Schools.Count();
+            }
             logger.ErrorLog("Kolia");
             return View();
         }

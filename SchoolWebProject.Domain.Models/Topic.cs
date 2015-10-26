@@ -19,17 +19,16 @@ namespace SchoolWebProject.Domain.Models
         [Required]
         public DateTime LastPostAddedMoment { get; set; }
 
-        public int ScoolID { get; set; }
+        public int SchoolId { get; set; }
         public virtual School School { get; set; }
 
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual List<Post> Posts { get; set; }
 
         public Topic()
         {
-            Posts = new HashSet<Post>();
         }
         
     }
