@@ -177,6 +177,10 @@
       <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
       <Name>SchoolWebProject.Domain.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj">
+      <Project>{f25258b9-2ff2-4fd0-8d15-397ce0391a9a}</Project>
+      <Name>SchoolWebProject.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
