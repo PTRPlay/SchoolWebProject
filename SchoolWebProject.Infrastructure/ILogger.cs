@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolWebProject.Infrastucture
+namespace SchoolWebProject.Infrastructure
 {
-    private interface ILogger
+    public interface ILogger
     {
         void WarningLog(string message);
 
