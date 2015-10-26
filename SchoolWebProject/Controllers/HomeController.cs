@@ -1,5 +1,5 @@
 ﻿using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastucture;
+using SchoolWebProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
