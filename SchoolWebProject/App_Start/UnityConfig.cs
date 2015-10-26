@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Infrastucture;
 
 namespace SchoolWebProject.App_Start
 {
