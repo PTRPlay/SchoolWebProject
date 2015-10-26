@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolWebProject.Infrastucture
+namespace SchoolWebProject.Infrastructure
 {
     public interface ILogger
     {

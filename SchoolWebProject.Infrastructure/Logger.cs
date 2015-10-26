@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace SchoolWebProject.Infrastucture
+namespace SchoolWebProject.Infrastructure
 {
     public class Logger : ILogger
     {
