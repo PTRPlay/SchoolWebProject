@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject", "SchoolWebProject\SchoolWebProject.csproj", "{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Infrastucture", "SchoolWebProject.Infrastucture\SchoolWebProject.Infrastucture.csproj", "{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Domain.Models", "SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj", "{F5421539-1FC9-47E3-B97A-CCBAB0B37ECC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5421539-1FC9-47E3-B97A-CCBAB0B37ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5421539-1FC9-47E3-B97A-CCBAB0B37ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5421539-1FC9-47E3-B97A-CCBAB0B37ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5421539-1FC9-47E3-B97A-CCBAB0B37ECC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
