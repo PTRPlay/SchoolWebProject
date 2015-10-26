@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolWebProject.Infrastucture
 {
-    private interface ILogger
+    public interface ILogger
     {
         void WarningLog(string message);
 
