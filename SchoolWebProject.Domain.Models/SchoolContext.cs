@@ -32,5 +32,12 @@ namespace SchoolWebProject.Domain.Models
         public DbSet<SearchWord> SearchWords { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<User> Users { get; set; }
+
+        public DbSet<TeacherCategory> TeacherCategorys { get; set; }
+        public DbSet<TeacherDegree> TeacherDegrees { get; set; }
+        public DbSet<Mark> Marks { get; set; }
+        public DbSet<MarkType> MarkTypes { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }

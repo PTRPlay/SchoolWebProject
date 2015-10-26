@@ -17,7 +17,7 @@ namespace SchoolWebProject.Domain.Models
         public int TopicId { get; set; }
         public virtual Topic Topic { get; set; }
 
-        public int ShoolId { get; set; }
+        public int SchoolId { get; set; }
         public virtual School School { get; set; }
 
         public int UserId { get; set; }
