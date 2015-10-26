@@ -8,14 +8,14 @@ namespace SchoolWebProject.Infrastructure
 {
     public interface ILogger
     {
-        void WarningLog(string message);
+        void WarningLog(string messageTemplate, params object[] propertyValues);
 
-        void InfoLog(string message);
+        void InfoLog(string messageTemplate, params object[] propertyValues);
 
-        void ErrorLog(string message);
-        
-        void DebugLog(string message);
-        
-        void TraceLog(string message);
+        void ErrorLog(string messageTemplate, params object[] propertyValues);
+
+        void DebugLog(string messageTemplate, params object[] propertyValues);
+
+        void TraceLog(string messageTemplate, params object[] propertyValues);
     }
 }

@@ -1,34 +1,33 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Text;
-
+using Serilog;
 namespace SchoolWebProject.Infrastructure
 {
-    public class Logger : ILogger
+    public class SerilogLogger : ILogger
     {
+
         public void WarningLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.Write(String.Format(messageTemplate, propertyValues));
+            Log.Warning(messageTemplate, propertyValues);
         }
 
         public void InfoLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Log.Information(messageTemplate, propertyValues);
         }
 
         public void ErrorLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Log.Error(messageTemplate, propertyValues);
         }
 
         public void DebugLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Log.Debug(messageTemplate, propertyValues);
         }
 
         public void TraceLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Log.Verbose(messageTemplate, propertyValues);
         }
     }
 }
