@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SchoolWebProject.Data.Configuration
 {
-    class SchoolWebSeedConfiguration : EntityTypeConfiguration<SchoolWebSeed>
+    class SchoolWebSeedDataConfiguration : EntityTypeConfiguration<SchoolWebSeedData>
     {
-        public SchoolWebSeedConfiguration()
+        public SchoolWebSeedDataConfiguration()
         {
-            this.ToTable("SchoolWebSeed");
+            this.ToTable("SchoolWebSeedData");
         }
     }
 }
