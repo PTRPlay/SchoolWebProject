@@ -30,6 +30,10 @@ namespace SchoolWebProject.Controllers
            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
            var teacherDegreeEntries = (from entry in mdc.TeacherDegrees select entry);
            ViewBag.TeacherDegrees = teacherDegreeEntries.ToList();
+           var schoolEntries = (from entry in mdc.Schools select entry);
+           ViewBag.Schools = schoolEntries.ToList();
+           var teacherEntries = (from entry in mdc.Users select entry);
+           ViewBag.Teachers = teacherEntries.ToList();
 
             logger.ErrorLog("Kolia");
             return View();

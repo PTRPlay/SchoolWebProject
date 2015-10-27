@@ -12,6 +12,8 @@ namespace SchoolWebProject.Domain.Models
         {
             GetTeacherCategories().ForEach(c => context.TeacherCategories.Add(c));
             GetTeacherDegrees().ForEach(c => context.TeacherDegrees.Add(c));
+            GetSchools().ForEach(c => context.Schools.Add(c));
+   //         GetTeachers().ForEach(c => context.Users.Add(c));
             base.Seed(context);
         }
 
@@ -74,11 +76,6 @@ namespace SchoolWebProject.Domain.Models
             };
         }
 
-             public string Name { get; set; }
-        public string City { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-
         private static List<School> GetSchools()
         {
             return new List<School>
@@ -91,6 +88,59 @@ namespace SchoolWebProject.Domain.Models
                 }
             };
         }
+
+
+        private static List<Teacher> GetTeachers()
+        {
+            return new List<Teacher>
+            {
+                new Teacher {
+                    FirstName = "Марія",
+                    LastName = "Коваленко",   
+                    MiddleName = "Денисівна",                    
+                    PhoneNumber = "+38 (097) 767-73-09",
+                    WorkBegin = new DateTime(2014, 6, 14),
+                    TeacherCategoryId = 1,
+                    TeacherDegreeId = 1,
+                    RoleId = 1,
+                    SchoolId=1,
+                    LogInDataId=1,
+                    OnlineId=1                    
+                },
+
+                   new Teacher {
+                    FirstName = "Надія",
+                    MiddleName = "Петрівна",
+                    LastName = "Тимощук",                                           
+                    PhoneNumber = "+38 (050) 265-00-09",
+                    WorkBegin = new DateTime(2007, 5, 1),
+                    TeacherCategoryId = 1,
+                    TeacherDegreeId = 1,
+                    RoleId = 1,
+                    SchoolId=1,
+                    LogInDataId=1,
+                    OnlineId=1
+                },
+                
+                    new Teacher {
+                    FirstName = "Олена",
+                    MiddleName = "Андріївна",
+                    LastName = "Зелевська",                                           
+                    PhoneNumber = "+38 (097) 677-73-09",
+                    WorkBegin = new DateTime(2010, 1, 11),
+                    TeacherCategoryId = 1,
+                    TeacherDegreeId = 1,
+                    RoleId = 1,
+                    SchoolId=1,
+                    LogInDataId=1,
+                    OnlineId=1
+                }
+  
+            };
+        }
+
+
+
 
 
 

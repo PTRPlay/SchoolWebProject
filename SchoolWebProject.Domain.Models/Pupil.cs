@@ -15,9 +15,8 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual List<Mark> Marks { get; set; }
 
-        public Pupil():base()
+       public Pupil():base()
         {
-
         }
     }
 }
