@@ -37,9 +37,5 @@ namespace SchoolWebProject.Domain.Models
         public virtual List<Mark> Marks { get; set; }
 
         public virtual List<LessonDetail> LessonDetails { get; set; }
-
-        public School()
-        {
-        }
     }
 }

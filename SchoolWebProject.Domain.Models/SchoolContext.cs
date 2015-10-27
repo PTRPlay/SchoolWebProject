@@ -9,15 +9,10 @@ namespace SchoolWebProject.Domain.Models
 {
     public class SchoolContext : DbContext 
     {
-        public SchoolContext():base("WebSchoolDB")
+        public SchoolContext()
+            : base("WebSchoolDB")
         {
             Database.SetInitializer<SchoolContext>(new SchoolWebSeedData());
-
-        }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
         public DbSet<Announcement> Announcements { get; set; }
@@ -55,5 +50,11 @@ namespace SchoolWebProject.Domain.Models
         public DbSet<Schedule> Schedules { get; set; }
 
         public DbSet<Subject> Subjects { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
     }
 }

@@ -13,10 +13,5 @@ namespace SchoolWebProject.Domain.Models
         [Required]
         [MaxLength(30)]
         public string Word { get; set; }
-
-        public SearchWord()
-        {
-
-        }
     }
 }

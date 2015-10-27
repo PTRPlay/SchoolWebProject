@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class Teacher:User
+    public class Teacher : User
     {
         public int? GroupId { get; set; }
 
@@ -24,9 +24,5 @@ namespace SchoolWebProject.Domain.Models
         public virtual List<Subject> Subjects { get; set; }
 
         public virtual List<Schedule> Schedules { get; set; }
-
-        public Teacher(): base()
-        {
-        }
     }
 }

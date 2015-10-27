@@ -10,7 +10,7 @@ namespace SchoolWebProject.Domain.Models
     {
         public int Id { get; set; }
 
-        //public string Poster { get; set; }
+        ////public string Poster { get; set; }
         [Required]
         [MaxLength(100)]
         public string Subject { get; set; }
@@ -30,10 +30,5 @@ namespace SchoolWebProject.Domain.Models
         public virtual User User { get; set; }
 
         public virtual List<Post> Posts { get; set; }
-
-        public Topic()
-        {
-        }
-        
     }
 }

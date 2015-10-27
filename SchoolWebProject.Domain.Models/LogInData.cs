@@ -25,9 +25,5 @@ namespace SchoolWebProject.Domain.Models
         public string PasswordHash { get; set; }
 
         public virtual User User { get; set; }
-
-        public LogInData()
-        {
-        }
     }
 }

@@ -23,10 +23,5 @@ namespace SchoolWebProject.Domain.Models
         public DateTime LastSearchTime { get; set; }
 
         public virtual User User { get; set; }
-
-        public Online()
-        {
-
-        }
     }
 }

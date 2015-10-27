@@ -42,7 +42,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual School School { get; set; }
 
-      //  public virtual List<Announcement> Announcements { get; set; }
+        ////  public virtual List<Announcement> Announcements { get; set; }
 
         public virtual List<Topic> Topics { get; set; }
 
@@ -55,9 +55,5 @@ namespace SchoolWebProject.Domain.Models
         public int OnlineId { get; set; }
 
         public virtual Online Online { get; set; }
-
-        public User()
-        {
-        }
     }
 }

@@ -15,14 +15,11 @@ namespace SchoolWebProject.Domain.Models
         public string Name { get; set; }
 
         public int SchoolId { get; set; }
+
         public virtual School School { get; set; }
 
         public virtual List<Pupil> Pupils { get; set; }
 
         public virtual List<Schedule> Schedules { get; set; }
-
-        public Group()
-        {
-        }
     }
 }
