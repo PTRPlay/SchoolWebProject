@@ -29,5 +29,11 @@ namespace SchoolWebProject.Controllers
             return View();
         }
 
+        [Authorize]
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+
     }
 }
