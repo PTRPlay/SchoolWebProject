@@ -34,6 +34,8 @@ namespace SchoolWebProject.Controllers
            ViewBag.Schools = schoolEntries.ToList();
            var teacherEntries = (from entry in mdc.Users select entry);
            ViewBag.Teachers = teacherEntries.ToList();
+           var announcementEntries = (from entry in mdc.Announcements select entry);
+           ViewBag.Announcements = announcementEntries.ToList();
 
             logger.ErrorLog("Kolia");
             return View();

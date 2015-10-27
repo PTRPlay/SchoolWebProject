@@ -13,6 +13,7 @@ namespace SchoolWebProject.Domain.Models
             GetTeacherCategories().ForEach(c => context.TeacherCategories.Add(c));
             GetTeacherDegrees().ForEach(c => context.TeacherDegrees.Add(c));
             GetSchools().ForEach(c => context.Schools.Add(c));
+   //         GetAnnouncements().ForEach(c => context.Announcements.Add(c));
    //         GetTeachers().ForEach(c => context.Users.Add(c));
             base.Seed(context);
         }
@@ -64,13 +65,13 @@ namespace SchoolWebProject.Domain.Models
                 new TeacherDegree {
                     Name = "старший учитель"
                 },
-                               new TeacherDegree {
+                new TeacherDegree {
                     Name = "старший вихователь"
                 },
                 new TeacherDegree {
                     Name = "майстер виробничого навчання I категорії"
                 },
-                               new TeacherDegree {
+                new TeacherDegree {
                     Name = "майстер виробничого навчання II категорії"
                 }
             };
@@ -85,6 +86,18 @@ namespace SchoolWebProject.Domain.Models
                     City = "Львів",
                     Address = "Наукова, 92",
                     PhoneNumber = "+38 (032) 263-73-09"
+                },
+                new School {
+                    Name = "Середня школа № 46",
+                    City = "Львів",
+                    Address = "Наукова",
+                    PhoneNumber = "+38 (032) 265-89-09"
+                },
+                 new School {
+                    Name = "Гімназія ім. В.Симоненка",
+                    City = "Львів",
+                    Address = "Наукова",
+                    PhoneNumber = "+38 (032) 243-73-59"
                 }
             };
         }
@@ -140,7 +153,21 @@ namespace SchoolWebProject.Domain.Models
         }
 
 
-
+        private static List<Announcement> GetAnnouncements()
+        {
+            return new List<Announcement>
+            {
+                new Announcement {
+                    Title = "І етап адаптаційних занять для майбутніх першокласників",
+                    Message = "Оголошуємо набір учнів у 1-ий клас на 2016-2017 н.р.",
+                    MessageDetails = "АДАПТАЦІЙНІ ЗАНЯТТЯ ПРОВОДЯТЬСЯ І етап – з 01.10.15 р. кожного вівторка та четверга о 16 год. 00 хв.",
+                    DataPublished = new DateTime(2010, 1, 11),
+                //    Image=null,
+               //   UserId =  1,
+                    SchoolId =1
+                }
+            };
+        }
 
 
 

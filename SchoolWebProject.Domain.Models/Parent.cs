@@ -5,11 +5,11 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class Parent:User
+    public class Parent : User
     {
         public virtual List<Pupil> Pupils { get; set; }
 
-        public Parent():base()
+        public Parent() : base()
         {
         }
     }

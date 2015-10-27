@@ -15,6 +15,7 @@ namespace SchoolWebProject.Domain.Models
         public string Name { get; set; }
 
         public virtual List<Teacher> Teachers { get; set; }
+
         public virtual List<Schedule> Schedules { get; set; } 
     }
 }

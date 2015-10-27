@@ -18,7 +18,6 @@ namespace SchoolWebProject.Domain.Models
 
         public Holidays()
         {
-
         }
     }
 }

@@ -18,11 +18,11 @@ namespace SchoolWebProject.Domain.Models
         public virtual School School { get; set; }
 
         public virtual List<Pupil> Pupils { get; set; }
+
         public virtual List<Schedule> Schedules { get; set; }
 
         public Group()
         {
-
         }
     }
 }
