@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.UnitTest", "UnitTestProject\SchoolWebProject.UnitTest.csproj", "{27BB6B23-04D4-4894-8DED-A7C3B4749B15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Services", "SchoolWebProject.Services\SchoolWebProject.Services.csproj", "{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{27BB6B23-04D4-4894-8DED-A7C3B4749B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27BB6B23-04D4-4894-8DED-A7C3B4749B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27BB6B23-04D4-4894-8DED-A7C3B4749B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

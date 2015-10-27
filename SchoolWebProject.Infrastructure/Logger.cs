@@ -8,27 +8,27 @@ namespace SchoolWebProject.Infrastructure
     {
         public void WarningLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.Write(String.Format(messageTemplate, propertyValues));
+            Debug.Write(string.Format(messageTemplate, propertyValues));
         }
 
         public void InfoLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
         public void ErrorLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
         public void DebugLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
         public void TraceLog(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(String.Format(messageTemplate, propertyValues));
+            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
     }
 }

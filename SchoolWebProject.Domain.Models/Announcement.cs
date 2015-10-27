@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -19,13 +20,14 @@ namespace SchoolWebProject.Domain.Models
         [MaxLength(3000)]
         public string MessageDetails { get; set; }
 
+        public byte[] Image { get; set; }
+        public DateTime DataPublished { get; set; }
+
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
         public int SchoolId { get; set; }
         public virtual School School { get; set; }
-
-        public DateTime DataPublished { get; set; }
 
         public Announcement()
         {

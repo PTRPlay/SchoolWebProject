@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5421539-1FC9-47E3-B97A-CCBAB0B37ECC}</ProjectGuid>
+    <ProjectGuid>{1A6BD081-F45F-46B1-B097-70B924B53DC9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SchoolWebProject.Domain.Models</RootNamespace>
-    <AssemblyName>SchoolWebProject.Domain.Models</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>SchoolWebProject.Data</RootNamespace>
+    <AssemblyName>SchoolWebProject.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,16 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -52,40 +48,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Announcement.cs" />
-    <Compile Include="ClassRoom.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="Holidays.cs" />
-    <Compile Include="LessonDetail.cs" />
-    <Compile Include="LogInData.cs" />
-    <Compile Include="Mark.cs" />
-    <Compile Include="MarkType.cs" />
-    <Compile Include="Online.cs" />
-    <Compile Include="Parent.cs" />
-    <Compile Include="Post.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Configuration\AnnouncementConfiguration.cs" />
+    <Compile Include="Configuration\ClassRoomConfiguration.cs" />
+    <Compile Include="Configuration\GroupConfiguration.cs" />
+    <Compile Include="Configuration\HolidaysConfiguration.cs" />
+    <Compile Include="Configuration\LessonDetailConfiguration.cs" />
+    <Compile Include="Configuration\LogInDataConfiguration.cs" />
+    <Compile Include="Configuration\MarkConfiguration.cs" />
+    <Compile Include="Configuration\MarkTypeConfiguration.cs" />
+    <Compile Include="Configuration\OnlineConfiguration.cs" />
+    <Compile Include="Configuration\ParentConfiguration.cs" />
+    <Compile Include="Configuration\PostConfiguration.cs" />
+    <Compile Include="Configuration\PupilConfiguration.cs" />
+    <Compile Include="Configuration\RoleConfiguration.cs" />
+    <Compile Include="Configuration\ScheduleConfiguration.cs" />
+    <Compile Include="Configuration\SchoolConfiguration.cs" />
+    <Compile Include="Configuration\SchoolContextConfiguration.cs" />
+    <Compile Include="Configuration\SchoolWebSeedDataConfiguration.cs" />
+    <Compile Include="Configuration\SearchWordConfiguration.cs" />
+    <Compile Include="Configuration\SubjectConfiguration.cs" />
+    <Compile Include="Configuration\TeacherCategoryConfiguration.cs" />
+    <Compile Include="Configuration\TeacherConfiguration.cs" />
+    <Compile Include="Configuration\TeacherDegreeConfiguration.cs" />
+    <Compile Include="Configuration\TopicConfiguration.cs" />
+    <Compile Include="Configuration\UserConfiguration.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pupil.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="Schedule.cs" />
-    <Compile Include="School.cs" />
-    <Compile Include="SchoolContext.cs" />
-    <Compile Include="SchoolWebSeedData.cs" />
-    <Compile Include="SearchWord.cs" />
-    <Compile Include="Subject.cs" />
-    <Compile Include="Teacher.cs" />
-    <Compile Include="TeacherCategory.cs" />
-    <Compile Include="TeacherDegree.cs" />
-    <Compile Include="Topic.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="SchoolWebProjectEntities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj">
-      <Project>{f25258b9-2ff2-4fd0-8d15-397ce0391a9a}</Project>
-      <Name>SchoolWebProject.Infrastructure</Name>
+    <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">
+      <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
+      <Name>SchoolWebProject.Domain.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

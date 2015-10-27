@@ -9,7 +9,7 @@ namespace SchoolWebProject.Domain.Models
     {
         public virtual List<Pupil> Pupils { get; set; }
 
-        public Parent()
+        public Parent():base()
         {
         }
     }
