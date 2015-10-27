@@ -11,7 +11,7 @@ namespace SchoolWebProject.Domain.Models
     {
         public SchoolContext():base("WebSchoolDB")
         {
-            Database.SetInitializer<SchoolContext>(new DropCreateDatabaseAlways<SchoolContext>());
+            Database.SetInitializer<SchoolContext>(new SchoolWebSeedData());
 
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,5 +32,11 @@ namespace SchoolWebProject.Domain.Models
         public DbSet<SearchWord> SearchWords { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<TeacherCategory> TeacherCategories { get; set; }
+        public DbSet<TeacherDegree> TeacherDegrees { get; set; }
+        public DbSet<Mark> Marks { get; set; }
+        public DbSet<MarkType> MarkTypes { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }

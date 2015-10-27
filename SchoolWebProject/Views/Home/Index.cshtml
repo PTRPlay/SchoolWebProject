@@ -3,3 +3,12 @@
 }
 
 <h2>Hello!</h2>
+
+ <h3> Список категорій вчителів <h3>
+@foreach (var entry in ViewBag.TeacherCategories)
+{
+<div>
+
+        <p>@entry.Name</p>
+</div>
+}

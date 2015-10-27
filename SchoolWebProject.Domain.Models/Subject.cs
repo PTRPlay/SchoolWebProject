@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class Role
+    public class Subject
     {
         public int Id { get; set; }
 
@@ -14,10 +14,7 @@ namespace SchoolWebProject.Domain.Models
         [MaxLength(30)]
         public string Name { get; set; }
 
-        public virtual List<User> Users { get; set; }
-
-        public Role()
-        { 
-        }
+        public virtual List<Teacher> Teachers { get; set; }
+        public virtual List<Schedule> Schedules { get; set; } 
     }
 }

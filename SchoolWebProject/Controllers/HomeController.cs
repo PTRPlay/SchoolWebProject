@@ -20,6 +20,15 @@ namespace SchoolWebProject.Controllers
         
         public ActionResult Index()
         {
+              SchoolContext mdc = new SchoolContext();
+           {
+
+               int i = mdc.Schools.Count();
+            }
+
+           var aboutTeacherEntries = (from entry in mdc.TeacherCategories select entry);
+           ViewBag.TeacherCategories = aboutTeacherEntries.ToList();
+
             logger.ErrorLog("Kolia");
             return View();
         }
