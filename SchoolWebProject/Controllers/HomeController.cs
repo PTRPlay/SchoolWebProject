@@ -26,8 +26,10 @@ namespace SchoolWebProject.Controllers
                int i = mdc.Schools.Count();
             }
 
-           var aboutTeacherEntries = (from entry in mdc.TeacherCategories select entry);
-           ViewBag.TeacherCategories = aboutTeacherEntries.ToList();
+           var teacherCategoriesEntries = (from entry in mdc.TeacherCategories select entry);
+           ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
+           var teacherDegreeEntries = (from entry in mdc.TeacherDegrees select entry);
+           ViewBag.TeacherDegrees = teacherDegreeEntries.ToList();
 
             logger.ErrorLog("Kolia");
             return View();
