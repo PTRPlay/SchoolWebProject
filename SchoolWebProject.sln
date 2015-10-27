@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject", "SchoolWebProject\SchoolWebProject.csproj", "{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Infrastructure", "SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj", "{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.UnitTest", "UnitTestProject\SchoolWebProject.UnitTest.csproj", "{27BB6B23-04D4-4894-8DED-A7C3B4749B15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Services", "SchoolWebProject.Services\SchoolWebProject.Services.csproj", "{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{27BB6B23-04D4-4894-8DED-A7C3B4749B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27BB6B23-04D4-4894-8DED-A7C3B4749B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27BB6B23-04D4-4894-8DED-A7C3B4749B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
