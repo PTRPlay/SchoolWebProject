@@ -63,6 +63,7 @@ namespace SchoolWebProject.Domain.Models
                 new Subject { Name = "геометрія" },
                 new Subject { Name = "правознавство" },
                 new Subject { Name = "українська література" }
+                new Subject { Name = "біологія" }
             };
         }
 
