@@ -73,6 +73,9 @@
       <HintPath>..\SchoolWebProject.Infrastructure\obj\Debug\SchoolWebProject.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SchoolWebProject.Services">
+      <HintPath>..\SchoolWebProject.Services\bin\Debug\SchoolWebProject.Services.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
