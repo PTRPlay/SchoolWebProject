@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
 
 namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
+        public TeacherService(ILogger logger) : base(logger)
+        {
+        }
+
         public List<Teacher> GetTeachers()
         {
             throw new NotImplementedException();
@@ -29,7 +34,7 @@ namespace SchoolWebProject.Services
             throw new NotImplementedException();
         }
 
-        public void RemoveTecher(Teacher teacher)
+        public void RemoveTeacher(Teacher teacher)
         {
             throw new NotImplementedException();
         }
