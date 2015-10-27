@@ -17,6 +17,7 @@ namespace SchoolWebProject.Controllers
             return this.View();
         }
 
+        [HttpPost]
         public User LogIn(string userName, string password, bool rememberMe)
         {
             // compare input username and password with database users login info
