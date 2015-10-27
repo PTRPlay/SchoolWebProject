@@ -187,9 +187,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\MyProfile.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Account\LogIn.cshtml" />
   </ItemGroup>
   <PropertyGroup>

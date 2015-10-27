@@ -1,7 +1,0 @@
-﻿@{
-    ViewBag.Title = "MyProfile";
-}
-
-<h2>MyProfile</h2>
-
-<h3>It's your page, @(Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "*not authenticated*" )</h3>
