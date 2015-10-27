@@ -13,6 +13,7 @@ namespace SchoolWebProject.Domain.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+
         public virtual List<Teacher> Teachers { get; set; }
     }
 }
