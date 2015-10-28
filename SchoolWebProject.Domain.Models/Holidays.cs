@@ -13,12 +13,8 @@ namespace SchoolWebProject.Domain.Models
 
         [Column(TypeName = "Date")]
         public DateTime StartDay { get; set; }
+
         [Column(TypeName = "Date")]
         public DateTime EndDay { get; set; }
-
-        public Holidays()
-        {
-
-        }
     }
 }

@@ -12,20 +12,19 @@ namespace SchoolWebProject.Domain.Models
 
         [Required]        
         public string Message { get; set; }
+
         public DateTime CreationTime { get; set; }
 
         public int TopicId { get; set; }
+
         public virtual Topic Topic { get; set; }
 
         public int SchoolId { get; set; }
+
         public virtual School School { get; set; }
 
         public int UserId { get; set; }
+
         public virtual User User { get; set; }
-
-        public Post()
-        {
-
-        }
     }
 }

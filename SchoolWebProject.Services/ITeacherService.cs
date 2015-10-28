@@ -7,13 +7,16 @@ using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Services
 {
-    interface ITeacherService
+    public interface ITeacherService
     {
         List<Teacher> GetTeachers();
+
         Teacher GetProfile();
+
         void UpdateProfile(Teacher teacher);
+
         void AddTeacher(Teacher teacher);
+
         void RemoveTeacher(Teacher teacher);
-        
     }
 }

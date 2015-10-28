@@ -10,26 +10,25 @@ namespace SchoolWebProject.Domain.Models
     {
         public int Id { get; set; }
 
-        //public string Poster { get; set; }
+        ////public string Poster { get; set; }
         [Required]
         [MaxLength(100)]
         public string Subject { get; set; }
+
         [Required]
         public DateTime CreationMoment { get; set; }
+
         [Required]
         public DateTime LastPostAddedMoment { get; set; }
 
         public int SchoolId { get; set; }
+
         public virtual School School { get; set; }
 
         public int UserId { get; set; }
+
         public virtual User User { get; set; }
 
         public virtual List<Post> Posts { get; set; }
-
-        public Topic()
-        {
-        }
-        
     }
 }

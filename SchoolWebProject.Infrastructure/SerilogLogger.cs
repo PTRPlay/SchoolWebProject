@@ -1,10 +1,10 @@
 ﻿using System;
 using Serilog;
+
 namespace SchoolWebProject.Infrastructure
 {
     public class SerilogLogger : ILogger
     {
-
         public void WarningLog(string messageTemplate, params object[] propertyValues)
         {
             Log.Warning(messageTemplate, propertyValues);

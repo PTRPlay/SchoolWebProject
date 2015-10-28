@@ -16,16 +16,14 @@ namespace SchoolWebProject.Domain.Models
 
         [MaxLength(20)]
         public string Login { get; set; }
+
         [MinLength(6)]
         [MaxLength(20)]
         [DataType(DataType.Password)]
         public string PasswordSalt { get; set; }
+
         public string PasswordHash { get; set; }
 
         public virtual User User { get; set; }
-
-        public LogInData()
-        {
-        }
     }
 }

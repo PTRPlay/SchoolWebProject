@@ -3,3 +3,59 @@
 }
 
 <h2>Hello!</h2>
+
+@foreach (var entry in ViewBag.Schools)
+{
+    <div>
+        <p>@entry.Id</p>
+        <h2>@entry.Name</h2>
+        <p>@entry.Address</p>
+        <p>@entry.City</p>
+        <p>@entry.PhoneNumber</p>
+    </div>
+}
+<br>
+@foreach (var entry in ViewBag.Announcements)
+{
+    <div>
+        <h2>@entry.Title</h2>
+        <p>@entry.Message</p>
+        <p>@entry.MessageDetails</p>
+     </div>
+}
+<br>
+<h3> Вчителі школи </h3>
+@foreach (var entry in ViewBag.Teachers)
+{
+    <div>
+        <p> @entry.FirstName </p>
+        <p> @entry.MiddleName </p>
+        <p> @entry.LastName</p>
+        <p> @entry.PhoneNumber</p>
+    </div>
+}
+
+<br>
+ <h3> Список категорій вчителів </h3>
+    @foreach (var entry in ViewBag.TeacherCategories)
+    {
+        <div>
+            <p>@entry.Name</p>
+        </div>
+    }
+<br>
+<h3>  Можливі звання вчителів </h3>
+      @foreach (var entry in ViewBag.TeacherDegrees)
+       {
+           <div>
+               <p>@entry.Name</p>
+           </div>
+       }
+<h3> Список предметів </h3>
+@foreach (var entry in ViewBag.Subjects)
+{
+    <div>
+        <p>@entry.Name</p>
+    </div>
+}
+<br>
