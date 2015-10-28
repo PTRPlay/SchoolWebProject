@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace SchoolWebProject.Data.Infrastructure
 {
-    public class UnitOfWork:IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         public UnitOfWork()
         {
-
         }
         
         public void Commit()
-        {
-        
+        {        
         }
     }
 }
