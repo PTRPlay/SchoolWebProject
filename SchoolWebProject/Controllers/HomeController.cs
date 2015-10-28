@@ -28,20 +28,17 @@ namespace SchoolWebProject.Controllers
            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
            var teacherDegreeEntries = from entry in mdc.TeacherDegrees select entry;
            ViewBag.TeacherDegrees = teacherDegreeEntries.ToList();
-
            var subjectEntries = from entry in mdc.Subjects select entry;
            ViewBag.Subjects = subjectEntries.ToList();
-
            var schoolEntries = from entry in mdc.Schools select entry;
            ViewBag.Schools = schoolEntries.ToList();
            var teacherEntries = from entry in mdc.Users select entry;
            ViewBag.Teachers = teacherEntries.ToList();
-
            var announcementEntries = from entry in mdc.Announcements select entry;
            ViewBag.Announcements = announcementEntries.ToList();
             
-            logger.ErrorLog("Kolia");
-            return View();
+            this.logger.Error("Kolia");
+            return this.View();
         }
     }
 }

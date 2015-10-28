@@ -2,6 +2,7 @@ using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.App_Start
 {
@@ -37,6 +38,7 @@ namespace SchoolWebProject.App_Start
             //container.LoadConfiguration();
 
             // TODO: Register your types here
+            container.RegisterType<ITeacherService, TeacherService>();
             container.RegisterType<ILogger, Logger>();
         }
     }
