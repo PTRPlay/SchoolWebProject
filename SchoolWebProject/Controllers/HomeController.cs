@@ -37,7 +37,7 @@ namespace SchoolWebProject.Controllers
            var announcementEntries = from entry in mdc.Announcements select entry;
            ViewBag.Announcements = announcementEntries.ToList();
             
-            this.logger.ErrorLog("Kolia");
+            this.logger.Error("Kolia");
             return this.View();
         }
     }
