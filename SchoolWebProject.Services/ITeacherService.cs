@@ -9,9 +9,9 @@ namespace SchoolWebProject.Services
 {
     public interface ITeacherService
     {
-        List<Teacher> GetTeachers();
+        IEnumerable<Teacher> GetAllTeachers();
 
-        Teacher GetProfile();
+        Teacher GetProfileById(int id);
 
         void UpdateProfile(Teacher teacher);
 

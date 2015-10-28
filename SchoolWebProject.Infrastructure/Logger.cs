@@ -1,34 +1,33 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Text;
 
 namespace SchoolWebProject.Infrastructure
 {
     public class Logger : ILogger
     {
-        public void WarningLog(string messageTemplate, params object[] propertyValues)
+        public void Warning(string messageTemplate, params object[] propertyValues)
         {
-            Debug.Write(string.Format(messageTemplate, propertyValues));
+            System.Diagnostics.Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
-        public void InfoLog(string messageTemplate, params object[] propertyValues)
+        public void Info(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
+            System.Diagnostics.Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
-        public void ErrorLog(string messageTemplate, params object[] propertyValues)
+        public void Error(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
+            System.Diagnostics.Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
-        public void DebugLog(string messageTemplate, params object[] propertyValues)
+        public void Debug(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
+            System.Diagnostics.Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
 
-        public void TraceLog(string messageTemplate, params object[] propertyValues)
+        public void Trace(string messageTemplate, params object[] propertyValues)
         {
-            Debug.WriteLine(string.Format(messageTemplate, propertyValues));
+            System.Diagnostics.Debug.WriteLine(string.Format(messageTemplate, propertyValues));
         }
     }
 }

@@ -5,29 +5,34 @@ namespace SchoolWebProject.Infrastructure
 {
     public class SerilogLogger : ILogger
     {
-        public void WarningLog(string messageTemplate, params object[] propertyValues)
+        public SerilogLogger()
         {
-            Log.Warning(messageTemplate, propertyValues);
+            Log.Logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger();
         }
 
-        public void InfoLog(string messageTemplate, params object[] propertyValues)
+        public void Warning(string messageTemplate, params object[] propertyValues)
         {
-            Log.Information(messageTemplate, propertyValues);
+            Log.Logger.Warning(messageTemplate, propertyValues);
         }
 
-        public void ErrorLog(string messageTemplate, params object[] propertyValues)
+        public void Info(string messageTemplate, params object[] propertyValues)
         {
-            Log.Error(messageTemplate, propertyValues);
+            Log.Logger.Information(messageTemplate, propertyValues);
         }
 
-        public void DebugLog(string messageTemplate, params object[] propertyValues)
+        public void Error(string messageTemplate, params object[] propertyValues)
         {
-            Log.Debug(messageTemplate, propertyValues);
+            Log.Logger.Error(messageTemplate, propertyValues);
         }
 
-        public void TraceLog(string messageTemplate, params object[] propertyValues)
+        public void Debug(string messageTemplate, params object[] propertyValues)
         {
-            Log.Verbose(messageTemplate, propertyValues);
+            Log.Logger.Debug(messageTemplate, propertyValues);
+        }
+
+        public void Trace(string messageTemplate, params object[] propertyValues)
+        {
+            Log.Logger.Verbose(messageTemplate, propertyValues);
         }
     }
 }
