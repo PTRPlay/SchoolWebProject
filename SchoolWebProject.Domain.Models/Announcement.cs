@@ -17,7 +17,6 @@ namespace SchoolWebProject.Domain.Models
         [Required]
         [MaxLength(200)]
         public string Message { get; set; }
-        [MaxLength(3000)]
         public string MessageDetails { get; set; }
 
   ////      public byte[] Image { get; set; }
