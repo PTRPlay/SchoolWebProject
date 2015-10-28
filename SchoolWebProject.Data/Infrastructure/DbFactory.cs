@@ -7,7 +7,7 @@ using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Data.Infrastructure
 {
-    public class DbFactory : IDbFactory
+    public class DbFactory :  Disposable, IDbFactory
     {
         private SchoolContext dbContext;
 
