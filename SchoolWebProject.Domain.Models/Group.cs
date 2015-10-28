@@ -11,13 +11,16 @@ namespace SchoolWebProject.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        public string Name { get; set; }
+        public int NameNumber { get; set; }
+
+        [Required]
+        [MaxLength(2)]
+        public string NameLetter { get; set; }
 
         public int SchoolId { get; set; }
 
         public virtual School School { get; set; }
-
+        
         public virtual List<Pupil> Pupils { get; set; }
 
         public virtual List<Schedule> Schedules { get; set; }

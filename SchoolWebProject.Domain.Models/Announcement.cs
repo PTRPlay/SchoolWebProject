@@ -12,11 +12,13 @@ namespace SchoolWebProject.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Title { get; set; }
+
         [Required]
-        [MaxLength(200)]
+        [MaxLength(300)]
         public string Message { get; set; }
+
         public string MessageDetails { get; set; }
 
   ////      public byte[] Image { get; set; }

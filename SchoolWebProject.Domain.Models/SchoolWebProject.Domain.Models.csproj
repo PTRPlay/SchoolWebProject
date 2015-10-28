@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
     <Compile Include="Announcement.cs" />
     <Compile Include="ClassRoom.cs" />
     <Compile Include="Group.cs" />

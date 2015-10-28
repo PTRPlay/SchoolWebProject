@@ -28,10 +28,18 @@
 @foreach (var entry in ViewBag.Teachers)
 {
     <div>
-        <p> @entry.FirstName </p>
-        <p> @entry.MiddleName </p>
-        <p> @entry.LastName</p>
+        <span> @entry.FirstName </span>
+        <span> @entry.MiddleName </span>
+        <span> @entry.LastName</span>
         <p> @entry.PhoneNumber</p>
+    </div>
+}
+<br>
+<h3> Учні школи </h3>
+@foreach (var entry in ViewBag.Pupils)
+{
+    <div>
+        <span> @entry.FirstName </span> <span> @entry.LastName</span>
     </div>
 }
 
