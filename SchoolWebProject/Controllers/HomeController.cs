@@ -45,8 +45,10 @@ namespace SchoolWebProject.Controllers
 
         public ActionResult GetTeachers()
         {
+            //Це тре зробити якось через сервіси , але у мене проблеми з репозиторієм для ініціалізації
+            // або я чогось не розумію або хз 
             var bin = new SchoolContext().Users;
-            ViewBag.Teachers = (from entry in bin select entry.FirstName).ToList();
+            ViewBag.Teachers = from entry in bin select entry.FirstName+" "+entry.LastName;
             return PartialView();
         }
     }
