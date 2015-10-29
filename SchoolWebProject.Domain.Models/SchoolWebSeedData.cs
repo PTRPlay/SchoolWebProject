@@ -15,7 +15,7 @@ namespace SchoolWebProject.Domain.Models
             GetSubjects().ForEach(c => context.Subjects.Add(c));
             GetSchools().ForEach(c => context.Schools.Add(c));
             ////          GetAnnouncements().ForEach(c => context.Announcements.Add(c));
-            ////         GetTeachers().ForEach(c => context.Users.Add(c));
+            GetTeachers().ForEach(c => context.Users.Add(c));
             base.Seed(context);
         }
 

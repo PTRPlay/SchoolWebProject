@@ -20,9 +20,9 @@ namespace SchoolWebProject.Controllers
         public ActionResult Index()
         {
               SchoolContext mdc = new SchoolContext();
-           {
-               int i = mdc.Schools.Count();
-            }
+           //{
+           //    int i = mdc.Schools.Count();
+           // }
 
            var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
@@ -39,6 +39,13 @@ namespace SchoolWebProject.Controllers
             
             this.logger.Error("Kolia");
             return this.View();
+        }
+
+        public ActionResult GetTeachers()
+        {
+            var bin = new SchoolContext().Users;
+            ViewBag.Teachers = (from entry in bin select entry.FirstName).ToList();
+            return PartialView();
         }
     }
 }
