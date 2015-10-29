@@ -10,13 +10,28 @@ namespace SchoolWebProject.Domain.Models
     {
         protected override void Seed(SchoolContext context)
         {
+            GetRoles().ForEach(c => context.Roles.Add(c));
             GetTeacherCategories().ForEach(c => context.TeacherCategories.Add(c));
             GetTeacherDegrees().ForEach(c => context.TeacherDegrees.Add(c));
             GetSubjects().ForEach(c => context.Subjects.Add(c));
             GetSchools().ForEach(c => context.Schools.Add(c));
-            ////          GetAnnouncements().ForEach(c => context.Announcements.Add(c));
+            context.SaveChanges();
+            GetAnnouncements().ForEach(c => context.Announcements.Add(c));
             GetTeachers().ForEach(c => context.Users.Add(c));
+            GetGroups().ForEach(c => context.Groups.Add(c));
+            GetPupils().ForEach(c => context.Users.Add(c));
             base.Seed(context);
+        }
+
+        private static List<Role> GetRoles()
+        {
+            return new List<Role>
+            {
+                new Role { Name = "admin" },
+                new Role { Name = "teacher" },
+                new Role { Name = "pupil" },
+                new Role { Name = "parent" }
+            };
         }
 
         private static List<TeacherCategory> GetTeacherCategories()
@@ -95,6 +110,29 @@ namespace SchoolWebProject.Domain.Models
             };
         }
 
+        private static List<Group> GetGroups()
+        {
+            return new List<Group>
+            {
+                new Group { NameNumber = 1, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 1, NameLetter = "Б", SchoolId = 1 },
+                new Group { NameNumber = 1, NameLetter = "В", SchoolId = 1 },
+                new Group { NameNumber = 2, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 2, NameLetter = "Б", SchoolId = 1 },
+                new Group { NameNumber = 3, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 5, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 5, NameLetter = "Б", SchoolId = 1 },
+                new Group { NameNumber = 5, NameLetter = "В", SchoolId = 1 },
+                new Group { NameNumber = 7, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 7, NameLetter = "Б", SchoolId = 1 },
+                new Group { NameNumber = 10, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 10, NameLetter = "Б", SchoolId = 1 },
+                new Group { NameNumber = 11, NameLetter = "А", SchoolId = 1 },
+                new Group { NameNumber = 11, NameLetter = "Б", SchoolId = 1 },
+                new Group { NameNumber = 11, NameLetter = "В", SchoolId = 1 }
+            };
+        }
+
        private static List<Teacher> GetTeachers()
         {
             return new List<Teacher>
@@ -108,10 +146,10 @@ namespace SchoolWebProject.Domain.Models
                     WorkBegin = new DateTime(2014, 6, 14),
                     TeacherCategoryId = 1,
                     TeacherDegreeId = 1,
-                    RoleId = 1,
-                    SchoolId = 1,
-                    LogInDataId = 1,
-                    OnlineId = 1                    
+                    RoleId = 2,
+                    SchoolId = 1
+              ////      LogInDataId = 1,
+              ////      OnlineId = 1                    
                 },
 
                    new Teacher 
@@ -122,11 +160,11 @@ namespace SchoolWebProject.Domain.Models
                     PhoneNumber = "+38 (050) 265-00-09",
                     WorkBegin = new DateTime(2007, 5, 1),
                     TeacherCategoryId = 1,
-                    TeacherDegreeId = 1,
-                    RoleId = 1,
-                    SchoolId = 1,
-                    LogInDataId = 1,
-                    OnlineId = 1
+                    TeacherDegreeId = 5,
+                    RoleId = 2,
+                    SchoolId = 1
+              ////      LogInDataId = 1,
+              ////      OnlineId = 1
                 },
                 
                     new Teacher
@@ -136,15 +174,60 @@ namespace SchoolWebProject.Domain.Models
                     LastName = "Зелевська",                                           
                     PhoneNumber = "+38 (097) 677-73-09",
                     WorkBegin = new DateTime(2010, 1, 11),
-                    TeacherCategoryId = 1,
+                    TeacherCategoryId = 3,
                     TeacherDegreeId = 1,
-                    RoleId = 1,
-                    SchoolId = 1,
-                    LogInDataId = 1,
-                    OnlineId = 1
+                    RoleId = 2,
+                    SchoolId = 1
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
                 }
             };
         }
+
+       private static List<Pupil> GetPupils()
+       {
+           return new List<Pupil>
+            {
+                new Pupil 
+                {
+                    FirstName = "Семен",
+                    LastName = "Коваленко",   
+                    MiddleName = "Петрович",                    
+                    PhoneNumber = "+38 (097) 767-73-09",
+                    RoleId = 3,
+                    SchoolId = 1,
+                    GroupId = 3
+              ////      LogInDataId = 1,
+              ////      OnlineId = 1                    
+                },
+
+                   new Pupil 
+                   {
+                    FirstName = "Ірина",
+                    MiddleName = "Петрівна",
+                    LastName = "Щеботова",                                           
+                    PhoneNumber = "+38 (050) 265-00-09",
+                    RoleId = 3,
+                    SchoolId = 1,
+                    GroupId = 3
+              ////      LogInDataId = 1,
+              ////      OnlineId = 1
+                },
+                
+                    new Pupil
+                    {
+                    FirstName = "Микола",
+                    MiddleName = "Андріїович",
+                    LastName = "Ковалов",                                           
+                    PhoneNumber = "+38 (097) 677-73-09",
+                    RoleId = 3,
+                    SchoolId = 1,
+                    GroupId = 3
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                }
+            };
+       }
 
         private static List<Announcement> GetAnnouncements()
         {

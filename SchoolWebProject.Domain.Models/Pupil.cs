@@ -11,9 +11,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual Group Group { get; set; }
 
-        public int ParentId { get; set; }
-
-        public virtual Parent Parent { get; set; }
+        public virtual List<Parent> Parents { get; set; }
 
         public virtual List<Mark> Marks { get; set; }
     }

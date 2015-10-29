@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27BB6B23-04D4-4894-8DED-A7C3B4749B15}</ProjectGuid>
+    <ProjectGuid>{38395D4E-FA8F-45B8-8F69-6CBD6559F67B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTestProject</RootNamespace>
-    <AssemblyName>UnitTestProject</AssemblyName>
+    <RootNamespace>UnitTest</RootNamespace>
+    <AssemblyName>UnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <HintPath>..\..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -53,13 +53,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TeatcherServiceUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">
-      <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
-      <Name>SchoolWebProject.Domain.Models</Name>
+    <ProjectReference Include="..\..\..\SchoolWebProject.Services\SchoolWebProject.Services.csproj">
+      <Project>{9be9e5e3-b01c-43bd-8904-2fd6b6bf4a28}</Project>
+      <Name>SchoolWebProject.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

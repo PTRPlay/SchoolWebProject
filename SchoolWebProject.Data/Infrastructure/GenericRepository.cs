@@ -5,15 +5,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Data.Infrastructure
 {
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class GenericRepository<T> where T : class
     {
         private readonly IDbSet<T> dbSet;
-        private SchoolWebProjectEntities dataContext;
+        private SchoolContext dataContext;
 
-        protected RepositoryBase()
+        protected GenericRepository()
         {
         }
 

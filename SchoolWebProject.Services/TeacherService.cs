@@ -5,38 +5,43 @@ using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Data.Infrastructure;
+
 
 namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
-        public TeacherService(ILogger logger) : base(logger)
+        private IRepository<Teacher> repository;
+
+        public TeacherService(ILogger logger, IRepository<Teacher> teacherRepository) : base(logger)
         {
+            repository = teacherRepository;
         }
 
-        public List<Teacher> GetTeachers()
+        public IEnumerable<Teacher> GetAllTeachers()
         {
-            throw new NotImplementedException();
+           return repository.GetAll();
         }
 
-        public Teacher GetProfile()
+        public Teacher GetProfileById(int id)
         {
-            throw new NotImplementedException();
+           return repository.GetById(id);
         }
 
         public void UpdateProfile(Teacher teacher)
         {
-            throw new NotImplementedException();
+            repository.Update(teacher);
         }
 
         public void AddTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            repository.Add(teacher);
         }
 
         public void RemoveTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            repository.Delete(teacher);
         }
     }
 }

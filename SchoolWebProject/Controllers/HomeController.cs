@@ -32,12 +32,14 @@ namespace SchoolWebProject.Controllers
            ViewBag.Subjects = subjectEntries.ToList();
            var schoolEntries = from entry in mdc.Schools select entry;
            ViewBag.Schools = schoolEntries.ToList();
-           var teacherEntries = from entry in mdc.Users select entry;
+           var teacherEntries = from entry in mdc.Users where entry.RoleId == 2 select entry;
            ViewBag.Teachers = teacherEntries.ToList();
+           var pupilEntries = from entry in mdc.Users where entry.RoleId == 3 select entry;
+           ViewBag.Pupils = pupilEntries.ToList();
            var announcementEntries = from entry in mdc.Announcements select entry;
            ViewBag.Announcements = announcementEntries.ToList();
             
-            this.logger.Error("Kolia");
+            this.logger.Debug("Kolia");
             return this.View();
         }
 

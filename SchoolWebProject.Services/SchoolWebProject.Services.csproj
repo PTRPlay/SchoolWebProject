@@ -48,6 +48,10 @@
     <Compile Include="TeacherService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolWebProject.Data\SchoolWebProject.Data.csproj">
+      <Project>{1a6bd081-f45f-46b1-b097-70b924b53dc9}</Project>
+      <Name>SchoolWebProject.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">
       <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
       <Name>SchoolWebProject.Domain.Models</Name>
