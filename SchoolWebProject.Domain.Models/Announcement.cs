@@ -21,7 +21,7 @@ namespace SchoolWebProject.Domain.Models
 
         public string MessageDetails { get; set; }
 
-  ////      public byte[] Image { get; set; }
+       public byte[] Image { get; set; }
 
         public DateTime DataPublished { get; set; }
 

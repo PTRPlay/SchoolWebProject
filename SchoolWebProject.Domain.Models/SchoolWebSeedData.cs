@@ -17,6 +17,7 @@ namespace SchoolWebProject.Domain.Models
             GetSchools().ForEach(c => context.Schools.Add(c));
             context.SaveChanges();
             GetAnnouncements().ForEach(c => context.Announcements.Add(c));
+            GetClassRooms().ForEach(c => context.ClassRooms.Add(c));
             GetTeachers().ForEach(c => context.Users.Add(c));
             GetGroups().ForEach(c => context.Groups.Add(c));
             GetPupils().ForEach(c => context.Users.Add(c));
@@ -225,8 +226,73 @@ namespace SchoolWebProject.Domain.Models
                     GroupId = 3
                 ////    LogInDataId = 1,
                 ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Назар", MiddleName = "Андріїович", LastName = "Гаврилів",                                           
+                    PhoneNumber = "+38 (097) 677-73-09",
+                    RoleId = 3, SchoolId = 1, GroupId = 9
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Микола", MiddleName = "Назарович", LastName = "Максимчук",                                           
+                    PhoneNumber = "+38 (097) 117-73-09",
+                    RoleId = 3, SchoolId = 1, GroupId = 9
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Олег", MiddleName = "Олексійович", LastName = "Денисік",                                           
+                    PhoneNumber = "+38 (097) 547-73-09",
+                    RoleId = 3, SchoolId = 1, GroupId = 5
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Данило", MiddleName = "Вікторович", LastName = "Лавринович",                                           
+                    PhoneNumber = "+38 (097) 907-73-09",
+                    RoleId = 3, SchoolId = 1, GroupId = 9 
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Тарас", MiddleName = "Семенович", LastName = "Марков",                                           
+                    PhoneNumber = "+38 (097) 177-73-66",
+                    RoleId = 3, SchoolId = 1, GroupId = 9
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                    new Pupil
+                    {
+                    FirstName = "Софія", MiddleName = "Денисівна", LastName = "Моцак",                                           
+                    PhoneNumber = "+38 (097) 547-73-09",
+                    RoleId = 3, SchoolId = 1, GroupId = 9
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Олександра", MiddleName = "Вікторівнач", LastName = "Грибавська",                                           
+                    PhoneNumber = "+38 (097) 907-73-09",
+                    RoleId = 3, SchoolId = 1, GroupId = 5 
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
+                },
+                     new Pupil
+                    {
+                    FirstName = "Наталя", MiddleName = "Семенівна", LastName = "Маркова",                                           
+                    PhoneNumber = "+38 (097) 177-73-66",
+                    RoleId = 3, SchoolId = 1, GroupId = 5
+                ////    LogInDataId = 1,
+                ////    OnlineId = 1
                 }
             };
+           
        }
 
         private static List<Announcement> GetAnnouncements()
@@ -242,7 +308,70 @@ namespace SchoolWebProject.Domain.Models
                 ////  Image = null,
                ////   UserId =  1,
                     SchoolId = 1
+                },
+                 new Announcement
+                {
+                    Title = "День учнівського самоврядування",
+                    Message = "Роль учнівського самоврядування набуває значення",
+                    MessageDetails = "Безперечно, навички управління суспільством стануть надбанням",
+                    DataPublished = new DateTime(2010, 6, 11),
+                ////  Image = null,
+               ////   UserId =  1,
+                    SchoolId = 1
+                },
+                 new Announcement
+                {
+                    Title = "Загальношкільна конференція",
+                    Message = "Сьогодні відбулась загальношкільна конференція учнів.   ",
+                    MessageDetails = "План конференції: 1. Обрання голови конференції.  ",
+                    DataPublished = new DateTime(2010, 11, 9),
+                ////  Image = null,
+               ////   UserId =  1,
+                    SchoolId = 1
                 }
+            };
+        }
+ 
+        private static List<ClassRoom> GetClassRooms()
+        {
+            return new List<ClassRoom>
+            {
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "каб.№ 11"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "каб.№ 12"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "каб.№ 15"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "каб.№ 16"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "каб.№ 27"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "каб.№ 28"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "спортзал №1"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "спортзал №2"
+                },
+                new ClassRoom{
+                    SchoolId = 1,
+                    Name = "актовий зал"
+                },
             };
         }
     }
