@@ -40,6 +40,7 @@ namespace SchoolWebProject.App_Start
             // TODO: Register your types here
             container.RegisterType<ITeacherService, TeacherService>();
             container.RegisterType<ILogger, SerilogLogger>();
+            container.RegisterType<IAccountService, AccountService>();
         }
     }
 }
