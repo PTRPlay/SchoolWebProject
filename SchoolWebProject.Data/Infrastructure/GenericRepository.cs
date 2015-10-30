@@ -9,7 +9,7 @@ using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Data.Infrastructure
 {
-    public abstract class GenericRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly IDbSet<T> dbSet;
         private SchoolContext dataContext;
