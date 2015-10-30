@@ -11,7 +11,7 @@ namespace SchoolWebProject.Domain.Models
     public class Holidays
     {
         public int Id { get; set; }
-
+        
         [Column(TypeName = "Date")]
         public DateTime StartDay { get; set; }
 

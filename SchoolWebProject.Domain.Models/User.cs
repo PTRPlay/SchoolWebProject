@@ -21,10 +21,14 @@ namespace SchoolWebProject.Domain.Models
         [MaxLength(30)]
         public string LastName { get; set; }
 
+        [MinLength(3)]
+        [MaxLength(30)]
         public string MiddleName { get; set; }
 
+        [MaxLength(30)]
         public string PhoneNumber { get; set; }
 
+        [MaxLength(200)]
         public string Address { get; set; }
 
         [Display(Name = "E-mail")]

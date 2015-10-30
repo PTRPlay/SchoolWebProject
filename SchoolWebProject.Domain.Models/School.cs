@@ -13,11 +13,14 @@ namespace SchoolWebProject.Domain.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
-
+               
+        [MaxLength(30)]
         public string City { get; set; }
 
+        [MaxLength(200)]
         public string Address { get; set; }
 
+        [MaxLength(30)]
         public string PhoneNumber { get; set; }
 
         public virtual List<Announcement> Announcements { get; set; }
