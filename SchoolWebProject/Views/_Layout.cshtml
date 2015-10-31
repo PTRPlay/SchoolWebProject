@@ -1,58 +1,71 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css"/>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>     
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <script src="~/Scripts/angular.min.js"></script>
+    <!-- Include the AngularJS routing library -->
+    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
 
+</head>
+<body ng-app="myApp">
+    
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
         <ul class="nav navbar-fixed-top">
-            <li class="navbar-right dropdown"><a href="#" data-toggle="dropdown"><span class="caret"></span>Category</a>
+            <li class="navbar-right dropdown">
+                <button href="#" data-toggle="dropdown"><span class="caret"></span>Category</button>
                 <ul class="dropdown-menu">
                     @foreach (var i in ViewBag.TeacherDegrees)
                     {
-                        <li><a href="#">@i.Name</a></li>
+                    <li><a>@i.Name</a></li>
                     }
                 </ul>
             </li>
-            <li class="navbar-right dropdown" >
-                <a href="#" data-toggle="dropdown"><span class="caret"></span>Subject</a>
+            <li class="navbar-right dropdown">
+                <button href="#" data-toggle="dropdown"><span class="caret"></span>Subject</button>
                 <ul class="dropdown-menu">
                     @foreach (var i in ViewBag.Subjects)
-                    { 
-                        <li><a href="#">@i.Name</a></li>
+                    {
+                    <li><a>@i.Name</a></li>
                     }
                 </ul>
             </li>
-        </ul> 
+        </ul>
     </div>
 
-       <div class="container-fluid" style="margin-top:70px">
-           <div class="row">
-                <div class="col-sm-2 sidebar affix">
-                    
-                    <ul class="nav nav-sidebar">
-                        <li class="btn nav-tabs" onclick="$('#main-info').load('Home/GetTeachers');">Teachers</li>
-                        <li class="btn nav-tabs">Subjects</li>
-                        <li class="btn nav-tabs">Scheldule</li>
-                        <li class="btn nav-tabs">News</li>
-                    </ul>
+    <div class="container-fluid" style="margin-top:70px">
+        <div class="row">
+            <div class="col-sm-2 sidebar affix">
 
-                </div>
-                       
-                <div class="cos-sm-9 col-sm-offset-3 main" id="main-info">
-                </div>
+                <ul class="nav nav-sidebar">
+                    <li class="btn nav-tabs"><a href="#teachers">Teachers</a></li>
+                    <li class="btn nav-tabs">Subjects</li>
+                    <li class="btn nav-tabs">Scheldule</li>
+                    <li class="btn nav-tabs">News</li>
+                </ul>
+
+            </div>
+
+            <div class="cos-sm-9 col-sm-offset-3 main" id="main-info">
+                <ng-view></ng-view>
             </div>
         </div>
-        @RenderBody()
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+    <script type="text/ng-template" id="Teachers.html" ng-controller="teachersController">
+        <p>Kolia</p>
+    </script>
+    
+    
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+        
+    
+    @RenderBody()
 
 </body>
 </html>
