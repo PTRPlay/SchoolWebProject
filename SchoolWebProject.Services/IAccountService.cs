@@ -7,7 +7,7 @@ using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Services
 {
-    interface IAccountService
+    public interface IAccountService
     {
         User LogInService(string userName, string password);
     }
