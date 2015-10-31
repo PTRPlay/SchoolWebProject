@@ -15,7 +15,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual TeacherCategory TeacherCategory { get; set; }
 
-        public int TeacherDegreeId { get; set; }
+        public int? TeacherDegreeId { get; set; }
 
         public virtual TeacherDegree TeacherDegree { get; set; }
 
