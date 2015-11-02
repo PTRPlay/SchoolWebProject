@@ -3,35 +3,63 @@
 <head>
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+   
     <script src="~/Scripts/angular.min.js"></script>
-    <!-- Include the AngularJS routing library -->
-    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
+    <script src="~/Scripts/angular-ui-router.js"></script>
+    <script src="~/Scripts/app.js"></script>
+    
+    <script src="~/Layouts/Controllers/teacherController.js"></script>
+    <script src="~/Layouts/Controllers/schelduleController.js"></script>
+    <script src="~/Layouts/Controllers/subjectController.js"></script>
+    <script src="~/Layouts/Controllers/newsController.js"></script>
+
+    <script src="~/Layouts/Services/newsService.js"></script>
+    <script src="~/Layouts/Services/schelduleService.js"></script>
+    <script src="~/Layouts/Services/subjectsServic.js"></script>
+    <script src="~/Layouts/Services/teachersServices.js"></script>
 
 </head>
 <body ng-app="myApp">
-    
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar  navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="home">AXE</a>
+            </div>
 
-        <ul class="nav navbar-fixed-top">
-            <li class="navbar-right dropdown">
-                <button href="#" data-toggle="dropdown"><span class="caret"></span>Category</button>
-                <ul class="dropdown-menu">
-                    @foreach (var i in ViewBag.TeacherDegrees)
-                    {
-                    <li><a>@i.Name</a></li>
-                    }
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#addTeachers" class="btn-danger" style="left:100px">Add Teachers</a></li>
                 </ul>
-            </li>
-            <li class="navbar-right dropdown">
-                <button href="#" data-toggle="dropdown"><span class="caret"></span>Subject</button>
-                <ul class="dropdown-menu">
-                    @foreach (var i in ViewBag.Subjects)
-                    {
-                    <li><a>@i.Name</a></li>
-                    }
-                </ul>
-            </li>
-        </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a data-toggle="dropdown"><span class="caret"></span>Category</a>
+                            <ul class="dropdown-menu">
+                                @foreach (var i in ViewBag.TeacherDegrees)
+                                {
+                                <li><a>@i.Name</a></li>
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown"><span class="caret"></span>Subject</a>
+                            <ul class="dropdown-menu">
+                                @foreach (var i in ViewBag.Subjects)
+                                {
+                                <li><a>@i.Name</a></li>
+                                }
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#login">Login</a>
+                        </li>
+                    </ul>
+            
+            </div>
+        </div>
     </div>
 
     <div class="container-fluid" style="margin-top:70px">
@@ -39,30 +67,21 @@
             <div class="col-sm-2 sidebar affix">
 
                 <ul class="nav nav-sidebar">
-                    <li class="btn nav-tabs"><a href="#teachers">Teachers</a></li>
-                    <li class="btn nav-tabs">Subjects</li>
-                    <li class="btn nav-tabs">Scheldule</li>
-                    <li class="btn nav-tabs">News</li>
+                    <li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
+                    <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
+                    <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
+                    <li class="btn nav-tabs"><a ui-sref="news" class="btn-default">News</a></li>
                 </ul>
 
             </div>
-
             <div class="cos-sm-9 col-sm-offset-3 main" id="main-info">
-                <ng-view></ng-view>
+                  <div ui-view></div>
             </div>
         </div>
     </div>
-
-
-
-    <script type="text/ng-template" id="Teachers.html" ng-controller="teachersController">
-        <p>Kolia</p>
-    </script>
-    
     
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/app.js"></script>
         
     
     @RenderBody()
