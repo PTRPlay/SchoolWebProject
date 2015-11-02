@@ -21,7 +21,7 @@ namespace SchoolWebProject.Controllers
 
         public ActionResult LogIn()
         {
-            return this.View();
+            return this.View("LogIn");
         }
 
         [HttpPost]
@@ -29,9 +29,12 @@ namespace SchoolWebProject.Controllers
         {
             User currentUser = this.accountService.GetUser(userName, password);
             if (currentUser == null)
-                throw new Exception("wrong user data");
+            {
+                logger.Info("Wrong login data!");
+                return this.View("LogIn");
+            }
             this.CreateCookie(currentUser, rememberMe);
-            return this.View();
+            return this.View("UserPage");
         }
 
         [Authorize]

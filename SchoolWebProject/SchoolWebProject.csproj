@@ -181,6 +181,7 @@
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\TeacherInfo\TeacherInfoController.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -190,6 +191,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Account\UserPage.cshtml" />
+    <Content Include="Views\TeacherInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
