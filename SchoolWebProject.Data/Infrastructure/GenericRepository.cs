@@ -14,8 +14,21 @@ namespace SchoolWebProject.Data.Infrastructure
         private readonly IDbSet<T> dbSet;
         private SchoolContext dataContext;
 
-        protected GenericRepository()
+        protected IDbFactory DbFactory
         {
+            get;
+            private set;
+        }
+
+        protected SchoolContext DbContext
+        {
+            get { return dataContext ?? (dataContext = DbFactory.Init()); }
+        }
+        
+        protected GenericRepository(IDbFactory dbFactory)
+        {
+            DbFactory = dbFactory;
+            dbSet = DbContext.Set<T>();
         }
 
         public virtual void Add(T entity)
