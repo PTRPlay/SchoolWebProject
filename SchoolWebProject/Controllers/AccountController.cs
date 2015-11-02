@@ -27,15 +27,10 @@ namespace SchoolWebProject.Controllers
         [HttpPost]
         public ActionResult LogIn(string userName, string password, bool rememberMe)
         {
-            int minutesToCookiesExpirate = 20;
-            User currentUser = accountService.LogInService(userName, password);
-
-            // parameter "name" - "login" string or "first name" string?
-            FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currentUser.LogInData.Login,
-                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), rememberMe, currentUser.Role.Name);
-            string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
-            HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-            HttpContext.Response.Cookies.Add(authorizationCookie);
+            User currentUser = this.accountService.GetUser(userName, password);
+            if (currentUser == null)
+                throw new Exception("wrong user data");
+            this.CreateCookie(currentUser, rememberMe);
             return this.View();
         }
 
@@ -44,6 +39,18 @@ namespace SchoolWebProject.Controllers
         {
             FormsAuthentication.SignOut();
             return this.RedirectToAction("Index", "Home");
+        }
+
+        private void CreateCookie(User currentUser,bool rememberMe)
+        {
+            int minutesToCookiesExpirate = 20;
+
+            // parameter "name" - "login" string or "first name" string?
+            FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currentUser.LogInData.Login,
+                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), rememberMe, currentUser.Role.Name);
+            string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
+            HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            HttpContext.Response.Cookies.Add(authorizationCookie);
         }
     }
 }
