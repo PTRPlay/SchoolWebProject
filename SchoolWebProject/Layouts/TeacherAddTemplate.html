@@ -22,11 +22,9 @@
                     <div class="form-group">
                         <label for="degree" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
-                            <input list="degree" class="form-control" id="degree" ng-model="teacher.degree" />
-                            <datalist id="degree">
-                                <!--Get degrees from database in controller-->
-                                <option> some </option>
-                            </datalist>
+                            <select name="menu" size="1" ng-controller="categoriesController" class="col-sm-4 form-control" id="degree" ng-model="teacher.degree">
+                                <option ng-repeat="category in listCategories">{{category}}</option>
+                            </select>
                         </div>
                     </div>
                 </form>

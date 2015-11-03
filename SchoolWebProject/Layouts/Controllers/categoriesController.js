@@ -1,5 +1,5 @@
-﻿myApp.controller('categoriesController', function ($rootScope, categories) {
+﻿myApp.controller('categoriesController', function ($scope, categories) {
     categories.success(function (data) {
-        $rootScope.categories = data;
+        $scope.listCategories = data;
     });
 });
