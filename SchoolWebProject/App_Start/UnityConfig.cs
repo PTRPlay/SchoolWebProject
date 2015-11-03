@@ -41,6 +41,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<ITeacherService, TeacherService>();
             container.RegisterType<ILogger, SerilogLogger>();
             container.RegisterType<IAccountService, AccountService>();
+            container.RegisterType(typeof(IRepository<>), typeof(GenericRepository<>));
         }
     }
 }
