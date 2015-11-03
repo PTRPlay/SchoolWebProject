@@ -70,10 +70,10 @@
     </Reference>
     <Reference Include="SchoolWebProject.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SchoolWebProject.Data\bin\Debug\SchoolWebProject.Data.dll</HintPath>
+      <HintPath>..\SchoolWebProject.Data\obj\Debug\SchoolWebProject.Data.dll</HintPath>
     </Reference>
     <Reference Include="SchoolWebProject.Services">
-      <HintPath>..\SchoolWebProject.Services\bin\Debug\SchoolWebProject.Services.dll</HintPath>
+      <HintPath>..\SchoolWebProject.Services\obj\Debug\SchoolWebProject.Services.dll</HintPath>
     </Reference>
     <Reference Include="Serilog">
       <HintPath>..\packages\Serilog.1.5.12\lib\net45\Serilog.dll</HintPath>
@@ -243,6 +243,10 @@
     <ProjectReference Include="..\SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj">
       <Project>{f25258b9-2ff2-4fd0-8d15-397ce0391a9a}</Project>
       <Name>SchoolWebProject.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Services.Tests\UnitTest\UnitTest\SchoolWebProject.Services.UnitTest.csproj">
+      <Project>{38395d4e-fa8f-45b8-8f69-6cbd6559f67b}</Project>
+      <Name>SchoolWebProject.Services.UnitTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

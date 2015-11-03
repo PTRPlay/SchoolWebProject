@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/release/ui-grid.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+    <link href="css/main.css" rel="stylesheet" />
+
+
+    <title>UI-Grid Demonstartion</title>
+</head>
+
+<body ng-controller="MainCtrl">
+    <h1>{{text}}</h1>
+    <div id="grid1" ui-grid="{data: topMovies, showGridFooter: true}" class="grid"></div>
+    <br />
+    <br />
+    <h1>List of workers</h1>
+    <button type="button" class="btn btn-success" ng-click="hideGrid = !hideGrid">
+        {{ hideGrid && 'Show' || 'Hide' }} Grid
+    </button>
+    <div class="well" ng-hide="hideGrid">
+        <div id="grid2" ui-grid="gridOptions" class="grid" ui-grid-move-columns></div>
+    </div>
+    <br />
+    <br />
+    <script src="lib/app.js"></script>
+</body>
+</html>
