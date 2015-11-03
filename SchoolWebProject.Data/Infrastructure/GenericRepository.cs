@@ -12,7 +12,10 @@ namespace SchoolWebProject.Data.Infrastructure
     public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly IDbSet<T> dbSet;
+        
         private SchoolContext dataContext;
+
+        protected IDbFactory DbFactory
 
         protected IDbFactory DbFactory
         {
@@ -24,8 +27,8 @@ namespace SchoolWebProject.Data.Infrastructure
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
-        
-        protected GenericRepository(IDbFactory dbFactory)
+
+        public GenericRepository(IDbFactory dbFactory)
         {
             DbFactory = dbFactory;
             dbSet = DbContext.Set<T>();
