@@ -1,4 +1,4 @@
-﻿var myApp = angular.module('myApp', ['ui.router']);
+﻿var myApp = angular.module('myApp', ['ui.router', 'angularModalService']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {

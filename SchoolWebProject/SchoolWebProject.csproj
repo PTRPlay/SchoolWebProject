@@ -168,6 +168,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\ModalControllers\addTeacherController.js" />
+    <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Services\newsService.js" />
@@ -176,7 +178,10 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Subjects.html" />
     <Content Include="Layouts\Teachers.html" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-modal-service.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular-ui-router.js" />
@@ -187,12 +192,11 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-<<<<<<< HEAD
+    <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\TeacherInfo\TeacherInfoController.js" />
-=======
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -200,7 +204,7 @@
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="teachersController.js" />
->>>>>>> 08bc516f734f584c54583a871428429bc2d1bdeb
+    <Content Include="Layouts\TeacherAddTemplate.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -212,13 +216,10 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\UserPage.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\TeacherInfo.cshtml" />
-=======
     <Content Include="Views\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>
->>>>>>> 08bc516f734f584c54583a871428429bc2d1bdeb
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
