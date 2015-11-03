@@ -17,38 +17,57 @@ namespace SchoolWebProject.Services
             this.logInRepository = inputRepository;
         }
 
-        public User LogInService(string userName, string password)
+        public User GetUser(string userName, string password)
         {
-            try
-            {
-                Expression<Func<User, bool>> expression = user =>
-                    user.LogInData.Login == userName && user.LogInData.PasswordHash == this.GetHashedPassword(password, user);
-                User currentUser = this.logInRepository.Get(expression);
+            Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
+            User currentUser = this.logInRepository.Get(getUserByLogin);
+            if (this.CheckUser(currentUser, password))
                 return currentUser;
-            }
-            catch
-            {
-                // if user does not exist
-                throw new Exception("Wrong login data!");
-            }
+            else return null;
         }
 
-        private string GetHashedPassword(string password, User currUser)
+        public string CreateHashPassword(string inputPassword, string salt)
         {
-            // connect input password with user`s salt
-            string passwordPlusSalt = string.Format(password + currUser.LogInData.PasswordSalt);
+            string fullPassword = string.Format(inputPassword + salt);
+            byte[] hash = SHA256.Create().ComputeHash(this.StringToByteArray(fullPassword));
+            return this.ByteArrayToString(hash);
+        }
 
-            // transform input string to byte[]
-            byte[] bytePassword = new byte[password.Length * sizeof(char)];
-            System.Buffer.BlockCopy(password.ToCharArray(), 0, bytePassword, 0, bytePassword.Length);
+        public string CreateSalt()
+        {
+            RNGCryptoServiceProvider cryptographer = new RNGCryptoServiceProvider();
+            int saltLength = 24;
+            byte[] salt = new byte[saltLength];
+            cryptographer.GetBytes(salt);
+            return this.ByteArrayToString(salt);
+        }
 
-            // hashing
-            byte[] hashedPassword = SHA256.Create().ComputeHash(bytePassword);
+        private bool CheckUser(User currUser, string password)
+        {
+            if (currUser.LogInData.PasswordHash == GetFullHash(password, currUser.LogInData.PasswordSalt))
+                return true;
+            else return false;
+        }
 
-            // tranform hashed password from byte[] to string
-            char[] tempChars = new char[hashedPassword.Length / sizeof(char)];
-            System.Buffer.BlockCopy(hashedPassword, 0, tempChars, 0, hashedPassword.Length);
-            return new string(tempChars);
+        private string GetFullHash(string password, string salt)
+        {
+            string passwordPlusSalt = string.Format(password + salt);
+            byte[] hashedPassword = SHA256.Create().ComputeHash(this.StringToByteArray(passwordPlusSalt));
+            return this.ByteArrayToString(hashedPassword);
+        }
+
+        private string ByteArrayToString(byte[] input)
+        {
+            char[] output = new char[input.Length / sizeof(char)];
+            System.Buffer.BlockCopy(input, 0, output, 0, input.Length);
+            return new string(output);
+        }
+
+        private byte[] StringToByteArray(string input)
+        {
+            byte[] output = new byte[input.Length * sizeof(char)];
+            System.Buffer.BlockCopy(input.ToCharArray(), 0, output, 0, output.Length);
+            return output;
         }
     }
 }

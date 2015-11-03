@@ -68,10 +68,9 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SchoolWebProject.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SchoolWebProject.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SchoolWebProject.Infrastructure\obj\Debug\SchoolWebProject.Infrastructure.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\SchoolWebProject.Data\bin\Debug\SchoolWebProject.Data.dll</HintPath>
     </Reference>
     <Reference Include="SchoolWebProject.Services">
       <HintPath>..\SchoolWebProject.Services\bin\Debug\SchoolWebProject.Services.dll</HintPath>
@@ -85,6 +84,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,18 +168,39 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\News.html" />
+    <Content Include="Layouts\Scheldule.html" />
+    <Content Include="Layouts\Services\newsService.js" />
+    <Content Include="Layouts\Services\schelduleService.js" />
+    <Content Include="Layouts\Services\subjectsServic.js" />
+    <Content Include="Layouts\Services\teachersServices.js" />
+    <Content Include="Layouts\Subjects.html" />
+    <Content Include="Layouts\Teachers.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+<<<<<<< HEAD
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\TeacherInfo\TeacherInfoController.js" />
+=======
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="teachersController.js" />
+>>>>>>> 08bc516f734f584c54583a871428429bc2d1bdeb
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -188,7 +209,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\UserPage.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\TeacherInfo.cshtml" />
+=======
+    <Content Include="Views\_Layout.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+>>>>>>> 08bc516f734f584c54583a871428429bc2d1bdeb
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -198,6 +228,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolWebProject.Data\SchoolWebProject.Data.csproj">
+      <Project>{1a6bd081-f45f-46b1-b097-70b924b53dc9}</Project>
+      <Name>SchoolWebProject.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">
       <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
       <Name>SchoolWebProject.Domain.Models</Name>
@@ -211,17 +245,11 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\LogIn.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

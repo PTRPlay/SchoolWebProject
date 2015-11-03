@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -43,12 +45,19 @@ namespace SchoolWebProject.Controllers
             return this.View();
         }
 
-        public ActionResult GetTeachers()
+        [HttpGet]
+        public string GetTeachers()
         {
-            //This should be done by services but repository is not done yet 
-            var bin = new SchoolContext().Users;
-            ViewBag.Teachers = from entry in bin select entry.FirstName+" "+entry.LastName;
-            return PartialView();
+            var item = new SchoolContext().Roles.First(i => i.Id == 2);
+            List<string> teachers = new List<string>();
+            foreach (var i in item.Users)
+            {
+                teachers.Add(i.FirstName + " " + i.LastName + " " + i.PhoneNumber);
+            }
+            
+            var jsonSerializer = new JavaScriptSerializer();
+            var json = jsonSerializer.Serialize(teachers);
+            return json;
         }
     }
 }

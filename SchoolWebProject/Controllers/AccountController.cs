@@ -21,22 +21,20 @@ namespace SchoolWebProject.Controllers
 
         public ActionResult LogIn()
         {
-            return this.View();
+            return this.View("LogIn");
         }
 
         [HttpPost]
         public ActionResult LogIn(string userName, string password, bool rememberMe)
         {
-            int minutesToCookiesExpirate = 20;
-            User currentUser = accountService.LogInService(userName, password);
-
-            // parameter "name" - "login" string or "first name" string?
-            FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currentUser.LogInData.Login,
-                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), rememberMe, currentUser.Role.Name);
-            string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
-            HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-            HttpContext.Response.Cookies.Add(authorizationCookie);
-            return this.View();
+            User currentUser = this.accountService.GetUser(userName, password);
+            if (currentUser == null)
+            {
+                logger.Info("Wrong login data!");
+                return this.View("LogIn");
+            }
+            this.CreateCookie(currentUser, rememberMe);
+            return this.View("UserPage");
         }
 
         [Authorize]
@@ -44,6 +42,18 @@ namespace SchoolWebProject.Controllers
         {
             FormsAuthentication.SignOut();
             return this.RedirectToAction("Index", "Home");
+        }
+
+        private void CreateCookie(User currentUser,bool rememberMe)
+        {
+            int minutesToCookiesExpirate = 20;
+
+            // parameter "name" - "login" string or "first name" string?
+            FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currentUser.LogInData.Login,
+                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), rememberMe, currentUser.Role.Name);
+            string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
+            HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            HttpContext.Response.Cookies.Add(authorizationCookie);
         }
     }
 }

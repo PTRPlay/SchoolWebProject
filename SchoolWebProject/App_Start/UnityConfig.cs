@@ -3,7 +3,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
-
+using SchoolWebProject.Data.Infrastructure;
 namespace SchoolWebProject.App_Start
 {
     /// <summary>
