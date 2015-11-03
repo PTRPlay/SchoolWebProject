@@ -15,11 +15,5 @@
 
     $scope.cancel = function () {
         $element.modal('hide');
-
-        close({
-            firstName: $scope.teacher.firstName,
-            lastName: $scope.teacher.lastName,
-            degree: $scope.teacher.degree
-        }, 500);
     }
 }]);

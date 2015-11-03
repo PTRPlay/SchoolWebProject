@@ -9,7 +9,7 @@
         }).then(function (modal) {
             modal.element.modal();
             modal.close.then(function (result) {
-                $http.post("api/teacherscategory", result).success(function(result) {
+                $http.post("api/teacherscategory",JSON.stringify(result)).success(function(result) {
                     alert(result);
                 });
             });
