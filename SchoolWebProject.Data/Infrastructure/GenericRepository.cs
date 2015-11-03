@@ -16,8 +16,6 @@ namespace SchoolWebProject.Data.Infrastructure
         private SchoolContext dataContext;
 
         protected IDbFactory DbFactory
-
-        protected IDbFactory DbFactory
         {
             get;
             private set;
