@@ -1,4 +1,4 @@
-﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', function ($scope, $element, title, close) {
+﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', '$rootScope', function ($scope, $element, title, close, $rootScope) {
     $scope.teacher = {
         firstName: null,
         lastName: null,

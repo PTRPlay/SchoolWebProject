@@ -168,10 +168,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\Controllers\categoriesController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
+    <Content Include="Layouts\Services\categoriesService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
     <Content Include="Layouts\Services\subjectsServic.js" />
