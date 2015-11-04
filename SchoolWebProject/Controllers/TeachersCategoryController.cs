@@ -25,9 +25,9 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/teacherscategory
-        public void Post([FromBody]string value)
+        public void Post([FromBody]string result)
         {
-            var bin = value;
+            var bin = result;
         }
 
         // PUT api/teacherscategory/5

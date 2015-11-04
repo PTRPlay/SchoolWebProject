@@ -9,11 +9,17 @@
         }).then(function (modal) {
             modal.element.modal();
             modal.close.then(function (result) {
-                $http.post("api/teacherscategory",JSON.stringify(result)).success(function(result) {
-                    alert(result);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/teacher",
+                    dataType: 'JSON',
+
+                    data: result
+
                 });
             });
-        });
+        })
     };
 }]);
 //add here your modal show methods

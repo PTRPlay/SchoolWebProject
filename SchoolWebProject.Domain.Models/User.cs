@@ -38,7 +38,7 @@ namespace SchoolWebProject.Domain.Models
         [Column(TypeName = "image")]
         public byte[] Image { get; set; }
 
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
 
         public virtual Role Role { get; set; }
 
