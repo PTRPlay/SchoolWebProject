@@ -245,6 +245,10 @@
       <Project>{f25258b9-2ff2-4fd0-8d15-397ce0391a9a}</Project>
       <Name>SchoolWebProject.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Services.Models\SchoolWebProject.Services.Models.csproj">
+      <Project>{2db1106a-7380-4bbf-9bcd-0b21e23f592e}</Project>
+      <Name>SchoolWebProject.Services.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolWebProject.Services.Tests\UnitTest\UnitTest\SchoolWebProject.Services.UnitTest.csproj">
       <Project>{38395d4e-fa8f-45b8-8f69-6cbd6559f67b}</Project>
       <Name>SchoolWebProject.Services.UnitTest</Name>

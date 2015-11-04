@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
+using simple = SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
@@ -25,8 +26,9 @@ namespace SchoolWebProject.Controllers
            //{
            //    int i = mdc.Schools.Count();
            // }
-
-           var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
+           //simple.Teacher t = simple.Teacher.CreateSimpleTeacher(mdc.Users.FirstOrDefault(u => u.Id == 13) as Teacher);
+           simple.Pupil p = simple.Pupil.CreateSimplePupil(mdc.Users.FirstOrDefault(u => u.Id == 50) as Pupil);
+            var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
            var teacherDegreeEntries = from entry in mdc.TeacherDegrees select entry;
            ViewBag.TeacherDegrees = teacherDegreeEntries.ToList();

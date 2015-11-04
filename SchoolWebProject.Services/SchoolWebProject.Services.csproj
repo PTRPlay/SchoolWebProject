@@ -58,6 +58,10 @@
       <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
       <Name>SchoolWebProject.Domain.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Services.Models\SchoolWebProject.Services.Models.csproj">
+      <Project>{2db1106a-7380-4bbf-9bcd-0b21e23f592e}</Project>
+      <Name>SchoolWebProject.Services.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
