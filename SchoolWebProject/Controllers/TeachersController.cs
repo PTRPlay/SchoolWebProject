@@ -14,23 +14,19 @@ namespace SchoolWebProject.Controllers
 {
     public class TeachersController : ApiController
     {
+        protected Logger tmpLogger;
+        protected GenericRepository<Teacher> repository;
+
+        public TeachersController() 
+        {
+            this.tmpLogger = new Logger();
+            this.repository = new GenericRepository<Teacher>(new DbFactory());
+        }
         // GET api/teachers
-        public string Get()
+        public IEnumerable<Teacher> Get()
         {
             var temp = new TeacherService(new Logger(), new GenericRepository<Teacher>(new DbFactory()));
-            List<Teacher> listOfTeachers = new List<Teacher>();
-            Teacher teacher = new Teacher();
-            foreach (var user in temp.GetAllTeachers())
-            {
-                teacher = new Teacher();
-                teacher.FirstName = user.FirstName;
-                teacher.LastName = user.LastName;
-                listOfTeachers.Add(teacher);
-            }
-            IEnumerable<Teacher> teachers = listOfTeachers;
-            var jsonSerializer = new JavaScriptSerializer();
-            var json = jsonSerializer.Serialize(teachers);
-            return json;
+            return temp.GetAllTeachers();
         }
 
         // GET api/teachers/5

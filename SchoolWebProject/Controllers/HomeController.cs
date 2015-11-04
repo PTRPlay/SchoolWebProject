@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
@@ -13,18 +14,18 @@ namespace SchoolWebProject.Controllers
     public class HomeController : Controller
     {
         public readonly ILogger logger = null;
+        protected GenericRepository<Teacher> repository;
 
         public HomeController(ILogger tmplogger)
         {
-            this.logger = tmplogger;
+            this.logger = new Logger();
+            this.repository = new GenericRepository<Teacher>(new DbFactory());
         }
         
         public ActionResult Index()
         {
               SchoolContext mdc = new SchoolContext();
-           //{
-           //    int i = mdc.Schools.Count();
-           // }
+
 
            var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
@@ -46,15 +47,18 @@ namespace SchoolWebProject.Controllers
         }
 
         [HttpGet]
-        public string GetTeachers()
+        public string Teachers()
         {
+            
             var item = new SchoolContext().Roles.First(i => i.Id == 2);
             List<string> teachers = new List<string>();
-            foreach (var i in item.Users)
+            var temp = new TeacherService(this.logger, this.repository);
+
+            foreach (var i in temp.GetAllTeachers())
             {
                 teachers.Add(i.FirstName + " " + i.LastName + " " + i.PhoneNumber);
             }
-            
+  
             var jsonSerializer = new JavaScriptSerializer();
             var json = jsonSerializer.Serialize(teachers);
             return json;
