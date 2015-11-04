@@ -11,7 +11,7 @@ namespace SchoolWebProject.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public virtual List<Teacher> Teachers { get; set; }

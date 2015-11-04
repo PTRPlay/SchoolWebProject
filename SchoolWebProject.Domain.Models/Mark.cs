@@ -11,19 +11,23 @@ namespace SchoolWebProject.Domain.Models
 
         public int Value { get; set; }
 
-        public int PupilId { get; set; }
+        public DateTime Date { get; set; }
+
+        //public int PupilId { get; set; }
 
         public virtual Pupil Pupil { get; set; }
 
-        public int ScheduleId { get; set; }
+        //public int ScheduleId { get; set; }
 
-        public virtual Schedule Schedule { get; set; }
+        //public virtual Schedule Schedule { get; set; }
+
+        public int LessonDetailId { get; set; }
+
+        public virtual LessonDetail LessonDetail { get; set; }
 
         public int MarkTypeId { get; set; }
 
         public virtual MarkType MarkType { get; set; }
-
-        public DateTime Date { get; set; }
 
         public int SchoolId { get; set; }
 

@@ -20,6 +20,8 @@ namespace SchoolWebProject.Domain.Models
         public int SchoolId { get; set; }
 
         public virtual School School { get; set; }
+
+        public virtual List<Teacher> Teacher { get; set; }
         
         public virtual List<Pupil> Pupils { get; set; }
 

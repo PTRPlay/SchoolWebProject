@@ -7,6 +7,8 @@ namespace SchoolWebProject.Domain.Models
 {
     public class Teacher : User
     {
+        public DateTime WorkBegin { get; set; }
+
         public int? GroupId { get; set; }
 
         public virtual Group Group { get; set; }
@@ -18,8 +20,6 @@ namespace SchoolWebProject.Domain.Models
         public int? TeacherDegreeId { get; set; }
 
         public virtual TeacherDegree TeacherDegree { get; set; }
-
-        public DateTime WorkBegin { get; set; }
 
         public virtual List<Subject> Subjects { get; set; }
 
