@@ -44,16 +44,9 @@ namespace SchoolWebProject.Services
 
         private bool CheckUser(User currUser, string password)
         {
-            if (currUser.LogInData.PasswordHash == GetFullHash(password, currUser.LogInData.PasswordSalt))
+            if (currUser.LogInData.PasswordHash == CreateHashPassword(password, currUser.LogInData.PasswordSalt))
                 return true;
             else return false;
-        }
-
-        private string GetFullHash(string password, string salt)
-        {
-            string passwordPlusSalt = string.Format(password + salt);
-            byte[] hashedPassword = SHA256.Create().ComputeHash(this.StringToByteArray(passwordPlusSalt));
-            return this.ByteArrayToString(hashedPassword);
         }
 
         private string ByteArrayToString(byte[] input)
