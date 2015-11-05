@@ -196,6 +196,7 @@
     <Content Include="Layouts\Services\schelduleService.js" />
     <Content Include="Layouts\Services\subjectsServic.js" />
     <Content Include="Layouts\Services\subjectsService.js" />
+    <Content Include="Layouts\Services\teacherInfoService.js" />
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Subjects.html" />
     <Content Include="Layouts\TeacherInfo.html" />

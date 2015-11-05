@@ -33,9 +33,12 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/teacher/5
-        public string Get(int id)
+        public ViewTeacher Get(int id)
         {
-            return "value";
+            TeacherService teachers = new TeacherService(this.getLogger, this.repository);
+            var teacher = new TeacherService(this.getLogger, this.repository).GetProfileById(id);
+            var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teacher);
+            return viewModel;
         }
 
         // POST api/teacher
