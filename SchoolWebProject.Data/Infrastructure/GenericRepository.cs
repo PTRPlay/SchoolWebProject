@@ -15,6 +15,12 @@ namespace SchoolWebProject.Data.Infrastructure
         
         private SchoolContext dataContext;
 
+        public GenericRepository(IDbFactory dbFactory)
+        {
+            this.DbFactory = dbFactory;
+            this.dbSet = DbContext.Set<T>();
+        }
+
         protected IDbFactory DbFactory
         {
             get;
@@ -23,13 +29,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         protected SchoolContext DbContext
         {
-            get { return dataContext ?? (dataContext = DbFactory.Init()); }
-        }
-
-        public GenericRepository(IDbFactory dbFactory)
-        {
-            DbFactory = dbFactory;
-            dbSet = DbContext.Set<T>();
+            get { return this.dataContext ?? (this.dataContext = this.DbFactory.Init()); }
         }
 
         public virtual void Add(T entity)

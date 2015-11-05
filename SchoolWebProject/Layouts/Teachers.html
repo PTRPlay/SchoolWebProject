@@ -1,6 +1,6 @@
 ﻿<div class="container">
     <h2>Here goes all teachers:</h2>
     <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="ModalShowController">
-        <li class="jumbotron">{{teacher}}<a ui-sref="/" ng-click="showTeachersEditPage()">Edit</a></li>
+        <li class="jumbotron">{{teacher}}<a ui-sref="teacherInfo?id={{teacher.id}}">View Info</a></li> 
     </ul>
 </div>

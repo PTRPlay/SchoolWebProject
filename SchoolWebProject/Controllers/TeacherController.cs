@@ -15,29 +15,37 @@ namespace SchoolWebProject.Controllers
 {
     public class TeacherController : ApiController
     {
+        
+        protected SerilogLogger getLogger;
+        protected GenericRepository<Teacher> repository;
+
+        public TeacherController() 
+        {
+            this.getLogger = new SerilogLogger();
+            this.repository = new GenericRepository<Teacher>(new DbFactory());
+        }
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
         {
-            var teachers = new TeacherService(new SerilogLogger(),
-                            new GenericRepository<Teacher>(new DbFactory()))
-                           .GetAllTeachers();
+            var teachers = new TeacherService(this.getLogger,this.repository).GetAllTeachers();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>,IEnumerable<ViewTeacher>>(teachers);
             return viewModel;
         }
 
         // GET api/teacher/5
-        public string Get(int id)
+        public ViewTeacher Get(int id)
         {
-            return "value";
+            TeacherService teachers = new TeacherService(this.getLogger, this.repository);
+            var teacher = new TeacherService(this.getLogger, this.repository).GetProfileById(id);
+            var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teacher);
+            return viewModel;
         }
 
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
             var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            new TeacherService(new SerilogLogger(),
-                                new GenericRepository<Teacher>(new DbFactory()))
-                                .AddTeacher(teacher);
+            new TeacherService(this.getLogger, this.repository).AddTeacher(teacher);
             var db = new SchoolContext();
             db.Users.Add(teacher);
             db.SaveChanges();

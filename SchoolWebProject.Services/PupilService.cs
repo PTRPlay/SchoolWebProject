@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchoolWebProject.Services
 {
-    class PupilService : BaseService, IPupilService
+    public class PupilService : BaseService, IPupilService
     {
         private IRepository<Pupil> repository;
 
