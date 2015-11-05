@@ -16,6 +16,5 @@
     teachers.success(function (data) {
         $scope.pupils = data;
     });
-    
 }
 ]);

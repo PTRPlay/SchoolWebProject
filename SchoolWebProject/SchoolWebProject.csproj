@@ -161,9 +161,11 @@
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\DegreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PupilsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherCategoryController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,10 +185,8 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\categoriesController.js" />
-<<<<<<< HEAD
     <Content Include="Layouts\Controllers\displayPupilController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
-=======
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\degreeController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
@@ -196,7 +196,6 @@
     <Content Include="Layouts\Controllers\subjectsController.js" />
     <Content Include="Layouts\Controllers\teacherController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
->>>>>>> f09ae0da4506b80da934c1ee301feaaab328e6c1
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
@@ -260,7 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Pupil\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
