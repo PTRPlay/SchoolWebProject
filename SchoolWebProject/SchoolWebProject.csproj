@@ -159,8 +159,7 @@
     <Compile Include="Controllers\PupilsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="Controllers\TeachersCategoryController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Controllers\TeacherCategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,14 +178,21 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\categoriesController.js" />
+    <Content Include="Layouts\Controllers\degreeController.js" />
+    <Content Include="Layouts\Controllers\newsController.js" />
+    <Content Include="Layouts\Controllers\schelduleController.js" />
+    <Content Include="Layouts\Controllers\subjectsController.js" />
+    <Content Include="Layouts\Controllers\teacherController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Services\categoriesService.js" />
+    <Content Include="Layouts\Services\degreeService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
     <Content Include="Layouts\Services\subjectsServic.js" />
+    <Content Include="Layouts\Services\subjectsService.js" />
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Subjects.html" />
     <Content Include="Layouts\Teachers.html" />
@@ -205,6 +211,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Layouts\Services\teachersServices.js.rej" />
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -216,7 +223,7 @@
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="teachersController.js" />
-    <Content Include="Layouts\TeacherAddTemplate.html" />
+    <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

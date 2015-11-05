@@ -45,10 +45,11 @@ namespace SchoolWebProject.Mapper
         {
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
                 .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.firstName))
-                .ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
-                .ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
-                .ForMember(g => g.Image, map => map.MapFrom(vm => vm.Image))
+                //.ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
+                //.ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
+                //.ForMember(g => g.Image, map => map.MapFrom(vm => vm.Image))
                 .ForMember(g => g.LastName, map => map.MapFrom(vm => vm.lastName))
+<<<<<<< HEAD
                 .ForMember(g=>g.MiddleName,map => map.MapFrom(vm => vm.middleName))
                 .ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.phoneNumber))
                 .ForMember(g => g.School, map => map.MapFrom(vm => vm.School));
@@ -63,6 +64,11 @@ namespace SchoolWebProject.Mapper
             .ForMember(g => g.PhoneNumber, map => map.MapFrom(vm => vm.phoneNumber));
         //    .ForMember(g => g.School, map => map.MapFrom(vm => vm.School));
   
+=======
+                .ForMember(g => g.MiddleName, map => map.MapFrom(vm => vm.middleName));
+                //.ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.phoneNumber))
+                //.ForMember(g => g.School, map => map.MapFrom(vm => vm.School));
+>>>>>>> dd99003c6e6181a20b1376a0f38ef29822e65479
         }
     }
 
