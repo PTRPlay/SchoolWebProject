@@ -1,7 +1,5 @@
 ﻿<div class="container">
-    <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="teachersController">
-        <li class="jumbotron">Призвіще:{{teacher.lastName}} 
-            Ім'я:{{teacher.firstName}}
-            Айді: {{teacher.id}}<a ui-sref="teacherInfo?id={{teacher.id}}">ViewInfo</a></li>
+    <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="angularModalService">
+        <li class="jumbotron">{{teacher}}<a ui-sref="teacherInfo?id={{teacher.id}}">View Info</a></li>
     </ul>
 </div>
