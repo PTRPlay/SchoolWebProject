@@ -164,12 +164,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\ViewAnnouncement.cs" />
     <Compile Include="Models\ViewPupil.cs" />
-=======
-    <Compile Include="Mapping\ViewPupil.cs" />
->>>>>>> 0d26725c56b86ae08e1ebfecbeffd7aceeb43424
     <Compile Include="Models\ViewTeacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
