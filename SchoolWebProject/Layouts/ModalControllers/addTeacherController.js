@@ -8,6 +8,16 @@
         category: null,
         subjects: []
     };
+    $scope.choseSubject = function () {
+        $scope.teacher.subjects = [];
+        var el = document.getElementsByName("a");
+        for (var i = 0; i < el.length; ++i) {
+            var a = el[i];
+            if (a.checked == true) {
+                $scope.teacher.subjects.push(a.value);
+            }
+        }
+    }
     $scope.close = function () {
         $element.modal('hide');
         close({
