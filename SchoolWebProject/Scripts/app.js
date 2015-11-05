@@ -1,4 +1,4 @@
-﻿var myApp = angular.module('myApp', ['ui.router', 'angularModalService']);
+var myApp = angular.module('myApp', ['ui.router', 'angularModalService']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
@@ -27,7 +27,7 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/LogIn.html'
     })
     .state('teacher', {
-        url: 'teacher/{id}',
+        url: '/teacher/{id}',
         templateUrl: '/Layouts/TeacherInfo.html',
         controller: 'teacherInfoController'
     })
