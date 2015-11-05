@@ -176,23 +176,14 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\categoriesController.js" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Content Include="Layouts\Controllers\teachersController.js" />
-=======
     <Content Include="Layouts\Controllers\degreeController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
->>>>>>> 6cbb462dd287b01d260ba7bcd93ba068bcac2345
-=======
->>>>>>> 6f82f1eb14c683198fa2abf6dab902a332c1e5c7
-=======
     <Content Include="Layouts\Controllers\degreeController.js" />
     <Content Include="Layouts\Controllers\newsController.js" />
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
     <Content Include="Layouts\Controllers\teacherController.js" />
->>>>>>> dd99003c6e6181a20b1376a0f38ef29822e65479
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
