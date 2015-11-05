@@ -26,9 +26,5 @@ myApp.config(function ($stateProvider) {
         url: '/login',
         templateUrl: '/Layouts/LogIn.html'
     })
-    .state('teacherInfo', {
-        url: '/teacherInfo?id={id}',
-        templateUrl: '/Layouts/TeacherInfo.html?id={id}',
-        controller: 'teacherInfoController'
-    })
+
 });

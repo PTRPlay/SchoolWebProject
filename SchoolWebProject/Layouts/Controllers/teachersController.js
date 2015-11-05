@@ -3,6 +3,4 @@
         $scope.teachers = data;
 
     });
-}
-
-]);
+}]);
