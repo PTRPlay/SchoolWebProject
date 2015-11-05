@@ -13,7 +13,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual Group Group { get; set; }
 
-        public int TeacherCategoryId { get; set; }
+        public int? TeacherCategoryId { get; set; }
 
         public virtual TeacherCategory TeacherCategory { get; set; }
 
