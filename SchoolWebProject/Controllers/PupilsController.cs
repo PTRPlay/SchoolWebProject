@@ -26,18 +26,18 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/pupils/5
-        public string Get(int id)
+        public ViewPupil Get(int id)
         {
-            return "value";
+            throw new NotImplementedException();
         }
 
         // POST api/pupils
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ViewPupil value)
         {
         }
 
         // PUT api/pupils/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]ViewPupil value)
         {
         }
 
