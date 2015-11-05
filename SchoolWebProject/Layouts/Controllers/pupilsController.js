@@ -1,20 +1,34 @@
 ﻿myApp.controller('pupilsController', ['$scope', 'pupils', function ($scope, pupils) {
-    $scope.tField = "Fuckkk yeah!!!";
-
+    $scope.text = "List of pupils:";
+    
     $scope.teachersGrid = {
         showGridFooter: true,
         columnDefs: [
-            {
-                field: 'name'
-            }
+   {
+       field: 'FirstName'
+   },
+   {
+       field: 'LastName'
+   },
+   {
+       field: "PhoneNumber"
+   },
+   {
+       field: "Address"
+   },
+   {
+       field: "Email"
+   }
+
         ],
         onRegisterApi: function (gridApi) {
             $scope.grid1Api = gridApi;
         }
     };
     
-    teachers.success(function (data) {
-        $scope.pupils = data;
+    pupils.success(function (data) {
+        $scope.teachersGrid.data = data;
     });
+    
 }
 ]);

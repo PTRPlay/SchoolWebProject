@@ -203,7 +203,7 @@
     <Content Include="Layouts\Services\categoriesService.js" />
     <Content Include="Layouts\Services\degreeService.js" />
     <Content Include="Layouts\Services\newsService.js" />
-    <Content Include="Layouts\Services\pupilService.js" />
+    <Content Include="Layouts\Services\pupilsService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
     <Content Include="Layouts\Services\subjectsServic.js" />
     <Content Include="Layouts\Services\subjectsService.js" />
