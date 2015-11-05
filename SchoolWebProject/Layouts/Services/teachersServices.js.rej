@@ -1,0 +1,12 @@
+diff a/SchoolWebProject/Layouts/Services/teachersServices.js b/SchoolWebProject/Layouts/Services/teachersServices.js	(rejected hunks)
+@@ -1,9 +0,0 @@
+-﻿myApp.factory('teachers', ['$http', function ($http) {
+-    return $http.get('Home/GetTeachers')
+-       .success(function (data) {
+-           return data;
+-       })
+-       .error(function (data) {
+-           return data;
+-       });
+-}]);
+\ No newline at end of file

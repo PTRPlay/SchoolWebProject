@@ -1,25 +1,19 @@
-﻿myApp.controller('ModalShowController', ['$scope', 'ModalService', '$http',function ($scope, ModalService, $http) {
-    $scope.showTeachersEditPage = function () {
+﻿myApp.controller('ModalShowController', ['$scope', 'ModalService', '$http', '$rootScope',function ($scope, ModalService, $http, $rootScope) {
+    $scope.showTeachersEditPage = function (teacher) {
+        teacher = 'some';
         ModalService.showModal({
-            templateUrl: "Layouts/TeacherAddTemplate.html",
+            templateUrl: "Layouts/TeachersAddTemplate.html",
             controller: "teacherAddController",
             inputs: {
-                title: "Вчитель"
+                title: "Вчитель",
+                teacherName: teacher
             }
         }).then(function (modal) {
             modal.element.modal();
             modal.close.then(function (result) {
-
-                $.ajax({
-                    type: "POST",
-                    url: "/api/teacher",
-                    dataType: 'JSON',
-
-                    data: result
-
-                });
+                $http.post("api/teacherscategory", result);
             });
-        })
+        });
     };
 }]);
 //add here your modal show methods
