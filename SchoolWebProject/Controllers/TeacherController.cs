@@ -16,13 +16,13 @@ namespace SchoolWebProject.Controllers
     public class TeacherController : ApiController
     {
         
-        protected SerilogLogger getLogger;
-        protected GenericRepository<Teacher> repository;
+        private ILogger getLogger;
+        private GenericRepository<Teacher> repository;
 
-        public TeacherController() 
+        public TeacherController(ILogger logger, GenericRepository<Teacher> teacherRepo) 
         {
-            this.getLogger = new SerilogLogger();
-            this.repository = new GenericRepository<Teacher>(new DbFactory());
+            this.getLogger = logger;
+            this.repository = teacherRepo;
         }
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
