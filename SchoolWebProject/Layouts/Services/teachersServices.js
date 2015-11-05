@@ -2,5 +2,4 @@
     return $http.get('api/teacher').success(function (data) {
         return data;
     });
-
 }]);

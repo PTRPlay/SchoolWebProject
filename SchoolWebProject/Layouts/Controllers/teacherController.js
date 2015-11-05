@@ -2,6 +2,4 @@
     teachers.success(function (data) {
         $scope.teachers = data;
     });
-}
-
-]);
+}]);

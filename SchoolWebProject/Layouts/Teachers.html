@@ -1,5 +1,5 @@
 ﻿<div class="container">
     <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="ModalShowController">
-        <li class="jumbotron">{{teacher}}<a ui-sref="/" ng-click="showTeachersEditPage()">Edit</a></li>
+        <li class="jumbotron">{{teacher}}<a ui-sref="/" ng-click="showTeachersEditPage(teacher)">Edit</a></li>
     </ul>
 </div>
