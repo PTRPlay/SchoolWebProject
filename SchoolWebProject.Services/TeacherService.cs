@@ -13,15 +13,19 @@ namespace SchoolWebProject.Services
     public class TeacherService : BaseService, ITeacherService
     {
         private GenericRepository<Teacher> repository;
+        private ILogger tmpLogger;
 
         public TeacherService(ILogger logger, GenericRepository<Teacher> teacherRepository) : base(logger)
         {
-            repository = teacherRepository;
+            this.tmpLogger = logger;
+            this.repository = teacherRepository;
         }
 
         public IEnumerable<Teacher> GetAllTeachers()
         {
-           return repository.GetAll().ToList();
+            List<Teacher> listOfTeachers = new List<Teacher>();
+            listOfTeachers = repository.GetAll().ToList();
+            return listOfTeachers;
         }
 
         public Teacher GetProfileById(int id)

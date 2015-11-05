@@ -10,7 +10,9 @@ namespace SchoolWebProject.Services
     public interface IAccountService
     {
         User GetUser(string userName, string password);
+
         string CreateHashPassword(string inputPassword, string salt);
+
         string CreateSalt();
     }
 }

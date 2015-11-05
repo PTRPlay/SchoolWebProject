@@ -50,7 +50,10 @@ namespace SchoolWebProject.Mapper
                 //.ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
                 //.ForMember(g => g.Image, map => map.MapFrom(vm => vm.Image))
                 .ForMember(g => g.LastName, map => map.MapFrom(vm => vm.lastName))
-                .ForMember(g => g.MiddleName, map => map.MapFrom(vm => vm.middleName));
+                .ForMember(g => g.MiddleName, map => map.MapFrom(vm => vm.middleName))
+                //.ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.phoneNumber))
+                //.ForMember(g => g.School, map => map.MapFrom(vm => vm.School));
+                .ForMember(g => g.Id, map => map.MapFrom(vm => vm.id));
            //     .ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.phoneNumber))
           //      .ForMember(g => g.School, map => map.MapFrom(vm => vm.School));
 

@@ -12,5 +12,6 @@ namespace SchoolWebProject.Models
         public string middleName {get;set;}
         public string lastName { get; set; }
         public string Email { get; set; }
+        public int id { get; set; }
     }
 }
