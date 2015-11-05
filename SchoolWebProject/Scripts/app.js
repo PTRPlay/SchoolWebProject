@@ -10,9 +10,9 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/Teachers.html',
         controller: 'teachersController'
     })
-    .state('subjects',{
+    .state('subjects', {
         url: '/subjects',
-        templateUrl: '/Layouts/Subject.html'
+        templateUrl: '/Layouts/Subjects.html'
     })
     .state('scheldule', {
         url: '/scheldule',
