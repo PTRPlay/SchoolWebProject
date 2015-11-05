@@ -51,6 +51,8 @@ namespace SchoolWebProject.Domain.Models
 
         public DbSet<Subject> Subjects { get; set; }
 
+        public DbSet<LessonDetail> LessonDetails { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

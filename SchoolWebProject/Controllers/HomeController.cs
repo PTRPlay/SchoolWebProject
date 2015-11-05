@@ -8,6 +8,7 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
+using simple = SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
@@ -25,9 +26,18 @@ namespace SchoolWebProject.Controllers
         public ActionResult Index()
         {
               SchoolContext mdc = new SchoolContext();
+<<<<<<< HEAD
 
 
            var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
+=======
+           //{
+           //    int i = mdc.Schools.Count();
+           // }
+           //simple.Teacher t = simple.Teacher.CreateSimpleTeacher(mdc.Users.FirstOrDefault(u => u.Id == 13) as Teacher);
+           simple.Pupil p = simple.Pupil.CreateSimplePupil(mdc.Users.FirstOrDefault(u => u.Id == 50) as Pupil);
+            var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
+>>>>>>> 6cbb462dd287b01d260ba7bcd93ba068bcac2345
            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
            var teacherDegreeEntries = from entry in mdc.TeacherDegrees select entry;
            ViewBag.TeacherDegrees = teacherDegreeEntries.ToList();

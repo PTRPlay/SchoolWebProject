@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Script.Serialization;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers

@@ -153,7 +153,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DegreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeachersCategoryController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,15 +173,21 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\categoriesController.js" />
+<<<<<<< HEAD
     <Content Include="Layouts\Controllers\teachersController.js" />
+=======
+    <Content Include="Layouts\Controllers\degreeController.js" />
+    <Content Include="Layouts\Controllers\subjectsController.js" />
+>>>>>>> 6cbb462dd287b01d260ba7bcd93ba068bcac2345
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Services\categoriesService.js" />
+    <Content Include="Layouts\Services\degreeService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
-    <Content Include="Layouts\Services\subjectsServic.js" />
+    <Content Include="Layouts\Services\subjectsService.js" />
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Subjects.html" />
     <Content Include="Layouts\Teachers.html" />
@@ -245,6 +253,10 @@
     <ProjectReference Include="..\SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj">
       <Project>{f25258b9-2ff2-4fd0-8d15-397ce0391a9a}</Project>
       <Name>SchoolWebProject.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Services.Models\SchoolWebProject.Services.Models.csproj">
+      <Project>{2db1106a-7380-4bbf-9bcd-0b21e23f592e}</Project>
+      <Name>SchoolWebProject.Services.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\SchoolWebProject.Services.Tests\UnitTest\UnitTest\SchoolWebProject.Services.UnitTest.csproj">
       <Project>{38395d4e-fa8f-45b8-8f69-6cbd6559f67b}</Project>

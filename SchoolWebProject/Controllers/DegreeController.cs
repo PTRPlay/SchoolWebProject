@@ -8,34 +8,33 @@ using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeachersCategoryController : ApiController
+    public class DegreeController : ApiController
     {
-        // GET api/teacherscategory
+        // GET api/degree
         public IEnumerable<string> Get()
         {
-            var categories = new SchoolContext().TeacherCategories;
-            var nameCategories = from entry in categories select entry.Name;
-            return nameCategories;
+            var degrees = new SchoolContext().TeacherDegrees;
+            var degreeNames = from entry in degrees select entry.Name;
+            return degreeNames;
         }
 
-        // GET api/teacherscategory/5
+        // GET api/degree/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/teacherscategory
-        public void Post(string value)//[FromBody]string value)
+        // POST api/degree
+        public void Post([FromBody]string value)
         {
-            var bin = value;
         }
 
-        // PUT api/teacherscategory/5
+        // PUT api/degree/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/teacherscategory/5
+        // DELETE api/degree/5
         public void Delete(int id)
         {
         }
