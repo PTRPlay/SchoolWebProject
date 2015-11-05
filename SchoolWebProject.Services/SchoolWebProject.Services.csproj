@@ -43,10 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="AnnouncementService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="IAccountService.cs" />
+    <Compile Include="IAnnouncementService.cs" />
+    <Compile Include="IPupilService.cs" />
     <Compile Include="ITeacherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PupilService.cs" />
     <Compile Include="TeacherService.cs" />
   </ItemGroup>
   <ItemGroup>
