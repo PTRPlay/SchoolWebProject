@@ -12,17 +12,18 @@ myApp.config(function ($stateProvider) {
     })
     .state('subjects',{
         url: '/subjects',
-        templateUrl: '/Layouts/Subjects.html',
-        controller:'subjectsController'
+        templateUrl: '/Layouts/Subjects.html'
     })
     .state('scheldule', {
         url: '/scheldule',
-        templateUrl: '/Layouts/Scheldule.html',
-        controller:'schelduleController'
+        templateUrl: '/Layouts/Scheldule.html'
     })
     .state('news', {
         url: '/news',
-        templateUrl: '/Layouts/News.html',
-        controller: 'newsController'
+        templateUrl: '/Layouts/News.html'
+    })
+    .state('login', {
+        url: '/login',
+        templateUrl: '/Layouts/LogIn.html'
     })
 });

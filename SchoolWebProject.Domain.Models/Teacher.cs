@@ -22,6 +22,8 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual TeacherDegree TeacherDegree { get; set; }
 
+        //public DateTime? WorkBegin { get; set; }
+
         public virtual List<Subject> Subjects { get; set; }
 
         public virtual List<Schedule> Schedules { get; set; }

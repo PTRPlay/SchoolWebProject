@@ -10,7 +10,7 @@ namespace SchoolWebProject.Controllers
 {
     public class SubjectsController : ApiController
     {
-        // GET api/subjects
+        // GET api/subject
         public IEnumerable<string> Get()
         {
             var subjects = new SchoolContext().Subjects;
