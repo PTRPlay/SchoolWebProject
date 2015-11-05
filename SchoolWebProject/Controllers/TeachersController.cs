@@ -14,18 +14,20 @@ namespace SchoolWebProject.Controllers
 {
     public class TeachersController : ApiController
     {
-        protected Logger tmpLogger;
+        protected Logger getLogger;
         protected GenericRepository<Teacher> repository;
 
         public TeachersController() 
         {
-            this.tmpLogger = new Logger();
+            this.getLogger = new Logger();
             this.repository = new GenericRepository<Teacher>(new DbFactory());
         }
         // GET api/teachers
+ 
         public IEnumerable<Teacher> Get()
         {
-            var temp = new TeacherService(new Logger(), new GenericRepository<Teacher>(new DbFactory()));
+            var temp = new TeacherService(this.getLogger, this.repository);
+
             return temp.GetAllTeachers();
         }
 

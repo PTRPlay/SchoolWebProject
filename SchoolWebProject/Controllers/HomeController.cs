@@ -46,22 +46,6 @@ namespace SchoolWebProject.Controllers
             return this.View();
         }
 
-        [HttpGet]
-        public string Teachers()
-        {
-            
-            var item = new SchoolContext().Roles.First(i => i.Id == 2);
-            List<string> teachers = new List<string>();
-            var temp = new TeacherService(this.logger, this.repository);
 
-            foreach (var i in temp.GetAllTeachers())
-            {
-                teachers.Add(i.FirstName + " " + i.LastName + " " + i.PhoneNumber);
-            }
-  
-            var jsonSerializer = new JavaScriptSerializer();
-            var json = jsonSerializer.Serialize(teachers);
-            return json;
-        }
     }
 }

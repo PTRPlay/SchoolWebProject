@@ -1,7 +1,7 @@
 myApp.factory('teachers', ['$http', function ($http){
-	return $http.get('Home/Teachers')
+	return $http.get('api/teachers')
 	.success(function (data) {
-		return data;
+		return data.get;
 	})
 	.error (function (data) {
 	    return data;

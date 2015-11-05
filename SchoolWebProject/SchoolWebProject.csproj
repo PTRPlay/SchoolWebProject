@@ -171,6 +171,7 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\categoriesController.js" />
+    <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
