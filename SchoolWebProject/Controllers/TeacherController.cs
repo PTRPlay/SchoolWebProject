@@ -18,8 +18,10 @@ namespace SchoolWebProject.Controllers
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
         {
-            var user = new SchoolContext().Users;
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<User>,IEnumerable<ViewTeacher>>(user);
+            var teachers = new TeacherService(new SerilogLogger(),
+                            new GenericRepository<Teacher>(new DbFactory()))
+                           .GetAllTeachers();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>,IEnumerable<ViewTeacher>>(teachers);
             return viewModel;
         }
 
@@ -32,9 +34,13 @@ namespace SchoolWebProject.Controllers
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
-            var teacher = AutoMapper.Mapper.Map<ViewTeacher, User>(value);
-            new SchoolContext().Users.Add(teacher);
-
+            var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+            new TeacherService(new SerilogLogger(),
+                                new GenericRepository<Teacher>(new DbFactory()))
+                                .AddTeacher(teacher);
+            var db = new SchoolContext();
+            db.Users.Add(teacher);
+            db.SaveChanges();
         }
 
         // PUT api/teacher/5

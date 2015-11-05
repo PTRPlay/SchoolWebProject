@@ -1,0 +1,15 @@
+﻿*{
+    margin-left:auto;
+    margin-right:auto;
+}
+#grid1{
+    width:700px;
+    height:230px;
+}
+#grid2{
+    width:1000px;
+    height:400px;
+}
+.header-filtered {
+  color: blue;
+}

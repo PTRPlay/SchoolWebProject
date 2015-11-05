@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject", "SchoolWebProject\SchoolWebProject.csproj", "{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}"
 EndProject
@@ -9,14 +9,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Domain.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Infrastructure", "SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj", "{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}"
 EndProject
-<<<<<<< HEAD
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Services", "SchoolWebProject.Services\SchoolWebProject.Services.csproj", "{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}"
 EndProject
->>>>>>> 55caf12d0d132556a3da5eaa513cf01d07463c4e
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Data", "SchoolWebProject.Data\SchoolWebProject.Data.csproj", "{1A6BD081-F45F-46B1-B097-70B924B53DC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Services.UnitTest", "SchoolWebProject.Services.Tests\UnitTest\UnitTest\SchoolWebProject.Services.UnitTest.csproj", "{38395D4E-FA8F-45B8-8F69-6CBD6559F67B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI-Grid Example", "UI-Grid Example\UI-Grid Example.csproj", "{BC6D1812-9E2E-4EAE-AA9A-D9B48CC9E1E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWebProject.Services.Models", "SchoolWebProject.Services.Models\SchoolWebProject.Services.Models.csproj", "{2DB1106A-7380-4BBF-9BCD-0B21E23F592E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,13 +37,10 @@ Global
 		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F25258B9-2FF2-4FD0-8D15-397CE0391A9A}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-=======
 		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BE9E5E3-B01C-43BD-8904-2FD6B6BF4A28}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 55caf12d0d132556a3da5eaa513cf01d07463c4e
 		{1A6BD081-F45F-46B1-B097-70B924B53DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A6BD081-F45F-46B1-B097-70B924B53DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A6BD081-F45F-46B1-B097-70B924B53DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +49,14 @@ Global
 		{38395D4E-FA8F-45B8-8F69-6CBD6559F67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38395D4E-FA8F-45B8-8F69-6CBD6559F67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38395D4E-FA8F-45B8-8F69-6CBD6559F67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6D1812-9E2E-4EAE-AA9A-D9B48CC9E1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6D1812-9E2E-4EAE-AA9A-D9B48CC9E1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6D1812-9E2E-4EAE-AA9A-D9B48CC9E1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6D1812-9E2E-4EAE-AA9A-D9B48CC9E1E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB1106A-7380-4BBF-9BCD-0B21E23F592E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB1106A-7380-4BBF-9BCD-0B21E23F592E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB1106A-7380-4BBF-9BCD-0B21E23F592E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB1106A-7380-4BBF-9BCD-0B21E23F592E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

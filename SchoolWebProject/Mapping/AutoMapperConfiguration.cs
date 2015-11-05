@@ -29,7 +29,7 @@ namespace SchoolWebProject.Mapper
 
         protected override void Configure()
         {
-            AutoMapper.Mapper.CreateMap<User,ViewTeacher>();
+            AutoMapper.Mapper.CreateMap<Teacher,ViewTeacher>();
         }
     }
 
@@ -42,14 +42,14 @@ namespace SchoolWebProject.Mapper
 
         protected override void Configure()
         {
-            AutoMapper.Mapper.CreateMap<ViewTeacher, User>()
-                .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.FirstName))
+            AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
+                .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.firstName))
                 .ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
                 .ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
                 .ForMember(g => g.Image, map => map.MapFrom(vm => vm.Image))
-                .ForMember(g => g.LastName, map => map.MapFrom(vm => vm.LastName))
-                .ForMember(g=>g.MiddleName,map => map.MapFrom(vm => vm.MiddleName))
-                .ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.PhoneNumber))
+                .ForMember(g => g.LastName, map => map.MapFrom(vm => vm.lastName))
+                .ForMember(g=>g.MiddleName,map => map.MapFrom(vm => vm.middleName))
+                .ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.phoneNumber))
                 .ForMember(g => g.School, map => map.MapFrom(vm => vm.School));
         }
     }
