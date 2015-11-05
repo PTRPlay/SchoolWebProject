@@ -8,13 +8,13 @@ namespace SchoolWebProject.Domain.Models
     [Serializable]
     public class Teacher : User
     {
-        public DateTime WorkBegin { get; set; }
+        public DateTime? WorkBegin { get; set; }
 
         public int? GroupId { get; set; }
 
         public virtual Group Group { get; set; }
 
-        public int TeacherCategoryId { get; set; }
+        public int? TeacherCategoryId { get; set; }
 
         public virtual TeacherCategory TeacherCategory { get; set; }
 
