@@ -5,6 +5,14 @@
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/release/ui-grid.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
     <script src="~/Scripts/angular-ui-router.min.js"></script>
     <script src="~/Scripts/angular-ui-router.js"></script>
     <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
@@ -13,6 +21,7 @@
     <script src="~/Scripts/app.js"></script>
     
     <script src="~/Layouts/Controllers/teacherController.js"></script>
+    <script src="~/Layouts/Controllers/pupilsController.js"></script>
     <script src="~/Layouts/Controllers/schelduleController.js"></script>
     <script src="~/Layouts/Controllers/subjectController.js"></script>
     <script src="~/Layouts/Controllers/newsController.js"></script>
@@ -21,7 +30,8 @@
     <script src="~/Layouts/Services/schelduleService.js"></script>
     <script src="~/Layouts/Services/subjectsServic.js"></script>
     <script src="~/Layouts/Services/teachersServices.js"></script>
-    
+    <script src="~/Layouts/Services/pupilService.js"></script>
+
     <script src="~/Layouts/ModalControllers/Modal.js"></script>
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
     <script src="~/Layouts/Controllers/categoriesController.js"></script>
@@ -81,6 +91,7 @@
                 <ul class="nav nav-sidebar">
                     <li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
                     <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
+                    <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Pupils</a></li>
                     <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
                     <li class="btn nav-tabs"><a ui-sref="news" class="btn-default">News</a></li>
                 </ul>

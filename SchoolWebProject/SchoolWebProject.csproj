@@ -72,6 +72,10 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SchoolWebProject.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SchoolWebProject.Data\obj\Debug\SchoolWebProject.Data.dll</HintPath>
@@ -177,15 +181,19 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\categoriesController.js" />
+    <Content Include="Layouts\Controllers\displayPupilController.js" />
+    <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Services\categoriesService.js" />
     <Content Include="Layouts\Services\newsService.js" />
+    <Content Include="Layouts\Services\pupilService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
     <Content Include="Layouts\Services\subjectsServic.js" />
     <Content Include="Layouts\Services\teachersServices.js" />
+    <Content Include="Layouts\Pupils.html" />
     <Content Include="Layouts\Subjects.html" />
     <Content Include="Layouts\Teachers.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -233,9 +241,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Pupil\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolWebProject.Data\SchoolWebProject.Data.csproj">

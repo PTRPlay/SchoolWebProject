@@ -12,11 +12,16 @@ myApp.config(function ($stateProvider) {
     })
     .state('subjects',{
         url: '/subjects',
-        templateUrl: '/Layouts/Subjects.html'
+        templateUrl: '/Layouts/Subject.html'
     })
     .state('scheldule', {
         url: '/scheldule',
         templateUrl: '/Layouts/Scheldule.html'
+    })
+    .state('pupils', {
+        url: '/pupils',
+        templateUrl: '/Layouts/Pupils.html',
+        controller: 'pupilsController'
     })
     .state('news', {
         url: '/news',
