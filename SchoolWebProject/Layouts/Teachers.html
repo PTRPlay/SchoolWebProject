@@ -1,9 +1,7 @@
-﻿<div ng-app="MyApp" ng-controller="teachersController" class="container">
-     <ul class="nav navbar" ng-repeat="teacher in teachers">
-        <li class="jumbotron">{{ teacher }} </li>
-     </ul>
 ﻿<div class="container">
     <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="teachersController">
-        <li class="jumbotron">{{teacher}}<a ui-sref="/" ng-click="showTeachersEditPage()">Edit</a></li>
+        <li class="jumbotron">Призвіще:{{teacher.lastName}} 
+            Ім'я:{{teacher.firstName}}
+            Айді: {{teacher.id}}<a ui-sref="teacherInfo?id={{teacher.id}}">ViewInfo</a></li>
     </ul>
 </div>
