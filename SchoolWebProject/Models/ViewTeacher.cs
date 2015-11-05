@@ -7,22 +7,11 @@ namespace SchoolWebProject.Models
 {
     public class ViewTeacher
     {
-        public string firstName { get; set; }
-
+        public byte[] img {get;set;}
+        public string firstName {get;set;}
+        public string middleName {get;set;}
         public string lastName { get; set; }
-
-        public string middleName { get; set; }
-
-        public string phoneNumber { get; set; }
-
-        public string Address { get; set; }
-
         public string Email { get; set; }
-
-        public byte[] Image { get; set; }
-
-        public string School{ get; set; }
-
-        public int LogInDataId { get; set; }
+        public int id { get; set; }
     }
 }
