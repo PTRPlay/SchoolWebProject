@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity.Mvc;
+using SchoolWebProject.Mapper;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SchoolWebProject.App_Start.UnityWebActivator), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(SchoolWebProject.App_Start.UnityWebActivator), "Shutdown")]
@@ -14,6 +15,8 @@ namespace SchoolWebProject.App_Start
         public static void Start() 
         {
             var container = UnityConfig.GetConfiguredContainer();
+
+            AutoMapperConfiguration.Configure();
 
             FilterProviders.Providers.Remove(FilterProviders.Providers.OfType<FilterAttributeFilterProvider>().First());
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(container));

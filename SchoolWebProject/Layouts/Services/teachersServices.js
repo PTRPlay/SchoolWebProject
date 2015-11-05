@@ -1,9 +1,6 @@
 ﻿myApp.factory('teachers', ['$http', function ($http) {
-    return $http.get('Home/GetTeachers')
-       .success(function (data) {
-           return data;
-       })
-       .error(function (data) {
-           return data;
-       });
+    return $http.get('api/teacher').success(function (data) {
+        return data;
+    });
+
 }]);
