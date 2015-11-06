@@ -4,38 +4,62 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeachersCategoryController : ApiController
+    public class TeacherCategoryController : ApiController
     {
-        // GET api/teacherscategory
-        public IEnumerable<string> Get()
+        private ILogger teacherCategoryLogger;
+
+        private GenericRepository<TeacherCategory> repository;
+
+        private UnitOfWork unitOfWork;
+        
+        private TeacherCategoryService teacherCategories;
+
+        private TeacherService teachers;
+
+        public TeacherCategoryController(ILogger logger, GenericRepository<TeacherCategory> teacherCategoryRepo, UnitOfWork unitOfWork)
         {
-            var categories = new SchoolContext().TeacherCategories;
-            var nameCategories = from entry in categories select entry.Name;
-            return nameCategories;
+            this.teacherCategoryLogger = logger;
+            this.repository = teacherCategoryRepo;
+            this.unitOfWork = unitOfWork;
+            this.teacherCategories = new TeacherCategoryService(this.teacherCategoryLogger, this.repository, this.unitOfWork);
+            this.teachers = new TeacherService(new Logger(), new GenericRepository<Teacher>(new DbFactory()));
         }
 
-        // GET api/teacherscategory/5
-        public string Get(int id)
+        // GET api/teachercategory
+        public IEnumerable<ViewTeacherCategory> Get()
         {
-            return "value";
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories.GetAllTeacherCategories());
+            return viewModel;
         }
 
-        // POST api/teacherscategory
+        // GET api/teachercategory/5
+        public IEnumerable<ViewTeacher> Get(int id)
+        {
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers.GetAllTeachers().Where(c=> c.TeacherCategoryId == id));
+            return viewModel;
+
+        }
+
+        // POST api/teachercategory
         public void Post([FromBody]string result)
         {
             var bin = result;
         }
 
-        // PUT api/teacherscategory/5
+        // PUT api/teachercategory/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/teacherscategory/5
+        // DELETE api/teachercategory/5
         public void Delete(int id)
         {
         }

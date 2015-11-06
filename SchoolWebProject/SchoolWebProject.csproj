@@ -163,13 +163,12 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
-    <Compile Include="Controllers\DegreeController.cs" />
+    <Compile Include="Controllers\TeacherDegreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PupilsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherCategoryController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +176,7 @@
     <Compile Include="Models\ViewAnnouncement.cs" />
     <Compile Include="Models\ViewPupil.cs" />
     <Compile Include="Models\ViewTeacher.cs" />
+    <Compile Include="Models\ViewTeacherCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +188,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
-    <Content Include="Layouts\Controllers\categoriesController.js" />
+    <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\displayPupilController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
@@ -204,7 +204,7 @@
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
-    <Content Include="Layouts\Services\categoriesService.js" />
+    <Content Include="Layouts\Services\teacherCategoriesService.js" />
     <Content Include="Layouts\Services\degreeService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\pupilsService.js" />

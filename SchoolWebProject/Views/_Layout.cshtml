@@ -35,8 +35,8 @@
 
     <script src="~/Layouts/ModalControllers/Modal.js"></script>
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
-    <script src="~/Layouts/Controllers/categoriesController.js"></script>
-    <script src="~/Layouts/Services/categoriesService.js"></script>
+    <script src="~/Layouts/Controllers/teacherCategoriesController.js"></script>
+    <script src="~/Layouts/Services/teacherCategoriesService.js"></script>
     <script src="~/Layouts/Controllers/subjectsController.js"></script>
     <script src="~/Layouts/Services/subjectsService.js"></script>
     <script src="~/Layouts/Controllers/degreeController.js"></script>
@@ -59,11 +59,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown"><span class="caret"></span>Category</a>
-                        <ul class="dropdown-menu">
-                            @foreach (var i in ViewBag.TeacherDegrees)
-                            {
-                                <li><a>@i.Name</a></li>
-                            }
+                        <ul class="dropdown-menu"  ng-controller="teacherCategoriesController">
+                            <li ng-repeat="teacherCategory in teacherCategories"> <a ng-controller="teachersController" href="api/teachercategory/{{teacherCategory.id}}">{{teacherCategory.name}}</a></li> 
                         </ul>
                     </li>
                     <li class="dropdown">

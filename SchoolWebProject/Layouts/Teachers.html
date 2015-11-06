@@ -1,5 +1,8 @@
-﻿<div class="container">
+﻿    <h2>{{text}}</h2>
+<div id="grid2" ui-grid="teachersGrid" class="grid"></div>
+
+<div class="container">
     <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="ModalShowController">
-        <li class="jumbotron">{{teacher}}<a ui-sref="teacherInfo?id={{teacher.id}}">View Info</a></li> 
+        <li class="jumbotron"><h2>{{teacher.firstName}}</h2> <h3>{{teacher.lastName}} {{teacher.middleName}}</h3> <a ui-sref="teacherInfo?id={{teacher.id}}">Profile</a></li>
     </ul>
 </div>

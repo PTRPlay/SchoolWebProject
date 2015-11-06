@@ -1,7 +1,7 @@
 ﻿myApp.controller('pupilsController', ['$scope', 'pupils', function ($scope, pupils) {
     $scope.text = "List of pupils:";
     
-    $scope.teachersGrid = {
+    $scope.pupilsGrid = {
         showGridFooter: true,
         columnDefs: [
    {
@@ -27,7 +27,7 @@
     };
     
     pupils.success(function (data) {
-        $scope.teachersGrid.data = data;
+        $scope.pupilsGrid.data = data;
     });
     
 }

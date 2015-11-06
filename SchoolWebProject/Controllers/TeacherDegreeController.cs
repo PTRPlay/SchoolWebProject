@@ -4,12 +4,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
+
 
 namespace SchoolWebProject.Controllers
 {
-    public class DegreeController : ApiController
+    public class TeacherDegreeController : ApiController
     {
+        private ILogger teacherDegreeLogger;
+
+        private GenericRepository<TeacherDegree> repository;
+
+        private TeacherService teachers;
+
+        public TeacherDegreeController(ILogger logger, GenericRepository<TeacherDegree> teacherDegreeRepo)
+        {
+            this.teacherDegreeLogger = logger;
+            this.repository = teacherDegreeRepo;
+            //this.teachers = new TeacherDegreeService(this.teacherDegreeLogger, this.repository);
+        }
+
         // GET api/degree
         public IEnumerable<string> Get()
         {
