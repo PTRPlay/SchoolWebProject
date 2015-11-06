@@ -1,26 +1,40 @@
-﻿myApp.controller('pupilsController', ['$scope', 'pupils', function ($scope, pupils) {
+﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', function ($scope, pupils, uiGridConstants) {
     $scope.text = "List of pupils:";
     
     $scope.pupilsGrid = {
         showGridFooter: true,
+        enableSorting: true,
+        enableFiltering: true,
+
         columnDefs: [
    {
-       field: 'FirstName'
+       field: 'LastName',
+       sort: {
+           direction: uiGridConstants.ASC,
+           priority: 1
+       },
    },
    {
-       field: 'LastName'
+       field: 'FirstName',
+       enableSorting:false,
+       enableFiltering: false
    },
    {
-       field: "PhoneNumber"
+       field: "PhoneNumber",
+       enableFiltering: false,
+       enableSorting: false,
    },
    {
-       field: "Address"
+       field: "Address",
+       enableFiltering: false,
+       enableSorting: false,
    },
    {
-       field: "Email"
+       field: "Email",
+       enableFiltering: false,
+       enableSorting: false,
    }
-
-        ],
+     ],
         onRegisterApi: function (gridApi) {
             $scope.grid1Api = gridApi;
         }
