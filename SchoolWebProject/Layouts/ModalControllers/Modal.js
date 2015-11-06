@@ -1,4 +1,4 @@
-﻿myApp.controller('ModalShowController', ['$scope', 'ModalService', '$http',function ($scope, ModalService, $http) {
+﻿myApp.controller('ModalShowController', ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
     $scope.showTeachersEditPage = function (user) {
         ModalService.showModal({
             templateUrl: "Layouts/TeacherAddTemplate.html",
@@ -15,4 +15,3 @@
         });
     };
 }]);
-//add here your modal show methods

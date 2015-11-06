@@ -28,6 +28,8 @@ namespace SchoolWebProject.Controllers
             SchoolContext mdc = new SchoolContext();
             var subjectEntries = from entry in mdc.Subjects select entry;
             ViewBag.Subjects = subjectEntries.ToList();
+            var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
+            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
 
                        /*var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
                        //{
