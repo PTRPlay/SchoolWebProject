@@ -14,13 +14,20 @@ namespace SchoolWebProject.Controllers
 {
     public class PupilsController : ApiController
     {
+        private ILogger getLogger;
+
+        private PupilService pupilService;
+
+        public PupilsController(ILogger logger, PupilService pupilService) 
+        {
+            this.getLogger = logger;
+            this.pupilService = pupilService;
+        }
+
         // GET api/pupils
         public IEnumerable<ViewPupil> Get()
         {
-            var pupils = new PupilService(new SerilogLogger(),
-                            new GenericRepository<Pupil>(new DbFactory()),
-                            new UnitOfWork(new DbFactory()))
-                           .GetAllPupils();
+            var pupils = pupilService.GetAllPupils();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
             return viewModel;
         }

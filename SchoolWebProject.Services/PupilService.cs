@@ -18,38 +18,38 @@ namespace SchoolWebProject.Services
         public PupilService(ILogger logger, IRepository<Pupil> pupilRepository, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            repository = pupilRepository;
+            this.repository = pupilRepository;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return repository.GetAll().Where(c => c.RoleId == 3);
+            return this.repository.GetAll().Where(c => c.RoleId == 3);
         }
 
         public Pupil GetProfileById(int id)
         {
-            return repository.GetById(id);
+            return this.repository.GetById(id);
         }
 
         public void UpdateProfile(Pupil pupil)
         {
-            repository.Update(pupil);
+            this.repository.Update(pupil);
         }
 
         public void AddPupil(Pupil pupil)
         {
-            repository.Add(pupil);
+            this.repository.Add(pupil);
         }
 
         public void RemovePupil(Pupil pupil)
         {
-            repository.Delete(pupil);
+            this.repository.Delete(pupil);
         }
 
         public void SavePupil()
         {
-            unitOfWork.SaveChanges();
+            this.unitOfWork.SaveChanges();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using SchoolWebProject.Data.Infrastructure;
+﻿using System;
+using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,33 +18,33 @@ namespace SchoolWebProject.Services
         public AnnouncementService(ILogger logger, IRepository<Announcement> announcementRepository, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            repository = announcementRepository;
+            this.repository = announcementRepository;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Announcement> GetAllAnnouncements()
         {
-            return repository.GetAll();
+            return this.repository.GetAll();
         }
 
         public Announcement GetAnnouncementById(int id)
         {
-            return repository.GetById(id);
+            return this.repository.GetById(id);
         }
 
         public void UpdateAnnouncement(Announcement announcement)
         {
-            repository.Update(announcement);
+            this.repository.Update(announcement);
         }
 
         public void AddAnnouncement(Announcement announcement)
         {
-            repository.Add(announcement);
+            this.repository.Add(announcement);
         }
 
         public void RemoveAnnouncement(Announcement announcement)
         {
-            repository.Delete(announcement);
+            this.repository.Delete(announcement);
         }
 
         public void SaveAnnouncement()

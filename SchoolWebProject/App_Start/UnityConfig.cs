@@ -44,6 +44,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<IAccountService, AccountService>();
             container.RegisterType(typeof(IRepository<>), typeof(GenericRepository<>));
             container.RegisterType<IDbFactory, DbFactory>();
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
 
         }
     }
