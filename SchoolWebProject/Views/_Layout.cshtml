@@ -3,11 +3,12 @@
 <head>
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-touch.js"></script>
     <script src="~/Scripts/angular-animate.js"></script>
-    
+
     <script src="~/Scripts/ui-grid.js"></script>
     <link href="~/Content/ui-grid.css" rel="stylesheet" />
     <script src="~/Scripts/angular-ui-router.min.js"></script>
@@ -17,27 +18,27 @@
     <script src="~/Scripts/angular-modal-service.js"></script>
     <script src="~/Scripts/app.js"></script>
     
-    <script src="~/Layouts/Controllers/teacherController.js"></script>
-    <script src="~/Layouts/Controllers/pupilsController.js"></script>
-    <script src="~/Layouts/Controllers/teachersController.js"></script>
-    <script src="~/Layouts/Controllers/schelduleController.js"></script>
-    <script src="~/Layouts/Controllers/subjectController.js"></script>
+    <script src="~/Layouts/Controllers/categoriesController.js"></script>
+    <script src="~/Layouts/Controllers/degreeController.js"></script>
     <script src="~/Layouts/Controllers/newsController.js"></script>
+    <script src="~/Layouts/Controllers/pupilsController.js"></script>
+    <script src="~/Layouts/Controllers/schelduleController.js"></script>
+    <script src="~/Layouts/Controllers/subjectsController.js"></script>
+    <script src="~/Layouts/Controllers/teacherCategoriesController.js"></script>
+    <script src="~/Layouts/Controllers/teachersController.js"></script>
 
+
+    <script src="~/Layouts/Services/categoriesService.js"></script>
+    <script src="~/Layouts/Services/degreeService.js"></script>
     <script src="~/Layouts/Services/newsService.js"></script>
-    <script src="~/Layouts/Services/schelduleService.js"></script>
-    <script src="~/Layouts/Services/subjectsServic.js"></script>
-    <script src="~/Layouts/Services/teachersServices.js"></script>
     <script src="~/Layouts/Services/pupilsService.js"></script>
-
+    <script src="~/Layouts/Services/schelduleService.js"></script>
+    <script src="~/Layouts/Services/subjectsService.js"></script>
+    <script src="~/Layouts/Services/teacherCategoriesService.js"></script>
+    <script src="~/Layouts/Services/teachersServices.js"></script>
+    
     <script src="~/Layouts/ModalControllers/Modal.js"></script>
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
-    <script src="~/Layouts/Controllers/teacherCategoriesController.js"></script>
-    <script src="~/Layouts/Services/teacherCategoriesService.js"></script>
-    <script src="~/Layouts/Controllers/subjectsController.js"></script>
-    <script src="~/Layouts/Services/subjectsService.js"></script>
-    <script src="~/Layouts/Controllers/degreeController.js"></script>
-    <script src="~/Layouts/Services/degreeService.js"></script>
 
 </head>
 <body ng-app="myApp">
@@ -50,14 +51,14 @@
 
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
                 <ul class="nav navbar-nav">
-                    <li><a href="#addTeachers" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage(null)">Add Teachers</a></li>
+                    <li><a href="#addTeachers" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown"><span class="caret"></span>Category</a>
                         <ul class="dropdown-menu"  ng-controller="teacherCategoriesController">
-                            <li ng-repeat="teacherCategory in teacherCategories"> <a ng-controller="teachersController" href="api/teachercategory/{{teacherCategory.id}}">{{teacherCategory.name}}</a></li> 
+                            <li ng-repeat="teacherCategory in teacherCategories"> <a href="api/teachercategory/{{teacherCategory.id}}">{{teacherCategory.name}}</a></li> 
                         </ul>
                     </li>
                     <li class="dropdown">
