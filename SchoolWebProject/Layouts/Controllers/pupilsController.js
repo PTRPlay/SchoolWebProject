@@ -11,7 +11,7 @@
        name: "numb",
        field: "№ ",
        cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
-       width: 40,
+       width: 50,
        enableSorting: false,
        enableFiltering: false,
    },
