@@ -1,0 +1,75 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <img src="{{pupil.img}}" class="img-rounded col-sm-4" width="350px" height="400px" alt="{{teacher.firstName}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="workStart" ng-model="teacher.workStart" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category" class="col-sm-2 control-label">Ступінь:</label>
+                        <div class="col-sm-4">
+                            <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
+                                <option ng-repeat="category in listCategories">{{category}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="degree" class="col-sm-2 control-label">Звання:</label>
+                        <div class="col-sm-4">
+                            <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
+                                <option ng-repeat="degree in listDegrees">{{degree}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjects" class="col-sm-2 control-label">Предмети:</label>
+                        <div class="col-sm-8" ng-controller="subjectsController">
+                            <table class="table-condensed">
+                                <tr ng-repeat="subject in listSubjects">
+                                    <td ng-if="$even" rowspan="2">
+                                        <input type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                    </td>
+                                    <td ng-if="$odd" rowspan="1">
+                                        <input type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dissmiss="modal" ng-click="close()">OK</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

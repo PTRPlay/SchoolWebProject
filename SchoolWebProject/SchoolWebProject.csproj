@@ -201,7 +201,9 @@
     <Content Include="Layouts\Controllers\newsController.js" />
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
+    <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
+    <Content Include="Layouts\ModalControllers\pupilModal.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\Scheldule.html" />
@@ -217,6 +219,7 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Pupils.html" />
     <Content Include="Layouts\Subjects.html" />
+    <Content Include="Layouts\PupilAddTemplate.html" />
     <Content Include="Layouts\TeacherInfo.html" />
     <Content Include="Layouts\Teachers.html" />
     <Content Include="Scripts\angular-animate.js" />
