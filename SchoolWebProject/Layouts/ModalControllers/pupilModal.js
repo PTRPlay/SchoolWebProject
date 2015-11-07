@@ -1,16 +1,16 @@
 ﻿myApp.controller('ModalShowController', ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
-    $scope.showTeachersEditPage = function (user) {
+    $scope.showPupilsEditPage = function (user) {
         ModalService.showModal({
             templateUrl: "Layouts/PupilAddTemplate.html",
-            controller: "teacherAddController",
+            controller: "pupilAddController",
             inputs: {
-                title: "Вчитель",
-                Teacher: user
+                title: "Учень",
+                Pupil: user
             }
         }).then(function (modal) {
             modal.element.modal();
             modal.close.then(function (result) {
-                $http.post("api/teacher", result);
+                $http.post("api/pupil", result);
             });
         });
     };

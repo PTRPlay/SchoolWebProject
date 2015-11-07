@@ -8,16 +8,16 @@
 
         columnDefs: [
    {
-       name: "numb",
        field: "№ ",
        cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
-       width: 50,
+       width: "50",
        enableSorting: false,
        enableFiltering: false,
    },
    {
        name: "LastName",
        field: "LastName",
+       width: "*",
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
@@ -25,33 +25,41 @@
    },
    {
        field: "FirstName",
+       width: "*",
        enableSorting:false,
        enableFiltering: false
    },
    {
        field: "PhoneNumber",
+       width: "*",
        enableFiltering: false,
-       enableSorting: false,
+       enableSorting: false
    },
    {
        field: "Address",
+       width: "*",
        enableFiltering: false,
        enableSorting: false,
+       visible: false
    },
    {
        field: "Email",
+       width: "*",
        enableFiltering: false,
        enableSorting: false,
+       visible: false
    },
    {
        field: "Edit",
-       cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.LastName)">Edit</button></div>',
+       cellTemplate: '<div><button ng-click="showPupilsEditPage()" style="width: 70px;">Edit</button></div>',
+       width: "80",
        enableFiltering: false,
        enableSorting: false
    },
    {
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.LastName)">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       width: "80",
        enableFiltering: false,
        enableSorting: false
    }
