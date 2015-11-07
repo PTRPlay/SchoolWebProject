@@ -1,1 +1,2 @@
-﻿myApp.controller('DisplayPupilController', ['$scope', 'ModalService', '$http',function ($scope, ModalService, $http) {
+﻿myApp.controller('DisplayPupilController', ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
+}]);

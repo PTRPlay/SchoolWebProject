@@ -12,3 +12,15 @@
         $scope.teacher = data;
     });
 }]);
+
+myApp.controller('categoriesController', function ($scope, categories) {
+    categories.success(function (data) {
+        $scope.listCategories = data;
+    });
+});
+
+myApp.controller('degreeController', function ($scope, degree) {
+    degree.success(function (data) {
+        $scope.listDegrees = data;
+    });
+});
