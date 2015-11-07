@@ -37,7 +37,7 @@
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories">{{category}}</option>
+                                <option ng-repeat="category in listCategories">{{category.name}}</option>
                             </select>
                         </div>
                     </div>
