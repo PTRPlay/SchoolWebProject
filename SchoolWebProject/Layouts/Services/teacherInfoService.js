@@ -8,3 +8,19 @@
 	})
 
 }]);
+
+myApp.factory('categories', ['$http', function ($http) {
+    return $http.get("api/teachercategory").success(function (data) {
+        return data;
+    }).error(function (data) {
+        return data;
+    });
+}]);
+
+myApp.factory('degree', ['$http', function ($http) {
+    return $http.get("api/teacherdegree").success(function (data) {
+        return data;
+    }).error(function (data) {
+        return data;
+    });
+}]);
