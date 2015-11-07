@@ -1,5 +1,6 @@
 ﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', function ($scope, $element, title, close, Teacher) {
     $scope.teacher = null;
+
     if (Teacher != null) {
         $scope.teacher = {
             id: Teacher.id,
@@ -9,8 +10,8 @@
             lastName: Teacher.lastName,
             phoneNumber: Teacher.phoneNumber,
             degree: Teacher.degree,
-            workStart: Teacher.workStart,
             category: Teacher.category,
+            workStart: Teacher.workStart,
             subjects: []
         };
     }
@@ -23,8 +24,8 @@
             lastName: null,
             phoneNumber: null,
             degree: null,
-            workStart: null,
             category: null,
+            workStart: null,
             subjects: []
         };
     }
@@ -41,9 +42,15 @@
     $scope.close = function () {
         $element.modal('hide');
         close({
+            id: $scope.teacher.id,
             firstName: $scope.teacher.firstName,
+            middleName: $scope.teacher.middleName,
             lastName: $scope.teacher.lastName,
-            degree: $scope.teacher.degree
+            phoneNumber: $scope.teacher.phoneNumber,
+            degree: $scope.teacher.degree,
+            category: $scope.teacher.category,
+            workStart: $scope.teacher.workStart,
+            subjects: $scope.teacher.subjects
         }, 500);
     };
 
@@ -51,9 +58,15 @@
         $element.modal('hide');
 
         close({
+            id: $scope.teacher.id,
             firstName: $scope.teacher.firstName,
+            middleName: $scope.teacher.middleName,
             lastName: $scope.teacher.lastName,
-            degree: $scope.teacher.degree
+            phoneNumber: $scope.teacher.phoneNumber,
+            degree: $scope.teacher.degree,
+            category: $scope.teacher.category,
+            workStart: $scope.teacher.workStart,
+            subjects: $scope.teacher.subjects
         }, 500);
     }
 }]);
