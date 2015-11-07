@@ -30,14 +30,14 @@
                     <div class="form-group">
                         <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control" id="workStart" ng-model="teacher.workStart" />
+                            <input type="datetime" class="form-control" id="workStart" ng-model="teacher.workStart" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories">{{category.name}}</option>
+                                <option ng-repeat="category in listCategories" value={{category.Id}}>{{category.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-                                <option ng-repeat="degree in listDegrees">{{degree}}</option>
+                                <option ng-repeat="degree in listDegrees" value={{degree.Id}}>{{degree.Name}}</option>
                             </select>
                         </div>
                     </div>

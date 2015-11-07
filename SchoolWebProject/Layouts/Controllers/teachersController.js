@@ -12,16 +12,16 @@ myApp.controller('teachersController', ['$scope', 'teachers', function ($scope, 
         showGridFooter: true,
         columnDefs: [
    {
-       field: 'firstName'
+       field: 'FirstName'
    },
    {
-       field: 'lastName'
+       field: 'LastName'
    },
    {
        field: "phoneNumber"
    },
    {
-       field: "category"
+       field: "Category"
    }
         ],
         onRegisterApi: function (gridApi) {

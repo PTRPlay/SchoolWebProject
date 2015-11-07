@@ -8,7 +8,7 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
-
+using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Controllers
 {
@@ -28,11 +28,11 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/teacherdegree
-        public IEnumerable<string> Get()
+        public IEnumerable<ViewTeacherDegree> Get()
         {
-            var degrees = new SchoolContext().TeacherDegrees;
-            var degreeNames = from entry in degrees select entry.Name;
-            return degreeNames;
+            var degree = new SchoolContext().TeacherDegrees;
+            var viewDegree = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(degree);
+            return viewDegree;
         }
 
         // GET api/teacherdegree/5
