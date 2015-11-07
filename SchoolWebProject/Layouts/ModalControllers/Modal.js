@@ -10,8 +10,7 @@
         }).then(function (modal) {
             modal.element.modal();
             modal.close.then(function (result) {
-                //$http.post("api/teacher", result);
-                alert(result.subjects);
+                $http.post("api/teacher", result);
             });
         });
     };
