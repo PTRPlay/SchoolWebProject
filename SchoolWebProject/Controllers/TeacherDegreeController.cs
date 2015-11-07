@@ -27,7 +27,7 @@ namespace SchoolWebProject.Controllers
             //this.teachers = new TeacherDegreeService(this.teacherDegreeLogger, this.repository);
         }
 
-        // GET api/degree
+        // GET api/teacherdegree
         public IEnumerable<string> Get()
         {
             var degrees = new SchoolContext().TeacherDegrees;
@@ -35,23 +35,23 @@ namespace SchoolWebProject.Controllers
             return degreeNames;
         }
 
-        // GET api/degree/5
+        // GET api/teacherdegree/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/degree
+        // POST api/teacherdegree
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/degree/5
+        // PUT api/teacherdegree/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/degree/5
+        // DELETE api/teacherdegree/5
         public void Delete(int id)
         {
         }
