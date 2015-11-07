@@ -50,15 +50,12 @@
             </div>
 
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
-                <ul class="nav navbar-nav">
-                    <li><a href="#addTeachers" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</a></li>
-                </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown"><span class="caret"></span>Category</a>
                         <ul class="dropdown-menu"  ng-controller="teacherCategoriesController">
-                            <li ng-repeat="teacherCategory in teacherCategories"> <a href="api/teachercategory/{{teacherCategory.id}}">{{teacherCategory.name}}</a></li> 
+                            <li ng-repeat="teacherCategory in teacherCategories"> <a href="api/teachercategory/{{teacherCategory.Id}}">{{teacherCategory.Name}}</a></li> 
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -93,7 +90,7 @@
                 </ul>
 
             </div>
-            <div class="cos-sm-9 col-sm-offset-3 main table">
+            <div class="cos-sm-9 col-sm-offset-3 main table" style="width:auto">
                 <div ui-view></div>
             </div>
         </div>  

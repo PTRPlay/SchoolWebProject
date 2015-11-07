@@ -43,7 +43,10 @@
         close({
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
-            degree: $scope.teacher.degree
+            middleName:$scope.teacher.middleName,
+            degree: $scope.teacher.degree,
+            category: $scope.teacher.category,
+            workStart:$scope.teacher.workStart
         }, 500);
     };
 
@@ -53,7 +56,10 @@
         close({
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
-            degree: $scope.teacher.degree
+            middleName: $scope.teacher.middleName,
+            degree: $scope.teacher.degree,
+            category: $scope.teacher.category,
+            workStart:$scope.teacher.workStart
         }, 500);
     }
 }]);
