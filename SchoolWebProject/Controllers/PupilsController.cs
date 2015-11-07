@@ -35,7 +35,9 @@ namespace SchoolWebProject.Controllers
         // GET api/pupils/5
         public ViewPupil Get(int id)
         {
-            throw new NotImplementedException();
+            var pupil = pupilService.GetProfileById(id);
+            var viewModel = AutoMapper.Mapper.Map<Pupil, ViewPupil>(pupil);
+            return viewModel;
         }
 
         // POST api/pupils

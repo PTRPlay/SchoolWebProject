@@ -24,7 +24,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return this.repository.GetAll().Where(c => c.RoleId == 3);
+            return this.repository.GetAll();
         }
 
         public Pupil GetProfileById(int id)

@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace SchoolWebProject.Controllers
 {
-    public class AnnouncementsController : ApiController
+        public class AnnouncementsController : ApiController
     {
         private ILogger getLogger;
 
@@ -27,15 +27,17 @@ namespace SchoolWebProject.Controllers
         // GET api/announcements
         public IEnumerable<ViewAnnouncement> Get()
         {
-            var announcement = this.announcementService.GetAllAnnouncements();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Announcement>, IEnumerable<ViewAnnouncement>>(announcement);
+            var announcements = this.announcementService.GetAllAnnouncements();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Announcement>, IEnumerable<ViewAnnouncement>>(announcements);
             return viewModel;
         }
 
         // GET api/announcements/5
         public ViewAnnouncement Get(int id)
         {
-            throw new NotImplementedException();
+            var announcement = this.announcementService.GetAnnouncementById(id);
+            var viewModel = AutoMapper.Mapper.Map<Announcement, ViewAnnouncement>(announcement);
+            return viewModel;
         }
 
         // POST api/announcements
