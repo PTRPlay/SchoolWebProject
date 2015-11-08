@@ -5,26 +5,81 @@
                 <button type="button" class="close" ng-click="close()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" name="AddTeacherForm">
                     <div class="form-group">
                         <img src="{{teacher.img}}" class="img-rounded col-sm-4" width="350px" height="400px" alt="{{teacher.firstName}}" />
                     </div>
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" />
+                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
+
+                            <div class="error" style="color:red"
+                                 ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
+                                <small class="error"
+                                       ng-show="AddTeacherForm.firstName.$error.required">
+                                    Your first Name is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.firstName.$error.minlength">
+                                    Your first Name is required to be at least 3 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.firstName.$error.maxlength">
+                                    Your first Name cannot be longer than 20 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.firstName.$error.pattern">
+                                    Not correct pattern
+                                </small>
+                            </div>
+
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" />
+                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
+
+                            <div class="error" style="color:red"
+                                 ng-show="AddTeacherForm.middleName.$dirty && AddTeacherForm.middleName.$invalid">
+                                <small class="error"
+                                       ng-show="AddTeacherForm.middleName.$error.required">
+                                    Your middle Name is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.middleName.$error.minlength">
+                                    Your middle Name is required to be at least 3 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.middleName.$error.maxlength">
+                                    Your middle Name cannot be longer than 20 characters
+                                </small>
+                            </div>
+
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" />
+                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
+
+                            <div class="error" style="color:red"
+                                 ng-show="AddTeacherForm.lastName.$dirty && AddTeacherForm.lastName.$invalid">
+                                <small class="error"
+                                       ng-show="AddTeacherForm.lastName.$error.required">
+                                    Your lastName is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.lastName.$error.minlength">
+                                    Your last Name is required to be at least 3 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.middleName.$error.maxlength">
+                                    Your last Name cannot be longer than 20 characters
+                                </small>
+                            </div>
+
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,7 +92,7 @@
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories">{{category.name}}</option>
+                                <option ng-repeat="category in listCategories" selected>{{category.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -45,20 +100,21 @@
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-                                <option ng-repeat="degree in listDegrees">{{degree}}</option>
+                                <option ng-repeat="degree in listDegrees" selected>{{degree}}</option>
                             </select>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <label for="subjects" class="col-sm-2 control-label">Предмети:</label>
                         <div class="col-sm-8" ng-controller="subjectsController">
                             <table class="table-condensed">
-                                <tr ng-repeat="subject in listSubjects">
+                                <tr ng-repeat="subject in listSubjects" >
                                     <td ng-if="$even" rowspan="2">
-                                        <input type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                        <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
                                     </td>
                                     <td ng-if="$odd" rowspan="1">
-                                        <input type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                        <input   type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
                                     </td>
                                 </tr>
                             </table>
@@ -67,7 +123,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dissmiss="modal" ng-click="close()">OK</button>
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-click="close()">OK</button>
                 <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
             </div>
         </div>
