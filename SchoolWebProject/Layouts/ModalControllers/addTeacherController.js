@@ -1,5 +1,6 @@
 ﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', function ($scope, $element, title, close, Teacher) {
     $scope.teacher = null;
+    $scope.IsError = true;
     if (Teacher != null) {
         $scope.teacher = {
             id: Teacher.id,
@@ -23,7 +24,7 @@
             lastName: null,
             phoneNumber: null,
             degree: null,
-            workStart: null,
+            workStart: new Date("2015-09-11"),
             category: null,
             subjects: []
         };

@@ -82,10 +82,10 @@
 
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
                         <div class="col-sm-4">
-                            <input type="datetime" class="form-control" id="workStart" ng-model="teacher.workStart" />
+                            <input type="date" name="workStart" class="form-control" id="workStart" ng-model="teacher.workStart" required />
                         </div>
                     </div>
                     <div class="form-group">
@@ -108,7 +108,7 @@
                     <div class="form-group">
                         <label for="subjects" class="col-sm-2 control-label">Предмети:</label>
                         <div class="col-sm-8" ng-controller="subjectsController">
-                            <table class="table-condensed">
+                            <table class="table-condensed" name="table">
                                 <tr ng-repeat="subject in listSubjects" >
                                     <td ng-if="$even" rowspan="2">
                                         <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
@@ -118,6 +118,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <p class="error" style="color:red" ng-show="teacher.subjects==0">Please choose at least one subject</p>
                         </div>
                     </div>
                 </form>
