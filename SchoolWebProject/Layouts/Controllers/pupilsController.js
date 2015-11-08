@@ -51,14 +51,14 @@
    },
    {
        field: "Edit",
-       cellTemplate: '<div><button ng-click="showPupilsEditPage()" style="width: 70px;">Edit</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.LastName)" style="width: 70px;">Edit</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
    },
    {
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.LastName)" style="width: 70px;">Delete</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
