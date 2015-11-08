@@ -25,7 +25,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual School School { get; set; }
 
-        //public int UserId { get; set; }
+        // public int UserId { get; set; }
 
         public virtual User User { get; set; }
 

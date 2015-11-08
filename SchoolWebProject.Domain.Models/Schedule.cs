@@ -21,7 +21,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual Group Group { get; set; }
 
-        //public int TeacherId { get; set; }
+        // public int TeacherId { get; set; }
 
         public virtual Teacher Teacher { get; set; }
 
@@ -33,7 +33,6 @@ namespace SchoolWebProject.Domain.Models
 
         public School School { get; set; }
 
-        public virtual List<LessonDetail> LessonsDetails { get; set; }
-        
+        public virtual List<LessonDetail> LessonsDetails { get; set; }        
     }
 }
