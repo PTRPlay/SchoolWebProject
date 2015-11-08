@@ -13,13 +13,13 @@ namespace SchoolWebProject.Domain.Models
 
         public DateTime Date { get; set; }
 
-        //public int PupilId { get; set; }
+        // public int PupilId { get; set; }
 
         public virtual Pupil Pupil { get; set; }
 
-        //public int ScheduleId { get; set; }
+        // public int ScheduleId { get; set; }
 
-        //public virtual Schedule Schedule { get; set; }
+        // public virtual Schedule Schedule { get; set; }
 
         public int LessonDetailId { get; set; }
 

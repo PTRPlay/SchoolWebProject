@@ -2,8 +2,7 @@ var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnim
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
-        url: '/home',
-        templateUrl: '/Layouts/Teachers.html'
+        url: '/home'
     })
     .state('teachers', {
         url:'/teachers',

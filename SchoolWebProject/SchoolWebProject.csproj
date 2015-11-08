@@ -173,6 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ViewTeacherDegree.cs" />
     <Compile Include="Models\ViewAnnouncement.cs" />
     <Compile Include="Models\ViewPupil.cs" />
     <Compile Include="Models\ViewTeacher.cs" />
@@ -192,7 +193,6 @@
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
-    <Content Include="Layouts\Controllers\displayPupilController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
@@ -200,6 +200,7 @@
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
+    <Content Include="Layouts\ModalControllers\pupilModal.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
@@ -214,6 +215,7 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Pupils.html" />
     <Content Include="Layouts\Subjects.html" />
+    <Content Include="Layouts\PupilAddTemplate.html" />
     <Content Include="Layouts\TeacherInfo.html" />
     <Content Include="Layouts\Teachers.html" />
     <Content Include="Scripts\angular-animate.js" />

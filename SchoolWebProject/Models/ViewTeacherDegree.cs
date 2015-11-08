@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SchoolWebProject.Models
 {
-    public class ViewTeacherCategory
+    public class ViewTeacherDegree
     {
         public int Id { get; set; }
 
