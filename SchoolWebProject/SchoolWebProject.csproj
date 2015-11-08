@@ -199,8 +199,8 @@
     <Content Include="Layouts\Controllers\newsController.js" />
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
+    <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
-    <Content Include="Layouts\ModalControllers\pupilModal.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
