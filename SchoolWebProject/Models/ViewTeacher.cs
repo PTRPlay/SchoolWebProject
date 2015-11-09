@@ -7,6 +7,8 @@ namespace SchoolWebProject.Models
 {
     public class ViewTeacher
     {
+        public int Id { get; set; }
+
         public byte[] Img { get; set;}
 
         public string FirstName { get; set;}
