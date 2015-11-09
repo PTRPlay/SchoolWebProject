@@ -32,9 +32,11 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<Announcement, ViewAnnouncement>();
             AutoMapper.Mapper.CreateMap<Pupil, ViewPupil>();
             AutoMapper.Mapper.CreateMap<Teacher, ViewTeacher>()
-                .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory));
+                .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory))
+                .ForMember(g => g.Degree, map => map.MapFrom(vm => vm.TeacherDegree));
             AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
-            AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>(); 
+            AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
+            AutoMapper.Mapper.CreateMap<Subject, ViewSubject>();
         }
     }
 
@@ -47,17 +49,12 @@ namespace SchoolWebProject.Mapper
 
         protected override void Configure()
         {
+            AutoMapper.Mapper.CreateMap<ViewTeacherCategory,TeacherDegree>();
+            AutoMapper.Mapper.CreateMap<ViewTeacherDegree,TeacherDegree>();
+            
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
-                //.ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.FirstName))
-                //.ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
-                //.ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
-                .ForMember(g => g.Image, map => map.MapFrom(vm => vm.Img))
-                .ForMember(g => g.LastName, map => map.MapFrom(vm => vm.LastName))
-                //.ForMember(g => g.MiddleName, map => map.MapFrom(vm => vm.MiddleName))
-                //.ForMember(g=>g.PhoneNumber,map => map.MapFrom(vm => vm.phoneNumber))
-                .ForMember(g => g.TeacherCategoryId, map => map.MapFrom(vm => vm.Category))
-                .ForMember(g => g.TeacherDegreeId, map => map.MapFrom(vm => vm.Degree))
-                .ForMember(g => g.WorkBegin, map => map.MapFrom(vm => vm.WorkStart));
+                .ForMember(g => g.TeacherCategory, map => map.MapFrom(vm => vm.Category))
+                .ForMember(g => g.TeacherDegree, map => map.MapFrom(vm => vm.Degree));
 
             AutoMapper.Mapper.CreateMap<ViewPupil, Pupil>()
                 .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.FirstName))
@@ -80,6 +77,7 @@ namespace SchoolWebProject.Mapper
                 .ForMember(g => g.Id, map => map.MapFrom(vm => vm.Id))
                 .ForMember(g => g.Name, map => map.MapFrom(vm => vm.Name));
 
+            AutoMapper.Mapper.CreateMap<ViewSubject, Subject>();
         }
     }
 }

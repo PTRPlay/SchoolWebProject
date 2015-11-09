@@ -5,17 +5,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Controllers
 {
     public class SubjectsController : ApiController
     {
         // GET api/subject
-        public IEnumerable<string> Get()
+        public IEnumerable<ViewSubject> Get()
         {
-            var subjects = new SchoolContext().Subjects;
+            var subjects = AutoMapper.Mapper.Map<IEnumerable<Subject>, IEnumerable<ViewSubject>>(new SchoolContext().Subjects);
             var subjectsName = from entry in subjects select entry.Name;
-            return subjectsName;
+            return subjects;
         }
 
         // GET api/subjects/5
