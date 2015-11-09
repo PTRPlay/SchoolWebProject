@@ -23,7 +23,7 @@ namespace SchoolWebProject.Models
 
         public DateTime WorkStart { get; set; }
 
-        public List<string> Subjects { get; set; }
+        public IEnumerable<string> Subjects { get; set; }
 
     }
 }
