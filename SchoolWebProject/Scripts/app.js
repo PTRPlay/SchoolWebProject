@@ -9,6 +9,13 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/Teachers.html',
         controller: 'teachersController'
     })
+
+    .state('teachersCategory', {
+        url: '/teacherCategory/:id',
+        templateUrl: '/Layouts/Teachers.html',
+        controller: 'viewTeacherCategories'
+    })
+
     .state('subjects', {
         url: '/subjects',
         templateUrl: '/Layouts/Subjects.html'

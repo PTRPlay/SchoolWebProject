@@ -7,4 +7,5 @@ myApp.factory('teachers', ['$http', function ($http){
 	    return data;
 	})
 
-﻿}]);
+}]);
+

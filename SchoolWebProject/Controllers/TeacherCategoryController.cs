@@ -16,10 +16,6 @@ namespace SchoolWebProject.Controllers
     {
         private ILogger teacherCategoryLogger;
 
-        private GenericRepository<TeacherCategory> repository;
-
-        private UnitOfWork unitOfWork;
-        
         private TeacherCategoryService teacherCategories;
 
         private TeacherService teachers;
@@ -27,10 +23,8 @@ namespace SchoolWebProject.Controllers
         public TeacherCategoryController(ILogger logger, GenericRepository<TeacherCategory> teacherCategoryRepo, UnitOfWork unitOfWork)
         {
             this.teacherCategoryLogger = logger;
-            this.repository = teacherCategoryRepo;
-            this.unitOfWork = unitOfWork;
-            this.teacherCategories = new TeacherCategoryService(this.teacherCategoryLogger, this.repository, this.unitOfWork);
-            this.teachers = new TeacherService(new Logger(), new GenericRepository<Teacher>(new DbFactory()));
+            this.teacherCategories = new TeacherCategoryService(this.teacherCategoryLogger);
+            this.teachers = new TeacherService(new Logger());
         }
 
         // GET api/teachercategory
