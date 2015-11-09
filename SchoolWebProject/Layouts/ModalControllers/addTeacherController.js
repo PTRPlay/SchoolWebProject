@@ -16,6 +16,7 @@
         };
     }
     else {
+        var today = new Date();
         $scope.teacher = {
             id: null,
             img: null,
@@ -24,7 +25,7 @@
             lastName: null,
             phoneNumber: null,
             degree: null,
-            workStart: new Date("2015-09-11"),
+            workStart: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
             category: null,
             subjects: []
         };
@@ -47,7 +48,8 @@
             middleName:$scope.teacher.middleName,
             degree: $scope.teacher.degree,
             category: $scope.teacher.category,
-            workStart:$scope.teacher.workStart
+            workStart: $scope.teacher.workStart,
+            subjects: $scope.teacher.subjects
         }, 500);
     };
 
@@ -60,7 +62,8 @@
             middleName: $scope.teacher.middleName,
             degree: $scope.teacher.degree,
             category: $scope.teacher.category,
-            workStart:$scope.teacher.workStart
+            workStart: $scope.teacher.workStart,
+            subjects: $scope.teacher.subjects
         }, 500);
     }
 }]);

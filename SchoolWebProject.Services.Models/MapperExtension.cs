@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchoolWebProject.Services.Models
 {
-    static class MapperExtension
+    public static class MapperExtension
     {
         public static IMappingExpression<TSource, TDestination> IgnoreAllNonExisting<TSource, TDestination>(this IMappingExpression<TSource, TDestination> expression)
         {
