@@ -70,7 +70,9 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SchoolContext.cs" />
-    <Compile Include="SchoolWebSeedData.cs" />
+    <Compile Include="SchoolWebSeedData.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="SearchWord.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Teacher.cs" />

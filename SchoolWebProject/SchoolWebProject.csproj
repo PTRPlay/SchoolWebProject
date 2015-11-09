@@ -193,13 +193,13 @@
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
-    <Content Include="Layouts\Controllers\displayPupilController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
     <Content Include="Layouts\Controllers\newsController.js" />
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
+    <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\News.html" />
@@ -215,6 +215,7 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Layouts\Pupils.html" />
     <Content Include="Layouts\Subjects.html" />
+    <Content Include="Layouts\PupilAddTemplate.html" />
     <Content Include="Layouts\TeacherInfo.html" />
     <Content Include="Layouts\Teachers.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -242,6 +243,10 @@
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\TeacherInfo\TeacherInfoController.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
