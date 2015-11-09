@@ -193,11 +193,8 @@
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
-<<<<<<< HEAD
-=======
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
->>>>>>> 1109560852223f099fa929f4619ca61f91d9b753
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
