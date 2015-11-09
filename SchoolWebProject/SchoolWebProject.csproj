@@ -195,7 +195,6 @@
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\groupsController.js" />
-    <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
