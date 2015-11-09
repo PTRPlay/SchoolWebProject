@@ -31,7 +31,8 @@ namespace SchoolWebProject.Mapper
         {
             AutoMapper.Mapper.CreateMap<Announcement, ViewAnnouncement>();
             AutoMapper.Mapper.CreateMap<Pupil, ViewPupil>();
-            AutoMapper.Mapper.CreateMap<Teacher, ViewTeacher>();
+            AutoMapper.Mapper.CreateMap<Teacher, ViewTeacher>()
+                .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory));
             AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
             AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>(); 
         }

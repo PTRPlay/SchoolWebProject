@@ -92,7 +92,7 @@
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories" selected>{{category.Name}}</option>
+                                <option ng-repeat="category in listCategories" selected value={{category.Id}}>{{category.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-                                <option ng-repeat="degree in listDegrees" selected>{{degree.Name}}</option>
+                                <option ng-repeat="degree in listDegrees" selected value={{degree.Id}}>{{degree.Name}}</option>
                             </select>
                         </div>
                     </div>

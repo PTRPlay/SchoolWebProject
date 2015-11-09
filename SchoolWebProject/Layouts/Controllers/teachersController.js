@@ -21,7 +21,7 @@ myApp.controller('teachersController', ['$scope', 'teachers', function ($scope, 
        field: "phoneNumber"
    },
    {
-       field: "Category"
+       field: "Category.Name"
    }
         ],
         onRegisterApi: function (gridApi) {
