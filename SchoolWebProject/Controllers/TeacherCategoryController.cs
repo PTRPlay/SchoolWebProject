@@ -20,7 +20,7 @@ namespace SchoolWebProject.Controllers
 
         private TeacherService teachers;
 
-        public TeacherCategoryController(ILogger logger, GenericRepository<TeacherCategory> teacherCategoryRepo, UnitOfWork unitOfWork)
+        public TeacherCategoryController(ILogger logger)
         {
             this.teacherCategoryLogger = logger;
             this.teacherCategories = new TeacherCategoryService(this.teacherCategoryLogger);

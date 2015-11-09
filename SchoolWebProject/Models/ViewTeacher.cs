@@ -19,6 +19,8 @@ namespace SchoolWebProject.Models
 
         public int Category { get; set; }
 
+        public string CategoryName { get; set;}
+
         public int Degree { get; set; }
 
         public DateTime WorkStart { get; set; }

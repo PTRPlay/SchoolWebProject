@@ -11,9 +11,9 @@ myApp.config(function ($stateProvider) {
     })
 
     .state('teachersCategory', {
-        url: '/teacherCategory/:id',
+        url: '/teacherCategory/{Id}',
         templateUrl: '/Layouts/Teachers.html',
-        controller: 'viewTeacherCategories'
+        controller: 'teacherByCategory'
     })
 
     .state('subjects', {

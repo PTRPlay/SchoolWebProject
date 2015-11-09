@@ -6,22 +6,20 @@
 ]);*/
 
 myApp.controller('teachersController', ['$scope', 'teachers', function ($scope, teachers) {
-    $scope.text = "Teachers:";
-
     $scope.teachersGrid = {
         showGridFooter: true,
         columnDefs: [
    {
-       field: 'FirstName'
-   },
-   {
        field: 'LastName'
    },
    {
-       field: "phoneNumber"
+       field: 'FirstName'
    },
    {
-       field: "Category"
+       field: "MiddleName"
+   },
+   {
+       field: "CategoryName"
    }
         ],
         onRegisterApi: function (gridApi) {

@@ -4,9 +4,10 @@
     });
 }]);
 
-myApp.controller('viewTeacherCategories', ['$scope', '$routeParams',function ($scope, $routeParams) {
-    teacherCategories.success(function (data) {
-        var currentId = $routeParams.id;
-        //$scope.teacherCategories = data;
+myApp.controller('teachersByCategory', ['$scope', 'teachers','$routeParams', function ($scope, teachers, $routeParams) {
+    var Id = $routeParams.Id;
+    teachers.success(function (data) {
+       $scope.teachers = data;
     });
 }]);
+
