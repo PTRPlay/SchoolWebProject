@@ -94,12 +94,7 @@
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-<<<<<<< HEAD
-                                <option ng-repeat="category in listCategories" selected>{{category.name}}</option>
-                                <option ng-repeat="category in listCategories" selected>{{category.Name}}</option>
-=======
-                                <option ng-repeat="category in listCategories" value="{{category.Id}}">{{category.Name}}</option>
->>>>>>> 1109560852223f099fa929f4619ca61f91d9b753
+                               <option ng-repeat="category in listCategories" value="{{category.Id}}">{{category.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -107,11 +102,8 @@
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-<<<<<<< HEAD
-                                <option ng-repeat="degree in listDegrees" selected>{{degree.name}}</option>
-=======
                                 <option ng-repeat="degree in listDegrees" value="{{degree.Id}}">{{degree.Name}}</option>
->>>>>>> 1109560852223f099fa929f4619ca61f91d9b753
+
                             </select>
                         </div>
                     </div>
