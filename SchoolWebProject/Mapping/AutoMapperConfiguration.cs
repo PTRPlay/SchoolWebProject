@@ -48,6 +48,7 @@ namespace SchoolWebProject.Mapper
         {
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
                 .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.FirstName))
+                .ForMember(g => g.Id, map => map.MapFrom(vm => vm.Id))
                 //.ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
                 //.ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
                 //.ForMember(g => g.Image, map => map.MapFrom(vm => vm.Img))

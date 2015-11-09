@@ -1,15 +1,12 @@
-﻿myApp.controller('teacherInfoController', ['$scope', 'teacher', function ($scope, teachers) {
+﻿myApp.controller('teacherInfoController', ['$scope', 'teachers', function ($scope, teachers) {
     teachers.success(function (data) {
-        /*$scope.getTeacher = function () {
-            var id = document.URL.split("?")[1].split("=")[1];
-            //var teachers = JSON.parse(data);
-            for (teacher in teachers)
-            {
-                if (teacher.id == id)
-                    return teacher;
+        $scope.getTeacher = function () {
+            var id = document.URL.split("teacher/")[1];
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Id == id)
+                    return data[i];
             }
-        }*/
-        $scope.teacher = data;
+        }
     });
 }]);
 
