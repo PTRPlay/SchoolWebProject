@@ -24,6 +24,7 @@
     <script src="~/Layouts/Controllers/subjectsController.js"></script>
     <script src="~/Layouts/Controllers/teacherCategoriesController.js"></script>
     <script src="~/Layouts/Controllers/teacherInfoController.js"></script>
+    <script src="~/Layouts/Controllers/groupsController.js"></script>
 
 
     <script src="~/Layouts/Services/newsService.js"></script>
@@ -34,6 +35,7 @@
     <script src="~/Layouts/Services/teacherInfoService.js"></script>
     <script src="~/Layouts/Controllers/teachersController.js"></script>
     <script src="~/Layouts/Services/teachersServices.js"></script>
+    <script src="~/Layouts/Services/groupsService.js"></script>
     
     <script src="~/Layouts/ModalControllers/Modal.js"></script>
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
@@ -51,22 +53,6 @@
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown"><span class="caret"></span>Category</a>
-                        <ul class="dropdown-menu"  ng-controller="teacherCategoriesController">
-                            <li ng-repeat="teacherCategory in teacherCategories"> <a href="api/teachercategory/{{teacherCategory.Id}}">{{teacherCategory.Name}}</a></li> 
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown"><span class="caret"></span>Subject</a>
-                        <ul class="dropdown-menu">
-                            @foreach (var i in ViewBag.Subjects)
-                            {
-                                <li><a>@i.Name</a></li>
-                            }
-                        </ul>
-                    </li>
-
                     <li>
                         <a ui-sref="login">Login</a>
                     </li>
@@ -84,6 +70,7 @@
                     <li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
                     <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
                     <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Pupils</a></li>
+                    <li class="btn nav-tabs"><a ui-sref="groups" class="btn-default">Groups</a></li>
                     <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
                     <li class="btn nav-tabs"><a ui-sref="newsService" class="btn-default">News</a></li>
                 </ul>
