@@ -352,11 +352,11 @@ namespace SchoolWebProject.Domain.Models
             return new List<Group>
             {
                 new Group { NameNumber = 1, NameLetter = "А", SchoolId = 1, 
-                    Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 6) as Teacher} },
+                    Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 11) as Teacher} },
                 new Group { NameNumber = 1, NameLetter = "Б", SchoolId = 1, 
-                    Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 8) as Teacher} },
+                    Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 12) as Teacher} },
                 new Group { NameNumber = 1, NameLetter = "В", SchoolId = 1 , 
-                    Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 9) as Teacher}},
+                    Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 13) as Teacher}},
                 new Group { NameNumber = 2, NameLetter = "А", SchoolId = 1 , 
                     Teacher=new List<Teacher>{context.Users.FirstOrDefault(u => u.Id == 14) as Teacher}},
                 new Group { NameNumber = 2, NameLetter = "Б", SchoolId = 1, 

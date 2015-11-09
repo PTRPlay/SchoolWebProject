@@ -8,7 +8,7 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
-//using simple = SchoolWebProject.Services.Models;
+using simple = SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
@@ -26,12 +26,14 @@ namespace SchoolWebProject.Controllers
         public ActionResult Index()
         {
             SchoolContext mdc = new SchoolContext();
+            simple.ViewGroup vg = simple.ViewGroup.CreateSimpleGroup(mdc.Groups.FirstOrDefault(g => g.Id == 1));
             var subjectEntries = from entry in mdc.Subjects select entry;
             ViewBag.Subjects = subjectEntries.ToList();
             var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
             ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
 
-                       /*var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
+            #region comments
+            /*var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
                        //{
                        //    int i = mdc.Schools.Count();
                        // }
@@ -75,6 +77,8 @@ namespace SchoolWebProject.Controllers
                             var announcementEntries = from entry in mdc.Announcements select entry;
                             ViewBag.Announcements = announcementEntries.ToList();
                         //}*/
+            #endregion
+
             this.logger.Debug("Kolia");
             return this.View();
         }

@@ -163,6 +163,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\TeacherDegreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PupilsController.cs" />
@@ -192,6 +193,7 @@
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
@@ -205,6 +207,8 @@
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
     <Content Include="Layouts\Scheldule.html" />
+    <Content Include="Layouts\Groups.html" />
+    <Content Include="Layouts\Services\groupsService.js" />
     <Content Include="Layouts\Services\teacherCategoriesService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\pupilsService.js" />

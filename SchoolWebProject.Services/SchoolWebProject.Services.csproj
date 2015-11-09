@@ -47,6 +47,8 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="IAnnouncementService.cs" />
+    <Compile Include="Implementations\GroupService.cs" />
+    <Compile Include="Interfaces\IGroupService.cs" />
     <Compile Include="IPupilService.cs" />
     <Compile Include="ITeacherCategoryService.cs" />
     <Compile Include="ITeacherService.cs" />
@@ -69,6 +71,7 @@
       <Name>SchoolWebProject.Services.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

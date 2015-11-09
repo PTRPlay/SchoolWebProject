@@ -13,6 +13,11 @@ myApp.config(function ($stateProvider) {
         url: '/subjects',
         templateUrl: '/Layouts/Subjects.html'
     })
+        .state('groups', {
+            url: '/groups',
+            templateUrl: '/Layouts/Groups.html',
+            controller:'groupsController'
+        })
     .state('scheldule', {
         url: '/scheldule',
         templateUrl: '/Layouts/Scheldule.html'
