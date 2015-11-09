@@ -4,20 +4,40 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
     public class SubjectsController : ApiController
     {
+        private ILogger subjectLogger;
+
+        private SubjectService subjects;
+
+        public SubjectsController(ILogger logger)
+        {
+            this.subjectLogger = logger;
+            this.subjects = new SubjectService(new Logger());
+        }
+
         // GET api/subject
-        public IEnumerable<string> Get()
+        public IEnumerable<ViewSubject> Get()
+        {
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Subject>, IEnumerable<ViewSubject>>(subjects.GetAllSubject());
+            return viewModel;
+        }
+
+/*        public IEnumerable<string> Get()
         {
             var subjects = new SchoolContext().Subjects;
             var subjectsName = from entry in subjects select entry.Name;
             return subjectsName;
         }
-
+*/
         // GET api/subjects/5
         public string Get(int id)
         {

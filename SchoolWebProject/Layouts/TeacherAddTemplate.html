@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я][I][i]/" required />
+                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
@@ -115,10 +115,10 @@
                             <table class="table-condensed" name="table">
                                 <tr ng-repeat="subject in listSubjects" >
                                     <td ng-if="$even" rowspan="2">
-                                        <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                        <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject.Id}}">&nbsp;{{subject.Name}}
                                     </td>
                                     <td ng-if="$odd" rowspan="1">
-                                        <input   type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                        <input   type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject.Id}}">&nbsp;{{subject.Name}}
                                     </td>
                                 </tr>
                             </table>
