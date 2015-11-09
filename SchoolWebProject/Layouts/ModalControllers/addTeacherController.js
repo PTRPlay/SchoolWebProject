@@ -1,5 +1,6 @@
 ﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', function ($scope, $element, title, close, Teacher) {
     $scope.teacher = null;
+    $scope.IsError = true;
     if (Teacher != null) {
         $scope.teacher = {
             id: Teacher.id,
@@ -15,6 +16,7 @@
         };
     }
     else {
+        var today = new Date();
         $scope.teacher = {
             id: null,
             img: null,
@@ -23,7 +25,7 @@
             lastName: null,
             phoneNumber: null,
             degree: null,
-            workStart: null,
+            workStart: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
             category: null,
             subjects: []
         };
@@ -46,7 +48,8 @@
             middleName:$scope.teacher.middleName,
             degree: $scope.teacher.degree,
             category: $scope.teacher.category,
-            workStart:$scope.teacher.workStart
+            workStart: $scope.teacher.workStart,
+            subjects: $scope.teacher.subjects
         }, 500);
     };
 
@@ -59,7 +62,8 @@
             middleName: $scope.teacher.middleName,
             degree: $scope.teacher.degree,
             category: $scope.teacher.category,
-            workStart:$scope.teacher.workStart
+            workStart: $scope.teacher.workStart,
+            subjects: $scope.teacher.subjects
         }, 500);
     }
 }]);

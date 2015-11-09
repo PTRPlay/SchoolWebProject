@@ -12,10 +12,11 @@ namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
-        private GenericRepository<Teacher> repository;
+        private IRepository<Teacher> repository;
         private ILogger tmpLogger;
 
-        public TeacherService(ILogger logger, GenericRepository<Teacher> teacherRepository) : base(logger)
+        public TeacherService(ILogger logger, IRepository<Teacher> teacherRepository)
+            : base(logger)
         {
             this.tmpLogger = logger;
             this.repository = teacherRepository;

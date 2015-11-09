@@ -57,6 +57,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SchoolWebProject.Data\SchoolWebProject.Data.csproj">
+      <Project>{1a6bd081-f45f-46b1-b097-70b924b53dc9}</Project>
+      <Name>SchoolWebProject.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">
+      <Project>{f5421539-1fc9-47e3-b97a-ccbab0b37ecc}</Project>
+      <Name>SchoolWebProject.Domain.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SchoolWebProject.Infrastructure\SchoolWebProject.Infrastructure.csproj">
+      <Project>{f25258b9-2ff2-4fd0-8d15-397ce0391a9a}</Project>
+      <Name>SchoolWebProject.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SchoolWebProject.Services.Models\SchoolWebProject.Services.Models.csproj">
+      <Project>{2db1106a-7380-4bbf-9bcd-0b21e23f592e}</Project>
+      <Name>SchoolWebProject.Services.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\SchoolWebProject.Services\SchoolWebProject.Services.csproj">
       <Project>{9be9e5e3-b01c-43bd-8904-2fd6b6bf4a28}</Project>
       <Name>SchoolWebProject.Services</Name>
