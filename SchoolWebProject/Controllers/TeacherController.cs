@@ -43,13 +43,18 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/teacher
-        public void Post([FromBody]ViewTeacher value)
+        public HttpResponseMessage Post([FromBody]ViewTeacher value)
         {
             var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            new TeacherService(this.getLogger, this.repository).AddTeacher(teacher);
+            //new TeacherService(this.getLogger, this.repository).AddTeacher(teacher);
             var db = new SchoolContext();
             db.Users.Add(teacher);
             db.SaveChanges();
+
+            var response = Request.CreateResponse(HttpStatusCode.Moved);
+            string rootUrl = Request.RequestUri.GetLeftPart(UriPartial.Authority);
+            response.Headers.Location = new Uri(rootUrl);
+            return response;
         }
 
         // PUT api/teacher/5
