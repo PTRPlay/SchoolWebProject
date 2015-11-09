@@ -18,7 +18,8 @@ myApp.config(function ($stateProvider) {
 
     .state('subjects', {
         url: '/subjects',
-        templateUrl: '/Layouts/Subjects.html'
+        templateUrl: '/Layouts/Teachers.html',
+        controller:'subjectsController'
     })
         .state('groups', {
             url: '/groups',
