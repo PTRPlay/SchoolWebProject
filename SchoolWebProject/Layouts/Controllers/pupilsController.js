@@ -8,7 +8,7 @@
         enablePaginationControls: true,
         paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
-        //useExternalPagination: true,
+        useExternalPagination: true,
 
         columnDefs: [
    {
@@ -70,18 +70,18 @@
      ],
         onRegisterApi: function (gridApi) {
             $scope.grid1Api = gridApi;
-            //gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
-            //    paginationOptions.pageNumber = newPage;
-            //    paginationOptions.pageSize = pageSize;
-            //    getPage();
-            //});
+            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
+                paginationOptions.pageNumber = newPage;
+                paginationOptions.pageSize = pageSize;
+                getPage();
+            });
         }
     };
     
-    //var getPage = function () {
-    //    var url;
-    //    url = 'https://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/data/100.json';
-    //};
+    var getPage = function () {
+        var url;
+        url = 'api/pupils';
+    };
 
     var paginationOptions = {
         pageNumber: 1,
@@ -97,9 +97,13 @@
         alert('Wanna delete ' + value + ' ?');
     };
 
-    pupils.success(function (data) {
-        $scope.pupilsGrid.data = data;
-    });
-    
+    var getPage = function () {
+        pupils.success(function (data) {
+            $scope.pupilsGrid.totalItems = 99;
+            var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
+            $scope.pupilsGrid.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);;
+        });
+    }
+    getPage();
 }
 ]);
