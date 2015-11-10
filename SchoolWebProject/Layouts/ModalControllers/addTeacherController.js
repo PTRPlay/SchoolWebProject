@@ -36,7 +36,7 @@
         for (var i = 0; i < el.length; ++i) {
             var a = el[i];
             if (a.checked == true) {
-                $scope.teacher.subjects.push(a.value);
+                $scope.teacher.subjects.push(JSON.parse(a.value));
             }
         }
     }
@@ -46,8 +46,8 @@
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
             middleName:$scope.teacher.middleName,
-            degree: $scope.teacher.degree,
-            category: $scope.teacher.category,
+            degree: JSON.parse($scope.teacher.degree),
+            category: JSON.parse($scope.teacher.category),
             workStart: $scope.teacher.workStart,
             subjects: $scope.teacher.subjects
         }, 500);
@@ -60,8 +60,8 @@
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
             middleName: $scope.teacher.middleName,
-            degree: $scope.teacher.degree,
-            category: $scope.teacher.category,
+            degree: JSON.parse($scope.teacher.degree),
+            category: JSON.parse($scope.teacher.category),
             workStart: $scope.teacher.workStart,
             subjects: $scope.teacher.subjects
         }, 500);

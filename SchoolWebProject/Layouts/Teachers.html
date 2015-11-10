@@ -18,7 +18,11 @@
     <h2>{{text}}</h2>
     <div id="grid2" ui-grid="teachersGrid" class="grid"></div>
 
-    <div class="nav navbar-nav" ng-controller="ModalShowController">
-        <a href="#addTeachers" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</a>
-    </div>
+        <button href="#addTeachers" role="button" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</button>
+</div>   
 
+<div class="container">
+    <ul class="nav navbar" ng-repeat="teacher in teachers" ng-controller="teachersController">
+        <li class="jumbotron"><h2>{{teacher.FirstName}}</h2> <h3>{{teacher.LastName}} {{teacher.MiddleName}} {{teacher.Category.Name}} </h3> <a ui-sref="teacherInfo?id={{teacher.id}}">Profile</a></li>
+    </ul>
+</div>
