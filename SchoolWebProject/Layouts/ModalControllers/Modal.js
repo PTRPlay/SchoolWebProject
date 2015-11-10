@@ -10,26 +10,12 @@
         }).then(function (modal) {
             modal.element.modal();
             modal.close.then(function (result) {
-                $http.post("api/teacher", result);
-                window.location.reload("/home");
+                if (result != null) {
+                    $http.post("api/teacher", result);
+                    window.location.reload("/home");
+                }
             });
         });
     };
 
-    $scope.showPupilsEditPage = function (user) {
-        ModalService.showModal({
-            templateUrl: "Layouts/PupilAddTemplate.html",
-            controller: "pupilAddController",
-            inputs: {
-                title: "Учень",
-                Pupil: user
-            }
-        }).then(function (modal) {
-            modal.element.modal();
-            modal.close.then(function (result) {
-                $http.post("api/pupil", result);
-                window.location.reload("/home");
-            });
-        });
-    };
 }]);
