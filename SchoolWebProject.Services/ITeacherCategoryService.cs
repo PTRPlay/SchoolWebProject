@@ -15,8 +15,5 @@ namespace SchoolWebProject.Services
 
         void UpdateTeacherCategory(TeacherCategory teacherCategory);
 
-        void AddTeacherCategory(TeacherCategory teacherCategory);
-
-        void RemoveTeacherCategory(TeacherCategory teacherCategory);
     }
 }

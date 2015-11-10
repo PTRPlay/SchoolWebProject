@@ -3,7 +3,7 @@
         <li class="dropdown">
             <a data-toggle="dropdown"><span class="caret"></span>Category</a>
             <ul class="dropdown-menu" ng-controller="teacherCategories">
-                <li ng-repeat="teacherCategory in teacherCategories"> <a ui-sref="api/teachercategory/{{teacherCategory.Id}}">{{teacherCategory.Name}}</a></li>
+                <li ng-repeat="teacherCategory in teacherCategories"> <a ng-href="#/teachercategory/{{teacherCategory.Id}}">{{teacherCategory.Name}}</a></li>
             </ul>
         </li>
         <li class="dropdown">

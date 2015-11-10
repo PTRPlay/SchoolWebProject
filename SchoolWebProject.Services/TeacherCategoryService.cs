@@ -39,20 +39,5 @@ namespace SchoolWebProject.Services
         {
             this.repository.Update(teacherCategory);
         }
-
-        public void AddTeacherCategory(TeacherCategory teacherCategory)
-        {
-            repository.Add(teacherCategory);
-        }
-
-        public void RemoveTeacherCategory(TeacherCategory teacherCategory)
-        {
-            repository.Delete(teacherCategory);
-        }
-
-        public void SaveTeacherCategory()
-        {
-            unitOfWork.SaveChanges();
-        }
     }
 }

@@ -13,7 +13,7 @@ myApp.config(function ($stateProvider) {
     .state('teachersCategory', {
         url: '/teacherCategory/{Id}',
         templateUrl: '/Layouts/Teachers.html',
-        controller: 'teacherByCategory'
+        controller: 'teachersByCategory'
     })
 
     .state('subjects', {

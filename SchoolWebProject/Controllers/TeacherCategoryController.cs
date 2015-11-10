@@ -37,7 +37,7 @@ namespace SchoolWebProject.Controllers
         // GET api/teachercategory/5
         public IEnumerable<ViewTeacher> Get(int id)
         {
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers.GetAllTeachers().Where(c=> c.TeacherCategoryId == id));
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers.GetAllTeachersByCategory(id));
             return viewModel;
 
         }

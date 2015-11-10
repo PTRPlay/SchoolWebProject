@@ -33,6 +33,13 @@ namespace SchoolWebProject.Services
             return listOfTeachers;
         }
 
+        public IEnumerable<Teacher> GetAllTeachersByCategory(int category)
+        {
+            List<Teacher> listOfTeachers = new List<Teacher>();
+            listOfTeachers = repository.GetAll().Where(c => c.TeacherCategoryId == category).ToList();
+            return listOfTeachers;
+        }
+
         public Teacher GetProfileById(int id)
         {
            return repository.GetById(id);

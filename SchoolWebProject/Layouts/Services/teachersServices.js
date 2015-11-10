@@ -10,13 +10,3 @@ myApp.factory('teachers', ['$http', function ($http){
 }]);
 
 
-myApp.factory('teachersByCategory', ['$http', function ($http){
-    return $http.get('api/teachercategory/{Id}')
-	.success(function (data) {
-	    return data;
-	})
-	.error (function (data) {
-	    return data;
-	})
-
-}]);
