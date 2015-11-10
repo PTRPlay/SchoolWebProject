@@ -1,6 +1,6 @@
 ﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', function ($scope, $element, title, close, Teacher) {
     $scope.teacher = null;
-    $scope.IsError = true;
+    $scope.IsFormValid = true;
     if (Teacher != null) {
         $scope.teacher = {
             id: Teacher.id,
