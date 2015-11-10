@@ -19,13 +19,13 @@ namespace SchoolWebProject.Models
 
         //public string Email { get; set; }
 
-        public int Category { get; set; }
+        public ViewTeacherCategory Category { get; set; }
 
-        public int Degree { get; set; }
+        public ViewTeacherDegree Degree { get; set; }
 
         public DateTime WorkStart { get; set; }
 
-        public IEnumerable<string> Subjects { get; set; }
+        public IEnumerable<ViewSubject> Subjects { get; set; }
 
     }
 }

@@ -21,14 +21,7 @@ myApp.controller('teachersController', ['$scope', 'teachers', function ($scope, 
        field: "phoneNumber"
    },
    {
-       field: "Category"
-   },
-   {
-       field: "Profile",
-       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       width: "80",
-       enableFiltering: false,
-       enableSorting: false
+       field: "Category.Name"
    }
         ],
         onRegisterApi: function (gridApi) {
