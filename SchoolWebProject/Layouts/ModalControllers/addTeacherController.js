@@ -43,6 +43,7 @@
     $scope.close = function () {
         $element.modal('hide');
         close({
+            cancelled: false,
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
             middleName:$scope.teacher.middleName,
@@ -56,14 +57,6 @@
     $scope.cancel = function () {
         $element.modal('hide');
 
-        close({
-            firstName: $scope.teacher.firstName,
-            lastName: $scope.teacher.lastName,
-            middleName: $scope.teacher.middleName,
-            degree: JSON.parse($scope.teacher.degree),
-            category: JSON.parse($scope.teacher.category),
-            workStart: $scope.teacher.workStart,
-            subjects: $scope.teacher.subjects
-        }, 500);
+        close(null, 500);
     }
 }]);
