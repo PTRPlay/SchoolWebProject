@@ -1,4 +1,4 @@
-﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', function ($scope, pupils, uiGridConstants) {
+﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
     $scope.text = "List of pupils:";
     
     $scope.pupilsGrid = {
@@ -90,11 +90,13 @@
     };
 
     $scope.editHandler = function (value) {
-        alert('Editing ' + value + ' !');
+        //alert('Editing ' + value + ' !');
+        PupilsModalService.showPupilsEditPage();
     };
 
     $scope.deleteHandler = function (value) {
-        alert('Wanna delete ' + value + ' ?');
+        //alert('Wanna delete ' + value + ' ?');
+        PupilsModalService.showPupilsDeleteModal();
     };
 
     var getPage = function () {

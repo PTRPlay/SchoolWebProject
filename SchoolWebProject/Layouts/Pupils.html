@@ -1,7 +1,7 @@
-﻿<div class="nav navbar-nav" ng-controller="ModalShowController">
-    <a href="#addPupil" class="btn-danger" style="left:100px" ng-click="showPupilsEditPage()">Add Pupil</a>
-    <br />
+﻿<div class="nav navbar-nav" ng-controller="pupilsController">
+    <a href="#addPupil" class="btn-danger" style="left:100px" ng-click="editHandler()">Add Pupil</a>
 </div> 
+<br />
     <h2>{{text}}</h2>
 <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
 
