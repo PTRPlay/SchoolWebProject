@@ -10,6 +10,7 @@ using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Models;
 using AutoMapper;
+using System.Web;
 
 namespace SchoolWebProject.Controllers
 {
@@ -44,7 +45,6 @@ namespace SchoolWebProject.Controllers
         {
             var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
             new TeacherService(this.getLogger).AddTeacher(teacher);
-            this.Get();
         }
 
         // PUT api/teacher/5

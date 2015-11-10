@@ -11,6 +11,7 @@
             modal.element.modal();
             modal.close.then(function (result) {
                 $http.post("api/teacher", result);
+                window.location.reload("/home");
             });
         });
     };
@@ -27,6 +28,7 @@
             modal.element.modal();
             modal.close.then(function (result) {
                 $http.post("api/pupil", result);
+                window.location.reload("/home");
             });
         });
     };
