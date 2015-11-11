@@ -28,10 +28,10 @@ namespace SchoolWebProject.Controllers
         {
             SchoolContext mdc = new SchoolContext();
             //simple.ViewGroup vg = simple.ViewGroup.CreateSimpleGroup(mdc.Groups.FirstOrDefault(g => g.Id == 1));
-            var subjectEntries = from entry in mdc.Subjects select entry;
+  /*          var subjectEntries = from entry in mdc.Subjects select entry;
             ViewBag.Subjects = subjectEntries.ToList();
             var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
-            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();
+            ViewBag.TeacherCategories = teacherCategoriesEntries.ToList();*/
 
             #region comments
             /*var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;

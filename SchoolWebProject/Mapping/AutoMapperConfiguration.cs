@@ -33,7 +33,8 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<Pupil, ViewPupil>();
             AutoMapper.Mapper.CreateMap<Teacher, ViewTeacher>()
                 .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory))
-                .ForMember(g => g.Degree, map => map.MapFrom(vm => vm.TeacherDegree));
+                .ForMember(g => g.Degree, map => map.MapFrom(vm => vm.TeacherDegree))
+                .ForMember(g => g.WorkStart, map => map.MapFrom(vm => Convert.ToDateTime(vm.WorkBegin)));
             AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
             AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
             AutoMapper.Mapper.CreateMap<Subject, ViewSubject>();
@@ -51,10 +52,11 @@ namespace SchoolWebProject.Mapper
         {
             AutoMapper.Mapper.CreateMap<ViewTeacherCategory,TeacherDegree>();
             AutoMapper.Mapper.CreateMap<ViewTeacherDegree,TeacherDegree>();
-            
+
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
                 .ForMember(g => g.TeacherCategory, map => map.MapFrom(vm => vm.Category))
                 .ForMember(g => g.TeacherDegree, map => map.MapFrom(vm => vm.Degree));
+                //.ForMember(g => Convert.ToString(g.WorkBegin), map => map.MapFrom(vm => vm.WorkStart));
 
             AutoMapper.Mapper.CreateMap<ViewPupil, Pupil>()
                 .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.FirstName))

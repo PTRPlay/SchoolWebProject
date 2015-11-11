@@ -1,17 +1,18 @@
-﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', function ($scope, $element, title, close, Teacher) {
+﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', '$filter', function ($scope, $element, title, close, Teacher, $filter) {
     $scope.teacher = null;
     $scope.IsFormValid = true;
     if (Teacher != null) {
+        var dateParsed = Teacher.WorkStart.split('.');
         $scope.teacher = {
-            id: Teacher.id,
-            img: Teacher.img,
-            firstName: Teacher.firstName,
-            middleName: Teacher.middleName,
-            lastName: Teacher.lastName,
-            phoneNumber: Teacher.phoneNumber,
-            degree: Teacher.degree,
-            workStart: Teacher.workStart,
-            category: Teacher.category,
+            id: Teacher.Id,
+            img: Teacher.Img,
+            firstName: Teacher.FirstName,
+            middleName: Teacher.MiddleName,
+            lastName: Teacher.LastName,
+            phoneNumber: Teacher.PhoneNumber,
+            degree: Teacher.Degree,
+            workStart: new Date(dateParsed[2],dateParsed[1],dateParsed[0]),
+            category: Teacher.Category,
             subjects: []
         };
     }

@@ -192,10 +192,9 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<TeacherCategory>
             {
-                new TeacherCategory { Name = "cпеціаліст" },
+                new TeacherCategory { Name = "спеціаліст вищої категорії" },
                 new TeacherCategory { Name = "спеціаліст другої категорії" },
                 new TeacherCategory { Name = "спеціаліст першої категорії" },
-                new TeacherCategory { Name = "спеціаліст вищої категорії" }
             };
         }
 
