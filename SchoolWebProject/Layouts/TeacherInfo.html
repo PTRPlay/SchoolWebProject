@@ -1,5 +1,5 @@
 ﻿<div ng-app="teacherInfoController">
-    <button ng-click="showTeachersEditPage()">Edit</button>        <button onclick="location.href = '#/teachers'" ng-href="#/teachers">Back to teacher's list</button>
+    <button ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())">Edit</button>        <button onclick="location.href = '#/teachers'" ng-href="#/teachers">Back to teacher's list</button>
     <h2>{{getTeacher().LastName}} {{getTeacher().FirstName}} {{getTeacher().MiddleName}}</h2>
     <img ng-src="{{getTeacher().Img}}" alt="Image" width="170px" height="170px"/>
     <h3>Category: {{getTeacher().Category}}</h3>
