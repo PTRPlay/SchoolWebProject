@@ -25,16 +25,14 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            var teacherService = new TeacherService(logger.Object);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             iRepository.Setup(act => act.GetAll()).Returns(teachers);
 
-            var expacted = teachers.Count;
-            var actual = teacherService.GetAllTeachers();
+            teacherService.GetAllTeachers();
 
             iRepository.Verify(inv => inv.GetAll(), Times.Once);
-            Assert.AreEqual(expacted, actual);
-
-
+          
         }
 
         [TestMethod]
@@ -43,14 +41,14 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(new Teacher { Id = 2, FirstName = "fn", LastName = "ln" });
-
-            var teacherService = new TeacherService(logger.Object);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             int anyIdMoreZero = 0;
 
             var teacher = teacherService.GetProfileById(anyIdMoreZero);
 
             iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.AtLeastOnce);
-            Assert.IsNotNull(teacher);
+           
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -59,7 +57,8 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            var teacherService = new TeacherService(logger.Object);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             int anyIdMoreZero = -2;
             var teacher = teacherService.GetProfileById(anyIdMoreZero);
             iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.AtLeastOnce);
@@ -70,7 +69,8 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            var teacherService = new TeacherService(logger.Object);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             Teacher teacher = new Teacher
             {
                 LastName = "Nikon",
@@ -92,7 +92,8 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            var teacherService = new TeacherService(logger.Object);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             Teacher teacher = new Teacher
             {
                 LastName = "Nikon",
@@ -113,7 +114,8 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            var teacherService = new TeacherService(logger.Object);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             Teacher teacher = new Teacher
             {
                 LastName = "Nikon",

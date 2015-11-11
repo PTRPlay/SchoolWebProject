@@ -164,7 +164,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
-    <Compile Include="Controllers\SchoolsController.cs" />
     <Compile Include="Controllers\TeacherDegreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PupilsController.cs" />
@@ -175,7 +174,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
-    <Compile Include="Models\ViewSchool.cs" />
     <Compile Include="Models\ViewSubject.cs" />
     <Compile Include="Models\ViewTeacherDegree.cs" />
     <Compile Include="Models\ViewAnnouncement.cs" />
@@ -198,8 +196,8 @@
     <Content Include="Global.asax" />
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
-    <Content Include="Layouts\Controllers\schoolController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
+    <Content Include="Layouts\Controllers\pupilInfoController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
     <Content Include="Layouts\Controllers\newsController.js" />
@@ -211,17 +209,16 @@
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\ModalControllers\modalServices.js" />
     <Content Include="Layouts\News.html" />
-    <Content Include="Layouts\Contacts.html" />
+    <Content Include="Layouts\NewsDetail.html" />
+    <Content Include="Layouts\PupilInfo.html" />
     <Content Include="Layouts\PupilsDeleteTemplate.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Groups.html" />
     <Content Include="Layouts\Services\groupsService.js" />
-    <Content Include="Layouts\Services\schoolService.js" />
     <Content Include="Layouts\Services\teacherCategoriesService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\pupilsService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
-    <Content Include="Layouts\Services\subjectsServic.js" />
     <Content Include="Layouts\Services\subjectsService.js" />
     <Content Include="Layouts\Services\teacherInfoService.js" />
     <Content Include="Layouts\Services\teachersServices.js" />
@@ -252,14 +249,11 @@
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-touch.min.js.map" />
-    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Properties\PublishProfiles\Local IIS Website.pubxml" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\TeacherInfo\TeacherInfoController.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -267,7 +261,6 @@
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Layouts\TeacherAddTemplate.html" />
-    <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Web.config" />
@@ -287,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\TeacherInfo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
