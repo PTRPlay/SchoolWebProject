@@ -1,4 +1,4 @@
-﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', '$filter', function ($scope, $element, title, close, Teacher, $filter) {
+﻿myApp.controller("teacherAddController", ['$scope', '$element', 'title', 'close', 'Teacher', function ($scope, $element, title, close, Teacher) {
     $scope.teacher = null;
     $scope.IsFormValid = true;
     if (Teacher != null) {
@@ -13,7 +13,7 @@
             degree: Teacher.Degree,
             workStart: new Date(dateParsed[2],dateParsed[1],dateParsed[0]),
             category: Teacher.Category,
-            subjects: []
+            subjects: Teacher.Subjects
         };
     }
     else {
@@ -41,10 +41,19 @@
             }
         }
     }
+    $scope.isSubjectHere = function (subject) {
+        for (var i = 0; i < Teacher.Subjects.length; ++i) {
+            if (Teacher.Subjects[i].Name == subject.Name) {
+                return true;
+            }
+        }
+        return false;
+    }
     $scope.close = function () {
         $element.modal('hide');
         close({
             cancelled: false,
+            id: $scope.teacher.id,
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
             middleName:$scope.teacher.middleName,
