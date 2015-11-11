@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\MarkController .cs" />
     <Compile Include="Controllers\SchoolsController.cs" />
     <Compile Include="Controllers\TeacherDegreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -175,6 +176,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ViewMark.cs" />
     <Compile Include="Models\ViewSchool.cs" />
     <Compile Include="Models\ViewSubject.cs" />
     <Compile Include="Models\ViewTeacherDegree.cs" />
@@ -198,6 +200,7 @@
     <Content Include="Global.asax" />
     <Content Include="Layouts\Contacts.html" />
     <Content Include="Layouts\Controllers\groupsController.js" />
+    <Content Include="Layouts\Controllers\journalController .js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\schoolController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
@@ -207,6 +210,7 @@
     <Content Include="Layouts\Controllers\newsController.js" />
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
+    <Content Include="Layouts\Journal.html" />
     <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\deletePupilController.js" />
@@ -219,6 +223,7 @@
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Groups.html" />
     <Content Include="Layouts\Services\groupsService.js" />
+    <Content Include="Layouts\Services\journalService.js" />
     <Content Include="Layouts\Services\schoolService.js" />
     <Content Include="Layouts\Services\teacherCategoriesService.js" />
     <Content Include="Layouts\Services\newsService.js" />

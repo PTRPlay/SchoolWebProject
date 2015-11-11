@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pagination']);
+var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
@@ -54,5 +54,10 @@ myApp.config(function ($stateProvider) {
         url: '/pupil/{id}',
         templateUrl: '/Layouts/PupilInfo.html',
         controller: 'pupilInfoController'
+    })
+	.state('journal', {
+        url: '/journal',
+        templateUrl: '/Layouts/Journal.html',
+        controller: 'journalController'
     })
 });
