@@ -48,6 +48,9 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<IDbFactory, DbFactory>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IGroupService, GroupService>();
+            container.RegisterType<IPupilService, PupilService>();
+            container.RegisterType<IAnnouncementService, AnnouncementService>();
+            container.RegisterType<ISchoolService, SchoolService>();
         }
     }
 }

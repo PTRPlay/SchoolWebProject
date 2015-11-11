@@ -324,10 +324,10 @@ namespace SchoolWebProject.Domain.Models
             {
                 new School 
                 {
-                    Name = "Середня школа № 66",
+                    Name = "Середня школа № 165",
                     City = "Львів",
-                    Address = "Наукова, 92",
-                    PhoneNumber = "+38 (032) 263-73-09"
+                    Address = "вул. Пастернака, 5А",
+                    PhoneNumber = "+38 (032) 263-73-09",
                 },
                 new School 
                 {

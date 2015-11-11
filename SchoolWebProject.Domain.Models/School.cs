@@ -23,6 +23,10 @@ namespace SchoolWebProject.Domain.Models
         [MaxLength(30)]
         public string PhoneNumber { get; set; }
 
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
+
         public virtual List<Announcement> Announcements { get; set; }
 
         public virtual List<Topic> Topics { get; set; }
