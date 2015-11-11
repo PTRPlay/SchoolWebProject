@@ -234,7 +234,8 @@ namespace SchoolWebProject.Domain.Models
                 new Subject { Name = "біологія", Teachers=new List<Teacher>() },//12
                 new Subject { Name = "фізкультура", Teachers=new List<Teacher>() },//13
                 new Subject { Name = "зарубіжна література", Teachers=new List<Teacher>() },//14
-                new Subject { Name = "охорона здоров'я", Teachers=new List<Teacher>() }//15
+                new Subject { Name = "охорона здоров'я", Teachers=new List<Teacher>() },//15
+                new Subject { Name = "астрономія", Teachers=new List<Teacher>() }//16
             };
         }
 
