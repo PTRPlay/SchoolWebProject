@@ -45,10 +45,6 @@ myApp.config(function ($stateProvider) {
             templateUrl: '/Layouts/NewsDetail.html',
             controller: 'newsDetailController'
     })
-    .state('login', {
-        url: '/login',
-        templateUrl: '/Layouts/LogIn.html'
-    })
     .state('teacher', {
         url: '/teacher/{id}',
         templateUrl: '/Layouts/TeacherInfo.html',

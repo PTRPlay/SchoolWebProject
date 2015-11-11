@@ -4,20 +4,28 @@
     Layout = null;
 }
 
-<h2>Login</h2>
-
-@using (Html.BeginForm("LogIn", "Account"))
-{
-    <p>
-        User name
-        <br />
-        @Html.TextBox("userName")
-    </p>
-    <p>
-        Password
-        <br />
-        @Html.Password("password")
-    </p>
-    <br />
-    <input type="submit" value="login" />
-}
+<style>
+    #loginBlock{
+        margin-top:150px;
+        margin-bottom:50px;
+    }
+</style>
+<center>
+    <div id="loginBlock">
+        <p>
+            <h2>Login</h2>
+        </p>
+        @using (Html.BeginForm("LogIn", "Account"))
+        {
+            <p>
+                User name:
+                @Html.TextBox("userName")
+            </p>
+            <p>
+                Password  :
+                @Html.Password("password")
+            </p>
+            <input type="submit" value="Log in" />
+        }
+    </div>
+</center>

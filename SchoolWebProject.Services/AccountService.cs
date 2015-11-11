@@ -22,8 +22,6 @@ namespace SchoolWebProject.Services
         {
             Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
             User currentUser = this.userRepository.Get(getUserByLogin);
-            Expression<Func<LogInData, bool>> getLogInData = login => login.Id == currentUser.LogInDataId;
-            LogInData eee = this.logInRepository.Get(getLogInData);
             if (this.CheckUser(currentUser, password))
                 return currentUser;
             else return null;
