@@ -46,6 +46,24 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
                           ]
        },
    },
+
+   {
+       enableFiltering: true,
+       field: "Subjects[0].Name",
+       displayName: 'Предмет',
+       filter: {
+           type: uiGridConstants.filter.SELECT,
+           selectOptions: [
+                            { value: 'фізика', label: 'Фізика' },
+                            { value: 'геометрія', label: 'Геометрія' },
+                            { value: 'хімія', label: 'Хімія' },
+                            { value: 'історія', label: 'Історія' },
+                            { value: 'математика', label: 'Математика' },
+           ]
+       }
+   },
+
+
    {
        field: "Profile",
        displayName: 'Профіль',
@@ -54,12 +72,6 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
        enableFiltering: false,
        enableSorting: false 
    },
-   {
-       enableFiltering: true,
-       field: "Subjects[0].Name",
-       displayName: 'Предмет',
-
-   }
 
         ],
         onRegisterApi: function (gridApi) {

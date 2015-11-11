@@ -16,28 +16,27 @@ namespace SchoolWebProject.Controllers
     {
         private ILogger teacherCategoryLogger;
 
-        private TeacherCategoryService teacherCategories;
+        private TeacherCategoryService teacherCategoryService;
 
-        private TeacherService teachers;
-
-        public TeacherCategoryController(ILogger logger)
+        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService) 
         {
             this.teacherCategoryLogger = logger;
-            this.teacherCategories = new TeacherCategoryService(this.teacherCategoryLogger);
-            this.teachers = new TeacherService(new Logger());
+            this.teacherCategoryService = teacherCategoryService;
         }
 
         // GET api/teachercategory
         public IEnumerable<ViewTeacherCategory> Get()
         {
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories.GetAllTeacherCategories());
+            var teacherCategories = teacherCategoryService.GetAllTeacherCategories();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
             return viewModel;
         }
 
         // GET api/teachercategory/5
-        public IEnumerable<ViewTeacher> Get(int id)
+        public ViewTeacherCategory Get(int id)
         {
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers.GetAllTeachersByCategory(id));
+            var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
+            var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
             return viewModel;
 
         }
