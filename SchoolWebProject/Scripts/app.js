@@ -40,14 +40,19 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/News.html',
         controller: 'newsController'
     })
-    .state('newsDetailService', {
-            url: '/news/{id}',
-            templateUrl: '/Layouts/NewsDetail.html',
-            controller: 'newsDetailController'
+    .state('schoolService', {
+            url: '/contacts',
+            templateUrl: '/Layouts/Contacts.html',
+            controller: 'schoolController'
     })
     .state('teacher', {
         url: '/teacher/{id}',
         templateUrl: '/Layouts/TeacherInfo.html',
         controller: 'teacherInfoController'
+    })
+    .state('pupil', {
+        url: '/pupil/{id}',
+        templateUrl: '/Layouts/PupilInfo.html',
+        controller: 'pupilInfoController'
     })
 });

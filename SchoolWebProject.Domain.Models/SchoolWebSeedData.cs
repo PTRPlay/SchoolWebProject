@@ -324,10 +324,10 @@ namespace SchoolWebProject.Domain.Models
             {
                 new School 
                 {
-                    Name = "Середня школа № 66",
+                    Name = "Середня школа № 165",
                     City = "Львів",
-                    Address = "Наукова, 92",
-                    PhoneNumber = "+38 (032) 263-73-09"
+                    Address = "вул. Пастернака, 5А",
+                    PhoneNumber = "+38 (032) 263-73-09",
                 },
                 new School 
                 {
@@ -759,12 +759,10 @@ new Pupil { LastName = "Яцик", FirstName = "Наталія", MiddleName = "�
 
        private static List<LogInData> GetLogInData(SchoolContext context)
        {
-           byte[] saltBytes = new byte[]{179, 217, 120, 85, 161, 235, 16, 71, 239, 22, 15, 93, 142, 233, 26, 199, 172, 28, 61, 216, 124, 40, 15, 134};
-           // password = "admin"
-           byte[] hashBytes = new byte[] {36, 17, 234, 120, 212, 125, 35, 115, 1, 3, 157, 34, 216, 4, 108, 219, 81, 154, 178, 14, 67, 60, 92, 22, 149, 82, 50, 40, 177, 10, 224, 13};
+
            return new List<LogInData>
             {
-                new LogInData { Login = "admin",PasswordHash= ByteArrayToString(hashBytes), PasswordSalt = ByteArrayToString(saltBytes), User = context.Users.FirstOrDefault(p => p.Id == 136) }
+                new LogInData { Login = "admin",PasswordHash="password", PasswordSalt = "123456", User = context.Users.FirstOrDefault(p => p.Id == 136) }
 
             };
        }
@@ -851,13 +849,6 @@ new Pupil { LastName = "Яцик", FirstName = "Наталія", MiddleName = "�
                 new Post{Message="занадто холодно", TopicId=1, SchoolId=1, 
                     User=context.Users.FirstOrDefault(u=>u.Id==35), CreationTime=new DateTime(2015, 11, 2, 19, 10 , 0)}    
             };
-        }
-
-        private static string ByteArrayToString(byte[] input)
-        {
-            char[] output = new char[input.Length / sizeof(char)];
-            System.Buffer.BlockCopy(input, 0, output, 0, input.Length);
-            return new string(output);
         }
     }
 }
