@@ -16,9 +16,9 @@ namespace SchoolWebProject.Controllers
     {
         private ILogger getLogger;
 
-        private PupilService pupilService;
+        private IPupilService pupilService;
 
-        public PupilsController(ILogger logger, PupilService pupilService) 
+        public PupilsController(ILogger logger, IPupilService pupilService) 
         {
             this.getLogger = logger;
             this.pupilService = pupilService;

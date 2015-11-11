@@ -4,8 +4,3 @@
     });
 });
 
-myApp.controller('newsDetailController', function ($scope, newsDetailService) {
-    newsDetailService.success(function (data) {
-        $scope.announcement = data;        
-    });
-});
