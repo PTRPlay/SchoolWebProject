@@ -117,10 +117,10 @@
                             <table class="table-condensed" name="table">
                                 <tr ng-repeat="subject in listSubjects" >
                                     <td ng-if="$even" rowspan="2">
-                                        <input type="checkbox" name="a" class="control-label" id="$index" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
+                                        <input type="checkbox" name="a" class="control-label" id="$index + 1" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
                                     </td>
                                     <td ng-if="$odd" rowspan="1">
-                                        <input   type="checkbox" name="a" class="control-label" id="$index" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
+                                        <input   type="checkbox" name="a" class="control-label" id="$index + 1" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
                                     </td>
                                 </tr>
                             </table>
