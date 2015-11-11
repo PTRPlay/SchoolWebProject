@@ -29,6 +29,27 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
    },
    {
        field: "PupilsAmount"
+   },
+   {
+       field: "Details",
+       cellTemplate: '<div><button class="btn btn-success btn-sm" style=" width: 70px;" >Details</button></div>',
+       width: "80",
+       enableFiltering: false,
+       enableSorting: false
+   },
+   {
+       field: "Edit",
+       cellTemplate: '<div><button class="btn btn-primary btn-sm" style=" width: 70px; " >Edit</button></div>',
+       width: "80",
+       enableFiltering: false,
+       enableSorting: false
+   },
+   {
+       field: "Delete",
+       cellTemplate: '<div><button class="btn btn-danger btn-sm" style=" width: 70px;" >Delete</button></div>',
+       width: "80",
+       enableFiltering: false,
+       enableSorting: false
    }
         ],
         onRegisterApi: function (gridApi) {
@@ -39,6 +60,7 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
     groups.success(function (data) {
         $scope.groupsGrid.data = data;
     });
-
+    //ng-click="grid.appScope.deleteHandler(row.entity.LastName)"
+    //ng-click="grid.appScope.editHandler(row.entity.LastName)"
 }
 ]);

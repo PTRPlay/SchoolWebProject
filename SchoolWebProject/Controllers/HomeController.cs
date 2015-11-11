@@ -8,7 +8,8 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
-using simple = SchoolWebProject.Services.Models;
+using System.Collections;
+//using simple = SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
@@ -26,7 +27,7 @@ namespace SchoolWebProject.Controllers
         public ActionResult Index()
         {
             SchoolContext mdc = new SchoolContext();
-            simple.ViewGroup vg = simple.ViewGroup.CreateSimpleGroup(mdc.Groups.FirstOrDefault(g => g.Id == 1));
+            //simple.ViewGroup vg = simple.ViewGroup.CreateSimpleGroup(mdc.Groups.FirstOrDefault(g => g.Id == 1));
             var subjectEntries = from entry in mdc.Subjects select entry;
             ViewBag.Subjects = subjectEntries.ToList();
             var teacherCategoriesEntries = from entry in mdc.TeacherCategories select entry;
