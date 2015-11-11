@@ -23,7 +23,7 @@ namespace SchoolWebProject.Models
 
         public ViewTeacherDegree Degree { get; set; }
 
-        public DateTime WorkStart { get; set; }
+        public String WorkStart { get; set; }
 
         public IEnumerable<ViewSubject> Subjects { get; set; }
 
