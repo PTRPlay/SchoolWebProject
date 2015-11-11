@@ -9,15 +9,15 @@
             <div class="panel-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-2">
-                            <img src={{announcement.Image}} alt="Image" width="170" height="170">
+                        <div class="col-md-3">
+                            <img ng-src="data:image/jpg;base64,{{announcement.Image}}" alt=" image" width="170" height="170">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <h4>{{announcement.Title}}</h4>
                             <br>
                             <h5>{{announcement.Message}}</h5>
                             <br>
-                            <h5><small>{{announcement.DataPublished}}</small></h5>
+                            <h5><small>{{announcement.DataPublished | date}}</small></h5>
                             <a ui-sref="newsDetailService" > view detail</a>
                         </div>
                     </div>

@@ -13,7 +13,7 @@ namespace SchoolWebProject.Models
 
         public string MessageDetails { get; set; }
 
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public DateTime DataPublished { get; set; }
     }
