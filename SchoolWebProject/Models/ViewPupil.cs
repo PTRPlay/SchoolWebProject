@@ -7,6 +7,10 @@ namespace SchoolWebProject.Models
 {
     public class ViewPupil
     {
+        public int Id { get; set; }
+
+        public byte[] Img { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
