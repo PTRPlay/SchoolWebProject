@@ -54,8 +54,9 @@
        visible: false
    },
    {
-       field: "Edit",
-       cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.LastName)" style="width: 70px;">Edit</button></div>',
+       field: "Profile",
+       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
+       //cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.LastName)" style="width: 70px;">Edit</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -109,3 +110,15 @@
     getPage();
 }
 ]);
+
+//myapp.controller('pupilinfocontroller', ['$scope', 'pupils', function ($scope, pupils) {
+//    pupils.success(function (data) {
+//        $scope.getpupil = function () {
+//            var id = document.url.split("pupil/")[1];
+//            for (var i = 0; i < data.length; i++) {
+//                if (data[i].id == id)
+//                    return data[i];
+//            }
+//        }
+//    });
+//}]);
