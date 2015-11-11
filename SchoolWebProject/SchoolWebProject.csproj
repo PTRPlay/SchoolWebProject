@@ -174,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ViewSubject.cs" />
     <Compile Include="Models\ViewTeacherDegree.cs" />
     <Compile Include="Models\ViewAnnouncement.cs" />
     <Compile Include="Models\ViewPupil.cs" />
@@ -196,6 +197,7 @@
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
+    <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
     <Content Include="Layouts\Controllers\newsController.js" />
@@ -203,9 +205,12 @@
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
     <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
+    <Content Include="Layouts\ModalControllers\deletePupilController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
+    <Content Include="Layouts\ModalControllers\modalServices.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
+    <Content Include="Layouts\PupilsDeleteTemplate.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Groups.html" />
     <Content Include="Layouts\Services\groupsService.js" />

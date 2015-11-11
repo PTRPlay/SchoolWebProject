@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns']);
+var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pagination']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
@@ -9,9 +9,17 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/Teachers.html',
         controller: 'teachersController'
     })
+
+    .state('teachersCategory', {
+        url: '/teacherCategory/:id',
+        templateUrl: '/Layouts/Teachers.html',
+        controller: 'viewTeacherCategories'
+    })
+
     .state('subjects', {
         url: '/subjects',
-        templateUrl: '/Layouts/Subjects.html'
+        templateUrl: '/Layouts/Teachers.html',
+        controller:'subjectsController'
     })
         .state('groups', {
             url: '/groups',

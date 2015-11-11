@@ -17,12 +17,12 @@ namespace SchoolWebProject.Services
 
         private IUnitOfWork unitOfWork;
 
-        public TeacherCategoryService(ILogger logger, IRepository<TeacherCategory> teacherCategoryRepository, IUnitOfWork unitOfWork)
+        public TeacherCategoryService(ILogger logger)
             : base(logger)
         {
             this.teacherCategoryLogger = logger;
-            this.repository = teacherCategoryRepository;
-            this.unitOfWork = unitOfWork;
+            this.repository = new GenericRepository<TeacherCategory>(new DbFactory());
+            this.unitOfWork = new UnitOfWork(new DbFactory());
         }
 
         public IEnumerable<TeacherCategory> GetAllTeacherCategories()

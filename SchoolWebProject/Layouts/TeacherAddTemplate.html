@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
+                           <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
@@ -32,14 +32,13 @@
                                        ng-show="AddTeacherForm.firstName.$error.pattern">
                                     Not correct pattern
                                 </small>
-                            </div>
-
+                           </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
+                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.middleName.$dirty && AddTeacherForm.middleName.$invalid">
@@ -55,14 +54,18 @@
                                        ng-show="AddTeacherForm.middleName.$error.maxlength">
                                     Your middle Name cannot be longer than 20 characters
                                 </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.middleName.$error.pattern">
+                                    Not correct pattern
+                                </small>
                             </div>
 
-                        </div>
+                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/[А-Я]{1}[а-я]/" required />
+                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.lastName.$dirty && AddTeacherForm.lastName.$invalid">
@@ -75,24 +78,27 @@
                                     Your last Name is required to be at least 3 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.middleName.$error.maxlength">
-                                    Your last Name cannot be longer than 20 characters
+                                       ng-show="AddTeacherForm.lastName.$error.maxlength">
+                                    Your last Name cannot be longer than 30 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.lastName.$error.pattern">
+                                    Not correct pattern
                                 </small>
                             </div>
-
                         </div>
                     </div>
-                    <div class="form-group" >
+                      <div class="form-group" >
                         <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
                         <div class="col-sm-4">
-                            <input type="date" name="workStart" class="form-control" id="workStart" ng-model="teacher.workStart" required />
+                            <input type="datetime" class="form-control" id="workStart" ng-model="teacher.workStart" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories" value="{{category.Id}}">{{category.Name}}</option>
+                               <option ng-repeat="category in listCategories" value={{category}}>{{category.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -100,7 +106,7 @@
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-                                <option ng-repeat="degree in listDegrees" value="{{degree.Id}}">{{degree.Name}}</option>
+                                <option ng-repeat="degree in listDegrees" value={{degree}}>{{degree.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -111,20 +117,22 @@
                             <table class="table-condensed" name="table">
                                 <tr ng-repeat="subject in listSubjects" >
                                     <td ng-if="$even" rowspan="2">
-                                        <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                        <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
                                     </td>
                                     <td ng-if="$odd" rowspan="1">
-                                        <input   type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value="{{subject}}">&nbsp;{{subject}}
+                                        <input   type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
                                     </td>
                                 </tr>
                             </table>
                             <p class="error" style="color:red" ng-show="teacher.subjects==0">Please choose at least one subject</p>
                         </div>
+                        <p ng-show="IsFormValid=AddTeacherForm.$valid&&teacher.subjects!=0"></p>
                     </div>
+                   
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-click="close()">OK</button>
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">OK</button>
                 <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
             </div>
         </div>

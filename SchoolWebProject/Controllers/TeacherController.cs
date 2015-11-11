@@ -10,6 +10,7 @@ using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Models;
 using AutoMapper;
+using System.Web;
 
 namespace SchoolWebProject.Controllers
 {
@@ -18,15 +19,12 @@ namespace SchoolWebProject.Controllers
         
         private ILogger getLogger;
 
-        private GenericRepository<Teacher> repository;
-
         private TeacherService teachers;
 
-        public TeacherController(ILogger logger, GenericRepository<Teacher> teacherRepo) 
+        public TeacherController(ILogger logger) 
         {
             this.getLogger = logger;
-            this.repository = teacherRepo;
-            this.teachers = new TeacherService(this.getLogger, this.repository);
+            this.teachers = new TeacherService(this.getLogger);
         }
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
@@ -46,10 +44,7 @@ namespace SchoolWebProject.Controllers
         public void Post([FromBody]ViewTeacher value)
         {
             var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            new TeacherService(this.getLogger, this.repository).AddTeacher(teacher);
-            var db = new SchoolContext();
-            db.Users.Add(teacher);
-            db.SaveChanges();
+            new TeacherService(this.getLogger).AddTeacher(teacher);
         }
 
         // PUT api/teacher/5

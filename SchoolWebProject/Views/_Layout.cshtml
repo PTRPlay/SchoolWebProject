@@ -36,10 +36,13 @@
     <script src="~/Layouts/Controllers/teachersController.js"></script>
     <script src="~/Layouts/Services/teachersServices.js"></script>
     <script src="~/Layouts/Services/groupsService.js"></script>
+    <script src="~/Layouts/ModalControllers/modalServices.js"></script>
+
     
     <script src="~/Layouts/ModalControllers/Modal.js"></script>
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
     <script src="~/Layouts/ModalControllers/addPupilController.js"></script>
+    <script src="~/Layouts/ModalControllers/deletePupilController.js"></script>
     
 </head>
 <body ng-app="myApp">
@@ -47,28 +50,12 @@
         <div class="container">
 
             <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="home">AXE</a>
+                <a class="navbar-brand" ui-sref="home">SchoolProject</a>
             </div>
 
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown"><span class="caret"></span>Category</a>
-                        <ul class="dropdown-menu"  ng-controller="teacherCategoriesController">
-                            <li ng-repeat="teacherCategory in teacherCategories"> <a href="api/teachercategory/{{teacherCategory.Id}}">{{teacherCategory.Name}}</a></li> 
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown"><span class="caret"></span>Subject</a>
-                        <ul class="dropdown-menu">
-                            @foreach (var i in ViewBag.Subjects)
-                            {
-                                <li><a>@i.Name</a></li>
-                            }
-                        </ul>
-                    </li>
-
                     <li>
                         <a ui-sref="login">Login</a>
                     </li>
@@ -92,7 +79,7 @@
                 </ul>
 
             </div>
-            <div class="cos-sm-9 col-sm-offset-3 main table" style="width:auto">
+            <div class="col-sm-9 col-sm-offset-2 main table" style="width:600px;">
                 <div ui-view></div>
             </div>
         </div>  
