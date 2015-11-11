@@ -12,31 +12,21 @@ namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
-        private ILogger tmpLogger;
-        private DbFactory dbFactory;
-        private GenericRepository<Teacher> repository;
-        private GenericRepository<User> userRepository;
-        private UnitOfWork unitOfWork;
+        private ILogger teacherLogger;
+        private IRepository<Teacher> repository;
+        private IUnitOfWork unitOfWork;
 
-        public TeacherService(ILogger logger) : base(logger)
+        public TeacherService(ILogger logger, IRepository<Teacher> teacherRepository, IUnitOfWork teacherUnitOfWork): base(logger)
         {
-            this.tmpLogger = logger;
-            this.dbFactory = new DbFactory();
-            this.repository = new GenericRepository<Teacher>(this.dbFactory);
-            this.unitOfWork = new UnitOfWork(this.dbFactory);
+            this.teacherLogger = logger;
+            this.repository = teacherRepository;
+            this.unitOfWork = teacherUnitOfWork;
         }
 
         public IEnumerable<Teacher> GetAllTeachers()
         {
             List<Teacher> listOfTeachers = new List<Teacher>();
             listOfTeachers = repository.GetAll().ToList();
-            return listOfTeachers;
-        }
-
-        public IEnumerable<Teacher> GetAllTeachersByCategory(int category)
-        {
-            List<Teacher> listOfTeachers = new List<Teacher>();
-            listOfTeachers = repository.GetAll().Where(c => c.TeacherCategoryId == category).ToList();
             return listOfTeachers;
         }
 

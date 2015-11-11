@@ -19,24 +19,26 @@ namespace SchoolWebProject.Controllers
         
         private ILogger getLogger;
 
-        private TeacherService teachers;
+        private TeacherService teacherService;
 
-        public TeacherController(ILogger logger) 
+        public TeacherController(ILogger logger, TeacherService teacherService) 
         {
             this.getLogger = logger;
-            this.teachers = new TeacherService(this.getLogger);
+            this.teacherService = teacherService;
         }
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
         {
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>,IEnumerable<ViewTeacher>>(teachers.GetAllTeachers());
+            var teachers = teacherService.GetAllTeachers();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>,IEnumerable<ViewTeacher>>(teachers);
             return viewModel;
         }
 
         // GET api/teacher/5
         public ViewTeacher Get(int id)
         {
-            var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teachers.GetProfileById(id));
+            var teacher = teacherService.GetProfileById(id);
+            var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teacher);
             return viewModel;
         }
 
@@ -44,7 +46,7 @@ namespace SchoolWebProject.Controllers
         public void Post([FromBody]ViewTeacher value)
         {
             var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            new TeacherService(this.getLogger).AddTeacher(teacher);
+            teacherService.AddTeacher(teacher);
         }
 
         // PUT api/teacher/5
