@@ -94,33 +94,33 @@
                             <input type="date" class="form-control" id="workStart" ng-model="teacher.workStart" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-controller="teacherInfoController">
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4">
                             <select name="menu" size="1" ng-controller="categoriesController" class="form-control" id="category" ng-model="teacher.category">
-                               <option ng-repeat="category in listCategories" value={{category}}>{{category.Name}}</option>
+                                <option ng-repeat="category in listCategories" ng-selected="getTeacher().Category.Name == category.Name" value={{category}}>{{category.Name}}</option>
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-controller="teacherInfoController">
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-                                <option ng-repeat="degree in listDegrees" value={{degree}}>{{degree.Name}}</option>
+                                <option ng-repeat="degree in listDegrees" ng-selected="getTeacher().Degree.Name == degree.Name" value={{degree}}>{{degree.Name}}</option>
                             </select>
                         </div>
                     </div>
                         
-                    <div class="form-group">
+                    <div class="form-group" ng-controller="teacherInfoController">
                         <label for="subjects" class="col-sm-2 control-label">Предмети:</label>
                         <div class="col-sm-8" ng-controller="subjectsController">
                             <table class="table-condensed" name="table">
-                                <tr ng-repeat="subject in listSubjects" >
+                                <tr ng-repeat="subject in listSubjects">
                                     <td ng-if="$even" rowspan="2">
-                                        <input  type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
+                                        <input type="checkbox" name="a" class="control-label" id="subjects {{$index}}" ng-checked="isSubjectHere(subject)" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
                                     </td>
                                     <td ng-if="$odd" rowspan="1">
-                                        <input   type="checkbox" name="a" class="control-label" id="subjects" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
+                                        <input type="checkbox" name="a" class="control-label" id="subjects {{$index}}" ng-checked="isSubjectHere(subject)" ng-click="choseSubject()" value={{subject}}>&nbsp;{{subject.Name}}
                                     </td>
                                 </tr>
                             </table>

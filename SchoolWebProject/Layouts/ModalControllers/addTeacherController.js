@@ -2,17 +2,18 @@
     $scope.teacher = null;
     $scope.IsFormValid = true;
     if (Teacher != null) {
+        var dateParsed = Teacher.WorkStart.split('.');
         $scope.teacher = {
-            id: Teacher.id,
-            img: Teacher.img,
-            firstName: Teacher.firstName,
-            middleName: Teacher.middleName,
-            lastName: Teacher.lastName,
-            phoneNumber: Teacher.phoneNumber,
-            degree: Teacher.degree,
-            workStart: Teacher.workStart,
-            category: Teacher.category,
-            subjects: []
+            id: Teacher.Id,
+            img: Teacher.Img,
+            firstName: Teacher.FirstName,
+            middleName: Teacher.MiddleName,
+            lastName: Teacher.LastName,
+            phoneNumber: Teacher.PhoneNumber,
+            degree: Teacher.Degree,
+            workStart: new Date(dateParsed[2],dateParsed[1],dateParsed[0]),
+            category: Teacher.Category,
+            subjects: Teacher.Subjects
         };
     }
     else {
@@ -40,10 +41,19 @@
             }
         }
     }
+    $scope.isSubjectHere = function (subject) {
+        for (var i = 0; i < Teacher.Subjects.length; ++i) {
+            if (Teacher.Subjects[i].Name == subject.Name) {
+                return true;
+            }
+        }
+        return false;
+    }
     $scope.close = function () {
         $element.modal('hide');
         close({
             cancelled: false,
+            id: $scope.teacher.id,
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,
             middleName:$scope.teacher.middleName,
