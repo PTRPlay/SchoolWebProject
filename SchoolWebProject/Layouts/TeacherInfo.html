@@ -2,8 +2,8 @@
     <button ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())">Edit</button>        <button onclick="location.href = '#/teachers'" ng-href="#/teachers">Back to teacher's list</button>
     <h2>{{getTeacher().LastName}} {{getTeacher().FirstName}} {{getTeacher().MiddleName}}</h2>
     <img ng-src="{{getTeacher().Img}}" alt="Image" width="170px" height="170px"/>
-    <h3>Category: {{getTeacher().Category}}</h3>
-    <h3>Degree: {{getTeacher().Dergee}}</h3>
+    <h3>Category: {{getTeacher().Category.Name}}</h3>
+    <h3>Degree: {{getTeacher().Dergee.Name}}</h3>
     <h3>Work start: {{getTeacher().WorkStart | date}}</h3>
-    <h3>Subjects:</h3> <div ng-repeat="subject in getTeacher().Subjects">{{subject}} </div>
+    <h3 ng-repeat="subject in getTeacher().Subjects">Subjects: {{subject.Name}}</h3>
 </div>

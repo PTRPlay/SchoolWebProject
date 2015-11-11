@@ -10,6 +10,8 @@ namespace SchoolWebProject.Domain.Models
     [Table("LogInData")]
     public class LogInData
     {
+        public int Id { get; set; }
+
         [Required]
         [Key, ForeignKey("User")]
         public int UserId { get; set; }

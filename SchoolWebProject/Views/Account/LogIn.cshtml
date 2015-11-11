@@ -1,15 +1,31 @@
 @model SchoolWebProject.Domain.Models.LogInData
 
 @{
-    Layout = "~/Views/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>LogIn</h2>
-
-@using (Html.BeginForm("LogIn","Account"))
-{
-    @Html.TextBox("userName")
-    @Html.TextBox("password")
-    @Html.RadioButton("rememberMe", false)
-    <input type="submit" value="Account"/>
-}
+<style>
+    #loginBlock{
+        margin-top:150px;
+        margin-bottom:50px;
+    }
+</style>
+<center>
+    <div id="loginBlock">
+        <p>
+            <h2>Login</h2>
+        </p>
+        @using (Html.BeginForm("LogIn", "Account"))
+        {
+            <p>
+                User name:
+                @Html.TextBox("userName")
+            </p>
+            <p>
+                Password  :
+                @Html.Password("password")
+            </p>
+            <input type="submit" value="Log in" />
+        }
+    </div>
+</center>

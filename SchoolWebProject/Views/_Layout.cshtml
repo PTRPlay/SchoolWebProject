@@ -19,6 +19,7 @@
     <script src="~/Scripts/app.js"></script>
     
     <script src="~/Layouts/Controllers/newsController.js"></script>
+    <script src="~/Layouts/Controllers/schoolController.js"></script>
     <script src="~/Layouts/Controllers/pupilsController.js"></script>
     <script src="~/Layouts/Controllers/schelduleController.js"></script>
     <script src="~/Layouts/Controllers/subjectsController.js"></script>
@@ -28,6 +29,7 @@
 
 
     <script src="~/Layouts/Services/newsService.js"></script>
+    <script src="~/Layouts/Services/schoolService.js"></script>
     <script src="~/Layouts/Services/pupilsService.js"></script>
     <script src="~/Layouts/Services/schelduleService.js"></script>
     <script src="~/Layouts/Services/subjectsService.js"></script>
@@ -57,7 +59,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a ui-sref="login">Login</a>
+                        <a href="account/login">Login</a>
                     </li>
                 </ul>
 
@@ -76,6 +78,7 @@
                     <li class="btn nav-tabs"><a ui-sref="groups" class="btn-default">Groups</a></li>
                     <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
                     <li class="btn nav-tabs"><a ui-sref="newsService" class="btn-default">News</a></li>
+                    <li class="btn nav-tabs"><a ui-sref="schoolService" class="btn-default">Contacts</a></li>
                 </ul>
 
             </div>

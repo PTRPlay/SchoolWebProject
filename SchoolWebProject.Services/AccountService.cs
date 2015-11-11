@@ -9,18 +9,19 @@ namespace SchoolWebProject.Services
 {
     public class AccountService : BaseService, IAccountService
     {
-        private GenericRepository<User> logInRepository;
+        private GenericRepository<User> userRepository;
+        private GenericRepository<LogInData> logInRepository;
 
-        public AccountService(ILogger logger, GenericRepository<User> inputRepository)
+        public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> loginRepository)
             : base(logger)
         {
-            this.logInRepository = inputRepository;
+            this.userRepository = inputRepository;
         }
 
         public User GetUser(string userName, string password)
         {
             Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
-            User currentUser = this.logInRepository.Get(getUserByLogin);
+            User currentUser = this.userRepository.Get(getUserByLogin);
             if (this.CheckUser(currentUser, password))
                 return currentUser;
             else return null;
