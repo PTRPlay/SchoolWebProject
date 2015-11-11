@@ -56,7 +56,7 @@
    {
        field: "Profile",
        cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       //cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.LastName)" style="width: 70px;">Edit</button></div>',
+       //cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.Id)" style="width: 70px;">Edit</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
