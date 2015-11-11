@@ -1,23 +1,6 @@
-﻿<div class="navbar-collapse collapse" ng-controller="ModalShowController">
-    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a data-toggle="dropdown"><span class="caret"></span>Category</a>
-            <ul class="dropdown-menu" ng-controller="teacherCategories">
-                <li ng-repeat="teacherCategory in teacherCategories"> <a ng-href="#/teachercategory/{{teacherCategory.Id}}">{{teacherCategory.Name}}</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a data-toggle="dropdown"><span class="caret"></span>Subject</a>
-            <ul class="dropdown-menu" ng-controller="subjectsController">
-                <li ng-repeat="subject in listSubjects" ng-controller="subjectsController"> <a ui-sref="api/subjects/{{subject.Id}}">{{subject.Name}}</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+﻿<div id="grid2" ui-grid="teachersGrid" class="grid" style="width:1000px; height: 470px;"></div>
 
-    <h2>{{text}}</h2>
-    <div id="grid2" ui-grid="teachersGrid" class="grid"></div>
-
-        <button href="#addTeachers" role="button" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</button>
+<div ng-controller="ModalShowController">
+    <button href="#addTeachers" role="button" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</button>
 </div>   
 <br />

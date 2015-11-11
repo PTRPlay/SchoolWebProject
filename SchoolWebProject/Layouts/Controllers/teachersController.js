@@ -19,35 +19,48 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
         columnDefs: [
    {
        enableFiltering: false,
-       field: 'LastName'
+       field: 'LastName',
+       displayName:'Призвіще'
+
    },
    {
        enableFiltering: false,
-       field: 'FirstName'
-   },
+       field: 'FirstName',
+       displayName: 'Ім`я'
+   },   
    {
        enableFiltering:false,
-       field: "MiddleName"
+       field: "MiddleName",
+       displayName:'По-батькові'
    },
    {
        enableFiltering:true,
-       field: "Category.Name", filter: {
-           term: '1',
+       field: "Category.Name",
+       displayName:'Категорія',
+       filter: {
            type: uiGridConstants.filter.SELECT,
-           selectOptions: [ { value: '1', label: 'спеціаліст' }, 
-                            { value: '2', label: 'спеціаліст першої категорії' }, 
-                            { value: '3', label: 'спеціаліст другої категорії'}, 
-                            { value: '4', label: 'спеціаліст вищої категорії' } 
-           ]
+           selectOptions: [
+                            { value: 'спеціаліст вищої категорії', label: 'спеціаліст вищої категорії' },
+                            { value: 'спеціаліст другої категорії', label: 'спеціаліст другої категорії' },
+                            { value: 'спеціаліст першої категорії', label: 'спеціаліст першої категорії' }
+                          ]
        },
-       cellFilter: 'mapGender', headerCellClass: $scope.highlightFilteredHeader },
+   },
    {
        field: "Profile",
+       displayName: 'Профіль',
        cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false 
+   },
+   {
+       enableFiltering: true,
+       field: "Subjects[0].Name",
+       displayName: 'Предмет',
+
    }
+
         ],
         onRegisterApi: function (gridApi) {
             $scope.grid2Api = gridApi;
@@ -59,23 +72,7 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
     })
     $scope.toggleFiltering = function(){
         $scope.gridOptions.enableFiltering = !$scope.gridOptions.enableFiltering;
-        $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN );
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+        
     };
 }])
-    .filter('mapGender', function () {
-        var genderHash = {
-            1: 'спеціаліст',
-            2: 'спеціаліст першої категорії',
-            3: 'спеціаліст другої категорії',
-            4: 'спеціаліст вищої категорії'
-        };
- 
-        return function(input) {
-            if (!input){
-                return '';
-            } else {
-                return genderHash[input];
-            }
-        };
-    
- })
