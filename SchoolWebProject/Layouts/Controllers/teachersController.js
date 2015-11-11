@@ -32,7 +32,7 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
    {
        enableFiltering:true,
        field: "Category.Name", filter: {
-           term: '1',
+           //term: '1',
            type: uiGridConstants.filter.SELECT,
            selectOptions: [ { value: '1', label: 'спеціаліст' }, 
                             { value: '2', label: 'спеціаліст першої категорії' }, 
@@ -40,7 +40,8 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
                             { value: '4', label: 'спеціаліст вищої категорії' } 
            ]
        },
-       cellFilter: 'mapGender', headerCellClass: $scope.highlightFilteredHeader },
+       //cellFilter: 'mapGender', headerCellClass: $scope.highlightFilteredHeader 
+   },
    {
        field: "Profile",
        cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
