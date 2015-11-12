@@ -11,8 +11,12 @@
             modal.element.modal();
             modal.close.then(function (result) {
                 if (result != null) {
-                    $http.post("api/teacher", result);
-                    window.location.reload("/home");
+                    var url = "api/teacher/";
+                    if (result.id != null)
+                     url+= result.id;
+                        $http.post(url, result);
+                        window.location.reload("/home");
+
                 }
             });
         });

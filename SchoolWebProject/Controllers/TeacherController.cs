@@ -45,13 +45,25 @@ namespace SchoolWebProject.Controllers
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
-            var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            teacherService.AddTeacher(teacher);
+            var teacher = new Teacher();
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
+            var bin = new SchoolContext();
+            bin.Users.Add(teacher);
+            bin.SaveChanges();
+            //teacherService.AddTeacher(teacher);
         }
 
         // PUT api/teacher/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        public void Put(int id, [FromBody]ViewTeacher value)
         {
+            var bin = new SchoolContext();
+            var teacher = bin.Users.First(p => p.Id == value.Id);
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,(Teacher)teacher);
+            //bin.Users.Attach(teacher);
+            bin.Entry(teacher).State = System.Data.Entity.EntityState.Modified; 
+            bin.SaveChanges();
+            //teacherService.UpdateProfile(teacher);
         }
 
         // DELETE api/teacher/5
