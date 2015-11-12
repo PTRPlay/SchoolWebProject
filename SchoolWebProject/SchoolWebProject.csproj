@@ -237,6 +237,7 @@
     <Content Include="Layouts\PupilAddTemplate.html" />
     <Content Include="Layouts\TeacherInfo.html" />
     <Content Include="Layouts\Teachers.html" />
+    <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -270,7 +271,6 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Layouts\TeacherAddTemplate.html" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Web.config" />
