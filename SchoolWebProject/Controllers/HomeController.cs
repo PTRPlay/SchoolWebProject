@@ -80,7 +80,7 @@ namespace SchoolWebProject.Controllers
                         //}*/
             #endregion
 
-            this.logger.Debug("Kolia");
+            this.logger.Debug("logTest");
             return this.View();
         }
 
