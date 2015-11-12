@@ -10,19 +10,22 @@ namespace SchoolWebProject.Services
     public class AccountService : BaseService, IAccountService
     {
         private GenericRepository<User> userRepository;
-        private GenericRepository<LogInData> logInRepository;
+        private GenericRepository<LogInData> loginRepo;
 
-        public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> loginRepository)
+        public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> inloginrepo)
             : base(logger)
         {
             this.userRepository = inputRepository;
+            this.loginRepo = inloginrepo;
         }
 
         public User GetUser(string userName, string password)
         {
             Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
             User currentUser = this.userRepository.Get(getUserByLogin);
-            if (this.CheckUser(currentUser, password))
+            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == currentUser.Id;
+            LogInData logindata = this.loginRepo.Get(getLoginData);
+            if (this.CheckUser(logindata, password) && currentUser != null)
                 return currentUser;
             else return null;
         }
@@ -43,9 +46,9 @@ namespace SchoolWebProject.Services
             return this.ByteArrayToString(salt);
         }
 
-        private bool CheckUser(User currUser, string password)
+        private bool CheckUser(LogInData currUser, string password)
         {
-            if (currUser.LogInData.PasswordHash == CreateHashPassword(password, currUser.LogInData.PasswordSalt))
+            if (currUser.PasswordHash == CreateHashPassword(password, currUser.PasswordSalt))
                 return true;
             else return false;
         }
