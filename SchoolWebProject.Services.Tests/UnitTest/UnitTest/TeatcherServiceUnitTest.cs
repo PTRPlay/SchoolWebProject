@@ -6,12 +6,13 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using Moq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 namespace SchoolWebProject.UnitTestProject
 {
     [TestClass]
     public class TeacherServiceUnitTest
     {
-        List<Teacher> teachers = new List<Teacher> {
+      private  List<Teacher> teachers = new List<Teacher> {
                 new Teacher { LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", 
     WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
 new Teacher { LastName = "Гарланенко", FirstName = "Євгенія", MiddleName = "Сергіївна", 
@@ -19,6 +20,9 @@ new Teacher { LastName = "Гарланенко", FirstName = "Євгенія", M
 new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = "Олегович", 
     WorkBegin = new DateTime(1990, 7, 18), PhoneNumber = "290849203", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 },
  };
+
+      private Teacher teacher = new Teacher { LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", 
+    WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 };
 
         [TestMethod]
         public void GetTeachers_Test_If_Get_All_Teacher_And_Invoke_GetAll_repository_Method()
@@ -36,18 +40,18 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         }
 
         [TestMethod]
-        public void GetProfileById_Test_Is_Return_One_Profile()
+        public void GetProfileById_Test_Is_Invoke_Repo_GetById()
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(new Teacher { Id = 2, FirstName = "fn", LastName = "ln" });
+            iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(teacher);
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
-            int anyIdMoreZero = 0;
+            int anyIdMoreZero = 3;
 
-            var teacher = teacherService.GetProfileById(anyIdMoreZero);
-
-            iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.AtLeastOnce);
+           teacherService.GetProfileById(anyIdMoreZero);
+            
+           iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
            
         }
 
@@ -60,8 +64,10 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
             int anyIdMoreZero = -2;
+
             var teacher = teacherService.GetProfileById(anyIdMoreZero);
-            iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.AtLeastOnce);
+
+            iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
         }
 
         [TestMethod]
@@ -71,17 +77,7 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
-            Teacher teacher = new Teacher
-            {
-                LastName = "Nikon",
-                FirstName = "Вадим",
-                MiddleName = "Олегович",
-                WorkBegin = new DateTime(1990, 7, 18),
-                PhoneNumber = "290849203",
-                RoleId = 2,
-                SchoolId = 1,
-                TeacherCategoryId = 2
-            };
+            
             teacherService.UpdateProfile(teacher);
 
             iRepository.Verify(inv => inv.Update(teacher), Times.Once);
@@ -94,18 +90,9 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
-            Teacher teacher = new Teacher
-            {
-                LastName = "Nikon",
-                FirstName = "Вадим",
-                MiddleName = "Олегович",
-                WorkBegin = new DateTime(1990, 7, 18),
-                PhoneNumber = "290849203",
-                RoleId = 2,
-                SchoolId = 1,
-                TeacherCategoryId = 2
-            };
+            
             teacherService.AddTeacher(teacher);
+
             iRepository.Verify(inv => inv.Add(teacher), Times.Once);
         }
 
@@ -116,17 +103,7 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iRepository.Object, iUnitOfWork.Object);
-            Teacher teacher = new Teacher
-            {
-                LastName = "Nikon",
-                FirstName = "Вадим",
-                MiddleName = "Олегович",
-                WorkBegin = new DateTime(1990, 7, 18),
-                PhoneNumber = "290849203",
-                RoleId = 2,
-                SchoolId = 1,
-                TeacherCategoryId = 2
-            };
+            
             teacherService.RemoveTeacher(teacher);
 
             iRepository.Verify(inv => inv.Delete(teacher), Times.Once);

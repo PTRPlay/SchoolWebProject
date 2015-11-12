@@ -2,7 +2,10 @@
     $scope.teacher = null;
     $scope.IsFormValid = true;
     if (Teacher != null) {
-        var dateParsed = Teacher.WorkStart.split('.');
+        var dateParsed;
+        if (Teacher.WorkStart != null) {
+            var dateParsed = Teacher.WorkStart.split('.');
+        }
         $scope.teacher = {
             id: Teacher.Id,
             img: Teacher.Img,
@@ -11,13 +14,12 @@
             lastName: Teacher.LastName,
             phoneNumber: Teacher.PhoneNumber,
             degree: Teacher.Degree,
-            workStart: new Date(dateParsed[2],dateParsed[1],dateParsed[0]),
+            workStart: dateParsed != null ? new Date(dateParsed[2],dateParsed[1],dateParsed[0]) : new Date(),
             category: Teacher.Category,
             subjects: Teacher.Subjects
         };
     }
     else {
-        var today = new Date();
         $scope.teacher = {
             id: null,
             img: null,
@@ -26,7 +28,7 @@
             lastName: null,
             phoneNumber: null,
             degree: null,
-            workStart: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+            workStart: new Date(),
             category: null,
             subjects: []
         };
@@ -41,10 +43,12 @@
             }
         }
     }
-    $scope.isSubjectHere = function (subject) {
-        for (var i = 0; i < Teacher.Subjects.length; ++i) {
-            if (Teacher.Subjects[i].Name == subject.Name) {
-                return true;
+    $scope.editShowTeacherSubjects = function (subject) {
+        if (Teacher != null) {
+            for (var i = 0; i < $scope.teacher.subjects.length; ++i) {
+                if ($scope.teacher.subjects[i].Name == subject.Name) {
+                    return true;
+                }
             }
         }
         return false;
