@@ -14,7 +14,7 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
        displayName:"No",
        field: 'NameNumber',
        width: "50",
-       cellFilter: 'number',
+       type: 'number',
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
@@ -28,7 +28,8 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
        field: "Teacher"
    },
    {
-       field: "PupilsAmount"
+       field: "PupilsAmount",
+       type: 'number'
    },
    {
        field: "Details",
