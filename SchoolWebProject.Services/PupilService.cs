@@ -24,7 +24,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return this.repository.GetAll();
+            return this.repository.GetAll().OrderBy(p=>p.LastName);
         }
 
         public Pupil GetProfileById(int id)
