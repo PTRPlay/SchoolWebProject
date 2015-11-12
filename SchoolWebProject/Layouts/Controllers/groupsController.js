@@ -25,7 +25,10 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
        width: "50"
    },
    {
-       field: "Teacher"
+       field: "Teacher",
+       sortingAlgorithm: function (a, b) {
+           return a.localeCompare(b)
+       }
    },
    {
        field: "PupilsAmount",
@@ -61,6 +64,7 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
     groups.success(function (data) {
         $scope.groupsGrid.data = data;
     });
+
     //ng-click="grid.appScope.deleteHandler(row.entity.LastName)"
     //ng-click="grid.appScope.editHandler(row.entity.LastName)"
 }

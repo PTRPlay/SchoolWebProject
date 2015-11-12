@@ -25,6 +25,9 @@
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
+       },
+       sortingAlgorithm: function (a, b) {
+           return a.localeCompare(b)
        }
    },
    {
