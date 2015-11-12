@@ -18,7 +18,7 @@
                         <h5>{{announcement.Message}}</h5>
                         <br>
                         <h5><small>{{announcement.DataPublished | date}}</small></h5>
-                        <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)"> view detail</a>
+                        <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)" style="cursor: pointer"> view detail</a>
                         <br>
                         <h5 ng-show="isShowing(announcementIndex)">{{announcement.MessageDetails}}</h5>
                     </div>
