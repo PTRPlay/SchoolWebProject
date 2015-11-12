@@ -32,6 +32,7 @@ namespace SchoolWebProject.Controllers
         {
             var degree = new SchoolContext().TeacherDegrees;
             var viewDegree = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(degree);
+            teacherDegreeLogger.Info("Get teacher degree");
             return viewDegree;
         }
 
