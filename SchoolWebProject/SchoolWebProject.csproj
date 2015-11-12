@@ -255,7 +255,6 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Layouts\Services\teachersServices.js.rej" />
     <Content Include="Content\ui-grid.woff" />
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
