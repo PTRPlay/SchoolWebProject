@@ -51,12 +51,8 @@ namespace SchoolWebProject.Domain.Models
         public virtual List<Topic> Topics { get; set; }
 
         public virtual List<Post> Posts { get; set; }
-
-        public int? LogInDataId { get; set; }
-
+        
         public virtual LogInData LogInData { get; set; }
-
-        public int? OnlineId { get; set; }
 
         public virtual Online Online { get; set; }
     }
