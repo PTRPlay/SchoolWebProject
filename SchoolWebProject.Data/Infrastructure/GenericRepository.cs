@@ -35,6 +35,7 @@ namespace SchoolWebProject.Data.Infrastructure
         public virtual void Add(T entity)
         {
             this.dbSet.Add(entity);
+            this.DbContext.SaveChanges();
         }
 
         public virtual void Update(T entity)
