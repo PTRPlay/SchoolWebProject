@@ -11,12 +11,14 @@
             modal.element.modal();
             modal.close.then(function (result) {
                 if (result != null) {
-                    var url = "api/teacher/";
-                    if (result.id != null)
-                     url+= result.id;
-                        $http.post(url, result);
+                    if (result.id == null) {
+                        $http.post("api/teacher", result);
                         window.location.reload("/home");
-
+                    }
+                    else{
+                        $http.post("api/teacher/" + result.id, result);
+                        window.location.reload("/home");
+                    }
                 }
             });
         });

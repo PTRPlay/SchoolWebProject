@@ -6,10 +6,3 @@
     });
 }]);
 
-myApp.factory('newsDetailService', ['$scope','$http', '$stateParams', function ($scope, $http, $stateParams) {
-    return $http.get("api/announcements/id").success(function (data) {
-        return data;
-    }).error(function (data) {
-        return data;
-    });
-}]);

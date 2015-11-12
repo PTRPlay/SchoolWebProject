@@ -16,9 +16,9 @@ namespace SchoolWebProject.Controllers
     {
         private ILogger getLogger;
 
-        private AnnouncementService announcementService;
+        private IAnnouncementService announcementService;
 
-        public AnnouncementsController(ILogger logger, AnnouncementService announcementService) 
+        public AnnouncementsController(ILogger logger, IAnnouncementService announcementService) 
         {
             this.getLogger = logger;
             this.announcementService = announcementService;

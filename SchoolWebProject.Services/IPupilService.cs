@@ -11,6 +11,8 @@ namespace SchoolWebProject.Services
     {
         IEnumerable<Pupil> GetAllPupils();
 
+        IEnumerable<Pupil> GetPage(int page, int amount);
+
         Pupil GetProfileById(int id);
 
         void UpdateProfile(Pupil pupil);

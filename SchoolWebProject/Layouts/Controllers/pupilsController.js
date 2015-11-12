@@ -25,6 +25,9 @@
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
+       },
+       sortingAlgorithm: function (a, b) {
+           return a.localeCompare(b)
        }
    },
    {
@@ -54,8 +57,9 @@
        visible: false
    },
    {
-       field: "Edit",
-       cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.LastName)" style="width: 70px;">Edit</button></div>',
+       field: "Profile",
+       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
+       //cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.Id)" style="width: 70px;">Edit</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -100,12 +104,15 @@
     };
 
     var getPage = function () {
-        pupils.success(function (data) {
+        var pageNumb = paginationOptions.pageNumber;
+        var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
+        pupils.getPage(pageNumb, paginationOptions.pageSize).success(function (data) {
             $scope.pupilsGrid.totalItems = 99;
-            var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
-            $scope.pupilsGrid.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);;
+            $scope.pupilsGrid.data = data;
         });
     }
     getPage();
 }
 ]);
+
+

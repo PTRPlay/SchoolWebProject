@@ -1,27 +1,29 @@
-﻿<div class="container">
-        <div class="page-header">
-            <h1>Announcements</h1>
-        </div>
-        <button type="button" class="btn btn-default">New announcements</button>
+﻿<div class="container" style="width:1000px">
+        <div class=" page-header">
+    <h1>News</h1>
+</div>
+    <!--<button type="button" class="btn btn-default">New announcements</button><br>-->
         <br>
         <br>
-        <div class="panel panel-default" ng-repeat="announcement in listAnnouncements">
-            <div class="panel-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img ng-src="data:image/jpg;base64,{{announcement.Image}}" alt=" image" width="170" height="170">
-                        </div>
-                        <div class="col-md-9">
-                            <h4>{{announcement.Title}}</h4>
-                            <br>
-                            <h5>{{announcement.Message}}</h5>
-                            <br>
-                            <h5><small>{{announcement.DataPublished | date}}</small></h5>
-                            <a ui-sref="newsDetailService" > view detail</a>
-                        </div>
+    <div class="panel panel-default" ng-repeat="(announcementIndex,announcement) in listAnnouncements">
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img ng-src="data:image/jpg;base64,{{announcement.Image}}" alt=" image" height="170">
+                    </div>
+                    <div class="col-md-8">
+                        <h4>{{announcement.Title}}</h4>
+                        <br>
+                        <h5>{{announcement.Message}}</h5>
+                        <br>
+                        <h5><small>{{announcement.DataPublished | date}}</small></h5>
+                        <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)" style="cursor: pointer"> view detail</a>
+                        <br>
+                        <h5 ng-show="isShowing(announcementIndex)">{{announcement.MessageDetails}}</h5>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
  </div>

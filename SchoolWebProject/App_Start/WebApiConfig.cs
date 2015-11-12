@@ -14,6 +14,11 @@ namespace SchoolWebProject
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "PagingApi",
+                routeTemplate: "api/{controller}/{page}/{amount}"
+            );
         }
     }
 }
