@@ -64,9 +64,12 @@
 
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" >
                     <li>
-                        <a href="account/login">Login</a>
+                        <a ui-sref="#">Loged in as @Context.User.Identity.Name</a>
+                    </li>
+                    <li>
+                        <a href="logout">Log out</a>
                     </li>
                 </ul>
 
