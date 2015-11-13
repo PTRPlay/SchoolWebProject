@@ -1,22 +1,47 @@
-﻿/*myApp.controller('teachersController', ['$scope', 'teachers', function ($scope, teachers) {
-    teachers.success(function (data) {
-        $scope.teachers = data;
-    });
-}
-]);*/
+﻿myApp.controller('teachersController', ['$scope', '$http', 'teachers', 'categories', 'uiGridConstants',  function ($scope, $http, teachers, categories, uiGridConstants) {
 
-myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', function ($scope, teachers, uiGridConstants) {
-    $scope.highlightFilteredHeader = function( row, rowRenderIndex, col, colRenderIndex ) {
-        if( col.filters[0].term ){
-            return 'header-filtered';
-        } else {
-            return '';
+    var id, value,label;
+    var categoriesOptions = [];
+    $http.get("api/teachercategory/").success(function (data) {
+        for (i = 0; i < data.length; i++) {
+            categoriesOptions[i]=({ value: data[i].Name, label: data[i].Name });
         }
+    });
+
+    var subjectsOptions= [];
+    $http.get("api/subjects/").success(function (data) {
+        for (i = 0; i < data.length; i++) {
+            subjectsOptions[i] = ({ value: data[i].Name, label: data[i].Name });
+        }
+    });
+
+    var categoriesOptions2 = [];
+
+    $scope.getSubjects = function (Id) {
+        teachers.success(function (data) {
+            for (i = 0; i < data[Id].Subjects.length; i++) {
+                categoriesOptions2[i] = ({ id: i, value: data[Id].Subjects[i].Name });
+            }
+            return data
+        })
+        return categoriesOptions2
     };
+
+
+
     $scope.teachersGrid = {
         showGridFooter: true,
-        enableFiltering:true,
+        enableFiltering: true,
+        enableCellEditOnFocus: true,
         columnDefs: [
+   {
+       field: "№ ",
+       cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
+       width: "35",
+       enableSorting: false,
+       enableFiltering: false,
+   },
+
    {
        enableFiltering: false,
        field: 'LastName',
@@ -39,11 +64,7 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
        displayName:'Категорія',
        filter: {
            type: uiGridConstants.filter.SELECT,
-           selectOptions: [
-                            { value: 'спеціаліст вищої категорії', label: 'спеціаліст вищої категорії' },
-                            { value: 'спеціаліст другої категорії', label: 'спеціаліст другої категорії' },
-                            { value: 'спеціаліст першої категорії', label: 'спеціаліст першої категорії' }
-                          ]
+           selectOptions: categoriesOptions
        },
    },
 
@@ -53,15 +74,13 @@ myApp.controller('teachersController', ['$scope', 'teachers','uiGridConstants', 
        displayName: 'Предмет',
        filter: {
            type: uiGridConstants.filter.SELECT,
-           selectOptions: [
-                            { value: 'фізика', label: 'Фізика' },
-                            { value: 'геометрія', label: 'Геометрія' },
-                            { value: 'хімія', label: 'Хімія' },
-                            { value: 'історія', label: 'Історія' },
-                            { value: 'математика', label: 'Математика' },
-           ]
-       }
-   },
+           selectOptions: subjectsOptions
+       },
+       enableCellEdit: true,
+       editableCellTemplate: 'ui-grid/dropdownEditor',
+       editDropdownValueLabel: 'value',
+       editDropdownOptionsArray: $scope.getSubjects(7)
+       },
 
 
    {

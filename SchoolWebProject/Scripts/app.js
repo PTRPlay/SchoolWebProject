@@ -10,22 +10,16 @@ myApp.config(function ($stateProvider) {
         controller: 'teachersController'
     })
 
-    .state('teachersCategory', {
-        url: '/teacherCategory/{Id}',
-        templateUrl: '/Layouts/Teachers.html',
-        controller: 'teachersByCategory'
-    })
-
     .state('subjects', {
         url: '/subjects',
         templateUrl: '/Layouts/Teachers.html',
         controller:'subjectsController'
     })
-        .state('groups', {
-            url: '/groups',
-            templateUrl: '/Layouts/Groups.html',
-            controller:'groupsController'
-        })
+    .state('groups', {
+        url: '/groups',
+        templateUrl: '/Layouts/Groups.html',
+        controller:'groupsController'
+    })
     .state('scheldule', {
         url: '/scheldule',
         templateUrl: '/Layouts/Scheldule.html'
