@@ -11,6 +11,7 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Models;
 using AutoMapper;
 using System.Web;
+using System.Data.Entity;
 
 namespace SchoolWebProject.Controllers
 {
@@ -45,13 +46,29 @@ namespace SchoolWebProject.Controllers
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
-            var teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            teacherService.AddTeacher(teacher);
+            var bin = new SchoolContext();
+            //Teacher teacher = new Teacher();
+            //teacher.Subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects).ToList<Subject>();
+            //var el = value.Subjects.First().Id;
+            var modifiedSubjects = value.Subjects;
+            value.Subjects = null;
+            //AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
+            Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+            //teacher.Subjects.AddRange(subjects);
+            foreach (var subject in modifiedSubjects)
+                bin.Subjects.First((p) => p.Id ==subject.Id).Teachers.Add(teacher);
+            bin.Entry(teacher).State = EntityState.Added;
+            bin.SaveChanges();
+            //teacherService.AddTeacher(teacher);
         }
 
         // PUT api/teacher/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        public void Put(int id, [FromBody]ViewTeacher value)
         {
+            var teacher = teacherService.GetProfileById(value.Id);
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,(Teacher)teacher);
+            teacherService.UpdateProfile(teacher);
         }
 
         // DELETE api/teacher/5

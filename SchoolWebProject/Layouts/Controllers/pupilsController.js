@@ -104,24 +104,15 @@
     };
 
     var getPage = function () {
-        pupils.success(function (data) {
+        var pageNumb = paginationOptions.pageNumber;
+        var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
+        pupils.getPage(pageNumb, paginationOptions.pageSize).success(function (data) {
             $scope.pupilsGrid.totalItems = 99;
-            var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
-            $scope.pupilsGrid.data = data.slice(firstRow, firstRow + paginationOptions.pageSize);;
+            $scope.pupilsGrid.data = data;
         });
     }
     getPage();
 }
 ]);
 
-//myapp.controller('pupilinfocontroller', ['$scope', 'pupils', function ($scope, pupils) {
-//    pupils.success(function (data) {
-//        $scope.getpupil = function () {
-//            var id = document.url.split("pupil/")[1];
-//            for (var i = 0; i < data.length; i++) {
-//                if (data[i].id == id)
-//                    return data[i];
-//            }
-//        }
-//    });
-//}]);
+

@@ -203,7 +203,6 @@
     <Content Include="Layouts\Controllers\journalController .js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
     <Content Include="Layouts\Controllers\schoolController.js" />
-    <Content Include="Layouts\Controllers\teacherCategoriesController.js" />
     <Content Include="Layouts\Controllers\pupilInfoController.js" />
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
@@ -225,7 +224,6 @@
     <Content Include="Layouts\Services\groupsService.js" />
     <Content Include="Layouts\Services\journalService.js" />
     <Content Include="Layouts\Services\schoolService.js" />
-    <Content Include="Layouts\Services\teacherCategoriesService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\pupilsService.js" />
     <Content Include="Layouts\Services\schelduleService.js" />
@@ -255,7 +253,6 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Layouts\Services\teachersServices.js.rej" />
     <Content Include="Content\ui-grid.woff" />
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
