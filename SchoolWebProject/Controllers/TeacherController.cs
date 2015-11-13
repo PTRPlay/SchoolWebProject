@@ -21,11 +21,13 @@ namespace SchoolWebProject.Controllers
         private ILogger getLogger;
 
         private TeacherService teacherService;
+        private SubjectService subjectService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService) 
+        public TeacherController(ILogger logger, TeacherService teacherService , SubjectService subjectService ) 
         {
             this.getLogger = logger;
             this.teacherService = teacherService;
+            this.subjectService = subjectService;
         }
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
@@ -66,9 +68,14 @@ namespace SchoolWebProject.Controllers
         [HttpPost]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
+            var bin = new SchoolContext();
+
             var teacher = teacherService.GetProfileById(value.Id);
             AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,(Teacher)teacher);
-            teacherService.UpdateProfile(teacher);
+
+            bin.Entry((Teacher)teacher).State = EntityState.Modified;
+            bin.SaveChanges();
+            //teacherService.UpdateProfile(teacher);
         }
 
         // DELETE api/teacher/5

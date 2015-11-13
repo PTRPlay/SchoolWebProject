@@ -26,7 +26,7 @@ namespace SchoolWebProject.Controllers
         
         public ActionResult Index()
         {
-            SchoolContext mdc = new SchoolContext();
+            //SchoolContext mdc = new SchoolContext();
             //simple.ViewGroup vg = simple.ViewGroup.CreateSimpleGroup(mdc.Groups.FirstOrDefault(g => g.Id == 1));
   /*          var subjectEntries = from entry in mdc.Subjects select entry;
             ViewBag.Subjects = subjectEntries.ToList();
@@ -80,6 +80,11 @@ namespace SchoolWebProject.Controllers
                         //}*/
             #endregion
 
+            var links = new Dictionary<string, string>();
+
+            links["Teachers"] = "teachers";
+            links["Subjects"] = "subjects";
+            ViewBag.Links = links;
             this.logger.Debug("logTest");
             return this.View();
         }
