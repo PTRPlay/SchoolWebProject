@@ -10,13 +10,15 @@ namespace SchoolWebProject.Services
     public class AccountService : BaseService, IAccountService
     {
         private GenericRepository<User> userRepository;
-        private GenericRepository<LogInData> loginRepo;
+        private GenericRepository<LogInData> userLoginRepository;
+        private GenericRepository<Role> rolesRepository;
 
-        public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> inloginrepo)
+        public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> inloginrepo, GenericRepository<Role>inputRoles)
             : base(logger)
         {
             this.userRepository = inputRepository;
-            this.loginRepo = inloginrepo;
+            this.userLoginRepository = inloginrepo;
+            this.rolesRepository = inputRoles;
         }
 
         public User GetUser(string userName, string password)
@@ -24,10 +26,22 @@ namespace SchoolWebProject.Services
             Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
             User currentUser = this.userRepository.Get(getUserByLogin);
             Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == currentUser.Id;
-            LogInData logindata = this.loginRepo.Get(getLoginData);
+            LogInData logindata = this.userLoginRepository.Get(getLoginData);
             if (this.CheckUser(logindata, password) && currentUser != null)
                 return currentUser;
             else return null;
+        }
+
+        public LogInData GetUserLogInData(int id)
+        {
+            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == id;
+            return userLoginRepository.Get(getLoginData);
+        }
+
+        public Role GetRoleById(int? id)
+        {
+            Expression<Func<Role, bool>> getRole = role => role.Id == id;
+            return rolesRepository.Get(getRole);
         }
 
         public string CreateHashPassword(string inputPassword, string salt)
