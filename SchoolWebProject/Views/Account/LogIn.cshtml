@@ -9,6 +9,9 @@
         margin-top:150px;
         margin-bottom:50px;
     }
+    #errorMessage{
+        color:red;
+    }
 </style>
 <center>
     <div id="loginBlock">
@@ -24,6 +27,7 @@
             <p>
                 Password  :
                 @Html.Password("password")
+                <div id="errorMessage">@ViewBag.error</div>
             </p>
             <input type="submit" value="Log in" />
         }
