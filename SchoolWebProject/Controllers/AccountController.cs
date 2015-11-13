@@ -19,8 +19,9 @@ namespace SchoolWebProject.Controllers
             this.accountService = accService;
         }
 
-        public ActionResult LogIn()
+        public ActionResult LogIn(string error = "")
         {
+            ViewBag.error = error;
             return this.View("LogIn");
         }
 
@@ -30,33 +31,26 @@ namespace SchoolWebProject.Controllers
             User currentUser = this.accountService.GetUser(userName, password);
             if (currentUser == null)
             {
-                logger.Info("Wrong login data!");
-                return this.RedirectToAction("login", "account");
+                string error = "Wrong login data!";
+                return this.LogIn(error);
             }
             this.CreateCookie(currentUser);
-            switch (this.accountService.GetRoleById(currentUser.RoleId).Name)
-            {
-                case "admin":
-                    // return admin page
-                    break;
-                case "teacher":
-                    // return teacher page
-                    break;
-                case "pupil":
-                    // return pupil page
-                    break;
-                case "parent":
-                    //return parent page
-                    break;
-            }
-            return this.RedirectToAction("userpage", "account");
+            ViewBag.Links = this.accountService.GetUserRaws(currentUser.RoleId);
+            return this.RedirectToAction("UserPage","Account");
+
+        }
+
+        public ActionResult UserPage()
+        {
+            ViewBag.Links = this.accountService.GetUserRaws(1);
+            return View();
         }
 
         [Authorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return this.RedirectToAction("index", "home");
+            return this.RedirectToAction("LogIn");
         }
 
         private void CreateCookie(User currentUser)

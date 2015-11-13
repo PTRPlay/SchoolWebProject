@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
+
 
 namespace SchoolWebProject.Services
 {
@@ -24,7 +26,9 @@ namespace SchoolWebProject.Services
         public User GetUser(string userName, string password)
         {
             Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
-            User currentUser = this.userRepository.Get(getUserByLogin);
+            User currentUser;
+            currentUser = this.userRepository.Get(getUserByLogin);
+            if (currentUser == null) return currentUser;
             Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == currentUser.Id;
             LogInData logindata = this.userLoginRepository.Get(getLoginData);
             if (this.CheckUser(logindata, password) && currentUser != null)
@@ -42,6 +46,29 @@ namespace SchoolWebProject.Services
         {
             Expression<Func<Role, bool>> getRole = role => role.Id == id;
             return rolesRepository.Get(getRole);
+        }
+
+        public Dictionary<string,string> GetUserRaws(int? id)
+        {
+            var permisions = new Dictionary<string, string>();
+            switch (id)
+            {
+                case 1:
+                    permisions["Teachers"] = "teachers";
+                    permisions["Subjects"] = "subjects";
+                    permisions["Pupils"] = "pupils";
+                    permisions["Groups"] = "groups";
+                    permisions["Scheldule"] = "scheldule";
+                    permisions["Journal"] = "journal";
+                    permisions["News"] = "newsService";
+                    permisions["Contacts"] = "schoolService";
+                    break;
+                default:
+
+                    break;
+            }
+            return permisions;
+
         }
 
         public string CreateHashPassword(string inputPassword, string salt)

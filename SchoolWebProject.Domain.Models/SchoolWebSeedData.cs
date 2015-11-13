@@ -61,7 +61,7 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<Admin>
             {
-                new Admin{ FirstName="Admin", MiddleName="The", LastName="Best", SchoolId=1, RoleId=4}
+                new Admin{ FirstName="Admin", MiddleName="The", LastName="Best", SchoolId=1, RoleId=1}
             };
         }
 
