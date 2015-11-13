@@ -35,14 +35,20 @@ namespace SchoolWebProject.Controllers
                 return this.LogIn(error);
             }
             this.CreateCookie(currentUser);
-            ViewBag.Links = this.accountService.GetUserRaws(currentUser.RoleId);
-            return this.RedirectToAction("UserPage","Account");
+            ViewBag.Links = this.accountService.GetUserRaws(accountService.GetRoleById(currentUser.RoleId).Name);
+            return this.RedirectToAction("Index","Home");
 
         }
 
+        [Authorize]
         public ActionResult UserPage()
         {
-            ViewBag.Links = this.accountService.GetUserRaws(1);
+            string role = "";
+            if (HttpContext.User.IsInRole("admin")) role = "admin";
+            else if (HttpContext.User.IsInRole("teacher")) role = "teacher";
+            else if (HttpContext.User.IsInRole("pupil")) role = "pupil";
+            else if (HttpContext.User.IsInRole("parent")) role = "parent";
+            ViewBag.Links = this.accountService.GetUserRaws(role);
             return View();
         }
 
