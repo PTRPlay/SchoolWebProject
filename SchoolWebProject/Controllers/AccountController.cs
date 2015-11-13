@@ -34,21 +34,7 @@ namespace SchoolWebProject.Controllers
                 return this.View("LogIn");
             }
             this.CreateCookie(currentUser);
-            switch (currentUser.Role.Name)
-            {
-                case "admin":
-                    // return admin page
-                    break;
-                case "teacher":
-                    // return teacher page
-                    break;
-                case "pupil":
-                    // return pupil page
-                    break;
-                case "parent":
-                    //return parent page
-                    break;
-            }
+            
             return View("LogIn");
         }
 
