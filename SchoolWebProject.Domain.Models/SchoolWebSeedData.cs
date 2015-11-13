@@ -79,6 +79,16 @@ namespace SchoolWebProject.Domain.Models
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, Date=new DateTime(2015, 11,16), LessonDetailId=2, Value=11,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
+				new Mark{ SchoolId=1, MarkTypeId=3, Date=new DateTime(2015, 11,16), LessonDetailId=3, Value=5,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, Date=new DateTime(2015, 11,16), LessonDetailId=3, Value=6,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, Date=new DateTime(2015, 11,16), LessonDetailId=3, Value=7,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, Date=new DateTime(2015, 11,16), LessonDetailId=3, Value=8,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, Date=new DateTime(2015, 11,16), LessonDetailId=3, Value=9,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
 
             };
         }
