@@ -33,9 +33,9 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/pupils/2/25
-        public IEnumerable<ViewPupil> GetPage(int page, int amount)
+        public IEnumerable<ViewPupil> GetPage(int page, int amount, string sorting)
         {
-            var pupils = pupilService.GetPage(page, amount);
+            var pupils = pupilService.GetPage(page, amount, sorting);
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
             return viewModel;
         }

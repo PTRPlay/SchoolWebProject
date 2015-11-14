@@ -9,6 +9,7 @@
         paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
         useExternalPagination: true,
+        useExternalSorting: true,
 
         columnDefs: [
    {
@@ -73,18 +74,22 @@
    }
      ],
         onRegisterApi: function (gridApi) {
-            $scope.grid1Api = gridApi;
+            $scope.gridApi = gridApi;
+            $scope.gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
+                console.log('sorting changed!!');
+                if (sortColumns.length == 0) {
+                    paginationOptions.sort = null;
+                } else {
+                    paginationOptions.sort = sortColumns[0].sort.direction;
+                }
+                getPage();
+            });
             gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                 paginationOptions.pageNumber = newPage;
                 paginationOptions.pageSize = pageSize;
                 getPage();
             });
         }
-    };
-    
-    var getPage = function () {
-        var url;
-        url = 'api/pupils';
     };
 
     var paginationOptions = {
@@ -104,10 +109,24 @@
     };
 
     var getPage = function () {
+        var sortDir = '';
         var pageNumb = paginationOptions.pageNumber;
-        var firstRow = (paginationOptions.pageNumber - 1) * paginationOptions.pageSize;
-        pupils.getPage(pageNumb, paginationOptions.pageSize).success(function (data) {
-            $scope.pupilsGrid.totalItems = 99;
+        $scope.pupilsGrid.totalItems = 99;
+        switch (paginationOptions.sort) {
+            case uiGridConstants.ASC:
+                sortDir = 'asc';
+                break;
+
+            case uiGridConstants.DESC:
+                sortDir = 'desc';
+                break;
+
+            default:
+                sortDir = 'asc';
+                break;
+        }
+        pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir).success(function (data) {
+           
             $scope.pupilsGrid.data = data;
         });
     }
