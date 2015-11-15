@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\LessonDetailController.cs" />
     <Compile Include="Controllers\MarkController .cs" />
     <Compile Include="Controllers\SchoolsController.cs" />
     <Compile Include="Controllers\TeacherDegreeController.cs" />
@@ -176,6 +177,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ViewLessonDetails.cs" />
     <Compile Include="Models\ViewMark.cs" />
     <Compile Include="Models\ViewSchool.cs" />
     <Compile Include="Models\ViewSubject.cs" />

@@ -38,8 +38,10 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
             AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
             AutoMapper.Mapper.CreateMap<Subject, ViewSubject>();
-            AutoMapper.Mapper.CreateMap<Mark, ViewMark>();
+            AutoMapper.Mapper.CreateMap<Mark, ViewMark>()
+                .ForMember(g=>g.LessonDetail,map=>map.MapFrom(vm=>vm.LessonDetail));
             AutoMapper.Mapper.CreateMap<School, ViewSchool>();
+            AutoMapper.Mapper.CreateMap<LessonDetail, ViewLessonDetail>();
         }
     }
 
