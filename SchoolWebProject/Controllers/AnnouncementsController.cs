@@ -43,11 +43,19 @@ namespace SchoolWebProject.Controllers
         // POST api/announcements
         public void Post([FromBody]ViewAnnouncement value)
         {
+            var bin = new SchoolContext();
+            Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
+            bin.Announcements.Add(announcement);
+            bin.SaveChanges();
+ 
         }
 
         // PUT api/announcements/5
         public void Put(int id, [FromBody]ViewAnnouncement value)
         {
+            var announcement = announcementService.GetAnnouncementById(value.Id);
+            AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value, announcement);
+            announcementService.UpdateAnnouncement(announcement);
         }
 
         // DELETE api/announcements/5
