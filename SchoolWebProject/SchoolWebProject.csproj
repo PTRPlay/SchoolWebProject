@@ -259,7 +259,6 @@
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-touch.min.js.map" />
-    <Content Include="Layouts\UserPage.cshtml" />
     <None Include="Properties\PublishProfiles\Local IIS Website.pubxml" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -287,7 +286,6 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Account\UserPage.cshtml" />
-    <Content Include="Views\Account\Temporary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

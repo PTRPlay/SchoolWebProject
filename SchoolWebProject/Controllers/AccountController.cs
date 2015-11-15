@@ -19,8 +19,9 @@ namespace SchoolWebProject.Controllers
             this.accountService = accService;
         }
 
-        public ActionResult LogIn()
+        public ActionResult LogIn(string error = "")
         {
+            ViewBag.error = error;
             return this.View("LogIn");
         }
 
@@ -30,28 +31,43 @@ namespace SchoolWebProject.Controllers
             User currentUser = this.accountService.GetUser(userName, password);
             if (currentUser == null)
             {
-                logger.Info("Wrong login data!");
-                return this.View("LogIn");
+                string error = "Wrong login data!";
+                return this.LogIn(error);
             }
             this.CreateCookie(currentUser);
-            
-            return View("LogIn");
+            ViewBag.Links = this.accountService.GetUserRaws(accountService.GetRoleById(currentUser.RoleId).Name);
+            return this.RedirectToAction("Index","Home");
+
+        }
+
+        [Authorize]
+        public ActionResult UserPage()
+        {
+            string role = "";
+            if (HttpContext.User.IsInRole("admin")) role = "admin";
+            else if (HttpContext.User.IsInRole("teacher")) role = "teacher";
+            else if (HttpContext.User.IsInRole("pupil")) role = "pupil";
+            else if (HttpContext.User.IsInRole("parent")) role = "parent";
+            ViewBag.Links = this.accountService.GetUserRaws(role);
+            return View();
         }
 
         [Authorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("LogIn");
         }
 
         private void CreateCookie(User currentUser)
         {
             int minutesToCookiesExpirate = 20;
+            LogInData currLogin = this.accountService.GetUserLogInData(currentUser.Id);
+            string currentUserRole = this.accountService.GetRoleById(currentUser.RoleId).Name;
 
-            // parameter "name" - "login" string or "first name" string?
-            FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currentUser.LogInData.Login,
-                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), true, currentUser.Role.Name);
+            // parameter "name" - "login" string or "first name" string? 
+            FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currLogin.Login,
+                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), true, currentUserRole);
             string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
             HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             HttpContext.Response.Cookies.Add(authorizationCookie);

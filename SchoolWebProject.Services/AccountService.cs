@@ -48,12 +48,12 @@ namespace SchoolWebProject.Services
             return rolesRepository.Get(getRole);
         }
 
-        public Dictionary<string,string> GetUserRaws(int? id)
+        public Dictionary<string,string> GetUserRaws(string role)
         {
             var permisions = new Dictionary<string, string>();
-            switch (id)
+            switch (role)
             {
-                case 1:
+                case "admin":
                     permisions["Teachers"] = "teachers";
                     permisions["Subjects"] = "subjects";
                     permisions["Pupils"] = "pupils";
@@ -68,7 +68,6 @@ namespace SchoolWebProject.Services
                     break;
             }
             return permisions;
-
         }
 
         public string CreateHashPassword(string inputPassword, string salt)
