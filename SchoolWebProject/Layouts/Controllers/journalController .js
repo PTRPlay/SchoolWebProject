@@ -1,13 +1,42 @@
-﻿
+﻿//Define a custom filter to search only visible columns (used with grid 3)
+myApp.filter('visibleColumns', function () {
+    return function (data, grid, query) {
 
-myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants', function ($scope, markService, uiGridConstants) {
-    $scope.highlightFilteredHeader = function (row, rowRenderIndex, col, colRenderIndex) {
-        if (col.filters[0].term) {
-            return 'header-filtered';
-        } else {
-            return '';
+        matches = [];
+
+        //no filter defined so bail
+        if (query === undefined || query === '') {
+            return data;
         }
-    };
+
+        query = query.toLowerCase();
+
+        //loop through data items and visible fields searching for match
+        for (var i = 0; i < data.length; i++) {
+            for (var j = 0; j < grid.columnDefs.length; j++) {
+
+                var dataItem = data[i];
+                var fieldName = grid.columnDefs[j]['field'];
+
+                //as soon as search term is found, add to match and move to next dataItem
+                if (dataItem[fieldName].toString().toLowerCase().indexOf(query) > -1) {
+                    matches.push(dataItem);
+                    break;
+                }
+            }
+        }
+        return matches;
+    }
+});
+
+myApp.controller('journalController', ['$scope','$filter','$http', 'markService', 'uiGridConstants', function ($scope,$filter,$http, markService, uiGridConstants) {
+   
+    $scope.subjectsOptions = [];
+    $http.get("api/subjects/").success(function (data) {
+        for (i = 0; i < data.length; i++) {
+            $scope.subjectsOptions[i] = ({ value: data[i].Name, label: data[i].Name });
+        }
+    });
     
     $scope.subjects = [
                            { value: '1', label: 'Фізика' },
@@ -33,9 +62,8 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
     
 
 
-    $scope.journalGrid = {
-        showGridFooter: true,
-        enableFiltering: true,
+   /* $scope.journalGrid = {
+       
        columnDefs : [
   {
       field: "№ ",
@@ -50,7 +78,7 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
        field: 'Pupil.FirstName',
        width: 100,
        pinnedLeft: true,
-       enableFiltering: false,
+       
        enableCellEdit: false
    },
        {
@@ -59,23 +87,10 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
            width: 100,
            pinnedLeft: true,
            enableSorting: true,
-           enableFiltering: false,
            enableCellEdit: false
        },
         
-   {
-       name: 'Subject',
-       displayName: "Subject",
-       field: 'LessonDetail.ScheduleId',
-       width: 200,
-       enableSorting: false,
-       enableCellEdit: false,
-       enableFiltering: true,
-       filter: {
-           term: '1'
-       }
-
-   },
+   
    {
        name: 'Group',
        displayName: "Group",
@@ -83,13 +98,12 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
        width: 200,
        enableSorting: false,
        enableCellEdit: false,
-       enableFiltering: true,
-       filter: {
-           term: '1'
-       }
+       //visible:false,
+       type: 'number',
+      
 
    },
-   {
+  /* {
        name: 'Date1',
        field: 'Value',
        width: 200,
@@ -107,14 +121,22 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
    }
 
         ],
+
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
         }
 
-    };
+    };*/
 
+    $scope.filterText;
+
+    $scope.journalGrid = { columnDefs: [{ field: 'Pupil.FirstName' }, { field: 'Pupil.LastName' }, { field: 'Pupil.GroupId' }] };
+
+    $scope.refreshData = function () {
+        $scope.journalGrid.data = $filter('filter')($scope.Data, $scope.filterText, undefined);
+    };
     markService.success(function (data1) {
-        $scope.journalGrid.data = data1;
+        $scope.Data = data1;
     });
     
 }])
