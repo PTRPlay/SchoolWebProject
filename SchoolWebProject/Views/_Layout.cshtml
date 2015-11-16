@@ -8,7 +8,7 @@
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-touch.js"></script>
     <script src="~/Scripts/angular-animate.js"></script>
-
+ 
     <script src="~/Scripts/ui-grid.js"></script>
     <link href="~/Content/ui-grid.css" rel="stylesheet" />
     <script src="~/Scripts/angular-ui-router.min.js"></script>
@@ -44,6 +44,8 @@
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
     <script src="~/Layouts/ModalControllers/addPupilController.js"></script>
     <script src="~/Layouts/ModalControllers/deletePupilController.js"></script>
+    <script src="~/Layouts/ModalControllers/addAnnouncementController.js"></script>
+    <script src="~/Layouts/ModalControllers/announcementModalService.js"></script>
 
 <style>
 @@media only screen and (max-width: 768px) {
@@ -64,9 +66,12 @@
 
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" >
                     <li>
-                        <a href="account/login">Login</a>
+                        <a ui-sref="#">Loged in as @Context.User.Identity.Name</a>
+                    </li>
+                    <li>
+                        <a href="account/logout">Log out</a>
                     </li>
                 </ul>
 
@@ -80,14 +85,18 @@
                 <div class="col-sm-2 sidebar affix">
 
                     <ul class="nav nav-sidebar">
-                        <li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
+                        @*<li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
                         <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
                         <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Pupils</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="groups" class="btn-default">Groups</a></li>
+                        <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Groups</a></li>
                         <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
                         <li class="btn nav-tabs"><a ui-sref="journal" class="btn-default">Journal</a></li>
                         <li class="btn nav-tabs"><a ui-sref="newsService" class="btn-default">News</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="schoolService" class="btn-default">Contacts</a></li>
+                        <li class="btn nav-tabs"><a ui-sref="schoolService" class="btn-default">Contacts</a></li>*@
+                        @foreach (var i in ViewBag.Links)
+                        {
+                            <li class="btn nav-tabs"><a ui-sref=@i.Value class="btn-default">@i.Key</a></li>
+                        }
                     </ul>
                     </div>
                 </div>

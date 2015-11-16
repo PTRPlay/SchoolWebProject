@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
                         <div class="col-sm-4">
-                           <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
+                           <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЄ]{1}[а-яіє]{2,}$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">

@@ -27,9 +27,13 @@ namespace SchoolWebProject.Services
             return this.repository.GetAll().OrderBy(p=>p.LastName);
         }
 
-        public IEnumerable<Pupil> GetPage(int pageNumb, int amount)
+        public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting)
         {
-            return this.repository.GetAll().OrderBy(p => p.LastName).Skip((pageNumb-1) * amount).Take(amount);
+            if(sorting.ToLower() == "desc")
+            return this.repository.GetAll().OrderByDescending(p => p.LastName).Skip((pageNumb-1) * amount).Take(amount);
+            else
+                return this.repository.GetAll().OrderBy(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
+
         }
 
         public Pupil GetProfileById(int id)

@@ -76,7 +76,14 @@ namespace SchoolWebProject.Data.Infrastructure
 
         public T Get(Expression<Func<T, bool>> where)
         {
-            return this.dbSet.Where(where).FirstOrDefault<T>();
+            try
+            {
+                return this.dbSet.Where(where).FirstOrDefault<T>();
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
