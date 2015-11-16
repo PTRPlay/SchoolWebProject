@@ -1,17 +1,11 @@
 ﻿
 
-myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants', function ($scope, markService, uiGridConstants) {
-    $scope.highlightFilteredHeader = function (row, rowRenderIndex, col, colRenderIndex) {
-        if (col.filters[0].term) {
-            return 'header-filtered';
-        } else {
-            return '';
-        }
-    };
+myApp.controller('journalController', ['$scope', 'markService','subjects','groups', 'uiGridConstants', function ($scope, markService,subjects,groups, uiGridConstants) {
     
-    $scope.subjectsOption = null;  
-    $scope.groupsOption = null;
-  
+   
+    $scope.chosenSubject=null;
+    $scope.chosenGroup=null;
+
     $scope.journalGrid = {
         showGridFooter: true,
         enableFiltering: true,
@@ -41,33 +35,6 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
            enableFiltering: false,
            enableCellEdit: false
        },
-        
-   {
-       name: 'Subject',
-       displayName: "Subject",
-       field: 'LessonDetail.ScheduleId',
-       width: 200,
-       enableSorting: false,
-       enableCellEdit: false,
-       enableFiltering: true,
-       filter: {
-           term: '1'
-       }
-
-   },
-   {
-       name: 'Group',
-       displayName: "Group",
-       field: 'Pupil.GroupId',
-       width: 200,
-       enableSorting: false,
-       enableCellEdit: false,
-       enableFiltering: true,
-       filter: {
-           term: '1'
-       }
-
-   },
    {
        name: 'Date1',
        field: 'Value',
@@ -92,8 +59,19 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
 
     };
 
-    markService.success(function (data1) {
-        $scope.journalGrid.data = data1;
+    $scope.GetJournalPage = function (chosenSubject,chosenGroup)
+    {
+        if (chosenGroup != null && chosenSubject != null)
+            markService.getPage(chosenSubject, chosenGroup).success(function (data) {
+                $scope.journalGrid.data = data;
+            });
+    }
+
+    subjects.success(function (data) {
+        $scope.subjectsOptions = data;
     });
-    
+
+    groups.success(function (data) {
+        $scope.groupsOptions = data;
+    });
 }])

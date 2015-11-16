@@ -6,14 +6,14 @@
     <div class="row container-fluid">
         <div class="form-group">
             <label for="subject" class="col-sm-2 control-label">Select subject:</label>
-            <select ng-controller="subjectsController" class="col-md-2" id="subject" ng-model="subjectsOption" ng-options="subject.Name for subject in listSubjects"></select>
+            <select class="col-md-2" id="subject" ng-model="chosenSubject" ng-change="GetJournalPage(chosenSubject,chosenGroup)" ng-options="subject.Id as subject.Name for subject in subjectsOptions"></select>
+        {{chosenSubject}}
         </div>
         <div class="form-group">
             <label for="group" class="col-sm-2 control-label">Select group:</label>
-            <select ng-controller="groupsController" class="col-md-2" id="group" ng-model="groupsOption">
-                <option ng-repeat="group in listGroups" value="{{group}}">{{group.NameNumber + '-' + group.NameLetter}}</option>
-            </select>
-        </div>
+            <select class="col-md-2" id="group" ng-model="chosenGroup" ng-change="GetJournalPage(chosenSubject,chosenGroup)" ng-options="group.Id as (group.NameNumber+'-'+group.NameLetter) for group in groupsOptions"></select>
+        {{chosenGroup}}
+         </div>
     </div>
 
    <div class="row">
