@@ -35,9 +35,7 @@ namespace SchoolWebProject.Controllers
                 return this.LogIn(error);
             }
             this.CreateCookie(currentUser);
-            ViewBag.Links = this.accountService.GetUserRaws(accountService.GetRoleById(currentUser.RoleId).Name);
             return this.RedirectToAction("Index","Home");
-
         }
 
         [Authorize]
