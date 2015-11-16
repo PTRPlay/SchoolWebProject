@@ -9,30 +9,9 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
         }
     };
     
-    $scope.subjects = [
-                           { value: '1', label: 'Фізика' },
-                           { value: '2', label: 'Геометрія' },
-                           { value: '3', label: 'Хімія' },
-                           { value: '4', label: 'Історія' },
-                           { value: '5', label: 'Математика' },
-    ];
-
-    $scope.groups = [
-                          { value: '1', label: '1a' },
-                          { value: '2', label: '2a' },
-                          { value: '3', label: '3a' },
-                          { value: '4', label: '4a' },
-                          { value: '5', label: '5a' },
-                          { value: '6', label: '6a' },
-                          { value: '7', label: '7a' },
-                          { value: '8', label: '8a' },
-                          { value: '9', label: '9a' },
-                          { value: '10', label: '10a' },
-    ];
-   
-    
-
-
+    $scope.subjectsOption = null;  
+    $scope.groupsOption = null;
+  
     $scope.journalGrid = {
         showGridFooter: true,
         enableFiltering: true,

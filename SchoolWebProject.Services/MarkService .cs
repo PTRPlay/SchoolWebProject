@@ -35,7 +35,8 @@ namespace SchoolWebProject.Services
         {
             var marks = repository.GetAll()
                 .Where(p => p.Pupil.GroupId == groupId)
-                .OrderBy(s => s.Pupil.LastName);
+                .OrderBy(s => s.Pupil.LastName)
+                .OrderBy(s => s.LessonDetail.Date);
             return marks;
         }
 
