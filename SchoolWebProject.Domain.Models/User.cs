@@ -46,7 +46,7 @@ namespace SchoolWebProject.Domain.Models
 
         public virtual School School { get; set; }
 
-        public virtual List<Announcement> Announcements { get; set; }
+        ////  public virtual List<Announcement> Announcements { get; set; }
 
         public virtual List<Topic> Topics { get; set; }
 

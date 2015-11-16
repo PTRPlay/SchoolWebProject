@@ -8,9 +8,7 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
             return '';
         }
     };
-
-    $scope.choosenSubject;
-
+    
     $scope.subjects = [
                            { value: '1', label: 'Фізика' },
                            { value: '2', label: 'Геометрія' },
@@ -19,6 +17,18 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
                            { value: '5', label: 'Математика' },
     ];
 
+    $scope.groups = [
+                          { value: '1', label: '1a' },
+                          { value: '2', label: '2a' },
+                          { value: '3', label: '3a' },
+                          { value: '4', label: '4a' },
+                          { value: '5', label: '5a' },
+                          { value: '6', label: '6a' },
+                          { value: '7', label: '7a' },
+                          { value: '8', label: '8a' },
+                          { value: '9', label: '9a' },
+                          { value: '10', label: '10a' },
+    ];
    
     
 
@@ -60,7 +70,23 @@ myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants
        width: 200,
        enableSorting: false,
        enableCellEdit: false,
-       enableFiltering: true
+       enableFiltering: true,
+       filter: {
+           term: '1'
+       }
+
+   },
+   {
+       name: 'Group',
+       displayName: "Group",
+       field: 'Pupil.GroupId',
+       width: 200,
+       enableSorting: false,
+       enableCellEdit: false,
+       enableFiltering: true,
+       filter: {
+           term: '1'
+       }
 
    },
    {

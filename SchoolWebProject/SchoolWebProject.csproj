@@ -200,6 +200,7 @@
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Contacts.html" />
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\journalController .js" />
@@ -212,8 +213,10 @@
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
     <Content Include="Layouts\Journal.html" />
+    <Content Include="Layouts\ModalControllers\addAnnouncementController.js" />
     <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
+    <Content Include="Layouts\ModalControllers\announcementModalService.js" />
     <Content Include="Layouts\ModalControllers\deletePupilController.js" />
     <Content Include="Layouts\ModalControllers\Modal.js" />
     <Content Include="Layouts\ModalControllers\modalServices.js" />
