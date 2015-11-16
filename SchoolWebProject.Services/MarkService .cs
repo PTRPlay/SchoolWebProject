@@ -31,6 +31,15 @@ namespace SchoolWebProject.Services
             return repository.GetAll();
         }
 
+        public IEnumerable<Mark> GetMarksBySubjectAndGroup(int subjectId, int groupId)
+        {
+            var marks = repository.GetAll()
+                .Where(p => p.Pupil.GroupId == groupId)
+                .OrderBy(s => s.Pupil.LastName)
+                .OrderBy(s => s.LessonDetail.Date);
+            return marks;
+        }
+
         public Mark GetMarkById(int id)
         {
            return repository.GetById(id);

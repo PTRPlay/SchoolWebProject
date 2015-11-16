@@ -1,69 +1,20 @@
-﻿//Define a custom filter to search only visible columns (used with grid 3)
-myApp.filter('visibleColumns', function () {
-    return function (data, grid, query) {
+﻿
 
-        matches = [];
-
-        //no filter defined so bail
-        if (query === undefined || query === '') {
-            return data;
+myApp.controller('journalController', ['$scope', 'markService', 'uiGridConstants', function ($scope, markService, uiGridConstants) {
+    $scope.highlightFilteredHeader = function (row, rowRenderIndex, col, colRenderIndex) {
+        if (col.filters[0].term) {
+            return 'header-filtered';
+        } else {
+            return '';
         }
-
-        query = query.toLowerCase();
-
-        //loop through data items and visible fields searching for match
-        for (var i = 0; i < data.length; i++) {
-            for (var j = 0; j < grid.columnDefs.length; j++) {
-
-                var dataItem = data[i];
-                var fieldName = grid.columnDefs[j]['field'];
-
-                //as soon as search term is found, add to match and move to next dataItem
-                if (dataItem[fieldName].toString().toLowerCase().indexOf(query) > -1) {
-                    matches.push(dataItem);
-                    break;
-                }
-            }
-        }
-        return matches;
-    }
-});
-
-myApp.controller('journalController', ['$scope','$filter','$http', 'markService', 'uiGridConstants', function ($scope,$filter,$http, markService, uiGridConstants) {
-   
-    $scope.subjectsOptions = [];
-    $http.get("api/subjects/").success(function (data) {
-        for (i = 0; i < data.length; i++) {
-            $scope.subjectsOptions[i] = ({ value: data[i].Name, label: data[i].Name });
-        }
-    });
+    };
     
-    $scope.subjects = [
-                           { value: '1', label: 'Фізика' },
-                           { value: '2', label: 'Геометрія' },
-                           { value: '3', label: 'Хімія' },
-                           { value: '4', label: 'Історія' },
-                           { value: '5', label: 'Математика' },
-    ];
-
-    $scope.groups = [
-                          { value: '1', label: '1a' },
-                          { value: '2', label: '2a' },
-                          { value: '3', label: '3a' },
-                          { value: '4', label: '4a' },
-                          { value: '5', label: '5a' },
-                          { value: '6', label: '6a' },
-                          { value: '7', label: '7a' },
-                          { value: '8', label: '8a' },
-                          { value: '9', label: '9a' },
-                          { value: '10', label: '10a' },
-    ];
-   
-    
-
-
-   /* $scope.journalGrid = {
-       
+    $scope.subjectsOption = null;  
+    $scope.groupsOption = null;
+  
+    $scope.journalGrid = {
+        showGridFooter: true,
+        enableFiltering: true,
        columnDefs : [
   {
       field: "№ ",
@@ -78,7 +29,7 @@ myApp.controller('journalController', ['$scope','$filter','$http', 'markService'
        field: 'Pupil.FirstName',
        width: 100,
        pinnedLeft: true,
-       
+       enableFiltering: false,
        enableCellEdit: false
    },
        {
@@ -87,10 +38,23 @@ myApp.controller('journalController', ['$scope','$filter','$http', 'markService'
            width: 100,
            pinnedLeft: true,
            enableSorting: true,
+           enableFiltering: false,
            enableCellEdit: false
        },
         
-   
+   {
+       name: 'Subject',
+       displayName: "Subject",
+       field: 'LessonDetail.ScheduleId',
+       width: 200,
+       enableSorting: false,
+       enableCellEdit: false,
+       enableFiltering: true,
+       filter: {
+           term: '1'
+       }
+
+   },
    {
        name: 'Group',
        displayName: "Group",
@@ -98,12 +62,13 @@ myApp.controller('journalController', ['$scope','$filter','$http', 'markService'
        width: 200,
        enableSorting: false,
        enableCellEdit: false,
-       //visible:false,
-       type: 'number',
-      
+       enableFiltering: true,
+       filter: {
+           term: '1'
+       }
 
    },
-  /* {
+   {
        name: 'Date1',
        field: 'Value',
        width: 200,
@@ -121,22 +86,14 @@ myApp.controller('journalController', ['$scope','$filter','$http', 'markService'
    }
 
         ],
-
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
         }
 
-    };*/
-
-    $scope.filterText;
-
-    $scope.journalGrid = { columnDefs: [{ field: 'Pupil.FirstName' }, { field: 'Pupil.LastName' }, { field: 'Pupil.GroupId' }] };
-
-    $scope.refreshData = function () {
-        $scope.journalGrid.data = $filter('filter')($scope.Data, $scope.filterText, undefined);
     };
+
     markService.success(function (data1) {
-        $scope.Data = data1;
+        $scope.journalGrid.data = data1;
     });
     
 }])

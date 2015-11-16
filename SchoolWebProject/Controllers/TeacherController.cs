@@ -49,7 +49,6 @@ namespace SchoolWebProject.Controllers
             var bin = new SchoolContext();
             //Teacher teacher = new Teacher();
             //teacher.Subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects).ToList<Subject>();
-            //var el = value.Subjects.First().Id;
             var modifiedSubjects = value.Subjects;
             value.Subjects = null;
             //AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
