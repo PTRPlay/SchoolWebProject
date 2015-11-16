@@ -39,18 +39,6 @@ namespace SchoolWebProject.Controllers
         }
 
         [Authorize]
-        public ActionResult UserPage()
-        {
-            string role = "";
-            if (HttpContext.User.IsInRole("admin")) role = "admin";
-            else if (HttpContext.User.IsInRole("teacher")) role = "teacher";
-            else if (HttpContext.User.IsInRole("pupil")) role = "pupil";
-            else if (HttpContext.User.IsInRole("parent")) role = "parent";
-            ViewBag.Links = this.accountService.GetUserRaws(role);
-            return View();
-        }
-
-        [Authorize]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

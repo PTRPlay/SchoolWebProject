@@ -181,10 +181,10 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<Role>
             {
-                new Role { Name = "admin" },
-                new Role { Name = "teacher" },
-                new Role { Name = "pupil" },
-                new Role { Name = "parent" }
+                new Role { Name = "Admin" },
+                new Role { Name = "Teacher" },
+                new Role { Name = "Pupil" },
+                new Role { Name = "Parent" }
             };
         }
 
