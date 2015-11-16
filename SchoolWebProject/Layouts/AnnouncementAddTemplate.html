@@ -1,0 +1,82 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="AddAnnouncementForm">
+                    <div class="form-group">
+            <!--           <input type="file" class="form-control" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="onLoad">   -->
+                        <img src="{{announcement.img}}" class="img-rounded col-sm-4" width="170" height="170" alt="{{announcement.title}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">Title:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="title" ng-model="announcement.title" name="title" ng-minlength="3" ng-maxlength="100" required />
+
+                            <div class="error" style="color:red"
+                                 ng-show="AddAnnouncementForm.title.$dirty && AddAnnouncementForm.title.$invalid">
+                                <small class="error"
+                                       ng-show="AddAnnouncementForm.title.$error.required">
+                                    Title is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddAnnouncementForm.title.$error.minlength">
+                                    Title is required to be at least 3 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddAnnouncementForm.title.$error.maxlength">
+                                    Your first Name cannot be longer than 100 characters
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="col-sm-2 control-label">Message:</label>
+                        <div class="col-sm-6">
+                            <textarea rows="3" class="form-control" id="message" ng-model="announcement.message" name="message" ng-minlength="3" ng-maxlength="300" required />
+
+                            <div class="error" style="color:red"
+                                 ng-show="AddAnnouncementForm.message.$dirty && AddAnnouncementForm.message.$invalid">
+                                <small class="error"
+                                       ng-show="AddAnnouncementForm.message.$error.required">
+                                    Message is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddAnnouncementForm.message.$error.minlength">
+                                    Message is required to be at least 3 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddAnnouncementForm.message.$error.maxlength">
+                                   Message cannot be longer than 300 characters
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageDetails" class="col-sm-2 control-label">Message detail:</label>
+                        <div class="col-sm-6">
+                            <textarea rows="5" class="form-control" id="messageDetails" ng-model="announcement.messageDetails" name="messageDetails"/>
+                            <div class="error" style="color:red"
+                                 ng-show="AddAnnouncementForm.messageDetails.$dirty && AddAnnouncementForm.messageDetails.$invalid">
+                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataPublished" class="col-sm-2 control-label">Data published:</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="dataPublished" ng-model="announcement.dataPublished" />
+                        </div>
+                    </div>
+          
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">OK</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

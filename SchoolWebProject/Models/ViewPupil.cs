@@ -25,6 +25,8 @@ namespace SchoolWebProject.Models
 
         public byte[] Image { get; set; }
 
+        public int GroupId { get; set; }
+
    ////     public string School { get; set; }
 
         public int LogInDataId { get; set; }

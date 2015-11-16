@@ -1,2 +1,37 @@
-﻿<h2>{{text}}</h2>
-<div id="journalGrid" ui-grid-pinning ui-grid-edit class="grid" ui-grid="journalGrid" style="width:1000px; height: 470px;"></div>
+﻿
+
+<div class="container">
+    <h2>{{text}}</h2>
+    
+    <div class="row container-fluid">
+        <label  for="sel3">Select subject:</label>
+        <label for="sel2">Select group:</label>
+        <select class="col-md-2" id="sel3" ng-init="gridApi.grid.columns[3].filters[0].term=99" ng-model="gridApi.grid.columns[3].filters[0].term"
+                ng-options="subject.value as subject.label for subject in subjects"></select>
+        <select  class="col-md-2" id="sel2" ng-model="gridApi.grid.columns[4].filters[0].term"
+                ng-options="group.value as group.label for group in groups"></select>
+</div>
+
+   <div class="row">
+        <div class="col-md-8">
+            <div id="journalGrid" ui-grid-pinning ui-grid-edit class="grid" ui-grid="journalGrid" ></div>
+        </div>
+        <div class="col-md-3 col-md-offset-0 container-fluid" style="background-color:#ffff66;border:solid;margin:10px;height:50px;">
+            <form role="form">
+                <p class="form-control text-center" style="margin:5px">{{journalGrid.data[0].Date.slice(0,10)}}</p>
+            </form>
+        </div>
+        <div class="col-md-3 col-md-offset-0 container-fluid"  style="background-color:#ffff66;border:solid;margin:10px; height:200px">
+            <form role="form">
+                <h4 class="text-center">Home Task:</h4>
+                <textarea class="form-control" rows="6" cols="8" readonly ng-model="journalGrid.data[0].LessonDetail.HomeTask"></textarea>
+            </form>
+        </div>
+        <div class="col-md-3 col-md-offset-0 container-fluid" style="background-color:#ffff66;border:solid;margin:10px; height:150px" >
+            <form role="form">
+                <h4 class="text-center">Home Task:</h4>
+                <textarea name="theme" class="form-control" rows="4" cols="8" ng-model="journalGrid.data[0].LessonDetail.Theme"></textarea>
+            </form>
+        </div>
+    </div>
+</div>

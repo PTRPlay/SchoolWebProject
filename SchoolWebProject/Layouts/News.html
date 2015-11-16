@@ -1,8 +1,8 @@
 ﻿<div class="container" style="width:1000px">
         <div class=" page-header">
-    <h1>News</h1>
-</div>
-    <!--<button type="button" class="btn btn-default">New announcements</button><br>-->
+            <h1>News</h1>
+        </div>
+    <button href="#addAnnouncement" type="button" class="btn btn-default" ng-controller="announcementModalService" ng-click="showAnnouncementEditPage()">New announcements</button><br>
         <br>
         <br>
     <div class="panel panel-default" ng-repeat="(announcementIndex,announcement) in listAnnouncements">
