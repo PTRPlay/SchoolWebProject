@@ -31,7 +31,7 @@ namespace SchoolWebProject.Controllers
             User currentUser = this.accountService.GetUser(userName, password);
             if (currentUser == null)
             {
-                string error = "Wrong login data!";
+                string error = Constants.LoginError;
                 return this.LogIn(error);
             }
             this.CreateCookie(currentUser);
