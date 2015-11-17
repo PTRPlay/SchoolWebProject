@@ -67,7 +67,7 @@
    },
    {
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.Id, row.entity.LastName)" style="width: 70px;">Delete</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -103,9 +103,9 @@
         PupilsModalService.showPupilsEditPage();
     };
 
-    $scope.deleteHandler = function (value) {
-        //alert('Wanna delete ' + value + ' ?');
-        PupilsModalService.showPupilsDeleteModal();
+    $scope.deleteHandler = function (id, lastName) {
+        var val = {id: id, lastName: lastName};
+        PupilsModalService.showPupilsDeleteModal(val);
     };
 
     var getPage = function () {

@@ -38,10 +38,12 @@
                     modal.close.then(function (result) {
                         if (result != null) {
                             if (result.id == null) {
+                                //add new pupil
                                 $http.post("api/pupils", result);
                                 window.location.reload("/home");
                             }
                             else {
+                                //update existing pupil
                                 $http.post("api/pupils/" + result.id, result);
                                 window.location.reload("/home");
                             }
@@ -49,5 +51,5 @@
 
                     });
                 });
-        }
+     }
 }]);

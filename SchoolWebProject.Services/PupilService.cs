@@ -52,8 +52,9 @@ namespace SchoolWebProject.Services
             this.unitOfWork.PupilRepository.Add(pupil);
         }
 
-        public void RemovePupil(Pupil pupil)
+        public void RemovePupil(int id)
         {
+            Pupil pupil = this.unitOfWork.PupilRepository.GetById(id); 
             this.unitOfWork.PupilRepository.Delete(pupil);
         }
 

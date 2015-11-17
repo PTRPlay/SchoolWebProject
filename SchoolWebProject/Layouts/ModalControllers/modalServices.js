@@ -26,6 +26,26 @@
 
                     });
                 });
+        },
+
+        showPupilsDeleteModal: function (id) {
+            ModalService.showModal({
+                templateUrl: "Layouts/PupilsDeleteTemplate.html",
+                controller: "pupilDeleteController",
+                inputs: {
+                    title: "Delete",
+                    PupilId: id
+                }
+            })
+                .then(function (modal) {
+                    modal.element.modal();
+                    modal.close.then(function (result) {
+                        if (result.id != null) {
+                                $http.delete("api/pupils/" + result.id);
+                                window.location.reload("/home");
+                            }
+                    });
+                });
         }
     }
 }]);

@@ -67,8 +67,11 @@ namespace SchoolWebProject.Controllers
         }
 
         // DELETE api/pupils/5
+        [HttpDelete]
         public void Delete(int id)
         {
+            pupilService.RemovePupil(id);
+            this.pupilService.SavePupil();
         }
     }
 }
