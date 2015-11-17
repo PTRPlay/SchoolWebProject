@@ -28,6 +28,7 @@
     <script src="~/Layouts/Controllers/groupsController.js"></script>
     <script src="~/Layouts/Controllers/teachersController.js"></script>
 	<script src="~/Layouts/Controllers/journalController .js"></script>
+    <script src="~/Layouts/Controllers/diaryController.js"></script>
 
     <script src="~/Layouts/Services/newsService.js"></script>
     <script src="~/Layouts/Services/schoolService.js"></script>
@@ -39,8 +40,9 @@
     <script src="~/Layouts/Services/groupsService.js"></script>
     <script src="~/Layouts/ModalControllers/modalServices.js"></script>
 	<script src="~/Layouts/Services/journalService.js"></script>
+    <script src="~/Layouts/Services/diaryService.js"></script>
     
-    <script src="~/Layouts/ModalControllers/Modal.js"></script>
+    <script src="~/Layouts/ModalControllers/teacherModalService.js"></script>
     <script src="~/Layouts/ModalControllers/addTeacherController.js"></script>
     <script src="~/Layouts/ModalControllers/addPupilController.js"></script>
     <script src="~/Layouts/ModalControllers/deletePupilController.js"></script>
@@ -66,9 +68,12 @@
 
             <div class="navbar-collapse collapse" ng-controller="ModalShowController">
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" >
                     <li>
-                        <a href="account/login">Login</a>
+                        <a ui-sref="#">Loged in as @Context.User.Identity.Name</a>
+                    </li>
+                    <li>
+                        <a href="account/logout">Log out</a>
                     </li>
                 </ul>
 
@@ -82,14 +87,19 @@
                 <div class="col-sm-2 sidebar affix">
 
                     <ul class="nav nav-sidebar">
-                        <li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Pupils</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="groups" class="btn-default">Groups</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="journal" class="btn-default">Journal</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="newsService" class="btn-default">News</a></li>
-                        <li class="btn nav-tabs"><a ui-sref="schoolService" class="btn-default">Contacts</a></li>
+                                                                        @*<li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
+        <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
+        <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Pupils</a></li>
+        <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Groups</a></li>
+        <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
+        <li class="btn nav-tabs"><a ui-sref="diaryService" class="btn-default">Diary</a></li>
+        <li class="btn nav-tabs"><a ui-sref="journal" class="btn-default">Journal</a></li>
+        <li class="btn nav-tabs"><a ui-sref="newsService" class="btn-default">News</a></li>
+        <li class="btn nav-tabs"><a ui-sref="schoolService" class="btn-default">Contacts</a></li>*@
+                        @foreach (var i in ViewBag.Links)
+                        {
+                            <li class="btn nav-tabs"><a ui-sref=@i.Value class="btn-default">@i.Key</a></li>
+                        }
                     </ul>
                     </div>
                 </div>

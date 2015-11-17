@@ -163,6 +163,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\DiaryController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\LessonDetailController.cs" />
     <Compile Include="Controllers\MarkController .cs" />
@@ -177,6 +178,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ViewDiary.cs" />
     <Compile Include="Models\ViewLessonDetails.cs" />
     <Compile Include="Models\ViewMark.cs" />
     <Compile Include="Models\ViewSchool.cs" />
@@ -200,8 +202,10 @@
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Contacts.html" />
+    <Content Include="Layouts\Controllers\diaryController.js" />
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\journalController .js" />
     <Content Include="Layouts\Controllers\pupilsController.js" />
@@ -212,13 +216,14 @@
     <Content Include="Layouts\Controllers\newsController.js" />
     <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
+    <Content Include="Layouts\Diary.html" />
     <Content Include="Layouts\Journal.html" />
     <Content Include="Layouts\ModalControllers\addAnnouncementController.js" />
     <Content Include="Layouts\ModalControllers\addPupilController.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\announcementModalService.js" />
     <Content Include="Layouts\ModalControllers\deletePupilController.js" />
-    <Content Include="Layouts\ModalControllers\Modal.js" />
+    <Content Include="Layouts\ModalControllers\teacherModalService.js" />
     <Content Include="Layouts\ModalControllers\modalServices.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
@@ -227,6 +232,7 @@
     <Content Include="Layouts\PupilsDeleteTemplate.html" />
     <Content Include="Layouts\Scheldule.html" />
     <Content Include="Layouts\Groups.html" />
+    <Content Include="Layouts\Services\diaryService.js" />
     <Content Include="Layouts\Services\groupsService.js" />
     <Content Include="Layouts\Services\journalService.js" />
     <Content Include="Layouts\Services\schoolService.js" />
@@ -240,7 +246,6 @@
     <Content Include="Layouts\Subjects.html" />
     <Content Include="Layouts\TeacherInfo.html" />
     <Content Include="Layouts\Teachers.html" />
-    <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -285,7 +290,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\Account\UserPage.cshtml" />
     <Content Include="Views\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>

@@ -16,10 +16,16 @@ namespace SchoolWebProject
             );
 
             config.Routes.MapHttpRoute(
+                name: "MarksApi",
+                routeTemplate: "api/{controller}/{subjectId}/{groupId}"
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "PagingApi",
                 routeTemplate: "api/{controller}/{page}/{amount}/{sorting}",
                 defaults: new { sorting = RouteParameter.Optional }
             );
+
         }
     }
 }

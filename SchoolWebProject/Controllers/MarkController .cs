@@ -34,6 +34,14 @@ namespace SchoolWebProject.Controllers
             return viewModel;
         }
 
+        // GET api/mark/subjectId/groupId
+        public IEnumerable<ViewMark> GetBySubjectAndGroup(int subjectId, int groupId)
+        {
+            var marks = markService.GetMarksBySubjectAndGroup(subjectId, groupId);
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Mark>, IEnumerable<ViewMark>>(marks);
+            return viewModel;
+        }
+
         // GET api/mark/5
         public ViewMark Get(int id)
         {
