@@ -42,6 +42,8 @@ namespace SchoolWebProject.Mapper
                 .ForMember(g=>g.LessonDetail,map=>map.MapFrom(vm=>vm.LessonDetail));
             AutoMapper.Mapper.CreateMap<School, ViewSchool>();
             AutoMapper.Mapper.CreateMap<LessonDetail, ViewLessonDetail>();
+         //   AutoMapper.Mapper.CreateMap<Pupil, ViewDiary>();
+
         }
     }
 
@@ -88,6 +90,7 @@ namespace SchoolWebProject.Mapper
 
             AutoMapper.Mapper.CreateMap<ViewSubject, Subject>();
             AutoMapper.Mapper.CreateMap<ViewSchool,School>();
+     //       AutoMapper.Mapper.CreateMap<ViewDiary, Pupil>();
         }
     }
 }

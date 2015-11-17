@@ -24,6 +24,11 @@ myApp.config(function ($stateProvider) {
         url: '/scheldule',
         templateUrl: '/Layouts/Scheldule.html'
     })
+    .state('diaryService', {
+        url: '/diary',
+        templateUrl: '/Layouts/Diary.html',
+        controller: 'diaryController'
+     })
     .state('pupils', {
         url: '/pupils',
         templateUrl: '/Layouts/Pupils.html',

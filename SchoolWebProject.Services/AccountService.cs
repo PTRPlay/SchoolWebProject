@@ -59,6 +59,7 @@ namespace SchoolWebProject.Services
                     permisions["Pupils"] = "pupils";
                     permisions["Groups"] = "groups";
                     permisions["Scheldule"] = "scheldule";
+                    permisions["Diary"] = "diaryService";
                     permisions["Journal"] = "journal";
                     permisions["News"] = "newsService";
                     permisions["Contacts"] = "schoolService";
@@ -72,6 +73,7 @@ namespace SchoolWebProject.Services
                     permisions["Contacts"] = "schoolService";
                     break;
                 case Constants.UserRoles.Pupil:
+                    permisions["Diary"] = "diaryService";
                     permisions["Scheldule"] = "scheldule";
                     permisions["Journal"] = "journal";
                     permisions["News"] = "newsService";
