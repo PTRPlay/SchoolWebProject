@@ -218,7 +218,7 @@
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\announcementModalService.js" />
     <Content Include="Layouts\ModalControllers\deletePupilController.js" />
-    <Content Include="Layouts\ModalControllers\Modal.js" />
+    <Content Include="Layouts\ModalControllers\teacherModalService.js" />
     <Content Include="Layouts\ModalControllers\modalServices.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
