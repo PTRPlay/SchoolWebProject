@@ -20,10 +20,10 @@ namespace SchoolWebProject.Controllers
 
         private MarkService markService;
 
-        public MarkController(ILogger logger) 
+        public MarkController(ILogger logger, MarkService markService) 
         {
             this.getLogger = logger;
-            this.markService = new MarkService(this.getLogger);
+            this.markService = markService;
         }
 
         // GET api/mark
@@ -53,8 +53,8 @@ namespace SchoolWebProject.Controllers
         public void Post([FromBody]ViewMark value)
         {
             var mark = AutoMapper.Mapper.Map<ViewMark, Mark>(value);
-            new MarkService(this.getLogger).AddMark(mark);
-            this.Get();
+            this.markService.AddMark(mark);
+            this.markService.SaveMark();
         }
 
         // PUT api/mark/5

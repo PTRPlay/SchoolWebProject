@@ -22,7 +22,7 @@ namespace SchoolWebProject.Controllers
         public HomeController(ILogger tmplogger, AccountService input)
         {
             this.logger = new Logger();
-            this.repository = new GenericRepository<Teacher>(new DbFactory());
+            //this.repository = new GenericRepository<Teacher>(new DbFactory());
             this.accountService = input;
         }
         

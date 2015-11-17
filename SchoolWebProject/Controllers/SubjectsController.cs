@@ -18,10 +18,10 @@ namespace SchoolWebProject.Controllers
 
         private SubjectService subjects;
 
-        public SubjectsController(ILogger logger)
+        public SubjectsController(ILogger logger, SubjectService subjects)
         {
             this.subjectLogger = logger;
-            this.subjects = new SubjectService(new Logger());
+            this.subjects = subjects;
         }
 
         // GET api/subject

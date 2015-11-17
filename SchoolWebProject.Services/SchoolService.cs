@@ -11,45 +11,45 @@ namespace SchoolWebProject.Services
 {
     public class SchoolService : BaseService, ISchoolService
     {
-        private IRepository<School> repository;
+        private ILogger schoolLogger;
 
         private IUnitOfWork unitOfWork;
 
-        public SchoolService(ILogger logger, IRepository<School> schoolRepository, IUnitOfWork unitOfWork)
+        public SchoolService(ILogger logger,  IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.repository = schoolRepository;
+            this.schoolLogger = logger;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<School> GetAllSchools()
         {
-            return this.repository.GetAll();
+            return this.unitOfWork.SchoolRepository.GetAll();
         }
 
         public School GetSchoolById(int id)
         {
-            return this.repository.GetById(id);
+            return this.unitOfWork.SchoolRepository.GetById(id);
         }
 
         public void UpdateSchool(School school)
         {
-            this.repository.Update(school);
+            this.unitOfWork.SchoolRepository.Update(school);
         }
 
         public void AddSchool(School school)
         {
-            this.repository.Add(school);
+            this.unitOfWork.SchoolRepository.Add(school);
         }
 
         public void RemoveSchool(School school)
         {
-            this.repository.Delete(school);
+            this.unitOfWork.SchoolRepository.Delete(school);
         }
 
         public void SaveSchool()
         {
-            unitOfWork.SaveChanges();
+            this.unitOfWork.SaveChanges();
         }
     }
 }

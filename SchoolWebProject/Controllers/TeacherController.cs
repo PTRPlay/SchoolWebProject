@@ -46,9 +46,12 @@ namespace SchoolWebProject.Controllers
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
-            var bin = new SchoolContext();
+            Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+
+            #region Old Comments. Clear if everything is working!
+            //var bin = new SchoolContext();
             //Teacher teacher = new Teacher();
-            //teacher.Subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects).ToList<Subject>();
+            /*//teacher.Subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects).ToList<Subject>();
             var modifiedSubjects = value.Subjects;
             value.Subjects = null;
             //AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
@@ -57,8 +60,11 @@ namespace SchoolWebProject.Controllers
             foreach (var subject in modifiedSubjects)
                 bin.Subjects.First((p) => p.Id ==subject.Id).Teachers.Add(teacher);
             bin.Entry(teacher).State = EntityState.Added;
-            bin.SaveChanges();
-            //teacherService.AddTeacher(teacher);
+            bin.SaveChanges();*/
+            #endregion
+
+            this.teacherService.AddTeacher(teacher);
+            this.teacherService.SaveTeacher();
         }
 
         // PUT api/teacher/5
@@ -68,6 +74,7 @@ namespace SchoolWebProject.Controllers
             var teacher = teacherService.GetProfileById(value.Id);
             AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,(Teacher)teacher);
             teacherService.UpdateProfile(teacher);
+            teacherService.SaveTeacher();
         }
 
         // DELETE api/teacher/5
