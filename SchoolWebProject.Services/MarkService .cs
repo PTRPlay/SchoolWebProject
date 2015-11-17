@@ -34,7 +34,7 @@ namespace SchoolWebProject.Services
         public IEnumerable<Mark> GetMarksBySubjectAndGroup(int subjectId, int groupId)
         {
             var marks = repository.GetAll()
-                .Where(p => p.Pupil.GroupId == groupId)
+                .Where(p => p.Pupil.GroupId == groupId && p.LessonDetail.Schedule.SubjectId == subjectId)
                 .OrderBy(s => s.Pupil.LastName)
                 .OrderBy(s => s.LessonDetail.Date);
             return marks;
