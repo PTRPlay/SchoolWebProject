@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <img src="{{teacher.img}}" class="img-rounded col-sm-4" width="250px" height="300px" alt="{{teacher.firstName}}" />
                     </div>
-                    <div class="form-group pull-right">
+                    <div class="form-group">
                         <label for="firstName" class="control-label">Ім'я:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЄ]{1}[а-яіє]{2,}$/" required />
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group pull-right">
+                    <div class="form-group">
                         <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
@@ -62,7 +62,7 @@
 
                         </div>
                     </div>
-                    <div class="form-group pull-right">
+                    <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
@@ -88,13 +88,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group pull-right">
+                    <div class="form-group">
                         <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" id="workStart" ng-model="teacher.workStart" />
                         </div>
                     </div>
-                    <div class="form-group pull-left">
+                    <div class="form-group">
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4" ng-controller="categoriesController">
                             <select name="menu" class="form-control" id="category" ng-model="teacher.category">
@@ -102,7 +102,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group pull-right">
+                    <div class="form-group">
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
