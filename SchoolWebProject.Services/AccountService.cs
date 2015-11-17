@@ -48,12 +48,12 @@ namespace SchoolWebProject.Services
             return rolesRepository.Get(getRole);
         }
 
-        public Dictionary<string,string> GetUserRaws(string role)
+        public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
         {
             var permisions = new Dictionary<string, string>();
             switch (role)
             {
-                case "admin":
+                case Constants.UserRoles.Admin:
                     permisions["Teachers"] = "teachers";
                     permisions["Subjects"] = "subjects";
                     permisions["Pupils"] = "pupils";
@@ -63,8 +63,29 @@ namespace SchoolWebProject.Services
                     permisions["News"] = "newsService";
                     permisions["Contacts"] = "schoolService";
                     break;
+                case Constants.UserRoles.Teacher:
+                    permisions["Pupils"] = "pupils";
+                    permisions["Groups"] = "groups";
+                    permisions["Scheldule"] = "scheldule";
+                    permisions["Journal"] = "journal";
+                    permisions["News"] = "newsService";
+                    permisions["Contacts"] = "schoolService";
+                    break;
+                case Constants.UserRoles.Pupil:
+                    permisions["Scheldule"] = "scheldule";
+                    permisions["Journal"] = "journal";
+                    permisions["News"] = "newsService";
+                    permisions["Contacts"] = "schoolService";
+                    break;
+                case Constants.UserRoles.Parent:
+                    permisions["Teachers"] = "teachers";
+                    permisions["Scheldule"] = "scheldule";
+                    permisions["Journal"] = "journal";
+                    permisions["News"] = "newsService";
+                    permisions["Contacts"] = "schoolService";
+                    break;
                 default:
-
+                    permisions = null;
                     break;
             }
             return permisions;
@@ -77,7 +98,7 @@ namespace SchoolWebProject.Services
             return this.ByteArrayToString(hash);
         }
 
-        public string CreateSalt()
+        private string CreateSalt()
         {
             RNGCryptoServiceProvider cryptographer = new RNGCryptoServiceProvider();
             int saltLength = 24;

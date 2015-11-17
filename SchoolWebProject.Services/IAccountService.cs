@@ -13,6 +13,5 @@ namespace SchoolWebProject.Services
 
         string CreateHashPassword(string inputPassword, string salt);
 
-        string CreateSalt();
     }
 }

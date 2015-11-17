@@ -31,25 +31,11 @@ namespace SchoolWebProject.Controllers
             User currentUser = this.accountService.GetUser(userName, password);
             if (currentUser == null)
             {
-                string error = "Wrong login data!";
+                string error = Constants.LoginError;
                 return this.LogIn(error);
             }
             this.CreateCookie(currentUser);
-            ViewBag.Links = this.accountService.GetUserRaws(accountService.GetRoleById(currentUser.RoleId).Name);
             return this.RedirectToAction("Index","Home");
-
-        }
-
-        [Authorize]
-        public ActionResult UserPage()
-        {
-            string role = "";
-            if (HttpContext.User.IsInRole("admin")) role = "admin";
-            else if (HttpContext.User.IsInRole("teacher")) role = "teacher";
-            else if (HttpContext.User.IsInRole("pupil")) role = "pupil";
-            else if (HttpContext.User.IsInRole("parent")) role = "parent";
-            ViewBag.Links = this.accountService.GetUserRaws(role);
-            return View();
         }
 
         [Authorize]

@@ -30,11 +30,12 @@ namespace SchoolWebProject.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                string role = "";
-                if (HttpContext.User.IsInRole("admin")) role = "admin";
-                else if (HttpContext.User.IsInRole("teacher")) role = "teacher";
-                else if (HttpContext.User.IsInRole("pupil")) role = "pupil";
-                else if (HttpContext.User.IsInRole("parent")) role = "parent";
+                Constants.UserRoles role = Constants.UserRoles.None;
+                if (HttpContext.User.IsInRole(Constants.UserRoles.Admin.ToString())) role = Constants.UserRoles.Admin;
+                else if (HttpContext.User.IsInRole(Constants.UserRoles.Teacher.ToString())) role = Constants.UserRoles.Teacher;
+                else if (HttpContext.User.IsInRole(Constants.UserRoles.Pupil.ToString())) role = Constants.UserRoles.Pupil;
+                else if (HttpContext.User.IsInRole(Constants.UserRoles.Parent.ToString())) role = Constants.UserRoles.Parent;
+                else return this.RedirectToAction("LogIn", "account");
                 ViewBag.Links = this.accountService.GetUserRaws(role);
             }
             else return this.RedirectToAction("LogIn", "account");

@@ -25,11 +25,11 @@ namespace SchoolWebProject.Domain.Models
 
         public DateTime DataPublished { get; set; }
 
-        ////      public int UserId { get; set; }
+        //// public int UserId { get; set; }
 
-        public virtual User User { get; set; }
+        //// public virtual User User { get; set; }
 
-        public int SchoolId { get; set; }
+        public int? SchoolId { get; set; }
 
         public virtual School School { get; set; }
     }
