@@ -11,8 +11,6 @@ namespace SchoolWebProject.Models
 
         public int Value { get; set; }
 
-        public DateTime Date { get; set; }
-
         public int ScheduleId { get; set; }
 
         public int LessonDetailId { get; set; }

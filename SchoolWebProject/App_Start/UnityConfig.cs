@@ -51,6 +51,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<IPupilService, PupilService>();
             container.RegisterType<IAnnouncementService, AnnouncementService>();
             container.RegisterType<ISchoolService, SchoolService>();
+            container.RegisterType<IDiaryService, DiaryService>();
         }
     }
 }
