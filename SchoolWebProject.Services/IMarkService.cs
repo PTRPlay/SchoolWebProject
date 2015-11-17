@@ -11,6 +11,8 @@ namespace SchoolWebProject.Services
     {
         IEnumerable<Mark> GetAllMarks();
 
+        IEnumerable<Mark> GetMarksBySubjectAndGroup(int subjectId, int groupId);
+
         Mark GetMarkById(int id);
 
         void UpdateMark(Mark mark);
