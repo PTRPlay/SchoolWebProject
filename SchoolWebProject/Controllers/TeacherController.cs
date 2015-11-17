@@ -48,34 +48,33 @@ namespace SchoolWebProject.Controllers
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
-            var bin = new SchoolContext();
-            //Teacher teacher = new Teacher();
-            //teacher.Subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects).ToList<Subject>();
+            SchoolContext bin = new SchoolContext();
             var modifiedSubjects = value.Subjects;
             value.Subjects = null;
-            //AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
             Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            //teacher.Subjects.AddRange(subjects);
             foreach (var subject in modifiedSubjects)
                 bin.Subjects.First((p) => p.Id ==subject.Id).Teachers.Add(teacher);
-            bin.Entry(teacher).State = EntityState.Added;
             bin.SaveChanges();
-            //teacherService.AddTeacher(teacher);
         }
 
         // PUT api/teacher/5
         [HttpPost]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            var bin = new SchoolContext();
-
-            var teacher = teacherService.GetProfileById(value.Id);
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,(Teacher)teacher);
-
-            bin.Entry((Teacher)teacher).State = EntityState.Modified;
+            SchoolContext bin = new SchoolContext();
+            Teacher teacher = (Teacher)bin.Users.First(p => p.Id == value.Id);
+            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>,IEnumerable<Subject>>(value.Subjects);
+            value.Subjects = null;
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
+            foreach (Subject subject in subjects)
+            { 
+                if (bin.Subjects.First((p)=>p.Id==subject.Id)!= null)
+                {
+                    teacher.Subjects.Add(bin.Subjects.First((p)=>p.Id==subject.Id));
+                }
+            }
             bin.SaveChanges();
-            //teacherService.UpdateProfile(teacher);
-        }
+       }
 
         // DELETE api/teacher/5
         public void Delete(int id)
