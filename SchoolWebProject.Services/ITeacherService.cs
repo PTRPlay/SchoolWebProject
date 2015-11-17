@@ -18,5 +18,7 @@ namespace SchoolWebProject.Services
         void AddTeacher(Teacher teacher);
 
         void RemoveTeacher(Teacher teacher);
+
+        void SaveTeacher();
     }
 }

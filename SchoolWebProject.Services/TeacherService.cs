@@ -13,42 +13,45 @@ namespace SchoolWebProject.Services
     public class TeacherService : BaseService, ITeacherService
     {
         private ILogger teacherLogger;
-        private IRepository<Teacher> repository;
         private IUnitOfWork unitOfWork;
 
-        public TeacherService(ILogger logger, IRepository<Teacher> teacherRepository, IUnitOfWork teacherUnitOfWork): base(logger)
+        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork): base(logger)
         {
             this.teacherLogger = logger;
-            this.repository = teacherRepository;
             this.unitOfWork = teacherUnitOfWork;
         }
 
         public IEnumerable<Teacher> GetAllTeachers()
         {
             List<Teacher> listOfTeachers = new List<Teacher>();
-            listOfTeachers = repository.GetAll().ToList();
+            listOfTeachers = this.unitOfWork.TeacherRepository.GetAll().ToList();
             return listOfTeachers;
         }
 
         public Teacher GetProfileById(int id)
         {
-           return repository.GetById(id);
+            return unitOfWork.TeacherRepository.GetById(id);
         }
 
         public void UpdateProfile(Teacher teacher)
         {
-            repository.Update(teacher);
+            unitOfWork.TeacherRepository.Update(teacher);
         }
 
         public void AddTeacher(Teacher teacher)
         {
-            repository.Add(teacher);
-            unitOfWork.SaveChanges();
+            this.unitOfWork.TeacherRepository.Add(teacher);
+            //repository.Add(teacher);
         }
 
         public void RemoveTeacher(Teacher teacher)
         {
-            repository.Delete(teacher);
+            this.unitOfWork.TeacherRepository.Delete(teacher);
+        }
+
+        public void SaveTeacher()
+        {
+            this.unitOfWork.SaveChanges();
         }
     }
 }
