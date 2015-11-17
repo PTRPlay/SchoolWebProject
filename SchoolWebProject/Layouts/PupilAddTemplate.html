@@ -5,31 +5,30 @@
                 <button type="button" class="close" ng-click="cancel()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" name="AddTeacherForm">
+                <form class="form-horizontal" name="AddPupilForm">
                     <div class="form-group">
-                        <img src="{{teacher.img}}" class="img-rounded col-sm-4" width="350px" height="400px" alt="{{teacher.firstName}}" />
+                        <img src="{{pupil.img}}" class="img-rounded col-sm-4" width="350px" height="400px" alt="{{pupil.firstName}}" />
                     </div>
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
-
+                            <input type="text" class="form-control" id="firstName" ng-model="pupil.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
                             <div class="error" style="color:red"
-                                 ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
+                                 ng-show="AddPupilForm.firstName.$dirty && AddPupilForm.firstName.$invalid">
                                 <small class="error"
-                                       ng-show="AddTeacherForm.firstName.$error.required">
+                                       ng-show="AddPupilForm.firstName.$error.required">
                                     Your first Name is required.
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.firstName.$error.minlength">
+                                       ng-show="AddPupilForm.firstName.$error.minlength">
                                     Your first Name is required to be at least 3 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.firstName.$error.maxlength">
+                                       ng-show="AddPupilForm.firstName.$error.maxlength">
                                     Your first Name cannot be longer than 20 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.firstName.$error.pattern">
+                                       ng-show="AddPupilForm.firstName.$error.pattern">
                                     Not correct pattern
                                 </small>
                             </div>
@@ -38,51 +37,48 @@
                     <div class="form-group">
                         <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
-
+                            <input type="text" class="form-control" id="middleName" ng-model="pupil.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
                             <div class="error" style="color:red"
-                                 ng-show="AddTeacherForm.middleName.$dirty && AddTeacherForm.middleName.$invalid">
+                                 ng-show="AddPupilForm.middleName.$dirty && AddPupilForm.middleName.$invalid">
                                 <small class="error"
-                                       ng-show="AddTeacherForm.middleName.$error.required">
+                                       ng-show="AddPupilForm.middleName.$error.required">
                                     Your middle Name is required.
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.middleName.$error.minlength">
+                                       ng-show="AddPupilForm.middleName.$error.minlength">
                                     Your middle Name is required to be at least 3 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.middleName.$error.maxlength">
+                                       ng-show="AddPupilForm.middleName.$error.maxlength">
                                     Your middle Name cannot be longer than 20 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.middleName.$error.pattern">
+                                       ng-show="AddPupilForm.middleName.$error.pattern">
                                     Not correct pattern
                                 </small>
                             </div>
-
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
-
+                            <input type="text" class="form-control" id="lastName" ng-model="pupil.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
                             <div class="error" style="color:red"
-                                 ng-show="AddTeacherForm.lastName.$dirty && AddTeacherForm.lastName.$invalid">
+                                 ng-show="AddPupilForm.lastName.$dirty && AddPupilForm.lastName.$invalid">
                                 <small class="error"
-                                       ng-show="AddTeacherForm.lastName.$error.required">
+                                       ng-show="AddPupilForm.lastName.$error.required">
                                     Your lastName is required.
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.lastName.$error.minlength">
+                                       ng-show="AddPupilForm.lastName.$error.minlength">
                                     Your last Name is required to be at least 3 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.lastName.$error.maxlength">
+                                       ng-show="AddPupilForm.lastName.$error.maxlength">
                                     Your last Name cannot be longer than 30 characters
                                 </small>
                                 <small class="error"
-                                       ng-show="AddTeacherForm.lastName.$error.pattern">
+                                       ng-show="AddPupilForm.lastName.$error.pattern">
                                     Not correct pattern
                                 </small>
                             </div>

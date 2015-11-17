@@ -1,13 +1,14 @@
 ﻿myApp.controller("pupilAddController", ['$scope', '$element', 'title', 'close', 'Pupil', function ($scope, $element, title, close, Pupil) {
     $scope.pupil = null;
+    $scope.IsFormValid = true;
     if (Pupil != null) {
         $scope.pupil = {
-            id: Pupil.id,
-            img: Pupil.img,
-            firstName: Pupil.firstName,
-            middleName: Pupil.middleName,
-            lastName: Pupil.lastName,
-            phoneNumber: Pupil.phoneNumber
+            id: Pupil.Id,
+            img: Pupil.Img,
+            firstName: Pupil.FirstName,
+            middleName: Pupil.MiddleName,
+            lastName: Pupil.LastName,
+            phoneNumber: Pupil.PhoneNumber
         };
     }
     else {
@@ -20,38 +21,23 @@
             phoneNumber: null
         };
     }
-    $scope.choseSubject = function () {
-        $scope.pupil.subjects = [];
-        var el = document.getElementsByName("a");
-        for (var i = 0; i < el.length; ++i) {
-            var a = el[i];
-            if (a.checked == true) {
-                $scope.pupil.subjects.push(a.value);
-            }
-        }
-    }
+    
     $scope.close = function () {
         $element.modal('hide');
         close({
+            id: $scope.pupil.id,
             firstName: $scope.pupil.firstName,
             lastName: $scope.pupil.lastName,
             middleName: $scope.pupil.middleName,
-            degree: $scope.pupil.degree,
-            category: $scope.pupil.category,
-            workStart: $scope.pupil.workStart
+            phoneNumber: null,
         }, 500);
+       
     };
 
     $scope.cancel = function () {
         $element.modal('hide');
+        console.log("cancelled!!");
 
-        close({
-            firstName: $scope.pupil.firstName,
-            lastName: $scope.pupil.lastName,
-            middleName: $scope.pupil.middleName,
-            degree: $scope.pupil.degree,
-            category: $scope.pupil.category,
-            workStart: $scope.pupil.workStart
-        }, 500);
+        close(null, 500);
     }
 }]);

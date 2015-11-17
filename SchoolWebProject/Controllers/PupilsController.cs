@@ -32,7 +32,7 @@ namespace SchoolWebProject.Controllers
             return viewModel;
         }
 
-        // GET api/pupils/2/25
+        // GET api/pupils/2/25/asc
         public IEnumerable<ViewPupil> GetPage(int page, int amount, string sorting)
         {
             var pupils = pupilService.GetPage(page, amount, sorting);
@@ -51,6 +51,14 @@ namespace SchoolWebProject.Controllers
         // POST api/pupils
         public void Post([FromBody]ViewPupil value)
         {
+            System.Diagnostics.Debug.WriteLine("From post");
+            System.Diagnostics.Debug.WriteLine("Saving data " +value.LastName);
+            var bin = new SchoolContext();
+            Pupil pupil = AutoMapper.Mapper.Map<ViewPupil, Pupil>(value);
+            //bin.Entry(pupil).State = System.Data.Entity.EntityState.Added;
+            bin.Users.Add(pupil);
+            bin.SaveChanges();
+            
         }
 
         // PUT api/pupils/5

@@ -49,6 +49,7 @@ namespace SchoolWebProject.Services
         public void AddPupil(Pupil pupil)
         {
             this.repository.Add(pupil);
+            unitOfWork.SaveChanges();
         }
 
         public void RemovePupil(Pupil pupil)
