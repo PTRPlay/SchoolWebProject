@@ -51,19 +51,19 @@ namespace SchoolWebProject.Controllers
         // POST api/pupils
         public void Post([FromBody]ViewPupil value)
         {
-            System.Diagnostics.Debug.WriteLine("From post");
-            System.Diagnostics.Debug.WriteLine("Saving data " +value.LastName);
-            var bin = new SchoolContext();
             Pupil pupil = AutoMapper.Mapper.Map<ViewPupil, Pupil>(value);
-            //bin.Entry(pupil).State = System.Data.Entity.EntityState.Added;
-            bin.Users.Add(pupil);
-            bin.SaveChanges();
-            
+            this.pupilService.AddPupil(pupil);
+            this.pupilService.SavePupil();
         }
 
         // PUT api/pupils/5
+         [HttpPost]
         public void Put(int id, [FromBody]ViewPupil value)
         {
+            var pupil = pupilService.GetProfileById(value.Id);
+            AutoMapper.Mapper.Map<ViewPupil, Pupil>(value, (Pupil)pupil);
+            pupilService.UpdateProfile(pupil);
+            pupilService.SavePupil();
         }
 
         // DELETE api/pupils/5
