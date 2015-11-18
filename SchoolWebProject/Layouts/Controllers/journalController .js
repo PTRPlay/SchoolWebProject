@@ -1,10 +1,8 @@
-﻿
-
-myApp.controller('journalController', ['$scope', 'markService','subjects','groups', 'uiGridConstants', function ($scope, markService,subjects,groups, uiGridConstants) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjects', 'groups', 'uiGridConstants', function ($scope, journalService, subjects, groups, uiGridConstants) {
     
-   
-    $scope.chosenSubject=null;
-    $scope.chosenGroup=null;
+
+    $scope.chosenSubject = null;
+    $scope.chosenGroup = null;
 
     $scope.journalGrid = {
         showGridFooter: true,
@@ -18,13 +16,22 @@ myApp.controller('journalController', ['$scope', 'markService','subjects','group
        enableCellEdit: false,
        enableFiltering: false,
    },
-   {
+  /* {
+       name: "Ім'я",
        field: "firstName",
        width: "100",
        pinnedLeft: false,
        enableCellEdit: false,
        enableFiltering: false
-   }
+   },*/
+        {
+            name: "Прізвище",
+            field: "lastName",
+            width: "100",
+            pinnedLeft: false,
+            enableCellEdit: false,
+            enableFiltering: false
+        }
 
         ],
         onRegisterApi: function (gridApi) {
@@ -38,40 +45,59 @@ myApp.controller('journalController', ['$scope', 'markService','subjects','group
     var AddPupil = function (Pupil) {
         pupilsMarks.push({
             id: Pupil.Id,
-            firstName: Pupil.FirstName,
             lastName: Pupil.LastName
         });
     }
 
     var fillPupils = function () {
-        for (var i = 0; i < data.Pupils.length; ++i) {
-            AddPupil(data.Pupils[i]);
+        for (var i = 0; i < $scope.data.Pupils.length; ++i) {
+            AddPupil($scope.data.Pupils[i]);
         }
-        for (var i = 0; i < pupilsMarks.length; ++i){
-            for (var j = 0; j < data.LessonDetails.length; ++j){
-                pupilsMarks[i][data.LessonDetails[j].Date.toString()] = null;
+        for (var i = 0; i < pupilsMarks.length; ++i) {
+            for (var j = 0; j < $scope.data.LessonDetails.length; ++j) {
+                pupilsMarks[i][$scope.data.LessonDetails[j].Date.toString()] = null;
             }
         }
+    }
+
+    var getDateByLessonDetailId = function (id) {
+        for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
+            if (id == $scope.data.LessonDetails[i].Id) {
+                return $scope.data.LessonDetails[i].Date.toString();
+            }
+        }
+        return null;
     }
 
     var fillMarks = function () {
         fillPupils();
         for (var i = 0; i < pupilsMarks.length; ++i) {
-            for (var j = 0; j < data.Marks.length; ++j) {
-                if (data.Marks.Pupil.FirstName == pupilsMarks[i].firstName && data.Marks.Pupil.LastName == pupilsMarks[i].LastName) {
-                    pupilsMarks[i][data.Marks.LessonDetail.Date.toString()] = data.Marks.Value;
+            for (var j = 0; j < $scope.data.Marks.length; ++j) {
+                //TODO: Remove true constant
+                //Test code)))
+                if (true) {
+                    pupilsMarks[i][getDateByLessonDetailId($scope.data.Marks[i].LessonDetailId)] = $scope.data.Marks[i].Value;
                 }
             }
         }
     }
-
-    fillMarks();
-
-    $scope.GetJournalPage = function (chosenSubject,chosenGroup)
-    {
+    $scope.GetJournalPage = function (chosenSubject, chosenGroup) {
         if (chosenGroup != null && chosenSubject != null)
-            markService.getPage(chosenSubject, chosenGroup).success(function (data) {
+            journalService.getPage(chosenSubject, chosenGroup).success(function (data) {
+                pupilsMarks = [];
                 $scope.data = data;
+                fillMarks();
+                for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
+                    var date = $scope.data.LessonDetails[i].Date.toString();
+                    $scope.journalGrid.columnDefs.push({
+                        name: date,
+                        field: date,
+                        pinnedLeft: false,
+                        enableCellEdit: false,
+                        enableFiltering: false
+                    });
+                }
+                $scope.journalGrid.data = pupilsMarks;
             });
     }
 
