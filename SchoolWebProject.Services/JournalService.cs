@@ -32,6 +32,8 @@ namespace SchoolWebProject.Services
                                  {
                                      Id = p.Id,
 
+                                     FirstName=p.FirstName,
+
                                      LastName = p.LastName,
 
                                      MiddleName = p.MiddleName

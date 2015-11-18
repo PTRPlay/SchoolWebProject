@@ -45,7 +45,7 @@
     var AddPupil = function (Pupil) {
         pupilsMarks.push({
             id: Pupil.Id,
-            lastName: Pupil.LastName
+            lastName: Pupil.LastName+' '+ Pupil.FirstName
         });
     }
 
