@@ -12,15 +12,12 @@ using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Controllers
 {
-    public class PupilsController : ApiController
+    public class PupilsController : BaseApiController
     {
-        private ILogger getLogger;
-
         private IPupilService pupilService;
 
-        public PupilsController(ILogger logger, IPupilService pupilService) 
+        public PupilsController(ILogger logger, IPupilService pupilService) : base(logger) 
         {
-            this.getLogger = logger;
             this.pupilService = pupilService;
         }
 
@@ -33,11 +30,14 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/pupils/2/25/asc
-        public IEnumerable<ViewPupil> GetPage(int page, int amount, string sorting)
+        public PupilPageData GetPage(int page, int amount, string sorting)
         {
-            var pupils = pupilService.GetPage(page, amount, sorting);
+            int pageCount;
+            var pupils = pupilService.GetPage(page, amount, sorting, out pageCount);
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
-            return viewModel;
+            PupilPageData pupilPage = new PupilPageData() { Pupils = viewModel, PageCount = pageCount };
+            logger.Info("Retrieving page with pupils from a server");
+            return pupilPage;
         }
 
         // GET api/pupils/5

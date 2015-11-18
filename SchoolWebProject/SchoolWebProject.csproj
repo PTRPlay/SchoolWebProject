@@ -167,6 +167,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\LessonDetailController.cs" />
@@ -182,6 +183,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\PupilPageData.cs" />
     <Compile Include="Models\ViewDiary.cs" />
     <Compile Include="Models\ViewLessonDetails.cs" />
     <Compile Include="Models\ViewMark.cs" />

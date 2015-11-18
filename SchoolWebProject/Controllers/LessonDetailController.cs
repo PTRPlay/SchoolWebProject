@@ -13,17 +13,13 @@ using AutoMapper;
 
 namespace SchoolWebProject.Controllers
 {
-    public class LessonDetailController : ApiController
+    public class LessonDetailController : BaseApiController
     {
-
-        private ILogger getLogger;
         private LessonDetailService lessonDetailService;
         private IRepository<LessonDetail> iRepo;
 
-
-        public LessonDetailController(ILogger logger, LessonDetailService service)
+        public LessonDetailController(ILogger logger, LessonDetailService service) : base(logger)
         {
-            this.getLogger = logger;
             this.lessonDetailService = service;
         }
 

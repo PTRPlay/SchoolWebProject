@@ -12,16 +12,15 @@ using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
-    public class DiaryController : ApiController
+    public class DiaryController : BaseApiController
     {
-        private ILogger getLogger;
         private IDiaryService diaryService;
 
-        public DiaryController(ILogger logger, IDiaryService diaryService) 
+        public DiaryController(ILogger logger, IDiaryService diaryService) : base(logger) 
         {
-            this.getLogger = logger;
             this.diaryService = diaryService;
         }
+
         // GET api/diary/5/data
         //public Diary Get(int id, DateTime date)
         public IEnumerable<Diary> Get(int id)

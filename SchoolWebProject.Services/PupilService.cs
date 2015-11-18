@@ -27,8 +27,9 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
         }
 
-        public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting)
+        public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, out int pageCount)
         {
+            pageCount = this.unitOfWork.PupilRepository.GetAll().Count();
             if(sorting.ToLower() == "desc")
                 return this.unitOfWork.PupilRepository.GetAll().OrderByDescending(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
             else

@@ -13,16 +13,12 @@ using AutoMapper;
 
 namespace SchoolWebProject.Controllers
 {
-    public class MarkController : ApiController
+    public class MarkController : BaseApiController
     {
-        
-        private ILogger getLogger;
-
         private MarkService markService;
 
-        public MarkController(ILogger logger, MarkService markService) 
+        public MarkController(ILogger logger, MarkService markService) : base(logger) 
         {
-            this.getLogger = logger;
             this.markService = markService;
         }
 
