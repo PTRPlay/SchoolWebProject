@@ -19,8 +19,12 @@ namespace SchoolWebProject.Services
             : base(logger)
         {
             this.teacherCategoryLogger = logger;
-
             this.unitOfWork = unitOfWork;
+        }
+
+        public void AddTeacherCategory (TeacherCategory teacherCategory)
+        {
+            this.unitOfWork.TeacherCategoryRepository.Add(teacherCategory);
         }
 
         public IEnumerable<TeacherCategory> GetAllTeacherCategories()
@@ -36,6 +40,11 @@ namespace SchoolWebProject.Services
         public void UpdateTeacherCategory(TeacherCategory teacherCategory)
         {
             this.unitOfWork.TeacherCategoryRepository.Update(teacherCategory);
+        }
+
+        public void SaveTeacherCategory()
+        {
+            this.unitOfWork.SaveChanges();
         }
     }
 }

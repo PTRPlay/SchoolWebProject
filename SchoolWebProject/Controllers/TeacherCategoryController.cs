@@ -43,9 +43,12 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/teachercategory
-        public void Post([FromBody]string result)
+        public void Post([FromBody]ViewTeacherCategory value)
         {
-            var bin = result;
+            TeacherCategory teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
+            this.teacherCategoryService.AddTeacherCategory(teacherCategory);
+            this.teacherCategoryService.SaveTeacherCategory();
+            
         }
 
         // PUT api/teachercategory/5
