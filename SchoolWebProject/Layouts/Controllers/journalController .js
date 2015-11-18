@@ -1,90 +1,104 @@
-﻿
-
-myApp.controller('journalController', ['$scope', 'journalService', 'subjects', 'groups', 'uiGridConstants', function ($scope, journalService, subjects, groups, uiGridConstants) {
-
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjects', 'groups', 'uiGridConstants', function ($scope, journalService, subjects, groups, uiGridConstants) {
+    
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
 
-    $scope.columns = [];
     $scope.journalGrid = {
-        columnDefs: $scope.columns,
+        showGridFooter: true,
+        enableFiltering: true,
+        columnDefs: [
+   {
+       field: "№ ",
+       cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
+       width: "50",
+       pinnedLeft: true,
+       enableCellEdit: false,
+       enableFiltering: false,
+   },
+  /* {
+       name: "Ім'я",
+       field: "firstName",
+       width: "100",
+       pinnedLeft: false,
+       enableCellEdit: false,
+       enableFiltering: false
+   },*/
+        {
+            name: "Прізвище",
+            field: "lastName",
+            width: "100",
+            pinnedLeft: false,
+            enableCellEdit: false,
+            enableFiltering: false
+        }
+
+        ],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
         }
+
     };
 
-    function PushColumns(date) {
-        for (var i = 0; i < (date.length + 3) ; i++) {
-            if (i === 0) {
-                $scope.columns.push(
-                  {
-                      field: "№ ",
-                      cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
-                      width: "50",
-                      pinnedLeft: true
-                  })
-            }
-            else if (i === 1) {
-                $scope.columns.push(
-                  {
-                      name: "Last Name",
-                      field: 'Pupil.LastName',
-                      width: 100,
-                      pinnedLeft: true,
-                      enableCellEdit: false
-                  })
-            }
-            else {
-                $scope.columns.push(
-                                {
-                                    name: " " + date[(i - 2)].slice(0, 10),
-                                    field: "$scope.journalGrid.data[date[i].slice(0, 10)]",
-                                    width: 100,
-                                    enableCellEdit: false
-                                })
+    var pupilsMarks = [];
+
+    var AddPupil = function (Pupil) {
+        pupilsMarks.push({
+            id: Pupil.Id,
+            lastName: Pupil.LastName
+        });
+    }
+
+    var fillPupils = function () {
+        for (var i = 0; i < $scope.data.Pupils.length; ++i) {
+            AddPupil($scope.data.Pupils[i]);
+        }
+        for (var i = 0; i < pupilsMarks.length; ++i) {
+            for (var j = 0; j < $scope.data.LessonDetails.length; ++j) {
+                pupilsMarks[i][$scope.data.LessonDetails[j].Date.toString()] = null;
             }
         }
     }
 
+    var getDateByLessonDetailId = function (id) {
+        for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
+            if (id == $scope.data.LessonDetails[i].Id) {
+                return $scope.data.LessonDetails[i].Date.toString();
+            }
+        }
+        return null;
+    }
 
-    var JournalRowObjecr = {};
-
-    function CreateObject(data, date) {
-        for (var i = 0; i < data.Pupils.length; i++) {
-            JournalRowObjecr[Id] = data.Pupils[i][Id];
-            JournalRowObjecr[Name] = data.Pupils[i].LastName;
-            for (var d = 0; d < date.length; d++) {
-                for (var j = 0; j < data.Mark.length; j++) {
-                    if (data.Mark[j].LessonDetail[Date] == date[i]) {
-                        JournalRowObjecr[date[d].slice(0, 10)] = Mark[j].Value;
-                    }
+    var fillMarks = function () {
+        fillPupils();
+        for (var i = 0; i < pupilsMarks.length; ++i) {
+            for (var j = 0; j < $scope.data.Marks.length; ++j) {
+                //TODO: Remove true constant
+                //Test code)))
+                if (true) {
+                    pupilsMarks[i][getDateByLessonDetailId($scope.data.Marks[i].LessonDetailId)] = $scope.data.Marks[i].Value;
                 }
             }
-            $scope.journalGrid.data.push(JournalRowObjecr);
-
         }
     }
-
-
-
-
-
-    $scope.GetJournalPage = function (chosenGroup, chosenSubject) {
+    $scope.GetJournalPage = function (chosenSubject, chosenGroup) {
         if (chosenGroup != null && chosenSubject != null)
-            journalService.getPage(chosenGroup, chosenSubject).success(function (data) {
-                $scope.date = data.getDate();
-                CreateObject(data, $scope.date);
-                PushColumns($scope.journalGrid.data);
+            journalService.getPage(chosenSubject, chosenGroup).success(function (data) {
+                pupilsMarks = [];
+                $scope.data = data;
+                fillMarks();
+                for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
+                    var date = $scope.data.LessonDetails[i].Date.toString();
+                    $scope.journalGrid.columnDefs.push({
+                        name: date,
+                        field: date,
+                        pinnedLeft: false,
+                        enableCellEdit: false,
+                        enableFiltering: false
+                    });
+                }
+                $scope.journalGrid.data = pupilsMarks;
             });
-    }
-
-    Object.prototype.getDate = function () {
-        var arr = [];
-        for (var i = 0; i < this.LessonDetails.length; i++) {
-            arr.push(this.LessonDetails[i].Date);
-        }
-        return arr;
     }
 
     subjects.success(function (data) {
