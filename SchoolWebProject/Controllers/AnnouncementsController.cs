@@ -40,10 +40,9 @@ namespace SchoolWebProject.Controllers
         // POST api/announcements
         public void Post([FromBody]ViewAnnouncement value)
         {
-            var bin = new SchoolContext();
             Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
-            bin.Announcements.Add(announcement);
-            bin.SaveChanges();
+            this.announcementService.AddAnnouncement(announcement);
+            this.announcementService.SaveAnnouncement();
  
         }
 
