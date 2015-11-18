@@ -9,47 +9,14 @@ myApp.controller('journalController', ['$scope', 'markService','subjects','group
     $scope.journalGrid = {
         showGridFooter: true,
         enableFiltering: true,
-       columnDefs : [
-  {
-      field: "№ ",
-      cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
-      width: "50",
-      pinnedLeft: true,
-      enableCellEdit: false,
-      enableFiltering: false,
-  },
+        columnDefs: [
    {
-       name: "First Name",
-       field: 'Pupil.FirstName',
-       width: 100,
+       field: "№ ",
+       cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
+       width: "50",
        pinnedLeft: true,
-       enableFiltering: false,
-       enableCellEdit: false
-   },
-       {
-           name: "Last Name",
-           field: 'Pupil.LastName',
-           width: 100,
-           pinnedLeft: true,
-           enableSorting: true,
-           enableFiltering: false,
-           enableCellEdit: false
-       },
-   {
-       name: 'Date1',
-       field: 'Value',
-       width: 200,
-       enableSorting: true,
-       enableFiltering: false,
        enableCellEdit: false,
-       order: 210
-   }, {
-       name: 'Date2',
-       field: 'Value',
-       width: 200,
-       enableSorting: true,
        enableFiltering: false,
-       enableCellEdit: false
    }
 
         ],
