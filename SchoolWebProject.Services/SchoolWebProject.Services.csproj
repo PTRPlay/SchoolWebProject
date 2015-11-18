@@ -50,7 +50,6 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="AnnouncementService.cs" />
     <Compile Include="BaseService.cs" />
-    <Compile Include="JournalService.cs" />
     <Compile Include="DiaryService.cs" />
     <Compile Include="EmailSenderService.cs" />
     <Compile Include="IAccountService.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="ISubjectService.cs" />
     <Compile Include="ITeacherCategoryService.cs" />
     <Compile Include="ITeacherService.cs" />
+    <Compile Include="JournalService.cs" />
     <Compile Include="LessonDetailService.cs" />
     <Compile Include="MarkService .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
