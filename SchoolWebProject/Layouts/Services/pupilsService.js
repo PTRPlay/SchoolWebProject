@@ -1,9 +1,11 @@
 ﻿myApp.factory('pupils', ['$http', function ($http) {
     //TODO: get pupils function whitch takes a parameters
     return{
-        getPage: function (page, amount, sorting) {
-            console.log('From service: '+ page, amount,sorting);
-            return $http.get('api/pupils/'+page+'/'+amount+'/'+sorting)
+        getPage: function (page, amount, sorting, filtering) {
+            if(!filtering)
+                return $http.get('api/pupils/' + page + '/' + amount + '/' + sorting )
+            else 
+                return $http.get('api/pupils/' + page + '/' + amount + '/' + sorting + '/' + filtering)
             .success(function (data) {
                 return data.get;
             })

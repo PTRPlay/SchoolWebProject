@@ -10,7 +10,6 @@ using System.Web.Security;
 
 namespace SchoolWebProject
 {
-
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -29,15 +28,18 @@ namespace SchoolWebProject
             {
                 return;
             }
+
             FormsAuthenticationTicket authTicket;
             try
             {
                 authTicket = FormsAuthentication.Decrypt(authCookie.Value);
             }
+
             catch
             {
                 return;
             }
+
             string[] roles = authTicket.UserData.Split(';');
             if (Context.User != null)
             {
