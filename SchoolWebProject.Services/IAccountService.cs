@@ -12,6 +12,5 @@ namespace SchoolWebProject.Services
         User GetUser(string userName, string password);
 
         string CreateHashPassword(string inputPassword, string salt);
-
     }
 }

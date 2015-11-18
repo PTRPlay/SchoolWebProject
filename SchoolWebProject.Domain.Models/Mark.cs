@@ -11,7 +11,7 @@ namespace SchoolWebProject.Domain.Models
 
         public int Value { get; set; }
 
-        // public int PupilId { get; set; }
+        public int PupilId { get; set; }
 
         public virtual Pupil Pupil { get; set; }
 

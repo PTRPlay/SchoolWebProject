@@ -153,6 +153,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="UnidecodeSharpFork">
+      <HintPath>..\SchoolWebProject.Services\bin\Debug\UnidecodeSharpFork.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -205,6 +208,7 @@
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Layouts\MyProfile.html" />
     <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Contacts.html" />
@@ -296,6 +300,7 @@
     <Content Include="Views\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

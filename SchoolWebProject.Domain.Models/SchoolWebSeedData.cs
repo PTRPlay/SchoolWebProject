@@ -500,6 +500,9 @@ new Teacher { LastName = "Яремчук", FirstName = "Валерія", MiddleN
 
        private static List<Pupil> GetPupils(SchoolContext context)
        {
+           // password "pupil"
+           string pupilSalt = ByteArrayToString( new byte[] { 106, 190, 255, 72, 109, 132, 153, 80, 208, 72, 129, 46, 76, 215, 57, 142, 39, 79, 226, 10, 145, 119, 232, 4 });
+           string pupilHash = ByteArrayToString(new byte[] { 128, 60, 90, 125, 169, 144, 26, 215, 165, 158, 177, 139, 230, 2, 61, 82, 178, 45, 30, 197, 225, 185, 148, 86, 227, 166, 57, 110, 234, 45, 53, 68 });
            return new List<Pupil>
             {
                 new Pupil { LastName = "Бондаренко", FirstName = "Юрій", MiddleName = "Олександрович", 
@@ -531,8 +534,8 @@ new Pupil { LastName = "Колотуха", FirstName = "Максим", MiddleNam
     PhoneNumber = "853886047", RoleId = 3, SchoolId = 1, GroupId = 11 },
 new Pupil { LastName = "Красилівський", FirstName = "Петро", MiddleName = "Олександрович", 
     PhoneNumber = "849234818", RoleId = 3, SchoolId = 1, GroupId = 1 },
-new Pupil { LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
-    PhoneNumber = "825654271", RoleId = 3, SchoolId = 1, GroupId = 13 },
+new Pupil { Id = 595, LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
+    PhoneNumber = "825654271", RoleId = 3, SchoolId = 1, GroupId = 13, LogInData = new LogInData{Login = "pupil", PasswordHash = pupilHash, PasswordSalt = pupilSalt, UserId = 595} },
 new Pupil { LastName = "Лосіцька", FirstName = "Наталія", MiddleName = "Іванівна", 
     PhoneNumber = "371166751", RoleId = 3, SchoolId = 1, GroupId = 10 },
 new Pupil { LastName = "Луцюк", FirstName = "Іван", MiddleName = "Анатолійович", 

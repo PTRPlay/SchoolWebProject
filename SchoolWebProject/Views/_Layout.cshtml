@@ -59,43 +59,31 @@
 
 </head>
 <body ng-app="myApp">
-    <div class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar  navbar-default navbar-fixed-top" role="navigation" style="height:52px">
         <div class="container">
 
-            <div class="navbar-header">
+            <div class="navbar-header" style="margin-top:1px">
                 <a class="navbar-brand" ui-sref="home">SchoolProject</a>
             </div>
-
-            <div class="navbar-collapse collapse" ng-controller="ModalShowController">
-
-                <ul class="nav navbar-nav navbar-right" >
-                    <li>
-                        <a ui-sref="#">Loged in as @Context.User.Identity.Name</a>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-btn" style="margin-top:1px">
+                        <a ui-sref="myprofile">Loged in as @Context.User.Identity.Name</a>
                     </li>
-                    <li>
+                    <li class="navbar-btn" style="margin-top:1px">
                         <a href="account/logout">Log out</a>
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>
 
-    <div class="container-fluid" style="margin-top:70px">
+    <div class="container-fluid" style="margin-top:55px">
         <div class="row">
             <div class="leftmenu">
                 <div class="col-sm-2 sidebar affix">
 
                     <ul class="nav nav-sidebar">
-                                                                        @*<li class="btn nav-tabs"><a ui-sref="teachers" class="btn-default">Teachers</a></li>
-        <li class="btn nav-tabs"><a ui-sref="subjects" class="btn-default">Subjects</a></li>
-        <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Pupils</a></li>
-        <li class="btn nav-tabs"><a ui-sref="pupils" class="btn-default">Groups</a></li>
-        <li class="btn nav-tabs"><a ui-sref="scheldule" class="btn-default">Scheldule</a></li>
-        <li class="btn nav-tabs"><a ui-sref="diaryService" class="btn-default">Diary</a></li>
-        <li class="btn nav-tabs"><a ui-sref="journal" class="btn-default">Journal</a></li>
-        <li class="btn nav-tabs"><a ui-sref="newsService" class="btn-default">News</a></li>
-        <li class="btn nav-tabs"><a ui-sref="schoolService" class="btn-default">Contacts</a></li>*@
                         @foreach (var i in ViewBag.Links)
                         {
                             <li class="btn nav-tabs"><a ui-sref=@i.Value class="btn-default">@i.Key</a></li>
