@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Net.Mail;
 using System.Security.Cryptography;
+using System.Web.Security;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-
+using UnidecodeSharpFork;
 
 namespace SchoolWebProject.Services
 {
@@ -14,6 +16,7 @@ namespace SchoolWebProject.Services
         private GenericRepository<User> userRepository;
         private GenericRepository<LogInData> userLoginRepository;
         private GenericRepository<Role> rolesRepository;
+        private EmailSenderService emailService;
 
         public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> inloginrepo, GenericRepository<Role>inputRoles)
             : base(logger)
@@ -21,6 +24,15 @@ namespace SchoolWebProject.Services
             this.userRepository = inputRepository;
             this.userLoginRepository = inloginrepo;
             this.rolesRepository = inputRoles;
+            this.emailService = new EmailSenderService(logger, this);
+        }
+
+        public void GenerateUserLoginData(User user)
+        {
+            string userLogin = GenerateLogin(user), userPassword = GeneratePassword();
+            SaveUserLoginData(user, userLogin, userPassword);
+            string message = string.Format(Constants.EmailMessage + "\n Логін :" + userLogin + "\n Пароль :" + userPassword);
+            emailService.SendMail(new MailAddress(user.Email), message);
         }
 
         public User GetUser(string userName, string password)
@@ -98,6 +110,30 @@ namespace SchoolWebProject.Services
             string fullPassword = string.Format(inputPassword + salt);
             byte[] hash = SHA256.Create().ComputeHash(this.StringToByteArray(fullPassword));
             return this.ByteArrayToString(hash);
+        }
+
+        private string GenerateLogin(User user)
+        {
+            string convertionString = string.Format(user.LastName + user.FirstName.Substring(0, 1) + user.RoleId);
+            return Unidecoder.Unidecode(convertionString).ToLower();
+        }
+
+        private string GeneratePassword(int passwordLength = 8)
+        {
+            int numberOfSpecialSymbols = 2;
+            return Membership.GeneratePassword(passwordLength, numberOfSpecialSymbols);
+        }
+
+        private void SaveUserLoginData(User user, string login, string password)
+        {
+            string salt = CreateSalt();
+            userLoginRepository.Add(new LogInData
+            {
+                Login = login,
+                PasswordSalt = salt,
+                PasswordHash = CreateHashPassword(password, salt),
+                UserId = user.Id,
+            });
         }
 
         private string CreateSalt()

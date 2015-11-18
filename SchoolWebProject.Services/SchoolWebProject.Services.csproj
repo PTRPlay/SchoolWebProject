@@ -35,20 +35,27 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnidecodeSharpFork, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\UnidecodeSharpFork.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="AnnouncementService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="DiaryService.cs" />
+    <Compile Include="EmailSenderService.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="IAnnouncementService.cs" />
     <Compile Include="IDiaryService.cs" />
+    <Compile Include="IEmailSenderService.cs" />
     <Compile Include="ILessonDetailService.cs" />
     <Compile Include="IMarkService.cs" />
     <Compile Include="Implementations\GroupService.cs" />
