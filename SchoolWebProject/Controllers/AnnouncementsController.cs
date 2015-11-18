@@ -12,15 +12,12 @@ using System.Web.Http;
 
 namespace SchoolWebProject.Controllers
 {
-        public class AnnouncementsController : ApiController
+        public class AnnouncementsController : BaseApiController
     {
-        private ILogger getLogger;
-
         private IAnnouncementService announcementService;
 
-        public AnnouncementsController(ILogger logger, IAnnouncementService announcementService) 
+        public AnnouncementsController(ILogger logger, IAnnouncementService announcementService) : base(logger) 
         {
-            this.getLogger = logger;
             this.announcementService = announcementService;
         }
 

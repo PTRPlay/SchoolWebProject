@@ -12,17 +12,14 @@ using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeacherDegreeController : ApiController
+    public class TeacherDegreeController : BaseApiController
     {
-        private ILogger teacherDegreeLogger;
-
         private GenericRepository<TeacherDegree> repository;
 
         private TeacherService teachers;
 
-        public TeacherDegreeController(ILogger logger, GenericRepository<TeacherDegree> teacherDegreeRepo)
+        public TeacherDegreeController(ILogger logger, GenericRepository<TeacherDegree> teacherDegreeRepo): base(logger)
         {
-            this.teacherDegreeLogger = logger;
             this.repository = teacherDegreeRepo;
             //this.teachers = new TeacherDegreeService(this.teacherDegreeLogger, this.repository);
         }
@@ -32,7 +29,7 @@ namespace SchoolWebProject.Controllers
         {
             var degree = new SchoolContext().TeacherDegrees;
             var viewDegree = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(degree);
-            teacherDegreeLogger.Info("Get teacher degree");
+            logger.Info("Get teacher degree");
             return viewDegree;
         }
 

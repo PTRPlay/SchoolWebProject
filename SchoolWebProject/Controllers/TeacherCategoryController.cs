@@ -12,15 +12,12 @@ using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeacherCategoryController : ApiController
+    public class TeacherCategoryController : BaseApiController
     {
-        private ILogger teacherCategoryLogger;
-
         private TeacherCategoryService teacherCategoryService;
 
-        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService) 
+        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService): base(logger) 
         {
-            this.teacherCategoryLogger = logger;
             this.teacherCategoryService = teacherCategoryService;
         }
 
@@ -29,7 +26,7 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategories = teacherCategoryService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
-            teacherCategoryLogger.Info("Gets Teaceher category");
+            logger.Info("Gets Teaceher category");
             return viewModel;
         }
 
