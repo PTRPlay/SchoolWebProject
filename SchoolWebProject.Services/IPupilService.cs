@@ -11,7 +11,7 @@ namespace SchoolWebProject.Services
     {
         IEnumerable<Pupil> GetAllPupils();
 
-        IEnumerable<Pupil> GetPage(int page, int amount, string sorting, out int pageCount);
+        IEnumerable<Pupil> GetPage(int page, int amount, string sorting, string filtering, out int pageCount);
 
         Pupil GetProfileById(int id);
 

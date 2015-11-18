@@ -1,15 +1,16 @@
 ﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
     $scope.text = "List of pupils:";
-    
+
     $scope.pupilsGrid = {
         //showGridFooter: true,
         enableSorting: true,
         enableFiltering: true,
         enablePaginationControls: true,
-        paginationPageSizes: [25, 50, 75],
+        paginationPageSizes: [5,25, 50, 75],
         paginationPageSize: 25,
         useExternalPagination: true,
         useExternalSorting: true,
+        useExternalFiltering: true,
 
         columnDefs: [
    {
@@ -75,6 +76,7 @@
      ],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
+
             $scope.gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
                 console.log('sorting changed!!');
                 if (sortColumns.length == 0) {
@@ -82,19 +84,34 @@
                 } else {
                     paginationOptions.sort = sortColumns[0].sort.direction;
                 }
-                getPage();
+                var grid = this.grid;
+                var val = '';
+                val = grid.columns[1].filters[0].term;
+                getPage(val);
             });
-            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
+
+            $scope.gridApi.core.on.filterChanged( $scope, function() {
+                var grid = this.grid;
+                var val = '';
+                val = grid.columns[1].filters[0].term;
+                    getPage(val);
+            });
+
+            $scope.gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                 paginationOptions.pageNumber = newPage;
                 paginationOptions.pageSize = pageSize;
-                getPage();
+
+                var grid = this.grid;
+                var val = '';
+                val = grid.columns[1].filters[0].term;
+                getPage(val);
             });
         }
     };
 
     var paginationOptions = {
         pageNumber: 1,
-        pageSize: 25,
+        pageSize: 5,
         sort: null
     };
 
@@ -108,9 +125,9 @@
         PupilsModalService.showPupilsDeleteModal(val);
     };
 
-    var getPage = function () {
-        var sortDir = '';
+    var getPage = function (filter) {
         var pageNumb = paginationOptions.pageNumber;
+        var sortDir = '';
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:
                 sortDir = 'asc';
@@ -124,7 +141,9 @@
                 sortDir = 'asc';
                 break;
         }
-        pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir).success(function (data) {
+
+        pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir, filter)
+            .success(function (data) {
             $scope.pupilsGrid.totalItems = data.PageCount;
             $scope.pupilsGrid.data = data.Pupils;
         });
