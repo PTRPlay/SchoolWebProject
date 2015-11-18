@@ -11,49 +11,51 @@ namespace SchoolWebProject.Services
 {
     public class PupilService : BaseService, IPupilService
     {
-        private IRepository<Pupil> repository;
+        private ILogger pupilLogger;
 
         private IUnitOfWork unitOfWork;
 
-        public PupilService(ILogger logger, IRepository<Pupil> pupilRepository, IUnitOfWork unitOfWork)
+        public PupilService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.repository = pupilRepository;
+            this.pupilLogger =logger;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return this.repository.GetAll().OrderBy(p=>p.LastName);
+            return this.unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
         }
 
         public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting)
         {
             if(sorting.ToLower() == "desc")
-            return this.repository.GetAll().OrderByDescending(p => p.LastName).Skip((pageNumb-1) * amount).Take(amount);
+                return this.unitOfWork.PupilRepository.GetAll().OrderByDescending(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
             else
-                return this.repository.GetAll().OrderBy(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
+                return this.unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
 
         }
 
         public Pupil GetProfileById(int id)
         {
-            return this.repository.GetById(id);
+            return this.unitOfWork.PupilRepository.GetById(id);
         }
 
         public void UpdateProfile(Pupil pupil)
         {
-            this.repository.Update(pupil);
+            this.unitOfWork.PupilRepository.Update(pupil);
         }
 
         public void AddPupil(Pupil pupil)
         {
-            this.repository.Add(pupil);
+            unitOfWork.SaveChanges();
+            this.unitOfWork.PupilRepository.Add(pupil);
         }
 
-        public void RemovePupil(Pupil pupil)
+        public void RemovePupil(int id)
         {
-            this.repository.Delete(pupil);
+            Pupil pupil = this.unitOfWork.PupilRepository.GetById(id); 
+            this.unitOfWork.PupilRepository.Delete(pupil);
         }
 
         public void SavePupil()

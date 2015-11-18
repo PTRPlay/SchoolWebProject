@@ -45,13 +45,16 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="AnnouncementService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="DiaryService.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="IAnnouncementService.cs" />
+    <Compile Include="IDiaryService.cs" />
     <Compile Include="ILessonDetailService.cs" />
     <Compile Include="IMarkService.cs" />
     <Compile Include="Implementations\GroupService.cs" />
     <Compile Include="Interfaces\IGroupService.cs" />
     <Compile Include="IPupilService.cs" />
+    <Compile Include="IScheduleService.cs" />
     <Compile Include="ISchoolService.cs" />
     <Compile Include="ISubjectService.cs" />
     <Compile Include="ITeacherCategoryService.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="MarkService .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PupilService.cs" />
+    <Compile Include="ScheduleService.cs" />
     <Compile Include="SchoolService.cs" />
     <Compile Include="SubjectService.cs" />
     <Compile Include="TeacherCategoryService.cs" />

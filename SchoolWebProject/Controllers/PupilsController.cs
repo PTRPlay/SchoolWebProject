@@ -32,7 +32,7 @@ namespace SchoolWebProject.Controllers
             return viewModel;
         }
 
-        // GET api/pupils/2/25
+        // GET api/pupils/2/25/asc
         public IEnumerable<ViewPupil> GetPage(int page, int amount, string sorting)
         {
             var pupils = pupilService.GetPage(page, amount, sorting);
@@ -51,16 +51,27 @@ namespace SchoolWebProject.Controllers
         // POST api/pupils
         public void Post([FromBody]ViewPupil value)
         {
+            Pupil pupil = AutoMapper.Mapper.Map<ViewPupil, Pupil>(value);
+            this.pupilService.AddPupil(pupil);
+            this.pupilService.SavePupil();
         }
 
         // PUT api/pupils/5
+         [HttpPost]
         public void Put(int id, [FromBody]ViewPupil value)
         {
+            var pupil = pupilService.GetProfileById(value.Id);
+            AutoMapper.Mapper.Map<ViewPupil, Pupil>(value, (Pupil)pupil);
+            pupilService.UpdateProfile(pupil);
+            pupilService.SavePupil();
         }
 
         // DELETE api/pupils/5
+        [HttpDelete]
         public void Delete(int id)
         {
+            pupilService.RemovePupil(id);
+            this.pupilService.SavePupil();
         }
     }
 }

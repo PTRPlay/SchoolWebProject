@@ -56,7 +56,6 @@
     $scope.close = function () {
         $element.modal('hide');
         close({
-            cancelled: false,
             id: $scope.teacher.id,
             firstName: $scope.teacher.firstName,
             lastName: $scope.teacher.lastName,

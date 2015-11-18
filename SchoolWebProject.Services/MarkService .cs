@@ -13,43 +13,46 @@ namespace SchoolWebProject.Services
     public class MarkService : BaseService, IMarkService
     {
         private ILogger tmpLogger;
-        private DbFactory dbFactory;
-        private GenericRepository<Mark> repository;
+
         private UnitOfWork unitOfWork;
 
-        public MarkService(ILogger logger)
+        public MarkService(ILogger logger, UnitOfWork unitOfWork)
             : base(logger)
         {
             this.tmpLogger = logger;
-            this.dbFactory = new DbFactory();
-            this.repository = new GenericRepository<Mark>(this.dbFactory);
-            this.unitOfWork = new UnitOfWork(this.dbFactory);
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Mark> GetAllMarks()
         {
-            return repository.GetAll();
+            return unitOfWork.MarkRepository.GetAll();
+        }
+
+        public IEnumerable<Mark> GetMarksBySubjectAndGroup(int subjectId, int groupId)
+        {
+            var marks = unitOfWork.MarkRepository.GetAll()
+                .Where(p => p.Pupil.GroupId == groupId);
+            return marks;
         }
 
         public Mark GetMarkById(int id)
         {
-           return repository.GetById(id);
+            return unitOfWork.MarkRepository.GetById(id);
         }
 
         public void UpdateMark(Mark mark)
         {
-            repository.Update(mark);
+            this.unitOfWork.MarkRepository.Update(mark);
         }
 
         public void AddMark(Mark mark)
         {
-            repository.Add(mark);
-            unitOfWork.SaveChanges();
+            this.unitOfWork.MarkRepository.Add(mark);
         }
 
         public void RemoveMark(Mark mark)
         {
-            repository.Delete(mark);
+            unitOfWork.MarkRepository.Delete(mark);
         }
 
         public void SaveMark()

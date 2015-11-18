@@ -10,9 +10,9 @@
                         <img src="{{teacher.img}}" class="img-rounded col-sm-4" width="350px" height="400px" alt="{{teacher.firstName}}" />
                     </div>
                     <div class="form-group">
-                        <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
+                        <label for="firstName" class="control-label col-sm-2">Ім'я:</label>
                         <div class="col-sm-4">
-                           <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЄ]{1}[а-яіє]{2,}$/" required />
+                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЄ]{1}[а-яіє]{2,}$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
@@ -32,7 +32,7 @@
                                        ng-show="AddTeacherForm.firstName.$error.pattern">
                                     Not correct pattern
                                 </small>
-                           </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,7 +60,7 @@
                                 </small>
                             </div>
 
-                         </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
@@ -88,17 +88,17 @@
                             </div>
                         </div>
                     </div>
-                      <div class="form-group" >
+                    <div class="form-group">
                         <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" id="workStart" ng-model="teacher.workStart" />
                         </div>
                     </div>
-                    <div class="form-group" ng-controller="teacherInfoController">
+                    <div class="form-group">
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4" ng-controller="categoriesController">
                             <select name="menu" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories" ng-selected="category.Name == getTeacher().Category.Name" value="{{category}}">{{category.Name}}</option>
+                                <option ng-repeat="category in listCategories" ng-selected="teacher.category.Name == category.Name" value="{{category}}">{{category.Name}}</option>
                             </select>
                         </div>
                     </div>
@@ -106,12 +106,12 @@
                         <label for="degree" class="col-sm-2 control-label">Звання:</label>
                         <div class="col-sm-4">
                             <select name="degreeMenu" ng-controller="degreeController" class="form-control" id="degree" ng-model="teacher.degree">
-                                <option ng-repeat="degree in listDegrees" ng-selected="degree.Name == getTeacher().Degree.Name" value="{{degree.Id}}">{{degree.Name}}</option>
+                                <option ng-repeat="degree in listDegrees" ng-selected="teacher.degree.Name == degree.Name" value="{{degree}}">{{degree.Name}}</option>
                             </select>
                         </div>
                     </div>
-                        
-                    <div class="form-group" ng-controller="teacherInfoController">
+
+                    <div class="form-group">
                         <label for="subjects" class="col-sm-2 control-label">Предмети:</label>
                         <div class="col-sm-8" ng-controller="subjectsController">
                             <table class="table-condensed" name="table">
@@ -128,7 +128,6 @@
                         </div>
                         <p ng-show="IsFormValid=AddTeacherForm.$valid&&teacher.subjects!=0"></p>
                     </div>
-                   
                 </form>
             </div>
             <div class="modal-footer">

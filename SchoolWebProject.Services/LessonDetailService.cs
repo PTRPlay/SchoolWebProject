@@ -12,45 +12,44 @@ namespace SchoolWebProject.Services
     public class LessonDetailService : BaseService, ILessonDetailService
     {
         private ILogger markLogger;
-        private IRepository<LessonDetail> repository;
+
         private IUnitOfWork unitOfWork;
 
-        public LessonDetailService(ILogger logger, IRepository<LessonDetail> LessonDetailRepository, IUnitOfWork lessonDetailUnitOfWork)
+        public LessonDetailService(ILogger logger, IUnitOfWork lessonDetailUnitOfWork)
             : base(logger)
         {
             this.markLogger = logger;
-            this.repository = LessonDetailRepository;
             this.unitOfWork = lessonDetailUnitOfWork;
         }
 
         public IEnumerable<LessonDetail> GetAllLessonDetails()
         {
-            return this.repository.GetAll();
+            return this.unitOfWork.LessonDetailRepository.GetAll();
         }
 
         public LessonDetail GetLessonDetailById(int id)
         {
-            return this.repository.GetById(id);
+            return this.unitOfWork.LessonDetailRepository.GetById(id);
         }
 
         public void UpdateLessonDetail(LessonDetail lessonDetail)
         {
-            this.repository.Update(lessonDetail);
+            this.unitOfWork.LessonDetailRepository.Update(lessonDetail);
         }
 
         public void AddLessonDetail(LessonDetail lessonDetail)
         {
-            this.repository.Add(lessonDetail);
+            this.unitOfWork.LessonDetailRepository.Add(lessonDetail);
         }
 
         public void RemoveLessonDetail(LessonDetail lessonDetail)
         {
-            this.repository.Delete(lessonDetail);
+            this.unitOfWork.LessonDetailRepository.Delete(lessonDetail);
         }
 
         public void SaveLessonDetail()
         {
-            unitOfWork.SaveChanges();
+            this.unitOfWork.SaveChanges();
         }
     }
 }
