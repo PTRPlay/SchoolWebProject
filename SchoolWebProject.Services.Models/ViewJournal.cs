@@ -10,7 +10,7 @@ namespace SchoolWebProject.Services.Models
 {
     public class ViewJournal
     {
-        public IEnumerable<Pupil> Pupils { get; set; }
+        public IEnumerable<SchoolWebProject.Domain.Models.Pupil> Pupils { get; set; }
 
         public IEnumerable<Mark> Marks { get; set; }
 

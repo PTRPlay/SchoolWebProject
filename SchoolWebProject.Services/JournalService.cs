@@ -22,7 +22,10 @@ namespace SchoolWebProject.Services
 
          public ViewJournal GetJournalObject(int groupId, int subjectId)
          {
-             throw new NotImplementedException();
+             var pupils =unitOfWork.PupilRepository.GetAll().Where(p=>p.GroupId==groupId);
+             var lessonDetail = unitOfWork.LessonDetailRepository.GetAll().Where(p => p.Schedule.GroupId == groupId && p.Schedule.SubjectId == subjectId);
+             var marks = unitOfWork.MarkRepository.GetAll().Where(p => p.Pupil.GroupId == groupId && p.LessonDetail.Schedule.SubjectId == subjectId);
+             return new ViewJournal() { Pupils=pupils,LessonDetails=lessonDetail, Marks=marks};
          }
 
 
