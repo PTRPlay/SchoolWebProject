@@ -83,9 +83,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SchoolWebProject.Data\obj\Debug\SchoolWebProject.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SchoolWebProject.Services">
-      <HintPath>..\SchoolWebProject.Services\obj\Debug\SchoolWebProject.Services.dll</HintPath>
-    </Reference>
     <Reference Include="Serilog">
       <HintPath>..\packages\Serilog.1.5.12\lib\net45\Serilog.dll</HintPath>
     </Reference>
@@ -152,9 +149,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnidecodeSharpFork">
-      <HintPath>..\SchoolWebProject.Services\bin\Debug\UnidecodeSharpFork.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
@@ -332,6 +326,10 @@
     <ProjectReference Include="..\SchoolWebProject.Services.Tests\UnitTest\UnitTest\SchoolWebProject.Services.UnitTest.csproj">
       <Project>{38395d4e-fa8f-45b8-8f69-6cbd6559f67b}</Project>
       <Name>SchoolWebProject.Services.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Services\SchoolWebProject.Services.csproj">
+      <Project>{9be9e5e3-b01c-43bd-8904-2fd6b6bf4a28}</Project>
+      <Name>SchoolWebProject.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
