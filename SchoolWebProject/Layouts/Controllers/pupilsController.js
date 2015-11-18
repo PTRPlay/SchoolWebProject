@@ -111,7 +111,6 @@
     var getPage = function () {
         var sortDir = '';
         var pageNumb = paginationOptions.pageNumber;
-        $scope.pupilsGrid.totalItems = 99;
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:
                 sortDir = 'asc';
@@ -126,8 +125,8 @@
                 break;
         }
         pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir).success(function (data) {
-           
-            $scope.pupilsGrid.data = data;
+            $scope.pupilsGrid.totalItems = data.PageCount;
+            $scope.pupilsGrid.data = data.Pupils;
         });
     }
     getPage();

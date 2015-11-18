@@ -178,6 +178,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\PupilPageData.cs" />
     <Compile Include="Models\ViewDiary.cs" />
     <Compile Include="Models\ViewLessonDetails.cs" />
     <Compile Include="Models\ViewMark.cs" />
