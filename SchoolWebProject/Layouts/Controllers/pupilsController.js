@@ -113,8 +113,12 @@
         sort: null
     };
 
-    $scope.editHandler = function (value) {
+    $scope.addPupil = function () {
         PupilsModalService.showPupilsEditPage();
+    };
+
+    $scope.editPupil = function (value) {
+        PupilsModalService.showPupilsEditPage(value);
     };
 
     $scope.deletePupil = function (id, lastName) {
