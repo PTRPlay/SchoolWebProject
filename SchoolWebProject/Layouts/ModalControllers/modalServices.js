@@ -14,32 +14,38 @@
                     modal.element.modal();
                     modal.close.then(function (result) {
                         if (result != null) {
-                            $http.post("api/pupil", result);
+                            if (result.id == null) {
+                                $http.post("api/pupils", result);
+                                window.location.reload("/home");
+                            }
+                            else {
+                                $http.post("api/pupils/" + result.id, result);
+                                window.location.reload("/home");
+                            }
                         }
+
                     });
                 });
         },
-        showPupilsDeleteModal: function (user) {
+
+        showPupilsDeleteModal: function (id) {
             ModalService.showModal({
                 templateUrl: "Layouts/PupilsDeleteTemplate.html",
                 controller: "pupilDeleteController",
                 inputs: {
-                    title: "Учень",
-                    Pupil: user
+                    title: "Delete",
+                    PupilId: id
                 }
             })
                 .then(function (modal) {
                     modal.element.modal();
                     modal.close.then(function (result) {
-                        if (result != null) {
-                            $http.post("api/pupil", result);
-                        }
+                        if (result.id != null) {
+                                $http.delete("api/pupils/" + result.id);
+                                window.location.reload("/home");
+                            }
                     });
                 });
-        },
-
-        showWithBonus: function (name) {
-            alert("Go to hell " + name);
         }
     }
 }]);

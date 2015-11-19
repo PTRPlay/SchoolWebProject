@@ -15,18 +15,15 @@ using System.Data.Entity;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeacherController : ApiController
+    public class TeacherController : BaseApiController
     {
-        
-        private ILogger getLogger;
-
         private TeacherService teacherService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService) 
+        public TeacherController(ILogger logger, TeacherService teacherService): base(logger) 
         {
-            this.getLogger = logger;
             this.teacherService = teacherService;
         }
+
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
         {
@@ -80,6 +77,7 @@ namespace SchoolWebProject.Controllers
         // DELETE api/teacher/5
         public void Delete(int id)
         {
+
         }
     }
 }

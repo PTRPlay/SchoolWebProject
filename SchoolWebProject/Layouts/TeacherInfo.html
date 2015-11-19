@@ -3,7 +3,7 @@
     <h2>{{getTeacher().LastName}} {{getTeacher().FirstName}} {{getTeacher().MiddleName}}</h2>
     <img ng-src="{{getTeacher().Img}}" alt="Image" width="170px" height="170px"/>
     <h3>Category: {{getTeacher().Category.Name}}</h3>
-    <h3>Degree: {{getTeacher().Dergee.Name}}</h3>
+    <h3>Degree: {{getTeacher().Degree.Name}}</h3>
     <h3>Work start: {{getTeacher().WorkStart | date}}</h3>
     <h3 ng-repeat="subject in getTeacher().Subjects">Subjects: {{subject.Name}}</h3>
 </div>

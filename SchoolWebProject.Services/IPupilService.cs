@@ -11,7 +11,7 @@ namespace SchoolWebProject.Services
     {
         IEnumerable<Pupil> GetAllPupils();
 
-        IEnumerable<Pupil> GetPage(int page, int amount, string sorting);
+        IEnumerable<Pupil> GetPage(int page, int amount, string sorting, out int pageCount);
 
         Pupil GetProfileById(int id);
 
@@ -19,7 +19,7 @@ namespace SchoolWebProject.Services
 
         void AddPupil(Pupil pupil);
 
-        void RemovePupil(Pupil pupil);
+        void RemovePupil(int id);
 
         void SavePupil();
     }

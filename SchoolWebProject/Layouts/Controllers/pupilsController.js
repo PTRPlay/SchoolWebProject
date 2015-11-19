@@ -67,7 +67,7 @@
    },
    {
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.Id, row.entity.LastName)" style="width: 70px;">Delete</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -103,15 +103,14 @@
         PupilsModalService.showPupilsEditPage();
     };
 
-    $scope.deleteHandler = function (value) {
-        //alert('Wanna delete ' + value + ' ?');
-        PupilsModalService.showPupilsDeleteModal();
+    $scope.deleteHandler = function (id, lastName) {
+        var val = {id: id, lastName: lastName};
+        PupilsModalService.showPupilsDeleteModal(val);
     };
 
     var getPage = function () {
         var sortDir = '';
         var pageNumb = paginationOptions.pageNumber;
-        $scope.pupilsGrid.totalItems = 99;
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:
                 sortDir = 'asc';
@@ -126,8 +125,8 @@
                 break;
         }
         pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir).success(function (data) {
-           
-            $scope.pupilsGrid.data = data;
+            $scope.pupilsGrid.totalItems = data.PageCount;
+            $scope.pupilsGrid.data = data.Pupils;
         });
     }
     getPage();

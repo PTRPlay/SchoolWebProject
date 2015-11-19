@@ -53,6 +53,7 @@
     <Compile Include="IMarkService.cs" />
     <Compile Include="Implementations\GroupService.cs" />
     <Compile Include="Interfaces\IGroupService.cs" />
+    <Compile Include="ITeacherDegreeService.cs" />
     <Compile Include="IPupilService.cs" />
     <Compile Include="IScheduleService.cs" />
     <Compile Include="ISchoolService.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="ScheduleService.cs" />
     <Compile Include="SchoolService.cs" />
     <Compile Include="SubjectService.cs" />
+    <Compile Include="TeacherDegreeService.cs" />
     <Compile Include="TeacherCategoryService.cs" />
     <Compile Include="TeacherService.cs" />
   </ItemGroup>

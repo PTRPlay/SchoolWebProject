@@ -15,15 +15,12 @@ using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
-    public class GroupsController : ApiController
+    public class GroupsController : BaseApiController
     {
-         private ILogger getLogger;
-
         private IGroupService groupService;
 
-        public GroupsController(ILogger logger, IGroupService groupService) 
+        public GroupsController(ILogger logger, IGroupService groupService) : base(logger) 
         {
-            this.getLogger = logger;
             this.groupService = groupService;
         }
 

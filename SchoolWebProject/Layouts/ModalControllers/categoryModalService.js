@@ -13,15 +13,15 @@
                 if (result != null) {
                     if (result.id == null) {
                         $http.post("api/teachercategory/", result);
-                        window.location.reload("/teachers");
+                        window.location.reload("/");
                     }
                     else {
                         $http.post("api/teachercategory/" + result.id, result);
-                        window.location.reload("/teachers");
+                        window.location.reload("/");
                     }
                 }
             });
         });
     };
-       
+
 }]);

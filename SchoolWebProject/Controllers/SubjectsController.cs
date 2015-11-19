@@ -12,15 +12,12 @@ using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
-    public class SubjectsController : ApiController
+    public class SubjectsController : BaseApiController
     {
-        private ILogger subjectLogger;
-
         private SubjectService subjects;
 
-        public SubjectsController(ILogger logger, SubjectService subjects)
+        public SubjectsController(ILogger logger, SubjectService subjects): base(logger)
         {
-            this.subjectLogger = logger;
             this.subjects = subjects;
         }
 

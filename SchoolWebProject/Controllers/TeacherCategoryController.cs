@@ -12,15 +12,12 @@ using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeacherCategoryController : ApiController
+    public class TeacherCategoryController : BaseApiController
     {
-        private ILogger teacherCategoryLogger;
-
         private TeacherCategoryService teacherCategoryService;
 
-        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService) 
+        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService): base(logger) 
         {
-            this.teacherCategoryLogger = logger;
             this.teacherCategoryService = teacherCategoryService;
         }
 
@@ -29,7 +26,7 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategories = teacherCategoryService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
-            teacherCategoryLogger.Info("Gets Teaceher category");
+            logger.Info("Gets Teacher category");
             return viewModel;
         }
 
@@ -45,20 +42,28 @@ namespace SchoolWebProject.Controllers
         // POST api/teachercategory
         public void Post([FromBody]ViewTeacherCategory value)
         {
-            TeacherCategory teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
+            var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
             this.teacherCategoryService.AddTeacherCategory(teacherCategory);
             this.teacherCategoryService.SaveTeacherCategory();
             
         }
 
         // PUT api/teachercategory/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        public void Put(int id, [FromBody]ViewTeacherCategory value)
         {
+            var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
+            AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value, teacherCategory);
+            teacherCategoryService.UpdateTeacherCategory(teacherCategory);
+            teacherCategoryService.SaveTeacherCategory();
         }
 
         // DELETE api/teachercategory/5
+        [HttpDelete]
         public void Delete(int id)
         {
+            this.teacherCategoryService.DeleteTeacherCategory(id);
+            this.teacherCategoryService.SaveTeacherCategory();
         }
     }
 }

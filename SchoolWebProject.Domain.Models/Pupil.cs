@@ -7,7 +7,7 @@ namespace SchoolWebProject.Domain.Models
 {
     public class Pupil : User
     {
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
 
         public virtual Group Group { get; set; }
 

@@ -32,6 +32,13 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.TeacherCategoryRepository.GetAll();
         }
 
+        public void DeleteTeacherCategory(int id)
+        {
+            TeacherCategory teacherCategory = this.unitOfWork.TeacherCategoryRepository.GetById(id);
+            teacherCategory.Teachers = null;
+            this.unitOfWork.TeacherCategoryRepository.Delete(teacherCategory);
+        }
+
         public TeacherCategory GetTeacherCategoryById(int id)
         {
             return this.unitOfWork.TeacherCategoryRepository.GetById(id);
