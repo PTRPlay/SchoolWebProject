@@ -34,7 +34,7 @@
        name: "Ім'я",
        field: "FirstName",
        width: "*",
-       enableSorting:false,
+       //enableSorting:false,
        enableFiltering: false
    },
    {
@@ -83,12 +83,16 @@
                 if (sortColumns.length == 0) {
                     paginationOptions.sort = null;
                 } else {
+                    paginationOptions.sort = null;
                     paginationOptions.sort = sortColumns[0].sort.direction;
                 }
+                var columnName = sortColumns[0].field;
+
                 var grid = this.grid;
-                var val = '';
-                val = grid.columns[1].filters[0].term;
-                getPage(val);
+                var filter = '';
+                filter = grid.columns[1].filters[0].term;
+
+                getPage(filter, columnName);
             });
 
             $scope.gridApi.core.on.filterChanged( $scope, function() {
@@ -129,22 +133,28 @@
         PupilsModalService.showPupilsDeleteModal(val);
     };
 
-    var getPage = function (filter) {
+    var getPage = function (filter, sortColumn) {
         var pageNumb = paginationOptions.pageNumber;
-        var sortDir = '';
+        var sortDir = 'LastName';
+
+        if (sortColumn) {
+            sortDir = sortColumn;
+        }
+
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:
-                sortDir = 'asc';
+                sortDir = sortDir + ' ASC';
                 break;
 
             case uiGridConstants.DESC:
-                sortDir = 'desc';
+                sortDir = sortDir + ' DESC';
                 break;
 
             default:
-                sortDir = 'asc';
+                sortDir = sortDir + ' ASC';
                 break;
         }
+        
 
         pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir, filter)
             .success(function (data) {
