@@ -34,7 +34,7 @@ namespace SchoolWebProject.Services
 
             if (filtering != null)
             {
-                pupils = unitOfWork.PupilRepository.GetAll().Where(p => p.LastName.StartsWith(filtering));
+                pupils = unitOfWork.PupilRepository.GetAll().Where(p => p.LastName.ToLower().StartsWith(filtering.ToLower()));
                 pageCount = pupils.Count();
                 pupils = pupils.AsQueryable().OrderBy(sorting).Skip((pageNumb - 1) * amount).Take(amount); 
                 return pupils;

@@ -8,7 +8,9 @@
             firstName: Pupil.FirstName,
             middleName: Pupil.MiddleName,
             lastName: Pupil.LastName,
-            phoneNumber: Pupil.PhoneNumber
+            phoneNumber: Pupil.PhoneNumber,
+            address: Pupil.Address,
+            email: Pupil.Email
         };
     }
     else {
@@ -18,7 +20,9 @@
             firstName: null,
             middleName: null,
             lastName: null,
-            phoneNumber: null
+            phoneNumber: null,
+            address: null,
+            email: null
         };
     }
     
@@ -29,14 +33,15 @@
             firstName: $scope.pupil.firstName,
             lastName: $scope.pupil.lastName,
             middleName: $scope.pupil.middleName,
-            phoneNumber: null,
+            phoneNumber: $scope.pupil.phoneNumber,
+            address: $scope.pupil.address,
+            email: $scope.pupil.email,
         }, 500);
        
     };
 
     $scope.cancel = function () {
         $element.modal('hide');
-        console.log("cancelled!!");
 
         close(null, 500);
     }

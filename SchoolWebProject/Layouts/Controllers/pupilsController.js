@@ -1,5 +1,4 @@
 ﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
-
     $scope.pupilsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -86,30 +85,24 @@
                     paginationOptions.sort = null;
                     paginationOptions.sort = sortColumns[0].sort.direction;
                 }
-                var columnName = sortColumns[0].field;
+                var sortColumnName = sortColumns[0].field;
 
-                var grid = this.grid;
-                var filter = '';
-                filter = grid.columns[1].filters[0].term;
+                var filter = grid.columns[1].filters[0].term;
 
-                getPage(filter, columnName);
+                getPage(filter, sortColumnName);
             });
 
             $scope.gridApi.core.on.filterChanged( $scope, function() {
-                var grid = this.grid;
-                var val = '';
-                val = grid.columns[1].filters[0].term;
-                    getPage(val);
+                var filter = gridApi.grid.columns[1].filters[0].term;
+                    getPage(filter);
             });
 
             $scope.gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                 paginationOptions.pageNumber = newPage;
                 paginationOptions.pageSize = pageSize;
 
-                var grid = this.grid;
-                var val = '';
-                val = grid.columns[1].filters[0].term;
-                getPage(val);
+                var filter = gridApi.grid.columns[1].filters[0].term;
+                getPage(filter);
             });
         }
     };
@@ -135,28 +128,27 @@
 
     var getPage = function (filter, sortColumn) {
         var pageNumb = paginationOptions.pageNumber;
-        var sortDir = 'LastName';
-
+        var sortOpt = 'LastName';
         if (sortColumn) {
-            sortDir = sortColumn;
+            sortOpt = sortColumn;
         }
 
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:
-                sortDir = sortDir + ' ASC';
+                sortOpt = sortOpt + ' ASC';
                 break;
 
             case uiGridConstants.DESC:
-                sortDir = sortDir + ' DESC';
+                sortOpt = sortOpt + ' DESC';
                 break;
 
             default:
-                sortDir = sortDir + ' ASC';
+                sortOpt = sortOpt + ' ASC';
                 break;
         }
         
 
-        pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir, filter)
+        pupils.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
             $scope.pupilsGrid.totalItems = data.PageCount;
             $scope.pupilsGrid.data = data.Pupils;
