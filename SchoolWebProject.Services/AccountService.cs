@@ -16,7 +16,7 @@ namespace SchoolWebProject.Services
         private GenericRepository<User> userRepository;
         private GenericRepository<LogInData> userLoginRepository;
         private GenericRepository<Role> rolesRepository;
-        private EmailSenderService emailService;
+        private IEmailSenderService emailService;
 
         public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> inloginrepo, GenericRepository<Role>inputRoles)
             : base(logger)
@@ -31,20 +31,21 @@ namespace SchoolWebProject.Services
         {
             string userLogin = GenerateLogin(user), userPassword = GeneratePassword();
             SaveUserLoginData(user, userLogin, userPassword);
-            string message = string.Format(Constants.EmailMessage + "\n Логін :" + userLogin + "\n Пароль :" + userPassword);
-            emailService.SendMail(new MailAddress(user.Email), message);
+            string message = string.Format(Constants.EmailMessage + "\nЛогін: " + userLogin + "\nПароль: " + userPassword);
+            emailService.SendMail(user.Email, message);
         }
 
         public User GetUser(string userName, string password)
         {
-            Expression<Func<User, bool>> getUserByLogin = user => user.LogInData.Login == userName;
-            User currentUser;
-            currentUser = this.userRepository.Get(getUserByLogin);
-            if (currentUser == null) return currentUser;
-            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == currentUser.Id;
-            LogInData logindata = this.userLoginRepository.Get(getLoginData);
-            if (this.CheckUser(logindata, password) && currentUser != null)
-                return currentUser;
+            Expression<Func<LogInData, bool>> getUserByLogin = user => user.Login == userName;
+            LogInData loginData;
+            loginData = this.userLoginRepository.Get(getUserByLogin);
+            if (loginData == null) return null;
+            if (this.CheckUser(loginData, password) && loginData != null)
+            {
+                Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
+                return this.userRepository.Get(getUser);
+            }
             else return null;
         }
 
