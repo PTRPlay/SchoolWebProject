@@ -63,8 +63,7 @@ namespace SchoolWebProject.Mapper
                 .ForMember(g => g.TeacherCategoryId, map => map.MapFrom(vm => vm.Category.Id))
                 .ForMember(g => g.TeacherDegreeId, map => map.MapFrom(vm => vm.Degree.Id))
                 //.ForMember(g => g.Subjects, map => map.MapFrom(vm => vm.Subjects))
-                .ForMember(g =>g.WorkBegin, map => map.MapFrom(vm => Convert.ToString(vm.WorkStart)));
-
+                .ForMember(g => g.WorkBegin, map => map.MapFrom(vm => Convert.ToString(vm.WorkStart)));
             AutoMapper.Mapper.CreateMap<ViewMark, Mark>();
 
             AutoMapper.Mapper.CreateMap<ViewPupil, Pupil>();
