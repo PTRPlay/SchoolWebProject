@@ -83,9 +83,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SchoolWebProject.Data\obj\Debug\SchoolWebProject.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SchoolWebProject.Services">
-      <HintPath>..\SchoolWebProject.Services\obj\Debug\SchoolWebProject.Services.dll</HintPath>
-    </Reference>
     <Reference Include="Serilog">
       <HintPath>..\packages\Serilog.1.5.12\lib\net45\Serilog.dll</HintPath>
     </Reference>
@@ -153,6 +150,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="UnidecodeSharpFork, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\UnidecodeSharpFork.1.0.0\lib\UnidecodeSharpFork.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -167,6 +168,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\JournalController.cs" />
     <Compile Include="Controllers\LessonDetailController.cs" />
     <Compile Include="Controllers\MarkController .cs" />
     <Compile Include="Controllers\SchoolsController.cs" />
@@ -211,6 +213,7 @@
     <Content Include="Layouts\ModalControllers\categoryModalService.js" />
     <Content Include="Layouts\TeacherCategoryTemplate.html" />
     <Content Include="Layouts\TeacherDegreeTemplate.html" />
+    <Content Include="Layouts\MyProfile.html" />
     <Content Include="Layouts\TeachersAddTemplate.html" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Contacts.html" />
@@ -302,6 +305,7 @@
     <Content Include="Views\_Layout.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +336,10 @@
     <ProjectReference Include="..\SchoolWebProject.Services.Tests\UnitTest\UnitTest\SchoolWebProject.Services.UnitTest.csproj">
       <Project>{38395d4e-fa8f-45b8-8f69-6cbd6559f67b}</Project>
       <Name>SchoolWebProject.Services.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchoolWebProject.Services\SchoolWebProject.Services.csproj">
+      <Project>{9be9e5e3-b01c-43bd-8904-2fd6b6bf4a28}</Project>
+      <Name>SchoolWebProject.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

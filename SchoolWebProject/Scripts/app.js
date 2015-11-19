@@ -58,5 +58,9 @@ myApp.config(function ($stateProvider) {
         url: '/journal',
         templateUrl: '/Layouts/Journal.html',
         controller: 'journalController'
+	})
+    .state('myprofile', {
+        url: '/myprofile',
+        templateUrl: '/Layouts/MyProfile.html',
     })
 });

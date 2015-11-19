@@ -35,20 +35,28 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnidecodeSharpFork">
+      <HintPath>..\packages\UnidecodeSharpFork.1.0.0\lib\UnidecodeSharpFork.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="AnnouncementService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="DiaryService.cs" />
+    <Compile Include="EmailSenderService.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="IAnnouncementService.cs" />
+    <Compile Include="IJournalService.cs" />
     <Compile Include="IDiaryService.cs" />
+    <Compile Include="IEmailSenderService.cs" />
     <Compile Include="ILessonDetailService.cs" />
     <Compile Include="IMarkService.cs" />
     <Compile Include="Implementations\GroupService.cs" />
@@ -60,6 +68,7 @@
     <Compile Include="ISubjectService.cs" />
     <Compile Include="ITeacherCategoryService.cs" />
     <Compile Include="ITeacherService.cs" />
+    <Compile Include="JournalService.cs" />
     <Compile Include="LessonDetailService.cs" />
     <Compile Include="MarkService .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,7 +94,9 @@
       <Name>SchoolWebProject.Services.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

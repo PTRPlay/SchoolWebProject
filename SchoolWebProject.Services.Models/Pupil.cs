@@ -25,7 +25,7 @@ namespace SchoolWebProject.Services.Models
 
         public byte[] Image { get; set; }
 
-         static Pupil()
+        static Pupil()
         {
             Mapper.CreateMap<db.Pupil, Pupil>().IgnoreAllNonExisting();
         }

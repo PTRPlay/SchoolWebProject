@@ -27,14 +27,34 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
         }
 
-        public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, out int pageCount)
+        public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount)
         {
-            pageCount = this.unitOfWork.PupilRepository.GetAll().Count();
-            if(sorting.ToLower() == "desc")
-                return this.unitOfWork.PupilRepository.GetAll().OrderByDescending(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
-            else
-                return this.unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
+            IEnumerable<Pupil> pupils = null;
+            if (filtering != null)
+            {
+                pupils = unitOfWork.PupilRepository.GetAll().Where(p => p.LastName.StartsWith(filtering));
+                pageCount = pupils.Count();
 
+                switch(sorting)
+                {
+                    case "desc":
+                        return pupils.OrderByDescending(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount); 
+                    default:
+                         return pupils.OrderBy(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
+                }
+            }
+            
+            if (sorting.ToLower() == "desc")
+            {
+                pupils = unitOfWork.PupilRepository.GetAll().OrderByDescending(p => p.LastName);
+            }
+            else
+            {
+                 pupils = unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName);
+            }
+
+            pageCount = pupils.Count();
+            return pupils.Skip((pageNumb - 1) * amount).Take(amount); 
         }
 
         public Pupil GetProfileById(int id)

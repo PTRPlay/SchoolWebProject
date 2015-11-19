@@ -30,10 +30,10 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/pupils/2/25/asc
-        public PupilPageData GetPage(int page, int amount, string sorting)
+        public PupilPageData GetPage(int page, int amount, string sorting, string filtering = null)
         {
             int pageCount;
-            var pupils = pupilService.GetPage(page, amount, sorting, out pageCount);
+            var pupils = pupilService.GetPage(page, amount, sorting, filtering, out pageCount);
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
             PupilPageData pupilPage = new PupilPageData() { Pupils = viewModel, PageCount = pageCount };
             logger.Info("Retrieving page with pupils from a server");

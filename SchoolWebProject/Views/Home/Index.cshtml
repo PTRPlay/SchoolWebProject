@@ -3,13 +3,7 @@
 }
 <script type="text/javascript">
     function htmlQuotes(str) {
-        str = str.split('\"').join('&quot;');
-        return str;
+        return str.split('&quot;').join('\"');
     }
-    var temp = htmlQuotes("@ViewBag.user");
-    window.currentUser = JSON.parse(temp);
-    alert("5-0--");
-    alert(currentUser.Id);
-    alert(currentUser);
-    alert("1000");
+    window.currentUser = JSON.parse(htmlQuotes("@ViewBag.user"));
 </script>

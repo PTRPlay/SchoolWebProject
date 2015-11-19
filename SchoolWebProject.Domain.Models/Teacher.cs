@@ -5,7 +5,6 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-
     public class Teacher : User
     {
         public DateTime? WorkBegin { get; set; }

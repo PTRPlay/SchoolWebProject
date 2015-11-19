@@ -1,9 +1,9 @@
-﻿myApp.factory('markService', ['$http', function ($http) {
+﻿myApp.factory('journalService', ['$http', function ($http) {
     //TODO: get pupils function whitch takes a parameters
     return {
-        getPage: function (subjectId,groupId ) {
+        getPage: function (groupId, subjectId) {
             console.log('From service: ' + groupId, subjectId);
-            return $http.get('api/mark/' + subjectId + '/' + groupId)
+            return $http.get('api/journal/' + groupId + '/' + subjectId)
             .success(function (data) {
                 return data.get;
             })
@@ -11,6 +11,6 @@
                 return data;
             })
         }
-        
+
     }
 }]);

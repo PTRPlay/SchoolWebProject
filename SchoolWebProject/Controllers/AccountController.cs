@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Security;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
-using System.Web.Routing;
+using UnidecodeSharpFork;
 
 namespace SchoolWebProject.Controllers
 {
@@ -37,6 +38,7 @@ namespace SchoolWebProject.Controllers
                 string error = Constants.LoginError;
                 return this.LogIn(error);
             }
+
             this.CreateCookie(currentUser);
             return this.RedirectToAction("Index", "Home");
         }
