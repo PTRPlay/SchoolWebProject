@@ -1,5 +1,4 @@
 ﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
-    $scope.text = "List of pupils:";
 
     $scope.pupilsGrid = {
         enableSorting: true,
@@ -20,7 +19,7 @@
        enableFiltering: false,
    },
    {
-       name: "LastName",
+       name: "Прізвище",
        field: "LastName",
        width: "*",
        sort: {
@@ -32,18 +31,21 @@
        }
    },
    {
+       name: "Ім'я",
        field: "FirstName",
        width: "*",
        enableSorting:false,
        enableFiltering: false
    },
    {
+       name: "Телефон",
        field: "PhoneNumber",
        width: "*",
        enableFiltering: false,
        enableSorting: false
    },
    {
+       name: "Адреса",
        field: "Address",
        width: "*",
        enableFiltering: false,
@@ -58,15 +60,17 @@
        visible: false
    },
    {
+       name: "Профіль",
        field: "Profile",
-       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
+       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Профіль</a></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
    },
    {
+       name: "Видалити",
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Видалити</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -76,7 +80,6 @@
             $scope.gridApi = gridApi;
 
             $scope.gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
-                console.log('sorting changed!!');
                 if (sortColumns.length == 0) {
                     paginationOptions.sort = null;
                 } else {
