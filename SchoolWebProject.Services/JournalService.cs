@@ -55,11 +55,12 @@ namespace SchoolWebProject.Services
                             select new ViewMark
                                 {
                                     Id = m.Id,
-                                    LessonDetailId = m.Id,
+                                    LessonDetailId = m.LessonDetailId,
                                     SchoolId = m.SchoolId,
                                     Value = m.Value,
                                     MarkTypeId = m.MarkTypeId,
-                                    ScheduleId = m.SchoolId
+                                    ScheduleId = m.SchoolId,
+                                    PupilId=m.PupilId
                                 };
 
             return new ViewJournal() { Pupils = pupilView, LessonDetails = lessonDeatailView, Marks = marksView };

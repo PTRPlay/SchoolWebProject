@@ -16,18 +16,10 @@
        enableCellEdit: false,
        enableFiltering: false,
    },
-  /* {
-       name: "Ім'я",
-       field: "firstName",
-       width: "100",
-       pinnedLeft: false,
-       enableCellEdit: false,
-       enableFiltering: false
-   },*/
         {
-            name: "Прізвище",
-            field: "lastName",
-            width: "100",
+            name: "Учень",
+            field: "name",
+            width: "200",
             pinnedLeft: false,
             enableCellEdit: false,
             enableFiltering: false
@@ -45,7 +37,7 @@
     var AddPupil = function (Pupil) {
         pupilsMarks.push({
             id: Pupil.Id,
-            lastName: Pupil.LastName+' '+ Pupil.FirstName
+            name: Pupil.LastName + ' ' + Pupil.FirstName
         });
     }
 
@@ -73,10 +65,8 @@
         fillPupils();
         for (var i = 0; i < pupilsMarks.length; ++i) {
             for (var j = 0; j < $scope.data.Marks.length; ++j) {
-                //TODO: Remove true constant
-                //Test code)))
-                if (true) {
-                    pupilsMarks[i][getDateByLessonDetailId($scope.data.Marks[i].LessonDetailId)] = $scope.data.Marks[i].Value;
+                if ($scope.data.Marks[j].PupilId == pupilsMarks[i].id) {
+                    pupilsMarks[i][getDateByLessonDetailId($scope.data.Marks[j].LessonDetailId)] = $scope.data.Marks[j].Value;
                 }
             }
         }
@@ -90,8 +80,9 @@
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
                     var date = $scope.data.LessonDetails[i].Date.toString();
                     $scope.journalGrid.columnDefs.push({
-                        name: date,
+                        name: date.slice(5,10),
                         field: date,
+                        width: "*",
                         pinnedLeft: false,
                         enableCellEdit: false,
                         enableFiltering: false
