@@ -11,6 +11,6 @@ namespace SchoolWebProject.Services
     {
         MailAddress fromAddress { get; }
 
-        void SendMail(MailAddress toAddress, string text);
+        void SendMail(string toAddress, string text);
     }
 }
