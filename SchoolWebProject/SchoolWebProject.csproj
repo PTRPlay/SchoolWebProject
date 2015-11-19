@@ -231,12 +231,11 @@
     <Content Include="Layouts\Diary.html" />
     <Content Include="Layouts\Journal.html" />
     <Content Include="Layouts\ModalControllers\addAnnouncementController.js" />
-    <Content Include="Layouts\ModalControllers\addPupilController.js" />
+    <Content Include="Layouts\ModalControllers\pupilModalControllers.js" />
     <Content Include="Layouts\ModalControllers\addTeacherController.js" />
     <Content Include="Layouts\ModalControllers\announcementModalService.js" />
-    <Content Include="Layouts\ModalControllers\deletePupilController.js" />
     <Content Include="Layouts\ModalControllers\teacherModalService.js" />
-    <Content Include="Layouts\ModalControllers\modalServices.js" />
+    <Content Include="Layouts\ModalControllers\pupilModalServices.js" />
     <Content Include="Layouts\News.html" />
     <Content Include="Layouts\NewsDetail.html" />
     <Content Include="Layouts\PupilAddTemplate.html" />

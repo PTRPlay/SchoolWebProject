@@ -20,7 +20,5 @@ namespace SchoolWebProject.Services
         void AddPupil(Pupil pupil);
 
         void RemovePupil(int id);
-
-        void SavePupil();
     }
 }

@@ -2,11 +2,10 @@
     $scope.text = "List of pupils:";
 
     $scope.pupilsGrid = {
-        //showGridFooter: true,
         enableSorting: true,
         enableFiltering: true,
         enablePaginationControls: true,
-        paginationPageSizes: [5,25, 50, 75],
+        paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
         useExternalPagination: true,
         useExternalSorting: true,
@@ -61,14 +60,13 @@
    {
        field: "Profile",
        cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       //cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.Id)" style="width: 70px;">Edit</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
    },
    {
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.Id, row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Delete</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -111,16 +109,15 @@
 
     var paginationOptions = {
         pageNumber: 1,
-        pageSize: 5,
+        pageSize: 25,
         sort: null
     };
 
     $scope.editHandler = function (value) {
-        //alert('Editing ' + value + ' !');
         PupilsModalService.showPupilsEditPage();
     };
 
-    $scope.deleteHandler = function (id, lastName) {
+    $scope.deletePupil = function (id, lastName) {
         var val = {id: id, lastName: lastName};
         PupilsModalService.showPupilsDeleteModal(val);
     };

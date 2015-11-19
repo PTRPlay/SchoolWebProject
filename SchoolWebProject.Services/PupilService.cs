@@ -24,7 +24,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return this.unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
+            return unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
         }
 
         public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount)
@@ -64,24 +64,25 @@ namespace SchoolWebProject.Services
 
         public void UpdateProfile(Pupil pupil)
         {
-            this.unitOfWork.PupilRepository.Update(pupil);
+            unitOfWork.PupilRepository.Update(pupil);
+            unitOfWork.SaveChanges();
+
         }
 
         public void AddPupil(Pupil pupil)
         {
+            unitOfWork.PupilRepository.Add(pupil);
             unitOfWork.SaveChanges();
-            this.unitOfWork.PupilRepository.Add(pupil);
+
         }
 
         public void RemovePupil(int id)
         {
             Pupil pupil = this.unitOfWork.PupilRepository.GetById(id); 
-            this.unitOfWork.PupilRepository.Delete(pupil);
+            unitOfWork.PupilRepository.Delete(pupil);
+            unitOfWork.SaveChanges();
+
         }
 
-        public void SavePupil()
-        {
-            this.unitOfWork.SaveChanges();
-        }
     }
 }
