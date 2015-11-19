@@ -3,29 +3,22 @@
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
+    $scope.lessonDetail = {
+        date: "some",
+        theme: null,
+        hometask: null,
+        showHomeTask: false
+    };
+    $scope.showHomeTask = false;
+    $scope.getLessonDetails = function (date) {
+        alert(date);
+        $scope.showHomeTask = true;
+        $scope.lessonDetail.date = date;
+    }
 
     $scope.journalGrid = {
         showGridFooter: true,
-        enableFiltering: true,
-        columnDefs: [
-   {
-       field: "№ ",
-       cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
-       width: "50",
-       pinnedLeft: true,
-       enableCellEdit: false,
-       enableFiltering: false,
-   },
-        {
-            name: "Учень",
-            field: "name",
-            width: "200",
-            pinnedLeft: false,
-            enableCellEdit: false,
-            enableFiltering: false
-        }
-
-        ],
+        columnDefs: [],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
         }
@@ -33,13 +26,14 @@
     };
 
     var pupilsMarks = [];
-
+    
     var AddPupil = function (Pupil) {
         pupilsMarks.push({
             id: Pupil.Id,
             name: Pupil.LastName + ' ' + Pupil.FirstName
         });
     }
+
 
     var fillPupils = function () {
         for (var i = 0; i < $scope.data.Pupils.length; ++i) {
@@ -74,18 +68,37 @@
     $scope.GetJournalPage = function (chosenSubject, chosenGroup) {
         if (chosenGroup != null && chosenSubject != null)
             journalService.getPage(chosenSubject, chosenGroup).success(function (data) {
+                $scope.journalGrid.columnDefs = [{
+                    field: "№ ",
+                    cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
+                    width: "50",
+                    pinnedLeft: true,
+                    enableCellEdit: false,
+                    enableFiltering: false,
+                },
+        {
+            name: "Учень",
+            field: "name",
+            width: "200",
+            pinnedLeft: false,
+            enableCellEdit: false,
+            enableFiltering: false
+        }];
                 pupilsMarks = [];
                 $scope.data = data;
                 fillMarks();
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
-                    var date = $scope.data.LessonDetails[i].Date.toString();
+                    var arrdate = $scope.data.LessonDetails[i].Date.toString().slice(5, 10).split("-");
+                    var date = arrdate[1] + "/" + arrdate[0];
                     $scope.journalGrid.columnDefs.push({
-                        name: date.slice(5,10),
-                        field: date,
+                        name: date,
+                        headerCellTemplate: '<div ng-controller="journalController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
+                        field: $scope.data.LessonDetails[i].Date.toString(),
                         width: "*",
                         pinnedLeft: false,
                         enableCellEdit: false,
-                        enableFiltering: false
+                        enableFiltering: false,
+                        enableSorting: false
                     });
                 }
                 $scope.journalGrid.data = pupilsMarks;

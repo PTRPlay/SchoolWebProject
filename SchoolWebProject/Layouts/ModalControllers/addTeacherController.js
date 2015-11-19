@@ -13,6 +13,7 @@
             middleName: Teacher.MiddleName,
             lastName: Teacher.LastName,
             phoneNumber: Teacher.PhoneNumber,
+            email: Teacher.Email,
             degree: Teacher.Degree,
             workStart: dateParsed != null ? new Date(dateParsed[2],dateParsed[1],dateParsed[0]) : new Date(),
             category: Teacher.Category,
@@ -27,6 +28,7 @@
             middleName: null,
             lastName: null,
             phoneNumber: null,
+            email: null,
             degree: null,
             workStart: new Date(),
             category: null,
@@ -61,6 +63,7 @@
             lastName: $scope.teacher.lastName,
             middleName:$scope.teacher.middleName,
             degree: JSON.parse($scope.teacher.degree),
+            email: $scope.teacher.email,
             category: JSON.parse($scope.teacher.category),
             workStart: $scope.teacher.workStart,
             subjects: $scope.teacher.subjects

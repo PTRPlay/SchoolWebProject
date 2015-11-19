@@ -89,6 +89,32 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">E-mail:</label>
+                        <div class="col-sm-4">
+                            <input type="email" class="form-control" id="email" name="email" ng-minlength="10" ng-model="teacher.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddTeacherForm.email.$dirty && AddTeacherForm.email.$invalid">
+                                <small class="error"
+                                       ng-show="AddTeacherForm.email.$error.required">
+                                    Your email is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.email.$error.minlength">
+                                    Your email is required to be at least 10 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="AddTeacherForm.email.$error.pattern">
+                                    Not correct pattern.
+                                </small>
+                            </div>
+                            <div class="success">
+                                <small class="text-success">
+                                    Пароль буде згенеровано та відправлено на e-mail.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="workStart" class="col-sm-2 control-label">Початок роботи:</label>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" id="workStart" ng-model="teacher.workStart" />

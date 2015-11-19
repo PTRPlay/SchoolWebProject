@@ -19,22 +19,17 @@
         <div class="col-md-8">
             <div id="journalGrid" ui-grid-pinning ui-grid-edit class="grid" ui-grid="journalGrid"></div>
         </div>
-        <div class="col-md-3 col-md-offset-0 container-fluid" style="background-color:#ffff66;border:solid;margin:10px;height:50px;">
-            <form role="form">
-                <p class="form-control text-center" style="margin:5px">{{journalGrid.data[0].Date.slice(0,10)}}</p>
-            </form>
-        </div>
-        <div class="col-md-3 col-md-offset-0 container-fluid" style="background-color:#ffff66;border:solid;margin:10px; height:200px">
-            <form role="form">
-                <h4 class="text-center">Home Task:</h4>
-                <textarea class="form-control" rows="6" cols="8" readonly ng-model="journalGrid.data[0].LessonDetail.HomeTask"></textarea>
-            </form>
-        </div>
-        <div class="col-md-3 col-md-offset-0 container-fluid" style="background-color:#ffff66;border:solid;margin:10px; height:150px">
-            <form role="form">
-                <h4 class="text-center">Home Task:</h4>
-                <textarea name="theme" class="form-control" rows="4" cols="8" ng-model="journalGrid.data[0].LessonDetail.Theme"></textarea>
-            </form>
+        <div class="form-group" ng-if="true">
+            <div>
+                Some text
+                <p>{{lessonDetail.date}}</p>
+            </div>
+            <div class="">
+
+            </div>
+            <div class="">
+
+            </div>
         </div>
     </div>
 </div>
