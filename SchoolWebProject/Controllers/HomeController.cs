@@ -34,13 +34,36 @@ namespace SchoolWebProject.Controllers
             User currUser = this.repository.Get(getUser);
             currUser.LogInData = null;
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-
             Constants.UserRoles role = Constants.UserRoles.None;
-            if (HttpContext.User.IsInRole(Constants.UserRoles.Admin.ToString())) role = Constants.UserRoles.Admin;
-            else if (HttpContext.User.IsInRole(Constants.UserRoles.Teacher.ToString())) role = Constants.UserRoles.Teacher;
-            else if (HttpContext.User.IsInRole(Constants.UserRoles.Pupil.ToString())) role = Constants.UserRoles.Pupil;
-            else if (HttpContext.User.IsInRole(Constants.UserRoles.Parent.ToString())) role = Constants.UserRoles.Parent;
-            else return this.RedirectToAction("login", "account");
+            if (HttpContext.User.IsInRole(Constants.UserRoles.Admin.ToString()))
+            {
+                role = Constants.UserRoles.Admin;
+            }
+            else
+            {
+                if (HttpContext.User.IsInRole(Constants.UserRoles.Teacher.ToString()))
+                {
+                    role = Constants.UserRoles.Teacher;
+                }
+                else
+                {
+                    if (HttpContext.User.IsInRole(Constants.UserRoles.Pupil.ToString()))
+                    {
+                        role = Constants.UserRoles.Pupil;
+                    }
+                    else
+                    {
+                        if (HttpContext.User.IsInRole(Constants.UserRoles.Parent.ToString()))
+                        {
+                            role = Constants.UserRoles.Parent;
+                        }
+                        else
+                        {
+                            return this.RedirectToAction("login", "account");
+                        }
+                    }
+                }
+            }
 
             var userData = new { Id = currUser.Id, Role = role.ToString(), Name = currUser.FirstName };
             ViewBag.Links = this.accountService.GetUserRaws(role);

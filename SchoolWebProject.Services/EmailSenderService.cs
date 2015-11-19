@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -16,34 +17,33 @@ namespace SchoolWebProject.Services
         public MailAddress fromAddress { get; private set; }
 
         private SmtpClient smtp;
-        private AccountService service;
+        private IAccountService service;
         private string Password;
 
-        public EmailSenderService(ILogger logger, AccountService inService) 
+        public EmailSenderService(ILogger logger, IAccountService inService) 
             : base(logger)
         {
-            this.fromAddress = new MailAddress("AxeSchoolWebProject@gmail.com");
+            this.fromAddress = new MailAddress(ConfigurationSettings.AppSettings["smtpEmail"]);
             this.service = inService;
-            this.Password = "lv165net";
-            this.smtp = new SmtpClient("smtp.gmail.com", 587)
+            this.Password = ConfigurationSettings.AppSettings["smtpPassword"];
+            this.smtp = new SmtpClient()
             {
+                Host = ConfigurationSettings.AppSettings["smtpServer"],
+                Port = int.Parse(ConfigurationSettings.AppSettings["smtpPort"]),
                 EnableSsl = true,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(this.fromAddress.Address, this.Password)
             };
         }
 
-        public void SendMail(MailAddress toAddress, string text)
+        public void SendMail(string toAddress, string text)
         {
-            MailMessage message = new MailMessage(this.fromAddress, toAddress) { Subject = Constants.EmailSubject, Body = text };
-            try
-            {
-                this.smtp.Send(message);
-            }
-            catch
-            {
-                
-            }
+            MailMessage message = new MailMessage(this.fromAddress, new MailAddress(toAddress)) 
+            { 
+                Subject = Constants.EmailSubject, 
+                Body = text
+            }; 
+            this.smtp.Send(message);
         }
 
     }

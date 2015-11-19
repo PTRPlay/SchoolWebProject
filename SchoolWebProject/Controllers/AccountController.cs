@@ -13,9 +13,9 @@ namespace SchoolWebProject.Controllers
     public class AccountController : Controller
     {
         public readonly ILogger logger = null;
-        private AccountService accountService;
+        private IAccountService accountService;
 
-        public AccountController(ILogger tmplogger, AccountService accService)
+        public AccountController(ILogger tmplogger, IAccountService accService)
         {
             this.logger = tmplogger;
             this.accountService = accService;
