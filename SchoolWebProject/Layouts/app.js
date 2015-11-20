@@ -6,61 +6,61 @@ myApp.config(function ($stateProvider) {
     })
     .state('teachers', {
         url:'/teachers',
-        templateUrl: '/Layouts/Teachers.html',
+        templateUrl: '/Layouts/PartialView/Teachers.html',
         controller: 'teachersController'
     })
 
     .state('subjects', {
         url: '/subjects',
-        templateUrl: '/Layouts/Teachers.html',
+        templateUrl: '/Layouts/PartialView/Teachers.html',
         controller:'subjectsController'
     })
     .state('groups', {
         url: '/groups',
-        templateUrl: '/Layouts/Groups.html',
+        templateUrl: '/Layouts/PartialView/Groups.html',
         controller:'groupsController'
     })
-    .state('scheldule', {
-        url: '/scheldule',
-        templateUrl: '/Layouts/Scheldule.html'
+    .state('schedule', {
+        url: '/schedule',
+        templateUrl: '/Layouts/PartialView/Schedule.html'
     })
     .state('diaryService', {
         url: '/diary',
-        templateUrl: '/Layouts/Diary.html',
+        templateUrl: '/Layouts/PartialView/Diary.html',
         controller: 'diaryController'
      })
     .state('pupils', {
         url: '/pupils',
-        templateUrl: '/Layouts/Pupils.html',
+        templateUrl: '/Layouts/PartialView/Pupils.html',
         controller: 'pupilsController'
     })
     .state('newsService', {
         url: '/news',
-        templateUrl: '/Layouts/News.html',
+        templateUrl: '/Layouts/PartialView/News.html',
         controller: 'newsController'
     })
     .state('schoolService', {
             url: '/contacts',
-            templateUrl: '/Layouts/Contacts.html',
+            templateUrl: '/Layouts/PartialView/Contacts.html',
             controller: 'schoolController'
     })
     .state('teacher', {
         url: '/teacher/{id}',
-        templateUrl: '/Layouts/TeacherInfo.html',
+        templateUrl: '/Layouts/PartialView/TeacherInfo.html',
         controller: 'teacherInfoController'
     })
     .state('pupil', {
         url: '/pupil/{id}',
-        templateUrl: '/Layouts/PupilInfo.html',
+        templateUrl: '/Layouts/PartialView/PupilInfo.html',
         controller: 'pupilInfoController'
     })
 	.state('journal', {
         url: '/journal',
-        templateUrl: '/Layouts/Journal.html',
+        templateUrl: '/Layouts/PartialView/Journal.html',
         controller: 'journalController'
 	})
     .state('myprofile', {
         url: '/myprofile',
-        templateUrl: '/Layouts/MyProfile.html',
+        templateUrl: '/Layouts/PartialView/MyProfile.html',
     })
 });

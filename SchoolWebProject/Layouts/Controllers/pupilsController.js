@@ -1,12 +1,9 @@
 ﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
-    $scope.text = "List of pupils:";
-
     $scope.pupilsGrid = {
-        //showGridFooter: true,
         enableSorting: true,
         enableFiltering: true,
         enablePaginationControls: true,
-        paginationPageSizes: [5,25, 50, 75],
+        paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
         useExternalPagination: true,
         useExternalSorting: true,
@@ -21,7 +18,7 @@
        enableFiltering: false,
    },
    {
-       name: "LastName",
+       name: "Прізвище",
        field: "LastName",
        width: "*",
        sort: {
@@ -33,18 +30,21 @@
        }
    },
    {
+       name: "Ім'я",
        field: "FirstName",
        width: "*",
-       enableSorting:false,
+       //enableSorting:false,
        enableFiltering: false
    },
    {
+       name: "Телефон",
        field: "PhoneNumber",
        width: "*",
        enableFiltering: false,
        enableSorting: false
    },
    {
+       name: "Адреса",
        field: "Address",
        width: "*",
        enableFiltering: false,
@@ -59,16 +59,17 @@
        visible: false
    },
    {
+       name: "Профіль",
        field: "Profile",
-       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       //cellTemplate: '<div><button ng-click="grid.appScope.editHandler(row.entity.Id)" style="width: 70px;">Edit</button></div>',
+       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Профіль</a></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
    },
    {
+       name: "Видалити",
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteHandler(row.entity.Id, row.entity.LastName)" style="width: 70px;">Delete</button></div>',
+       cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Видалити</button></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -78,71 +79,76 @@
             $scope.gridApi = gridApi;
 
             $scope.gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
-                console.log('sorting changed!!');
                 if (sortColumns.length == 0) {
                     paginationOptions.sort = null;
                 } else {
+                    paginationOptions.sort = null;
                     paginationOptions.sort = sortColumns[0].sort.direction;
                 }
-                var grid = this.grid;
-                var val = '';
-                val = grid.columns[1].filters[0].term;
-                getPage(val);
+                var sortColumnName = sortColumns[0].field;
+
+                var filter = grid.columns[1].filters[0].term;
+
+                getPage(filter, sortColumnName);
             });
 
             $scope.gridApi.core.on.filterChanged( $scope, function() {
-                var grid = this.grid;
-                var val = '';
-                val = grid.columns[1].filters[0].term;
-                    getPage(val);
+                var filter = gridApi.grid.columns[1].filters[0].term;
+                    getPage(filter);
             });
 
             $scope.gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                 paginationOptions.pageNumber = newPage;
                 paginationOptions.pageSize = pageSize;
 
-                var grid = this.grid;
-                var val = '';
-                val = grid.columns[1].filters[0].term;
-                getPage(val);
+                var filter = gridApi.grid.columns[1].filters[0].term;
+                getPage(filter);
             });
         }
     };
 
     var paginationOptions = {
         pageNumber: 1,
-        pageSize: 5,
+        pageSize: 25,
         sort: null
     };
 
-    $scope.editHandler = function (value) {
-        //alert('Editing ' + value + ' !');
+    $scope.addPupil = function () {
         PupilsModalService.showPupilsEditPage();
     };
 
-    $scope.deleteHandler = function (id, lastName) {
+    $scope.editPupil = function (value) {
+        PupilsModalService.showPupilsEditPage(value);
+    };
+
+    $scope.deletePupil = function (id, lastName) {
         var val = {id: id, lastName: lastName};
         PupilsModalService.showPupilsDeleteModal(val);
     };
 
-    var getPage = function (filter) {
+    var getPage = function (filter, sortColumn) {
         var pageNumb = paginationOptions.pageNumber;
-        var sortDir = '';
+        var sortOpt = 'LastName';
+        if (sortColumn) {
+            sortOpt = sortColumn;
+        }
+
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:
-                sortDir = 'asc';
+                sortOpt = sortOpt + ' ASC';
                 break;
 
             case uiGridConstants.DESC:
-                sortDir = 'desc';
+                sortOpt = sortOpt + ' DESC';
                 break;
 
             default:
-                sortDir = 'asc';
+                sortOpt = sortOpt + ' ASC';
                 break;
         }
+        
 
-        pupils.getPage(pageNumb, paginationOptions.pageSize, sortDir, filter)
+        pupils.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
             $scope.pupilsGrid.totalItems = data.PageCount;
             $scope.pupilsGrid.data = data.Pupils;

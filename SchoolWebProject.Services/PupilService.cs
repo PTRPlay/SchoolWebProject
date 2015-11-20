@@ -4,6 +4,7 @@ using SchoolWebProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,37 +25,25 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return this.unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
+            return unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
         }
 
         public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount)
         {
             IEnumerable<Pupil> pupils = null;
+
             if (filtering != null)
             {
-                pupils = unitOfWork.PupilRepository.GetAll().Where(p => p.LastName.StartsWith(filtering));
+                pupils = unitOfWork.PupilRepository.GetAll().Where(p => p.LastName.ToLower().StartsWith(filtering.ToLower()));
                 pageCount = pupils.Count();
-
-                switch(sorting)
-                {
-                    case "desc":
-                        return pupils.OrderByDescending(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount); 
-                    default:
-                         return pupils.OrderBy(p => p.LastName).Skip((pageNumb - 1) * amount).Take(amount);
-                }
-            }
-            
-            if (sorting.ToLower() == "desc")
-            {
-                pupils = unitOfWork.PupilRepository.GetAll().OrderByDescending(p => p.LastName);
-            }
-            else
-            {
-                 pupils = unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName);
+                pupils = pupils.AsQueryable().OrderBy(sorting).Skip((pageNumb - 1) * amount).Take(amount); 
+                return pupils;
             }
 
+            pupils = unitOfWork.PupilRepository.GetAll().AsQueryable().OrderBy(sorting);
             pageCount = pupils.Count();
-            return pupils.Skip((pageNumb - 1) * amount).Take(amount); 
+            pupils = pupils.Skip((pageNumb - 1) * amount).Take(amount);
+            return pupils;
         }
 
         public Pupil GetProfileById(int id)
@@ -64,24 +53,21 @@ namespace SchoolWebProject.Services
 
         public void UpdateProfile(Pupil pupil)
         {
-            this.unitOfWork.PupilRepository.Update(pupil);
+            unitOfWork.PupilRepository.Update(pupil);
+            unitOfWork.SaveChanges();
         }
 
         public void AddPupil(Pupil pupil)
         {
+            unitOfWork.PupilRepository.Add(pupil);
             unitOfWork.SaveChanges();
-            this.unitOfWork.PupilRepository.Add(pupil);
         }
 
         public void RemovePupil(int id)
         {
             Pupil pupil = this.unitOfWork.PupilRepository.GetById(id); 
-            this.unitOfWork.PupilRepository.Delete(pupil);
-        }
-
-        public void SavePupil()
-        {
-            this.unitOfWork.SaveChanges();
+            unitOfWork.PupilRepository.Delete(pupil);
+            unitOfWork.SaveChanges();
         }
     }
 }

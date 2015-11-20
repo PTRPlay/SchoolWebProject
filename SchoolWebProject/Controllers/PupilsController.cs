@@ -53,7 +53,6 @@ namespace SchoolWebProject.Controllers
         {
             Pupil pupil = AutoMapper.Mapper.Map<ViewPupil, Pupil>(value);
             this.pupilService.AddPupil(pupil);
-            this.pupilService.SavePupil();
         }
 
         // PUT api/pupils/5
@@ -63,7 +62,6 @@ namespace SchoolWebProject.Controllers
             var pupil = pupilService.GetProfileById(value.Id);
             AutoMapper.Mapper.Map<ViewPupil, Pupil>(value, (Pupil)pupil);
             pupilService.UpdateProfile(pupil);
-            pupilService.SavePupil();
         }
 
         // DELETE api/pupils/5
@@ -71,7 +69,6 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             pupilService.RemovePupil(id);
-            this.pupilService.SavePupil();
         }
     }
 }

@@ -71,7 +71,7 @@ namespace SchoolWebProject.Services
                     permisions["Subjects"] = "subjects";
                     permisions["Pupils"] = "pupils";
                     permisions["Groups"] = "groups";
-                    permisions["Scheldule"] = "scheldule";
+                    permisions["Schedule"] = "schedule";
                     permisions["Diary"] = "diaryService";
                     permisions["Journal"] = "journal";
                     permisions["News"] = "newsService";
