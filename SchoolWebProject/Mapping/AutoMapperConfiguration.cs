@@ -71,7 +71,7 @@ namespace SchoolWebProject.Mapper
                 .ForMember(g => g.FirstName, map => map.MapFrom(vm => vm.FirstName))
                 .ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
                 .ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email))
-                .ForMember(g => g.Image, map => map.MapFrom(vm => vm.Image))
+                //.ForMember(g => g.Image, map => map.MapFrom(vm => vm.Image))
                 .ForMember(g => g.LastName, map => map.MapFrom(vm => vm.LastName))
                 .ForMember(g => g.MiddleName, map => map.MapFrom(vm => vm.MiddleName))
                 .ForMember(g => g.PhoneNumber, map => map.MapFrom(vm => vm.PhoneNumber));

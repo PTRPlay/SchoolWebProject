@@ -26,7 +26,7 @@ myApp.config(function ($stateProvider) {
     })
     .state('diaryService', {
         url: '/diary',
-        templateUrl: '/Layouts/Diary.html',
+        templateUrl: '/Layouts/PartialView/Diary.html',
         controller: 'diaryController'
      })
     .state('pupils', {
@@ -61,6 +61,6 @@ myApp.config(function ($stateProvider) {
 	})
     .state('myprofile', {
         url: '/myprofile',
-        templateUrl: '/Layouts/MyProfile.html',
+        templateUrl: '/Layouts/PartialView/MyProfile.html',
     })
 });
