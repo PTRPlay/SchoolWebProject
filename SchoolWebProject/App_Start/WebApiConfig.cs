@@ -22,8 +22,8 @@ namespace SchoolWebProject
 
             config.Routes.MapHttpRoute(
                 name: "PagingApi",
-                routeTemplate: "api/{controller}/{page}/{amount}/{sorting}",
-                defaults: new { sorting = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{page}/{amount}/{sorting}/{filtering}",
+                defaults: new { sorting = RouteParameter.Optional, filtering = RouteParameter.Optional }
             );
 
         }

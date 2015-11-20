@@ -12,15 +12,12 @@ using System.Web.Http;
 
 namespace SchoolWebProject.Controllers
 {
-        public class AnnouncementsController : ApiController
+        public class AnnouncementsController : BaseApiController
     {
-        private ILogger getLogger;
-
         private IAnnouncementService announcementService;
 
-        public AnnouncementsController(ILogger logger, IAnnouncementService announcementService) 
+        public AnnouncementsController(ILogger logger, IAnnouncementService announcementService) : base(logger) 
         {
-            this.getLogger = logger;
             this.announcementService = announcementService;
         }
 
@@ -43,10 +40,9 @@ namespace SchoolWebProject.Controllers
         // POST api/announcements
         public void Post([FromBody]ViewAnnouncement value)
         {
-            var bin = new SchoolContext();
             Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
-            bin.Announcements.Add(announcement);
-            bin.SaveChanges();
+            this.announcementService.AddAnnouncement(announcement);
+            this.announcementService.SaveAnnouncement();
  
         }
 

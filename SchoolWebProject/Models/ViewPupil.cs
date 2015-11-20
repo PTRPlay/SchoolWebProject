@@ -9,8 +9,6 @@ namespace SchoolWebProject.Models
     {
         public int Id { get; set; }
 
-        public byte[] Img { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -23,12 +21,12 @@ namespace SchoolWebProject.Models
 
         public string Email { get; set; }
 
-        public byte[] Image { get; set; }
+        //public byte[] Img { get; set; }
 
-        public int GroupId { get; set; }
+        //public int GroupId { get; set; }
 
-   ////     public string School { get; set; }
+   //     public string School { get; set; }
 
-        public int LogInDataId { get; set; }
+        //public int LogInDataId { get; set; }
     }
 }

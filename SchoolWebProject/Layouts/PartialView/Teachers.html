@@ -1,6 +1,14 @@
 ﻿<div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
 
-<div ng-controller="ModalShowController">
-    <button href="#addTeachers" role="button" class="btn-danger" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</button>
-</div>   
+<div>
+    <div ng-controller="ModalShowController">
+        <button href="#addTeachers"  class="btn-primary" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</button>
+
+        <button ng-controller="categoryModelService"  href="#addCategory" role="button" class="btn-primary" style="left:300px" ng-click="showCategoryEditPage()">Edit Categories</button>
+
+        <button ng-controller="degreeModelService" href="#addDegree" role="button" class="btn-primary" style="left:300px" ng-click="showDegreeEditPage()">Edit Degrees</button>
+    </div> 
+</div>
+
 <br />
+

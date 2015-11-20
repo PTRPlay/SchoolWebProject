@@ -28,6 +28,11 @@
     };
 
 
+    $scope.getCurrentFocus = function () {
+        var rowCol = $scope.gridApi.cellNav.getFocusedCell();
+        return rowCol;
+    }
+
 
     $scope.teachersGrid = {
         showGridFooter: true,
@@ -79,7 +84,7 @@
        enableCellEdit: true,
        editableCellTemplate: 'ui-grid/dropdownEditor',
        editDropdownValueLabel: 'value',
-       editDropdownOptionsArray: $scope.getSubjects(7)
+       editDropdownOptionsArray: $scope.getSubjects($scope.getCurrentFocus)
        },
 
 

@@ -7,54 +7,64 @@ using System.Web.Http;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Services;
 using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeacherDegreeController : ApiController
+    public class TeacherDegreeController : BaseApiController
     {
-        private ILogger teacherDegreeLogger;
+        private TeacherDegreeService teacherDegreeService;
 
-        private GenericRepository<TeacherDegree> repository;
-
-        private TeacherService teachers;
-
-        public TeacherDegreeController(ILogger logger, GenericRepository<TeacherDegree> teacherDegreeRepo)
+        public TeacherDegreeController(ILogger logger, TeacherDegreeService teacherDegreeService)
+            : base(logger)
         {
-            this.teacherDegreeLogger = logger;
-            this.repository = teacherDegreeRepo;
-            //this.teachers = new TeacherDegreeService(this.teacherDegreeLogger, this.repository);
+            this.teacherDegreeService = teacherDegreeService;
         }
 
-        // GET api/teacherdegree
+        // GET api/teacherDegree
         public IEnumerable<ViewTeacherDegree> Get()
         {
-            var degree = new SchoolContext().TeacherDegrees;
-            var viewDegree = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(degree);
-            teacherDegreeLogger.Info("Get teacher degree");
-            return viewDegree;
+            var teacherCategories = teacherDegreeService.GetAllTeacherCategories();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(teacherCategories);
+            logger.Info("Gets Teacher Degree");
+            return viewModel;
         }
 
-        // GET api/teacherdegree/5
-        public string Get(int id)
+        // GET api/teacherDegree/5
+        public ViewTeacherDegree Get(int id)
         {
-            return "value";
+            var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
+            var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
+            return viewModel;
+
         }
 
-        // POST api/teacherdegree
-        public void Post([FromBody]string value)
+        // POST api/teacherDegree
+        public void Post([FromBody]ViewTeacherDegree value)
         {
+            var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
+            this.teacherDegreeService.AddTeacherDegree(teacherDegree);
+            this.teacherDegreeService.SaveTeacherDegree();
+
         }
 
-        // PUT api/teacherdegree/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/teacherDegree/5
+        [HttpPost]
+        public void Put(int id, [FromBody]ViewTeacherDegree value)
         {
+            var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
+            AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value, teacherDegree);
+            teacherDegreeService.UpdateTeacherDegree(teacherDegree);
+            teacherDegreeService.SaveTeacherDegree();
         }
 
-        // DELETE api/teacherdegree/5
+        // DELETE api/teacherDegree/5
+        [HttpDelete]
         public void Delete(int id)
         {
+            this.teacherDegreeService.DeleteTeacherDegree(id);
+            this.teacherDegreeService.SaveTeacherDegree();
         }
     }
 }

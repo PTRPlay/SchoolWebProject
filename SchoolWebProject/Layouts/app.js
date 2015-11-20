@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination']);
+var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination', 'ui.grid.cellNav']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
@@ -24,6 +24,11 @@ myApp.config(function ($stateProvider) {
         url: '/schedule',
         templateUrl: '/Layouts/PartialView/Schedule.html'
     })
+    .state('diaryService', {
+        url: '/diary',
+        templateUrl: '/Layouts/Diary.html',
+        controller: 'diaryController'
+     })
     .state('pupils', {
         url: '/pupils',
         templateUrl: '/Layouts/PartialView/Pupils.html',
@@ -53,5 +58,9 @@ myApp.config(function ($stateProvider) {
         url: '/journal',
         templateUrl: '/Layouts/PartialView/Journal.html',
         controller: 'journalController'
+	})
+    .state('myprofile', {
+        url: '/myprofile',
+        templateUrl: '/Layouts/MyProfile.html',
     })
 });

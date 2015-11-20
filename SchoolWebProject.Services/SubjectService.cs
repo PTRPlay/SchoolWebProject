@@ -13,41 +13,38 @@ namespace SchoolWebProject.Services
     {
         private ILogger subjectLogger;
 
-        private IRepository<Subject> repository;
-
         private IUnitOfWork unitOfWork;
 
-        public SubjectService(ILogger logger)
+        public SubjectService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
             this.subjectLogger = logger;
-            this.repository = new GenericRepository<Subject>(new DbFactory());
-            this.unitOfWork = new UnitOfWork(new DbFactory());
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Subject> GetAllSubject()
         {
-            return this.repository.GetAll();
+            return this.unitOfWork.SubjectRepository.GetAll();
         }
 
         public Subject GetSubjectById(int id)
         {
-            return this.repository.GetById(id);
+            return this.unitOfWork.SubjectRepository.GetById(id);
         }
 
         public void UpdateSubject(Subject subject)
         {
-            this.repository.Update(subject);
+            this.unitOfWork.SubjectRepository.Update(subject);
         }
 
         public void AddSubject(Subject subject)
         {
-            repository.Add(subject);
+            unitOfWork.SubjectRepository.Add(subject);
         }
 
         public void RemoveSubject(Subject subject)
         {
-            repository.Delete(subject);
+            unitOfWork.SubjectRepository.Delete(subject);
         }
 
         public void SaveSubject()

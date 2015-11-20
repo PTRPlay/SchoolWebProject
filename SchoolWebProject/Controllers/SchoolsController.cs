@@ -11,17 +11,15 @@ using System.Web.Http;
 
 namespace SchoolWebProject.Controllers
 {
-    public class SchoolsController : ApiController
+    public class SchoolsController : BaseApiController
     {
-        private ILogger getLogger;
-
         private ISchoolService schoolService;
 
-        public SchoolsController(ILogger logger, ISchoolService pupilService) 
+        public SchoolsController(ILogger logger, ISchoolService pupilService) : base(logger) 
         {
-            this.getLogger = logger;
             this.schoolService = pupilService;
         }
+
         // GET api/schools
         public IEnumerable<ViewSchool> Get()
         {

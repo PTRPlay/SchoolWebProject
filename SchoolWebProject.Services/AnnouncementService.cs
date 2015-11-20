@@ -11,45 +11,46 @@ namespace SchoolWebProject.Services
 {
     public class AnnouncementService : BaseService, IAnnouncementService
     {
-        private IRepository<Announcement> repository;
+
+        private ILogger announcementLogger;
 
         private IUnitOfWork unitOfWork;
 
-        public AnnouncementService(ILogger logger, IRepository<Announcement> announcementRepository, IUnitOfWork unitOfWork)
+        public AnnouncementService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.repository = announcementRepository;
+            this.announcementLogger = logger;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Announcement> GetAllAnnouncements()
         {
-            return this.repository.GetAll();
+            return this.unitOfWork.AnnouncementRepository.GetAll();
         }
 
         public Announcement GetAnnouncementById(int id)
         {
-            return this.repository.GetById(id);
+            return this.unitOfWork.AnnouncementRepository.GetById(id);
         }
 
         public void UpdateAnnouncement(Announcement announcement)
         {
-            this.repository.Update(announcement);
+            this.unitOfWork.AnnouncementRepository.Update(announcement);
         }
 
         public void AddAnnouncement(Announcement announcement)
         {
-            this.repository.Add(announcement);
+            this.unitOfWork.AnnouncementRepository.Add(announcement);
         }
 
         public void RemoveAnnouncement(Announcement announcement)
         {
-            this.repository.Delete(announcement);
+            this.unitOfWork.AnnouncementRepository.Delete(announcement);
         }
 
         public void SaveAnnouncement()
         {
-            unitOfWork.SaveChanges();
+            this.unitOfWork.SaveChanges();
         }
     }
 }

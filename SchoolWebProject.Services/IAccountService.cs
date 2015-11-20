@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
 
 namespace SchoolWebProject.Services
 {
@@ -13,5 +14,12 @@ namespace SchoolWebProject.Services
 
         string CreateHashPassword(string inputPassword, string salt);
 
+        LogInData GetUserLogInData(int id);
+
+        Role GetRoleById(int? id);
+
+        Dictionary<string, string> GetUserRaws(Constants.UserRoles role);
+
+        void GenerateUserLoginData(User user);
     }
 }
