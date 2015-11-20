@@ -3,7 +3,7 @@
     return {
         showPupilsEditPage: function (user) {
             ModalService.showModal({
-                templateUrl: "Layouts/PupilAddTemplate.html",
+                templateUrl: "Layouts/PartialView/PupilAddTemplate.html",
                 controller: "pupilAddController",
                 inputs: {
                     title: "Учень",
@@ -21,7 +21,7 @@
         },
         showPupilsDeleteModal: function (user) {
             ModalService.showModal({
-                templateUrl: "Layouts/PupilsDeleteTemplate.html",
+                templateUrl: "Layouts/PartialView/PupilsDeleteTemplate.html",
                 controller: "pupilDeleteController",
                 inputs: {
                     title: "Учень",

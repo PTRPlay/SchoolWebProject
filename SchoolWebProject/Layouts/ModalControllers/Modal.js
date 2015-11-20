@@ -1,7 +1,7 @@
 ﻿myApp.controller('ModalShowController', ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
     $scope.showTeachersEditPage = function (user) {
         ModalService.showModal({
-            templateUrl: "Layouts/TeachersAddTemplate.html",
+            templateUrl: "Layouts/PartialView/TeachersAddTemplate.html",
             controller: "teacherAddController",
             inputs: {
                 title: "Вчитель",
@@ -23,5 +23,4 @@
             });
         });
     };
-
 }]);
