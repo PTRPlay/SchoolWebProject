@@ -13,7 +13,7 @@ namespace SchoolWebProject.Models
 
         public string Theme { get; set; }
 
-        //public DateTime Date { get; set; }
+        public DateTime Date { get; set; }
 
         //public int ScheduleId { get; set; }
 
