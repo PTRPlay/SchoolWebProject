@@ -46,11 +46,12 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/mark
-        public void Post([FromBody]ViewMark value)
+        public void Post([FromBody]ViewMark vm)
         {
-            var mark = AutoMapper.Mapper.Map<ViewMark, Mark>(value);
-            this.markService.AddMark(mark);
-            this.markService.SaveMark();
+            Mark mark = markService.GetMarkById(vm.Id);
+            mark.Value = vm.Value;
+            markService.UpdateMark(mark);
+            markService.SaveMark();
         }
 
         // PUT api/mark/5

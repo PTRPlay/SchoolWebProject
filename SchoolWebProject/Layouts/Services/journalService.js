@@ -9,7 +9,11 @@
             .error(function (data) {
                 return data;
             })
+        },
+        editMark: function (markId, newValue) {
+            $http.post('/api/mark', {id:markId, value:newValue}).success(function (data) {
+                return data.get;
+            })
         }
-
     }
 }]);
