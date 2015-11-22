@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class SchoolWebSeedData :DropCreateDatabaseIfModelChanges<SchoolContext>
+    public class SchoolWebSeedData :DropCreateDatabaseAlways<SchoolContext>
     {
         protected override void Seed(SchoolContext context)
         {
@@ -91,31 +91,31 @@ namespace SchoolWebProject.Domain.Models
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
 
                  new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=4, Value=4,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=4, Value=5,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=4, Value=6,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==113)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=4, Value=6,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=4, Value=11,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==118)as Pupil},
 				new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=5,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=6,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=7,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==113)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=8,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==118)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=9,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==97)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=5, Value=9,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=5, Value=9,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=5, Value=9,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==113)as Pupil},
 
             };
         }
