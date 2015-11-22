@@ -10,8 +10,8 @@
                 return data;
             })
         },
-        editMark: function (markId, newValue) {
-            $http.post('/api/mark', {id:markId, value:newValue}).success(function (data) {
+        editMark: function (markId, newValue, PupilId, LessonDetailId) {
+            $http.post('/api/mark', { id: markId, value: newValue, PupilId: PupilId,LessonDetailId:LessonDetailId }).success(function (data) {
                 return data.get;
             })
         }

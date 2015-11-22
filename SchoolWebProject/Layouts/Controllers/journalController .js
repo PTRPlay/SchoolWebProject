@@ -139,7 +139,7 @@
             if (newValue != oldValue) {
                 console.log('Mark Date: ' + colDef.field, rowEntity.name);
                 var markId = GetMarkId(rowEntity.name, colDef.field);
-                journalService.editMark(markId, newValue);
+                journalService.editMark(markId, newValue, rowEntity.id, colDef.field);
             }
         });
     };

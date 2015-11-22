@@ -49,9 +49,18 @@ namespace SchoolWebProject.Controllers
         public void Post([FromBody]ViewMark vm)
         {
             Mark mark = markService.GetMarkById(vm.Id);
-            mark.Value = vm.Value;
-            markService.UpdateMark(mark);
-            markService.SaveMark();
+            if (mark == null)
+            {
+                var newMark = AutoMapper.Mapper.Map<ViewMark, Mark>(vm);
+                markService.AddMark(newMark);
+                //markService.SaveMark();
+            }
+            else
+            {
+                mark.Value = vm.Value;
+                markService.UpdateMark(mark);
+                markService.SaveMark();
+            }
         }
 
         // PUT api/mark/5
