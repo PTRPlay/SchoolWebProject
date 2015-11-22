@@ -42,8 +42,6 @@ namespace SchoolWebProject.Controllers
         {
             Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
             this.announcementService.AddAnnouncement(announcement);
-            this.announcementService.SaveAnnouncement();
- 
         }
 
         // PUT api/announcements/5

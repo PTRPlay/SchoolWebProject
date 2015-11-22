@@ -10,7 +10,7 @@
     $scope.mondayDate.setDate($scope.currentdate.getDate() - $scope.currentday + 1);
     $scope.mondayDateMonth = $scope.mondayDate.getMonth() + 1;
     $scope.stringdate = $scope.mondayDate.getFullYear() + '-' + $scope.mondayDateMonth + '-' + $scope.mondayDate.getDate();
- //   $scope.stringdate = '2015-11-16';
+   // $scope.stringdate = '2015-11-16';
 
     diaryService.getDiary($scope.IdUser, $scope.stringdate).success(function (data) {
         $scope.diary = data;
