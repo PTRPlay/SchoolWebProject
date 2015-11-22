@@ -124,10 +124,10 @@
     }
 
     $scope.journalGrid.onRegisterApi = function (gridApi) {
-        //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
-            journalService.editMark(4, newValue);
+            console.log('Mark Date: ' + colDef.field, rowEntity.name);
+            journalService.editMark(rowEntity.name,colDef.field, newValue);
         });
     };
 
