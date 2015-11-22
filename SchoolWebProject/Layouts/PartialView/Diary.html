@@ -1,31 +1,36 @@
 ﻿<div class="container" style="width:1000px">
-    <div class=" page-header">
-        <h1>Diary</h1>
-    </div>
-    <table class="table table-bordered">
-        Monday
-        <thead>
-            <tr>
-                <td width="7%">Day Of The Week</td>
-                <td width="7%">Order Number</td>
-                <td>SubjectName</td>
-                <td>HomeTask</td>
-                <td>Mark</td>
-                <td>MarkTypeName</td>
-                <td>Data</td>
-            </tr>
-         </thead>
 
-        <tbody ng-repeat="entry in diary">
-            <tr>
-                <td>{{entry.DayOfTheWeek}}</td>
-                <td>{{entry.OrderNumber}}</td>
-                <td>{{entry.SubjectName}}</td>
-                <td>{{entry.HomeTask}}</td>
-                <td>{{entry.MarkValue}}</td>
-                <td>{{entry.MarkTypeName}}</td>
-                <td>{{entry.Date}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class=" page-header">
+        <h1>Щоденник</h1>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="i in [1,2,3,4,5]">
+        <div class="panel-heading"><h4> {{days[i-1]}},  {{getCurrentDay(i)}}</h4></div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td width="2%">№</td>
+                        <td width="15%">Предмет</td>
+                        <td width="25%">Тема уроку</td>
+                        <td width="40%">Домашнє завдання</td>
+                        <td width="18%" colspan="2">Оцінка</td>
+                     </tr>
+                </thead>
+                <tbody ng-repeat="entry in diary" ng-show="isShowing(entry.DayOfTheWeek,i)">
+                    <tr>
+                        <td>{{entry.OrderNumber}}</td>
+                        <td>{{entry.SubjectName}}</td>
+                        <td>{{entry.LessonTheme}}</td>
+                        <td>{{entry.HomeTask}}</td>
+                        <td width="13%">{{entry.MarkTypeName}}</td>
+                        <td width="5%">{{entry.MarkValue}}</td>
+                     </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
+
+

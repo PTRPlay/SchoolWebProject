@@ -7,3 +7,6 @@
     height: auto;
 }
 
+.table .table-bordered thead td {
+    font-weight: 700;
+}

@@ -1,8 +1,8 @@
 ﻿<div class="container" style="width:1000px">
         <div class=" page-header">
-            <h1>News</h1>
+            <h1> Новини </h1>
         </div>
-    <button href="#addAnnouncement" type="button" class="btn btn-default" ng-controller="announcementModalService" ng-click="showAnnouncementEditPage()">New announcements</button><br>
+    <button href="#addAnnouncement" type="button" class="btn btn-default" ng-controller="announcementModalService" ng-click="showAnnouncementEditPage()">Додати новину</button><br>
         <br>
         <br>
     <div class="panel panel-default" ng-repeat="(announcementIndex,announcement) in listAnnouncements">
@@ -18,7 +18,7 @@
                         <h5>{{announcement.Message}}</h5>
                         <br>
                         <h5><small>{{announcement.DataPublished | date}}</small></h5>
-                        <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)" style="cursor: pointer"> view detail</a>
+                        <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)" style="cursor: pointer"> детальніше </a>
                         <br>
                         <h5 ng-show="isShowing(announcementIndex)">{{announcement.MessageDetails}}</h5>
                     </div>
