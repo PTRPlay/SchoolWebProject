@@ -127,10 +127,6 @@
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
-            //Do your REST call here via $http.get or $http.post
-
-            //Alert to show what info about the edit is available
-            alert('Column: ' + colDef.name + ' ID: ' + rowEntity.id + ' Name: ' + rowEntity.name);
             journalService.editMark(4, newValue);
         });
     };
