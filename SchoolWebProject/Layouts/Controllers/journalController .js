@@ -123,11 +123,24 @@
             });
     }
 
+    function GetMarkId(rowEntityName, colDefField)
+    {
+        var name=rowEntityName.split(" ");
+        for (var i = 0; i < $scope.data.Marks.length; i++)
+        {
+            if ($scope.data.Marks[i].LessonDetailId == colDefField && $scope.data.Marks[i].FirstName == name[1] && $scope.data.Marks[i].LastName == name[0])
+            { return $scope.data.Marks[i].Id; }
+        }
+    }
+
     $scope.journalGrid.onRegisterApi = function (gridApi) {
         $scope.gridApi = gridApi;
         gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
-            console.log('Mark Date: ' + colDef.field, rowEntity.name);
-            journalService.editMark(rowEntity.name,colDef.field, newValue);
+            if (newValue != oldValue) {
+                console.log('Mark Date: ' + colDef.field, rowEntity.name);
+                var markId = GetMarkId(rowEntity.name, colDef.field);
+                journalService.editMark(markId, newValue);
+            }
         });
     };
 

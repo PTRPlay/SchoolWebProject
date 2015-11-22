@@ -23,6 +23,10 @@ namespace SchoolWebProject.Services.Models
 
         public int PupilId { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         
     }
 }
