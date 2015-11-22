@@ -37,7 +37,6 @@ namespace SchoolWebProject.Controllers
             var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
             return viewModel;
-
         }
 
         // POST api/teacherDegree
@@ -46,7 +45,6 @@ namespace SchoolWebProject.Controllers
             var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
             this.teacherDegreeService.AddTeacherDegree(teacherDegree);
             this.teacherDegreeService.SaveTeacherDegree();
-
         }
 
         // PUT api/teacherDegree/5

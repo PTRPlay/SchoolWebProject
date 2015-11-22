@@ -16,7 +16,7 @@ namespace SchoolWebProject.Controllers
     {
         private TeacherCategoryService teacherCategoryService;
 
-        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService): base(logger) 
+        public TeacherCategoryController(ILogger logger, TeacherCategoryService teacherCategoryService) : base(logger) 
         {
             this.teacherCategoryService = teacherCategoryService;
         }
@@ -45,7 +45,6 @@ namespace SchoolWebProject.Controllers
             var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
             this.teacherCategoryService.AddTeacherCategory(teacherCategory);
             this.teacherCategoryService.SaveTeacherCategory();
-            
         }
 
         // PUT api/teachercategory/5

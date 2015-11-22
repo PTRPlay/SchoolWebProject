@@ -53,7 +53,7 @@ namespace SchoolWebProject.Controllers
             value.Subjects = null;
             Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
             foreach (var subject in modifiedSubjects)
-                bin.Subjects.First((p) => p.Id ==subject.Id).Teachers.Add(teacher);
+                bin.Subjects.First((p) => p.Id == subject.Id).Teachers.Add(teacher);
             bin.SaveChanges();
         }
 
@@ -63,16 +63,17 @@ namespace SchoolWebProject.Controllers
         {
             SchoolContext bin = new SchoolContext();
             Teacher teacher = (Teacher)bin.Users.First(p => p.Id == value.Id);
-            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>,IEnumerable<Subject>>(value.Subjects);
+            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
             value.Subjects = null;
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, teacher);
             foreach (Subject subject in subjects)
             { 
-                if (bin.Subjects.First((p)=>p.Id==subject.Id)!= null)
+                if (bin.Subjects.First((p) => p.Id == subject.Id) != null)
                 {
-                    teacher.Subjects.Add(bin.Subjects.First((p)=>p.Id==subject.Id));
+                    teacher.Subjects.Add(bin.Subjects.First((p) => p.Id==subject.Id));
                 }
             }
+
             bin.SaveChanges();
        }
 

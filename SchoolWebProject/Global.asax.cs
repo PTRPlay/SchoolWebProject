@@ -34,7 +34,6 @@ namespace SchoolWebProject
             {
                 authTicket = FormsAuthentication.Decrypt(authCookie.Value);
             }
-
             catch
             {
                 return;

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Services;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Models;
 using AutoMapper;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
