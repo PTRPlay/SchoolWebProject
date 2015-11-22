@@ -25,7 +25,7 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/Schedule.html'
     })
     .state('diaryService', {
-        url: '/diary',
+        url: '/diary/{id}/{date}',
         templateUrl: '/Layouts/PartialView/Diary.html',
         controller: 'diaryController'
      })

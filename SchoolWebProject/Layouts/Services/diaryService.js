@@ -1,7 +1,15 @@
 ﻿myApp.factory('diaryService', ['$http', function ($http) {
-    return $http.get("api/diary/56").success(function (data) {
-        return data;
-    }).error(function (data) {
-        return data;
-    });
+
+    return {
+        getDiary: function (id, date) {
+            return $http.get('api/diary/diary/' + id + '/' + date)
+            .success(function (data) {
+                return data.get;
+            })
+            .error(function (data) {
+                return data;
+            })
+        }
+    }
+
 }]);

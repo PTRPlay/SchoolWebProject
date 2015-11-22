@@ -1,14 +1,12 @@
-﻿using System;
-using SchoolWebProject.Models;
+﻿using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
+using SchoolWebProject.Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Services;
-using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Controllers
 {
@@ -16,20 +14,44 @@ namespace SchoolWebProject.Controllers
     {
         private IDiaryService diaryService;
 
-        public DiaryController(ILogger logger, IDiaryService diaryService) : base(logger) 
+        public DiaryController(ILogger logger, IDiaryService diaryService)
+            : base(logger)
         {
             this.diaryService = diaryService;
         }
-
-        // GET api/diary/5/data
-        //public Diary Get(int id, DateTime date)
-        public IEnumerable<Diary> Get(int id)
+        // GET api/diary
+        public IEnumerable<string> Get()
         {
-          //  throw new NotImplementedException();
-            var viewModel = diaryService.GetDiaryByUserId(id);
-                 return viewModel;
+            return new string[] { "value1", "value2" };
         }
-        
 
-     }
+        // GET api/diary/id/date
+        public IEnumerable<Diary> Get(int id, string date)
+        {
+            //  throw new NotImplementedException();
+            var viewModel = diaryService.GetDiaryByUserId(id, date);
+            return viewModel;
+        }
+
+        // GET api/diary/5
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/diary
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT api/diary/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/diary/5
+        public void Delete(int id)
+        {
+        }
+    }
 }

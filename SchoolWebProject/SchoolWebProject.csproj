@@ -166,7 +166,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
-    <Compile Include="Controllers\DiaryController.cs" />
+    <Compile Include="Controllers\DiaryController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\JournalController.cs" />
     <Compile Include="Controllers\LessonDetailController.cs" />
@@ -289,6 +291,7 @@
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\Local IIS Website.pubxml" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
