@@ -1,0 +1,63 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="AddGroupForm">  
+                                      
+                    <div class="form-group">
+                        <label for="NameNumber" class="col-sm-2 control-label">Number:</label>
+                        <div class="col-sm-4">
+                            <select name="NameNumber" class="form-control" id="NameNumber" ng-model="group.nameNumber">
+                                <option ng-repeat="n in [1,2,3,4,5,6,7,8,9,10,11]" ng-selected="group.nameNumber == n" ng-click="group.nameNumber = {{$index}}" value="{{n}}"> {{n}} </option>
+                            </select> 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NameLetter" class="col-sm-2 control-label">Letter:</label>
+                        <div class="col-sm-4">
+                            <select name="NameLetter" class="form-control" id="NameLetter" ng-model="group.nameLetter">
+                                <option ng-repeat="n in ['А','Б','В','Г']" ng-selected="group.nameLetter == n" ng-click="group.nameLetter = {{$index}}" value="{{n}}"> {{n}} </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="lastName" ng-model="pupil.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddPupilForm.lastName.$dirty && AddPupilForm.lastName.$invalid">
+                                <small class="error"
+                                       ng-show="AddPupilForm.lastName.$error.required">
+                                    Поле не можу бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddPupilForm.lastName.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddPupilForm.lastName.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddPupilForm.lastName.$error.pattern">
+                                    Перша буква велика! Лише кирилиця!
+                                </small>
+                            </div>
+                        </div>
+                    </div>-->
+                    
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">Ok</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Відмінити</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
-﻿myApp.factory('groups', ['$http', function ($http)
+﻿myApp.factory('group', ['$http', function ($http)
 {
-    return $http.get('api/groups')
+    return $http.get('api/group/{id}')
 	.success(function (data)
 	{
 	    return data.get;
@@ -8,5 +8,6 @@
 	.error(function (data)
 	{
 	    return data;
-	}) 
+	})
+
 }]);

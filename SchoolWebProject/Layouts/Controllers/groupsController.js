@@ -1,13 +1,10 @@
-﻿//myApp.controller('groupsController', function ($scope, groups) {
-//    groups.success(function (data) {
-//        $scope.listGroups = data;
-//    });
-//});
-myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', function ($scope, groups, uiGridConstants)
+﻿myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', 'GroupModalService',
+    function ($scope, groups, uiGridConstants, GroupModalService)
 {
-    $scope.text = "Groups:";
+    $scope.text = "All Groups:";
 
-    $scope.groupsGrid = {
+    $scope.groupsGrid =
+        {
         showGridFooter: true,
         columnDefs: [
    {
@@ -15,28 +12,31 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
        field: 'NameNumber',
        width: "50",
        type: 'number',
-       sort: {
-           direction: uiGridConstants.ASC,
-           priority: 1
-       }
+       sort:
+           {
+                direction: uiGridConstants.ASC,
+                priority: 1
+           }
    },
    {
        field: 'NameLetter',
        width: "50"
    },
    {
-       field: "Teacher",
-       sortingAlgorithm: function (a, b) {
+       field: "TeacherName",
+       sortingAlgorithm: function (a, b)
+       {
            return a.localeCompare(b)
        }
    },
    {
        field: "PupilsAmount",
-       type: 'number'
+       type: 'number',
+       width: "150"
    },
    {
        field: "Details",
-       cellTemplate: '<div><button class="btn btn-success btn-sm" style=" width: 70px;" >Details</button></div>',
+       cellTemplate: '<div><a class="btn btn-success btn-sm" ng-href="#/group/{{row.entity.Id}}" style=" width: 70px;" >Details</a></div>',
        width: "80",
        enableFiltering: false,
        enableSorting: false
@@ -56,17 +56,35 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
        enableSorting: false
    }
         ],
-        onRegisterApi: function (gridApi) {
+        onRegisterApi: function (gridApi)
+        {
             $scope.grid2Api = gridApi;
         }
     };
 
-    groups.success(function (data) {
+    $scope.addGroup = function ()
+    {
+        GroupModalService.showGroupEditPage();
+    };
+
+    $scope.editGroup = function (value)
+    {
+        GroupModalService.showGroupEditPage(value);
+    };
+
+    $scope.deleteGroup = function (id, nameNumber, nameLetter)
+    {
+        var val = { id: id, nameNumber:nameNumber, nameLetter:nameLetter };
+        GroupModalService.showGroupDeleteModal(val);
+    };
+
+    groups.success(function (data)
+    {
         $scope.groupsGrid.data = data;
-        $scope.listGroups = data;
     });
 
     //ng-click="grid.appScope.deleteHandler(row.entity.LastName)"
     //ng-click="grid.appScope.editHandler(row.entity.LastName)"
 }
+
 ]);

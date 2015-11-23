@@ -18,9 +18,13 @@ namespace SchoolWebProject.Services.Models
 
         public int TeacherId { get; set; }
 
-        public string Teacher { get; set; }
+        public string TeacherName { get; set; }
 
         public int PupilsAmount { get; set; }
+
+        public List<ViewPupil> ViewPupils { get; set; }
+
+        public int SchoolId { get; set; }
 
         static ViewGroup()
         {
@@ -30,22 +34,38 @@ namespace SchoolWebProject.Services.Models
                     dest => dest.TeacherId,
                     opts => opts.MapFrom(src => (
                         ((src.Teacher != null) && (src.Teacher.Count != 0))
-                        ? ((db.User)src.Teacher[0]).Id 
+                        ? ((db.User)src.Teacher[0]).Id
                         : 0)))
                 .ForMember(
-                    dest => dest.Teacher,
+                    dest => dest.TeacherName,
                     opts => opts.MapFrom(src => (
                         ((src.Teacher != null) && (src.Teacher.Count != 0))
-                        ? ((db.User)src.Teacher[0]).FirstName + " " + ((db.User)src.Teacher[0]).LastName
+                        ? ((db.User)src.Teacher[0]).FirstName + " " + ((db.User)src.Teacher[0]).MiddleName + " " + ((db.User)src.Teacher[0]).LastName
                         : "немає")))
                 .ForMember(
-                    dest=>dest.PupilsAmount,
-                    opts=>opts.MapFrom(src=>src.Pupils.Count));
+                    dest => dest.PupilsAmount,
+                    opts => opts.MapFrom(src => src.Pupils.Count));
+
+            AutoMapper.Mapper.CreateMap<ViewGroup, db.Group>()
+                .IgnoreAllNonExisting()
+                .ForMember(dest => dest.SchoolId, opts => opts.MapFrom(src => 1));
         }
 
         public static ViewGroup CreateSimpleGroup(db.Group g)
         {
-            return Mapper.Map<db.Group, ViewGroup>(g);
+            ViewGroup temp = Mapper.Map<db.Group, ViewGroup>(g);
+            List<ViewPupil> pupils = new List<ViewPupil>();
+            ViewPupil p = new ViewPupil();
+
+            if (g.Pupils != null)
+            {
+                foreach (var v in g.Pupils)
+                    pupils.Add(Mapper.Map<db.Pupil, ViewPupil>(v));
+
+                temp.ViewPupils = pupils;
+            }
+
+            return temp;
         }
     }
 }
