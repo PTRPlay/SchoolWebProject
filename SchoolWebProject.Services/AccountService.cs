@@ -129,7 +129,7 @@ namespace SchoolWebProject.Services
                 Login = login,
                 PasswordSalt = salt,
                 PasswordHash = CreateHashPassword(password, salt),
-                UserId = user.Id,
+                UserId = user.Id
             });
         }
 

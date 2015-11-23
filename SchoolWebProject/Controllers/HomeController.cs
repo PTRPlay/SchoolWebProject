@@ -17,55 +17,43 @@ namespace SchoolWebProject.Controllers
     public class HomeController : Controller
     {
         public readonly ILogger logger = null;
-        private GenericRepository<User> repository;
+        private IUnitOfWork unitOfWork;
         private AccountService accountService;
 
-        public HomeController(ILogger tmplogger, AccountService input)
+        public HomeController(ILogger tmplogger, AccountService input, IUnitOfWork unit)
         {
             this.logger = new Logger();
-            this.repository = new GenericRepository<User>(new DbFactory());
             this.accountService = input;
+            this.unitOfWork = unit;
         }
-        
+
         [Authorize]
         public ActionResult Index()
         {
             Expression<Func<User, bool>> getUser = user => user.LogInData.Login == HttpContext.User.Identity.Name;
-            User currUser = this.repository.Get(getUser);
+            SchoolWebProject.Domain.Models.User currUser = this.unitOfWork.UserRepository.Get(getUser);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             Constants.UserRoles role = Constants.UserRoles.None;
             if (HttpContext.User.IsInRole(Constants.UserRoles.Admin.ToString()))
             {
                 role = Constants.UserRoles.Admin;
             }
-            else
+            else if (HttpContext.User.IsInRole(Constants.UserRoles.Teacher.ToString()))
             {
-                if (HttpContext.User.IsInRole(Constants.UserRoles.Teacher.ToString()))
-                {
-                    role = Constants.UserRoles.Teacher;
-                }
-                else
-                {
-                    if (HttpContext.User.IsInRole(Constants.UserRoles.Pupil.ToString()))
-                    {
-                        role = Constants.UserRoles.Pupil;
-                    }
-                    else
-                    {
-                        if (HttpContext.User.IsInRole(Constants.UserRoles.Parent.ToString()))
-                        {
-                            role = Constants.UserRoles.Parent;
-                        }
-                        else
-                        {
-                            return this.RedirectToAction("login", "account");
-                        }
-                    }
-                }
+                role = Constants.UserRoles.Teacher;
             }
-            var userData = new { Id = currUser.Id, Role = role.ToString(), Name = currUser.FirstName };
+            else if (HttpContext.User.IsInRole(Constants.UserRoles.Pupil.ToString()))
+            {
+                role = Constants.UserRoles.Pupil;
+            }
+            else if (HttpContext.User.IsInRole(Constants.UserRoles.Parent.ToString()))
+            {
+                role = Constants.UserRoles.Parent;
+            }
+            else return this.RedirectToAction("login", "account");
+            // var userData = new { Id = currUser.Id, Role = role.ToString(), Name = currUser.FirstName };
             ViewBag.Links = this.accountService.GetUserRaws(role);
-            ViewBag.user = serializer.Serialize(userData); 
+            // ViewBag.user = serializer.Serialize(userData);
             return this.View();
         }
     }
