@@ -1,15 +1,15 @@
-﻿using AutoMapper;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Models;
-using SchoolWebProject.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -39,6 +39,7 @@ namespace SchoolWebProject.Controllers
 
         // PUT api/lessonDetail/5
         [HttpPost]
+        [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]ViewLessonDetail value)
         {
             var lessonDetail = this.lessonDetailService.GetLessonDetailById(id);
@@ -48,6 +49,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/lessonDetail
+        [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]ViewLessonDetail value)
         {
             var lessonDetail = AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value);
@@ -55,6 +57,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // DELETE api/lessonDetail/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
         }

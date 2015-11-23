@@ -1,14 +1,19 @@
-﻿using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+<<<<<<< HEAD
 using SchoolWebProject.Services;
+=======
+using System.Web.Mvc;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+>>>>>>> e17e600b6b6176217a925e7c960a5d4dcca1cf81
 using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 using SchoolWebProject.Services.Interfaces;
 using SchoolWebProject.Services.Models;
 
@@ -32,6 +37,7 @@ namespace SchoolWebProject.Controllers
                 viewModel.Add(ViewGroup.CreateSimpleGroup(v));
             return viewModel;
         }
+<<<<<<< HEAD
         // GET api/groups/8
         public ViewGroup Get(int id)
         {
@@ -62,5 +68,7 @@ namespace SchoolWebProject.Controllers
         {
             groupService.RemoveGroup(id);
         }
+=======
+>>>>>>> e17e600b6b6176217a925e7c960a5d4dcca1cf81
     }
 }

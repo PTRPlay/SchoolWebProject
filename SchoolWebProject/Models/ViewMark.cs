@@ -19,6 +19,8 @@ namespace SchoolWebProject.Models
 
         public int SchoolId { get; set; }
 
+        public int PupilId { get; set; }
+
         public ViewPupil Pupil { get; set; }
 
         public ViewLessonDetail LessonDetail { get; set; }

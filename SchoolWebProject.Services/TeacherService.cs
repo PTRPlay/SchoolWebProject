@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Data.Infrastructure;
@@ -13,6 +14,7 @@ namespace SchoolWebProject.Services
     public class TeacherService : BaseService, ITeacherService
     {
         private ILogger teacherLogger;
+
         private IUnitOfWork unitOfWork;
 
         public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork): base(logger)
@@ -30,18 +32,32 @@ namespace SchoolWebProject.Services
 
         public Teacher GetProfileById(int id)
         {
-            return unitOfWork.TeacherRepository.GetById(id);
+            return this.unitOfWork.TeacherRepository.GetById(id);
+        }
+
+        public Teacher Get(Expression<Func<Teacher,bool>> expression)
+        {
+            return unitOfWork.TeacherRepository.Get(expression);
         }
 
         public void UpdateProfile(Teacher teacher)
         {
-            unitOfWork.TeacherRepository.Update(teacher);
+            foreach (var subject in teacher.Subjects)
+            {
+                this.unitOfWork.SubjectRepository.Update(subject);
+            }
+
+            this.unitOfWork.TeacherRepository.Update(teacher);
         }
 
         public void AddTeacher(Teacher teacher)
         {
+            foreach (var subject in teacher.Subjects) 
+            { 
+                this.unitOfWork.SubjectRepository.Update(subject); 
+            }
+
             this.unitOfWork.TeacherRepository.Add(teacher);
-            //repository.Add(teacher);
         }
 
         public void RemoveTeacher(Teacher teacher)

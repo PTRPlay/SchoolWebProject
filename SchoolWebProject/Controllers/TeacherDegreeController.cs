@@ -37,20 +37,20 @@ namespace SchoolWebProject.Controllers
             var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
             return viewModel;
-
         }
 
         // POST api/teacherDegree
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacherDegree value)
         {
             var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
             this.teacherDegreeService.AddTeacherDegree(teacherDegree);
             this.teacherDegreeService.SaveTeacherDegree();
-
         }
 
         // PUT api/teacherDegree/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherDegree value)
         {
             var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
@@ -61,6 +61,7 @@ namespace SchoolWebProject.Controllers
 
         // DELETE api/teacherDegree/5
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
             this.teacherDegreeService.DeleteTeacherDegree(id);

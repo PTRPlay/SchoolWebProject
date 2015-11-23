@@ -81,6 +81,10 @@
     groups.success(function (data)
     {
         $scope.groupsGrid.data = data;
+<<<<<<< HEAD
+=======
+        //$scope.listGroups = data;
+>>>>>>> e17e600b6b6176217a925e7c960a5d4dcca1cf81
     });
 
     //ng-click="grid.appScope.deleteHandler(row.entity.LastName)"

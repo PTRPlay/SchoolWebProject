@@ -11,6 +11,6 @@ namespace SchoolWebProject.Services
 {
     public interface IDiaryService
     {
-        IEnumerable<Diary> GetDiaryByUserId(int id);
+        IEnumerable<Diary> GetDiaryByUserId(int id, string date);
     }
 }

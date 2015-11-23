@@ -4,12 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Services;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Models;
 using AutoMapper;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -46,19 +46,32 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/mark
-        public void Post([FromBody]ViewMark value)
+        [Authorize(Roles = "Admin, Teacher")]
+        public void Post([FromBody]ViewMark vm)
         {
-            var mark = AutoMapper.Mapper.Map<ViewMark, Mark>(value);
-            this.markService.AddMark(mark);
-            this.markService.SaveMark();
+            Mark mark = markService.GetMarkById(vm.Id);
+            if (mark == null)
+            {
+                var newMark = AutoMapper.Mapper.Map<ViewMark, Mark>(vm);
+                markService.AddMark(newMark);
+                markService.SaveMark();
+            }
+            else
+            {
+                mark.Value = vm.Value;
+                markService.UpdateMark(mark);
+                markService.SaveMark();
+            }
         }
 
         // PUT api/mark/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/teacher/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
         }

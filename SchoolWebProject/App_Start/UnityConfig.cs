@@ -1,11 +1,11 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using SchoolWebProject.Services;
-using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Services.Interfaces;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
 using SchoolWebProject.Services.Implementations;
+using SchoolWebProject.Services.Interfaces;
 
 namespace SchoolWebProject.App_Start
 {
