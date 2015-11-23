@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,6 +52,11 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.PupilRepository.GetById(id);
         }
 
+        public Pupil Get(Expression<Func<Pupil, bool>> expression)
+        {
+            return unitOfWork.PupilRepository.Get(expression);
+        }
+
         public void UpdateProfile(Pupil pupil)
         {
             unitOfWork.PupilRepository.Update(pupil);
@@ -59,7 +65,6 @@ namespace SchoolWebProject.Services
 
         public void AddPupil(Pupil pupil)
         {
-            pupil.RoleId = 3;
             unitOfWork.PupilRepository.Add(pupil);
             unitOfWork.SaveChanges();
         }

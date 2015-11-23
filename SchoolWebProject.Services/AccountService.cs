@@ -23,12 +23,17 @@ namespace SchoolWebProject.Services
             this.emailService = new EmailSenderService(logger, this);
         }
 
-        public void GenerateUserLoginData(User user)
+        public LogInData GenerateUserLoginData(User user)
         {
-            string userLogin = GenerateLogin(user), userPassword = GeneratePassword();
-            SaveUserLoginData(user, userLogin, userPassword);
+            string userLogin = GenerateLogin(user), userPassword = GeneratePassword(), salt = CreateSalt();
             string message = string.Format(Constants.EmailMessage + "\nЛогін: " + userLogin + "\nПароль: " + userPassword);
             emailService.SendMail(user.Email, message);
+            return new LogInData
+                {
+                    Login = userLogin,
+                    PasswordSalt = salt,
+                    PasswordHash = CreateHashPassword(userPassword,salt)
+                };
         }
 
         public User GetUser(string userName, string password)
@@ -119,18 +124,6 @@ namespace SchoolWebProject.Services
         {
             int numberOfSpecialSymbols = 2;
             return Membership.GeneratePassword(passwordLength, numberOfSpecialSymbols);
-        }
-
-        private void SaveUserLoginData(User user, string login, string password)
-        {
-            string salt = CreateSalt();
-            this.unitOfWork.LogInDataRepository.Add(new LogInData
-            {
-                Login = login,
-                PasswordSalt = salt,
-                PasswordHash = CreateHashPassword(password, salt),
-                UserId = user.Id
-            });
         }
 
         private string CreateSalt()

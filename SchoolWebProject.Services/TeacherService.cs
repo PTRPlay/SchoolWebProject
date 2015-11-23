@@ -52,7 +52,6 @@ namespace SchoolWebProject.Services
 
         public void AddTeacher(Teacher teacher)
         {
-            teacher.RoleId = 2;
             foreach (var subject in teacher.Subjects) 
             { 
                 this.unitOfWork.SubjectRepository.Update(subject); 

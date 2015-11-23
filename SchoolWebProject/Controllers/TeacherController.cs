@@ -53,11 +53,11 @@ namespace SchoolWebProject.Controllers
         public void Post([FromBody]ViewTeacher value)
         {
             Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+            teacher.RoleId = 2;
+            if (teacher.Email != null)
+                teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
             teacherService.AddTeacher(teacher);
             teacherService.SaveTeacher();
-            Expression<Func<Teacher, bool>> getTeacher = teach =>
-                (teach.LastName == teacher.LastName && teach.MiddleName == teacher.MiddleName && teach.FirstName == teacher.FirstName);
-            this.accountService.GenerateUserLoginData(this.teacherService.Get(getTeacher));
         }
 
         // PUT api/teacher/5
