@@ -3,7 +3,6 @@
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
     $scope.journalGrid = {
-        showGridFooter: true,
         columnDefs: [],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
@@ -77,6 +76,7 @@
                     cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
                     width: "50",
                     pinnedLeft: true,
+                    pinnedHeader:true,
                     enableCellEdit: false,
                     enableFiltering: false,
                     cellFilter: 'currencyFilter:this'
@@ -85,7 +85,8 @@
             name: "Учень",
             field: "name",
             width: "200",
-            pinnedLeft: false,
+            pinnedLeft: true,
+            pinnedHeader: true,
             enableCellEdit: false,
             enableFiltering: false
         }];
@@ -97,13 +98,13 @@
                         name: parseDate($scope.data.LessonDetails[i].Date),
                         headerCellTemplate: '<div ng-controller="lessondetailController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
                         field: $scope.data.LessonDetails[i].Id.toString(),
-                        width: "*",
                         pinnedLeft: false,
+                        pinnedHeader: true,
                         enableCellEdit: true,
                         enableFiltering: false,
                         cellFilter: 'mapGender',
                         enableSorting: false,
-                        editableCellTemplate: 'ui-grid/dropdownEditor', width: '20%',
+                        editableCellTemplate: 'ui-grid/dropdownEditor', width: '6%',
                         editDropdownOptionsArray: [
                         { id: 0, value: " " },
                         { id: 1, value: 1 },
