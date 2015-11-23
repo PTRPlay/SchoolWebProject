@@ -37,16 +37,19 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/schools
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/schools/5
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/schools/5
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
         }

@@ -1,6 +1,7 @@
 ﻿using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
+using SchoolWebProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,16 +28,19 @@ namespace SchoolWebProject.Controllers
         //}
 
         // POST api/schedule
+        [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/schedule/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/schedule/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
         }
