@@ -48,33 +48,25 @@ namespace SchoolWebProject.Controllers
         // POST api/teacher
         public void Post([FromBody]ViewTeacher value)
         {
-            SchoolContext bin = new SchoolContext();
+            /*SchoolContext bin = new SchoolContext();
             var modifiedSubjects = value.Subjects;
             value.Subjects = null;
             Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
             foreach (var subject in modifiedSubjects)
                 bin.Subjects.First((p) => p.Id == subject.Id).Teachers.Add(teacher);
-            bin.SaveChanges();
+            bin.SaveChanges();*/
+            Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+            teacherService.AddTeacher(teacher);
+            teacherService.SaveTeacher();
         }
 
         // PUT api/teacher/5
         [HttpPost]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            SchoolContext bin = new SchoolContext();
-            Teacher teacher = (Teacher)bin.Users.First(p => p.Id == value.Id);
-            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
-            value.Subjects = null;
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, teacher);
-            foreach (Subject subject in subjects)
-            { 
-                if (bin.Subjects.First((p) => p.Id == subject.Id) != null)
-                {
-                    teacher.Subjects.Add(bin.Subjects.First((p) => p.Id==subject.Id));
-                }
-            }
-
-            bin.SaveChanges();
+            var teacher = teacherService.GetProfileById(id);
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, (Teacher)teacher);
+            teacherService.UpdateProfile(teacher);
        }
 
         // DELETE api/teacher/5
