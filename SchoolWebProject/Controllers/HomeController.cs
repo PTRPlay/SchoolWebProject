@@ -51,9 +51,9 @@ namespace SchoolWebProject.Controllers
                 role = Constants.UserRoles.Parent;
             }
             else return this.RedirectToAction("login", "account");
-            // var userData = new { Id = currUser.Id, Role = role.ToString(), Name = currUser.FirstName };
+             var userData = new { Id = currUser.Id, Role = role.ToString(), Name = currUser.FirstName };
             ViewBag.Links = this.accountService.GetUserRaws(role);
-            // ViewBag.user = serializer.Serialize(userData);
+             ViewBag.user = serializer.Serialize(userData);
             return this.View();
         }
     }
