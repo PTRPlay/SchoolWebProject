@@ -101,6 +101,7 @@
                         pinnedLeft: false,
                         enableCellEdit: true,
                         enableFiltering: false,
+                        cellFilter: 'mapGender',
                         enableSorting: false,
                         editableCellTemplate: 'ui-grid/dropdownEditor', width: '20%',
                         editDropdownOptionsArray: [
@@ -154,3 +155,18 @@
         $scope.groupsOptions = data;
     });
 }])
+
+myApp.filter('mapGender', function () {
+    var genderHash = {
+        0: ' ',
+        13: 'н'
+    };
+
+    return function (input) {
+        if (input == 0 || input == 13) {
+            return genderHash[input];
+        }
+        else return input;
+        }
+    
+});
