@@ -32,7 +32,6 @@ namespace SchoolWebProject.Controllers
         {
             Expression<Func<User, bool>> getUser = user => user.LogInData.Login == HttpContext.User.Identity.Name;
             User currUser = this.repository.Get(getUser);
-            currUser.LogInData = null;
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             Constants.UserRoles role = Constants.UserRoles.None;
             if (HttpContext.User.IsInRole(Constants.UserRoles.Admin.ToString()))
@@ -64,7 +63,6 @@ namespace SchoolWebProject.Controllers
                     }
                 }
             }
-
             var userData = new { Id = currUser.Id, Role = role.ToString(), Name = currUser.FirstName };
             ViewBag.Links = this.accountService.GetUserRaws(role);
             ViewBag.user = serializer.Serialize(userData); 

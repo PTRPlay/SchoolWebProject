@@ -16,6 +16,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         GenericRepository<LessonDetail> LessonDetailRepository { get; }
 
+        GenericRepository<LogInData> LogInDataRepository { get; }
+
         GenericRepository<Mark> MarkRepository { get; }
 
         GenericRepository<MarkType> MarkTypeRepository { get; }
@@ -33,6 +35,10 @@ namespace SchoolWebProject.Data.Infrastructure
         GenericRepository<School> SchoolRepository { get; }
         
         GenericRepository<Subject> SubjectRepository { get; }
+
+        GenericRepository<User> UserRepository { get; }
+
+        GenericRepository<Role> RoleRepository { get; }
         #endregion 
 
         void SaveChanges();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -18,10 +19,12 @@ namespace SchoolWebProject.Controllers
     public class TeacherController : BaseApiController
     {
         private TeacherService teacherService;
+        private IAccountService accountService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService): base(logger) 
+        public TeacherController(ILogger logger, TeacherService teacherService, IAccountService accService): base(logger) 
         {
             this.teacherService = teacherService;
+            this.accountService = accService;
         }
 
         // GET api/teacher
@@ -62,6 +65,9 @@ namespace SchoolWebProject.Controllers
 
             this.teacherService.AddTeacher(teacher);
             this.teacherService.SaveTeacher();
+            Expression<Func<Teacher, bool>> exp = teacherProfile => (teacherProfile.LastName == teacher.LastName &&
+                teacherProfile.FirstName == teacher.FirstName && teacherProfile.MiddleName == teacher.MiddleName);
+            accountService.GenerateUserLoginData(this.teacherService.Get(exp));
         }
 
         // PUT api/teacher/5

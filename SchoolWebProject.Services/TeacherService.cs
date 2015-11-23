@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Data.Infrastructure;
@@ -31,6 +32,11 @@ namespace SchoolWebProject.Services
         public Teacher GetProfileById(int id)
         {
             return unitOfWork.TeacherRepository.GetById(id);
+        }
+
+        public Teacher Get(Expression<Func<Teacher,bool>> expression)
+        {
+            return unitOfWork.TeacherRepository.Get(expression);
         }
 
         public void UpdateProfile(Teacher teacher)

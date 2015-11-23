@@ -13,17 +13,13 @@ namespace SchoolWebProject.Services
 {
     public class AccountService : BaseService, IAccountService
     {
-        private GenericRepository<User> userRepository;
-        private GenericRepository<LogInData> userLoginRepository;
-        private GenericRepository<Role> rolesRepository;
+        private IUnitOfWork unitOfWork;
         private IEmailSenderService emailService;
 
-        public AccountService(ILogger logger, GenericRepository<User> inputRepository, GenericRepository<LogInData> inloginrepo, GenericRepository<Role>inputRoles)
+        public AccountService(ILogger logger, IUnitOfWork unit)
             : base(logger)
         {
-            this.userRepository = inputRepository;
-            this.userLoginRepository = inloginrepo;
-            this.rolesRepository = inputRoles;
+            this.unitOfWork = unit;
             this.emailService = new EmailSenderService(logger, this);
         }
 
@@ -39,12 +35,12 @@ namespace SchoolWebProject.Services
         {
             Expression<Func<LogInData, bool>> getUserByLogin = user => user.Login == userName;
             LogInData loginData;
-            loginData = this.userLoginRepository.Get(getUserByLogin);
+            loginData = this.unitOfWork.LogInDataRepository.Get(getUserByLogin);
             if (loginData == null) return null;
             if (this.CheckUser(loginData, password) && loginData != null)
             {
                 Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
-                return this.userRepository.Get(getUser);
+                return this.unitOfWork.UserRepository.Get(getUser);
             }
             else return null;
         }
@@ -52,13 +48,13 @@ namespace SchoolWebProject.Services
         public LogInData GetUserLogInData(int id)
         {
             Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == id;
-            return userLoginRepository.Get(getLoginData);
+            return this.unitOfWork.LogInDataRepository.Get(getLoginData);
         }
 
         public Role GetRoleById(int? id)
         {
             Expression<Func<Role, bool>> getRole = role => role.Id == id;
-            return rolesRepository.Get(getRole);
+            return this.unitOfWork.RoleRepository.Get(getRole);
         }
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
@@ -128,7 +124,7 @@ namespace SchoolWebProject.Services
         private void SaveUserLoginData(User user, string login, string password)
         {
             string salt = CreateSalt();
-            userLoginRepository.Add(new LogInData
+            this.unitOfWork.LogInDataRepository.Add(new LogInData
             {
                 Login = login,
                 PasswordSalt = salt,
