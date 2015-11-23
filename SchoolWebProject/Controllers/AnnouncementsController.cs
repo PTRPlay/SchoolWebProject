@@ -38,6 +38,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/announcements
+        [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]ViewAnnouncement value)
         {
             Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
@@ -45,6 +46,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // PUT api/announcements/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]ViewAnnouncement value)
         {
             var announcement = this.announcementService.GetAnnouncementById(value.Id);
@@ -53,6 +55,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // DELETE api/announcements/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
         }
