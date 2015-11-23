@@ -59,6 +59,7 @@ namespace SchoolWebProject.Services
 
         public void AddPupil(Pupil pupil)
         {
+            pupil.RoleId = 3;
             unitOfWork.PupilRepository.Add(pupil);
             unitOfWork.SaveChanges();
         }
