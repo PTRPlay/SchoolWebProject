@@ -1,6 +1,7 @@
 ﻿myApp.controller('ScheduleModal', ['$scope', 'ModalService', '$http','schedule',function ($scope, ModalService, $http,schedule) {
     $scope.schedule = null;
     $scope.modifiedSchedule = null;
+    $scope.filterTeacherName = null;
     schedule.success(
         function (data){
             $scope.schedule = data;
@@ -17,16 +18,17 @@
             modal.element.modal();
             modal.close.then(function (result) {
                 if (result != null) {
-                    $scope.modifiedSchedule = modifiedScheduleFunc($scope.schedule, result.teacher);
+                    //$scope.modifiedSchedule = modifiedScheduleFunc($scope.schedule, result.teacher);
+                    $scope.filterTeacherName = result.teacher;
                 }
             });
         });
     };
 
-    function modifiedScheduleFunc(mas,filter) {
+    function modifiedScheduleFunc() {
         var result = [];
-        for (var i = 0; i < mas.length; ++i) {
-            if (mas[i].Teacher.LastName.indexOf(filter) >= 0) {
+        for (var i = 0; i < $scope.schedule.length; ++i) {
+            if ($scope.schedule[i].Teacher.LastName.indexOf($scope.filterTeacherName) >= 0) {
                 result.push(mas[i]);
             }
         }

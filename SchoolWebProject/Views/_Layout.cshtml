@@ -3,6 +3,9 @@
 <head>
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/ui-bootstrap-csp.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery-ui.css">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
@@ -62,6 +65,28 @@
         display: none;
     }
 }
+
+   TABLE {
+    width: 600px; 
+    border-bottom: 2px solid maroon; 
+    background: black; 
+   }
+   TH {
+    background: gray; 
+    color: white; 
+   }
+   TD, TH {
+    padding: 3px;
+    text-align: center;
+    border-bottom-color:#E7D9D9;
+    border-color:gray;
+    border-style:solid; 
+   }
+   TD.jewel {
+    text-align: left;
+    background: #ccc; 
+   }
+
 </style>
 
 </head>
@@ -98,14 +123,14 @@
                     </ul>
                     </div>
                 </div>
-                <div class="col-sm-9 col-sm-offset-2 main table" style="width:600px;">
+                <div class="col-sm-9 col-sm-offset-2 main table" style="width:1000px;">
                     <div ui-view></div>
                 </div>
             </div>
     </div>
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
-
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
     @RenderBody()
 
