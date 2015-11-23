@@ -2,6 +2,7 @@
     $scope.teacher = null;
     $scope.IsFormValid = true;
     if (Teacher != null) {
+        $scope.edit = false;
         var dateParsed;
         if (Teacher.WorkStart != null) {
             var dateParsed = Teacher.WorkStart.split('.');
@@ -21,6 +22,7 @@
         };
     }
     else {
+        $scope.edit = true;
         $scope.teacher = {
             id: null,
             img: null,

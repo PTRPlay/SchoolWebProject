@@ -41,16 +41,12 @@ namespace SchoolWebProject.Services
         public void AddAnnouncement(Announcement announcement)
         {
             this.unitOfWork.AnnouncementRepository.Add(announcement);
+            this.unitOfWork.SaveChanges();
         }
 
         public void RemoveAnnouncement(Announcement announcement)
         {
             this.unitOfWork.AnnouncementRepository.Delete(announcement);
-        }
-
-        public void SaveAnnouncement()
-        {
-            this.unitOfWork.SaveChanges();
         }
     }
 }

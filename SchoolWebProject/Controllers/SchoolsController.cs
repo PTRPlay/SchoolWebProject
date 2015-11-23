@@ -1,13 +1,13 @@
-﻿using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Models;
-using SchoolWebProject.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -37,16 +37,19 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/schools
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/schools/5
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/schools/5
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
         }

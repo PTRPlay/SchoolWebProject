@@ -1,14 +1,14 @@
 ﻿using System;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Models;
-using SchoolWebProject.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -38,23 +38,24 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/announcements
+        [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]ViewAnnouncement value)
         {
             Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
             this.announcementService.AddAnnouncement(announcement);
-            this.announcementService.SaveAnnouncement();
- 
         }
 
         // PUT api/announcements/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]ViewAnnouncement value)
         {
-            var announcement = announcementService.GetAnnouncementById(value.Id);
+            var announcement = this.announcementService.GetAnnouncementById(value.Id);
             AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value, announcement);
-            announcementService.UpdateAnnouncement(announcement);
+            this.announcementService.UpdateAnnouncement(announcement);
         }
 
         // DELETE api/announcements/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
         }

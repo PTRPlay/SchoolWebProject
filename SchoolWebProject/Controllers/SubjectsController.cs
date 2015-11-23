@@ -16,7 +16,7 @@ namespace SchoolWebProject.Controllers
     {
         private SubjectService subjects;
 
-        public SubjectsController(ILogger logger, SubjectService subjects): base(logger)
+        public SubjectsController(ILogger logger, SubjectService subjects) : base(logger)
         {
             this.subjects = subjects;
         }
@@ -42,16 +42,19 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/subjects
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/subjects/5
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/subjects/5
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
         }

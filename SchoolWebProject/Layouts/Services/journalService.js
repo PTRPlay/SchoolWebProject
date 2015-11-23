@@ -1,5 +1,4 @@
 ﻿myApp.factory('journalService', ['$http', function ($http) {
-    //TODO: get pupils function whitch takes a parameters
     return {
         getPage: function (groupId, subjectId) {
             console.log('From service: ' + groupId, subjectId);
@@ -10,7 +9,11 @@
             .error(function (data) {
                 return data;
             })
+        },
+        editMark: function (markId, newValue, PupilId, LessonDetailId) {
+            $http.post('/api/mark', { id: markId, value: newValue, PupilId: PupilId,LessonDetailId:LessonDetailId }).success(function (data) {
+                return data.get;
+            })
         }
-
     }
 }]);

@@ -20,6 +20,6 @@ namespace SchoolWebProject.Services
 
         Dictionary<string, string> GetUserRaws(Constants.UserRoles role);
 
-        void GenerateUserLoginData(User user);
+        LogInData GenerateUserLoginData(User user);
     }
 }

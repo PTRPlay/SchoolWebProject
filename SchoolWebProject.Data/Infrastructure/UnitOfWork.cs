@@ -22,6 +22,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private GenericRepository<LessonDetail> lessonDetailRepository;
 
+        private GenericRepository<LogInData> loginDataRepository;
+
         private GenericRepository<Mark> markRepository;
 
         private GenericRepository<MarkType> markTypeRepository;
@@ -39,6 +41,11 @@ namespace SchoolWebProject.Data.Infrastructure
         private GenericRepository<TeacherCategory> teacherCategoryRepository;
 
         private GenericRepository<TeacherDegree> teacherDegreeRepository;
+
+        private GenericRepository<User> userRepository;
+
+        private GenericRepository<Role> roleRepository;
+
         #endregion 
 
         #region Init Repositories
@@ -76,6 +83,18 @@ namespace SchoolWebProject.Data.Infrastructure
                     this.lessonDetailRepository = new GenericRepository<LessonDetail>(dbFactory);
                 }
                 return lessonDetailRepository;
+            }
+        }
+
+        public GenericRepository<LogInData> LogInDataRepository
+        {
+            get
+            {
+                if (this.loginDataRepository == null)
+                {
+                    this.loginDataRepository = new GenericRepository<LogInData>(dbFactory);
+                }
+                return loginDataRepository;
             }
         }
 
@@ -184,6 +203,30 @@ namespace SchoolWebProject.Data.Infrastructure
                     this.teacherDegreeRepository = new GenericRepository<TeacherDegree>(dbFactory);
                 }
                 return teacherDegreeRepository;
+            }
+        }
+
+        public GenericRepository<User> UserRepository
+        {
+            get
+            {
+                if (this.userRepository == null)
+                {
+                    this.userRepository = new GenericRepository<User>(dbFactory);
+                }
+                return userRepository;
+            }
+        }
+
+        public GenericRepository<Role> RoleRepository
+        {
+            get
+            {
+                if (this.roleRepository == null)
+                {
+                    this.roleRepository = new GenericRepository<Role>(dbFactory);
+                }
+                return roleRepository;
             }
         }
 

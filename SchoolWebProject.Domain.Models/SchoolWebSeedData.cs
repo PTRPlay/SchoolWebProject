@@ -70,25 +70,25 @@ namespace SchoolWebProject.Domain.Models
             return new List<Mark>
             {
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=11,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=8,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=10,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==113)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=2, Value=9,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==118)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=2, Value=11,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==97)as Pupil},
 				new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=5,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=6,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=7,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==113)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=8,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==118)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=9,
-                Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==97)as Pupil},
 
                  new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=4, Value=4,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
@@ -100,7 +100,7 @@ namespace SchoolWebProject.Domain.Models
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==119)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=4, Value=11,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==98)as Pupil},
-				new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=5,
+                new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=5,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==56)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=6,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
@@ -124,13 +124,14 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<LessonDetail>
             {
-                new LessonDetail{ HomeTask="Впр. 145-150", 
+                    new LessonDetail{ HomeTask="Впр. 145-150", 
                     Theme="Метод Гауса", 
                     Date=new DateTime(2015, 11,16 ), ScheduleId=1, SchoolId =1},
-                
                     new LessonDetail{ HomeTask="Ex. 12 - by heart, ex. 13, 14 - write, ex. 15 - prepare for dictation", 
                     Theme="Travel the world: exotic places", 
                     Date=new DateTime(2015, 11,16 ), ScheduleId=2, SchoolId =1},
+                    new LessonDetail{ HomeTask="П. 10", Theme="Кліматичні зони", 
+                    Date=new DateTime(2015, 11,16 ), ScheduleId=3, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 232 - write, ex. 15, 16 - read, ex. 16", 
                     Theme="Travel the world: exotic places", 
                     Date=new DateTime(2015, 11,23 ), ScheduleId=2, SchoolId =1},
@@ -140,11 +141,7 @@ namespace SchoolWebProject.Domain.Models
                     new LessonDetail{ HomeTask="Ex. 32 - search, ex. 17, 18 - write", 
                     Theme="Travel the world: exotic places", 
                     Date=new DateTime(2015, 12,7 ), ScheduleId=2, SchoolId =1},
-
-
-                new LessonDetail{ HomeTask="П. 10", Theme="Кліматичні зони", 
-                    Date=new DateTime(2015, 11,16 ), ScheduleId=3, SchoolId =1},
-                new LessonDetail{ HomeTask="Впр. 55, 57, 58, правила", Theme="Однорідні члени речення", 
+                    new LessonDetail{ HomeTask="Впр. 55, 57, 58, правила", Theme="Однорідні члени речення", 
                     Date=new DateTime(2015, 11,16 ), ScheduleId=4, SchoolId =1}
             };
         }
@@ -575,7 +572,7 @@ new Pupil { LastName = "Колотуха", FirstName = "Максим", MiddleNam
     PhoneNumber = "853886047", RoleId = 3, SchoolId = 1, GroupId = 11 },
 new Pupil { LastName = "Красилівський", FirstName = "Петро", MiddleName = "Олександрович", 
     PhoneNumber = "849234818", RoleId = 3, SchoolId = 1, GroupId = 1 },
-new Pupil { Id = 595, LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
+new Pupil { LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
     PhoneNumber = "825654271", RoleId = 3, SchoolId = 1, GroupId = 13, LogInData = new LogInData{Login = "pupil", PasswordHash = pupilHash, PasswordSalt = pupilSalt, UserId = 595} },
 new Pupil { LastName = "Лосіцька", FirstName = "Наталія", MiddleName = "Іванівна", 
     PhoneNumber = "371166751", RoleId = 3, SchoolId = 1, GroupId = 10 },

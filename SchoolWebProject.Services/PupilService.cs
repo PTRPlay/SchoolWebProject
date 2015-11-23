@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,11 @@ namespace SchoolWebProject.Services
         public Pupil GetProfileById(int id)
         {
             return this.unitOfWork.PupilRepository.GetById(id);
+        }
+
+        public Pupil Get(Expression<Func<Pupil, bool>> expression)
+        {
+            return unitOfWork.PupilRepository.Get(expression);
         }
 
         public void UpdateProfile(Pupil pupil)

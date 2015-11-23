@@ -15,36 +15,35 @@ namespace SchoolWebProject.Services.Implementations
         private IRepository<Group> repository;
         private IUnitOfWork unitOfWork;
 
-        public GroupService(ILogger logger, IRepository<Group> groupRepository, IUnitOfWork unitOfWork)
+        public GroupService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.repository = groupRepository;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Group> GetAllGroups()
         {
-            return repository.GetAll().ToList();
+            return unitOfWork.GroupRepository.GetAll().ToList(); 
         }
 
         public Group GetGroupById(int id)
         {
-            return repository.GetById(id);
+            return unitOfWork.GroupRepository.GetById(id);
         }
 
         public void UpdateGroup(Group group)
         {
-            repository.Update(group);
+            unitOfWork.GroupRepository.Update(group);
         }
 
         public void AddGroup(Group group)
         {
-            repository.Add(group);
+            unitOfWork.GroupRepository.Add(group);
         }
 
         public void RemoveGroup(Group group)
         {
-            repository.Delete(group);
+            unitOfWork.GroupRepository.Delete(group);
         }
 
         public void SaveChanges()
