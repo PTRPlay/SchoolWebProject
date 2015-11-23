@@ -79,6 +79,7 @@
                     pinnedLeft: true,
                     enableCellEdit: false,
                     enableFiltering: false,
+                    cellFilter: 'currencyFilter:this'
                 },
         {
             name: "Учень",
@@ -103,6 +104,7 @@
                         enableSorting: false,
                         editableCellTemplate: 'ui-grid/dropdownEditor', width: '20%',
                         editDropdownOptionsArray: [
+                        { id: 0, value: " " },
                         { id: 1, value: 1 },
                         { id: 2, value: 2 },
                         { id: 3, value: 3 },
