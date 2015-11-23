@@ -13,6 +13,7 @@ namespace SchoolWebProject.Models
         public ViewTeacher Teacher { get; set;}
         public int OrderNumber { get; set; }
         public int DayOfTheWeek { get; set; }
+        public int ClassRoomId { get; set; }
         //public virtual IEnumerable<LessonDetail> LessonsDetails { get; set; }
     }
 }
