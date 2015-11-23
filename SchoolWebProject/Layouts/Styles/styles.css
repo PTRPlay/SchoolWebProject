@@ -1,0 +1,12 @@
+﻿.details-background{
+    border-color: lightgray;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: 2px;
+    width: 30%;
+    height: auto;
+}
+
+.table .table-bordered thead td {
+    font-weight: 700;
+}

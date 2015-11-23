@@ -1,7 +1,7 @@
 ﻿myApp.controller('announcementModalService', ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
     $scope.showAnnouncementEditPage = function (announcement) {
         ModalService.showModal({
-            templateUrl: "Layouts/AnnouncementAddTemplate.html",
+            templateUrl: "Layouts/PartialView/AnnouncementAddTemplate.html",
             controller: "announcementAddController",
             inputs: {
                 title: "Announcement",

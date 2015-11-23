@@ -60,7 +60,9 @@ namespace SchoolWebProject.Services
                                     Value = m.Value,
                                     MarkTypeId = m.MarkTypeId,
                                     ScheduleId = m.SchoolId,
-                                    PupilId=m.PupilId
+                                    PupilId=m.PupilId,
+                                    FirstName=m.Pupil.FirstName,
+                                    LastName=m.Pupil.LastName
                                 };
 
             return new ViewJournal() { Pupils = pupilView, LessonDetails = lessonDeatailView, Marks = marksView };

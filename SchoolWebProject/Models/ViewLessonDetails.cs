@@ -15,11 +15,11 @@ namespace SchoolWebProject.Models
 
         public DateTime Date { get; set; }
 
-        public int ScheduleId { get; set; }
+        //public int ScheduleId { get; set; }
 
        // public virtual Schedule Schedule { get; set; }
 
-        public int SchoolId { get; set; }
+        //public int SchoolId { get; set; }
 
         //public virtual School School { get; set; }
 

@@ -4,19 +4,18 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Services;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Models;
 using AutoMapper;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
     public class LessonDetailController : BaseApiController
     {
         private LessonDetailService lessonDetailService;
-        private IRepository<LessonDetail> iRepo;
 
         public LessonDetailController(ILogger logger, LessonDetailService service) : base(logger)
         {
@@ -26,31 +25,36 @@ namespace SchoolWebProject.Controllers
         // GET api/lessonDetail
         public IEnumerable<ViewLessonDetail> Get()
         {
-            var lessonDetail = lessonDetailService.GetAllLessonDetails();
+            var lessonDetail = this.lessonDetailService.GetAllLessonDetails();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<LessonDetail>, IEnumerable<ViewLessonDetail>>(lessonDetail);
             return viewModel;
         }
 
-        // GET api/mark/5
+        // GET api/lessonDetail/5
         public ViewLessonDetail Get(int id)
         {
-            var viewModel = AutoMapper.Mapper.Map<LessonDetail, ViewLessonDetail>(lessonDetailService.GetLessonDetailById(id));
+            var viewModel = AutoMapper.Mapper.Map<LessonDetail, ViewLessonDetail>(this.lessonDetailService.GetLessonDetailById(id));
             return viewModel;
         }
 
-        // POST api/mark
+        // PUT api/lessonDetail/5
+        [HttpPost]
+        public void Put(int id, [FromBody]ViewLessonDetail value)
+        {
+            var lessonDetail = this.lessonDetailService.GetLessonDetailById(id);
+            AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value, lessonDetail);
+            this.lessonDetailService.UpdateLessonDetail(lessonDetail);
+            this.lessonDetailService.SaveLessonDetail();
+        }
+
+        // POST api/lessonDetail
         public void Post([FromBody]ViewLessonDetail value)
         {
             var lessonDetail = AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value);
-            lessonDetailService.AddLessonDetail(lessonDetail);
+            this.lessonDetailService.AddLessonDetail(lessonDetail);
         }
 
-        // PUT api/mark/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/teacher/5
+        // DELETE api/lessonDetail/5
         public void Delete(int id)
         {
         }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -16,17 +15,20 @@ using System.Data.Entity;
 
 namespace SchoolWebProject.Controllers
 {
-    public class TeacherController : BaseApiController
+    public class TeacherController : ApiController
     {
+        
+        private ILogger getLogger;
+
         private TeacherService teacherService;
-        private IAccountService accountService;
+        private SubjectService subjectService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService, IAccountService accService): base(logger) 
+        public TeacherController(ILogger logger, TeacherService teacherService , SubjectService subjectService ) 
         {
+            this.getLogger = logger;
             this.teacherService = teacherService;
-            this.accountService = accService;
+            this.subjectService = subjectService;
         }
-
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
         {
@@ -47,43 +49,23 @@ namespace SchoolWebProject.Controllers
         public void Post([FromBody]ViewTeacher value)
         {
             Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-
-            #region Old Comments. Clear if everything is working!
-            //var bin = new SchoolContext();
-            //Teacher teacher = new Teacher();
-            /*//teacher.Subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects).ToList<Subject>();
-            var modifiedSubjects = value.Subjects;
-            value.Subjects = null;
-            //AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
-            Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
-            //teacher.Subjects.AddRange(subjects);
-            foreach (var subject in modifiedSubjects)
-                bin.Subjects.First((p) => p.Id ==subject.Id).Teachers.Add(teacher);
-            bin.Entry(teacher).State = EntityState.Added;
-            bin.SaveChanges();*/
-            #endregion
-
-            this.teacherService.AddTeacher(teacher);
-            this.teacherService.SaveTeacher();
-            Expression<Func<Teacher, bool>> exp = teacherProfile => (teacherProfile.LastName == teacher.LastName &&
-                teacherProfile.FirstName == teacher.FirstName && teacherProfile.MiddleName == teacher.MiddleName);
-            accountService.GenerateUserLoginData(this.teacherService.Get(exp));
+            teacherService.AddTeacher(teacher);
+            teacherService.SaveTeacher();
         }
 
         // PUT api/teacher/5
         [HttpPost]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            var teacher = teacherService.GetProfileById(value.Id);
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,(Teacher)teacher);
+            var teacher = teacherService.GetProfileById(id);
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, (Teacher)teacher);
             teacherService.UpdateProfile(teacher);
-            teacherService.SaveTeacher();
-        }
+       }
 
         // DELETE api/teacher/5
         public void Delete(int id)
         {
-
+             
         }
     }
 }

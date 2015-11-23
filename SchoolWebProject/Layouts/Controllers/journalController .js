@@ -1,21 +1,7 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjects', 'groups', 'uiGridConstants', function ($scope, journalService, subjects, groups, uiGridConstants) {
-    
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjects', 'groups', 'uiGridConstants', '$rootScope',function ($scope, journalService, subjects, groups, uiGridConstants, $rootScope) {
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
-    $scope.lessonDetail = {
-        date: "some",
-        theme: null,
-        hometask: null,
-        showHomeTask: false
-    };
-    $scope.showHomeTask = false;
-    $scope.getLessonDetails = function (date) {
-        alert(date);
-        $scope.showHomeTask = true;
-        $scope.lessonDetail.date = date;
-    }
-
     $scope.journalGrid = {
         showGridFooter: true,
         columnDefs: [],
@@ -41,7 +27,7 @@
         }
         for (var i = 0; i < pupilsMarks.length; ++i) {
             for (var j = 0; j < $scope.data.LessonDetails.length; ++j) {
-                pupilsMarks[i][$scope.data.LessonDetails[j].Date.toString()] = null;
+                pupilsMarks[i][$scope.data.LessonDetails[j].Id.toString()] = null;
             }
         }
     }
@@ -55,16 +41,34 @@
         return null;
     }
 
+    var getLessonDetailByDate = function (date) {
+        for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
+            if (date == $scope.data.LessonDetail[i].Date) {
+                return {
+                    date: parseDate($scope.data.LessonDetail[i].Date),
+                    theme: $scope.LessonDetail[i].HomeTask,
+                    hometask: $scope.LessonDetail[i].Theme
+                }
+            }
+        }
+    }
+
     var fillMarks = function () {
         fillPupils();
         for (var i = 0; i < pupilsMarks.length; ++i) {
             for (var j = 0; j < $scope.data.Marks.length; ++j) {
                 if ($scope.data.Marks[j].PupilId == pupilsMarks[i].id) {
-                    pupilsMarks[i][getDateByLessonDetailId($scope.data.Marks[j].LessonDetailId)] = $scope.data.Marks[j].Value;
+                    pupilsMarks[i][$scope.data.Marks[j].LessonDetailId] = $scope.data.Marks[j].Value;
                 }
             }
         }
     }
+
+    var parseDate = function (date) {
+        var arrdate = date.toString().slice(5, 10).split("-");
+        return arrdate[1] + "/" + arrdate[0];
+    }
+
     $scope.GetJournalPage = function (chosenSubject, chosenGroup) {
         if (chosenGroup != null && chosenSubject != null)
             journalService.getPage(chosenSubject, chosenGroup).success(function (data) {
@@ -88,22 +92,57 @@
                 $scope.data = data;
                 fillMarks();
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
-                    var arrdate = $scope.data.LessonDetails[i].Date.toString().slice(5, 10).split("-");
-                    var date = arrdate[1] + "/" + arrdate[0];
                     $scope.journalGrid.columnDefs.push({
-                        name: date,
-                        headerCellTemplate: '<div ng-controller="journalController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
-                        field: $scope.data.LessonDetails[i].Date.toString(),
+                        name: parseDate($scope.data.LessonDetails[i].Date),
+                        headerCellTemplate: '<div ng-controller="lessondetailController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
+                        field: $scope.data.LessonDetails[i].Id.toString(),
                         width: "*",
                         pinnedLeft: false,
-                        enableCellEdit: false,
+                        enableCellEdit: true,
                         enableFiltering: false,
-                        enableSorting: false
+                        enableSorting: false,
+                        editableCellTemplate: 'ui-grid/dropdownEditor', width: '20%',
+                        editDropdownOptionsArray: [
+                        { id: 1, value: 1 },
+                        { id: 2, value: 2 },
+                        { id: 3, value: 3 },
+                        { id: 4, value: 4 },
+                        { id: 5, value: 5 },
+                        { id: 6, value: 6 },
+                        { id: 7, value: 7 },
+                        { id: 8, value: 8 },
+                        { id: 9, value: 9 },
+                        { id: 10, value: 10 },
+                        { id: 11, value: 11 },
+                        { id: 12, value: 12 },
+                        { id: 13, value: "н" }
+                        ]
                     });
                 }
                 $scope.journalGrid.data = pupilsMarks;
             });
     }
+
+    function GetMarkId(rowEntityName, colDefField)
+    {
+        var name=rowEntityName.split(" ");
+        for (var i = 0; i < $scope.data.Marks.length; i++)
+        {
+            if ($scope.data.Marks[i].LessonDetailId == colDefField && $scope.data.Marks[i].FirstName == name[1] && $scope.data.Marks[i].LastName == name[0])
+            { return $scope.data.Marks[i].Id; }
+        }
+    }
+
+    $scope.journalGrid.onRegisterApi = function (gridApi) {
+        $scope.gridApi = gridApi;
+        gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
+            if (newValue != oldValue) {
+                console.log('Mark Date: ' + colDef.field, rowEntity.name);
+                var markId = GetMarkId(rowEntity.name, colDef.field);
+                journalService.editMark(markId, newValue, rowEntity.id, colDef.field);
+            }
+        });
+    };
 
     subjects.success(function (data) {
         $scope.subjectsOptions = data;

@@ -63,7 +63,7 @@ myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', fun
 
     groups.success(function (data) {
         $scope.groupsGrid.data = data;
-        $scope.listGroups = data;
+        //$scope.listGroups = data;
     });
 
     //ng-click="grid.appScope.deleteHandler(row.entity.LastName)"

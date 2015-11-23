@@ -16,7 +16,7 @@ namespace SchoolWebProject.Controllers
     {
         private SubjectService subjects;
 
-        public SubjectsController(ILogger logger, SubjectService subjects): base(logger)
+        public SubjectsController(ILogger logger, SubjectService subjects) : base(logger)
         {
             this.subjects = subjects;
         }
