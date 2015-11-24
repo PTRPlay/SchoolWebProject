@@ -215,7 +215,6 @@
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\app.js" />
-    <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\ModalControllers\addCategoryController.js" />
@@ -223,14 +222,9 @@
     <Content Include="Layouts\ModalControllers\degreeModalService.js" />
     <Content Include="Layouts\ModalControllers\categoryModalService.js" />
     <Content Include="Layouts\ModalControllers\FilterScheduleController.js" />
-    <Content Include="Layouts\ModalControllers\groupModalController.js" />
-    <Content Include="Layouts\ModalControllers\groupModalService.js" />
     <Content Include="Layouts\ModalControllers\ScheduleModal.js" />
     <Content Include="Layouts\PartialView\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\PartialView\Contacts.html" />
-    <Content Include="Layouts\PartialView\GroupAddTemplate.html" />
-    <Content Include="Layouts\PartialView\GroupDeleteTemplate.html" />
-    <Content Include="Layouts\PartialView\GroupDetails.html" />
     <Content Include="Layouts\PartialView\Groups.html" />
     <Content Include="Layouts\PartialView\Journal.html" />
     <Content Include="Layouts\PartialView\News.html" />
@@ -245,7 +239,6 @@
     <Content Include="Layouts\PartialView\TeacherInfo.html" />
     <Content Include="Layouts\PartialView\Teachers.html" />
     <Content Include="Layouts\PartialView\TeachersAddTemplate.html" />
-    <Content Include="Layouts\Services\GroupDetailsService.js" />
     <Content Include="Layouts\Services\lessondetailService.js" />
     <Content Include="Layouts\Services\scheduleService.js" />
     <Content Include="Layouts\PartialView\TeacherCategoryTemplate.html" />

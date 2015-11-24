@@ -24,7 +24,7 @@ namespace SchoolWebProject.Controllers
         // GET api/subject
         public IEnumerable<ViewSubject> Get()
         {
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Subject>, IEnumerable<ViewSubject>>(subjects.GetAllSubjects());
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Subject>, IEnumerable<ViewSubject>>(subjects.GetAllSubject());
             return viewModel;
         }
 

@@ -1,12 +1,10 @@
-﻿myApp.factory('groups', ['$http', function ($http)
-{
+﻿myApp.factory('groups', ['$http', function ($http) {
     return $http.get('api/groups')
-	.success(function (data)
-	{
+	.success(function (data) {
 	    return data.get;
 	})
-	.error(function (data)
-	{
+	.error(function (data) {
 	    return data;
-	}) 
+	})
+
 }]);

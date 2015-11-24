@@ -17,7 +17,7 @@ namespace SchoolWebProject.Services.Interfaces
 
         void AddGroup(Group group);
 
-        void RemoveGroup(int id);
+        void RemoveGroup(Group group);
 
         void SaveChanges();
     }

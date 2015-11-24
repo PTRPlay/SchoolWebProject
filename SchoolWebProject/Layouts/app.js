@@ -12,11 +12,10 @@ myApp.config(function ($stateProvider) {
 
     .state('subjects', {
         url: '/subjects',
-        templateUrl: '/Layouts/PartialView/Subjects.html',
+        templateUrl: '/Layouts/PartialView/Teachers.html',
         controller:'subjectsController'
     })
-    .state('groups',
-    {
+    .state('groups', {
         url: '/groups',
         templateUrl: '/Layouts/PartialView/Groups.html',
         controller:'groupsController'
@@ -55,12 +54,6 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/PupilInfo.html',
         controller: 'pupilInfoController'
     })
-        .state('group',
-        {
-            url: '/group/{id}',
-            templateUrl: '/Layouts/PartialView/GroupDetails.html',
-            controller: 'groupDetailsController'
-        })
 	.state('journal', {
         url: '/journal',
         templateUrl: '/Layouts/PartialView/Journal.html',

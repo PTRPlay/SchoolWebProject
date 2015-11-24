@@ -12,6 +12,7 @@ namespace SchoolWebProject.Services.Implementations
 {
     public class GroupService:BaseService, IGroupService
     {
+        private IRepository<Group> repository;
         private IUnitOfWork unitOfWork;
 
         public GroupService(ILogger logger, IUnitOfWork unitOfWork)
@@ -33,20 +34,16 @@ namespace SchoolWebProject.Services.Implementations
         public void UpdateGroup(Group group)
         {
             unitOfWork.GroupRepository.Update(group);
-            unitOfWork.SaveChanges();
         }
 
         public void AddGroup(Group group)
         {
             unitOfWork.GroupRepository.Add(group);
-            unitOfWork.SaveChanges();
         }
 
-        public void RemoveGroup(int id)
+        public void RemoveGroup(Group group)
         {
-            Group group = unitOfWork.GroupRepository.GetById(id);
             unitOfWork.GroupRepository.Delete(group);
-            unitOfWork.SaveChanges();
         }
 
         public void SaveChanges()
