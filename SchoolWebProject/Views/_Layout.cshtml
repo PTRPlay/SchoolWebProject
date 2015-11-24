@@ -21,12 +21,12 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/angular-modal-service.js"></script>
     <script src="~/Layouts/app.js"></script>
+    <script src="~/Layouts/AutoComplater.js"></script>
     
     <script src="~/Layouts/Controllers/newsController.js"></script>
     <script src="~/Layouts/Controllers/schoolController.js"></script>
     <script src="~/Layouts/Controllers/pupilsController.js"></script>
     <script src="~/Layouts/Controllers/pupilInfoController.js"></script>
-    <script src="~/Layouts/Controllers/schelduleController.js"></script>
     <script src="~/Layouts/Controllers/subjectsController.js"></script>
     <script src="~/Layouts/Controllers/teacherInfoController.js"></script>
     <script src="~/Layouts/Controllers/groupsController.js"></script>
@@ -39,7 +39,6 @@
     <script src="~/Layouts/Services/newsService.js"></script>
     <script src="~/Layouts/Services/schoolService.js"></script>
     <script src="~/Layouts/Services/pupilsService.js"></script>
-    <script src="~/Layouts/Services/schelduleService.js"></script>
     <script src="~/Layouts/Services/subjectsService.js"></script>
     <script src="~/Layouts/Services/teacherInfoService.js"></script>
     <script src="~/Layouts/Services/teachersServices.js"></script>
@@ -60,7 +59,6 @@
     <script src="~/Layouts/ModalControllers/addDegreeController.js"></script>
     <script src="~/Layouts/ModalControllers/degreeModalService.js"></script>
     <script src="~/Layouts/ModalControllers/FilterScheduleController.js"></script>
-    <script src="~/Layouts/ModalControllers/ScheduleModal.js"></script>
 
 <style>
 @@media only screen and (max-width: 768px) {
@@ -69,16 +67,16 @@
     }
 }
 
-   TABLE {
+   #Schedule {
     width: 600px; 
     border-bottom: 2px solid maroon; 
     background: black; 
    }
-   TH {
+    #Schedule TH {
     background: gray; 
     color: white; 
    }
-   TD, TH {
+   #Schedule TD, TH  {
     padding: 3px;
     text-align: center;
     border-bottom-color:#E7D9D9;
@@ -133,7 +131,7 @@
     </div>
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>1
 
     @RenderBody()
 

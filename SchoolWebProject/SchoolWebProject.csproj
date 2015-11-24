@@ -215,6 +215,7 @@
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\app.js" />
+    <Content Include="Layouts\AutoComplater.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\ModalControllers\addCategoryController.js" />
@@ -255,7 +256,6 @@
     <Content Include="Layouts\Controllers\teachersController.js" />
     <Content Include="Layouts\Controllers\subjectsController.js" />
     <Content Include="Layouts\Controllers\newsController.js" />
-    <Content Include="Layouts\Controllers\schelduleController.js" />
     <Content Include="Layouts\Controllers\teacherInfoController.js" />
     <Content Include="Layouts\PartialView\Diary.html" />
     <Content Include="Layouts\ModalControllers\addAnnouncementController.js" />
@@ -270,7 +270,6 @@
     <Content Include="Layouts\Services\schoolService.js" />
     <Content Include="Layouts\Services\newsService.js" />
     <Content Include="Layouts\Services\pupilsService.js" />
-    <Content Include="Layouts\Services\schelduleService.js" />
     <Content Include="Layouts\Services\subjectsService.js" />
     <Content Include="Layouts\Services\teacherInfoService.js" />
     <Content Include="Layouts\Services\teachersServices.js" />

@@ -13,7 +13,6 @@ namespace SchoolWebProject.Controllers
 {
     public class ScheduleController : ApiController
     {
-        // GET api/schedule
         public IEnumerable<ViewSchedule> Get()
         {
             var scheldules = new SchoolContext().Schedules;
@@ -21,11 +20,19 @@ namespace SchoolWebProject.Controllers
             return viewSchedules;
         }
 
-        // GET api/schedule/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        public IEnumerable<ViewSchedule> Get(string filter)
+        {
+            //TO DO 
+            // IT IS NOT FINISHED YET
+
+            //string[] filters = filter.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);
+            var scheldules = new SchoolContext().Schedules.
+                Where((enty) => enty.Teacher.FirstName + enty.Teacher.MiddleName + enty.Teacher.LastName == filter).ToArray();
+                //Intersect(new SchoolContext().Schedules.
+                //Where(enty=>enty.Group.NameNumber+enty.Group.NameLetter == filters[1]));
+            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(scheldules);
+            return viewSchedules;
+        }
 
         // POST api/schedule
         [Authorize(Roles = "Admin, Teacher")]

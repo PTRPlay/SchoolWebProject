@@ -11,40 +11,38 @@ namespace SchoolWebProject.Services
 {
     public class ScheduleService : BaseService, IScheduleService
     {
-        private IRepository<Schedule> repository;
 
         private IUnitOfWork unitOfWork;
 
-        public ScheduleService(ILogger logger, IRepository<Schedule> scheduleRepository, IUnitOfWork unitOfWork)
+        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.repository = scheduleRepository;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Schedule> GetAllSchedules()
         {
-            return this.repository.GetAll();
+            return this.unitOfWork.ScheduleRepository.GetAll();
         }
 
         public Schedule GetScheduleById(int id)
         {
-            return this.repository.GetById(id);
+            return this.unitOfWork.ScheduleRepository.GetById(id);
         }
-
+        
         public void UpdateSchedule(Schedule schedule)
         {
-            this.repository.Update(schedule);
+            this.unitOfWork.ScheduleRepository.Update(schedule);
         }
 
         public void AddSchedule(Schedule schedule)
         {
-            this.repository.Add(schedule);
+            this.unitOfWork.ScheduleRepository.Add(schedule);
         }
 
         public void RemoveSchedule(Schedule schedule)
         {
-            this.repository.Delete(schedule);
+            this.unitOfWork.ScheduleRepository.Delete(schedule);
         }
 
         public void SaveSchedule()
