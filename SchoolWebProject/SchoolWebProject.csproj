@@ -246,7 +246,6 @@
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
     <Content Include="Layouts\Styles\styles.css" />
-    <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Controllers\diaryController.js" />
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\journalController .js" />
@@ -294,7 +293,6 @@
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-touch.min.js.map" />
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\Local IIS Website.pubxml" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -303,7 +301,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\ui-grid.js" />
@@ -325,7 +322,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\TeacherInfo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -382,7 +378,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50437</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
