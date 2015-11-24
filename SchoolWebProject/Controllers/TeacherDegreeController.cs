@@ -40,6 +40,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/teacherDegree
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacherDegree value)
         {
             var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
@@ -49,6 +50,7 @@ namespace SchoolWebProject.Controllers
 
         // PUT api/teacherDegree/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherDegree value)
         {
             var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
@@ -59,6 +61,7 @@ namespace SchoolWebProject.Controllers
 
         // DELETE api/teacherDegree/5
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
             this.teacherDegreeService.DeleteTeacherDegree(id);

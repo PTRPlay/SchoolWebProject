@@ -46,6 +46,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/mark
+        [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]ViewMark vm)
         {
             Mark mark = markService.GetMarkById(vm.Id);
@@ -53,7 +54,7 @@ namespace SchoolWebProject.Controllers
             {
                 var newMark = AutoMapper.Mapper.Map<ViewMark, Mark>(vm);
                 markService.AddMark(newMark);
-                //markService.SaveMark();
+                markService.SaveMark();
             }
             else
             {
@@ -64,11 +65,13 @@ namespace SchoolWebProject.Controllers
         }
 
         // PUT api/mark/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/teacher/5
+        [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
         }

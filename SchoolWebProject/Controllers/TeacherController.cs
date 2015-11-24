@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -22,12 +23,14 @@ namespace SchoolWebProject.Controllers
 
         private TeacherService teacherService;
         private SubjectService subjectService;
+        private IAccountService accountService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService , SubjectService subjectService ) 
+        public TeacherController(ILogger logger, TeacherService teacherService , SubjectService subjectService, IAccountService accService ) 
         {
             this.getLogger = logger;
             this.teacherService = teacherService;
             this.subjectService = subjectService;
+            this.accountService = accService;
         }
         // GET api/teacher
         public IEnumerable<ViewTeacher> Get()
@@ -46,15 +49,20 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/teacher
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacher value)
         {
             Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+            teacher.RoleId = 2;
+            if (teacher.Email != null)
+                teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
             teacherService.AddTeacher(teacher);
             teacherService.SaveTeacher();
         }
 
         // PUT api/teacher/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
             var teacher = teacherService.GetProfileById(id);
@@ -63,6 +71,7 @@ namespace SchoolWebProject.Controllers
        }
 
         // DELETE api/teacher/5
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
              

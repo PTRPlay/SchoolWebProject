@@ -40,6 +40,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // POST api/teachercategory
+        [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacherCategory value)
         {
             var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
@@ -49,6 +50,7 @@ namespace SchoolWebProject.Controllers
 
         // PUT api/teachercategory/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherCategory value)
         {
             var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
@@ -59,6 +61,7 @@ namespace SchoolWebProject.Controllers
 
         // DELETE api/teachercategory/5
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
             this.teacherCategoryService.DeleteTeacherCategory(id);

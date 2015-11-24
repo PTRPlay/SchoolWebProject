@@ -572,7 +572,7 @@ new Pupil { LastName = "Колотуха", FirstName = "Максим", MiddleNam
     PhoneNumber = "853886047", RoleId = 3, SchoolId = 1, GroupId = 11 },
 new Pupil { LastName = "Красилівський", FirstName = "Петро", MiddleName = "Олександрович", 
     PhoneNumber = "849234818", RoleId = 3, SchoolId = 1, GroupId = 1 },
-new Pupil { Id = 595, LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
+new Pupil { LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
     PhoneNumber = "825654271", RoleId = 3, SchoolId = 1, GroupId = 13, LogInData = new LogInData{Login = "pupil", PasswordHash = pupilHash, PasswordSalt = pupilSalt, UserId = 595} },
 new Pupil { LastName = "Лосіцька", FirstName = "Наталія", MiddleName = "Іванівна", 
     PhoneNumber = "371166751", RoleId = 3, SchoolId = 1, GroupId = 10 },
