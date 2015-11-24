@@ -9,8 +9,11 @@ namespace SchoolWebProject.Domain.Models
 {
     public class SchoolContext : DbContext 
     {
+        private const string ConnectionStringSQLServer = "name=DbConnectionString";
+        private const string ConnectionStringLocalDB = "WebSchoolDB";
+
         public SchoolContext()
-            : base("WebSchoolDB")
+            : base(ConnectionStringSQLServer)
         {
             Database.SetInitializer<SchoolContext>(new SchoolWebSeedData());
         }

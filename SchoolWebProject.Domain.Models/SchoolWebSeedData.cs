@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class SchoolWebSeedData : DropCreateDatabaseAlways<SchoolContext>
+    public class SchoolWebSeedData : DropCreateDatabaseIfModelChanges<SchoolContext>
     {
         protected override void Seed(SchoolContext context)
         {
