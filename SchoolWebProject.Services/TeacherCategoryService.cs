@@ -36,6 +36,8 @@ namespace SchoolWebProject.Services
         {
             TeacherCategory teacherCategory = this.unitOfWork.TeacherCategoryRepository.GetById(id);
             teacherCategory.Teachers = null;
+            
+            this.unitOfWork.TeacherCategoryRepository.Update(teacherCategory);
             this.unitOfWork.TeacherCategoryRepository.Delete(teacherCategory);
         }
 
