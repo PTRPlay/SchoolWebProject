@@ -261,6 +261,7 @@
     <Content Include="Layouts\PartialView\TeacherCategoryTemplate.html" />
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
+    <Content Include="Layouts\Styles\ProfilesStyles.css" />
     <Content Include="Layouts\Styles\styles.css" />
     <Content Include="Layouts\Controllers\diaryController.js" />
     <Content Include="Layouts\Controllers\groupsController.js" />
