@@ -45,7 +45,8 @@
        width: "35",
        enableSorting: false,
        enableFiltering: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
    {
@@ -103,7 +104,8 @@
        enableFiltering: false,
        enableCellEditOnFocus:false,
        enableSorting: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
         ],

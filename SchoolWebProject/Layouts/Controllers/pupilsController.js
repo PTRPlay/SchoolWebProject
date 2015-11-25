@@ -16,7 +16,8 @@
        width: "50",
        enableSorting: false,
        enableFiltering: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        name: "Прізвище",
@@ -45,7 +46,8 @@
        width: "*",
        enableFiltering: false,
        enableSorting: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        name: "Адреса",
@@ -69,7 +71,8 @@
        width: "90",
        enableFiltering: false,
        enableSorting: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        name: "Видалити",
@@ -78,7 +81,8 @@
        width: "90",
        enableFiltering: false,
        enableSorting: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    }
      ],
         onRegisterApi: function (gridApi) {

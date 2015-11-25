@@ -16,7 +16,8 @@
                        direction: uiGridConstants.ASC,
                        priority: 1
                    },
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
            },
            {
                name: 'Літера',
@@ -46,7 +47,9 @@
                width: "80",
                enableFiltering: false,
                enableSorting: false,
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
+
            },
            {
                name: "Редагування",
@@ -55,7 +58,8 @@
                width: "80",
                enableFiltering: false,
                enableSorting: false,
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
            },
            {
                name: "Видалити",
@@ -64,7 +68,8 @@
                width: "80",
                enableFiltering: false,
                enableSorting: false,
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
            }
                 ],
                 onRegisterApi: function (gridApi) {
