@@ -1,6 +1,7 @@
 ﻿myApp.controller('newsController', function ($scope, newsService) {
-    newsService.success(function (data) {
-        $scope.listAnnouncements= data;
+    $scope.listAnnouncements = [];
+    newsService.getNews().success(function (data) {
+        $scope.listAnnouncements = data;
     });
     $scope.activeIndex;
     $scope.showDetail = function (index) {
@@ -10,5 +11,7 @@
     $scope.isShowing = function (index) {
         return $scope.activeIndex == index;
     };
+
 });
+
 
