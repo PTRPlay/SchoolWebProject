@@ -18,19 +18,19 @@
                                  ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
                                 <small class="error"
                                        ng-show="AddTeacherForm.firstName.$error.required">
-                                    Your first Name is required.
+                                    Ім'я є обов'язковим для введення
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.firstName.$error.minlength">
-                                    Your first Name is required to be at least 3 characters
+                                    Ім'я повинно містити як мінімум 3 літери.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.firstName.$error.maxlength">
-                                    Your first Name cannot be longer than 20 characters
+                                    Ім'я не може містити більше 20 літер.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.firstName.$error.pattern">
-                                    Not correct pattern
+                                    Не коректне ім'я
                                 </small>
                             </div>
                         </div>
@@ -44,19 +44,19 @@
                                  ng-show="AddTeacherForm.middleName.$dirty && AddTeacherForm.middleName.$invalid">
                                 <small class="error"
                                        ng-show="AddTeacherForm.middleName.$error.required">
-                                    Your middle Name is required.
+                                    По-батькові є обов'язковим для введення.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.middleName.$error.minlength">
-                                    Your middle Name is required to be at least 3 characters
+                                    По-батькові повинно містити як мінімум 3 літери.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.middleName.$error.maxlength">
-                                    Your middle Name cannot be longer than 20 characters
+                                    По-батькові не може містити більше 20 літер.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.middleName.$error.pattern">
-                                    Not correct pattern
+                                    Не коректне по-батькові.
                                 </small>
                             </div>
 
@@ -71,19 +71,19 @@
                                  ng-show="AddTeacherForm.lastName.$dirty && AddTeacherForm.lastName.$invalid">
                                 <small class="error"
                                        ng-show="AddTeacherForm.lastName.$error.required">
-                                    Your lastName is required.
+                                    Прізвище є обов'язкове для введення.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.lastName.$error.minlength">
-                                    Your last Name is required to be at least 3 characters
+                                    Прізвище повинно містити як мінімум 3 літери.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.lastName.$error.maxlength">
-                                    Your last Name cannot be longer than 30 characters
+                                    Призвіще не може містити більше 20 літер.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.lastName.$error.pattern">
-                                    Not correct pattern
+                                    Не коректне призвіще.
                                 </small>
                             </div>
                         </div>
@@ -96,15 +96,15 @@
                                  ng-show="AddTeacherForm.email.$dirty && AddTeacherForm.email.$invalid">
                                 <small class="error"
                                        ng-show="AddTeacherForm.email.$error.required">
-                                    Your email is required.
+                                    Введіть пароль.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.email.$error.minlength">
-                                    Your email is required to be at least 10 characters
+                                    Як мінімум 10 символів.
                                 </small>
                                 <small class="error"
                                        ng-show="AddTeacherForm.email.$error.pattern">
-                                    Not correct pattern.
+                                    Не коректний email.
                                 </small>
                             </div>
                             <div class="success">
@@ -150,7 +150,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <p class="error" style="color:red" ng-show="teacher.subjects==0">Please choose at least one subject</p>
+                            <p class="error" style="color:red" ng-show="teacher.subjects==0">Оберіть хоча б один предмет</p>
                         </div>
                         <p ng-show="IsFormValid=AddTeacherForm.$valid&&teacher.subjects!=0"></p>
                     </div>
@@ -158,7 +158,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">OK</button>
-                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Скасувати</button>
             </div>
         </div>
     </div>
