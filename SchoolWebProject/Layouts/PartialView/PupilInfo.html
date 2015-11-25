@@ -1,31 +1,29 @@
 ﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
-<div id="profile">
-    <div ng-app="pupilInfoController">
-        <div class="page-header">
-            <div class="center-block">
-                Профіль
-                <button style="font-size:14px" class="pull-right" ng-controller="pupilsController" ng-click="editPupil(getPupil())">Редагувати</button>
-                <button style="font-size:14px" class="pull-right" onclick="location.href = '#/pupils'" ng-href="#/pupils">До списку учнів</button>
-            </div>
+<div ng-app="pupilInfoController">
+    <div class="page-header">
+        <div class="center-block">
+            Профіль
+            <button style="font-size:14px" class="pull-right" ng-controller="pupilsController" ng-click="editPupil(getPupil())">Редагувати</button>
+            <button style="font-size:14px" class="pull-right" onclick="location.href = '#/pupils'" ng-href="#/pupils">До списку учнів</button>
+        </div>
 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div ng-show="getPupil().Img">
+            <img id="UserImage" ng-src="{{getPupil().Img}}" alt="Image" width="170" height="170" />
+        </div>
+        <div ng-show="!getPupil().Img">
+            <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div ng-show="getPupil().Img">
-                <img id="UserImage" ng-src="{{getPupil().Img}}" alt="Image" width="170" height="170" />
-            </div>
-            <div ng-show="!getPupil().Img">
-                <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
-            </div>
-        </div>
-        <div class="col-md-9">
-            <h2 id="UserName">{{getPupil().LastName}} {{getPupil().FirstName}} {{getPupil().MiddleName}}</h2>
-            <div id="info">
-                <h4 id="infoBlock">Телефон: {{getPupil().PhoneNumber}} </h4>
-                <h4 id="infoBlock">Адреса:  {{getPupil().Address}} </h4>
-                <h4 id="infoBlock">Email:   {{getPupil().Email}} </h4>
-            </div>
+    <div class="col-md-9">
+        <h2 id="UserName">{{getPupil().LastName}} {{getPupil().FirstName}} {{getPupil().MiddleName}}</h2>
+        <div id="info">
+            <h4 id="infoBlock">Телефон: {{getPupil().PhoneNumber}} </h4>
+            <h4 id="infoBlock">Адреса:  {{getPupil().Address}} </h4>
+            <h4 id="infoBlock">Email:   {{getPupil().Email}} </h4>
         </div>
     </div>
 </div>
