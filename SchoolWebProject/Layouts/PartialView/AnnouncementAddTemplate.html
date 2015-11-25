@@ -19,15 +19,14 @@
                                  ng-show="AddAnnouncementForm.title.$dirty && AddAnnouncementForm.title.$invalid">
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.required">
-                                    Введіть назву
+                                    Введіть заголовок новини
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.minlength">
-                                    Назва повинна містити як мінімум 3 літери
+                                    Заголовок повинен містити як мінімум 3 символи
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.maxlength">
-                                    Your announcement title cannot be longer than 100 characters
                                     Назва не може містити більше 100 символів
                                 </small>
                             </div>
@@ -42,15 +41,15 @@
                                  ng-show="AddAnnouncementForm.message.$dirty && AddAnnouncementForm.message.$invalid">
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.required">
-                                    Повідомлення не може бути пустим, як мінімум - 3 символи.
+                                    Повідомлення не може бути пустим.
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.minlength">
-                                    Повідомлення не може бути пустим, як мінімум - 3 символи.
+                                    Повідомлення повиненно містити як мінімум 3 символи
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.maxlength">
-                                    Message cannot be longer than 300 characters
+                                    Повідомлення не може містити більше 300 символів
                                 </small>
                             </div>
                         </div>
@@ -73,8 +72,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!AddAnnouncementForm.$valid" ng-click="close()">OK</button>
-                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
-                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">OK</button>
                 <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Скасувати</button>
             </div>
         </div>
