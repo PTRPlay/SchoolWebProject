@@ -1,7 +1,7 @@
 ﻿myApp.controller('diaryController', function ($scope, diaryService) {
     $scope.weeks = 0;
+    //    $scope.IdUser = window.currentUser.Id;
     $scope.IdUser = 56;
-    $scope.days = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'Пятниця'];
     $scope.millisInDay = 1000 * 60 * 60 * 24;
 
     $scope.fillHtml = function (week) {
@@ -24,17 +24,12 @@
 
     $scope.isCurrentDate = function (index) {
         $scope.curdate = new Date();
-        $scope.curdatemonth = $scope.curdate.getMonth() + 1;
-        $scope.scurdate = $scope.curdate.getDate() + '.' + $scope.curdatemonth + '.' + $scope.curdate.getFullYear();
-        return $scope.scurdate == $scope.getDayByIndex(index);
+        return $scope.sameDay($scope.curdate, $scope.getDayByIndex(index));
     };
 
     $scope.getDayByIndex = function (index) {
-        $scope.date = new Date();
-        $scope.date.setDate($scope.mondayDate.getDate() - 1 + index);
-        $scope.month = $scope.date.getMonth() + 1;
-        $scope.sdate = $scope.date.getDate() + '.' + $scope.month + '.' + $scope.date.getFullYear();
-        return $scope.sdate;
+        $scope.date = new Date(+$scope.mondayDate + (index - 1) * $scope.millisInDay);
+        return $scope.date;
     };
 
     $scope.showPrevious = function () {
@@ -46,5 +41,16 @@
         $scope.weeks = $scope.weeks + 1;
         $scope.fillHtml($scope.weeks);
     };
+
+    $scope.showCurrent = function () {
+        $scope.weeks = 0;
+        $scope.fillHtml($scope.weeks);
+    };
+
+    $scope.sameDay = function (d1, d2) {
+        return d1.getFullYear() === d2.getFullYear()
+          && d1.getDate() === d2.getDate()
+          && d1.getMonth() === d2.getMonth();
+    }
 
 });
