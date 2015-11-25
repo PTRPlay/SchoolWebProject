@@ -53,6 +53,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<ISchoolService, SchoolService>();
             container.RegisterType<IDiaryService, DiaryService>();
             container.RegisterType<IEmailSenderService, EmailSenderService>();
+            container.RegisterType<ISubjectService, SubjectService>();
         }
     }
 }

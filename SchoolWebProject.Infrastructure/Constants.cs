@@ -8,7 +8,7 @@ namespace SchoolWebProject.Infrastructure
 {
     public class Constants
     {
-        public static readonly string LoginError = "Invalid user name or password";
+        public static readonly string LoginError = "Невірні логін або пароль";
 
         public static readonly string EmailSubject = "Ваш логін та пароль для аккаунта на сайті SchoolWebProject!";
 
