@@ -48,7 +48,12 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        <img id="UserImage" ng-src="{{getPupil().Img}}" alt="Image" width="170" height="170" />
+        <div ng-show="getPupil().Img">
+            <img id="UserImage" ng-src="{{getPupil().Img}}" alt="Image" width="170" height="170" />
+        </div>
+        <div ng-show="!getPupil().Img">
+            <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
+        </div>
     </div>
     <div class="col-md-8">
         <h2 id="UserName">{{getPupil().LastName}} {{getPupil().FirstName}} {{getPupil().MiddleName}}</h2>
