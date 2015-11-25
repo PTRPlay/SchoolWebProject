@@ -11,20 +11,17 @@ namespace SchoolWebProject.Services
 {
     public class SubjectService : BaseService, ISubjectService
     {
-        private ILogger subjectLogger;
-
         private IUnitOfWork unitOfWork;
 
         public SubjectService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.subjectLogger = logger;
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Subject> GetAllSubject()
+        public IEnumerable<Subject> GetAllSubjects()
         {
-            return this.unitOfWork.SubjectRepository.GetAll();
+            return this.unitOfWork.SubjectRepository.GetAll().ToList();
         }
 
         public Subject GetSubjectById(int id)
@@ -35,16 +32,20 @@ namespace SchoolWebProject.Services
         public void UpdateSubject(Subject subject)
         {
             this.unitOfWork.SubjectRepository.Update(subject);
+            unitOfWork.SaveChanges();
         }
 
         public void AddSubject(Subject subject)
         {
             unitOfWork.SubjectRepository.Add(subject);
+            unitOfWork.SaveChanges();
         }
 
-        public void RemoveSubject(Subject subject)
+        public void RemoveSubject(int id)
         {
+            Subject subject = unitOfWork.SubjectRepository.GetById(id);
             unitOfWork.SubjectRepository.Delete(subject);
+            unitOfWork.SaveChanges();
         }
 
         public void SaveSubject()

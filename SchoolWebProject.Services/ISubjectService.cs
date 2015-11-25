@@ -9,7 +9,7 @@ namespace SchoolWebProject.Services
 {
     public interface ISubjectService
     {
-        IEnumerable<Subject> GetAllSubject();
+        IEnumerable<Subject> GetAllSubjects();
 
         Subject GetSubjectById(int id);
 
@@ -17,6 +17,6 @@ namespace SchoolWebProject.Services
 
         void AddSubject(Subject subject);
 
-        void RemoveSubject(Subject subject);
+        void RemoveSubject(int id);
     }
 }

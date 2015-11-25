@@ -1,1 +1,27 @@
-﻿<p>from Subjects</p>
+﻿<div class="page-header">
+    <h1>Subjects</h1>
+</div>
+
+<!--<div ng-controller="subjectsController">
+    <button role="button" class="btn-info" style="left:100px" ng-click="addSubject()">Add Subject</button>
+</div>-->
+
+<div class="panel panel-default" ng-repeat="(subjectIndex,subject) in listSubjects">
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <h4>{{subject.Name}}</h4>
+                    <a ng-click="showTeachers(subjectIndex)" ng-hide="isShowing(subjectIndex)" style="cursor: pointer"> Teachers </a>
+                    <br>
+                    <div ng-show="isShowing(subjectIndex)" ng-repeat="teacher in subject.ViewTeachers">
+
+                        <a ng-href="#/teacher/{{teacher.Id}}">{{$index+1}}. {{teacher.FirstName+" "+teacher.LastName}}</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
