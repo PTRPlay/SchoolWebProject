@@ -16,11 +16,13 @@
        width: "50",
        enableSorting: false,
        enableFiltering: false,
+       enableHiding: false
    },
    {
        name: "Прізвище",
        field: "LastName",
        width: "*",
+       enableHiding: false,
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
@@ -34,14 +36,16 @@
        field: "FirstName",
        width: "*",
        //enableSorting:false,
-       enableFiltering: false
+       enableFiltering: false,
+       enableHiding: false
    },
    {
        name: "Телефон",
        field: "PhoneNumber",
        width: "*",
        enableFiltering: false,
-       enableSorting: false
+       enableSorting: false,
+       enableHiding: false
    },
    {
        name: "Адреса",
@@ -64,7 +68,8 @@
        cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Профіль</a></div>',
        width: "80",
        enableFiltering: false,
-       enableSorting: false
+       enableSorting: false,
+       enableHiding: false
    },
    {
        name: "Видалити",
@@ -72,7 +77,8 @@
        cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Видалити</button></div>',
        width: "80",
        enableFiltering: false,
-       enableSorting: false
+       enableSorting: false,
+       enableHiding: false
    }
      ],
         onRegisterApi: function (gridApi) {
