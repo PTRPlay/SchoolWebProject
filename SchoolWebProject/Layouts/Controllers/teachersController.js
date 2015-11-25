@@ -50,7 +50,7 @@
    {
        enableFiltering: false,
        field: 'LastName',
-       displayName:'Призвіще'
+       displayName:'Прізвище'
 
    },
    {
@@ -61,7 +61,7 @@
    {
        enableFiltering:false,
        field: "MiddleName",
-       displayName:'По-батькові'
+       displayName:'По батькові'
    },
    {
        enableFiltering:true,
