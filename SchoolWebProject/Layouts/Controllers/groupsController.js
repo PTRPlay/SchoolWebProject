@@ -1,72 +1,98 @@
-﻿//myApp.controller('groupsController', function ($scope, groups) {
-//    groups.success(function (data) {
-//        $scope.listGroups = data;
-//    });
-//});
-myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', function ($scope, groups, uiGridConstants)
-{
-    $scope.text = "Groups:";
+﻿myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', 'GroupModalService',
+    function ($scope, groups, uiGridConstants, GroupModalService) {
+        $scope.text = "Список класів";
 
-    $scope.groupsGrid = {
-        showGridFooter: true,
-        columnDefs: [
-   {
-       displayName:"No",
-       field: 'NameNumber',
-       width: "50",
-       type: 'number',
-       sort: {
-           direction: uiGridConstants.ASC,
-           priority: 1
-       }
-   },
-   {
-       field: 'NameLetter',
-       width: "50"
-   },
-   {
-       field: "Teacher",
-       sortingAlgorithm: function (a, b) {
-           return a.localeCompare(b)
-       }
-   },
-   {
-       field: "PupilsAmount",
-       type: 'number'
-   },
-   {
-       field: "Details",
-       cellTemplate: '<div><button class="btn btn-success btn-sm" style=" width: 70px;" >Details</button></div>',
-       width: "80",
-       enableFiltering: false,
-       enableSorting: false
-   },
-   {
-       field: "Edit",
-       cellTemplate: '<div><button class="btn btn-primary btn-sm" style=" width: 70px; " >Edit</button></div>',
-       width: "80",
-       enableFiltering: false,
-       enableSorting: false
-   },
-   {
-       field: "Delete",
-       cellTemplate: '<div><button class="btn btn-danger btn-sm" style=" width: 70px;" >Delete</button></div>',
-       width: "80",
-       enableFiltering: false,
-       enableSorting: false
-   }
-        ],
-        onRegisterApi: function (gridApi) {
-            $scope.grid2Api = gridApi;
-        }
-    };
+        $scope.groupsGrid =
+            {
+                showGridFooter: true,
+                columnDefs: [
+           {
+               displayName: "№",
+               field: 'NameNumber',
+               width: "50",
+               type: 'number',
+               sort:
+                   {
+                       direction: uiGridConstants.ASC,
+                       priority: 1
+                   },
+               enableHiding: false,
+               enableColumnMenu: false
+           },
+           {
+               name: 'Літера',
+               field: 'NameLetter',
+               width: "50",
+               enableHiding: false
+           },
+           {
+               name: "Класний керівник",
+               field: "TeacherName",
+               sortingAlgorithm: function (a, b) {
+                   return a.localeCompare(b)
+               },
+               enableHiding: false
+           },
+           {
+               name: "Кількість учнів",
+               field: "PupilsAmount",
+               type: 'number',
+               width: "150",
+               enableHiding: false
+           },
+           {
+               name: "Деталі",
+               field: "Details",
+               cellTemplate: '<div><a class="btn btn-default btn-sm" ng-href="#/group/{{row.entity.Id}}" style=" width: 70px;" ><img src="/Layouts/Images/group.png"></a></div>',
+               width: "80",
+               enableFiltering: false,
+               enableSorting: false,
+               enableHiding: false,
+               enableColumnMenu: false
 
-    groups.success(function (data) {
-        $scope.groupsGrid.data = data;
-        //$scope.listGroups = data;
-    });
+           },
+           {
+               name: "Редагування",
+               field: "Edit",
+               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.editGroup(row.entity)" style=" width: 70px; " ><img src="/Layouts/Images/edit.png"></button></div>',
+               width: "80",
+               enableFiltering: false,
+               enableSorting: false,
+               enableHiding: false,
+               enableColumnMenu: false
+           },
+           {
+               name: "Видалити",
+               field: "Delete",
+               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" style=" width: 70px;" ><img src="/Layouts/Images/remove.png"></button></div>',
+               width: "80",
+               enableFiltering: false,
+               enableSorting: false,
+               enableHiding: false,
+               enableColumnMenu: false
+           }
+                ],
+                onRegisterApi: function (gridApi) {
+                    $scope.grid2Api = gridApi;
+                }
+            };
 
-    //ng-click="grid.appScope.deleteHandler(row.entity.LastName)"
-    //ng-click="grid.appScope.editHandler(row.entity.LastName)"
-}
+        $scope.addGroup = function () {
+            GroupModalService.showGroupEditPage();
+        };
+
+        $scope.editGroup = function (value) {
+            GroupModalService.showGroupEditPage(value);
+        };
+
+        $scope.deleteGroup = function (id, nameNumber, nameLetter) {
+            var val = { id: id, nameNumber: nameNumber, nameLetter: nameLetter };
+            GroupModalService.showGroupDeleteModal(val);
+        };
+
+        groups.success(function (data) {
+            $scope.groupsGrid.data = data;
+        });
+    }
+
 ]);

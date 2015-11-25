@@ -7,56 +7,59 @@ using System.Web.Http;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Models;
+using SchoolWebProject.Services.Models;
 using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
     public class SubjectsController : BaseApiController
     {
-        private SubjectService subjects;
+        private ISubjectService subjectService;
 
-        public SubjectsController(ILogger logger, SubjectService subjects) : base(logger)
+        public SubjectsController(ILogger logger, ISubjectService subjects)
+            : base(logger)
         {
-            this.subjects = subjects;
+            this.subjectService = subjects;
         }
 
         // GET api/subject
         public IEnumerable<ViewSubject> Get()
         {
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Subject>, IEnumerable<ViewSubject>>(subjects.GetAllSubject());
+            var subjects = subjectService.GetAllSubjects();
+            List<ViewSubject> viewModel = new List<ViewSubject>();
+            foreach (var v in subjects)
+                viewModel.Add(ViewSubject.CreateSimpleSubject(v));
+            return viewModel;
+
+        }
+
+        // GET api/subjects/5
+        public ViewSubject Get(int id)
+        {
+            var subject = this.subjectService.GetSubjectById(id);
+            var viewModel = ViewSubject.CreateSimpleSubject(subject);
             return viewModel;
         }
 
-/*        public IEnumerable<string> Get()
-        {
-            var subjects = new SchoolContext().Subjects;
-            var subjectsName = from entry in subjects select entry.Name;
-            return subjectsName;
-        }
-*/
-        // GET api/subjects/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/subjects
-        [Authorize(Roles = "Admin")]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ViewSubject value)
         {
+            Subject subject = AutoMapper.Mapper.Map<ViewSubject, Subject>(value);
+            this.subjectService.AddSubject(subject);
         }
 
         // PUT api/subjects/5
-        [Authorize(Roles = "Admin")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]ViewSubject value)
         {
+            var subject = subjectService.GetSubjectById(value.Id);
+            AutoMapper.Mapper.Map<ViewSubject, Subject>(value, subject);
+            subjectService.UpdateSubject(subject);
         }
 
         // DELETE api/subjects/5
-        [Authorize(Roles = "Admin")]
         public void Delete(int id)
         {
+            subjectService.RemoveSubject(id);
         }
     }
 }

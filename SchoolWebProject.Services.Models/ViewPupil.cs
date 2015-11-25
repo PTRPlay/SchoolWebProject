@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using db = SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Services.Models
 {
@@ -22,5 +24,14 @@ namespace SchoolWebProject.Services.Models
    //     public string School { get; set; }
 
         //public int LogInDataId { get; set; }
+        static ViewPupil()
+        {
+            Mapper.CreateMap<db.Pupil, ViewPupil>().IgnoreAllNonExisting();
+        }
+
+        public static ViewPupil CreateSimplePupil(db.Pupil p)
+        {
+            return Mapper.Map<db.Pupil, ViewPupil>(p);
+        }
     }
 }

@@ -1,4 +1,12 @@
 ﻿<div ng-controller="scheduleController" style="display:inline">
+    
+    <div>
+        <input name="teacher" type="text" id="Filter" autocomplete="on"/>
+        <button type="button" ng-click="showSchedule()">
+            Show
+        </button>
+    </div>
+
 <div class="navbar-left" style="width:400px" >
 <table id="Schedule">
     <thead>
@@ -13,52 +21,47 @@
         <tr>
             <td rowspan="7">{{enty.day}}</td>
             <td>1</td>
-            <td id="{{enty.day}}teacher1" style="background-color:#E9E9E9"></td>
-            <td id="{{enty.day}}subject1" style="background-color:#F7F5F3"></td>
+            <td id="{{$index}}teacher1" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}subject1" style="background-color:#F7F5F3"></td>
         </tr>
 
         <tr>
             <td>2</td>
-            <td id="{{enty.day}}teacher2" style="background-color:#F7F5F3"></td>
-            <td id="{{enty.day}}subject2" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}teacher2" style="background-color:#F7F5F3"></td>
+            <td id="{{$index}}subject2" style="background-color:#E9E9E9"></td>
         </tr>
 
         <tr>
             <td>3</td>
-            <td id="{{enty.day}}teacher3" style="background-color:#E9E9E9"></td>
-            <td id="{{enty.day}}subject3" style="background-color:#F7F5F3"></td>
+            <td id="{{$index}}teacher3" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}subject3" style="background-color:#F7F5F3"></td>
         </tr>
 
         <tr>
             <td>4</td>
-            <td id="{{enty.day}}teacher4" style="background-color:#F7F5F3"></td>
-            <td id="{{enty.day}}subject4" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}teacher4" style="background-color:#F7F5F3"></td>
+            <td id="{{$index}}subject4" style="background-color:#E9E9E9"></td>
         </tr>
 
         <tr>
             <td>5</td>
-            <td id="{{enty.day}}teacher5" style="background-color:#E9E9E9"></td>
-            <td id="{{enty.day}}subject5" style="background-color:#F7F5F3"></td>
+            <td id="{{$index}}teacher5" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}subject5" style="background-color:#F7F5F3"></td>
         </tr>
 
         <tr>
             <td>6</td>
-            <td id="{{enty.day}}teacher6" style="background-color:#F7F5F3"></td>
-            <td id="{{enty.day}}subject6" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}teacher6" style="background-color:#F7F5F3"></td>
+            <td id="{{$index}}subject6" style="background-color:#E9E9E9"></td>
         </tr>
 
         <tr>
             <td>7</td>
-            <td id="{{enty.day}}teacher7" style="background-color:#E9E9E9"></td>
-            <td id="{{enty.day}}subject7" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}teacher7" style="background-color:#E9E9E9"></td>
+            <td id="{{$index}}subject7" style="background-color:#E9E9E9"></td>
         </tr>
     </tbody>
 </table>
 </div>
-    <div class="navbar-right ui-widget" style="position:relative" >
-        <input name="teacher" type="text" id="teacherFilter" />
-        <button type="button" data-toggle="dropdown">
-            Filter
-        </button>
-    </div>
+
 </div>

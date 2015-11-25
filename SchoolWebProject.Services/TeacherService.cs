@@ -35,6 +35,12 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.TeacherRepository.GetById(id);
         }
 
+        public IEnumerable<Teacher> GetByName(string filter)
+        {
+            return this.unitOfWork.TeacherRepository.GetAll().
+                Where((enty) => (enty.LastName).Contains(filter));
+        }
+
         public Teacher Get(Expression<Func<Teacher,bool>> expression)
         {
             return unitOfWork.TeacherRepository.Get(expression);

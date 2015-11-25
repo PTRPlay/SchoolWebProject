@@ -6,5 +6,4 @@
 	.error(function (data) {
 	    return data;
 	})
-
 }]);

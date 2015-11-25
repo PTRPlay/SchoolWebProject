@@ -48,6 +48,11 @@ namespace SchoolWebProject.Controllers
             return viewModel;
         }
 
+        public IEnumerable<ViewTeacher> Get(string filter)
+        {
+            return AutoMapper.Mapper.Map<IEnumerable<Teacher>,IEnumerable<ViewTeacher>>(teacherService.GetByName(filter));
+        }
+
         // POST api/teacher
         [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacher value)

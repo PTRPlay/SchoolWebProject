@@ -1,0 +1,47 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="AddSubjectForm">
+
+                    <div class="form-group">
+
+                        <label for="Name" class="col-sm-2 control-label">Назва:</label>
+                        <div class="col-sm-4">
+
+                            <input type="text" class="form-control" id="Name" ng-model="subject.name" name="name" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
+
+                            <div class="error" style="color:red"
+                                 ng-show="AddSubjectForm.name.$dirty && AddSubjectForm.name.$invalid">
+                                <small class="error"
+                                       ng-show="AddSubjectForm.name.$error.required">
+                                    Поле не може бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddSubjectForm.name.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddSubjectForm.name.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddSubjectForm.name.$error.pattern">
+                                    Перша буква велика! Лише кирилиця!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">Ok</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Відмінити</button>
+            </div>
+        </div>
+    </div>
+</div>

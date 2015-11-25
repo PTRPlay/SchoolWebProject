@@ -1,14 +1,18 @@
-﻿<div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
+﻿<div class="container" style="width:1000px">
+    <div class="page-header">
+        <h1>Список вчителів</h1>
+    </div>
+    <div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
 
-<div>
-    <div ng-controller="ModalShowController">
-        <button href="#addTeachers"  class="btn-primary" style="left:100px" ng-click="showTeachersEditPage()">Add Teachers</button>
+    <div>
+        <div ng-controller="ModalShowController">
+            <button href="#addTeachers" class="btn-primary" style="left:100px" ng-click="showTeachersEditPage()">Додати вчителя</button>
 
-        <button ng-controller="categoryModelService"  href="#addCategory" role="button" class="btn-primary" style="left:300px" ng-click="showCategoryEditPage()">Edit Categories</button>
+            <button ng-controller="categoryModelService" href="#addCategory" role="button" class="btn-primary" style="left:300px" ng-click="showCategoryEditPage()">Редагувати категорії</button>
 
-        <button ng-controller="degreeModelService" href="#addDegree" role="button" class="btn-primary" style="left:300px" ng-click="showDegreeEditPage()">Edit Degrees</button>
-    </div> 
+            <button ng-controller="degreeModelService" href="#addDegree" role="button" class="btn-primary" style="left:300px" ng-click="showDegreeEditPage()">Редагувати звання</button>
+        </div>
+    </div>
+
 </div>
-
-<br />
 

@@ -45,23 +45,28 @@
        width: "35",
        enableSorting: false,
        enableFiltering: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
    {
        enableFiltering: false,
        field: 'LastName',
-       displayName:'Призвіще'
+       displayName: 'Прізвище',
+       enableHiding: false
 
    },
    {
        enableFiltering: false,
        field: 'FirstName',
-       displayName: 'Ім`я'
+       displayName: 'Ім`я',
+       enableHiding: false
    },   
    {
        enableFiltering:false,
        field: "MiddleName",
-       displayName:'По-батькові'
+       displayName: 'По батькові',
+       enableHiding: false
    },
    {
        enableFiltering:true,
@@ -71,6 +76,7 @@
            type: uiGridConstants.filter.SELECT,
            selectOptions: categoriesOptions
        },
+       enableHiding: false
    },
 
    {
@@ -82,19 +88,24 @@
            selectOptions: subjectsOptions
        },
        enableCellEdit: true,
+       enableHiding: false,
        editableCellTemplate: 'ui-grid/dropdownEditor',
        editDropdownValueLabel: 'value',
        editDropdownOptionsArray: $scope.getSubjects($scope.getCurrentFocus)
        },
 
 
+
    {
        field: "Profile",
        displayName: 'Профіль',
-       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       width: "80",
+       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;"><img src="/Layouts/Images/user.png"></a></div>',
+       width: "80", 
        enableFiltering: false,
-       enableSorting: false 
+       enableCellEditOnFocus:false,
+       enableSorting: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
         ],

@@ -7,7 +7,7 @@
             <div class="modal-body">
                 <form class="form-horizontal" name="AddAnnouncementForm">
                     <div class="form-group">
-            <!--           <input type="file" class="form-control" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="onLoad">   -->
+                        <!--           <input type="file" class="form-control" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="onLoad">   -->
                         <img src="{{announcement.img}}" class="img-rounded col-sm-4" width="170" height="170" alt="{{announcement.title}}" />
                     </div>
                     <div class="form-group">
@@ -19,15 +19,15 @@
                                  ng-show="AddAnnouncementForm.title.$dirty && AddAnnouncementForm.title.$invalid">
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.required">
-                                    Title is required.
+                                    Введіть заголовок новини
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.minlength">
-                                    Title is required to be at least 3 characters
+                                    Заголовок повинен містити як мінімум 3 символи
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.maxlength">
-                                    Your first Name cannot be longer than 100 characters
+                                    Назва не може містити більше 100 символів
                                 </small>
                             </div>
                         </div>
@@ -41,15 +41,15 @@
                                  ng-show="AddAnnouncementForm.message.$dirty && AddAnnouncementForm.message.$invalid">
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.required">
-                                    Message is required.
+                                    Повідомлення не може бути пустим.
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.minlength">
-                                    Message is required to be at least 3 characters
+                                    Повідомлення повиненно містити як мінімум 3 символи
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.maxlength">
-                                   Message cannot be longer than 300 characters
+                                    Повідомлення не може містити більше 300 символів
                                 </small>
                             </div>
                         </div>
@@ -57,10 +57,7 @@
                     <div class="form-group">
                         <label for="messageDetails" class="col-sm-2 control-label">Деталі:</label>
                         <div class="col-sm-6">
-                            <textarea rows="5" class="form-control" id="messageDetails" ng-model="announcement.messageDetails" name="messageDetails"/>
-                            <div class="error" style="color:red"
-                                 ng-show="AddAnnouncementForm.messageDetails.$dirty && AddAnnouncementForm.messageDetails.$invalid">
-                             </div>
+                            <textarea rows="5" class="form-control" id="messageDetails" ng-model="announcement.messageDetails" name="messageDetails" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,13 +66,13 @@
                             <input type="date" class="form-control" id="dataPublished" ng-model="announcement.dataPublished" />
                         </div>
                     </div>
-          
+
 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">OK</button>
-                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Cancel</button>
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!AddAnnouncementForm.$valid" ng-click="close()">OK</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Скасувати</button>
             </div>
         </div>
     </div>

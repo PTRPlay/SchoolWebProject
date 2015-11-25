@@ -65,6 +65,8 @@
     <Compile Include="ViewLessonDetails.cs" />
     <Compile Include="ViewMark.cs" />
     <Compile Include="ViewPupil.cs" />
+    <Compile Include="ViewSubject.cs" />
+    <Compile Include="ViewTeacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">

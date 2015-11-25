@@ -4,6 +4,7 @@ using SchoolWebProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,8 @@ namespace SchoolWebProject.Services
             teacherCategory.Teachers = null;
             
             this.unitOfWork.TeacherCategoryRepository.Update(teacherCategory);
+            Expression<Func<TeacherCategory, bool>> getTeacherCategory = category => category.Id == id;
+            teacherCategory.Teachers.RemoveAll(category => teacherCategory.Id == id);
             this.unitOfWork.TeacherCategoryRepository.Delete(teacherCategory);
         }
 
