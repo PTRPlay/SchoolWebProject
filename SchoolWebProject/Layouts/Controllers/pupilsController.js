@@ -61,16 +61,16 @@
    {
        name: "Профіль",
        field: "Profile",
-       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Профіль</a></div>',
-       width: "80",
+       cellTemplate: '<a class="btn btn-default btn-sm" ng-href="#/pupil/{{row.entity.Id}}" style="width: 80px;"><img src="/Layouts/Images/user.png"></a>',
+       width: "90",
        enableFiltering: false,
        enableSorting: false
    },
    {
        name: "Видалити",
        field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Видалити</button></div>',
-       width: "80",
+       cellTemplate: '<a class="btn btn-default btn-sm" ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 80px;"><img src="/Layouts/Images/remove.png"></a>',
+       width: "90",
        enableFiltering: false,
        enableSorting: false
    }
