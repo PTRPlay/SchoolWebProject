@@ -219,6 +219,10 @@
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
+    <Content Include="Layouts\Images\edit.png" />
+    <Content Include="Layouts\Images\group.png" />
+    <Content Include="Layouts\Images\remove.png" />
+    <Content Include="Layouts\Images\user.png" />
     <Content Include="Layouts\ModalControllers\addCategoryController.js" />
     <Content Include="Layouts\ModalControllers\addDegreeController.js" />
     <Content Include="Layouts\ModalControllers\degreeModalService.js" />

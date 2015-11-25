@@ -68,37 +68,37 @@ namespace SchoolWebProject.Services
             switch (role)
             {
                 case Constants.UserRoles.Admin:
-                    permisions["Teachers"] = "teachers";
-                    permisions["Subjects"] = "subjects";
-                    permisions["Pupils"] = "pupils";
-                    permisions["Groups"] = "groups";
-                    permisions["Schedule"] = "schedule";
-                    permisions["Diary"] = "diaryService";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Вчителі"] = "teachers";
+                    permisions["Предмети"] = "subjects";
+                    permisions["Учні"] = "pupils";
+                    permisions["Класи"] = "groups";
+                    permisions["Розклад"] = "schedule";
+                    permisions["Щоденник"] = "diaryService";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Teacher:
-                    permisions["Pupils"] = "pupils";
-                    permisions["Groups"] = "groups";
-                    permisions["Scheldule"] = "scheldule";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Учні"] = "pupils";
+                    permisions["Класи"] = "groups";
+                    permisions["Розклад"] = "scheldule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Pupil:
                     permisions["Diary"] = "diaryService";
-                    permisions["Scheldule"] = "scheldule";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Розклад"] = "scheldule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Parent:
-                    permisions["Teachers"] = "teachers";
-                    permisions["Scheldule"] = "scheldule";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Вчителі"] = "teachers";
+                    permisions["Розклад"] = "scheldule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Конткти"] = "schoolService";
                     break;
                 default:
                     permisions = null;

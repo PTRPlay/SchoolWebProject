@@ -34,21 +34,21 @@
            },
            {
                field: "Details",
-               cellTemplate: '<div><a class="btn btn-default btn-sm" ng-href="#/group/{{row.entity.Id}}" style=" width: 70px;" >Details</a></div>',
+               cellTemplate: '<div><a class="btn btn-default btn-sm" ng-href="#/group/{{row.entity.Id}}" style=" width: 70px;" ><img src="/Layouts/Images/group.png"></a></div>',
                width: "80",
                enableFiltering: false,
                enableSorting: false
            },
            {
                field: "Edit",
-               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.editGroup(row.entity)" style=" width: 70px; " >Edit</button></div>',
+               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.editGroup(row.entity)" style=" width: 70px; " ><img src="/Layouts/Images/edit.png"></button></div>',
                width: "80",
                enableFiltering: false,
                enableSorting: false
            },
            {
                field: "Delete",
-               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" style=" width: 70px;" >Delete</button></div>',
+               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" style=" width: 70px;" ><img src="/Layouts/Images/remove.png"></button></div>',
                width: "80",
                enableFiltering: false,
                enableSorting: false

@@ -91,9 +91,10 @@
    {
        field: "Profile",
        displayName: 'Профіль',
-       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       width: "80",
+       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;"><img src="/Layouts/Images/user.png"></a></div>',
+       width: "80", 
        enableFiltering: false,
+       enableCellEditOnFocus:false,
        enableSorting: false 
    },
 
