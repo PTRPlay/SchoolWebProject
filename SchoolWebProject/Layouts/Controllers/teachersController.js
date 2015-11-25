@@ -45,23 +45,27 @@
        width: "35",
        enableSorting: false,
        enableFiltering: false,
+       enableHiding: false
    },
 
    {
        enableFiltering: false,
        field: 'LastName',
-       displayName:'Прізвище'
+       displayName: 'Прізвище',
+       enableHiding: false
 
    },
    {
        enableFiltering: false,
        field: 'FirstName',
-       displayName: 'Ім`я'
+       displayName: 'Ім`я',
+       enableHiding: false
    },   
    {
        enableFiltering:false,
        field: "MiddleName",
-       displayName:'По батькові'
+       displayName: 'По батькові',
+       enableHiding: false
    },
    {
        enableFiltering:true,
@@ -71,6 +75,7 @@
            type: uiGridConstants.filter.SELECT,
            selectOptions: categoriesOptions
        },
+       enableHiding: false
    },
 
    {
@@ -82,10 +87,12 @@
            selectOptions: subjectsOptions
        },
        enableCellEdit: true,
+       enableHiding: false,
        editableCellTemplate: 'ui-grid/dropdownEditor',
        editDropdownValueLabel: 'value',
        editDropdownOptionsArray: $scope.getSubjects($scope.getCurrentFocus)
        },
+
 
 
    {
@@ -95,7 +102,8 @@
        width: "80", 
        enableFiltering: false,
        enableCellEditOnFocus:false,
-       enableSorting: false 
+       enableSorting: false,
+       enableHiding: false
    },
 
         ],

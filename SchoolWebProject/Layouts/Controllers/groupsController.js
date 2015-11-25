@@ -15,25 +15,29 @@
                    {
                        direction: uiGridConstants.ASC,
                        priority: 1
-                   }
+                   },
+               enableHiding: false
            },
            {
                name: 'Літера',
                field: 'NameLetter',
-               width: "50"
+               width: "50",
+               enableHiding: false
            },
            {
                name: "Класний керівник",
                field: "TeacherName",
                sortingAlgorithm: function (a, b) {
                    return a.localeCompare(b)
-               }
+               },
+               enableHiding: false
            },
            {
                name: "Кількість учнів",
                field: "PupilsAmount",
                type: 'number',
-               width: "150"
+               width: "150",
+               enableHiding: false
            },
            {
                name: "Деталі",
@@ -41,7 +45,8 @@
                cellTemplate: '<div><a class="btn btn-default btn-sm" ng-href="#/group/{{row.entity.Id}}" style=" width: 70px;" ><img src="/Layouts/Images/group.png"></a></div>',
                width: "80",
                enableFiltering: false,
-               enableSorting: false
+               enableSorting: false,
+               enableHiding: false
            },
            {
                name: "Редагування",
@@ -49,7 +54,8 @@
                cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.editGroup(row.entity)" style=" width: 70px; " ><img src="/Layouts/Images/edit.png"></button></div>',
                width: "80",
                enableFiltering: false,
-               enableSorting: false
+               enableSorting: false,
+               enableHiding: false
            },
            {
                name: "Видалити",
@@ -57,7 +63,8 @@
                cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" style=" width: 70px;" ><img src="/Layouts/Images/remove.png"></button></div>',
                width: "80",
                enableFiltering: false,
-               enableSorting: false
+               enableSorting: false,
+               enableHiding: false
            }
                 ],
                 onRegisterApi: function (gridApi) {
