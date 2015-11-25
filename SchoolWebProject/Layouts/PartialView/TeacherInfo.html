@@ -1,9 +1,65 @@
-﻿<div ng-app="teacherInfoController">
-    <button ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())">Edit</button>        <button onclick="location.href = '#/teachers'" ng-href="#/teachers">Back to teacher's list</button>
-    <h2>{{getTeacher().LastName}} {{getTeacher().FirstName}} {{getTeacher().MiddleName}}</h2>
-    <img ng-src="{{getTeacher().Img}}" alt="Image" width="170" height="170"/>
-    <h3>Category: {{getTeacher().Category.Name}}</h3>
-    <h3>Degree: {{getTeacher().Degree.Name}}</h3>
-    <h3>Work start: {{getTeacher().WorkStart | date}}</h3>
-    <h3>Subjects:</h3><h3 ng-repeat="subject in getTeacher().Subjects"> {{subject.Name}}</h3>
+﻿<style>
+    .page-header {
+        margin-left: 30px;
+        margin-bottom: 5px;
+    }
+
+    .center-block {
+        margin-top: 5px;
+        font-size: 30px;
+    }
+
+    #infoBlock {
+        padding: 10px;
+        padding-left: 15px;
+    }
+
+    #UserName {
+        margin-top: 10px;
+        padding-left: 50px;
+        padding-top: 15px;
+        margin-bottom: 30px;
+    }
+
+    #info {
+        border-width: 1px;
+        border-style: solid;
+        border-color: gainsboro;
+        position: relative;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    #UserImage {
+        margin-left: 60px;
+        margin-right: 15px;
+        margin-top: 55px;
+    }
+</style>
+<div ng-app="teacherInfoController">
+    <div class="page-header">
+        <div class="center-block">
+            Профіль
+            <button style="font-size:14px" class="pull-right" ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())">Редагувати</button>
+            <button style="font-size:14px" class="pull-right" onclick="location.href = '#/teachers'" ng-href="#/teachers">До списку вчителів</button>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <img id="UserImage" ng-src="{{getTeacher().Img}}" alt="Image" width="170" height="170" />
+    </div>
+    <div class="col-md-8">
+        <h2 id="UserName">{{getTeacher().LastName}} {{getTeacher().FirstName}} {{getTeacher().MiddleName}}</h2>
+        <div id="info">
+            <h4 id="infoBlock">Телефон: {{getTeacher().PhoneNumber}} </h4>
+            <h4 id="infoBlock">Адреса:  {{getTeacher().Address}} </h4>
+            <h4 id="infoBlock">Email:   {{getTeacher().Email}} </h4>
+            <h4 id="infoBlock">Категорія: {{getTeacher().Category.Name}}</h4>
+            <h4 id="infoBlock">Звання: {{getTeacher().Degree.Name}}</h4>
+            <h4 id="infoBlock">Початок роботи: {{getTeacher().WorkStart}}</h4>
+            <h4 id="infoBlock">Предмети: <span ng-repeat="subject in getTeacher().Subjects">  {{subject.Name}}</span></h4>
+        </div>
+    </div>
 </div>

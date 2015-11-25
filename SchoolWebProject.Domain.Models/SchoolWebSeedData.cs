@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchoolWebProject.Domain.Models
 {
-    public class SchoolWebSeedData : DropCreateDatabaseIfModelChanges<SchoolContext>
+    public class SchoolWebSeedData : DropCreateDatabaseAlways<SchoolContext>
     {
         protected override void Seed(SchoolContext context)
         {
@@ -61,7 +61,8 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<Admin>
             {
-                new Admin{ FirstName="Admin", MiddleName="The", LastName="Best", SchoolId=1, RoleId=1}
+                new Admin{ FirstName="Адмін", MiddleName="Адмінович", LastName="Адмінов", SchoolId=1, RoleId=1, 
+                    Address = "Admin str. 2/54", Email = "admin@mymail.com", PhoneNumber = "+38 (063) 256-16-16" }
             };
         }
 
