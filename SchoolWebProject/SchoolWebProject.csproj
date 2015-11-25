@@ -170,6 +170,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\HolidaysController.cs" />
     <Compile Include="Controllers\JournalController.cs" />
     <Compile Include="Controllers\LessonDetailController.cs" />
     <Compile Include="Controllers\MarkController .cs" />
@@ -217,6 +218,7 @@
     <Content Include="Layouts\app.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
+    <Content Include="Layouts\Controllers\holidaysController.js" />
     <Content Include="Layouts\ModalControllers\addCategoryController.js" />
     <Content Include="Layouts\ModalControllers\addDegreeController.js" />
     <Content Include="Layouts\ModalControllers\degreeModalService.js" />
@@ -239,11 +241,13 @@
     <Content Include="Layouts\PartialView\TeacherInfo.html" />
     <Content Include="Layouts\PartialView\Teachers.html" />
     <Content Include="Layouts\PartialView\TeachersAddTemplate.html" />
+    <Content Include="Layouts\PartialView\Holidays.html" />
     <Content Include="Layouts\Services\lessondetailService.js" />
     <Content Include="Layouts\Services\scheduleService.js" />
     <Content Include="Layouts\PartialView\TeacherCategoryTemplate.html" />
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
+    <Content Include="Layouts\Services\holidaysService.js" />
     <Content Include="Layouts\Styles\styles.css" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Controllers\diaryController.js" />

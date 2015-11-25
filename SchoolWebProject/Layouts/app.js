@@ -63,4 +63,9 @@ myApp.config(function ($stateProvider) {
         url: '/myprofile',
         templateUrl: '/Layouts/PartialView/MyProfile.html',
     })
+    .state('holidays', {
+        url: '/holidays',
+        templateUrl: '/Layouts/PartialView/Holidays.html',
+        controller: 'holidaysController'
+    })
 });

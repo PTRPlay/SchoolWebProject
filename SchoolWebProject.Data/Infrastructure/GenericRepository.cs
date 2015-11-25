@@ -39,6 +39,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         public virtual void Attach(T entity)
         {
+            this.dataContext.Entry(entity).State = EntityState.Unchanged;
             this.dbSet.Attach(entity);
         }
 
@@ -61,6 +62,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
             foreach (T obj in objects)
             {
+                this.dataContext.Entry(obj).State = EntityState.Modified;
                 this.dbSet.Remove(obj);
             }
         }
