@@ -22,17 +22,14 @@ namespace SchoolWebProject.Mapper
 
     public class DomainToViewModelMappingProfile : Profile
     {
-        public string ProfileName
-        {
-            get { return "DomainToViewModelMappings"; }
-        }
 
         protected override void Configure()
         {
             AutoMapper.Mapper.CreateMap<Announcement, ViewAnnouncement>();
             AutoMapper.Mapper.CreateMap<Pupil, ViewPupil>();
             AutoMapper.Mapper.CreateMap<Teacher, ViewTeacher>()
-                .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory));
+                .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory))
+                .ForMember(g=>g.WorkStart,map => map.MapFrom(vm=>Convert.ToString(vm.WorkBegin)));
             AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
             AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
             AutoMapper.Mapper.CreateMap<Subject, ViewSubject>();
@@ -46,11 +43,6 @@ namespace SchoolWebProject.Mapper
 
     public class ViewModelToDomainMappingProfile : Profile
     {
-        public string ProfileName
-        {
-            get { return "ViewModelToDomainMappings"; }
-        }
-
         protected override void Configure()
         {
             AutoMapper.Mapper.CreateMap<ViewTeacherCategory, TeacherDegree>();
@@ -59,7 +51,7 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
                 .ForMember(g => g.TeacherCategoryId, map => map.MapFrom(vm => vm.Category.Id))
                 .ForMember(g => g.TeacherDegreeId, map => map.MapFrom(vm => vm.Degree.Id))
-                .ForMember(g => g.WorkBegin, map => map.MapFrom(vm => Convert.ToString(vm.WorkStart)))
+                .ForMember(g => g.WorkBegin, map => map.MapFrom(vm => Convert.ToDateTime(vm.WorkStart)))
                 .ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
                 .ForMember(g => g.PhoneNumber, map => map.MapFrom(vm => vm.PhoneNumber))
                 .ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email));

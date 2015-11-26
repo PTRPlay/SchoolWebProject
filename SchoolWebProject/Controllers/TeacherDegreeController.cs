@@ -25,7 +25,7 @@ namespace SchoolWebProject.Controllers
         // GET api/teacherDegree
         public IEnumerable<ViewTeacherDegree> Get()
         {
-            var teacherCategories = this.teacherDegreeService.GetAllTeacherCategories();
+            var teacherCategories = teacherDegreeService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(teacherCategories);
             logger.Info("Gets Teacher Degree");
             return viewModel;
@@ -34,7 +34,7 @@ namespace SchoolWebProject.Controllers
         // GET api/teacherDegree/5
         public ViewTeacherDegree Get(int id)
         {
-            var teacherDegree = this.teacherDegreeService.GetTeacherDegreeById(id);
+            var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
             return viewModel;
         }
@@ -46,6 +46,7 @@ namespace SchoolWebProject.Controllers
             var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
             this.teacherDegreeService.AddTeacherDegree(teacherDegree);
             this.teacherDegreeService.SaveTeacherDegree();
+            logger.Info("Added new teacher degree");
         }
 
         // PUT api/teacherDegree/5
@@ -53,10 +54,11 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherDegree value)
         {
-            var teacherDegree = this.teacherDegreeService.GetTeacherDegreeById(id);
+            var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
             AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value, teacherDegree);
-            this.teacherDegreeService.UpdateTeacherDegree(teacherDegree);
-            this.teacherDegreeService.SaveTeacherDegree();
+            teacherDegreeService.UpdateTeacherDegree(teacherDegree);
+            teacherDegreeService.SaveTeacherDegree();
+            logger.Info("Edited teacher degree");
         }
 
         // DELETE api/teacherDegree/5
@@ -66,6 +68,7 @@ namespace SchoolWebProject.Controllers
         {
             this.teacherDegreeService.DeleteTeacherDegree(id);
             this.teacherDegreeService.SaveTeacherDegree();
+            logger.Info("Delete teacher degree");
         }
     }
 }

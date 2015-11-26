@@ -3,9 +3,15 @@
     <div class="page-header">
         <div class="center-block">
             Профіль
-            <button style="font-size:14px" class="pull-right" ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())">Редагувати</button>
-            <button style="font-size:14px" class="pull-right" onclick="location.href = '#/teachers'" ng-href="#/teachers">До списку вчителів</button>
-        </div>
+            <a ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())" class="btn btn-primary pull-right" style="margin:1px">
+                <span class="glyphicons glyphicons-user-add"></span> Редагувати
+            </a>
+
+    <a onclick="location.href = '#/teachers'" ng-href="#/teachers" class="btn btn-primary pull-right" style="margin:1px">
+        <span class="glyphicons glyphicons-user-add"></span> До списку вчителів
+    </a>
+
+    </div>
     </div>
 </div>
 <div class="row">
