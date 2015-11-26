@@ -46,6 +46,7 @@ namespace SchoolWebProject.Controllers
             var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
             this.teacherDegreeService.AddTeacherDegree(teacherDegree);
             this.teacherDegreeService.SaveTeacherDegree();
+            logger.Info("Added new teacher degree");
         }
 
         // PUT api/teacherDegree/5
@@ -57,6 +58,7 @@ namespace SchoolWebProject.Controllers
             AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value, teacherDegree);
             teacherDegreeService.UpdateTeacherDegree(teacherDegree);
             teacherDegreeService.SaveTeacherDegree();
+            logger.Info("Edited teacher degree");
         }
 
         // DELETE api/teacherDegree/5
@@ -66,6 +68,7 @@ namespace SchoolWebProject.Controllers
         {
             this.teacherDegreeService.DeleteTeacherDegree(id);
             this.teacherDegreeService.SaveTeacherDegree();
+            logger.Info("Delete teacher degree");
         }
     }
 }

@@ -13,9 +13,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private SchoolContext dbContext;
 
-        //private GenericRepository<Teacher> teacherRepository;
-
         #region Definition of repositories
+
         private GenericRepository<Announcement> announcementRepository;
 
         private GenericRepository<Group> groupRepository;
@@ -50,6 +49,11 @@ namespace SchoolWebProject.Data.Infrastructure
 
         #endregion 
 
+        public UnitOfWork(IDbFactory dbFactory)
+        {
+            this.dbFactory = dbFactory;
+        }
+
         #region Init Repositories
 
         public GenericRepository<Announcement> AnnouncementRepository
@@ -58,9 +62,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.announcementRepository == null)
                 {
-                    this.announcementRepository = new GenericRepository<Announcement>(dbFactory);
+                    this.announcementRepository = new GenericRepository<Announcement>(this.dbFactory);
                 }
-                return announcementRepository;
+                
+                return this.announcementRepository;
             }
         }
 
@@ -70,9 +75,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.groupRepository == null)
                 {
-                    this.groupRepository = new GenericRepository<Group>(dbFactory);
+                    this.groupRepository = new GenericRepository<Group>(this.dbFactory);
                 }
-                return groupRepository;
+
+                return this.groupRepository;
             }
         }
 
@@ -82,9 +88,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.holidaysRepository == null)
                 {
-                    this.holidaysRepository = new GenericRepository<Holidays>(dbFactory);
+                    this.holidaysRepository = new GenericRepository<Holidays>(this.dbFactory);
                 }
-                return holidaysRepository;
+
+                return this.holidaysRepository;
             }
         }
 
@@ -94,9 +101,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.lessonDetailRepository == null)
                 {
-                    this.lessonDetailRepository = new GenericRepository<LessonDetail>(dbFactory);
+                    this.lessonDetailRepository = new GenericRepository<LessonDetail>(this.dbFactory);
                 }
-                return lessonDetailRepository;
+
+                return this.lessonDetailRepository;
             }
         }
 
@@ -106,9 +114,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.loginDataRepository == null)
                 {
-                    this.loginDataRepository = new GenericRepository<LogInData>(dbFactory);
+                    this.loginDataRepository = new GenericRepository<LogInData>(this.dbFactory);
                 }
-                return loginDataRepository;
+
+                return this.loginDataRepository;
             }
         }
 
@@ -118,9 +127,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.markRepository == null)
                 {
-                    this.markRepository = new GenericRepository<Mark>(dbFactory);
+                    this.markRepository = new GenericRepository<Mark>(this.dbFactory);
                 }
-                return markRepository;
+
+                return this.markRepository;
             }
         }
 
@@ -130,9 +140,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.markTypeRepository == null)
                 {
-                    this.markTypeRepository = new GenericRepository<MarkType>(dbFactory);
+                    this.markTypeRepository = new GenericRepository<MarkType>(this.dbFactory);
                 }
-                return markTypeRepository;
+
+                return this.markTypeRepository;
             }
         }
 
@@ -142,9 +153,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.pupilRepository == null)
                 {
-                    this.pupilRepository = new GenericRepository<Pupil>(dbFactory);
+                    this.pupilRepository = new GenericRepository<Pupil>(this.dbFactory);
                 }
-                return pupilRepository;
+
+                return this.pupilRepository;
             }
         }
 
@@ -154,9 +166,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.scheduleRepository == null)
                 {
-                    this.scheduleRepository = new GenericRepository<Schedule>(dbFactory);
+                    this.scheduleRepository = new GenericRepository<Schedule>(this.dbFactory);
                 }
-                return scheduleRepository;
+
+                return this.scheduleRepository;
             }
         }
 
@@ -166,9 +179,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.schoolRepository == null)
                 {
-                    this.schoolRepository = new GenericRepository<School>(dbFactory);
+                    this.schoolRepository = new GenericRepository<School>(this.dbFactory);
                 }
-                return schoolRepository;
+
+                return this.schoolRepository;
             }
         }
 
@@ -178,9 +192,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.subjectRepository == null)
                 {
-                    this.subjectRepository = new GenericRepository<Subject>(dbFactory);
+                    this.subjectRepository = new GenericRepository<Subject>(this.dbFactory);
                 }
-                return subjectRepository;
+
+                return this.subjectRepository;
             }
         }
 
@@ -190,9 +205,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.teacherRepository == null)
                 {
-                    this.teacherRepository = new GenericRepository<Teacher>(dbFactory);
+                    this.teacherRepository = new GenericRepository<Teacher>(this.dbFactory);
                 }
-                return teacherRepository;
+
+                return this.teacherRepository;
             }
         }
 
@@ -202,9 +218,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.teacherCategoryRepository == null)
                 {
-                    this.teacherCategoryRepository = new GenericRepository<TeacherCategory>(dbFactory);
+                    this.teacherCategoryRepository = new GenericRepository<TeacherCategory>(this.dbFactory);
                 }
-                return teacherCategoryRepository;
+
+                return this.teacherCategoryRepository;
             }
         }
 
@@ -214,9 +231,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.teacherDegreeRepository == null)
                 {
-                    this.teacherDegreeRepository = new GenericRepository<TeacherDegree>(dbFactory);
+                    this.teacherDegreeRepository = new GenericRepository<TeacherDegree>(this.dbFactory);
                 }
-                return teacherDegreeRepository;
+
+                return this.teacherDegreeRepository;
             }
         }
 
@@ -226,9 +244,10 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.userRepository == null)
                 {
-                    this.userRepository = new GenericRepository<User>(dbFactory);
+                    this.userRepository = new GenericRepository<User>(this.dbFactory);
                 }
-                return userRepository;
+
+                return this.userRepository;
             }
         }
 
@@ -238,18 +257,14 @@ namespace SchoolWebProject.Data.Infrastructure
             {
                 if (this.roleRepository == null)
                 {
-                    this.roleRepository = new GenericRepository<Role>(dbFactory);
+                    this.roleRepository = new GenericRepository<Role>(this.dbFactory);
                 }
-                return roleRepository;
+
+                return this.roleRepository;
             }
         }
 
         #endregion
-
-        public UnitOfWork(IDbFactory dbFactory)
-        {
-            this.dbFactory = dbFactory;
-        }
 
         public SchoolContext DbContext
         {
