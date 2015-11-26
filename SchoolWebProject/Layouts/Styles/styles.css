@@ -1,4 +1,11 @@
-﻿.details-background{
+﻿@@media only screen and (max-width: 768px) {
+    .leftmenu {
+        display: none;
+    }
+}
+
+
+.details-background{
     border-color: lightgray;
     border-style: solid;
     border-radius: 2px;
@@ -14,15 +21,17 @@
 
 #main-sidebar {
     float: left;
-    width: 23%;
+    width: 13%;
     height: 90%;
     padding-top:5%;
+    padding-right:5%;
 }
 
 #main-content {
     float: right;
-    width:77%;
+    width:87%;
     height:90%;
+    padding-left:5%;
     padding-top:5%;
 }
 
@@ -33,7 +42,6 @@
 
 #Schedule {
     width: 600px;
-    border-bottom: 2px solid maroon;
     background: black;
 }
 
