@@ -1,5 +1,6 @@
 ﻿myApp.controller('schoolController', function ($scope, schoolService) {
-    schoolService.success(function (data) {
+    schoolService.loadSchool()
+        .success(function (data) {
         $scope.school = data;
     });
 });

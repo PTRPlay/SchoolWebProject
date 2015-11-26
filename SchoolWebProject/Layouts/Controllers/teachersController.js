@@ -1,4 +1,4 @@
-﻿myApp.controller('teachersController', ['$scope', '$http', 'teachers', 'categories', 'uiGridConstants',  function ($scope, $http, teachers, categories, uiGridConstants) {
+﻿myApp.controller('teachersController', ['$scope', '$http', 'teachersService', 'categories', 'uiGridConstants', function ($scope, $http, teachersService, categories, uiGridConstants) {
 
     var id, value,label;
     var categoriesOptions = [];
@@ -18,7 +18,8 @@
     var categoriesOptions2 = [];
 
     $scope.getSubjects = function (Id) {
-        teachers.success(function (data) {
+        teachersService.getTeachers()
+            .success(function (data) {
             for (i = 0; i < data[Id].Subjects.length; i++) {
                 categoriesOptions2[i] = ({ id: i, value: data[Id].Subjects[i].Name });
             }
@@ -112,7 +113,8 @@
         }
     };
 
-    teachers.success(function (data) {
+    teachersService.getTeachers()
+        .success(function (data) {
         $scope.teachersGrid.data = data;
     })
     $scope.toggleFiltering = function(){
