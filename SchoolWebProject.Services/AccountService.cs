@@ -73,6 +73,7 @@ namespace SchoolWebProject.Services
                     permisions["Учні"] = "pupils";
                     permisions["Класи"] = "groups";
                     permisions["Розклад"] = "schedule";
+                    permisions["Журнал"] = "journal";
                     permisions["Новини"] = "newsService";
                     permisions["Контакти"] = "schoolService";
                     break;
