@@ -13,14 +13,11 @@ namespace SchoolWebProject.Services
 {
     public class PupilService : BaseService, IPupilService
     {
-        private ILogger pupilLogger;
-
         private IUnitOfWork unitOfWork;
 
         public PupilService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.pupilLogger =logger;
             this.unitOfWork = unitOfWork;
         }
 
