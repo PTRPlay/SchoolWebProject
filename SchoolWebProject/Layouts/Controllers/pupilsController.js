@@ -22,6 +22,7 @@
    {
        name: "Прізвище",
        field: "LastName",
+       enableFiltering: true,
        width: "*",
        enableHiding: false,
        sort: {
