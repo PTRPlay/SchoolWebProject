@@ -18,7 +18,7 @@ namespace SchoolWebProject.Data.Infrastructure
         public GenericRepository(IDbFactory dbFactory)
         {
             this.DbFactory = dbFactory;
-            this.dbSet = DbContext.Set<T>();
+            this.dbSet = this.DbContext.Set<T>();
         }
 
         protected IDbFactory DbFactory
@@ -45,9 +45,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         public virtual void Update(T entity)
         {
-            //this.dbSet.Attach(entity);
             this.dataContext.Entry(entity).State = EntityState.Modified;
-            
         }
 
         public virtual void Delete(T entity)

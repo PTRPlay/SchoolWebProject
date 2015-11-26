@@ -1,4 +1,4 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjects', 'groups', 'uiGridConstants', '$rootScope',function ($scope, journalService, subjects, groups, uiGridConstants, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope',function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
@@ -148,11 +148,11 @@
         });
     };
 
-    subjects.success(function (data) {
+    subjectsService.getSubjects().success(function (data) {
         $scope.subjectsOptions = data;
     });
 
-    groups.success(function (data) {
+    groupsService.getGroups().success(function (data) {
         $scope.groupsOptions = data;
     });
 }])

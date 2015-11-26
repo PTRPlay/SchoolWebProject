@@ -43,10 +43,10 @@
            {
                name: "Опції",
                field: "Details",
-               cellTemplate: '<div><a title="Деталі про {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" ng-href="#/group/{{row.entity.Id}}"><img src="/Layouts/Images/group.png"></a> '+
-                             '<a title="Редагувати {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" href="" ng-click="grid.appScope.editGroup(row.entity)" ><img src="/Layouts/Images/edit.png"></a> ' +
-                             '<a title="Видалити {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" href="" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" ><img src="/Layouts/Images/remove.png"></a></div>',
-               width: "100",
+               cellTemplate: '<div>&nbsp <a title="Деталі про {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" ng-href="#/group/{{row.entity.Id}}"><img src="/Layouts/Images/group.png"></a> &nbsp ' +
+                             '<a title="Редагувати {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" href="" ng-click="grid.appScope.editGroup(row.entity)" ><img src="/Layouts/Images/edit.png"></a> &nbsp ' +
+                             '<a title="Видалити {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" href="" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" ><img src="/Layouts/Images/remove.png"></a>&nbsp</div>',
+               width: "120",
                enableFiltering: false,
                enableSorting: false,
                enableHiding: false,

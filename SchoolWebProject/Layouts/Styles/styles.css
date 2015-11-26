@@ -1,64 +1,29 @@
-﻿@@media only screen and (max-width: 768px) {
-    .leftmenu {
-        display: none;
-    }
-}
-
-
-.details-background{
+﻿.details-background {
     border-color: lightgray;
     border-style: solid;
     border-radius: 2px;
     border-width: 2px;
     width: 30%;
     height: auto;
+    margin-right: 3%;
+}
+
+.lessondetails-textarea {
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    resize: none;
+}
+
+.change-button {
+    margin-right: 5%;
 }
 
 .table .table-bordered thead td {
     font-weight: 700;
 }
 
-
-#main-sidebar {
-    float: left;
-    width: 13%;
-    height: 90%;
-    padding-top:5%;
-    padding-right:5%;
-}
-
-#main-content {
-    float: right;
-    width:87%;
-    height:90%;
-    padding-left:5%;
-    padding-top:5%;
-}
-
-#top-content {
-    height:5%;
-    position:fixed;
-}
-
-#Schedule {
-    width: 600px;
-    background: black;
-}
-
-#Schedule TH {
-        background: gray;
-        color: white;
-    }
-
-#Schedule TD, TH {
-        padding: 3px;
-        text-align: center;
-        border-bottom-color: #E7D9D9;
-        border-color: gray;
-        border-style: solid;
-    }
-
-TD.jewel {
-    text-align: left;
-    background: #ccc;
+#image-plaseholder {
+    border: 1px solid;
+    border-color: lightgrey;
 }

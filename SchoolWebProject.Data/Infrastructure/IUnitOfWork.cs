@@ -24,7 +24,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         GenericRepository<MarkType> MarkTypeRepository { get; }
 
-        GenericRepository<Teacher> TeacherRepository {get;}
+        GenericRepository<Teacher> TeacherRepository { get; }
 
         GenericRepository<TeacherCategory> TeacherCategoryRepository { get; }
 
@@ -44,6 +44,5 @@ namespace SchoolWebProject.Data.Infrastructure
         #endregion 
 
         void SaveChanges();
-        //IRepository<TEntity> repository<TEntity>() where TEntity : class;
     }
 }

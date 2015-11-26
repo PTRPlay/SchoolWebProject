@@ -16,8 +16,8 @@
     }
     $scope.change = function () {
         console.log("Update");
+        $scope.changedDetail = false;
         $http.post("api/lessonDetail" + "/" + $rootScope.lessonDetail.id, $rootScope.lessonDetail);
-        //window.location.reload("/home");
     }
     $scope.changedDetail = false;
     $scope.isChangedDetail = function () {
