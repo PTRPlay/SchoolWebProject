@@ -18,10 +18,6 @@ namespace SchoolWebProject.Services
         public PupilService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-<<<<<<< HEAD
-            this.pupilLogger = logger;
-=======
->>>>>>> abb56ed7d3183c803088d07869242d70e728645e
             this.unitOfWork = unitOfWork;
         }
 

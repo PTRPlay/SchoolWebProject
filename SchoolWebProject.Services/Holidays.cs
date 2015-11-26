@@ -12,11 +12,8 @@ namespace SchoolWebProject.Services
 {
     public class HolidaysService : BaseService, IHolidaysService
     {
-<<<<<<< HEAD
         private ILogger holidaysLogger;
 
-=======
->>>>>>> abb56ed7d3183c803088d07869242d70e728645e
         private IUnitOfWork unitOfWork;
 
         public HolidaysService(ILogger logger, IUnitOfWork unitOfWork)

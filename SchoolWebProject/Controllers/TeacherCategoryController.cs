@@ -34,8 +34,8 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
-            return viewModel;
             logger.Info("Getted teacher category {0}", teacherCategory.Name);
+            return viewModel;
         }
 
         // POST api/teachercategory
