@@ -1,5 +1,4 @@
-﻿myApp.factory('pupils', ['$http', function ($http) {
-    //TODO: get pupils function whitch takes a parameters
+﻿myApp.factory('pupilsService', ['$http', function ($http) {
     return{
         getPage: function (page, amount, sorting, filtering) {
             if(!filtering)

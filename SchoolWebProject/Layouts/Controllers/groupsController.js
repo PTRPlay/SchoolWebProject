@@ -1,5 +1,5 @@
-﻿myApp.controller('groupsController', ['$scope', 'groups', 'uiGridConstants', 'GroupModalService',
-    function ($scope, groups, uiGridConstants, GroupModalService) {
+﻿myApp.controller('groupsController', ['$scope', 'groupsService', 'uiGridConstants', 'GroupModalService',
+    function ($scope, groupsService, uiGridConstants, GroupModalService) {
         $scope.text = "Список класів";
 
         $scope.groupsGrid =
@@ -72,7 +72,8 @@
             GroupModalService.showGroupDeleteModal(val);
         };
 
-        groups.success(function (data) {
+        groupsService.getGroups()
+            .success(function (data) {
             $scope.groupsGrid.data = data;
         });
     }

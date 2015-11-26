@@ -1,10 +1,22 @@
-﻿.details-background{
+﻿.details-background {
     border-color: lightgray;
     border-style: solid;
     border-radius: 2px;
     border-width: 2px;
     width: 30%;
     height: auto;
+    margin-right: 3%;
+}
+
+.lessondetails-textarea {
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    resize: none;
+}
+
+.change-button {
+    margin-right: 5%;
 }
 
 .table .table-bordered thead td {

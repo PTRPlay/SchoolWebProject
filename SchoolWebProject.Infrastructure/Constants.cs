@@ -14,6 +14,13 @@ namespace SchoolWebProject.Infrastructure
 
         public static readonly string EmailMessage = "Ваш логін і пароль для входу на сайт SchoolWebProject такі : ";
 
-        public enum UserRoles { None, Admin, Teacher, Pupil, Parent };
+        public enum UserRoles 
+        { 
+            None, 
+            Admin, 
+            Teacher, 
+            Pupil, 
+            Parent };
+
     }
 }

@@ -1,4 +1,4 @@
-﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
+﻿myApp.controller('pupilsController', ['$scope', 'pupilsService', 'uiGridConstants', 'PupilsModalService', function ($scope, pupilsService, uiGridConstants, PupilsModalService) {
     $scope.pupilsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -22,6 +22,7 @@
    {
        name: "Прізвище",
        field: "LastName",
+       enableFiltering: true,
        width: "*",
        enableHiding: false,
        sort: {
@@ -150,7 +151,7 @@
         }
         
 
-        pupils.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
+        pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
             $scope.pupilsGrid.totalItems = data.PageCount;
             $scope.pupilsGrid.data = data.Pupils;

@@ -1,8 +1,8 @@
-﻿myApp.controller('lessondetailController', ['$scope', '$rootScope', 'lessondetail', '$http', function ($scope, $rootScope, lessondetail, $http) {
+﻿myApp.controller('lessondetailController', ['$scope', '$rootScope', 'lessonDetailService', '$http', function ($scope, $rootScope, lessonDetailService, $http) {
     $rootScope.showHomeTask = false;
     $scope.getLessonDetails = function (id) {
         $rootScope.showHomeTask = true;
-        var data = lessondetail.getLessonDetails(id).success(function (data) {
+        var data = lessonDetailService.getLessonDetails(id).success(function (data) {
             $rootScope.lessonDetail = {
                 id: data.Id,
                 date: data.Date,
@@ -16,8 +16,8 @@
     }
     $scope.change = function () {
         console.log("Update");
+        $scope.changedDetail = false;
         $http.post("api/lessonDetail" + "/" + $rootScope.lessonDetail.id, $rootScope.lessonDetail);
-        //window.location.reload("/home");
     }
     $scope.changedDetail = false;
     $scope.isChangedDetail = function () {
