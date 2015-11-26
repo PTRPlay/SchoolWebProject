@@ -22,7 +22,7 @@ namespace SchoolWebProject.Controllers
 
         public HomeController(ILogger tmplogger, AccountService input, IUnitOfWork unit)
         {
-            this.logger = new Logger();
+            this.logger = tmplogger;
             this.accountService = input;
             this.unitOfWork = unit;
         }

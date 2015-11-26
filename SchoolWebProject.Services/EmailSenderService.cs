@@ -14,37 +14,36 @@ namespace SchoolWebProject.Services
 {
     public class EmailSenderService : BaseService, IEmailSenderService
     {
-        public MailAddress fromAddress { get; private set; }
-
         private SmtpClient smtp;
         private IAccountService service;
-        private string Password;
+        private string password;
 
         public EmailSenderService(ILogger logger, IAccountService inService) 
             : base(logger)
         {
-            this.fromAddress = new MailAddress(ConfigurationSettings.AppSettings["smtpEmail"]);
+            this.FromAddress = new MailAddress(ConfigurationSettings.AppSettings["smtpEmail"]);
             this.service = inService;
-            this.Password = ConfigurationSettings.AppSettings["smtpPassword"];
+            this.password = ConfigurationSettings.AppSettings["smtpPassword"];
             this.smtp = new SmtpClient()
             {
                 Host = ConfigurationSettings.AppSettings["smtpServer"],
                 Port = int.Parse(ConfigurationSettings.AppSettings["smtpPort"]),
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(this.fromAddress.Address, this.Password)
+                Credentials = new NetworkCredential(this.FromAddress.Address, this.password)
             };
         }
 
+        public MailAddress FromAddress { get; private set; }
+
         public void SendMail(string toAddress, string text)
         {
-            MailMessage message = new MailMessage(this.fromAddress, new MailAddress(toAddress)) 
+            MailMessage message = new MailMessage(this.FromAddress, new MailAddress(toAddress)) 
             { 
                 Subject = Constants.EmailSubject, 
                 Body = text
             }; 
             this.smtp.Send(message);
         }
-
     }
 }
