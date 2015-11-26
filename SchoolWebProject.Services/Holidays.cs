@@ -7,7 +7,6 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 
-
 namespace SchoolWebProject.Services
 {
     public class HolidaysService : BaseService, IHolidaysService

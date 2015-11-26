@@ -6,9 +6,9 @@
             </div>
 
             <div id="grid" ui-grid="categoriesGrid" ui-grid-edit ui-grid-cellnav class="grid" style="height: auto"></div>
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Назва:</label>
-                        <input type="text" class="glyphicon-check" id="name" ng-model="category.name" name="name" placeholder="Нова категорія">
+                    <div class="form-group" style="text-align:center">
+                        <label>Нова категорія: </label>
+                        <input type="text"  id="name" ng-model="category.name" name="name" placeholder="Назва нової категорії">
                         <button type="button" ng-href="#/teachers" id="Add" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">Додати</button>
                     </div>
             <div class="modal-footer" >

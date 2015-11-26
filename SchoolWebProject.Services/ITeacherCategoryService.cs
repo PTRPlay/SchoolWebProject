@@ -18,6 +18,5 @@ namespace SchoolWebProject.Services
         void AddTeacherCategory(TeacherCategory teacherCategory);
 
         void SaveTeacherCategory();
-
     }
 }
