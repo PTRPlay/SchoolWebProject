@@ -46,6 +46,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private GenericRepository<Role> roleRepository;
 
+        private GenericRepository<Holidays> holidaysRepository;
+
         #endregion 
 
         #region Init Repositories
@@ -227,6 +229,18 @@ namespace SchoolWebProject.Data.Infrastructure
                     this.roleRepository = new GenericRepository<Role>(dbFactory);
                 }
                 return roleRepository;
+            }
+        }
+
+        public GenericRepository<Holidays> HolidaysRepository
+        {
+            get
+            {
+                if (this.holidaysRepository == null)
+                {
+                    this.holidaysRepository = new GenericRepository<Holidays>(dbFactory);
+                }
+                return holidaysRepository;
             }
         }
 
