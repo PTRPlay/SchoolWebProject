@@ -70,9 +70,11 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            var teacher = teacherService.GetProfileById(id);
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, (Teacher)teacher);
-            teacherService.UpdateProfile(teacher);
+            var bin = new SchoolContext();
+            var teacher = (Teacher)bin.Users.First(t => t.Id == id);
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value,teacher);
+            bin.Users.Attach(teacher);
+            bin.SaveChanges();
        }
 
         // DELETE api/teacher/5

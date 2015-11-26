@@ -21,7 +21,6 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/angular-modal-service.js"></script>
     <script src="~/Layouts/app.js"></script>
-    <script src="~/Layouts/AutoComplater.js"></script>
     
     <script src="~/Layouts/Controllers/newsController.js"></script>
     <script src="~/Layouts/Controllers/schoolController.js"></script>
@@ -66,44 +65,22 @@
         display: none;
     }
 }
-
-   #Schedule {
-    width: 600px; 
-    border-bottom: 2px solid maroon; 
-    background: black; 
-   }
-    #Schedule TH {
-    background: gray; 
-    color: white; 
-   }
-   #Schedule TD, TH  {
-    padding: 3px;
-    text-align: center;
-    border-bottom-color:#E7D9D9;
-    border-color:gray;
-    border-style:solid; 
-   }
-   TD.jewel {
-    text-align: left;
-    background: #ccc; 
-   }
-
 </style>
 
 </head>
 <body ng-app="myApp">
-    <div class="navbar  navbar-default navbar-fixed-top" role="navigation" style="height:52px">
+    <div id="top-content" class="navbar  navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
 
-            <div class="navbar-header" style="margin-top:1px">
+            <div class="navbar-header">
                 <a class="navbar-brand" ui-sref="home">SchoolProject</a>
             </div>
             <div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="navbar-btn" style="margin-top:1px">
+                    <li class="navbar-btn">
                         <a ui-sref="myprofile">Loged in as @Context.User.Identity.Name</a>
                     </li>
-                    <li class="navbar-btn" style="margin-top:1px">
+                    <li class="navbar-btn">
                         <a href="account/logout">Log out</a>
                     </li>
                 </ul>
@@ -111,9 +88,7 @@
         </div>
     </div>
 
-    <div class="container-fluid" style="margin-top:55px">
-        <div class="row">
-            <div class="leftmenu">
+    <div id="main-sidebar">
                 <div class="col-sm-2 sidebar affix">
 
                     <ul class="nav nav-sidebar">
@@ -122,16 +97,15 @@
                             <li class="btn nav-tabs"><a ui-sref=@i.Value class="btn-default">@i.Key</a></li>
                         }
                     </ul>
-                    </div>
                 </div>
-                <div class="col-sm-9 col-sm-offset-2 main table" style="width:1000px;">
-                    <div ui-view></div>
-                </div>
-            </div>
+    </div>
+
+    <div id="main-content">
+        <div ui-view></div>
     </div>
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>1
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     @RenderBody()
 

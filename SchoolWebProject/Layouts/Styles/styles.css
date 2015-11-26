@@ -10,3 +10,47 @@
 .table .table-bordered thead td {
     font-weight: 700;
 }
+
+
+#main-sidebar {
+    float: left;
+    width: 23%;
+    height: 90%;
+    padding-top:5%;
+}
+
+#main-content {
+    float: right;
+    width:77%;
+    height:90%;
+    padding-top:5%;
+}
+
+#top-content {
+    height:5%;
+    position:fixed;
+}
+
+#Schedule {
+    width: 600px;
+    border-bottom: 2px solid maroon;
+    background: black;
+}
+
+#Schedule TH {
+        background: gray;
+        color: white;
+    }
+
+#Schedule TD, TH {
+        padding: 3px;
+        text-align: center;
+        border-bottom-color: #E7D9D9;
+        border-color: gray;
+        border-style: solid;
+    }
+
+TD.jewel {
+    text-align: left;
+    background: #ccc;
+}
