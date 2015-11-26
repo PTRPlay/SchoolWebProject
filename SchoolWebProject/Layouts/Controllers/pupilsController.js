@@ -65,25 +65,17 @@
        visible: false
    },
    {
-       name: "Профіль",
+       name: "Опції",
        field: "Profile",
-       cellTemplate: '<a class="btn btn-default btn-sm" ng-href="#/pupil/{{row.entity.Id}}" style="width: 80px;"><img src="/Layouts/Images/user.png"></a>',
-       width: "90",
+       cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/pupil/{{row.entity.Id}}"><img src="/Layouts/Images/user.png"></a>  ' +
+           '<a title="Видалити {{row.entity.LastName}} {{row.entity.FirstName}}" href="" ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)"><img src="/Layouts/Images/remove.png"></a></div>',
+       width: "70",
        enableFiltering: false,
        enableSorting: false,
        enableHiding: false,
        enableColumnMenu: false
    },
-   {
-       name: "Видалити",
-       field: "Delete",
-       cellTemplate: '<a class="btn btn-default btn-sm" ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 80px;"><img src="/Layouts/Images/remove.png"></a>',
-       width: "90",
-       enableFiltering: false,
-       enableSorting: false,
-       enableHiding: false,
-       enableColumnMenu: false
-   }
+
      ],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;

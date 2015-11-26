@@ -227,8 +227,8 @@
     <Content Include="Layouts\Images\group.png" />
     <Content Include="Layouts\Images\remove.png" />
     <Content Include="Layouts\Images\user.png" />
-    <Content Include="Layouts\ModalControllers\addCategoryController.js" />
     <Content Include="Layouts\ModalControllers\addDegreeController.js" />
+    <Content Include="Layouts\ModalControllers\addCategoryController.js" />
     <Content Include="Layouts\ModalControllers\degreeModalService.js" />
     <Content Include="Layouts\ModalControllers\categoryModalService.js" />
     <Content Include="Layouts\ModalControllers\FilterScheduleController.js" />

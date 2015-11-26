@@ -36,8 +36,7 @@ namespace SchoolWebProject.Services
         public void DeleteTeacherDegree(int id)
         {
             TeacherDegree teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
-            Expression<Func<TeacherDegree, bool>> getTeacherDegree = degree => degree.Id == id;
-            teacherDegree.Teachers.RemoveAll(category => teacherDegree.Id == id);
+            teacherDegree.Teachers.RemoveAll(degree => teacherDegree.Id == id);
             this.unitOfWork.TeacherDegreeRepository.Delete(teacherDegree);
         }
 

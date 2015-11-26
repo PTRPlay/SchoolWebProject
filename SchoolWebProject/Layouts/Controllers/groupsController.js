@@ -41,36 +41,18 @@
                enableHiding: false
            },
            {
-               name: "Деталі",
+               name: "Опції",
                field: "Details",
-               cellTemplate: '<div><a class="btn btn-default btn-sm" ng-href="#/group/{{row.entity.Id}}" style=" width: 70px;" ><img src="/Layouts/Images/group.png"></a></div>',
-               width: "80",
+               cellTemplate: '<div><a title="Деталі про {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" ng-href="#/group/{{row.entity.Id}}"><img src="/Layouts/Images/group.png"></a> '+
+                             '<a title="Редагувати {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" href="" ng-click="grid.appScope.editGroup(row.entity)" ><img src="/Layouts/Images/edit.png"></a> ' +
+                             '<a title="Видалити {{row.entity.NameNumber}}-{{row.entity.NameLetter}}" href="" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" ><img src="/Layouts/Images/remove.png"></a></div>',
+               width: "100",
                enableFiltering: false,
                enableSorting: false,
                enableHiding: false,
                enableColumnMenu: false
 
            },
-           {
-               name: "Редагування",
-               field: "Edit",
-               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.editGroup(row.entity)" style=" width: 70px; " ><img src="/Layouts/Images/edit.png"></button></div>',
-               width: "80",
-               enableFiltering: false,
-               enableSorting: false,
-               enableHiding: false,
-               enableColumnMenu: false
-           },
-           {
-               name: "Видалити",
-               field: "Delete",
-               cellTemplate: '<div><button class="btn btn-default btn-sm" ng-click="grid.appScope.deleteGroup(row.entity.Id, row.entity.NameNumber, row.entity.NameLetter)" style=" width: 70px;" ><img src="/Layouts/Images/remove.png"></button></div>',
-               width: "80",
-               enableFiltering: false,
-               enableSorting: false,
-               enableHiding: false,
-               enableColumnMenu: false
-           }
                 ],
                 onRegisterApi: function (gridApi) {
                     $scope.grid2Api = gridApi;

@@ -36,10 +36,6 @@ namespace SchoolWebProject.Services
         public void DeleteTeacherCategory(int id)
         {
             TeacherCategory teacherCategory = this.unitOfWork.TeacherCategoryRepository.GetById(id);
-            teacherCategory.Teachers = null;
-            
-            this.unitOfWork.TeacherCategoryRepository.Update(teacherCategory);
-            Expression<Func<TeacherCategory, bool>> getTeacherCategory = category => category.Id == id;
             teacherCategory.Teachers.RemoveAll(category => teacherCategory.Id == id);
             this.unitOfWork.TeacherCategoryRepository.Delete(teacherCategory);
         }

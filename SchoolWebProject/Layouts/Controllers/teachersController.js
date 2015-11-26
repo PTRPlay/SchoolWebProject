@@ -82,16 +82,14 @@
    {
        enableFiltering: true,
        field: "Subjects[0].Name",
+       cellTemplate: '<select  class="form-control" id="subject" ng-model="teachers.Subjects"><option ng-repeat="subject in row.entity.Subjects" value="" value="{{subject.Name}}" selected>{{subject.Name}}</option></select>',
        displayName: 'Предмет',
        filter: {
            type: uiGridConstants.filter.SELECT,
            selectOptions: subjectsOptions
        },
-       enableCellEdit: true,
+       enableCellEdit: false,
        enableHiding: false,
-       editableCellTemplate: 'ui-grid/dropdownEditor',
-       editDropdownValueLabel: 'value',
-       editDropdownOptionsArray: $scope.getSubjects($scope.getCurrentFocus)
        },
 
 
@@ -99,8 +97,8 @@
    {
        field: "Profile",
        displayName: 'Профіль',
-       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;"><img src="/Layouts/Images/user.png"></a></div>',
-       width: "80", 
+       cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;"><img src="/Layouts/Images/user.png"></a></div>',
+       width: "30", 
        enableFiltering: false,
        enableCellEditOnFocus:false,
        enableSorting: false,

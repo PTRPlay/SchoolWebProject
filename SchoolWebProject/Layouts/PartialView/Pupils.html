@@ -5,7 +5,10 @@
     <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
     <br />
     <div ng-controller="pupilsController">
-        <button href="#addPupil" role="button" class="btn-primary" style="left:100px" ng-click="addPupil()">Додати учня</button>
+
+        <a href="#addPupil" class=" btn btn-primary" ng-click="addPupil()">
+            <span class="glyphicons glyphicons-user-add"></span> Додати учня
+        </a>
     </div>
 </div>
 

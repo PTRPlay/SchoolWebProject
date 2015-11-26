@@ -3,14 +3,21 @@
         <h1>Список вчителів</h1>
     </div>
     <div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
-
-    <div>
+    <br>
+    <div >
         <div ng-controller="ModalShowController">
-            <button href="#addTeachers" class="btn-primary" style="left:100px" ng-click="showTeachersEditPage()">Додати вчителя</button>
+            <a href="#addTeachers" class="btn btn-primary" ng-click="showTeachersEditPage()">
+                <span class="glyphicons glyphicons-user-add"></span> Додати вчителя
+            </a>
 
-            <button ng-controller="categoryModelService" href="#addCategory" role="button" class="btn-primary" style="left:300px" ng-click="showCategoryEditPage()">Редагувати категорії</button>
+            <a ng-controller="categoryModelService" href="#addCategory" class=" btn btn-primary" ng-click="showCategoryEditPage()">
+                <span class="glyphicons glyphicons-user-add"></span> Редагувати категорії
+            </a>
 
-            <button ng-controller="degreeModelService" href="#addDegree" role="button" class="btn-primary" style="left:300px" ng-click="showDegreeEditPage()">Редагувати звання</button>
+            <a ng-controller="degreeModelService" href="#addDegree" class=" btn btn-primary" ng-click="showDegreeEditPage()">
+                <span class="glyphicons glyphicons-user-add"></span> Редагувати звання
+            </a>
+
         </div>
     </div>
 
