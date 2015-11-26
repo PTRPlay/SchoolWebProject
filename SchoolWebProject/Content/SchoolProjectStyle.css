@@ -1,0 +1,18 @@
+﻿#main-sidebar {
+    float: left;
+    width: 23%;
+    height: 90%;
+    padding-top:5%;
+}
+
+#main-content {
+    float: right;
+    width:77%;
+    height:90%;
+    padding-top:5%;
+}
+
+#top-content {
+    height:5%;
+    position:fixed;
+}

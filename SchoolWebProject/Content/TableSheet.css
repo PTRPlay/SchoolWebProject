@@ -1,0 +1,20 @@
+﻿   #Schedule {
+    width: 600px; 
+    border-bottom: 2px solid maroon; 
+    background: black; 
+   }
+    #Schedule TH {
+    background: gray; 
+    color: white; 
+   }
+   #Schedule TD, TH  {
+    padding: 3px;
+    text-align: center;
+    border-bottom-color:#E7D9D9;
+    border-color:gray;
+    border-style:solid; 
+   }
+   TD.jewel {
+    text-align: left;
+    background: #ccc; 
+   }
