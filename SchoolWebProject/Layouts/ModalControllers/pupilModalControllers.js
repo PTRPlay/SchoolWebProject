@@ -49,6 +49,7 @@
 
 myApp.controller("pupilDeleteController", ['$scope', '$element', 'title', 'close', 'PupilId', function ($scope, $element, title, close, PupilId) {
     $scope.pupilId = null;
+    $scope.IsFormValid = true;
     if (PupilId != null) {
         $scope.pupilId = {
             id: PupilId.id,
