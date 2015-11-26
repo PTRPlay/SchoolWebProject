@@ -5,6 +5,13 @@
     border-width: 2px;
     width: 30%;
     height: auto;
+    margin-right: 3%;
+}
+
+.lessondetails-textarea{
+    width: 90%;
+    height: 40%;
+    margin-left: 5%;
 }
 
 .table .table-bordered thead td {
