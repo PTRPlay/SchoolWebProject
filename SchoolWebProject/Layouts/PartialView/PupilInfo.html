@@ -1,41 +1,4 @@
-﻿<style>
-    .page-header {
-        margin-left: 30px;
-        margin-bottom: 5px;
-    }
-
-    .center-block {
-        margin-top: 5px;
-        font-size: 30px;
-    }
-
-    #infoBlock {
-        padding: 10px;
-        padding-left: 15px;
-    }
-
-    #UserName {
-        margin-top: 10px;
-        padding-left: 50px;
-        padding-top: 15px;
-        margin-bottom: 30px;
-    }
-
-    #info {
-        border-width: 1px;
-        border-style: solid;
-        border-color: gainsboro;
-        position: relative;
-        margin-top: 20px;
-        padding: 20px;
-    }
-
-    #UserImage {
-        margin-left: 60px;
-        margin-right: 15px;
-        margin-top: 55px;
-    }
-</style>
+﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
 <div ng-app="pupilInfoController">
     <div class="page-header">
         <div class="center-block">
@@ -47,7 +10,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div ng-show="getPupil().Img">
             <img id="UserImage" ng-src="{{getPupil().Img}}" alt="Image" width="170" height="170" />
         </div>
@@ -55,7 +18,7 @@
             <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <h2 id="UserName">{{getPupil().LastName}} {{getPupil().FirstName}} {{getPupil().MiddleName}}</h2>
         <div id="info">
             <h4 id="infoBlock">Телефон: {{getPupil().PhoneNumber}} </h4>
