@@ -13,13 +13,10 @@ namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
-        private ILogger teacherLogger;
-
         private IUnitOfWork unitOfWork;
 
         public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork): base(logger)
         {
-            this.teacherLogger = logger;
             this.unitOfWork = teacherUnitOfWork;
         }
 

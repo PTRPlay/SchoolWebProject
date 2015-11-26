@@ -11,15 +11,11 @@ namespace SchoolWebProject.Services
 {
     public class HolidaysService : BaseService, IHolidaysService
     {
-
-        private ILogger holidaysLogger;
-
         private IUnitOfWork unitOfWork;
 
         public HolidaysService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.holidaysLogger = logger;
             this.unitOfWork = unitOfWork;
         }
 

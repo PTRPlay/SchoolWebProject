@@ -12,14 +12,11 @@ namespace SchoolWebProject.Services
 {
     public class MarkService : BaseService, IMarkService
     {
-        private ILogger tmpLogger;
-
         private UnitOfWork unitOfWork;
 
         public MarkService(ILogger logger, UnitOfWork unitOfWork)
             : base(logger)
         {
-            this.tmpLogger = logger;
             this.unitOfWork = unitOfWork;
         }
 
