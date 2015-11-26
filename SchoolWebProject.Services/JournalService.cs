@@ -22,6 +22,7 @@ namespace SchoolWebProject.Services
 
         public ViewJournal GetJournalObject(int groupId, int subjectId)
         {
+            logger.Info("Get journal. GroupId = {0}, SubjectId = {1}", groupId, subjectId);
             var pupils = unitOfWork.PupilRepository.GetAll();
             var lessonDetail = unitOfWork.LessonDetailRepository.GetAll();
             var marks = unitOfWork.MarkRepository.GetAll();

@@ -39,13 +39,14 @@ namespace SchoolWebProject.Services
 
         public void AddAnnouncement(Announcement announcement)
         {
-
+            logger.Info("Add announcement {0}", announcement.Title);
             this.unitOfWork.AnnouncementRepository.Add(announcement);
             this.unitOfWork.SaveChanges();
         }
 
         public void RemoveAnnouncement(Announcement announcement)
         {
+            logger.Info("Remove annoncement {0}", announcement.Title);
             this.unitOfWork.AnnouncementRepository.Delete(announcement);
         }
     }

@@ -26,7 +26,6 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategories = teacherCategoryService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
-            logger.Info("Get all teacher categories");
             return viewModel;
         }
 
