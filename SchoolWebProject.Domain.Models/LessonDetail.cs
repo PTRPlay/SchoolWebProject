@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -13,8 +14,10 @@ namespace SchoolWebProject.Domain.Models
 
         public string Theme { get; set; }
 
+        [Required]
         public DateTime Date { get; set; }
 
+        [Required]
         public int ScheduleId { get; set; }
 
         public virtual Schedule Schedule { get; set; }
