@@ -50,7 +50,6 @@ namespace SchoolWebProject.Services
                 var temp = this.unitOfWork.SubjectRepository.GetById(subject.Id);
                 this.unitOfWork.SubjectRepository.Update(temp);
             }
-            //teacher.Subjects.Clear();
             this.unitOfWork.TeacherRepository.Update(teacher);
             this.unitOfWork.SaveChanges();
         }

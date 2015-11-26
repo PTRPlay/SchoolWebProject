@@ -52,18 +52,17 @@
 
    },
 
-
-    {
+   {
        field: "Опції",
-       cellTemplate: '<div><a href="#/teachers" ng-click="grid.appScope.editDegreeCategory(row.entity.Id, row.entity.Name)" >   <img src="Layouts/Images/ok.png"></a>' +
-           '<a href="#/teachers" ng-click="grid.appScope.deleteDegreeCategory(row.entity.Id)">   <img src="Layouts/Images/remove.png"></a></div>',
+       cellTemplate: '<div><a href="#/teachers" ng-click="grid.appScope.editTeacherDegree(row.entity.Id, row.entity.Name)" >   <img src="Layouts/Images/ok.png"></a>' +
+           '<a href="#/teachers" ng-click="grid.appScope.deleteTeacherDegree(row.entity.Id)">   <img src="Layouts/Images/remove.png"></a></div>',
        width: "80",
        enableFiltering: false,
        enableCellEdit: false,
        enableSorting: false
-    }
+   }
 
-        ],
+   ],
         onRegisterApi: function (gridApi) {
             $scope.grid1Api = gridApi;
         }
@@ -77,28 +76,17 @@
     $scope.deleteTeacherDegree = function (id) {
         if (id != null) {
             $http.delete("api/teacherdegree/" + id);
-        $scope.gridApi.core.refresh();
             window.location.reload("/");
+            $scope.gridApi.core.refresh();
+
         }
     };
 
     $scope.editTeacherDegree = function (id, result) {
         var editedTeacherDegree ={id : id, name : result}
         $http.post("api/teacherdegree/" + id, editedTeacherDegree);
+        window.location.reload("/");
         $scope.gridApi.core.refresh();
-                window.location.reload("/");
         }
-
-
-
-    $scope.currentFocused = "";
-    $scope.getCurrentFocus = function () {
-        var rowCol = $scope.grid1Api.cellNav.getFocusedCell();
-        if (rowCol !== null) {
-            $scope.currentFocused = rowCol.row.entity.Id;
-            alert($scope.currentFocused);
-        }
-        
-    }
 
 }]);

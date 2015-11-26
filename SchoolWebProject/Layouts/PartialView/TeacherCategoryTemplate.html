@@ -6,20 +6,11 @@
             </div>
 
             <div id="grid" ui-grid="categoriesGrid" ui-grid-edit ui-grid-cellnav class="grid" style="height: auto"></div>
-
-
-
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Назва:</label>
-                        <div align="center">
-                            <input type="text" ng-bind="currentFocused" id="name" ng-model="category.name" name="name" placeholder="Нова категорія" width="300px">
-                            <button type="button" id="Add" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">Додати</button>
-                        </div>
-             
+                        <input type="text" class="glyphicon-check" id="name" ng-model="category.name" name="name" placeholder="Нова категорія">
+                        <button type="button" ng-href="#/teachers" id="Add" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">Додати</button>
                     </div>
-
-
-
             <div class="modal-footer" >
                 <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Закрити</button>
             </div>
