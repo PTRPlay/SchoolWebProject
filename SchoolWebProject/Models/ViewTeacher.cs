@@ -27,9 +27,8 @@ namespace SchoolWebProject.Models
 
         public ViewTeacherDegree Degree { get; set; }
 
-        public String WorkStart { get; set; }
+        public string WorkStart { get; set; }
 
         public IEnumerable<ViewSubject> Subjects { get; set; }
-
     }
 }

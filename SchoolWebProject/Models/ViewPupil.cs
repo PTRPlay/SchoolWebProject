@@ -20,13 +20,5 @@ namespace SchoolWebProject.Models
         public string Address { get; set; }
 
         public string Email { get; set; }
-
-        //public byte[] Img { get; set; }
-
-        //public int GroupId { get; set; }
-
-   //     public string School { get; set; }
-
-        //public int LogInDataId { get; set; }
     }
 }

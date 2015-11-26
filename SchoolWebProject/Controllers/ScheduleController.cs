@@ -1,7 +1,7 @@
 ﻿using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
-using SchoolWebProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace SchoolWebProject.Controllers
         public IEnumerable<ViewSchedule> Get()
         {
             var scheldules = new SchoolContext().Schedules;
-            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>,IEnumerable<ViewSchedule>>(scheldules);
+            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(scheldules);
             return viewSchedules;
         }
 

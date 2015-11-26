@@ -1,16 +1,19 @@
 ﻿using System;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+
 
 namespace SchoolWebProject.Services
 {
     public class HolidaysService : BaseService, IHolidaysService
     {
+        private ILogger holidaysLogger;
+
         private IUnitOfWork unitOfWork;
 
         public HolidaysService(ILogger logger, IUnitOfWork unitOfWork)

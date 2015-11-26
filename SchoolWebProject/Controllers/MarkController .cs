@@ -25,7 +25,7 @@ namespace SchoolWebProject.Controllers
         // GET api/mark
         public IEnumerable<ViewMark> Get()
         {
-            var marks = markService.GetAllMarks();
+            var marks = this.markService.GetAllMarks();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Mark>, IEnumerable<ViewMark>>(marks);
             return viewModel;
         }
@@ -33,7 +33,7 @@ namespace SchoolWebProject.Controllers
         // GET api/mark/subjectId/groupId
         public IEnumerable<ViewMark> GetBySubjectAndGroup(int subjectId, int groupId)
         {
-            var marks = markService.GetMarksBySubjectAndGroup(subjectId, groupId);
+            var marks = this.markService.GetMarksBySubjectAndGroup(subjectId, groupId);
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Mark>, IEnumerable<ViewMark>>(marks);
             return viewModel;
         }
@@ -41,7 +41,7 @@ namespace SchoolWebProject.Controllers
         // GET api/mark/5
         public ViewMark Get(int id)
         {
-            var viewModel = AutoMapper.Mapper.Map<Mark, ViewMark>(markService.GetMarkById(id));
+            var viewModel = AutoMapper.Mapper.Map<Mark, ViewMark>(this.markService.GetMarkById(id));
             return viewModel;
         }
 
@@ -49,18 +49,18 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]ViewMark vm)
         {
-            Mark mark = markService.GetMarkById(vm.Id);
+            Mark mark = this.markService.GetMarkById(vm.Id);
             if (mark == null)
             {
                 var newMark = AutoMapper.Mapper.Map<ViewMark, Mark>(vm);
-                markService.AddMark(newMark);
-                markService.SaveMark();
+                this.markService.AddMark(newMark);
+                this.markService.SaveMark();
             }
             else
             {
                 mark.Value = vm.Value;
-                markService.UpdateMark(mark);
-                markService.SaveMark();
+                this.markService.UpdateMark(mark);
+                this.markService.SaveMark();
             }
         }
 

@@ -26,6 +26,7 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategories = teacherCategoryService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
+            logger.Info("Get all teacher categories");
             return viewModel;
         }
 
@@ -34,8 +35,8 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
-            logger.Info("Getted teacher category {0}", teacherCategory.Name);
             return viewModel;
+            logger.Info("Getted teacher category {0}", teacherCategory.Name);
         }
 
         // POST api/teachercategory
