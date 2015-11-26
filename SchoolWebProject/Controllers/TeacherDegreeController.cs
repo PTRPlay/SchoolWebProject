@@ -25,7 +25,7 @@ namespace SchoolWebProject.Controllers
         // GET api/teacherDegree
         public IEnumerable<ViewTeacherDegree> Get()
         {
-            var teacherCategories = teacherDegreeService.GetAllTeacherCategories();
+            var teacherCategories = this.teacherDegreeService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(teacherCategories);
             logger.Info("Gets Teacher Degree");
             return viewModel;
@@ -34,7 +34,7 @@ namespace SchoolWebProject.Controllers
         // GET api/teacherDegree/5
         public ViewTeacherDegree Get(int id)
         {
-            var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
+            var teacherDegree = this.teacherDegreeService.GetTeacherDegreeById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
             return viewModel;
         }
@@ -53,10 +53,10 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherDegree value)
         {
-            var teacherDegree = teacherDegreeService.GetTeacherDegreeById(id);
+            var teacherDegree = this.teacherDegreeService.GetTeacherDegreeById(id);
             AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value, teacherDegree);
-            teacherDegreeService.UpdateTeacherDegree(teacherDegree);
-            teacherDegreeService.SaveTeacherDegree();
+            this.teacherDegreeService.UpdateTeacherDegree(teacherDegree);
+            this.teacherDegreeService.SaveTeacherDegree();
         }
 
         // DELETE api/teacherDegree/5

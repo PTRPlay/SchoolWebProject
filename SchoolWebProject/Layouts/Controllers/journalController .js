@@ -1,4 +1,4 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope',function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;

@@ -22,12 +22,9 @@ namespace SchoolWebProject.Controllers
             this.journalService = journalService;
         }
 
-        // GET api/diary/5/data
-        //public Diary Get(int id, DateTime date)
         public ViewJournal GetJournalPage(int groupId, int subjectId)
         {
-          //  throw new NotImplementedException();
-            var viewModel = journalService.GetJournalObject(groupId, subjectId);
+            var viewModel = this.journalService.GetJournalObject(groupId, subjectId);
                  return viewModel;
         }
      }

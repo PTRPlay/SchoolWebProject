@@ -26,7 +26,7 @@ namespace SchoolWebProject.Controllers
         // GET api/groups
         public IEnumerable<ViewGroup> Get()
         {
-            var groups = groupService.GetAllGroups();
+            var groups = this.groupService.GetAllGroups();
             List<ViewGroup> viewModel = new List<ViewGroup>();
             foreach (var v in groups)
                 viewModel.Add(ViewGroup.CreateSimpleGroup(v));
@@ -52,16 +52,16 @@ namespace SchoolWebProject.Controllers
         [HttpPost]
         public void Put(int id, [FromBody]ViewGroup value)
         {
-            var group = groupService.GetGroupById(value.Id);
+            var group = this.groupService.GetGroupById(value.Id);
             AutoMapper.Mapper.Map<ViewGroup, Group>(value, group);
-            groupService.UpdateGroup(group);
+            this.groupService.UpdateGroup(group);
         }
 
         // DELETE api/groups/5
         [HttpDelete]
         public void Delete(int id)
         {
-            groupService.RemoveGroup(id);
+            this.groupService.RemoveGroup(id);
         }
     }
 }

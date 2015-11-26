@@ -37,10 +37,10 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
             AutoMapper.Mapper.CreateMap<Subject, ViewSubject>();
             AutoMapper.Mapper.CreateMap<Mark, ViewMark>()
-                .ForMember(g=>g.LessonDetail,map => map.MapFrom(vm => vm.LessonDetail));
+                .ForMember(g => g.LessonDetail, map => map.MapFrom(vm => vm.LessonDetail));
             AutoMapper.Mapper.CreateMap<School, ViewSchool>();
             AutoMapper.Mapper.CreateMap<LessonDetail, ViewLessonDetail>();
-            AutoMapper.Mapper.CreateMap<Schedule, ViewSchedule>();;
+            AutoMapper.Mapper.CreateMap<Schedule, ViewSchedule>();
         }
     }
 
@@ -53,8 +53,8 @@ namespace SchoolWebProject.Mapper
 
         protected override void Configure()
         {
-            AutoMapper.Mapper.CreateMap<ViewTeacherCategory,TeacherDegree>();
-            AutoMapper.Mapper.CreateMap<ViewTeacherDegree,TeacherDegree>();
+            AutoMapper.Mapper.CreateMap<ViewTeacherCategory, TeacherDegree>();
+            AutoMapper.Mapper.CreateMap<ViewTeacherDegree, TeacherDegree>();
 
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
                 .ForMember(g => g.TeacherCategoryId, map => map.MapFrom(vm => vm.Category.Id))
