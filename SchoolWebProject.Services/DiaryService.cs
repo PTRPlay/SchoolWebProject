@@ -29,17 +29,11 @@ namespace SchoolWebProject.Services
             DateTime thursday = monday.AddDays(3);
             DateTime friday = monday.AddDays(4);
             var pupil = this.unitOfWork.PupilRepository.GetById(idUser);
-            var schedule = this.unitOfWork.ScheduleRepository.GetAll();
-            var lessons = this.unitOfWork.LessonDetailRepository.GetAll();
-            var marks = this.unitOfWork.MarkRepository.GetAll();
-
-            var tempLessons = from l in lessons
-                              where l.Date == monday || l.Date == tuesday || l.Date == wednesday || l.Date == thursday || l.Date == friday
-                              select l;
-
+            var schedule = this.unitOfWork.ScheduleRepository.GetMany(s => s.GroupId == pupil.GroupId);
+            var lessons = this.unitOfWork.LessonDetailRepository.GetMany(l => l.Date == monday || l.Date == tuesday || l.Date == wednesday || l.Date == thursday || l.Date == friday);
+            var marks = this.unitOfWork.MarkRepository.GetMany(m => m.PupilId == idUser);
             var tempDiary = from s in schedule
-                            where s.GroupId == pupil.GroupId
-                            join l in tempLessons
+                            join l in lessons
                             on s.Id equals l.ScheduleId into ppssll
                             orderby s.DayOfTheWeek ascending
                             from l in ppssll.DefaultIfEmpty()
@@ -54,12 +48,9 @@ namespace SchoolWebProject.Services
                                 Date = l == null ? string.Empty : l.Date.ToString(),
                                 LessonDetailId = l == null ? 0 : l.Id
                             };
-            var tempMark = from m in marks
-                           where m.PupilId == idUser
-                           select m;
 
             var temp = from t in tempDiary
-                       join m in tempMark
+                       join m in marks
                        on t.LessonDetailId equals m.LessonDetailId into ttmm
                        from tm in ttmm.DefaultIfEmpty()
                        select new Diary
