@@ -55,9 +55,11 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="DiaryService.cs" />
     <Compile Include="EmailSenderService.cs" />
+    <Compile Include="Holidays.cs" />
     <Compile Include="IAccountService.cs" />
     <Compile Include="IAnnouncementService.cs" />
     <Compile Include="IDiaryService.cs" />
+    <Compile Include="IHolidaysService.cs" />
     <Compile Include="IJournalService.cs" />
     <Compile Include="IEmailSenderService.cs" />
     <Compile Include="ILessonDetailService.cs" />

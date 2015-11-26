@@ -1,5 +1,5 @@
-﻿myApp.controller('pupilInfoController', ['$scope', 'pupils', function ($scope, pupils) {
-    pupils.getPupil().success(function (data) {
+﻿myApp.controller('pupilInfoController', ['$scope', 'pupilsService', function ($scope, pupilsService) {
+    pupilsService.getPupil().success(function (data) {
         $scope.getPupil = function () {
             var id = document.URL.split("pupil/")[1];
             for (var i = 0; i < data.length; i++) {

@@ -48,12 +48,22 @@ namespace SchoolWebProject.Services
 
         public void UpdateProfile(Teacher teacher)
         {
+            Subject temp = new Subject();
             foreach (var subject in teacher.Subjects)
             {
-                this.unitOfWork.SubjectRepository.Update(subject);
-            }
+                //subject.Teachers);    
 
+                this.unitOfWork.SubjectRepository.GetById(subject.Id).Teachers.Add(teacher);
+                //temp.Teachers.Add(teacher);
+                //this.unitOfWork.SubjectRepository.Attach(temp);
+
+            }
+            //this.unitOfWork.SubjectRepository.Attach(teacher.Subjects[0]);
+            //teacher.Subjects[0] = this.unitOfWork.SubjectRepository.GetById(teacher.Subjects[0].Id);
+            //this.unitOfWork.SubjectRepository.Add(teacher.Subjects[0]);
+            this.unitOfWork.SubjectRepository.Attach(temp);
             this.unitOfWork.TeacherRepository.Update(teacher);
+            this.unitOfWork.SaveChanges();
         }
 
         public void AddTeacher(Teacher teacher)

@@ -14,6 +14,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         GenericRepository<Group> GroupRepository { get; }
 
+        GenericRepository<Holidays> HolidaysRepository { get; }
+
         GenericRepository<LessonDetail> LessonDetailRepository { get; }
 
         GenericRepository<LogInData> LogInDataRepository { get; }

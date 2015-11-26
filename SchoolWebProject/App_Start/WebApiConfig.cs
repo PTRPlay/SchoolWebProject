@@ -16,8 +16,7 @@ namespace SchoolWebProject
 
             config.Routes.MapHttpRoute(
                 name: "DiaryApi",
-                routeTemplate: "api/{controller}/diary/{id}/{date}"
-                );
+                routeTemplate: "api/{controller}/diary/{id}/{date}");
 
             config.Routes.MapHttpRoute(
                 name: "MarksApi",

@@ -1,4 +1,4 @@
-﻿myApp.controller('pupilsController', ['$scope', 'pupils', 'uiGridConstants', 'PupilsModalService', function ($scope, pupils, uiGridConstants, PupilsModalService) {
+﻿myApp.controller('pupilsController', ['$scope', 'pupilsService', 'uiGridConstants', 'PupilsModalService', function ($scope, pupilsService, uiGridConstants, PupilsModalService) {
     $scope.pupilsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -16,11 +16,15 @@
        width: "50",
        enableSorting: false,
        enableFiltering: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        name: "Прізвище",
        field: "LastName",
+       enableFiltering: true,
        width: "*",
+       enableHiding: false,
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
@@ -34,14 +38,17 @@
        field: "FirstName",
        width: "*",
        //enableSorting:false,
-       enableFiltering: false
+       enableFiltering: false,
+       enableHiding: false
    },
    {
        name: "Телефон",
        field: "PhoneNumber",
        width: "*",
        enableFiltering: false,
-       enableSorting: false
+       enableSorting: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        name: "Адреса",
@@ -59,21 +66,17 @@
        visible: false
    },
    {
-       name: "Профіль",
+       name: "Опції",
        field: "Profile",
-       cellTemplate: '<div><a ng-href="#/pupil/{{row.entity.Id}}" style="width: 70px;">Профіль</a></div>',
-       width: "80",
+       cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/pupil/{{row.entity.Id}}"><img src="/Layouts/Images/user.png"></a>  ' +
+           '<a title="Видалити {{row.entity.LastName}} {{row.entity.FirstName}}" href="" ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)"><img src="/Layouts/Images/remove.png"></a></div>',
+       width: "70",
        enableFiltering: false,
-       enableSorting: false
+       enableSorting: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
-   {
-       name: "Видалити",
-       field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)" style="width: 70px;">Видалити</button></div>',
-       width: "80",
-       enableFiltering: false,
-       enableSorting: false
-   }
+
      ],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
@@ -148,7 +151,7 @@
         }
         
 
-        pupils.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
+        pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
             $scope.pupilsGrid.totalItems = data.PageCount;
             $scope.pupilsGrid.data = data.Pupils;

@@ -1,4 +1,4 @@
-﻿myApp.factory('lessondetail', ['$http', function ($http) {
+﻿myApp.factory('lessonDetailService', ['$http', function ($http) {
     return {
         getLessonDetails: function (id) {
             return $http.get("api/lessonDetail/" + id)

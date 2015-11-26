@@ -1,5 +1,6 @@
-﻿myApp.controller('teacherInfoController', ['$scope', 'teachers', function ($scope, teachers) {
-    teachers.success(function (data) {
+﻿myApp.controller('teacherInfoController', ['$scope', 'teachersService', function ($scope, teachersService) {
+    teachersService.getTeachers()
+        .success(function (data) {
         $scope.getTeacher = function () {
             var id = document.URL.split("teacher/")[1];
             for (var i = 0; i < data.length; i++) {

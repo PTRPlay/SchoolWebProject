@@ -1,0 +1,23 @@
+﻿<div ng-app="groupDetailsController">
+    <div ng-controller="groupsController">
+
+        <h2>{{getGroup().NameNumber}} - {{getGroup().NameLetter}}</h2>
+
+        <h3>Класний керівник: <a ng-href="#/teacher/{{getGroup().TeacherId}}"> {{getGroup().TeacherName}} </a></h3>
+        <h3>Список учнів: </h3>
+        <div class="panel panel-default" ng-repeat="pupil in getGroup().ViewPupils">
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <a ng-href="#/pupil/{{pupil.Id}}">{{$index+1}}. {{pupil.FirstName+" "+pupil.LastName}}</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

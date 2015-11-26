@@ -11,17 +11,20 @@
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-touch.js"></script>
     <script src="~/Scripts/angular-animate.js"></script>
- 
+
+    <script src="~/Scripts/angular-locale_uk.js"></script>
+
     <script src="~/Scripts/ui-grid.js"></script>
     <link href="~/Content/ui-grid.css" rel="stylesheet" />
-    <link href="~/Layouts/Styles/styles.css" rel="stylesheet"/>
+    <link href="~/Layouts/Styles/styles.css" rel="stylesheet" />
     <script src="~/Scripts/angular-ui-router.min.js"></script>
     <script src="~/Scripts/angular-ui-router.js"></script>
     <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/angular-modal-service.js"></script>
     <script src="~/Layouts/app.js"></script>
-    
+    <script src="~/Layouts/AutoComplater.js"></script>
+
     <script src="~/Layouts/Controllers/newsController.js"></script>
     <script src="~/Layouts/Controllers/schoolController.js"></script>
     <script src="~/Layouts/Controllers/pupilsController.js"></script>
@@ -29,11 +32,13 @@
     <script src="~/Layouts/Controllers/subjectsController.js"></script>
     <script src="~/Layouts/Controllers/teacherInfoController.js"></script>
     <script src="~/Layouts/Controllers/groupsController.js"></script>
+    <script src="~/Layouts/Controllers/holidaysController.js"></script>
     <script src="~/Layouts/Controllers/teachersController.js"></script>
-	<script src="~/Layouts/Controllers/journalController .js"></script>
+    <script src="~/Layouts/Controllers/journalController .js"></script>
     <script src="~/Layouts/Controllers/diaryController.js"></script>
     <script src="~/Layouts/Controllers/scheduleController.js"></script>
     <script src="~/Layouts/Controllers/lessondetailController.js"></script>
+    <script src="~/Layouts/Controllers/groupDetailsController.js"></script>
 
     <script src="~/Layouts/Services/newsService.js"></script>
     <script src="~/Layouts/Services/schoolService.js"></script>
@@ -42,9 +47,11 @@
     <script src="~/Layouts/Services/teacherInfoService.js"></script>
     <script src="~/Layouts/Services/teachersServices.js"></script>
     <script src="~/Layouts/Services/groupsService.js"></script>
-	<script src="~/Layouts/Services/journalService.js"></script>
+    <script src="~/Layouts/Services/GroupDetailsService.js"></script>
+    <script src="~/Layouts/Services/journalService.js"></script>
     <script src="~/Layouts/Services/diaryService.js"></script>
     <script src="~/Layouts/Services/scheduleService.js"></script>
+    <script src="~/Layouts/Services/holidaysService.js"></script>
     <script src="~/Layouts/Services/lessondetailService.js"></script>
 
     <script src="~/Layouts/ModalControllers/pupilModalServices.js"></script>
@@ -58,37 +65,67 @@
     <script src="~/Layouts/ModalControllers/addDegreeController.js"></script>
     <script src="~/Layouts/ModalControllers/degreeModalService.js"></script>
     <script src="~/Layouts/ModalControllers/FilterScheduleController.js"></script>
+    <script src="~/Layouts/ModalControllers/groupModalService.js"></script>
+    <script src="~/Layouts/ModalControllers/groupModalController.js"></script>
+    <script src="~/Layouts/ModalControllers/subjectModalService.js"></script>
+    <script src="~/Layouts/ModalControllers/subjectModalController.js"></script>
 
-<style>
-@@media only screen and (max-width: 768px) {
- .leftmenu{
-        display: none;
-    }
-}
-</style>
+    <style>
+        @@media only screen and (max-width: 768px) {
+            .leftmenu {
+                display: none;
+            }
+        }
+
+        #Schedule {
+            width: 600px;
+            border-bottom: 2px solid maroon;
+            background: black;
+        }
+
+            #Schedule TH {
+                background: gray;
+                color: white;
+            }
+
+            #Schedule TD, TH {
+                padding: 3px;
+                text-align: center;
+                border-bottom-color: #E7D9D9;
+                border-color: gray;
+                border-style: solid;
+            }
+
+        TD.jewel {
+            text-align: left;
+            background: #ccc;
+        }
+    </style>
 
 </head>
 <body ng-app="myApp">
-    <div id="top-content" class="navbar  navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar  navbar-default navbar-fixed-top" role="navigation" style="height:52px">
         <div class="container">
 
-            <div class="navbar-header">
+            <div class="navbar-header" style="margin-top:1px">
                 <a class="navbar-brand" ui-sref="home">SchoolProject</a>
             </div>
             <div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="navbar-btn">
-                        <a ui-sref="myprofile">Loged in as @Context.User.Identity.Name</a>
+                    <li class="navbar-btn" style="margin-top:1px">
+                        <a ui-sref="myprofile">Ви зайшли як <b>@Context.User.Identity.Name</b></a>
                     </li>
-                    <li class="navbar-btn">
-                        <a href="account/logout">Log out</a>
+                    <li class="navbar-btn" style="margin-top:1px">
+                        <a href="account/logout">Вийти</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div id="main-sidebar">
+    <div class="container-fluid" style="margin-top:55px">
+        <div class="row">
+            <div class="leftmenu">
                 <div class="col-sm-2 sidebar affix">
 
                     <ul class="nav nav-sidebar">
@@ -98,14 +135,15 @@
                         }
                     </ul>
                 </div>
-    </div>
-
-    <div id="main-content">
-        <div ui-view></div>
+            </div>
+            <div class="col-sm-9 col-sm-offset-2 main table" style="width:1000px;">
+                <div ui-view></div>
+            </div>
+        </div>
     </div>
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
     @RenderBody()
 

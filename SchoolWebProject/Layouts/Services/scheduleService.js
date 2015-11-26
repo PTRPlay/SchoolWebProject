@@ -1,4 +1,4 @@
-﻿myApp.service('schedule', ['$http', function ($http) {
+﻿myApp.service('scheduleService', ['$http', function ($http) {
     this.loadSchedule = function (filter) {
         return $http.get('api/schedule/?filter='+filter)
         .success(function (data) {

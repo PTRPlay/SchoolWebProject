@@ -1,15 +1,15 @@
-﻿myApp.controller("categoryAddController", ['$scope', '$element', '$http', 'title', 'close', 'Category', function ($scope, $element, $http, title, close, Category) {
-    $scope.category = null;
+﻿myApp.controller("degreeAddController", ['$scope', '$element', '$http', 'title', 'close', 'Degree', function ($scope, $element, $http, title, close, Degree) {
+    $scope.degree = null;
     $scope.IsFormValid = true;
-    if (Category != null) {
+    if (Degree != null) {
 
-        $scope.category = {
-            id: Category.Id,
-            name: Category.Name,
+        $scope.degree = {
+            id: Degree.Id,
+            name: Degree.Name,
         };
     }
     else {
-        $scope.category = {
+        $scope.degree = {
             Id: null,
             Name: null
         };
@@ -19,8 +19,8 @@
         $element.modal('hide');
         close({
             cancelled: false,
-            id: $scope.category.id,
-            name: $scope.category.name,
+            id: $scope.degree.id,
+            name: $scope.degree.name,
         }, 500);
     };
 
@@ -52,23 +52,16 @@
 
    },
 
-    {
-       field: "Save",
-       cellTemplate: '<div><button ng-click="grid.appScope.editTeacherCategory(row.entity.Id, row.entity.Name)" style="width: 80px;">Save</button></div>',
-       width: "80",
-       enableFiltering: false,
-       enableCellEdit: false,
-       enableSorting: false
-    },
 
     {
-       field: "Delete",
-       cellTemplate: '<div><button ng-click="grid.appScope.deleteTeacherCategory(row.entity.Id)" style="width: 80px;">Delete</button></div>',
+       field: "Опції",
+       cellTemplate: '<div><a href="#/teachers" ng-click="grid.appScope.editDegreeCategory(row.entity.Id, row.entity.Name)" >   <img src="Layouts/Images/ok.png"></a>' +
+           '<a href="#/teachers" ng-click="grid.appScope.deleteDegreeCategory(row.entity.Id)">   <img src="Layouts/Images/remove.png"></a></div>',
        width: "80",
        enableFiltering: false,
        enableCellEdit: false,
        enableSorting: false
-      }
+    }
 
         ],
         onRegisterApi: function (gridApi) {
@@ -76,22 +69,36 @@
         }
     };
 
-    $http.get("api/teachercategory").success(function (data) {
+    $http.get("api/teacherdegree").success(function (data) {
         $scope.categoriesGrid.data = data;
         //return data;
     })
 
-    $scope.deleteTeacherCategory = function (id) {
+    $scope.deleteTeacherDegree = function (id) {
         if (id != null) {
-            $http.delete("api/teachercategory/" + id);
-        window.location.reload("/");
+            $http.delete("api/teacherdegree/" + id);
+        $scope.gridApi.core.refresh();
+            window.location.reload("/");
         }
     };
 
-    $scope.editTeacherCategory = function (id, result) {
-        var editedTeacherCategory ={id : id, name : result}
-        $http.post("api/teachercategory/" + id, editedTeacherCategory);
-        window.location.reload("/");
+    $scope.editTeacherDegree = function (id, result) {
+        var editedTeacherDegree ={id : id, name : result}
+        $http.post("api/teacherdegree/" + id, editedTeacherDegree);
+        $scope.gridApi.core.refresh();
+                window.location.reload("/");
         }
+
+
+
+    $scope.currentFocused = "";
+    $scope.getCurrentFocus = function () {
+        var rowCol = $scope.grid1Api.cellNav.getFocusedCell();
+        if (rowCol !== null) {
+            $scope.currentFocused = rowCol.row.entity.Id;
+            alert($scope.currentFocused);
+        }
+        
+    }
 
 }]);

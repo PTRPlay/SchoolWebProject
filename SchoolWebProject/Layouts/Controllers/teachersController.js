@@ -1,4 +1,4 @@
-﻿myApp.controller('teachersController', ['$scope', '$http', 'teachers', 'categories', 'uiGridConstants',  function ($scope, $http, teachers, categories, uiGridConstants) {
+﻿myApp.controller('teachersController', ['$scope', '$http', 'teachersService', 'categories', 'uiGridConstants', function ($scope, $http, teachersService, categories, uiGridConstants) {
 
     var id, value,label;
     var categoriesOptions = [];
@@ -18,7 +18,8 @@
     var categoriesOptions2 = [];
 
     $scope.getSubjects = function (Id) {
-        teachers.success(function (data) {
+        teachersService.getTeachers()
+            .success(function (data) {
             for (i = 0; i < data[Id].Subjects.length; i++) {
                 categoriesOptions2[i] = ({ id: i, value: data[Id].Subjects[i].Name });
             }
@@ -45,23 +46,28 @@
        width: "35",
        enableSorting: false,
        enableFiltering: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
    {
        enableFiltering: false,
        field: 'LastName',
-       displayName:'Призвіще'
+       displayName: 'Прізвище',
+       enableHiding: false
 
    },
    {
        enableFiltering: false,
        field: 'FirstName',
-       displayName: 'Ім`я'
+       displayName: 'Ім`я',
+       enableHiding: false
    },   
    {
        enableFiltering:false,
        field: "MiddleName",
-       displayName:'По-батькові'
+       displayName: 'По батькові',
+       enableHiding: false
    },
    {
        enableFiltering:true,
@@ -71,30 +77,34 @@
            type: uiGridConstants.filter.SELECT,
            selectOptions: categoriesOptions
        },
+       enableHiding: false
    },
 
    {
        enableFiltering: true,
        field: "Subjects[0].Name",
+       cellTemplate: '<select  class="form-control" id="subject" ng-model="teachers.Subjects"><option ng-repeat="subject in row.entity.Subjects" value="" value="{{subject.Name}}" selected>{{subject.Name}}</option></select>',
        displayName: 'Предмет',
        filter: {
            type: uiGridConstants.filter.SELECT,
            selectOptions: subjectsOptions
        },
-       enableCellEdit: true,
-       editableCellTemplate: 'ui-grid/dropdownEditor',
-       editDropdownValueLabel: 'value',
-       editDropdownOptionsArray: $scope.getSubjects($scope.getCurrentFocus)
+       enableCellEdit: false,
+       enableHiding: false,
        },
+
 
 
    {
        field: "Profile",
        displayName: 'Профіль',
-       cellTemplate: '<div><a ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;">Profile</a></div>',
-       width: "80",
+       cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/teacher/{{row.entity.Id}}" style="width: 70px;"><img src="/Layouts/Images/user.png"></a></div>',
+       width: "30", 
        enableFiltering: false,
-       enableSorting: false 
+       enableCellEditOnFocus:false,
+       enableSorting: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
         ],
@@ -103,7 +113,8 @@
         }
     };
 
-    teachers.success(function (data) {
+    teachersService.getTeachers()
+        .success(function (data) {
         $scope.teachersGrid.data = data;
     })
     $scope.toggleFiltering = function(){
