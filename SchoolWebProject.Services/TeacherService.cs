@@ -13,13 +13,10 @@ namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
-        private ILogger teacherLogger;
-
         private IUnitOfWork unitOfWork;
 
         public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork) : base(logger)
         {
-            this.teacherLogger = logger;
             this.unitOfWork = teacherUnitOfWork;
         }
 
@@ -53,7 +50,6 @@ namespace SchoolWebProject.Services
                 var temp = this.unitOfWork.SubjectRepository.GetById(subject.Id);
                 this.unitOfWork.SubjectRepository.Update(temp);
             }
-            //teacher.Subjects.Clear();
             this.unitOfWork.TeacherRepository.Update(teacher);
             this.unitOfWork.SaveChanges();
         }

@@ -24,8 +24,8 @@ namespace SchoolWebProject.Controllers
 
         public ViewJournal GetJournalPage(int groupId, int subjectId)
         {
-            var viewModel = this.journalService.GetJournalObject(groupId, subjectId);
-                 return viewModel;
+            var viewModel = journalService.GetJournalObject(groupId, subjectId);
+            return viewModel;
         }
      }
 }
