@@ -1,0 +1,25 @@
+﻿#infoBlock {
+    padding: 10px;
+    padding-left: 15px;
+}
+
+#UserName {
+    margin-top: 10px;
+    padding-left: 50px;
+    padding-top: 15px;
+    margin-bottom: 30px;
+}
+
+#info {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gainsboro;
+    position: relative;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.center-block {
+    margin-top: 5px;
+    font-size: 30px;
+}

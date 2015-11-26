@@ -37,22 +37,32 @@ namespace SchoolWebProject.Data.Infrastructure
             this.dbSet.Add(entity);
         }
 
+        public virtual void Attach(T entity)
+        {
+            this.dataContext.Entry(entity).State = EntityState.Unchanged;
+            this.dbSet.Attach(entity);
+        }
+
         public virtual void Update(T entity)
         {
             //this.dbSet.Attach(entity);
             this.dataContext.Entry(entity).State = EntityState.Modified;
+            
         }
 
         public virtual void Delete(T entity)
         {
+            this.dataContext.Entry(entity).State = EntityState.Modified;
             this.dbSet.Remove(entity);
         }
 
         public virtual void Delete(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = this.dbSet.Where<T>(where).AsEnumerable();
+
             foreach (T obj in objects)
             {
+                this.dataContext.Entry(obj).State = EntityState.Modified;
                 this.dbSet.Remove(obj);
             }
         }

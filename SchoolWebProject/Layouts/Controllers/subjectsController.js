@@ -1,5 +1,6 @@
 ﻿myApp.controller('subjectsController', function ($scope, subjectsService) {
-    subjectsService.success(function (data) {
+    subjectsService.getSubjects()
+        .success(function (data) {
         $scope.listSubjects = data;
     });
 

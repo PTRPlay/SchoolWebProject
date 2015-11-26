@@ -170,6 +170,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\HolidaysController.cs" />
     <Compile Include="Controllers\JournalController.cs" />
     <Compile Include="Controllers\LessonDetailController.cs" />
     <Compile Include="Controllers\MarkController .cs" />
@@ -219,8 +220,15 @@
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
-    <Content Include="Layouts\ModalControllers\addCategoryController.js" />
+    <Content Include="Layouts\Controllers\holidaysController.js" />
+    <Content Include="Layouts\Images\default-profile.png" />
+    <Content Include="Layouts\Images\news-placeholder2.jpg" />
+    <Content Include="Layouts\Images\edit.png" />
+    <Content Include="Layouts\Images\group.png" />
+    <Content Include="Layouts\Images\remove.png" />
+    <Content Include="Layouts\Images\user.png" />
     <Content Include="Layouts\ModalControllers\addDegreeController.js" />
+    <Content Include="Layouts\ModalControllers\addCategoryController.js" />
     <Content Include="Layouts\ModalControllers\degreeModalService.js" />
     <Content Include="Layouts\ModalControllers\categoryModalService.js" />
     <Content Include="Layouts\ModalControllers\FilterScheduleController.js" />
@@ -249,13 +257,17 @@
     <Content Include="Layouts\PartialView\TeacherInfo.html" />
     <Content Include="Layouts\PartialView\Teachers.html" />
     <Content Include="Layouts\PartialView\TeachersAddTemplate.html" />
+    <Content Include="Layouts\PartialView\Holidays.html" />
     <Content Include="Layouts\Services\GroupDetailsService.js" />
     <Content Include="Layouts\Services\lessondetailService.js" />
     <Content Include="Layouts\Services\scheduleService.js" />
     <Content Include="Layouts\PartialView\TeacherCategoryTemplate.html" />
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
+    <Content Include="Layouts\Services\holidaysService.js" />
+    <Content Include="Layouts\Styles\ProfilesStyles.css" />
     <Content Include="Layouts\Styles\styles.css" />
+    <Content Include="Layouts\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\Controllers\diaryController.js" />
     <Content Include="Layouts\Controllers\groupsController.js" />
     <Content Include="Layouts\Controllers\journalController .js" />
@@ -284,6 +296,7 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-locale_uk.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-modal-service.js" />
     <Content Include="Scripts\angular-route.js" />

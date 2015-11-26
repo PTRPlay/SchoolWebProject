@@ -59,7 +59,10 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<ViewTeacher, Teacher>()
                 .ForMember(g => g.TeacherCategoryId, map => map.MapFrom(vm => vm.Category.Id))
                 .ForMember(g => g.TeacherDegreeId, map => map.MapFrom(vm => vm.Degree.Id))
-                .ForMember(g => g.WorkBegin, map => map.MapFrom(vm => Convert.ToString(vm.WorkStart)));
+                .ForMember(g => g.WorkBegin, map => map.MapFrom(vm => Convert.ToString(vm.WorkStart)))
+                .ForMember(g => g.Address, map => map.MapFrom(vm => vm.Address))
+                .ForMember(g => g.PhoneNumber, map => map.MapFrom(vm => vm.PhoneNumber))
+                .ForMember(g => g.Email, map => map.MapFrom(vm => vm.Email));
 
             AutoMapper.Mapper.CreateMap<ViewMark, Mark>()
                  .ForMember(g => g.SchoolId, map => map.MapFrom(vm => 1))

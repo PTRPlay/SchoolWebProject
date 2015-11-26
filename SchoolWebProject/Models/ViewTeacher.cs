@@ -19,6 +19,10 @@ namespace SchoolWebProject.Models
 
         public string Email { get; set; }
 
+        public string PhoneNumber { get; set; }
+
+        public string Address { get; set; }
+
         public ViewTeacherCategory Category { get; set; }
 
         public ViewTeacherDegree Degree { get; set; }

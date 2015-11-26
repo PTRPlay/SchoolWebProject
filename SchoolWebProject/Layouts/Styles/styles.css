@@ -10,3 +10,8 @@
 .table .table-bordered thead td {
     font-weight: 700;
 }
+
+#image-plaseholder {
+    border: 1px solid;
+    border-color: lightgrey;
+}

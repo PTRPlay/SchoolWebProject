@@ -9,7 +9,7 @@ namespace SchoolWebProject.Services
 {
     public interface IEmailSenderService
     {
-        MailAddress fromAddress { get; }
+        MailAddress FromAddress { get; }
 
         void SendMail(string toAddress, string text);
     }

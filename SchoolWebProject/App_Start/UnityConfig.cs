@@ -52,7 +52,9 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<IAnnouncementService, AnnouncementService>();
             container.RegisterType<ISchoolService, SchoolService>();
             container.RegisterType<IDiaryService, DiaryService>();
+            container.RegisterType<ITeacherCategoryService, TeacherCategoryService>();
             container.RegisterType<IEmailSenderService, EmailSenderService>();
+            container.RegisterType<IHolidaysService, HolidaysService>();
             container.RegisterType<ISubjectService, SubjectService>();
         }
     }

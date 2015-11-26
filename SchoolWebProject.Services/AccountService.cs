@@ -25,14 +25,14 @@ namespace SchoolWebProject.Services
 
         public LogInData GenerateUserLoginData(User user)
         {
-            string userLogin = GenerateLogin(user), userPassword = GeneratePassword(), salt = CreateSalt();
+            string userLogin = this.GenerateLogin(user), userPassword = this.GeneratePassword(), salt = this.CreateSalt();
             string message = string.Format(Constants.EmailMessage + "\nЛогін: " + userLogin + "\nПароль: " + userPassword);
-            emailService.SendMail(user.Email, message);
+            this.emailService.SendMail(user.Email, message);
             return new LogInData
                 {
                     Login = userLogin,
                     PasswordSalt = salt,
-                    PasswordHash = CreateHashPassword(userPassword,salt)
+                    PasswordHash = this.CreateHashPassword(userPassword, salt)
                 };
         }
 
@@ -41,13 +41,20 @@ namespace SchoolWebProject.Services
             Expression<Func<LogInData, bool>> getUserByLogin = user => user.Login == userName;
             LogInData loginData;
             loginData = this.unitOfWork.LogInDataRepository.Get(getUserByLogin);
-            if (loginData == null) return null;
+            if (loginData == null)
+            {
+                return null;
+            }
+
             if (this.CheckUser(loginData, password) && loginData != null)
             {
                 Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
                 return this.unitOfWork.UserRepository.Get(getUser);
             }
-            else return null;
+            else
+            {
+                return null;
+            }
         }
 
         public LogInData GetUserLogInData(int id)
@@ -68,42 +75,42 @@ namespace SchoolWebProject.Services
             switch (role)
             {
                 case Constants.UserRoles.Admin:
-                    permisions["Teachers"] = "teachers";
-                    permisions["Subjects"] = "subjects";
-                    permisions["Pupils"] = "pupils";
-                    permisions["Groups"] = "groups";
-                    permisions["Schedule"] = "schedule";
-                    permisions["Diary"] = "diaryService";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Вчителі"] = "teachers";
+                    permisions["Предмети"] = "subjects";
+                    permisions["Учні"] = "pupils";
+                    permisions["Класи"] = "groups";
+                    permisions["Розклад"] = "schedule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Teacher:
-                    permisions["Pupils"] = "pupils";
-                    permisions["Groups"] = "groups";
-                    permisions["Scheldule"] = "scheldule";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Учні"] = "pupils";
+                    permisions["Класи"] = "groups";
+                    permisions["Розклад"] = "scheldule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Pupil:
-                    permisions["Diary"] = "diaryService";
-                    permisions["Scheldule"] = "scheldule";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Щоденник"] = "diaryService";
+                    permisions["Розклад"] = "scheldule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Parent:
-                    permisions["Teachers"] = "teachers";
-                    permisions["Scheldule"] = "scheldule";
-                    permisions["Journal"] = "journal";
-                    permisions["News"] = "newsService";
-                    permisions["Contacts"] = "schoolService";
+                    permisions["Вчителі"] = "teachers";
+                    permisions["Розклад"] = "scheldule";
+                    permisions["Журнал"] = "journal";
+                    permisions["Новини"] = "newsService";
+                    permisions["Конткти"] = "schoolService";
                     break;
                 default:
                     permisions = null;
                     break;
             }
+
             return permisions;
         }
 
@@ -137,9 +144,14 @@ namespace SchoolWebProject.Services
 
         private bool CheckUser(LogInData currUser, string password)
         {
-            if (currUser.PasswordHash == CreateHashPassword(password, currUser.PasswordSalt))
+            if (currUser.PasswordHash == this.CreateHashPassword(password, currUser.PasswordSalt))
+            {
                 return true;
-            else return false;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private string ByteArrayToString(byte[] input)

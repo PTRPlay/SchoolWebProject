@@ -20,6 +20,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private GenericRepository<Group> groupRepository;
 
+        private GenericRepository<Holidays> holidaysRepository;
+
         private GenericRepository<LessonDetail> lessonDetailRepository;
 
         private GenericRepository<LogInData> loginDataRepository;
@@ -73,6 +75,18 @@ namespace SchoolWebProject.Data.Infrastructure
                     this.groupRepository = new GenericRepository<Group>(dbFactory);
                 }
                 return groupRepository;
+            }
+        }
+
+        public GenericRepository<Holidays> HolidaysRepository
+        {
+            get
+            {
+                if (this.holidaysRepository == null)
+                {
+                    this.holidaysRepository = new GenericRepository<Holidays>(dbFactory);
+                }
+                return holidaysRepository;
             }
         }
 

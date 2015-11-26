@@ -3,8 +3,8 @@
 
         <h2>{{getGroup().NameNumber}} - {{getGroup().NameLetter}}</h2>
 
-        <h3>Teacher: <a ng-href="#/teacher/{{getGroup().TeacherId}}"> {{getGroup().TeacherName}} </a></h3>
-        <h3>Pupils: </h3>
+        <h3>Класний керівник: <a ng-href="#/teacher/{{getGroup().TeacherId}}"> {{getGroup().TeacherName}} </a></h3>
+        <h3>Список учнів: </h3>
         <div class="panel panel-default" ng-repeat="pupil in getGroup().ViewPupils">
             <div class="panel-body">
                 <div class="container-fluid">

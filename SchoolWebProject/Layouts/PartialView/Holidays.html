@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Навчальний рік</title>
+</head>
+<body>
+    <div ng-repeat="holiday in holidays">
+    <h4>Семестр #1</h4> <br>
+        <label for="workStart" class="col-sm-2 control-label">Початок:</label>
+        <div class="col-sm-3">
+            <input type="date"  class="form-control" id="date" ng-model="holidays.StartDay | date:"dd.MM.yy"" />
+        </div>
+        <label for="workStart" class="col-sm-2 control-label">Кінець:{{holiday.StartDay | date:"dd.MM.yy"}}</label>
+        <div class="col-sm-3">
+            <input type="date" placeholder="{{holiday.StartDay}}"  class="form-control" id="semestrOneEndDay" ng-model="holidays.EndDay" />
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <h4>Семестр #2</h4> <br>
+        <label for="workStart" class="col-sm-2 control-label">Початок:</label>
+        <div class="col-sm-3">
+            <input type="date" class="form-control" id="semestrTwoStartDay" ng-model="holidays2.StartDay" />
+        </div>
+        <label for="workStart" class="col-sm-2 control-label">Кінець:</label>
+        <div class="col-sm-3">
+            <input type="date" class="form-control" id="semestrTwoEndDay" ng-model="holidays2.EndDay" />
+        </div>
+    </div>
+    <div ng-repeat="holiday in holidays">
+    <h5><small>воу : {{holiday.StartDay}} </small></h5>
+        </div>
+</body>
+</html>
