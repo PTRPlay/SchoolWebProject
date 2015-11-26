@@ -1,15 +1,15 @@
 ﻿using System;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
+using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -27,7 +27,7 @@ namespace SchoolWebProject.Controllers
         // GET api/pupils
         public IEnumerable<ViewPupil> Get()
         {
-            var pupils = pupilService.GetAllPupils();
+            var pupils = this.pupilService.GetAllPupils();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
             return viewModel;
         }
@@ -36,7 +36,7 @@ namespace SchoolWebProject.Controllers
         public PupilPageData GetPage(int page, int amount, string sorting, string filtering = null)
         {
             int pageCount;
-            var pupils = pupilService.GetPage(page, amount, sorting, filtering, out pageCount);
+            var pupils = this.pupilService.GetPage(page, amount, sorting, filtering, out pageCount);
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
             PupilPageData pupilPage = new PupilPageData() { Pupils = viewModel, PageCount = pageCount };
             logger.Info("Retrieving page with pupils from a server");
@@ -46,7 +46,7 @@ namespace SchoolWebProject.Controllers
         // GET api/pupils/5
         public ViewPupil Get(int id)
         {
-            var pupil = pupilService.GetProfileById(id);
+            var pupil = this.pupilService.GetProfileById(id);
             var viewModel = AutoMapper.Mapper.Map<Pupil, ViewPupil>(pupil);
             return viewModel;
         }
@@ -61,6 +61,7 @@ namespace SchoolWebProject.Controllers
             {
                 pupil.LogInData = this.accountService.GenerateUserLoginData(pupil);
             }
+
             this.pupilService.AddPupil(pupil);
         }
 
@@ -69,9 +70,9 @@ namespace SchoolWebProject.Controllers
          [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]ViewPupil value)
         {
-            var pupil = pupilService.GetProfileById(value.Id);
+            var pupil = this.pupilService.GetProfileById(value.Id);
             AutoMapper.Mapper.Map<ViewPupil, Pupil>(value, (Pupil)pupil);
-            pupilService.UpdateProfile(pupil);
+            this.pupilService.UpdateProfile(pupil);
         }
 
         // DELETE api/pupils/5
@@ -79,7 +80,7 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin, Teacher")]
         public void Delete(int id)
         {
-            pupilService.RemovePupil(id);
+            this.pupilService.RemovePupil(id);
         }
     }
 }
