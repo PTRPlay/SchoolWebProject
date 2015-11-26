@@ -28,4 +28,3 @@ namespace SchoolWebProject.Services.Models
         }
     }
 }
-

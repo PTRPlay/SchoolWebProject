@@ -1,42 +1,54 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SchoolWebProject.Services;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using Moq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
+
 namespace SchoolWebProject.UnitTestProject
 {
     [TestClass]
     public class TeacherServiceUnitTest
     {
-      private  List<Teacher> teachers = new List<Teacher> {
-                new Teacher { LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", 
-    WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
-new Teacher { LastName = "Гарланенко", FirstName = "Євгенія", MiddleName = "Сергіївна", 
-    WorkBegin = new DateTime(2008, 3, 18), PhoneNumber = "993385320", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 },
-new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = "Олегович", 
-    WorkBegin = new DateTime(1990, 7, 18), PhoneNumber = "290849203", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 },
+      private List<Teacher> teachers = new List<Teacher> 
+      {
+          new Teacher 
+          { 
+              LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна",
+              WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 
+          },
+          new Teacher 
+          {
+              LastName = "Гарланенко", FirstName = "Євгенія", MiddleName = "Сергіївна",
+              WorkBegin = new DateTime(2008, 3, 18), PhoneNumber = "993385320", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 
+          },
+          new Teacher 
+          {
+              LastName = "Євенко", FirstName = "Вадим", MiddleName = "Олегович",
+              WorkBegin = new DateTime(1990, 7, 18), PhoneNumber = "290849203", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2
+          },
  };
 
-      private Teacher teacher = new Teacher { LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", 
-    WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 };
+      private Teacher teacher = new Teacher 
+      {
+          LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна",
+          WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 
+      };
 
         [TestMethod]
         public void GetTeachers_Test_If_Get_All_Teacher_And_Invoke_GetAll_repository_Method()
         {
             var logger = new Mock<ILogger>();
-            var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-            iRepository.Setup(act => act.GetAll()).Returns(teachers);
+            iUnitOfWork.Setup(inv => inv.TeacherRepository.GetAll());
 
             teacherService.GetAllTeachers();
 
-            iRepository.Verify(inv => inv.GetAll(), Times.Once);
-          
+            iUnitOfWork.Verify(inv => inv.TeacherRepository.GetAll(), Times.Once);
         }
 
         [TestMethod]
@@ -44,7 +56,7 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(teacher);
+            iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(this.teacher);
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
             int anyIdMoreZero = 3;
@@ -52,7 +64,6 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
            teacherService.GetProfileById(anyIdMoreZero);
             
            iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
-           
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -77,10 +88,10 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-            
-            teacherService.UpdateProfile(teacher);
 
-            iRepository.Verify(inv => inv.Update(teacher), Times.Once);
+            teacherService.UpdateProfile(this.teacher);
+
+            iRepository.Verify(inv => inv.Update(this.teacher), Times.Once);
         }
 
         [TestMethod]
@@ -88,11 +99,11 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
         {
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-            var teacherService =  new TeacherService(logger.Object, iUnitOfWork.Object);
-            
-            teacherService.AddTeacher(teacher);
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
 
-            iUnitOfWork.Verify(inv => inv.TeacherRepository.Add(teacher), Times.Once);
+            teacherService.AddTeacher(this.teacher);
+
+            iUnitOfWork.Verify(inv => inv.TeacherRepository.Add(this.teacher), Times.Once);
         }
 
         [TestMethod]
@@ -102,11 +113,10 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-            
-            teacherService.RemoveTeacher(teacher);
 
-            iRepository.Verify(inv => inv.Delete(teacher), Times.Once);
+            teacherService.RemoveTeacher(this.teacher);
+
+            iRepository.Verify(inv => inv.Delete(this.teacher), Times.Once);
         }
-
     }
 }

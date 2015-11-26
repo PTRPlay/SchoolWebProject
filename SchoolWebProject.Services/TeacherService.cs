@@ -17,7 +17,7 @@ namespace SchoolWebProject.Services
 
         private IUnitOfWork unitOfWork;
 
-        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork): base(logger)
+        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork) : base(logger)
         {
             this.teacherLogger = logger;
             this.unitOfWork = teacherUnitOfWork;
@@ -41,7 +41,7 @@ namespace SchoolWebProject.Services
                 Where((enty) => (enty.LastName).Contains(filter));
         }
 
-        public Teacher Get(Expression<Func<Teacher,bool>> expression)
+        public Teacher Get(Expression<Func<Teacher, bool>> expression)
         {
             return unitOfWork.TeacherRepository.Get(expression);
         }

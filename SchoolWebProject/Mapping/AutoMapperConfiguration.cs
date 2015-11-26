@@ -29,7 +29,7 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<Pupil, ViewPupil>();
             AutoMapper.Mapper.CreateMap<Teacher, ViewTeacher>()
                 .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory))
-                .ForMember(g=>g.WorkStart,map => map.MapFrom(vm=>Convert.ToString(vm.WorkBegin)));
+                .ForMember(g => g.WorkStart, map => map.MapFrom(vm => Convert.ToString(vm.WorkBegin)));
             AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
             AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
             AutoMapper.Mapper.CreateMap<Subject, ViewSubject>();

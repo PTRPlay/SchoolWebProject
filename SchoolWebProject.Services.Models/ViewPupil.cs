@@ -17,13 +17,6 @@ namespace SchoolWebProject.Services.Models
 
         public string MiddleName { get; set; }
 
-        //public byte[] Img { get; set; }
-
-        //public int GroupId { get; set; }
-
-   //     public string School { get; set; }
-
-        //public int LogInDataId { get; set; }
         static ViewPupil()
         {
             Mapper.CreateMap<db.Pupil, ViewPupil>().IgnoreAllNonExisting();

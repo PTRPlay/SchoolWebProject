@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using SchoolWebProject;
 
 namespace SchoolWebProject.Services
 {
@@ -25,12 +25,12 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Mark> GetAllMarks()
         {
-            return unitOfWork.MarkRepository.GetAll();
+            return this.unitOfWork.MarkRepository.GetAll();
         }
 
         public IEnumerable<Mark> GetMarksBySubjectAndGroup(int subjectId, int groupId)
         {
-            var marks = unitOfWork.MarkRepository.GetAll()
+            var marks = this.unitOfWork.MarkRepository.GetAll()
                 .Where(p => p.Pupil.GroupId == groupId && p.LessonDetail.Schedule.SubjectId == subjectId)
                 .OrderBy(s => s.Pupil.LastName)
                 .OrderBy(s => s.LessonDetail.Date);
@@ -39,7 +39,7 @@ namespace SchoolWebProject.Services
 
         public Mark GetMarkById(int id)
         {
-            return unitOfWork.MarkRepository.GetById(id);
+            return this.unitOfWork.MarkRepository.GetById(id);
         }
 
         public void UpdateMark(Mark mark)
@@ -54,12 +54,12 @@ namespace SchoolWebProject.Services
 
         public void RemoveMark(Mark mark)
         {
-            unitOfWork.MarkRepository.Delete(mark);
+            this.unitOfWork.MarkRepository.Delete(mark);
         }
 
         public void SaveMark()
         {
-            unitOfWork.SaveChanges();
+            this.unitOfWork.SaveChanges();
         }
     }
 }
