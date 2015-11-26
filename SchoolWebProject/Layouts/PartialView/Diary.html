@@ -22,7 +22,7 @@
             <div ng-class="isCurrentDate(i) ? 'panel panel-success' : 'panel panel-default'">
                 <div class="panel-heading"><h4> {{getDayByIndex(i) | date:"fullDate"}} </h4></div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="diary-table">
                         <thead>
                             <tr>
                                 <td width="2%">№</td>

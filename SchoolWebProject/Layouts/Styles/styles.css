@@ -52,7 +52,7 @@ TD.jewel {
     margin-right: 3%;
 }
 
-.table .table-bordered thead td {
+#diary-table thead td {
     font-weight: 700;
 }
 
