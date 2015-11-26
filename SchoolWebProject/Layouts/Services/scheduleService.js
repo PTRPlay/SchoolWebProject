@@ -26,7 +26,7 @@
         }
     }
     this.InitializeAutocomplate = function () {
-        $('#Filter').autocomplete({
+        $('#TeacherFilter').autocomplete({
             source: function (request, response) {
                 var filter = request.term;
                 $.ajax(
@@ -44,5 +44,6 @@
                 });
             }
         });
+
     }
 }]);

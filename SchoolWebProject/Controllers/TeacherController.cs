@@ -39,8 +39,8 @@ namespace SchoolWebProject.Controllers
         {
             var teachers = this.teacherService.GetAllTeachers();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers);
-            return viewModel;
             logger.Info("Get all teachers");
+            return viewModel;
         }
 
         // GET api/teacher/5
