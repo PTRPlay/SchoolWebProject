@@ -4,22 +4,19 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using SchoolWebProject;
 
 namespace SchoolWebProject.Services
 {
     public class TeacherService : BaseService, ITeacherService
     {
-        private ILogger teacherLogger;
-
         private IUnitOfWork unitOfWork;
 
-        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork): base(logger)
+        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork) : base(logger)
         {
-            this.teacherLogger = logger;
             this.unitOfWork = teacherUnitOfWork;
         }
 
@@ -41,7 +38,7 @@ namespace SchoolWebProject.Services
                 Where((enty) => (enty.LastName).Contains(filter));
         }
 
-        public Teacher Get(Expression<Func<Teacher,bool>> expression)
+        public Teacher Get(Expression<Func<Teacher, bool>> expression)
         {
             return unitOfWork.TeacherRepository.Get(expression);
         }
@@ -53,7 +50,6 @@ namespace SchoolWebProject.Services
                 var temp = this.unitOfWork.SubjectRepository.GetById(subject.Id);
                 this.unitOfWork.SubjectRepository.Update(temp);
             }
-            //teacher.Subjects.Clear();
             this.unitOfWork.TeacherRepository.Update(teacher);
             this.unitOfWork.SaveChanges();
         }

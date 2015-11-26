@@ -13,20 +13,17 @@ namespace SchoolWebProject.Services
 {
     public class PupilService : BaseService, IPupilService
     {
-        private ILogger pupilLogger;
-
         private IUnitOfWork unitOfWork;
 
         public PupilService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.pupilLogger =logger;
             this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<Pupil> GetAllPupils()
         {
-            return unitOfWork.PupilRepository.GetAll().OrderBy(p=>p.LastName);
+            return unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName);
         }
 
         public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount)

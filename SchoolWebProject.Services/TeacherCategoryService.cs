@@ -1,25 +1,22 @@
-﻿using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
 
 namespace SchoolWebProject.Services
 {
     public class TeacherCategoryService : BaseService, ITeacherCategoryService
     {
-        private ILogger teacherCategoryLogger;
-        
         private IUnitOfWork unitOfWork;
 
         public TeacherCategoryService(ILogger logger, IUnitOfWork unitOfWork)
             : base(logger)
         {
-            this.teacherCategoryLogger = logger;
             this.unitOfWork = unitOfWork;
         }
 

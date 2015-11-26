@@ -1,14 +1,14 @@
 ﻿using System;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
+using SchoolWebProject.Services.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Services.Models;
-using SchoolWebProject.Services;
 
 namespace SchoolWebProject.Controllers
 {
@@ -25,12 +25,11 @@ namespace SchoolWebProject.Controllers
         // GET api/subject
         public IEnumerable<ViewSubject> Get()
         {
-            var subjects = subjectService.GetAllSubjects();
+            var subjects = this.subjectService.GetAllSubjects();
             List<ViewSubject> viewModel = new List<ViewSubject>();
             foreach (var v in subjects)
                 viewModel.Add(ViewSubject.CreateSimpleSubject(v));
             return viewModel;
-
         }
 
         // GET api/subjects/5
@@ -51,15 +50,15 @@ namespace SchoolWebProject.Controllers
         // PUT api/subjects/5
         public void Put(int id, [FromBody]ViewSubject value)
         {
-            var subject = subjectService.GetSubjectById(value.Id);
+            var subject = this.subjectService.GetSubjectById(value.Id);
             AutoMapper.Mapper.Map<ViewSubject, Subject>(value, subject);
-            subjectService.UpdateSubject(subject);
+            this.subjectService.UpdateSubject(subject);
         }
 
         // DELETE api/subjects/5
         public void Delete(int id)
         {
-            subjectService.RemoveSubject(id);
+            this.subjectService.RemoveSubject(id);
         }
     }
 }

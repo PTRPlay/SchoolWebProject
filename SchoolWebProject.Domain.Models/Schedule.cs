@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -9,14 +10,18 @@ namespace SchoolWebProject.Domain.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public int OrderNumber { get; set; }
 
+        [Required]
         public int DayOfTheWeek { get; set; }
 
+        [Required]
         public int SubjectId { get; set; }
 
         public virtual Subject Subject { get; set; }
 
+        [Required]
         public int GroupId { get; set; }
 
         public virtual Group Group { get; set; }

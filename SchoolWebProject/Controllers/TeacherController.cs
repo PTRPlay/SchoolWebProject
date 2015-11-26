@@ -26,9 +26,9 @@ namespace SchoolWebProject.Controllers
 
         private IAccountService accountService;
 
-        public TeacherController(ILogger Logger, TeacherService teacherService, SubjectService subjectService, IAccountService accService) 
+        public TeacherController(ILogger logger, TeacherService teacherService, SubjectService subjectService, IAccountService accService) 
         {
-            this.logger = Logger;
+            this.logger = logger;
             this.teacherService = teacherService;
             this.subjectService = subjectService;
             this.accountService = accService;
@@ -39,7 +39,6 @@ namespace SchoolWebProject.Controllers
         {
             var teachers = this.teacherService.GetAllTeachers();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers);
-            logger.Info("Get all teachers");
             return viewModel;
         }
 
@@ -48,7 +47,7 @@ namespace SchoolWebProject.Controllers
         {
             var teacher = this.teacherService.GetProfileById(id);
             var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teacher);
-            logger.Info("Geting teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            this.logger.Info("Geting teacher {0}, {1}", teacher.LastName, teacher.FirstName);
             return viewModel;
         }
 
@@ -67,7 +66,7 @@ namespace SchoolWebProject.Controllers
                 teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
             this.teacherService.AddTeacher(teacher);
             this.teacherService.SaveTeacher();
-            logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            this.logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
         }
 
         // PUT api/teacher/5
@@ -78,7 +77,7 @@ namespace SchoolWebProject.Controllers
             var teacher = this.teacherService.GetProfileById(id);
             AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, (Teacher)teacher);
             this.teacherService.UpdateProfile(teacher);
-            logger.Info("Edited teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            this.logger.Info("Edited teacher {0}, {1}", teacher.LastName, teacher.FirstName);
        }
 
         // DELETE api/teacher/5
@@ -87,7 +86,7 @@ namespace SchoolWebProject.Controllers
         {
             //// TO DO
             //// this.teacherService.RemoveTeacher()
-            logger.Info("Deleted teacher");
+            this.logger.Info("Deleted teacher");
         }
     }
 }

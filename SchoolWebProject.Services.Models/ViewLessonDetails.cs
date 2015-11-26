@@ -17,12 +17,6 @@ namespace SchoolWebProject.Services.Models
 
         public int ScheduleId { get; set; }
 
-       // public virtual Schedule Schedule { get; set; }
-
         public int SchoolId { get; set; }
-
-        //public virtual School School { get; set; }
-
-       // public virtual List<Mark> Marks { get; set; }
     }
 }

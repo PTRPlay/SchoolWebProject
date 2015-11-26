@@ -5,7 +5,7 @@ namespace SchoolWebProject.Services
 {
     public class BaseService
     {
-        private ILogger logger;
+        protected ILogger logger;
 
         public BaseService(ILogger logger)
         {

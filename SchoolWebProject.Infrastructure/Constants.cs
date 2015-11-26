@@ -21,6 +21,5 @@ namespace SchoolWebProject.Infrastructure
             Teacher, 
             Pupil, 
             Parent };
-
     }
 }

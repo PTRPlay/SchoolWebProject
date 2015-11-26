@@ -26,6 +26,7 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategories = this.teacherCategoryService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
+            logger.Info("Gets Teacher category");
             return viewModel;
         }
 
@@ -34,7 +35,6 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategory = this.teacherCategoryService.GetTeacherCategoryById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
-            logger.Info("Getted teacher category {0}", teacherCategory.Name);
             return viewModel;
         }
 
@@ -45,7 +45,6 @@ namespace SchoolWebProject.Controllers
             var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
             this.teacherCategoryService.AddTeacherCategory(teacherCategory);
             this.teacherCategoryService.SaveTeacherCategory();
-            logger.Info("Added new teacher category");
         }
 
         // PUT api/teachercategory/5
@@ -57,7 +56,6 @@ namespace SchoolWebProject.Controllers
             AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value, teacherCategory);
             this.teacherCategoryService.UpdateTeacherCategory(teacherCategory);
             this.teacherCategoryService.SaveTeacherCategory();
-            logger.Info("Edited teacher category");
         }
 
         // DELETE api/teachercategory/5
@@ -67,7 +65,6 @@ namespace SchoolWebProject.Controllers
         {
             this.teacherCategoryService.DeleteTeacherCategory(id);
             this.teacherCategoryService.SaveTeacherCategory();
-            logger.Info("Delete teacher category");
         }
     }
 }

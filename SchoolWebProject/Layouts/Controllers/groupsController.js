@@ -23,7 +23,8 @@
                name: 'Літера',
                field: 'NameLetter',
                width: "50",
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
            },
            {
                name: "Класний керівник",
@@ -31,14 +32,16 @@
                sortingAlgorithm: function (a, b) {
                    return a.localeCompare(b)
                },
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
            },
            {
                name: "Кількість учнів",
                field: "PupilsAmount",
                type: 'number',
                width: "150",
-               enableHiding: false
+               enableHiding: false,
+               enableColumnMenu: false
            },
            {
                name: "Опції",

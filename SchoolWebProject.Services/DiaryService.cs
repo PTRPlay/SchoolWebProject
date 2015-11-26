@@ -22,6 +22,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Diary> GetDiaryByUserId(int idUser, string date)
         {
+            logger.Info("Get diary for user. Id = {0}", idUser);
             string[] split = date.Split('-');
             DateTime monday = new DateTime(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]));
             DateTime tuesday = monday.AddDays(1);
