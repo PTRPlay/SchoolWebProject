@@ -87,7 +87,7 @@ namespace SchoolWebProject.Services
                     permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Pupil:
-                    permisions["Diary"] = "diaryService";
+                    permisions["Щоденник"] = "diaryService";
                     permisions["Розклад"] = "scheldule";
                     permisions["Журнал"] = "journal";
                     permisions["Новини"] = "newsService";

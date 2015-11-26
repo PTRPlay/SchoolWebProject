@@ -74,6 +74,8 @@ namespace SchoolWebProject.Domain.Models
             {
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=11,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=11,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=8,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3,LessonDetailId=2, Value=10,
@@ -84,6 +86,8 @@ namespace SchoolWebProject.Domain.Models
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==97)as Pupil},
 				new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=5,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==55)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=9,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=6,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==64)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=3, Value=7,
@@ -119,6 +123,8 @@ namespace SchoolWebProject.Domain.Models
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==65)as Pupil},
                 new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=5, Value=9,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==114)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=1, LessonDetailId=4, Value=10,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
 
             };
         }
@@ -220,9 +226,11 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<MarkType>
             {
-                new MarkType{Name="Control Work"},
-                new MarkType{Name="Individual Task"},
-                new MarkType{Name="Activity on Lesson"}
+                new MarkType{Name="Контрольна робота"},
+                new MarkType{Name="Індивідуальне завдання"},
+                new MarkType{Name="Активність на уроці"},
+                new MarkType{Name="Самостійна робота"},
+                new MarkType{Name="Диктант"}
             };
         }
 
@@ -576,7 +584,7 @@ new Pupil { LastName = "Колотуха", FirstName = "Максим", MiddleNam
 new Pupil { LastName = "Красилівський", FirstName = "Петро", MiddleName = "Олександрович", 
     PhoneNumber = "849234818", RoleId = 3, SchoolId = 1, GroupId = 1 },
 new Pupil { LastName = "Крикун", FirstName = "Владислав", MiddleName = "Валерійович", 
-    PhoneNumber = "825654271", RoleId = 3, SchoolId = 1, GroupId = 13, LogInData = new LogInData{Login = "pupil", PasswordHash = pupilHash, PasswordSalt = pupilSalt, UserId = 595} },
+    PhoneNumber = "825654271", RoleId = 3, SchoolId = 1, GroupId = 10, LogInData = new LogInData{Login = "pupil", PasswordHash = pupilHash, PasswordSalt = pupilSalt, UserId = 595} },
 new Pupil { LastName = "Лосіцька", FirstName = "Наталія", MiddleName = "Іванівна", 
     PhoneNumber = "371166751", RoleId = 3, SchoolId = 1, GroupId = 10 },
 new Pupil { LastName = "Луцюк", FirstName = "Іван", MiddleName = "Анатолійович", 
