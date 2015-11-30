@@ -1,7 +1,7 @@
 ﻿using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
+using SchoolWebProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +13,28 @@ namespace SchoolWebProject.Controllers
 {
     public class ScheduleController : ApiController
     {
+        private ILogger logger;
+        private IScheduleService scheduleService;
+
+        public ScheduleController(ILogger logger , IScheduleService scheduleService) 
+        {
+            this.logger = logger;
+            this.scheduleService = scheduleService;
+        }
+
         public IEnumerable<ViewSchedule> Get()
         {
-            var scheldules = new SchoolContext().Schedules;
-            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(scheldules);
+            var schedules = scheduleService.GetAllSchedules();
+            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>,IEnumerable<ViewSchedule>>(schedules);
+            logger.Info("Get All Schedule");
             return viewSchedules;
         }
 
         public IEnumerable<ViewSchedule> Get(string filter)
         {
-            //TO DO 
-            // IT IS NOT FINISHED YET
-
-            //string[] filters = filter.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);
-            var scheldules = new SchoolContext().Schedules.
-                Where((enty) => enty.Teacher.FirstName + enty.Teacher.MiddleName + enty.Teacher.LastName == filter).ToArray();
-                //Intersect(new SchoolContext().Schedules.
-                //Where(enty=>enty.Group.NameNumber+enty.Group.NameLetter == filters[1]));
-            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(scheldules);
+            string[] filters = filter.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);
+            var schedules = this.scheduleService.GetByFilter(filters[0], filters[1]);
+            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(schedules);
             return viewSchedules;
         }
 

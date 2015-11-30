@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using SchoolWebProject;
 
 namespace SchoolWebProject.Services
 {

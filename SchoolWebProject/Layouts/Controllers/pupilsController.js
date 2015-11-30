@@ -25,6 +25,7 @@
        enableFiltering: true,
        width: "*",
        enableHiding: false,
+       enableColumnMenu: false,
        sort: {
            direction: uiGridConstants.ASC,
            priority: 1
@@ -39,7 +40,8 @@
        width: "*",
        //enableSorting:false,
        enableFiltering: false,
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        name: "Телефон",

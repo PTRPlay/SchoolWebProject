@@ -26,9 +26,9 @@ namespace SchoolWebProject.Controllers
 
         private IAccountService accountService;
 
-        public TeacherController(ILogger Logger, TeacherService teacherService, SubjectService subjectService, IAccountService accService) 
+        public TeacherController(ILogger logger, TeacherService teacherService, SubjectService subjectService, IAccountService accService) 
         {
-            this.logger = Logger;
+            this.logger = logger;
             this.teacherService = teacherService;
             this.subjectService = subjectService;
             this.accountService = accService;
@@ -47,7 +47,7 @@ namespace SchoolWebProject.Controllers
         {
             var teacher = this.teacherService.GetProfileById(id);
             var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teacher);
-            logger.Info("Geting teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            this.logger.Info("Geting teacher {0}, {1}", teacher.LastName, teacher.FirstName);
             return viewModel;
         }
 
@@ -66,7 +66,7 @@ namespace SchoolWebProject.Controllers
                 teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
             this.teacherService.AddTeacher(teacher);
             this.teacherService.SaveTeacher();
-            logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            this.logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
         }
 
         // PUT api/teacher/5
@@ -74,10 +74,20 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            var teacher = this.teacherService.GetProfileById(id);
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, (Teacher)teacher);
-            this.teacherService.UpdateProfile(teacher);
-            logger.Info("Edited teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            SchoolContext bin = new SchoolContext();
+            Teacher teacher = (Teacher)bin.Users.First(p => p.Id == value.Id);
+            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            value.Subjects = null;
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, teacher);
+            foreach (Subject subject in subjects)
+            { 
+                if (bin.Subjects.First((p) => p.Id == subject.Id) != null)
+                {
+                    teacher.Subjects.Add(bin.Subjects.First((p) => p.Id==subject.Id));
+                }
+            }
+
+            bin.SaveChanges();
        }
 
         // DELETE api/teacher/5
@@ -86,7 +96,7 @@ namespace SchoolWebProject.Controllers
         {
             //// TO DO
             //// this.teacherService.RemoveTeacher()
-            logger.Info("Deleted teacher");
+            this.logger.Info("Deleted teacher");
         }
     }
 }

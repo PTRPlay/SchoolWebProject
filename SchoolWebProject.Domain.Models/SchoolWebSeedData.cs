@@ -135,10 +135,10 @@ namespace SchoolWebProject.Domain.Models
             {
                     new LessonDetail{ HomeTask="Впр. 145-150", 
                     Theme="Знову до школи", 
-                    Date=new DateTime(2015, 09,02 ), ScheduleId=2, SchoolId =1},
+                    Date=new DateTime(2015, 09,02 ), ScheduleId=9, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 5, p. 5; Ex. 6, p. 6", 
                     Theme="Режим дня школяра", 
-                    Date=new DateTime(2015, 09,09 ), ScheduleId=2, SchoolId =1},
+                    Date=new DateTime(2015, 09,09 ), ScheduleId=9, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 3-5, p. 8-9", Theme="Наші  друзі", 
                     Date=new DateTime(2015, 09,16 ), ScheduleId=3, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 2, p. 13", 

@@ -18,6 +18,5 @@ namespace SchoolWebProject.Services
         void AddTeacherDegree(TeacherDegree teacherDegree);
 
         void SaveTeacherDegree();
-
     }
 }

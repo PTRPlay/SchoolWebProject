@@ -29,17 +29,18 @@ namespace SchoolWebProject.Controllers
         {
             var pupils = this.pupilService.GetAllPupils();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
+            logger.Info("Retrieving all pupils");
             return viewModel;
         }
 
-        // GET api/pupils/2/25/asc
+        // GET api/pupils/2/25/LastName ASC/Пилипів
         public PupilPageData GetPage(int page, int amount, string sorting, string filtering = null)
         {
             int pageCount;
             var pupils = this.pupilService.GetPage(page, amount, sorting, filtering, out pageCount);
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<ViewPupil>>(pupils);
             PupilPageData pupilPage = new PupilPageData() { Pupils = viewModel, PageCount = pageCount };
-            logger.Info("Retrieving page with pupils from a server");
+            logger.Info("Retrieving page with pupils from a server. Page # {0}, amount - {1}", page, amount);
             return pupilPage;
         }
 
@@ -48,6 +49,7 @@ namespace SchoolWebProject.Controllers
         {
             var pupil = this.pupilService.GetProfileById(id);
             var viewModel = AutoMapper.Mapper.Map<Pupil, ViewPupil>(pupil);
+            logger.Info("Retrieving pupil with id {0}", id);
             return viewModel;
         }
 
@@ -63,6 +65,7 @@ namespace SchoolWebProject.Controllers
             }
 
             this.pupilService.AddPupil(pupil);
+            logger.Info("Added pupil {0} {1}", value.FirstName, value.LastName);
         }
 
         // PUT api/pupils/5
@@ -73,6 +76,7 @@ namespace SchoolWebProject.Controllers
             var pupil = this.pupilService.GetProfileById(value.Id);
             AutoMapper.Mapper.Map<ViewPupil, Pupil>(value, (Pupil)pupil);
             this.pupilService.UpdateProfile(pupil);
+            logger.Info("Edited pupil {0} {1}", value.FirstName, value.LastName);
         }
 
         // DELETE api/pupils/5
@@ -81,6 +85,7 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             this.pupilService.RemovePupil(id);
+            logger.Info("Deleted pupil with id {0}", id);
         }
     }
 }

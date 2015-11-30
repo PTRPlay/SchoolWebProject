@@ -54,8 +54,8 @@
 
    {
        field: "Опції",
-       cellTemplate: '<div><a href="#/teachers" ng-click="grid.appScope.editTeacherDegree(row.entity.Id, row.entity.Name)" >   <img src="Layouts/Images/ok.png"></a>' +
-           '<a href="#/teachers" ng-click="grid.appScope.deleteTeacherDegree(row.entity.Id)">   <img src="Layouts/Images/remove.png"></a></div>',
+       cellTemplate: '<div><a title="Зберегти зміни" href="#/teachers" ng-click="grid.appScope.editTeacherDegree(row.entity.Id, row.entity.Name)" >   <img src="Layouts/Images/ok.png"></a>' +
+           '<a title="Видалити звання {{row.enity.Name}}" href="#/teachers" ng-click="grid.appScope.deleteTeacherDegree(row.entity.Id)">   <img src="Layouts/Images/remove.png"></a></div>',
        width: "80",
        enableFiltering: false,
        enableCellEdit: false,

@@ -25,13 +25,10 @@ namespace SchoolWebProject.Services
             logger.Info("Get diary for user. Id = {0}", idUser);
             string[] split = date.Split('-');
             DateTime monday = new DateTime(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]));
-            DateTime tuesday = monday.AddDays(1);
-            DateTime wednesday = monday.AddDays(2);
-            DateTime thursday = monday.AddDays(3);
             DateTime friday = monday.AddDays(4);
             var pupil = this.unitOfWork.PupilRepository.GetById(idUser);
             var schedule = this.unitOfWork.ScheduleRepository.GetMany(s => s.GroupId == pupil.GroupId);
-            var lessons = this.unitOfWork.LessonDetailRepository.GetMany(l => l.Date == monday || l.Date == tuesday || l.Date == wednesday || l.Date == thursday || l.Date == friday);
+            var lessons = this.unitOfWork.LessonDetailRepository.GetMany(l => l.Date >= monday && l.Date <= friday);
             var marks = this.unitOfWork.MarkRepository.GetMany(m => m.PupilId == idUser);
             var tempDiary = from s in schedule
                             join l in lessons
