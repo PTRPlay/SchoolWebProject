@@ -22,7 +22,7 @@ namespace SchoolWebProject.Services
         public IEnumerable<Announcement> GetAllAnnouncements()
         {
             logger.Info("Get all announcements.");
-            return this.unitOfWork.AnnouncementRepository.GetAll();
+            return this.unitOfWork.AnnouncementRepository.GetAll().OrderByDescending(a => a.DataPublished);
         }
 
         public Announcement GetAnnouncementById(int id)

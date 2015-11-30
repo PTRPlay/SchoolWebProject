@@ -23,12 +23,11 @@ namespace SchoolWebProject.Services
 
         public ViewJournal GetJournalObject(int groupId, int subjectId)
         {
-            var pupils = this.unitOfWork.PupilRepository.GetAll();
-            var lessonDetail = this.unitOfWork.LessonDetailRepository.GetAll();
-            var marks = this.unitOfWork.MarkRepository.GetAll();
+            var pupils = this.unitOfWork.PupilRepository.GetMany(p=>p.GroupId == groupId).OrderBy(p=>p.LastName);
+            var lessonDetail = this.unitOfWork.LessonDetailRepository.GetMany(ld => ld.Schedule.GroupId == groupId && ld.Schedule.SubjectId == subjectId);
+            var marks = this.unitOfWork.MarkRepository.GetMany(m => m.Pupil.GroupId == groupId&&m.LessonDetail.Schedule.SubjectId==subjectId);
 
             var pupilView = from p in pupils
-                             where p.GroupId == groupId orderby p.LastName
                              select new ViewPupil 
                                  {
                                      Id = p.Id,
@@ -41,7 +40,6 @@ namespace SchoolWebProject.Services
                                  };
 
             var lessonDeatailView = from ld in lessonDetail
-                                    where ld.Schedule.GroupId == groupId && ld.Schedule.SubjectId == subjectId
                                     select new ViewLessonDetail
                                         {
                                             Id = ld.Id,
@@ -52,7 +50,6 @@ namespace SchoolWebProject.Services
                                         };
 
             var marksView = from m in marks
-                            where m.Pupil.GroupId == groupId && m.LessonDetail.Schedule.SubjectId == subjectId
                             select new ViewMark
                                 {
                                     Id = m.Id,

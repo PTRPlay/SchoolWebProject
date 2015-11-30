@@ -74,10 +74,20 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            var teacher = this.teacherService.GetProfileById(id);
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, (Teacher)teacher);
-            this.teacherService.UpdateProfile(teacher);
-            this.logger.Info("Edited teacher {0}, {1}", teacher.LastName, teacher.FirstName);
+            SchoolContext bin = new SchoolContext();
+            Teacher teacher = (Teacher)bin.Users.First(p => p.Id == value.Id);
+            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            value.Subjects = null;
+            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, teacher);
+            foreach (Subject subject in subjects)
+            { 
+                if (bin.Subjects.First((p) => p.Id == subject.Id) != null)
+                {
+                    teacher.Subjects.Add(bin.Subjects.First((p) => p.Id==subject.Id));
+                }
+            }
+
+            bin.SaveChanges();
        }
 
         // DELETE api/teacher/5
