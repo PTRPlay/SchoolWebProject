@@ -464,6 +464,9 @@ namespace SchoolWebProject.Domain.Models
 
        private static List<Teacher> GetTeachers()
         {
+            byte[] salt = new byte[] { 186, 40, 167, 66, 66, 129, 52, 135, 193, 28, 184, 27, 163, 64, 94, 133, 52, 45, 75, 53, 86, 47, 24, 106 };
+            // password = "teacher"
+            byte[] hash = new byte[] { 234, 121, 20, 185, 122, 79, 14, 194, 228, 231, 220, 50, 138, 118, 90, 25, 94, 66, 158, 74, 149, 218, 127, 68, 58, 56, 127, 50, 170, 119, 250, 112 };
             return new List<Teacher>
             {
 new Teacher { LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", 
@@ -475,7 +478,12 @@ new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = 
 new Teacher { LastName = "Карасевич", FirstName = "Владислав", MiddleName = "Олександрович", 
     WorkBegin = new DateTime(1996, 2, 5), PhoneNumber = "181890830", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
 new Teacher { LastName = "Кліщук", FirstName = "Марія", MiddleName = "Дмитрівна", 
-    WorkBegin = new DateTime(1996, 9, 4), PhoneNumber = "915391281", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
+    WorkBegin = new DateTime(1996, 9, 4), PhoneNumber = "915391281", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1, LogInData =  
+    new LogInData {
+        Login = "teacher",
+        PasswordSalt = ByteArrayToString(salt),
+        PasswordHash = ByteArrayToString(hash)
+    } },
 new Teacher { LastName = "Коваль", FirstName = "Вікторія", MiddleName = "Олександрівна", 
     WorkBegin = new DateTime(2005, 11, 26), PhoneNumber = "770638463", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
 new Teacher { LastName = "Ковриняк", FirstName = "Анна", MiddleName = "Ігорівна", 
