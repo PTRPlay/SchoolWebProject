@@ -46,7 +46,8 @@ namespace SchoolWebProject.Services
                                             HomeTask = ld.HomeTask,
                                             Date = ld.Date,
                                             ScheduleId = ld.ScheduleId,
-                                            SchoolId = ld.SchoolId
+                                            SchoolId = ld.SchoolId,
+                                            TeacherId=ld.Schedule.TeacherId
                                         };
 
             var marksView = from m in marks

@@ -2,6 +2,7 @@
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
+    isValidRoleForEditMark = false;
     $scope.journalGrid = {
         columnDefs: [],
         onRegisterApi: function (gridApi) {
@@ -96,6 +97,7 @@
         }];
                 pupilsMarks = [];
                 $scope.data = data;
+                isValidRoleForEditMark = window.currentUser.Role == "Admin" || window.currentUser.Id == data.LessonDetail.TeacherId;
                 fillMarks();
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
                     $scope.journalGrid.columnDefs.push({
