@@ -27,6 +27,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Schedule> GetByFilter(string teacher, string group)
         {
+            
             var groupSchedule = this.unitOfWork.ScheduleRepository.
                 GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
             var teacherSchedule = this.unitOfWork.ScheduleRepository.
@@ -45,6 +46,7 @@ namespace SchoolWebProject.Services
                     return teacherSchedule;
                 }
             }
+            
             return groupSchedule.Intersect(teacherSchedule);
         }
         
