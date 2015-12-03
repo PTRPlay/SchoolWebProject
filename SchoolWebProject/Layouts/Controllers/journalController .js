@@ -97,7 +97,7 @@
         }];
                 pupilsMarks = [];
                 $scope.data = data;
-                isValidRoleForEditMark = window.currentUser.Role == "Admin" || window.currentUser.Id == data.LessonDetail.TeacherId;
+                isValidRoleForEditMark = window.currentUser.Role == "Admin" || window.currentUser.Id == data.LessonDetails[0].TeacherId;
                 fillMarks();
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
                     $scope.journalGrid.columnDefs.push({
@@ -105,7 +105,7 @@
                         headerCellTemplate: '<div ng-controller="lessondetailController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
                         field: $scope.data.LessonDetails[i].Id.toString(),
                         pinnedLeft: false,
-                        enableCellEdit: true,
+                        enableCellEdit: isValidRoleForEditMark,
                         enableFiltering: false,
                         cellFilter: 'mapGender',
                         enableSorting: false,
