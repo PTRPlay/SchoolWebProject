@@ -24,6 +24,7 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="~/Scripts/angular-modal-service.js"></script>
     <script src="~/Layouts/app.js"></script>
+    <script src="~/Layouts/custom.js"></script>
 
     <script src="~/Layouts/Controllers/newsController.js"></script>
     <script src="~/Layouts/Controllers/schoolController.js"></script>
@@ -72,7 +73,7 @@
 
 </head>
 <body ng-app="myApp">
-    <div id ="top-content" class="leftmenu navbar  navbar-default navbar-fixed-top" role="navigation" >
+    @*<div id ="top-content" class="leftmenu navbar  navbar-default navbar-fixed-top" role="navigation" >
         <div class="container">
 
             <div class="navbar-header">
@@ -89,9 +90,46 @@
                 </ul>
             </div>
         </div>
+    </div>*@
+    <div class="responsive-navigation visible-sm visible-xs">
+        <a href="#" class="menu-toggle-btn">
+
+            <i class="fa fa-bars fa-2x"></i>
+        </a>
+        <div class="navigation responsive-menu">
+            <ul class="main-menu">
+                @foreach (var link in ViewBag.Links)
+                {
+                    <li class=@link.Value><a ui-sref=@link.Value>@link.Key</a></li>
+                }
+            </ul>
+        </div>
+    </div> 
+
+       
+     <div id="main-sidebar" class="hidden-xs hidden-sm">
+            <div class="logo">
+                <a ui-sref="myprofile"><img src="~/Layouts/Images/user.png"/> Ви зайшли як <b>@Context.User.Identity.Name</b></a>
+                <a href="account/logout">Вийти</a>
+            </div> 
+            <div class="navigation">
+                <ul class="main-menu">
+                    @foreach(var link in ViewBag.Links)
+                    {
+                        <li class=@link.Value><a ui-sref=@link.Value>@link.Key</a></li>
+                    }
+                </ul>
+            </div>
+    </div>
+        
+    
+    <div class="spacer" style="clear: both;"></div>
+        
+    <div id="main-content">
+            <div ui-view></div>
     </div>
 
-            <nav id="main-sidebar" class="pushy pushy-open">
+    @*<nav id="main-sidebar" class="pushy pushy-open">
                 <div class="col-sm-2 sidebar affix">
 
                     <ul class="nav nav-sidebar">
@@ -101,11 +139,7 @@
                         }
                     </ul>
                 </div>
-            </nav>
-            
-    <div id="main-content">
-        <div ui-view></div>
-    </div>
+            </nav>*@
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>

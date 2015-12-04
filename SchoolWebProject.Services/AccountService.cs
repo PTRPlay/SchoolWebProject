@@ -87,21 +87,21 @@ namespace SchoolWebProject.Services
                 case Constants.UserRoles.Teacher:
                     permisions["Учні"] = "pupils";
                     permisions["Класи"] = "groups";
-                    permisions["Розклад"] = "scheldule";
+                    permisions["Розклад"] = "schedule";
                     permisions["Журнал"] = "journal";
                     permisions["Новини"] = "newsService";
                     permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Pupil:
                     permisions["Щоденник"] = "diaryService";
-                    permisions["Розклад"] = "scheldule";
+                    permisions["Розклад"] = "schedule";
                     permisions["Журнал"] = "journal";
                     permisions["Новини"] = "newsService";
                     permisions["Контакти"] = "schoolService";
                     break;
                 case Constants.UserRoles.Parent:
                     permisions["Вчителі"] = "teachers";
-                    permisions["Розклад"] = "scheldule";
+                    permisions["Розклад"] = "schedule";
                     permisions["Журнал"] = "journal";
                     permisions["Новини"] = "newsService";
                     permisions["Конткти"] = "schoolService";
