@@ -54,20 +54,32 @@
        enableFiltering: false,
        field: 'LastName',
        displayName: 'Прізвище',
-       enableHiding: false
+       sortingAlgorithm: function (a, b) {
+           return a.localeCompare(b)
+       },
+       enableHiding: false,
+       enableColumnMenu: false
 
    },
    {
        enableFiltering: false,
        field: 'FirstName',
+       sortingAlgorithm: function (a, b) {
+           return a.localeCompare(b)
+       },
        displayName: 'Ім`я',
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },   
    {
        enableFiltering:false,
        field: "MiddleName",
        displayName: 'По батькові',
-       enableHiding: false
+       sortingAlgorithm: function (a, b) {
+           return a.localeCompare(b)
+       },
+       enableHiding: false,
+       enableColumnMenu: false
    },
    {
        enableFiltering:true,
@@ -77,7 +89,8 @@
            type: uiGridConstants.filter.SELECT,
            selectOptions: categoriesOptions
        },
-       enableHiding: false
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
    {
@@ -91,6 +104,7 @@
        },
        enableCellEdit: false,
        enableHiding: false,
+       enableColumnMenu: false
        },
 
 

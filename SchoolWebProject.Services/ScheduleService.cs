@@ -25,6 +25,29 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.ScheduleRepository.GetAll();
         }
 
+        public IEnumerable<Schedule> GetByFilter(string teacher, string group)
+        {
+            var groupSchedule = this.unitOfWork.ScheduleRepository.
+                GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
+            var teacherSchedule = this.unitOfWork.ScheduleRepository.
+                GetMany(p => p.Teacher.FirstName + p.Teacher.MiddleName + p.Teacher.LastName == teacher);
+            if (teacher == "null")
+            {
+                if (group != "null")
+                {
+                    return groupSchedule;
+                }
+            }
+            else 
+            {
+                if (group == "null") 
+                {
+                    return teacherSchedule;
+                }
+            }
+            return groupSchedule.Intersect(teacherSchedule);
+        }
+        
         public Schedule GetScheduleById(int id)
         {
             return this.unitOfWork.ScheduleRepository.GetById(id);

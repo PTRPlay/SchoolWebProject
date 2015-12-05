@@ -1,11 +1,12 @@
 ﻿using System;
-using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+
 using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
@@ -22,37 +23,34 @@ namespace SchoolWebProject.Services
 
         public ViewJournal GetJournalObject(int groupId, int subjectId)
         {
-            logger.Info("Get journal. GroupId = {0}, SubjectId = {1}", groupId, subjectId);
-            var pupils = unitOfWork.PupilRepository.GetAll();
-            var lessonDetail = unitOfWork.LessonDetailRepository.GetAll();
-            var marks = unitOfWork.MarkRepository.GetAll();
+            var pupils = this.unitOfWork.PupilRepository.GetMany(p=>p.GroupId == groupId).OrderBy(p=>p.LastName);
+            var lessonDetail = this.unitOfWork.LessonDetailRepository.GetMany(ld => ld.Schedule.GroupId == groupId && ld.Schedule.SubjectId == subjectId);
+            var marks = this.unitOfWork.MarkRepository.GetMany(m => m.Pupil.GroupId == groupId&&m.LessonDetail.Schedule.SubjectId==subjectId);
 
-            var pupilView = (from p in pupils
-                             where p.GroupId == groupId
-                             select new ViewPupil
+            var pupilView = from p in pupils
+                             select new ViewPupil 
                                  {
                                      Id = p.Id,
 
-                                     FirstName=p.FirstName,
+                                     FirstName = p.FirstName,
 
                                      LastName = p.LastName,
 
                                      MiddleName = p.MiddleName
-                                 });
+                                 };
 
             var lessonDeatailView = from ld in lessonDetail
-                                    where ld.Schedule.GroupId == groupId && ld.Schedule.SubjectId == subjectId
                                     select new ViewLessonDetail
                                         {
                                             Id = ld.Id,
                                             HomeTask = ld.HomeTask,
                                             Date = ld.Date,
                                             ScheduleId = ld.ScheduleId,
-                                            SchoolId = ld.SchoolId
+                                            SchoolId = ld.SchoolId,
+                                            TeacherId=ld.Schedule.TeacherId
                                         };
 
             var marksView = from m in marks
-                            where m.Pupil.GroupId == groupId && m.LessonDetail.Schedule.SubjectId == subjectId
                             select new ViewMark
                                 {
                                     Id = m.Id,
@@ -61,14 +59,12 @@ namespace SchoolWebProject.Services
                                     Value = m.Value,
                                     MarkTypeId = m.MarkTypeId,
                                     ScheduleId = m.SchoolId,
-                                    PupilId=m.PupilId,
-                                    FirstName=m.Pupil.FirstName,
-                                    LastName=m.Pupil.LastName
+                                    PupilId = m.PupilId,
+                                    FirstName = m.Pupil.FirstName,
+                                    LastName = m.Pupil.LastName
                                 };
 
             return new ViewJournal() { Pupils = pupilView, LessonDetails = lessonDeatailView, Marks = marksView };
         }
     }
 }
-
-

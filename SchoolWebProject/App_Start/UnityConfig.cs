@@ -42,7 +42,7 @@ namespace SchoolWebProject.App_Start
 
             // TODO: Register your types here
             container.RegisterType<ITeacherService, TeacherService>();
-            container.RegisterType<ILogger, SerilogLogger>();
+            container.RegisterType<ILogger, SerilogLogger>(new ContainerControlledLifetimeManager());
             container.RegisterType<IAccountService, AccountService>();
             container.RegisterType(typeof(IRepository<>), typeof(GenericRepository<>));
             container.RegisterType<IDbFactory, DbFactory>();
@@ -56,6 +56,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<IEmailSenderService, EmailSenderService>();
             container.RegisterType<IHolidaysService, HolidaysService>();
             container.RegisterType<ISubjectService, SubjectService>();
+            container.RegisterType<IScheduleService, ScheduleService>();
         }
     }
 }

@@ -14,7 +14,6 @@ namespace SchoolWebProject.Controllers
 {
     public class HolidaysController : BaseApiController
     {
-
         private IHolidaysService holidaysService;
 
         public HolidaysController(ILogger logger, IHolidaysService holidaysService) : base(logger) 
@@ -25,7 +24,7 @@ namespace SchoolWebProject.Controllers
         // GET api/holidays
         public IEnumerable<Holidays> Get()
         {
-            return holidaysService.GetAllHolidays();
+            return this.holidaysService.GetAllHolidays();
         }
 
         // GET api/holidays/5

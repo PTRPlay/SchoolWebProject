@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SchoolWebProject.Services.Implementations
 {
-    public class GroupService:BaseService, IGroupService
+    public class GroupService : BaseService, IGroupService
     {
         private IUnitOfWork unitOfWork;
 
@@ -22,31 +22,31 @@ namespace SchoolWebProject.Services.Implementations
 
         public IEnumerable<Group> GetAllGroups()
         {
-            return unitOfWork.GroupRepository.GetAll().ToList();
+            return this.unitOfWork.GroupRepository.GetAll().ToList();
         }
 
         public Group GetGroupById(int id)
         {
-            return unitOfWork.GroupRepository.GetById(id);
+            return this.unitOfWork.GroupRepository.GetById(id);
         }
 
         public void UpdateGroup(Group group)
         {
-            unitOfWork.GroupRepository.Update(group);
-            unitOfWork.SaveChanges();
+            this.unitOfWork.GroupRepository.Update(group);
+            this.unitOfWork.SaveChanges();
         }
 
         public void AddGroup(Group group)
         {
-            unitOfWork.GroupRepository.Add(group);
-            unitOfWork.SaveChanges();
+            this.unitOfWork.GroupRepository.Add(group);
+            this.unitOfWork.SaveChanges();
         }
 
         public void RemoveGroup(int id)
         {
-            Group group = unitOfWork.GroupRepository.GetById(id);
-            unitOfWork.GroupRepository.Delete(group);
-            unitOfWork.SaveChanges();
+            Group group = this.unitOfWork.GroupRepository.GetById(id);
+            this.unitOfWork.GroupRepository.Delete(group);
+            this.unitOfWork.SaveChanges();
         }
 
         public void SaveChanges()

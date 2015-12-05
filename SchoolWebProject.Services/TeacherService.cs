@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
-using SchoolWebProject;
 
 namespace SchoolWebProject.Services
 {
@@ -15,7 +15,7 @@ namespace SchoolWebProject.Services
     {
         private IUnitOfWork unitOfWork;
 
-        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork): base(logger)
+        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork) : base(logger)
         {
             this.unitOfWork = teacherUnitOfWork;
         }
@@ -38,7 +38,7 @@ namespace SchoolWebProject.Services
                 Where((enty) => (enty.LastName).Contains(filter));
         }
 
-        public Teacher Get(Expression<Func<Teacher,bool>> expression)
+        public Teacher Get(Expression<Func<Teacher, bool>> expression)
         {
             return unitOfWork.TeacherRepository.Get(expression);
         }

@@ -8,7 +8,7 @@
                 <form class="form-horizontal" name="AddAnnouncementForm">
                     <div class="form-group">
                         <!--           <input type="file" class="form-control" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="onLoad">   -->
-                        <img src="{{announcement.img}}" class="img-rounded col-sm-4" width="170" height="170" alt="зображення" />
+       <!--                <img src="{{announcement.img}}" class="img-rounded col-sm-4" width="170" height="170" alt="зображення" /> --> 
                     </div>
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Заголовок:</label>
@@ -71,8 +71,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!AddAnnouncementForm.$valid" ng-click="close()">OK</button>
-                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Скасувати</button>
+                <button id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!AddAnnouncementForm.$valid" ng-click="close()">OK</button>
+                <button class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Скасувати</button>
             </div>
         </div>
     </div>

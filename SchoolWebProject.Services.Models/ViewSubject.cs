@@ -21,7 +21,6 @@ namespace SchoolWebProject.Services.Models
 
             AutoMapper.Mapper.CreateMap<ViewSubject, db.Subject>()
                 .IgnoreAllNonExisting();
-            //.ForMember(dest => dest.SchoolId, opts => opts.MapFrom(src => 1));
         }
 
         public static ViewSubject CreateSimpleSubject(db.Subject s)
@@ -47,8 +46,6 @@ namespace SchoolWebProject.Services.Models
         public static db.Subject CreateEntitySubject(ViewSubject vs)
         {
             db.Subject temp = null;
-
-            //to do: not to lose list of ef teachers
 
             return temp;
         }

@@ -24,7 +24,7 @@ namespace SchoolWebProject.Controllers
         // GET api/teachercategory
         public IEnumerable<ViewTeacherCategory> Get()
         {
-            var teacherCategories = teacherCategoryService.GetAllTeacherCategories();
+            var teacherCategories = this.teacherCategoryService.GetAllTeacherCategories();
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
             return viewModel;
         }
@@ -32,10 +32,10 @@ namespace SchoolWebProject.Controllers
         // GET api/teachercategory/5
         public ViewTeacherCategory Get(int id)
         {
-            var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
+            var teacherCategory = this.teacherCategoryService.GetTeacherCategoryById(id);
             var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
-            return viewModel;
             logger.Info("Getted teacher category {0}", teacherCategory.Name);
+            return viewModel;
         }
 
         // POST api/teachercategory
@@ -53,10 +53,10 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherCategory value)
         {
-            var teacherCategory = teacherCategoryService.GetTeacherCategoryById(id);
+            var teacherCategory = this.teacherCategoryService.GetTeacherCategoryById(id);
             AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value, teacherCategory);
-            teacherCategoryService.UpdateTeacherCategory(teacherCategory);
-            teacherCategoryService.SaveTeacherCategory();
+            this.teacherCategoryService.UpdateTeacherCategory(teacherCategory);
+            this.teacherCategoryService.SaveTeacherCategory();
             logger.Info("Edited teacher category");
         }
 

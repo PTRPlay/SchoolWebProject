@@ -1,7 +1,8 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope',function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
 
     $scope.chosenSubject = null;
     $scope.chosenGroup = null;
+    isValidRoleForEditMark = false;
     $scope.journalGrid = {
         columnDefs: [],
         onRegisterApi: function (gridApi) {
@@ -76,22 +77,27 @@
                     cellTemplate: '<div class="ui-grid-cell-contents">{{grid.renderContainers.body.visibleRowCache.indexOf(row)+1}}</div>',
                     width: "50",
                     pinnedLeft: true,
-                    pinnedHeader:true,
                     enableCellEdit: false,
                     enableFiltering: false,
-                    cellFilter: 'currencyFilter:this'
+                    enableHiding: false,
+                    enableColumnMenu: false
                 },
         {
             name: "Учень",
             field: "name",
             width: "200",
             pinnedLeft: true,
-            pinnedHeader: true,
+            sortingAlgorithm: function (a, b) {
+                return a.localeCompare(b)
+            },
             enableCellEdit: false,
-            enableFiltering: false
+            enableFiltering: false,
+            enableHiding: false,
+            enableColumnMenu: false
         }];
                 pupilsMarks = [];
                 $scope.data = data;
+                isValidRoleForEditMark = window.currentUser.Role == "Admin" || window.currentUser.Id == data.LessonDetails[0].TeacherId;
                 fillMarks();
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
                     $scope.journalGrid.columnDefs.push({
@@ -99,12 +105,11 @@
                         headerCellTemplate: '<div ng-controller="lessondetailController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
                         field: $scope.data.LessonDetails[i].Id.toString(),
                         pinnedLeft: false,
-                        pinnedHeader: true,
-                        enableCellEdit: true,
+                        enableCellEdit: isValidRoleForEditMark,
                         enableFiltering: false,
                         cellFilter: 'mapGender',
                         enableSorting: false,
-                        editableCellTemplate: 'ui-grid/dropdownEditor', width: '6%',
+                        editableCellTemplate: 'ui-grid/dropdownEditor', width: '*',
                         editDropdownOptionsArray: [
                         { id: 0, value: " " },
                         { id: 1, value: 1 },

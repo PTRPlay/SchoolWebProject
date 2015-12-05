@@ -52,7 +52,7 @@ TD.jewel {
     margin-right: 3%;
 }
 
-.table .table-bordered thead td {
+#diary-table thead td {
     font-weight: 700;
 }
 
@@ -95,5 +95,17 @@ TD.jewel {
     border: 1px solid;
     border-color: lightgrey;
 }
+#grid2.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
 
+#pupilsGrid.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
+ #groupsGrid.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
 

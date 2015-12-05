@@ -135,10 +135,10 @@ namespace SchoolWebProject.Domain.Models
             {
                     new LessonDetail{ HomeTask="Впр. 145-150", 
                     Theme="Знову до школи", 
-                    Date=new DateTime(2015, 09,02 ), ScheduleId=2, SchoolId =1},
+                    Date=new DateTime(2015, 09,02 ), ScheduleId=9, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 5, p. 5; Ex. 6, p. 6", 
                     Theme="Режим дня школяра", 
-                    Date=new DateTime(2015, 09,09 ), ScheduleId=2, SchoolId =1},
+                    Date=new DateTime(2015, 09,09 ), ScheduleId=9, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 3-5, p. 8-9", Theme="Наші  друзі", 
                     Date=new DateTime(2015, 09,16 ), ScheduleId=3, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 2, p. 13", 
@@ -170,7 +170,11 @@ namespace SchoolWebProject.Domain.Models
                     Date=new DateTime(2015, 11,18 ), ScheduleId=2, SchoolId =1},
                     new LessonDetail{ HomeTask="Ex. 3, p. 24-25",
                     Theme="Друзі пізнаються в біді", 
-                    Date=new DateTime(2015, 11,25 ), ScheduleId=2, SchoolId =1}
+                    Date=new DateTime(2015, 11,25 ), ScheduleId=2, SchoolId =1},
+
+                    new LessonDetail{ HomeTask="Ex. 3, p. 24-25",
+                    Theme="Друзі пізнаються в біді", 
+                    Date=new DateTime(2015, 11,25 ), ScheduleId=5, SchoolId =1}
             };
         }
 
@@ -464,18 +468,28 @@ namespace SchoolWebProject.Domain.Models
 
        private static List<Teacher> GetTeachers()
         {
+            byte[] salt = new byte[] { 186, 40, 167, 66, 66, 129, 52, 135, 193, 28, 184, 27, 163, 64, 94, 133, 52, 45, 75, 53, 86, 47, 24, 106 };
+            // password = "teacher"
+            byte[] hash = new byte[] { 234, 121, 20, 185, 122, 79, 14, 194, 228, 231, 220, 50, 138, 118, 90, 25, 94, 66, 158, 74, 149, 218, 127, 68, 58, 56, 127, 50, 170, 119, 250, 112 };
             return new List<Teacher>
             {
 new Teacher { LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", 
-    WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
+    WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 ,
+LogInData = new LogInData()
+},
 new Teacher { LastName = "Гарланенко", FirstName = "Євгенія", MiddleName = "Сергіївна", 
-    WorkBegin = new DateTime(2008, 3, 18), PhoneNumber = "993385320", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 },
+    WorkBegin = new DateTime(2008, 3, 18), PhoneNumber = "993385320", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2, LogInData = new LogInData() },
 new Teacher { LastName = "Євенко", FirstName = "Вадим", MiddleName = "Олегович", 
-    WorkBegin = new DateTime(1990, 7, 18), PhoneNumber = "290849203", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 },
+    WorkBegin = new DateTime(1990, 7, 18), PhoneNumber = "290849203", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2, LogInData = new LogInData() },
 new Teacher { LastName = "Карасевич", FirstName = "Владислав", MiddleName = "Олександрович", 
-    WorkBegin = new DateTime(1996, 2, 5), PhoneNumber = "181890830", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
+    WorkBegin = new DateTime(1996, 2, 5), PhoneNumber = "181890830", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1, LogInData = new LogInData() },
 new Teacher { LastName = "Кліщук", FirstName = "Марія", MiddleName = "Дмитрівна", 
-    WorkBegin = new DateTime(1996, 9, 4), PhoneNumber = "915391281", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
+    WorkBegin = new DateTime(1996, 9, 4), PhoneNumber = "915391281", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1, 
+    LogInData = new LogInData {
+        Login = "teacher",
+        PasswordSalt = ByteArrayToString(salt),
+        PasswordHash = ByteArrayToString(hash)
+    } },
 new Teacher { LastName = "Коваль", FirstName = "Вікторія", MiddleName = "Олександрівна", 
     WorkBegin = new DateTime(2005, 11, 26), PhoneNumber = "770638463", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 },
 new Teacher { LastName = "Ковриняк", FirstName = "Анна", MiddleName = "Ігорівна", 
