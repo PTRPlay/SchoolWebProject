@@ -14,6 +14,7 @@
             //groupNumber: Pupil.Group.NameNumber,
             //groupLetter: Pupil.Group.NameLetter,
             group: {
+                id: Pupil.Group.Id,
                 nameNumber: Pupil.Group.NameNumber,
                 nameLetter: Pupil.Group.NameLetter
             }

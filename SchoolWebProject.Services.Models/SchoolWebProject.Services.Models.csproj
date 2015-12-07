@@ -60,13 +60,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pupil.cs" />
     <Compile Include="Teacher.cs" />
+    <Compile Include="ViewAnnouncement.cs" />
+    <Compile Include="ViewDiary.cs" />
     <Compile Include="ViewGroup.cs" />
     <Compile Include="ViewJournal.cs" />
-    <Compile Include="ViewLessonDetails.cs" />
+    <Compile Include="ViewLessonDetail.cs" />
     <Compile Include="ViewMark.cs" />
     <Compile Include="ViewPupil.cs" />
+    <Compile Include="ViewSchedule.cs" />
+    <Compile Include="ViewSchool.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ViewSubject.cs" />
     <Compile Include="ViewTeacher.cs" />
+    <Compile Include="ViewTeacherCategory.cs" />
+    <Compile Include="ViewTeacherDegree.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">

@@ -7,24 +7,40 @@ using db = SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Services.Models
 {
-    public class ViewTeacher1
+    public class ViewTeacher
     {
         public int Id { get; set; }
 
-        public string FirstName { get; set; }
+        public byte[] Img { get; set; }
 
-        public string LastName { get; set; }
+        public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
 
-        static ViewTeacher1()
+        public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public string Address { get; set; }
+
+        public ViewTeacherCategory Category { get; set; }
+
+        public ViewTeacherDegree Degree { get; set; }
+
+        public string WorkStart { get; set; }
+
+        public IEnumerable<ViewSubject> Subjects { get; set; }
+
+        static ViewTeacher()
         {
-            Mapper.CreateMap<db.Teacher, ViewTeacher1>().IgnoreAllNonExisting();
+            Mapper.CreateMap<db.Teacher, ViewTeacher>().IgnoreAllNonExisting();
         }
 
-        public static ViewTeacher1 CreateSimpleTeacher(db.Teacher t)
+        public static ViewTeacher CreateSimpleTeacher(db.Teacher t)
         {
-            return Mapper.Map<db.Teacher, ViewTeacher1>(t);
+            return Mapper.Map<db.Teacher, ViewTeacher>(t);
         }
     }
 }
