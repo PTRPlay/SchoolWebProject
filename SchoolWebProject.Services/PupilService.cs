@@ -32,13 +32,13 @@ namespace SchoolWebProject.Services
 
             if (filtering != null)
             {
-                pupils = unitOfWork.PupilRepository.GetAll().Where(p => p.LastName.ToLower().StartsWith(filtering.ToLower()));
+                pupils = unitOfWork.PupilRepository.GetMany(p => p.LastName.ToLower().StartsWith(filtering.ToLower()));
                 pageCount = pupils.Count();
                 pupils = pupils.AsQueryable().OrderBy(sorting).Skip((pageNumb - 1) * amount).Take(amount); 
                 return pupils;
             }
 
-            pupils = unitOfWork.PupilRepository.GetAll().AsQueryable().OrderBy(sorting);
+            pupils = unitOfWork.PupilRepository.GetAll().OrderBy(sorting);
             pageCount = pupils.Count();
             pupils = pupils.Skip((pageNumb - 1) * amount).Take(amount);
             return pupils;
