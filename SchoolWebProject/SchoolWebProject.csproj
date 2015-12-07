@@ -195,7 +195,6 @@
     <Compile Include="Models\ViewSubject.cs" />
     <Compile Include="Models\ViewTeacherDegree.cs" />
     <Compile Include="Models\ViewAnnouncement.cs" />
-    <Compile Include="Models\ViewPupil.cs" />
     <Compile Include="Models\ViewTeacher.cs" />
     <Compile Include="Models\ViewTeacherCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

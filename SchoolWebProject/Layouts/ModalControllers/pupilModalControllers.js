@@ -10,7 +10,15 @@
             lastName: Pupil.LastName,
             phoneNumber: Pupil.PhoneNumber,
             address: Pupil.Address,
-            email: Pupil.Email
+            email: Pupil.Email,
+            //groupNumber: Pupil.Group.NameNumber,
+            //groupLetter: Pupil.Group.NameLetter,
+            group: {
+                nameNumber: Pupil.Group.NameNumber,
+                nameLetter: Pupil.Group.NameLetter
+            }
+
+            
         };
     }
     else {
@@ -22,7 +30,10 @@
             lastName: null,
             phoneNumber: null,
             address: null,
-            email: null
+            email: null,
+            //groupNumber: null,
+            //groupLetter: null
+            group:null
         };
     }
     
@@ -36,6 +47,9 @@
             phoneNumber: $scope.pupil.phoneNumber,
             address: $scope.pupil.address,
             email: $scope.pupil.email,
+            //groupNumber: $scope.pupil.groupNumber,
+            //groupLetter: $scope.pupil.groupLetter,
+            group: $scope.pupil.group
         }, 500);
        
     };
