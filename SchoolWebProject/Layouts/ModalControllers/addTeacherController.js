@@ -5,7 +5,7 @@
         $scope.edit = false;
         var dateParsed;
         if (Teacher.WorkStart != null) {
-            var dateParsed = Teacher.WorkStart.split('.');
+            var dateParsed = Teacher.WorkStart.slice(0,10).split('.');
         }
         $scope.teacher = {
             id: Teacher.Id,

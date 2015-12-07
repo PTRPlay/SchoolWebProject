@@ -123,8 +123,8 @@
                     <div class="form-group">
                         <label for="category" class="col-sm-2 control-label">Ступінь:</label>
                         <div class="col-sm-4" ng-controller="categoriesController">
-                            <select name="menu" class="form-control" id="category" ng-model="teacher.category">
-                                <option ng-repeat="category in listCategories" ng-selected="teacher.category.Name == category.Name" value="{{category}}">{{category.Name}}</option>
+                            <select name="menu" class="form-control" id="category" ng-options="category as category.Name for category in listCategories" ng-model="teacher.category">
+                                <!--<option ng-repeat="category in listCategories" ng-selected="teacher.category.Name == category.Name" value="{{category}}">{{category.Name}}</option>-->
                             </select>
                         </div>
                     </div>
