@@ -53,9 +53,34 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
         border-style: solid;
     }
 
+#TeacherFilter {
+    width:400px;
+    margin-bottom:10px;
+}
+
 TD.jewel {
     text-align: left;
     background: #ccc;
+}
+
+
+.editableTable {
+    border:solid 1px;
+    width:100%
+}
+ 
+.editableTable td {
+    border:solid 1px;
+}
+ 
+.editableTable .cellEditing {
+    padding: 0;
+}
+ 
+.editableTable .cellEditing input[type=text]{
+    width:100%;
+    border:0;
+    background-color:rgb(255,253,210);  
 }
 
 ﻿.details-background {
