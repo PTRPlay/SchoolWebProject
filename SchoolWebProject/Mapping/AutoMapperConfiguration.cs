@@ -77,6 +77,7 @@ namespace SchoolWebProject.Mapper
         }
         public Group ParseStringIntoGroup(string info)
         {
+            if (info == "") return null;
             Group group = new Group();
             group.NameLetter = info.Split('-')[1];
             group.NameNumber = Convert.ToInt32(info.Split('-')[0]);
