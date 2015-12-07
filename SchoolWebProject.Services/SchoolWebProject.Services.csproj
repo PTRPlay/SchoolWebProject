@@ -75,7 +75,7 @@
     <Compile Include="ITeacherService.cs" />
     <Compile Include="JournalService.cs" />
     <Compile Include="LessonDetailService.cs" />
-    <Compile Include="MarkService .cs" />
+    <Compile Include="MarkService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PupilService.cs" />
     <Compile Include="ScheduleService.cs" />
