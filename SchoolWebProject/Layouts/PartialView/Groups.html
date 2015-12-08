@@ -1,4 +1,10 @@
-﻿<div style="width:1000px">
+﻿<div id="groups" style="width:1000px">
+    <script type="text/javascript">
+        if (window.currentUser.Role != "Admin" || window.currentUser.Role != "Teacher") {
+            document.location.href = '';
+            document.getElementById("groups").style.display = "none";
+        }
+    </script>
     <div class="page-header">
         <div class="row">
             <div class="col-md-6">
