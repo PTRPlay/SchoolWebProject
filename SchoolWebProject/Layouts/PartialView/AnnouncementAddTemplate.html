@@ -7,13 +7,13 @@
             <div class="modal-body">
                 <form class="form-horizontal" name="AddAnnouncementForm">
                     <div class="form-group">
-                        <input type="file" id="image" ng-model="announcement_image" name="image" accept="image/*" base-sixty-four-input >
+                        <input type="file" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input>
 
-                        <div ng-show="announcement_image">
-                            <img ng-src="data:image/jpg;base64,{{announcement_image.base64}}" height="170" alt="зображення" />
+                        <div ng-show="announcement.image">
+                            <img ng-src="data:image/jpg;base64,{{announcement.image.base64}}" height="170" alt="зображення" />
                         </div>
                         <div ng-show="announcement.Image">
-                            <img ng-src="data:image/jpg;base64,{{announcement.image}}"  height="170" alt="зображення" />
+                            <img ng-src="data:image/jpg;base64,{{announcement.image}}" height="170" alt="зображення" />
                         </div>
                     </div>
                     <div class="form-group">

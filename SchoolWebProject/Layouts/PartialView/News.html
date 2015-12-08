@@ -1,22 +1,27 @@
 ﻿<div class="container-fluid">
+    <script type="text/javascript">
+        if (window.currentUser.Role != "Admin" || window.currentUser.Role != "Teacher") {
+            document.getElementById("addNews").style.display = "none";
+        }
+    </script>
     <div class="page-header row">
         <div class="col-md-10">
             <h2> Новини </h2>
         </div>
         <div class="col-md-2">
-            <button style="margin-top:22px" class="btn btn-primary pull-right" ng-controller="announcementModalService" ng-click="showAnnouncementEditPage()">Додати новину</button>
+            <button id="addNews" style="margin-top:22px" class="btn btn-primary pull-right" ng-controller="announcementModalService" ng-click="showAnnouncementEditPage()">Додати новину</button>
         </div>
     </div>
     <div class="panel panel-default" ng-repeat="(announcementIndex,announcement) in listAnnouncements">
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="text-align:center">
                         <div ng-show="announcement.Image">
                             <img ng-src="data:image/jpg;base64,{{announcement.Image}}" alt=" image" height="170">
                         </div>
                         <div ng-show="!announcement.Image">
-                            <img src="../Layouts/Images/news-placeholder2.jpg" id ="image-plaseholder" height="170">
+                            <img src="../Layouts/Images/news-placeholder2.jpg" id="image-plaseholder" height="170">
                         </div>
                     </div>
                     <div class="col-md-8">
