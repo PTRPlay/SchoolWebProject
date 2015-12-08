@@ -40,6 +40,24 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<LessonDetail, ViewLessonDetail>();
             AutoMapper.Mapper.CreateMap<Schedule, ViewSchedule>()
                 .ForMember(g => g.Group, map => map.MapFrom(vm => vm.Group.NameNumber + "-" + vm.Group.NameLetter));
+
+            AutoMapper.Mapper.CreateMap<Group, ViewGroup>()
+               .IgnoreAllNonExisting()
+               .ForMember(
+                   dest => dest.TeacherId,
+                   opts => opts.MapFrom(src => (
+                       ((src.Teacher != null) && (src.Teacher.Count != 0))
+                       ? ((User)src.Teacher[0]).Id
+                       : 0)))
+               .ForMember(
+                   dest => dest.TeacherName,
+                   opts => opts.MapFrom(src => (
+                       ((src.Teacher != null) && (src.Teacher.Count != 0))
+                       ? ((User)src.Teacher[0]).FirstName + " " + ((User)src.Teacher[0]).MiddleName + " " + ((User)src.Teacher[0]).LastName
+                       : "немає")))
+               .ForMember(
+                   dest => dest.PupilsAmount,
+                   opts => opts.MapFrom(src => src.Pupils.Count));
         }
     }
 
@@ -75,6 +93,10 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<ViewSchedule, Schedule>()
                 .ForMember(g => g.Group, map => map.MapFrom(vm => ParseStringIntoGroup(vm.Group)))
                 .ForMember(g => g.SchoolId, map => map.MapFrom(vm => 1));
+
+            AutoMapper.Mapper.CreateMap<ViewGroup, Group>()
+                .IgnoreAllNonExisting()
+                .ForMember(dest => dest.SchoolId, opts => opts.MapFrom(src => 1));
         }
         public Group ParseStringIntoGroup(string info)
         {
