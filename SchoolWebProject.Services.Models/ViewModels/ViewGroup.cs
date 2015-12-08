@@ -26,30 +26,30 @@ namespace SchoolWebProject.Services.Models
 
         public int SchoolId { get; set; }
 
-        //static ViewGroup()
-        //{
-        //    AutoMapper.Mapper.CreateMap<Group, ViewGroup>()
-        //        .IgnoreAllNonExisting()
-        //        .ForMember(
-        //            dest => dest.TeacherId,
-        //            opts => opts.MapFrom(src => (
-        //                ((src.Teacher != null) && (src.Teacher.Count != 0))
-        //                ? ((User)src.Teacher[0]).Id
-        //                : 0)))
-        //        .ForMember(
-        //            dest => dest.TeacherName,
-        //            opts => opts.MapFrom(src => (
-        //                ((src.Teacher != null) && (src.Teacher.Count != 0))
-        //                ? ((User)src.Teacher[0]).FirstName + " " + ((User)src.Teacher[0]).MiddleName + " " + ((User)src.Teacher[0]).LastName
-        //                : "немає")))
-        //        .ForMember(
-        //            dest => dest.PupilsAmount,
-        //            opts => opts.MapFrom(src => src.Pupils.Count));
+        static ViewGroup()
+        {
+            AutoMapper.Mapper.CreateMap<Group, ViewGroup>()
+                .IgnoreAllNonExisting()
+                .ForMember(
+                    dest => dest.TeacherId,
+                    opts => opts.MapFrom(src => (
+                        ((src.Teacher != null) && (src.Teacher.Count != 0))
+                        ? ((User)src.Teacher[0]).Id
+                        : 0)))
+                .ForMember(
+                    dest => dest.TeacherName,
+                    opts => opts.MapFrom(src => (
+                        ((src.Teacher != null) && (src.Teacher.Count != 0))
+                        ? ((User)src.Teacher[0]).FirstName + " " + ((User)src.Teacher[0]).MiddleName + " " + ((User)src.Teacher[0]).LastName
+                        : "немає")))
+                .ForMember(
+                    dest => dest.PupilsAmount,
+                    opts => opts.MapFrom(src => src.Pupils.Count));
 
-        //    AutoMapper.Mapper.CreateMap<ViewGroup, Group>()
-        //        .IgnoreAllNonExisting()
-        //        .ForMember(dest => dest.SchoolId, opts => opts.MapFrom(src => 1));
-        //}
+            AutoMapper.Mapper.CreateMap<ViewGroup, Group>()
+                .IgnoreAllNonExisting()
+                .ForMember(dest => dest.SchoolId, opts => opts.MapFrom(src => 1));
+        }
 
         public static ViewGroup CreateSimpleGroup(Group g)
         {

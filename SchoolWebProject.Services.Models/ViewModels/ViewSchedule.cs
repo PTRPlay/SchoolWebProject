@@ -9,7 +9,7 @@ namespace SchoolWebProject.Models
 {
     public class ViewSchedule
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public ViewSubject Subject { get; set; }
 
@@ -19,8 +19,9 @@ namespace SchoolWebProject.Models
 
         public int DayOfTheWeek { get; set; }
 
-        public int ClassRoomId { get; set; }
+        public string Group { get; set; }
+        //public int ClassRoomId { get; set; }
 
-        public virtual IEnumerable<LessonDetail> LessonsDetails { get; set; }
+        //public virtual IEnumerable<LessonDetail> LessonsDetails { get; set; }
     }
 }
