@@ -27,7 +27,7 @@ namespace SchoolWebProject.Services
             var lessonDetail = this.unitOfWork.LessonDetailRepository.GetMany(ld => ld.Schedule.GroupId == groupId && ld.Schedule.SubjectId == subjectId);
             var marks = this.unitOfWork.MarkRepository.GetMany(m => m.Pupil.GroupId == groupId&&m.LessonDetail.Schedule.SubjectId==subjectId);
 
-            var pupilView = from p in pupils
+            var pupilView = from p in pupils orderby p.LastName
                              select new ViewPupil 
                                  {
                                      Id = p.Id,
@@ -39,7 +39,7 @@ namespace SchoolWebProject.Services
                                      MiddleName = p.MiddleName
                                  };
 
-            var lessonDeatailView = from ld in lessonDetail
+            var lessonDeatailView = from ld in lessonDetail orderby ld.Date
                                     select new ViewLessonDetail
                                         {
                                             Id = ld.Id,

@@ -42,16 +42,19 @@ namespace SchoolWebProject.Services
         public void UpdateMark(Mark mark)
         {
             this.unitOfWork.MarkRepository.Update(mark);
+            SaveMark();
         }
 
         public void AddMark(Mark mark)
         {
             this.unitOfWork.MarkRepository.Add(mark);
+            SaveMark();
         }
 
         public void RemoveMark(Mark mark)
         {
             this.unitOfWork.MarkRepository.Delete(mark);
+            SaveMark();
         }
 
         public void SaveMark()

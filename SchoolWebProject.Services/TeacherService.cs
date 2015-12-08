@@ -64,6 +64,12 @@ namespace SchoolWebProject.Services
             this.unitOfWork.TeacherRepository.Add(teacher);
         }
 
+        public int GetIdByName(string FirstName , string LastName , string MiddleName)
+        {
+            var teachers = this.unitOfWork.TeacherRepository.GetAll();
+            return teachers.FirstOrDefault(t => t.FirstName == FirstName && t.MiddleName == MiddleName && t.LastName == LastName).Id;
+        }
+
         public void RemoveTeacher(Teacher teacher)
         {
             this.unitOfWork.TeacherRepository.Delete(teacher);

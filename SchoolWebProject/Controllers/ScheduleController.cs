@@ -35,13 +35,16 @@ namespace SchoolWebProject.Controllers
             string[] filters = filter.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);
             var schedules = this.scheduleService.GetByFilter(filters[0], filters[1]);
             var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(schedules);
+            logger.Info("Get part Schedule");
             return viewSchedules;
         }
-
+        
         // POST api/schedule
         [Authorize(Roles = "Admin, Teacher")]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]IEnumerable<ViewSchedule> modificationsViewSchedules)
         {
+            var schedules = AutoMapper.Mapper.Map<IEnumerable<ViewSchedule>, IEnumerable<Schedule>>(modificationsViewSchedules);
+            this.scheduleService.ModifySchedule(schedules);
         }
 
         // PUT api/schedule/5

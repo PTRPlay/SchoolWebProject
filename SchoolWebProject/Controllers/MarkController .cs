@@ -54,13 +54,11 @@ namespace SchoolWebProject.Controllers
             {
                 var newMark = AutoMapper.Mapper.Map<ViewMark, Mark>(vm);
                 this.markService.AddMark(newMark);
-                this.markService.SaveMark();
             }
             else
             {
                 mark.Value = vm.Value;
                 this.markService.UpdateMark(mark);
-                this.markService.SaveMark();
             }
         }
 

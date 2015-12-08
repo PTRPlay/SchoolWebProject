@@ -1,72 +1,21 @@
 ﻿<div ng-controller="scheduleController">
-
+    <div class="page-header">
+    <h2>Розклад</h2>
+    </div>
     <div>
-        <input id="TeacherFilter" type="text" autocomplete="on" />
-        <input id ="SubjectFilter" type="text" value="1-A" />
-        <button type="button" ng-click="showSchedule()">
-            Show
+        <input id="TeacherFilter" type="text" autocomplete="on"/>
+        <input id ="SubjectFilter" type="text" ng-model="group" value="7-А"/>
+        <button class="btn btn-primary" ng-click="showSchedule()">
+            Показати Розклад
+        </button>
+        <button class="btn btn-primary" ng-click="Edit(group)">
+            Редагувати Розклад
         </button>
     </div>
-
-    <div>
-        <input id="editCheckBox" type="checkbox" style="font-size:large" ng-show={{IsValidUser}}>Edit Anable
-    </div>
-    
+    {{InitializeAutocomplate()}}
     <div class="navbar-left">
-        <table id="Schedule">
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Nuber</th>
-                    <th>Teacher</th>
-                    <th>Subject</th>
-                </tr>
-            </thead>
-            <tbody ng-repeat="enty in [{day:'Monday',color: '#E9E9E9'},{day:'Tuesday',color:'#F7F5F3'},{day:'Wednesday',color:'#E9E9E9'},{day:'Thursday',color:'#F7F5F3'},{day:'Friday',color:'#E9E9E9'}]" style="background:{{enty.color}}">
-                <tr>
-                    <td rowspan="7">{{enty.day}}</td>
-                    <td>1</td>
-                    <td id="{{$index}}teacher1"  ondblclick="GetList(this.id)" style="background-color:#E9E9E9">{{some}}</td>
-                    <td id="{{$index}}subject1" ondblclick="GetList(this.id)" style="background-color:#F7F5F3"></td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td id="{{$index}}teacher2" ondblclick="GetList(this.id)" style="background-color:#F7F5F3"></td>
-                    <td id="{{$index}}subject2" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td id="{{$index}}teacher3" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                    <td id="{{$index}}subject3" ondblclick="GetList(this.id)" style="background-color:#F7F5F3"></td>
-                </tr>
-
-                <tr>
-                    <td>4</td>
-                    <td id="{{$index}}teacher4" ondblclick="GetList(this.id)" style="background-color:#F7F5F3"></td>
-                    <td id="{{$index}}subject4" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                </tr>
-
-                <tr>
-                    <td>5</td>
-                    <td id="{{$index}}teacher5" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                    <td id="{{$index}}subject5" ondblclick="GetList(this.id)" style="background-color:#F7F5F3"></td>
-                </tr>
-
-                <tr>
-                    <td>6</td>
-                    <td id="{{$index}}teacher6" ondblclick="GetList(this.id)" style="background-color:#F7F5F3"></td>
-                    <td id="{{$index}}subject6" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                </tr>
-
-                <tr>
-                    <td>7</td>
-                    <td id="{{$index}}teacher7" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                    <td id="{{$index}}subject7" ondblclick="GetList(this.id)" style="background-color:#E9E9E9"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div my-Table></div>
+        {{AddEvent()}}
     </div>
 
 </div>
