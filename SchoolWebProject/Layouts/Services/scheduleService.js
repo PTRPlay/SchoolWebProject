@@ -15,6 +15,16 @@
         })
     }
 
+    this.getAllSchedule = function () {
+        return $http.get('api/schedule/')
+        .success(function (data) {
+            return data;
+        })
+        .error(function (data) {
+            return data;
+        })
+    }
+
     function clearSchedule() {
         for (var i = 0; i < 5; ++i) {
             for (var j = 1; j < 7; j++) {

@@ -20,6 +20,8 @@ namespace SchoolWebProject.Models
 
         public int ClassRoomId { get; set; }
 
+        public int GroupId { get; set; }
+
         //public virtual IEnumerable<LessonDetail> LessonsDetails { get; set; }
     }
 }
