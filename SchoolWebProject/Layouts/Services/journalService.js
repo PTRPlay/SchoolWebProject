@@ -14,6 +14,11 @@
             $http.post('/api/mark', { id: markId, value: newValue, PupilId: PupilId,LessonDetailId:LessonDetailId }).success(function (data) {
                 return data.get;
             })
+        },
+        generateLessonDateil: function (schedule) {
+            $http.post("api/lessonDetail", schedule).success(function (data) {
+                return data.get;
+            })
         }
     }
 }]);

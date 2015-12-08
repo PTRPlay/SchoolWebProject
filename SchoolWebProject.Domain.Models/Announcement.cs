@@ -20,8 +20,9 @@ namespace SchoolWebProject.Domain.Models
         public string Message { get; set; }
 
         public string MessageDetails { get; set; }
-
-       public string Image { get; set; }
+ 
+        [Column(TypeName = "varchar(MAX)")]
+        public string Image { get; set; }
 
         public DateTime DataPublished { get; set; }
 

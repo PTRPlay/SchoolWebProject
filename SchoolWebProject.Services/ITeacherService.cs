@@ -19,6 +19,8 @@ namespace SchoolWebProject.Services
 
         void RemoveTeacher(Teacher teacher);
 
+        int GetIdByName(string FirstName, string LastName, string MiddleName);
+
         void SaveTeacher();
     }
 }

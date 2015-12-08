@@ -7,8 +7,14 @@
             <div class="modal-body">
                 <form class="form-horizontal" name="AddAnnouncementForm">
                     <div class="form-group">
-                        <!--           <input type="file" class="form-control" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="onLoad">   -->
-       <!--                <img src="{{announcement.img}}" class="img-rounded col-sm-4" width="170" height="170" alt="зображення" /> --> 
+                        <input type="file" id="image" ng-model="announcement_image" name="image" accept="image/*" base-sixty-four-input >
+
+                        <div ng-show="announcement_image">
+                            <img ng-src="data:image/jpg;base64,{{announcement_image.base64}}" height="170" alt="зображення" />
+                        </div>
+                        <div ng-show="announcement.Image">
+                            <img ng-src="data:image/jpg;base64,{{announcement.image}}"  height="170" alt="зображення" />
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Заголовок:</label>

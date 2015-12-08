@@ -38,6 +38,6 @@ namespace SchoolWebProject.Domain.Models
 
         public School School { get; set; }
 
-        public virtual List<LessonDetail> LessonsDetails { get; set; }        
+        //public virtual List<LessonDetail> LessonsDetails { get; set; }        
     }
 }
