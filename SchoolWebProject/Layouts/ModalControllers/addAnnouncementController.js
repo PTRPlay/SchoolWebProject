@@ -1,6 +1,7 @@
 ﻿myApp.controller("announcementAddController", ['$scope', '$element', 'title', 'close', 'Announcement', function ($scope, $element, title, close, Announcement) {
     $scope.announcement = null;
     $scope.IsFormValid = true;
+
     if (Announcement != null) {
         var dateParsed;
         if (Announcement.DataPublished != null) {
@@ -31,7 +32,7 @@
         close({
             cancelled: false,
             id: $scope.announcement.id,
-            image: $scope.announcement.image,
+            image: $scope.announcement_image.base64,
             title: $scope.announcement.title,
             message: $scope.announcement.message,
             messageDetails: $scope.announcement.messageDetails,
