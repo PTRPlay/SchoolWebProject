@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SchoolWebProject.Domain.Models;
 
 namespace SchoolWebProject.Models
 {
     public class ViewSchedule
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public ViewSubject Subject { get; set; }
 
@@ -18,7 +17,8 @@ namespace SchoolWebProject.Models
 
         public int DayOfTheWeek { get; set; }
 
-        public int ClassRoomId { get; set; }
+        public string Group { get; set; }
+        //public int ClassRoomId { get; set; }
 
         public int GroupId { get; set; }
 

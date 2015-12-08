@@ -13,11 +13,9 @@
                 if (result != null) {
                     if (result.id == null) {
                         $http.post("api/teacher", result);
-                        window.location.reload("/home");
                     }
                     else{
                         $http.post("api/teacher/" + result.id, result);
-                        window.location.reload("/home");
                     }
                 }
             });
