@@ -167,7 +167,7 @@
             }
         }
 
-        pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
+        $scope.myPromise = pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
                 $scope.pupilsGrid.totalItems = data.PageCount;
                 $scope.pupilsGrid.data = data.Pupils;

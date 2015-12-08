@@ -86,22 +86,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="NameNumber" class="col-sm-2 control-label">Число:</label>
+                        <label for="Group" class="col-sm-2 control-label">Клас:</label>
                         <div class="col-sm-4">
                             <select name="NameNumber" class="form-control" id="NameNumber" ng-model="pupil.group.nameNumber">
                                 <option ng-repeat="n in ['1','2','3','4','5','6','7','8','9','10','11']" ng-selected="pupil.group.nameNumber == n" ng-click="pupil.group.nameNumber = {{$index}}" value="{{n}}"> {{n}} </option>
                             </select>
+                            <select name="NameLetter" class="form-control" id="NameLetter" ng-model="pupil.group.nameLetter">
+                                <option ng-repeat="n in ['А','Б','В','Г']" ng-selected="pupil.group.nameLetter == n" ng-click="pupil.group.nameLetter = {{$index}}" value="{{n}}"> {{n}} </option>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label for="NameLetter" class="col-sm-2 control-label">Літера:</label>
                         <div class="col-sm-4">
                             <select name="NameLetter" class="form-control" id="NameLetter" ng-model="pupil.group.nameLetter">
                                 <option ng-repeat="n in ['А','Б','В','Г']" ng-selected="pupil.group.nameLetter == n" ng-click="pupil.group.nameLetter = {{$index}}" value="{{n}}"> {{n}} </option>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="form-group">
                         <label for="phoneNumber" class="col-sm-2 control-label">Телефон:</label>

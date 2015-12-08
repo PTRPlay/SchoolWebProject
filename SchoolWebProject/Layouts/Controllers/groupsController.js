@@ -75,7 +75,7 @@
             GroupModalService.showGroupDeleteModal(val);
         };
 
-        groupsService.getGroups()
+        $scope.myPromise = groupsService.getGroups()
             .success(function (data) {
             $scope.groupsGrid.data = data;
         });

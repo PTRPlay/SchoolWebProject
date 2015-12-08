@@ -15,7 +15,8 @@
             </div>
          </div>
         </div>
-    <div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
-    <br>
-</div>
+    <div cg-busy="{promise:myPromise,message:'Загрузка'}"></div>
+        <div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
+        <br>
+    </div>
 
