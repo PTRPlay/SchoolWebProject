@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Services.Interfaces;
 
 namespace SchoolWebProject.Services 
 {
@@ -13,11 +14,17 @@ namespace SchoolWebProject.Services
     {
 
         private IUnitOfWork unitOfWork;
+        private ITeacherService teacherService;
+        private ISubjectService subjectService;
+        private IGroupService groupService;
 
-        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork)
+        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork,ITeacherService teacherService ,ISubjectService subjectService,IGroupService groupService)
             : base(logger)
         {
             this.unitOfWork = unitOfWork;
+            this.teacherService = teacherService;
+            this.subjectService = subjectService;
+            this.groupService = groupService;
         }
 
         public IEnumerable<Schedule> GetAllSchedules()
@@ -27,6 +34,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Schedule> GetByFilter(string teacher, string group)
         {
+            
             var groupSchedule = this.unitOfWork.ScheduleRepository.
                 GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
             var teacherSchedule = this.unitOfWork.ScheduleRepository.
@@ -45,6 +53,7 @@ namespace SchoolWebProject.Services
                     return teacherSchedule;
                 }
             }
+            
             return groupSchedule.Intersect(teacherSchedule);
         }
         
@@ -53,14 +62,53 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.ScheduleRepository.GetById(id);
         }
         
-        public void UpdateSchedule(Schedule schedule)
+        private void updateSchedule(Schedule findedSchedule , Schedule schedule)
         {
-            this.unitOfWork.ScheduleRepository.Update(schedule);
+            findedSchedule.TeacherId = teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
+            findedSchedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
+            this.unitOfWork.ScheduleRepository.Update(findedSchedule);
         }
 
-        public void AddSchedule(Schedule schedule)
+        private void addSchedule(Schedule schedule)
         {
-            this.unitOfWork.ScheduleRepository.Add(schedule);
+            schedule.TeacherId = teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
+            schedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
+            schedule.ClassRoomId = 1;
+            schedule.GroupId = groupService.GetAllGroups().FirstOrDefault(g => g.NameLetter == schedule.Group.NameLetter 
+                                                                            && g.NameNumber == schedule.Group.NameNumber).Id;
+            schedule.Teacher = null;
+            schedule.Subject = null;
+            schedule.Group = null;
+            schedule.ClassRoom = null;
+            unitOfWork.ScheduleRepository.Add(schedule);    
+        }
+
+        public void ModifySchedule(IEnumerable<Schedule> schedules)
+        {
+            var allSchedules = GetAllSchedules();
+            foreach (var schedule in schedules)
+            {
+                var findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek 
+                                                            && s.OrderNumber == schedule.OrderNumber 
+                                                            && s.Group.NameLetter == schedule.Group.NameLetter
+                                                            && s.Group.NameNumber == schedule.Group.NameNumber);
+                if (findedSchedule != null)
+                {
+                    if (schedule.Teacher.FirstName == "")
+                    {
+                        RemoveSchedule(findedSchedule);
+                    }
+                    else
+                    {
+                        updateSchedule(findedSchedule, schedule);
+                    }
+                }
+                else if (schedule.Teacher.FirstName!="")
+                {
+                    addSchedule(schedule);
+                }
+            }
+            unitOfWork.SaveChanges();
         }
 
         public void RemoveSchedule(Schedule schedule)

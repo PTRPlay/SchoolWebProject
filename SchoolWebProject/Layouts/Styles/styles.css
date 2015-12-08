@@ -1,17 +1,32 @@
-﻿#main-sidebar {
-    float: left;
-    width: 13%;
-    height: 90%;
-    padding-top: 5%;
-    padding-right: 5%;
+﻿.main-menu
+{ 
+    padding: 0; 
+    margin: 0; 
+    list-style: none;
 }
 
+body { font: 14px/1.85em 'Open Sans', Arial, Helvetice Neue, sans-serif; color: #777777; font-weight: 300; font-style: normal; -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */ -webkit-text-size-adjust: 100%; }
+
+a, a:hover, a:focus { text-decoration: none; -webkit-transition: all 150ms ease-in; -moz-transition: all 150ms ease-in; -o-transition: all 150ms ease-in; transition: all 150ms ease-in; }
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif; }
+
+*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+ #main-sidebar { 
+     float: left; 
+     width: 23%; 
+     height: 100%; 
+     background-color: #495054; 
+     color: white;
+     position:fixed;
+ }
+
 #main-content {
+    padding-left:10px;
     float: right;
-    width: 87%;
+    width: 77%;
     height: 90%;
-    padding-left: 5%;
-    padding-top: 5%;
 }
 
 #top-content {
@@ -20,7 +35,8 @@
 }
 
 #Schedule {
-    width: 600px;
+    float:initial;
+    width: 1000px;
     background: black;
 }
 
@@ -37,9 +53,34 @@
         border-style: solid;
     }
 
+#TeacherFilter {
+    width:400px;
+    margin-bottom:10px;
+}
+
 TD.jewel {
     text-align: left;
     background: #ccc;
+}
+
+
+.editableTable {
+    border:solid 1px;
+    width:100%
+}
+ 
+.editableTable td {
+    border:solid 1px;
+}
+ 
+.editableTable .cellEditing {
+    padding: 0;
+}
+ 
+.editableTable .cellEditing input[type=text]{
+    width:100%;
+    border:0;
+    background-color:rgb(255,253,210);  
 }
 
 ﻿.details-background {
@@ -55,16 +96,6 @@ TD.jewel {
 #diary-table thead td {
     font-weight: 700;
 }
-
-
-#main-sidebar {
-    float: left;
-    width: 13%;
-    height: 90%;
-    padding-top: 5%;
-    padding-right: 5%;
-}
-
 
 .details-background {
     border-color: lightgray;
@@ -109,3 +140,82 @@ TD.jewel {
     border-top: 1px solid whitesmoke;
 }
 
+a {
+    background: transparent none repeat scroll 0px 0px;
+}
+
+li.home a.active {
+    color: #38A9E3;
+}
+li.home a {
+    border-color: #38A9E3;
+}
+.main-menu li a {
+    color: #FFF;
+    text-transform: uppercase;
+    display: block;
+    border-left: 4px solid;
+    padding: 15px 30px;
+    background-color: #383E41;
+    transition: all 150ms ease-in 0s;
+}
+.main-menu {
+    text-align: center;
+}
+.main-menu, .responsive-menu ul, .social-member, .progess-bars, .first-footer .social-footer ul {
+    list-style: outside none none;
+}
+
+.logo { 
+    margin: 100px 0; 
+    background-color: #38a9e3; 
+    padding: 25px 40px; 
+
+}
+.logo a { 
+    color: white; 
+
+}
+.logo a h1 { 
+    text-transform: uppercase; 
+    font-size: 30px; 
+    margin: 0; 
+    font-weight: 800; 
+
+}
+.logo span { 
+    color: #bee3f6; 
+    font-size: 13px; 
+}
+
+.navigation {
+    position:relative;
+    bottom:10%;
+}
+
+.responsive-navigation { 
+    position: relative; 
+    width: 100%; 
+    display: block; 
+    z-index: 9999; 
+}
+
+li.home a { border-color: #38a9e3; }
+li.home a.active { color: #38a9e3; }
+
+li.teachers a { border-color: #e9b144; }
+li.teachers a.teachers { color: #e9b144; }
+
+li.subjects a { border-color: #974dea; }
+li.subjects a.active { color: #974dea; }
+
+li.pupils a { border-color: #38e395; }
+li.pupils a.active { color: #38e395; }
+
+li.groups a { border-color: #e3387c; }
+li.groups a.active { color: #e3387c; }
+
+.content {
+    float:initial;
+    width:100%;
+}

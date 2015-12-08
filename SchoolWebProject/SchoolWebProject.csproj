@@ -20,6 +20,12 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -210,6 +216,9 @@
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
+    <Content Include="Layouts\custom.js" />
+    <Content Include="Layouts\Directives\ScheduleDirective.js" />
+    <Content Include="Layouts\Directives\ScheduleTable.html" />
     <Content Include="Layouts\Images\default-profile.png" />
     <Content Include="Layouts\Images\news-placeholder2.jpg" />
     <Content Include="Layouts\Images\edit.png" />
@@ -285,6 +294,7 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-base64-upload.js" />
     <Content Include="Scripts\angular-locale_uk.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-modal-service.js" />

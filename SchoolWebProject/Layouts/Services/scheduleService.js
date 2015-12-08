@@ -1,49 +1,76 @@
-﻿myApp.service('scheduleService', ['$http', function ($http) {
-    this.loadSchedule = function (filter) {
-        return $http.get('api/schedule/?filter='+filter)
-        .success(function (data) {
-            clearSchedule();
-            for (var i = 0; i < data.length; ++i) {
-                var idTeacher = data[i].DayOfTheWeek - 1 + "teacher" + data[i].OrderNumber;
-                var idSubject = data[i].DayOfTheWeek - 1 + "subject" + data[i].OrderNumber;
-                document.getElementById(idTeacher).innerHTML = data[i].Teacher.FirstName + " " + data[i].Teacher.MiddleName + " " + data[i].Teacher.LastName;
-                document.getElementById(idSubject).innerHTML = data[i].Subject.Name;
-            }
-        })
-        .error(function (data) {
-            return data;
-        })
-    }
+﻿myApp.service('scheduleService', ['$http',function ($http,$scope) {
+    return function ($scope) {
+        $scope.AddEvent = function () {
+            $("td").dblclick(function () {
+                var OriginalContent = $(this).text();
+                $(this).addClass("cellEditing");
+                $(this).html("<input type='text' value='" + OriginalContent + "' />");
+                $(this).children().first().focus();
 
-    function clearSchedule() {
-        for (var i = 0; i < 5; ++i) {
-            for (var j = 1; j < 7; j++) {
-                var TeacherId = i + 'teacher' + j;
-                var SubjectId = i + 'subject' + j;
-                document.getElementById(TeacherId).innerHTML = "";
-                document.getElementById(SubjectId).innerHTML = "";
-            }
-        }
-    }
-    this.InitializeAutocomplate = function () {
-        $('#TeacherFilter').autocomplete({
-            source: function (request, response) {
-                var filter = request.term;
-                $.ajax(
-                {
-                    url: 'api/teacher?filter=' + filter,
-                    dataType: "json",
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return {
-                                label: item.FirstName + " " + item.MiddleName + " " + " " + item.LastName,
-                                value: item.FirstName + " " + item.MiddleName + " " + " " + item.LastName
-                            }
-                        }));
+                $(this).children().first().keypress(function (e) {
+                    if (e.which == 13) {
+                        var newContent = $(this).val();
+                        $(this).parent().text(newContent);
+                        $(this).parent().removeClass("cellEditing");
                     }
                 });
-            }
-        });
 
+                $(this).children().first().blur(function () {
+                    $(this).parent().text(OriginalContent);
+                    $(this).parent().removeClass("cellEditing");
+                });
+            });
+        };
+
+        $scope.Edit = function (group) {
+            var schedules = [];
+            for (var day = 1; day < 6; day++)
+                for (var order = 1; order < 8; order++) {
+                    var teacher = document.getElementById(day + 'teacher' + order).textContent.split(" ");
+                    var subject = document.getElementById(day + 'subject' + order).textContent;
+                    schedules.push(
+                        {
+                            OrderNumber: order,
+                            DayOfTheWeek: day,
+                            teacher: {
+                                FirstName: teacher[0],
+                                MiddleName: teacher[1],
+                                LastName: teacher[2]
+                            },
+                            subject: {
+                                Name: subject
+                            },
+                            group: group
+                        }
+                        )
+                }
+            $http.post('api/schedule', schedules);
+        }
+
+        $scope.InitializeAutocomplate = function () {
+            $('#TeacherFilter').autocomplete({
+                source: function (request, response) {
+                    var filter = request.term;
+                    $.ajax(
+                    {
+                        url: 'api/teacher?filter=' + filter,
+                        dataType: "json",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.FirstName + " " + item.MiddleName + " " + " " + item.LastName,
+                                    value: item.FirstName + " " + item.MiddleName + " " + " " + item.LastName
+                                }
+                            }));
+                        }
+                    });
+                }
+            });
+        }
+
+
+        var obj = {};
+        return obj;
     }
+
 }]);
