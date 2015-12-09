@@ -1,4 +1,4 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService','scheduleService', 'groupsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService,scheduleService, groupsService, uiGridConstants, lessonDetailService, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'scheduleServiceForjournal', 'groupsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, scheduleServiceForjournal, groupsService, uiGridConstants, lessonDetailService, $rootScope) {
 
     $scope.chosenSubject = false;
     $scope.chosenGroup = false;
@@ -157,7 +157,7 @@
 
     
    
-    scheduleService.getAllSchedule().success(function (data) {
+    scheduleServiceForjournal.getAllSchedule().success(function (data) {
       $scope.schedules = data;
     });
 
@@ -173,7 +173,7 @@
        i = 0;
        for (var atribut in $scope.subjectsOptions)
        {
-           $scope.parsedSubjectsOptions[i] = { id: atribut, Name: $scope.subjectsOptions[atribut] };
+           $scope.parsedSubjectsOptions[i] = { Id: atribut, Name: $scope.subjectsOptions[atribut] };
            i += 1;
        }
     }
