@@ -18,10 +18,12 @@ namespace SchoolWebProject.Controllers
     public class LessonDetailController : BaseApiController
     {
         private LessonDetailService lessonDetailService;
+        private ScheduleService scheduleServise;
 
-        public LessonDetailController(ILogger logger, LessonDetailService service) : base(logger)
+        public LessonDetailController(ILogger logger, LessonDetailService service, ScheduleService schedule) : base(logger)
         {
             this.lessonDetailService = service;
+            this.scheduleServise = schedule;
         }
 
         // GET api/lessonDetail
@@ -47,15 +49,14 @@ namespace SchoolWebProject.Controllers
             var lessonDetail = this.lessonDetailService.GetLessonDetailById(id);
             AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value, lessonDetail);
             this.lessonDetailService.UpdateLessonDetail(lessonDetail);
-            this.lessonDetailService.SaveLessonDetail();
         }
 
         // POST api/lessonDetail
         [Authorize(Roles = "Admin, Teacher")]
         public void Post([FromBody]ViewLessonDetail value)
         {
-            var lessonDetail = AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value);
-            this.lessonDetailService.AddLessonDetail(lessonDetail);
+            var schedule = this.scheduleServise.GetScheduleById(value.Id);
+            this.lessonDetailService.GenereteLessonDeatail(schedule);
         }
 
         // DELETE api/lessonDetail/5

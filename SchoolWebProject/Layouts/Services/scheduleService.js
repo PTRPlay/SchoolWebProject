@@ -74,3 +74,16 @@
     }
 
 }]);
+
+myApp.factory('scheduleServiceForjournal', ['$http', function ($http) {
+    return {
+        getAllSchedule:function()
+        {
+            return  $http.get('api/schedule/').success(function (data) {
+                return data;
+            }).error(function (data) {
+                return data;
+            });
+        }
+    }
+}]);
