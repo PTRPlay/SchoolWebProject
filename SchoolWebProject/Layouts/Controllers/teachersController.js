@@ -127,7 +127,7 @@
         }
     };
 
-    teachersService.getTeachers()
+    $scope.myPromise = teachersService.getTeachers()
         .success(function (data) {
         $scope.teachersGrid.data = data;
     })

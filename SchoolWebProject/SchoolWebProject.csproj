@@ -192,27 +192,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
-    <Compile Include="Models\PupilPageData.cs" />
-    <Compile Include="Models\ViewDiary.cs" />
-    <Compile Include="Models\ViewLessonDetails.cs" />
-    <Compile Include="Models\ViewMark.cs" />
-    <Compile Include="Models\ViewSchedule.cs" />
-    <Compile Include="Models\ViewSchool.cs" />
-    <Compile Include="Models\ViewSubject.cs" />
-    <Compile Include="Models\ViewTeacherDegree.cs" />
-    <Compile Include="Models\ViewAnnouncement.cs" />
-    <Compile Include="Models\ViewPupil.cs" />
-    <Compile Include="Models\ViewTeacher.cs" />
-    <Compile Include="Models\ViewTeacherCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\angular-busy.css" />
+    <Content Include="Content\angular-busy.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\BusyIndicatorTemplate.html" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
@@ -308,6 +299,8 @@
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-base64-upload.js" />
+    <Content Include="Scripts\angular-busy.js" />
+    <Content Include="Scripts\angular-busy.min.js" />
     <Content Include="Scripts\angular-locale_uk.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-modal-service.js" />
@@ -357,6 +350,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

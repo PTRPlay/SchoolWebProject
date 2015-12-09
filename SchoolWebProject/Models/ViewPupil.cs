@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Models
 {
@@ -20,5 +21,8 @@ namespace SchoolWebProject.Models
         public string Address { get; set; }
 
         public string Email { get; set; }
+
+        //public ViewGroup Group { get; set; }
+
     }
 }

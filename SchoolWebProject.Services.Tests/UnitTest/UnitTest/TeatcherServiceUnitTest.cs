@@ -73,6 +73,8 @@ namespace SchoolWebProject.UnitTestProject
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
+
+            iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
             int anyIdMoreZero = -2;
 
@@ -99,7 +101,9 @@ namespace SchoolWebProject.UnitTestProject
         {
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iRepository = new Mock<IRepository<Teacher>>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
 
             teacherService.AddTeacher(this.teacher);
 
@@ -113,6 +117,7 @@ namespace SchoolWebProject.UnitTestProject
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
 
             teacherService.RemoveTeacher(this.teacher);
 

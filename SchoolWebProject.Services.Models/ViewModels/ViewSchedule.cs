@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Models
 {
@@ -19,8 +21,6 @@ namespace SchoolWebProject.Models
 
         public string Group { get; set; }
         //public int ClassRoomId { get; set; }
-
-        public int GroupId { get; set; }
 
         //public virtual IEnumerable<LessonDetail> LessonsDetails { get; set; }
     }
