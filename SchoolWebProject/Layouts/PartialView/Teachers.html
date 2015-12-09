@@ -1,27 +1,16 @@
-﻿<div id="teachers" style="width:1000px">
-    <script type="text/javascript">
-        if (window.currentUser.Role == "Pupil") {
-            document.location.href = '';
-            document.getElementById("teachers").style.display = "none";
-        }
-        if (window.currentUser.Role != "Admin") {
-            document.getElementById("addTeacher").style.display = "none";
-            document.getElementById("editCategory").style.display = "none";
-            document.getElementById("editDegree").style.display = "none";
-        }
-    </script>
+﻿<div style="width:1000px" ng-controller="permissionController" ng-show="showTeachers()">
     <div class="page-header" ng-controller="ModalShowController">
         <div class="row">
             <div class="col-md-6">
                 <h2> Список вчителів</h2>
             </div>
-            <div class="col-md-6" style="padding-top:20px; text-align:right">
+            <div class="col-md-6" style="padding-top:20px; text-align:right" ng-controller="permissionController" ng-show="showAddEditTeacher()">
 
-                <a class="btn btn-primary" id="addTeacher" ng-click="showTeachersEditPage()"> Додати вчителя</a>
+                <a class="btn btn-primary" ng-click="showTeachersEditPage()"> Додати вчителя</a>
 
-                <a ng-controller="categoryModelService" class=" btn btn-primary" id="editCategory" ng-click="showCategoryEditPage()"> Редагувати категорії </a>
+                <a ng-controller="categoryModelService" class=" btn btn-primary" ng-click="showCategoryEditPage()"> Редагувати категорії </a>
 
-                <a ng-controller="degreeModelService" class=" btn btn-primary" id="editDegree" ng-click="showDegreeEditPage()"> Редагувати звання </a>
+                <a ng-controller="degreeModelService" class=" btn btn-primary" ng-click="showDegreeEditPage()"> Редагувати звання </a>
 
             </div>
         </div>

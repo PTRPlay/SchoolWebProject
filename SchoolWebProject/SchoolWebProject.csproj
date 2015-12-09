@@ -226,6 +226,7 @@
     <Content Include="Layouts\app.js" />
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
+    <Content Include="Layouts\Controllers\permissionController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
     <Content Include="Layouts\custom.js" />

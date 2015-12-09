@@ -1,11 +1,5 @@
 ﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
-<div ng-app="pupilInfoController" id="pupilInfo">
-    <script type="text/javascript">
-        if (window.currentUser.Role != "Admin" || window.currentUser.Role != "Teacher") {
-            document.location.href = '';
-            document.getElementById("pupilInfo").style.display = "none";
-        }
-    </script>
+<div ng-app="pupilInfoController" ng-controller="permissionController" ng-show="showPupils()">
     <div class="page-header">
         <div class="center-block">
             Профіль
