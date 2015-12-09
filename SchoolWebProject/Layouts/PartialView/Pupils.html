@@ -1,10 +1,4 @@
-﻿<div style="width:1000px" id="pupils">
-    <script type="text/javascript">
-        if (window.currentUser.Role != "Admin" || window.currentUser.Role != "Teacher") {
-            document.location.href = '';
-            document.getElementById("pupils").style.display = "none";
-        }
-    </script>
+﻿<div style="width:1000px" ng-controller="permissionController" ng-show="showPupils()">
     <div class="page-header">
         <div class="row">
             <div class="col-md-6">
@@ -17,14 +11,10 @@
             </div>
         </div>
     </div>
-    <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
-    <br />
-    <div ng-controller="pupilsController">
-
-
+    <div cg-busy="{promise:myPromise,message:'Загрузка',backdrop:true}"></div>
+        <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
+        <br />
     </div>
-</div>
-
 
 
 

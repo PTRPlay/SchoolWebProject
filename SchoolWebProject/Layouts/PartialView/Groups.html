@@ -1,10 +1,4 @@
-﻿<div id="groups" style="width:1000px">
-    <script type="text/javascript">
-        if (window.currentUser.Role != "Admin" || window.currentUser.Role != "Teacher") {
-            document.location.href = '';
-            document.getElementById("groups").style.display = "none";
-        }
-    </script>
+﻿<div style="width:1000px" ng-controller="permissionController" ng-show="showGroups()">
     <div class="page-header">
         <div class="row">
             <div class="col-md-6">
@@ -15,7 +9,7 @@
             </div>
         </div>
     </div>
-
-    <div id="groupsGrid" class="grid" ui-grid="groupsGrid" style="width:1000px; height: 470px;"></div>
-
+    <div cg-busy="{promise:myPromise,message:'Загрузка'}">
+        <div id="groupsGrid" class="grid" ui-grid="groupsGrid" style="width:1000px; height: 470px;"></div>
+    </div>
 </div>
