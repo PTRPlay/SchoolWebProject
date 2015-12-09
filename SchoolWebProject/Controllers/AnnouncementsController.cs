@@ -48,6 +48,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // PUT api/announcements/5
+        [HttpPost]
         [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]ViewAnnouncement value)
         {

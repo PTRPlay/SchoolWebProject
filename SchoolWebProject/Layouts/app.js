@@ -42,6 +42,11 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/News.html',
         controller: 'newsController'
     })
+    .state('newsAdminService', {
+        url: '/adminnews',
+        templateUrl: '/Layouts/PartialView/NewsAdmin.html',
+        controller: 'newsAdminController'
+    })
     .state('schoolService', {
             url: '/contacts',
             templateUrl: '/Layouts/PartialView/Contacts.html',

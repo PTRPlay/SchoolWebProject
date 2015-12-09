@@ -1,10 +1,4 @@
-﻿<div ng-app="groupDetailsController" id="groupInfo">
-    <script type="text/javascript">
-        if (window.currentUser.Role != "Admin" || window.currentUser.Role != "Teacher") {
-            document.location.href = '';
-            document.getElementById("groupInfo").style.display = "none";
-        }
-    </script>
+﻿<div ng-app="groupDetailsController" ng-controller="permissionController" ng-show="showGroups()">
     <div ng-controller="groupsController">
 
         <h2>{{getGroup().NameNumber}} - {{getGroup().NameLetter}}</h2>
