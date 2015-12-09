@@ -1,7 +1,7 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'scheduleServiceForjournal', 'groupsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, scheduleServiceForjournal, groupsService, uiGridConstants, lessonDetailService, $rootScope) {
 
-    $scope.chosenSubject = null;
-    $scope.chosenGroup = null;
+    $scope.chosenSubject = false;
+    $scope.chosenGroup = false;
     isValidRoleForEditMark = false;
     $scope.journalGrid = {
         columnDefs: [],
@@ -70,7 +70,7 @@
     }
 
     $scope.GetJournalPage = function (chosenSubject, chosenGroup) {
-        if (chosenGroup != null && chosenSubject != null)
+        if (chosenGroup != false && chosenSubject != false)
             journalService.getPage(chosenSubject, chosenGroup).success(function (data) {
                 $scope.journalGrid.columnDefs = [{
                     field: "№ ",
@@ -153,13 +153,35 @@
         });
     };
 
-    subjectsService.getSubjects().success(function (data) {
-        $scope.subjectsOptions = data;
+   
+
+    
+   
+    scheduleServiceForjournal.getAllSchedule().success(function (data) {
+      $scope.schedules = data;
     });
+
+   $scope.GetSubjectByGroupId=function(GroupId)
+   {
+       $scope.subjectsOptions = {};
+       $scope.parsedSubjectsOptions = {};
+       for (i = 0; i < $scope.schedules.length; i++)
+        {
+           if ($scope.schedules[i].GroupId == GroupId)
+               $scope.subjectsOptions[$scope.schedules[i].Subject.Id] = $scope.schedules[i].Subject.Name;
+       }
+       i = 0;
+       for (var atribut in $scope.subjectsOptions)
+       {
+           $scope.parsedSubjectsOptions[i] = { Id: atribut, Name: $scope.subjectsOptions[atribut] };
+           i += 1;
+       }
+    }
 
     groupsService.getGroups().success(function (data) {
         $scope.groupsOptions = data;
     });
+
 }])
 
 myApp.filter('mapGender', function () {
