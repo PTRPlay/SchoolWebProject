@@ -1,6 +1,7 @@
+/// <reference path="PartialView/ErrorPage.html" />
 var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch',
     'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination',
-    'ui.grid.cellNav', 'ui.bootstrap', 'naif.base64', 'cgBusy']);
+    'ui.grid.cellNav', 'ui.bootstrap', 'naif.base64', 'blockUI'])
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
@@ -76,4 +77,9 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/Holidays.html',
         controller: 'holidaysController'
     })
+})
+.config(function(blockUIConfig) {
+    blockUIConfig.message = 'Loading!';
+
+    blockUIConfig.delay = 200;
 });

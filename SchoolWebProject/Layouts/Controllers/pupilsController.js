@@ -1,4 +1,4 @@
-﻿myApp.controller('pupilsController', ['$scope', 'pupilsService', 'uiGridConstants', 'PupilsModalService', function ($scope, pupilsService, uiGridConstants, PupilsModalService) {
+﻿myApp.controller('pupilsController', ['$scope','pupilsService', 'uiGridConstants', 'PupilsModalService', function ($scope, pupilsService, uiGridConstants, PupilsModalService) {
     $scope.pupilsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -167,7 +167,7 @@
             }
         }
 
-        $scope.myPromise = pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
+        pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
                 $scope.pupilsGrid.totalItems = data.PageCount;
                 $scope.pupilsGrid.data = data.Pupils;
