@@ -32,7 +32,7 @@
         close({
             cancelled: false,
             id: $scope.announcement.id,
-            image: $scope.announcement_image.base64,
+            image: $scope.announcement.image != null ? $scope.announcement.image.base64 : null,
             title: $scope.announcement.title,
             message: $scope.announcement.message,
             messageDetails: $scope.announcement.messageDetails,

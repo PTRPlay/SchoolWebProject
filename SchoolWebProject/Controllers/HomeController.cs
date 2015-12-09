@@ -30,9 +30,6 @@ namespace SchoolWebProject.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            Expression<Func<User, bool>> getUser = user => user.LogInData.Login == HttpContext.User.Identity.Name;
-            SchoolWebProject.Domain.Models.User currUser = this.unitOfWork.UserRepository.Get(getUser);
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             Constants.UserRoles role = Constants.UserRoles.None;
             if (HttpContext.User.IsInRole(Constants.UserRoles.Admin.ToString()))
             {
@@ -51,6 +48,8 @@ namespace SchoolWebProject.Controllers
                 role = Constants.UserRoles.Parent;
             }
             else return this.RedirectToAction("login", "account");
+            User currUser = this.accountService.GetCurrentUserProfile(HttpContext.User.Identity.Name);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
             var userData = new
             {
                 Id = currUser.Id,

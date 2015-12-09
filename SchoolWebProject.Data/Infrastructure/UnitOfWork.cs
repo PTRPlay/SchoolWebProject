@@ -199,7 +199,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Teacher> TeacherRepository
+        public IRepository<Teacher> TeacherRepository
         {
             get
             {

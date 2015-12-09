@@ -1,9 +1,18 @@
 ﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
-<div ng-app="teacherInfoController">
+<div id="teachersInfo" ng-app="teacherInfoController">
+    <script type="text/javascript">
+        if (window.currentUser.Role == "Pupil") {
+            document.location.href = '';
+            document.getElementById("teachersInfo").style.display = "none";
+        }
+        if (window.currentUser.Role != "Admin") {
+            document.getElementById("editTeacher").style.display = "none";
+        }
+    </script>
     <div class="page-header">
         <div class="center-block">
             Профіль
-            <a ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())" class="btn btn-primary pull-right" style="margin:1px">
+            <a ng-controller="ModalShowController" id="editTeacher" ng-click="showTeachersEditPage(getTeacher())" class="btn btn-primary pull-right" style="margin:1px">
                 <span class="glyphicons glyphicons-user-add"></span> Редагувати
             </a>
 

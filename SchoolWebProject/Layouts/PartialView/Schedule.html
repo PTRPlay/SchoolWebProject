@@ -1,4 +1,9 @@
 ﻿<div ng-controller="scheduleController">
+    <script type="text/javascript">
+        if (window.currentUser.Role == "Pupil" || window.currentUser.Role == "Parent") {
+            document.getElementById("editSchedule").style.display = "none";
+        }
+    </script>
     <div class="page-header">
     <h2>Розклад</h2>
     </div>
@@ -8,7 +13,7 @@
         <button class="btn btn-primary" ng-click="showSchedule()">
             Показати Розклад
         </button>
-        <button class="btn btn-primary" ng-click="Edit(group)">
+        <button id="editSchedule" class="btn btn-primary" ng-click="Edit(group)">
             Редагувати Розклад
         </button>
     </div>
