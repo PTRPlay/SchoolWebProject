@@ -61,6 +61,13 @@ namespace SchoolWebProject.Services
         {
             return this.unitOfWork.ScheduleRepository.GetById(id);
         }
+
+        public IEnumerable<Subject> GetSubjectForGroupByGroupId(int GroupId)
+        {
+            var subjects = this.unitOfWork.ScheduleRepository.GetMany(s => s.GroupId == GroupId).Select(s => s.Subject);
+            var unicSubject = subjects.Distinct();
+            return unicSubject;
+        }
         
         private void updateSchedule(Schedule findedSchedule , Schedule schedule)
         {

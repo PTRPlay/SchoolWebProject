@@ -13,6 +13,8 @@ namespace SchoolWebProject.Services
 
         Schedule GetScheduleById(int id);
 
+        IEnumerable<Subject> GetSubjectForGroupByGroupId(int GroupId);
+
         IEnumerable<Schedule> GetByFilter(string teacher , string group);
 
         //void UpdateSchedule(Schedule mark);

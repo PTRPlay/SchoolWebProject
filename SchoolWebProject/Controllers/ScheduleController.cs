@@ -30,6 +30,7 @@ namespace SchoolWebProject.Controllers
             return viewSchedules;
         }
 
+       
         public IEnumerable<ViewSchedule> Get(string filter)
         {
             string[] filters = filter.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);

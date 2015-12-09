@@ -1,4 +1,4 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'scheduleServiceForjournal', 'groupsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, scheduleServiceForjournal, groupsService, uiGridConstants, lessonDetailService, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, uiGridConstants, lessonDetailService, $rootScope) {
 
     $scope.chosenSubject = false;
     $scope.chosenGroup = false;
@@ -157,25 +157,13 @@
 
     
    
-    scheduleServiceForjournal.getAllSchedule().success(function (data) {
-      $scope.schedules = data;
-    });
+    
 
-   $scope.GetSubjectByGroupId=function(GroupId)
+   $scope.GetSubjectByGroupId=function(groupId)
    {
-       $scope.subjectsOptions = {};
-       $scope.parsedSubjectsOptions = {};
-       for (i = 0; i < $scope.schedules.length; i++)
-        {
-           if ($scope.schedules[i].GroupId == GroupId)
-               $scope.subjectsOptions[$scope.schedules[i].Subject.Id] = $scope.schedules[i].Subject.Name;
-       }
-       i = 0;
-       for (var atribut in $scope.subjectsOptions)
-       {
-           $scope.parsedSubjectsOptions[i] = { Id: atribut, Name: $scope.subjectsOptions[atribut] };
-           i += 1;
-       }
+       subjectsService.getSujectForGroup(groupId).success(function (data) {
+           $scope.parsedSubjectsOptions = data;
+       });
     }
 
     groupsService.getGroups().success(function (data) {
