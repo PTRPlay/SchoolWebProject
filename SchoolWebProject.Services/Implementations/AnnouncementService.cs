@@ -35,6 +35,7 @@ namespace SchoolWebProject.Services
         {
             logger.Info("Update announcement {0}", announcement.Title);
             this.unitOfWork.AnnouncementRepository.Update(announcement);
+            this.unitOfWork.SaveChanges();
         }
 
         public void AddAnnouncement(Announcement announcement)
@@ -48,6 +49,7 @@ namespace SchoolWebProject.Services
         {
             logger.Info("Remove annoncement {0}", announcement.Title);
             this.unitOfWork.AnnouncementRepository.Delete(announcement);
+            this.unitOfWork.SaveChanges();
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿<div class="container-fluid">
+    <div class="page-header">
+        <h1>Новини</h1>
+    </div>
+    <div ng-controller="announcementModalService">
+        <a class=" btn btn-primary" ng-click="showAnnouncementEditPage()">
+            <span class="glyphicons glyphicons-user-add"></span> Додати новину
+        </a>
+        <a class=" btn btn-primary" ng-href="#/news">
+            <span class="glyphicons glyphicons-user-add"></span> Попередній перегляд
+        </a>
+    </div>
+    <br>
+
+
+    <div id="announcmentGrid" class="grid" ui-grid="announcmentGrid" style="width:930px; height: 470px;"></div>
+
+
+
+</div>

@@ -220,6 +220,7 @@
     <Content Include="Layouts\app.js" />
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
+    <Content Include="Layouts\Controllers\newsAdminController.js" />
     <Content Include="Layouts\Controllers\permissionController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
@@ -250,6 +251,7 @@
     <Content Include="Layouts\PartialView\Groups.html" />
     <Content Include="Layouts\PartialView\Journal.html" />
     <Content Include="Layouts\PartialView\News.html" />
+    <Content Include="Layouts\PartialView\NewsAdmin.html" />
     <Content Include="Layouts\PartialView\NewsDetail.html" />
     <Content Include="Layouts\PartialView\PupilAddTemplate.html" />
     <Content Include="Layouts\PartialView\PupilInfo.html" />
