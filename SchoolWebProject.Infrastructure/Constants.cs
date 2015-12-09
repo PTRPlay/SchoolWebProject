@@ -14,12 +14,51 @@ namespace SchoolWebProject.Infrastructure
 
         public static readonly string EmailMessage = "Ваш логін і пароль для входу на сайт SchoolWebProject такі : ";
 
+        public static readonly int minutesToCookiesExpirate = 20;
+
+        public static readonly Dictionary<string, string> AdminPermissions = new Dictionary<string, string>() {
+            {"Вчителі","teachers"},
+            {"Предмети", "subjects"},
+            {"Учні", "pupils"},
+            {"Класи", "groups"},
+            {"Розклад", "schedule"},
+            {"Журнал", "journal"},
+            {"Новини", "newsService"},
+            {"Контакти", "schoolService"}
+        };
+
+        public static readonly Dictionary<string, string> TeacherPermissions = new Dictionary<string, string>() {
+            {"Учні", "pupils"},
+            {"Класи", "groups"},
+            {"Розклад", "schedule"},
+            {"Журнал", "journal"},
+            {"Новини", "newsService"},
+            {"Контакти", "schoolService"}
+        };
+
+        public static readonly Dictionary<string, string> PupilPermissions = new Dictionary<string, string>() {
+            {"Щоденник", "diaryService"},
+            {"Розклад", "schedule"},
+            {"Журнал", "journal"},
+            {"Новини", "newsService"},
+            {"Контакти", "schoolService"}
+        };
+
+        public static readonly Dictionary<string, string> ParentPermissions = new Dictionary<string, string>() {
+            {"Вчителі","teachers"},
+            {"Розклад", "schedule"},
+            {"Журнал", "journal"},
+            {"Новини", "newsService"},
+            {"Контакти", "schoolService"}
+        };
+
         public enum UserRoles 
         { 
             None, 
             Admin, 
             Teacher, 
             Pupil, 
-            Parent };
+            Parent 
+        };
     }
 }

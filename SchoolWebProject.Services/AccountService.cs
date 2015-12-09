@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Net.Mail;
 using System.Security.Cryptography;
+using System.Web;
 using System.Web.Security;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
@@ -71,47 +72,24 @@ namespace SchoolWebProject.Services
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
         {
-            var permisions = new Dictionary<string, string>();
             switch (role)
             {
                 case Constants.UserRoles.Admin:
-                    permisions["Вчителі"] = "teachers";
-                    permisions["Предмети"] = "subjects";
-                    permisions["Учні"] = "pupils";
-                    permisions["Класи"] = "groups";
-                    permisions["Розклад"] = "schedule";
-                    permisions["Журнал"] = "journal";
-                    permisions["Новини"] = "newsService";
-                    permisions["Контакти"] = "schoolService";
+                    return Constants.AdminPermissions;
                     break;
                 case Constants.UserRoles.Teacher:
-                    permisions["Учні"] = "pupils";
-                    permisions["Класи"] = "groups";
-                    permisions["Розклад"] = "schedule";
-                    permisions["Журнал"] = "journal";
-                    permisions["Новини"] = "newsService";
-                    permisions["Контакти"] = "schoolService";
+                    return Constants.TeacherPermissions;
                     break;
                 case Constants.UserRoles.Pupil:
-                    permisions["Щоденник"] = "diaryService";
-                    permisions["Розклад"] = "schedule";
-                    permisions["Журнал"] = "journal";
-                    permisions["Новини"] = "newsService";
-                    permisions["Контакти"] = "schoolService";
+                    return Constants.PupilPermissions;
                     break;
                 case Constants.UserRoles.Parent:
-                    permisions["Вчителі"] = "teachers";
-                    permisions["Розклад"] = "schedule";
-                    permisions["Журнал"] = "journal";
-                    permisions["Новини"] = "newsService";
-                    permisions["Конткти"] = "schoolService";
+                    return Constants.ParentPermissions;
                     break;
                 default:
-                    permisions = null;
+                    return null;
                     break;
             }
-
-            return permisions;
         }
 
         public string CreateHashPassword(string inputPassword, string salt)
@@ -131,6 +109,12 @@ namespace SchoolWebProject.Services
         {
             int numberOfSpecialSymbols = 2;
             return Membership.GeneratePassword(passwordLength, numberOfSpecialSymbols);
+        }
+
+        public User GetCurrentUserProfile(string userLogin)
+        {
+            Expression<Func<User, bool>> getUser = user => user.LogInData.Login == userLogin;
+            return this.unitOfWork.UserRepository.Get(getUser);
         }
 
         private string CreateSalt()
