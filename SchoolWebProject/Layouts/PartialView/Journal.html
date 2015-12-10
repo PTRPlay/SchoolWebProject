@@ -5,12 +5,12 @@
     <div class="row container-fluid">
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="subject" class="col-sm-2 control-label">Урок:</label>
-                <select class="form-control" id="subject" ng-model="chosenSubject" ng-change="GetJournalPage(chosenSubject, chosenGroup)" ng-options="subject.Id as subject.Name for subject in subjectsOptions"></select>
+                <label for="group" class="col-sm-2 control-label">Клас:</label>
+                <select class="form-control" id="group" ng-model="chosenGroup" ng-change="GetSubjectByGroupId(chosenGroup);GetJournalPage(chosenSubject, chosenGroup);" ng-options="group.Id as (group.NameNumber+'-'+group.NameLetter) for group in groupsOptions"></select>
             </div>
             <div class="col-sm-3">
-                <label for="group" class="col-sm-2 control-label">Клас:</label>
-                <select class="form-control" id="group" ng-model="chosenGroup" ng-change="GetJournalPage(chosenSubject, chosenGroup)" ng-options="group.Id as (group.NameNumber+'-'+group.NameLetter) for group in groupsOptions"></select>
+                <label for="subject" class="col-sm-2 control-label">Урок:</label>
+                <select ng-disabled="chosenGroup==false" class="form-control" id="subject" ng-model="chosenSubject" ng-change="GetJournalPage(chosenSubject, chosenGroup)" ng-options="subject.Id as subject.Name for subject in parsedSubjectsOptions"></select>
             </div>
         </div>
     </div>

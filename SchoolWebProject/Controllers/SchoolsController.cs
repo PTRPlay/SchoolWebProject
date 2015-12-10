@@ -8,6 +8,8 @@ using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
+using SchoolWebProject.Services.Models;
+
 
 namespace SchoolWebProject.Controllers
 {

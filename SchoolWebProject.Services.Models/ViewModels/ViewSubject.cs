@@ -13,7 +13,7 @@ namespace SchoolWebProject.Services.Models
 
         public string Name { get; set; }
 
-        public List<ViewTeacher1> ViewTeachers { get; set; }
+        public List<ViewTeacher> ViewTeachers { get; set; }
 
         static ViewSubject()
         {
@@ -26,15 +26,15 @@ namespace SchoolWebProject.Services.Models
         public static ViewSubject CreateSimpleSubject(db.Subject s)
         {
             ViewSubject temp = Mapper.Map<db.Subject, ViewSubject>(s);
-            List<ViewTeacher1> teachers = new List<ViewTeacher1>();
-            ViewTeacher1 t = new ViewTeacher1();
+            List<ViewTeacher> teachers = new List<ViewTeacher>();
+            ViewTeacher t = new ViewTeacher();
 
             if (s.Teachers != null)
             {
                 foreach (var v in s.Teachers)
                 {
                     if (v.SchoolId == 1)
-                        teachers.Add(Mapper.Map<db.Teacher, ViewTeacher1>(v));
+                        teachers.Add(Mapper.Map<db.Teacher, ViewTeacher>(v));
                 }
 
                 temp.ViewTeachers = teachers;

@@ -13,6 +13,8 @@ using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
+using SchoolWebProject.Services.Models;
+
 
 namespace SchoolWebProject.Controllers
 {
@@ -38,7 +40,7 @@ namespace SchoolWebProject.Controllers
         public IEnumerable<ViewTeacher> Get()
         {
             var teachers = this.teacherService.GetAllTeachers();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(teachers);
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<SchoolWebProject.Domain.Models.Teacher>, IEnumerable<ViewTeacher>>(teachers);
             return viewModel;
         }
 
@@ -46,21 +48,21 @@ namespace SchoolWebProject.Controllers
         public ViewTeacher Get(int id)
         {
             var teacher = this.teacherService.GetProfileById(id);
-            var viewModel = AutoMapper.Mapper.Map<Teacher, ViewTeacher>(teacher);
+            var viewModel = AutoMapper.Mapper.Map<SchoolWebProject.Domain.Models.Teacher, ViewTeacher>(teacher);
             this.logger.Info("Geting teacher {0}, {1}", teacher.LastName, teacher.FirstName);
             return viewModel;
         }
 
         public IEnumerable<ViewTeacher> Get(string filter)
         {
-            return AutoMapper.Mapper.Map<IEnumerable<Teacher>, IEnumerable<ViewTeacher>>(this.teacherService.GetByName(filter));
+            return AutoMapper.Mapper.Map<IEnumerable<SchoolWebProject.Domain.Models.Teacher>, IEnumerable<ViewTeacher>>(this.teacherService.GetByName(filter));
         }
 
         // POST api/teacher
         [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacher value)
         {
-            Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value);
+            SchoolWebProject.Domain.Models.Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value);
             teacher.RoleId = 2;
             if (teacher.Email != null)
                 teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
@@ -75,10 +77,10 @@ namespace SchoolWebProject.Controllers
         public void Put(int id, [FromBody]ViewTeacher value)
         {
             SchoolContext bin = new SchoolContext();
-            Teacher teacher = (Teacher)bin.Users.First(p => p.Id == value.Id);
+            SchoolWebProject.Domain.Models.Teacher teacher = (SchoolWebProject.Domain.Models.Teacher)bin.Users.First(p => p.Id == value.Id);
             IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
             value.Subjects = null;
-            AutoMapper.Mapper.Map<ViewTeacher, Teacher>(value, teacher);
+            AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
             foreach (Subject subject in subjects)
             { 
                 if (bin.Subjects.First((p) => p.Id == subject.Id) != null)

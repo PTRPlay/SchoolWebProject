@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace SchoolWebProject.Models
+namespace SchoolWebProject.Services.Models
 {
-    public class ViewSubject
+    public class ViewTeacherDegree
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

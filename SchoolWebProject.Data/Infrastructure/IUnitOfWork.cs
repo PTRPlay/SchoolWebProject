@@ -24,7 +24,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         GenericRepository<MarkType> MarkTypeRepository { get; }
 
-        GenericRepository<Teacher> TeacherRepository { get; }
+        IRepository<Teacher> TeacherRepository { get; }
 
         GenericRepository<TeacherCategory> TeacherCategoryRepository { get; }
 
@@ -36,7 +36,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         GenericRepository<School> SchoolRepository { get; }
         
-        GenericRepository<Subject> SubjectRepository { get; }
+        IRepository<Subject> SubjectRepository { get; }
 
         GenericRepository<User> UserRepository { get; }
 

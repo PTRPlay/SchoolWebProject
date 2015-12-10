@@ -1,21 +1,23 @@
-﻿<div style="width:1000px">
-    <div class="page-header" ng-controller="ModalShowController" >
+﻿<div style="width:1000px" ng-controller="permissionController" ng-show="showTeachers()">
+    <div class="page-header" ng-controller="ModalShowController">
         <div class="row">
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <h2> Список вчителів</h2>
             </div>
-            <div class="col-md-6" style="padding-top:20px; text-align:right">
-                
-                    <a class="btn btn-primary" ng-click="showTeachersEditPage()"> Додати вчителя</a>
+            <div class="col-md-6" style="padding-top:20px; text-align:right" ng-controller="permissionController" ng-show="showAddEditTeacher()">
 
-                    <a ng-controller="categoryModelService" class=" btn btn-primary" ng-click="showCategoryEditPage()"> Редагувати категорії </a>
+                <a class="btn btn-primary" ng-click="showTeachersEditPage()"> Додати вчителя</a>
 
-                    <a ng-controller="degreeModelService" class=" btn btn-primary" ng-click="showDegreeEditPage()"> Редагувати звання </a>
-                
+                <a ng-controller="categoryModelService" class=" btn btn-primary" ng-click="showCategoryEditPage()"> Редагувати категорії </a>
+
+                <a ng-controller="degreeModelService" class=" btn btn-primary" ng-click="showDegreeEditPage()"> Редагувати звання </a>
+
             </div>
-         </div>
         </div>
-    <div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
-    <br>
-</div>
+    </div>
+
+        <div id="grid2" ui-grid="teachersGrid" ui-grid-edit class="grid" style="width:1000px; height: 470px;"></div>
+        <br>
+    </div>
+
 

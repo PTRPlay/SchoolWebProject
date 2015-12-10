@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{78F10F5E-BEC7-4091-A0FC-C9457761ECC2}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SchoolWebProject</RootNamespace>
@@ -98,6 +98,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -106,8 +110,13 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -124,17 +133,11 @@
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -175,6 +178,7 @@
     <Compile Include="Controllers\DiaryController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HolidaysController.cs" />
     <Compile Include="Controllers\JournalController.cs" />
@@ -192,27 +196,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
-    <Compile Include="Models\PupilPageData.cs" />
-    <Compile Include="Models\ViewDiary.cs" />
-    <Compile Include="Models\ViewLessonDetails.cs" />
-    <Compile Include="Models\ViewMark.cs" />
-    <Compile Include="Models\ViewSchedule.cs" />
-    <Compile Include="Models\ViewSchool.cs" />
-    <Compile Include="Models\ViewSubject.cs" />
-    <Compile Include="Models\ViewTeacherDegree.cs" />
-    <Compile Include="Models\ViewAnnouncement.cs" />
-    <Compile Include="Models\ViewPupil.cs" />
-    <Compile Include="Models\ViewTeacher.cs" />
-    <Compile Include="Models\ViewTeacherCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\angular-block-ui.css" />
+    <Content Include="Content\angular-block-ui.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\BusyIndicatorTemplate.html" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
@@ -222,16 +217,20 @@
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\app.js" />
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
+    <Content Include="Layouts\Controllers\newsAdminController.js" />
+    <Content Include="Layouts\Controllers\permissionController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
     <Content Include="Layouts\Controllers\ScheduleDirectiveController.js" />
     <Content Include="Layouts\custom.js" />
     <Content Include="Layouts\Directives\ScheduleDirective.js" />
     <Content Include="Layouts\Directives\ScheduleTable.html" />
+    <Content Include="Layouts\ExceptionOverrideModule.js" />
     <Content Include="Layouts\Images\default-profile.png" />
     <Content Include="Layouts\Images\news-placeholder2.jpg" />
     <Content Include="Layouts\Images\edit.png" />
@@ -250,12 +249,15 @@
     <Content Include="Layouts\ModalControllers\subjectModalService.js" />
     <Content Include="Layouts\PartialView\AnnouncementAddTemplate.html" />
     <Content Include="Layouts\PartialView\Contacts.html" />
+    <Content Include="Layouts\PartialView\PermissionErrorPage.html" />
+    <Content Include="Layouts\PartialView\ErrorPage.html" />
     <Content Include="Layouts\PartialView\GroupAddTemplate.html" />
     <Content Include="Layouts\PartialView\GroupDeleteTemplate.html" />
     <Content Include="Layouts\PartialView\GroupDetails.html" />
     <Content Include="Layouts\PartialView\Groups.html" />
     <Content Include="Layouts\PartialView\Journal.html" />
     <Content Include="Layouts\PartialView\News.html" />
+    <Content Include="Layouts\PartialView\NewsAdmin.html" />
     <Content Include="Layouts\PartialView\NewsDetail.html" />
     <Content Include="Layouts\PartialView\PupilAddTemplate.html" />
     <Content Include="Layouts\PartialView\PupilInfo.html" />
@@ -276,6 +278,7 @@
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
     <Content Include="Layouts\Services\holidaysService.js" />
+    <Content Include="Layouts\Services\errorService.js" />
     <Content Include="Layouts\Styles\ProfilesStyles.css" />
     <Content Include="Layouts\Styles\styles.css" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
@@ -307,6 +310,9 @@
     <Content Include="Layouts\Services\teachersServices.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-base64-upload.js" />
+    <Content Include="Scripts\angular-block-ui.js" />
+    <Content Include="Scripts\angular-block-ui.min.js" />
     <Content Include="Scripts\angular-locale_uk.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-modal-service.js" />
@@ -327,6 +333,11 @@
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Content\angular-block-ui.css.map" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\Local IIS Website.pubxml" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -334,6 +345,8 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\angular-block-ui.min.js.map" />
+    <Content Include="Scripts\angular-block-ui.js.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -353,6 +366,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Settings.StyleCop" />
+    <Content Include="Views\Error\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

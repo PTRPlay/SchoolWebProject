@@ -1,7 +1,7 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, uiGridConstants, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, uiGridConstants, lessonDetailService, $rootScope) {
 
-    $scope.chosenSubject = null;
-    $scope.chosenGroup = null;
+    $scope.chosenSubject = false;
+    $scope.chosenGroup = false;
     isValidRoleForEditMark = false;
     $scope.journalGrid = {
         columnDefs: [],
@@ -70,7 +70,7 @@
     }
 
     $scope.GetJournalPage = function (chosenSubject, chosenGroup) {
-        if (chosenGroup != null && chosenSubject != null)
+        if (chosenGroup != false && chosenSubject != false)
             journalService.getPage(chosenSubject, chosenGroup).success(function (data) {
                 $scope.journalGrid.columnDefs = [{
                     field: "№ ",
@@ -153,13 +153,23 @@
         });
     };
 
-    subjectsService.getSubjects().success(function (data) {
-        $scope.subjectsOptions = data;
-    });
+   
+
+    
+   
+    
+
+   $scope.GetSubjectByGroupId=function(groupId)
+   {
+       subjectsService.getSujectForGroup(groupId).success(function (data) {
+           $scope.parsedSubjectsOptions = data;
+       });
+    }
 
     groupsService.getGroups().success(function (data) {
         $scope.groupsOptions = data;
     });
+
 }])
 
 myApp.filter('mapGender', function () {

@@ -9,6 +9,8 @@ using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
+using SchoolWebProject.Services.Models;
+
 
 namespace SchoolWebProject.Controllers
 {
@@ -46,6 +48,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // PUT api/announcements/5
+        [HttpPost]
         [Authorize(Roles = "Admin, Teacher")]
         public void Put(int id, [FromBody]ViewAnnouncement value)
         {
@@ -56,8 +59,11 @@ namespace SchoolWebProject.Controllers
 
         // DELETE api/announcements/5
         [Authorize(Roles = "Admin, Teacher")]
-        public void Delete(int id)
+        public void Delete([FromBody]ViewAnnouncement value)
         {
+            Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
+            this.announcementService.RemoveAnnouncement(announcement);
+ 
         }
     }
 }

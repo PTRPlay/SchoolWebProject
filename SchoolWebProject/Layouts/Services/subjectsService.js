@@ -5,7 +5,17 @@
                 return data;
             }).error(function (data) {
                 return data;
+            })
+        },
+
+            getSujectForGroup: function(groupId){
+                return $http.get("api/subjects/getSubjectForGroup/" + groupId)
+                .success(function(data){
+                    return data;
+            }).error(function(data){
+                return data;
             });
-        }
+            }
+        
 }
 }]);

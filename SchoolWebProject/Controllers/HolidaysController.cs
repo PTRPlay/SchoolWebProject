@@ -16,11 +16,12 @@ namespace SchoolWebProject.Controllers
     {
         private IHolidaysService holidaysService;
 
-        public HolidaysController(ILogger logger, IHolidaysService holidaysService) : base(logger) 
+        public HolidaysController(ILogger logger, IHolidaysService holidaysService)
+            : base(logger)
         {
             this.holidaysService = holidaysService;
         }
-        
+
         // GET api/holidays
         public IEnumerable<Holidays> Get()
         {
@@ -33,19 +34,18 @@ namespace SchoolWebProject.Controllers
             return "value";
         }
 
+        [Authorize(Roles = "Admin")]
         // POST api/holidays
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Holidays value)
         {
+            this.holidaysService.AddHolidays(value);
         }
 
-        // PUT api/holidays/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public void Put(int id, [FromBody]Holidays value)
         {
-        }
-
-        // DELETE api/holidays/5
-        public void Delete(int id)
-        {
+            this.holidaysService.UpdateHolidays(value);
         }
     }
 }

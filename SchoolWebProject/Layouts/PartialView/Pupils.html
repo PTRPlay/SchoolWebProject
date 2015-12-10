@@ -1,4 +1,4 @@
-﻿<div style="width:1000px">
+﻿<div style="width:1000px" ng-controller="permissionController" ng-show="showPupils()">
     <div class="page-header">
         <div class="row">
             <div class="col-md-6">
@@ -11,14 +11,9 @@
             </div>
         </div>
     </div>
-    <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
-    <br />
-    <div ng-controller="pupilsController">
-
-
+        <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
+        <br />
     </div>
-</div>
-
 
 
 

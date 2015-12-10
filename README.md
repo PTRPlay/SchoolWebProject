@@ -1,2 +1,2 @@
 # SchoolWebProject
-School project for school by Lv-165.Net
+School project for school by Lv-165.Net group

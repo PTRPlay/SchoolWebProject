@@ -1,5 +1,5 @@
 ﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
-<div ng-app="pupilInfoController">
+<div ng-app="pupilInfoController" ng-controller="permissionController" ng-show="showPupils()">
     <div class="page-header">
         <div class="center-block">
             Профіль
@@ -20,6 +20,7 @@
     <div class="col-md-9">
         <h2 id="UserName">{{getPupil().LastName}} {{getPupil().FirstName}} {{getPupil().MiddleName}}</h2>
         <div id="info">
+            <h4 id="infoBlock">Клас: {{getPupil().Group.NameNumber}} - {{getPupil().Group.NameLetter}} </h4>
             <h4 id="infoBlock">Телефон: {{getPupil().PhoneNumber}} </h4>
             <h4 id="infoBlock">Адреса:  {{getPupil().Address}} </h4>
             <h4 id="infoBlock">Email:   {{getPupil().Email}} </h4>

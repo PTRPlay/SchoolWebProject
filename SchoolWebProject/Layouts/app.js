@@ -1,11 +1,13 @@
-var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination', 'ui.grid.cellNav', 'ui.bootstrap']);
+var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch',
+    'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination',
+    'ui.grid.cellNav', 'ui.bootstrap', 'naif.base64', 'blockUI', 'exceptionOverride']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
         url: '/home'
     })
     .state('teachers', {
-        url:'/teachers',
+        url: '/teachers',
         templateUrl: '/Layouts/PartialView/Teachers.html',
         controller: 'teachersController'
     })
@@ -13,12 +15,12 @@ myApp.config(function ($stateProvider) {
     .state('subjects', {
         url: '/subjects',
         templateUrl: '/Layouts/PartialView/Subjects.html',
-        controller:'subjectsController'
+        controller: 'subjectsController'
     })
     .state('groups', {
         url: '/groups',
         templateUrl: '/Layouts/PartialView/Groups.html',
-        controller:'groupsController'
+        controller: 'groupsController'
     })
     .state('schedule', {
         url: '/schedule',
@@ -28,7 +30,7 @@ myApp.config(function ($stateProvider) {
         url: '/diary/{id}/{date}',
         templateUrl: '/Layouts/PartialView/Diary.html',
         controller: 'diaryController'
-     })
+    })
     .state('pupils', {
         url: '/pupils',
         templateUrl: '/Layouts/PartialView/Pupils.html',
@@ -39,10 +41,15 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/News.html',
         controller: 'newsController'
     })
+    .state('newsAdminService', {
+        url: '/adminnews',
+        templateUrl: '/Layouts/PartialView/NewsAdmin.html',
+        controller: 'newsAdminController'
+    })
     .state('schoolService', {
-            url: '/contacts',
-            templateUrl: '/Layouts/PartialView/Contacts.html',
-            controller: 'schoolController'
+        url: '/contacts',
+        templateUrl: '/Layouts/PartialView/Contacts.html',
+        controller: 'schoolController'
     })
     .state('teacher', {
         url: '/teacher/{id}',
@@ -54,16 +61,15 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/PupilInfo.html',
         controller: 'pupilInfoController'
     })
-    .state('group',
-        {
-            url: '/group/{id}',
-            templateUrl: '/Layouts/PartialView/GroupDetails.html',
-            controller: 'groupDetailsController'
-        })
+    .state('group', {
+        url: '/group/{id}',
+        templateUrl: '/Layouts/PartialView/GroupDetails.html',
+        controller: 'groupDetailsController'
+    })
 	.state('journal', {
-        url: '/journal',
-        templateUrl: '/Layouts/PartialView/Journal.html',
-        controller: 'journalController'
+	    url: '/journal',
+	    templateUrl: '/Layouts/PartialView/Journal.html',
+	    controller: 'journalController'
 	})
     .state('myprofile', {
         url: '/myprofile',
@@ -74,4 +80,14 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/Holidays.html',
         controller: 'holidaysController'
     })
+     .state('permissionError', {
+         url: '/permissionerror',
+         templateUrl: '/Layouts/PartialView/PermissionErrorPage.html'
+     })
+})
+.config(function (blockUIConfig) {
+    blockUIConfig.message = 'Loading...';
+
+    blockUIConfig.delay = 200;
 });
+

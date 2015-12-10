@@ -15,11 +15,13 @@ namespace SchoolWebProject.Controllers
     public class SubjectsController : BaseApiController
     {
         private ISubjectService subjectService;
+        private IScheduleService scheduleServise;
 
-        public SubjectsController(ILogger logger, ISubjectService subjects)
+        public SubjectsController(ILogger logger, ISubjectService subjects, IScheduleService schedule)
             : base(logger)
         {
             this.subjectService = subjects;
+            this.scheduleServise = schedule;
         }
 
         // GET api/subject
@@ -37,6 +39,18 @@ namespace SchoolWebProject.Controllers
         {
             var subject = this.subjectService.GetSubjectById(id);
             var viewModel = ViewSubject.CreateSimpleSubject(subject);
+            return viewModel;
+        }
+
+           [Route("api/subject/getSubjectForGroup/{GroupId}")]
+        public IEnumerable<ViewSubject> GetSubjectForGroup(int GroupId)
+        {
+            var subjects = this.scheduleServise.GetSubjectForGroupByGroupId(GroupId);
+            List<ViewSubject> viewModel = new List<ViewSubject>();
+            foreach (var subject in subjects)
+            {
+                viewModel.Add(new ViewSubject { Id = subject.Id, Name = subject.Name });
+            }
             return viewModel;
         }
 

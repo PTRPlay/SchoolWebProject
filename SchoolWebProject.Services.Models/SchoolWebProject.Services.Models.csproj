@@ -55,18 +55,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Diary.cs" />
+    <Compile Include="Models\Diary.cs" />
     <Compile Include="MapperExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pupil.cs" />
-    <Compile Include="Teacher.cs" />
-    <Compile Include="ViewGroup.cs" />
-    <Compile Include="ViewJournal.cs" />
-    <Compile Include="ViewLessonDetails.cs" />
-    <Compile Include="ViewMark.cs" />
-    <Compile Include="ViewPupil.cs" />
-    <Compile Include="ViewSubject.cs" />
-    <Compile Include="ViewTeacher.cs" />
+    <Compile Include="Models\Pupil.cs" />
+    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="ViewModels\ViewAnnouncement.cs" />
+    <Compile Include="ViewModels\ViewDiary.cs" />
+    <Compile Include="ViewModels\ViewGroup.cs" />
+    <Compile Include="ViewModels\ViewJournal.cs" />
+    <Compile Include="ViewModels\ViewLessonDetail.cs" />
+    <Compile Include="ViewModels\ViewMark.cs" />
+    <Compile Include="ViewModels\ViewPupil.cs" />
+    <Compile Include="ViewModels\ViewSchedule.cs" />
+    <Compile Include="ViewModels\ViewSchool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\ViewSubject.cs" />
+    <Compile Include="ViewModels\ViewTeacher.cs" />
+    <Compile Include="ViewModels\ViewTeacherCategory.cs" />
+    <Compile Include="ViewModels\ViewTeacherDegree.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchoolWebProject.Domain.Models\SchoolWebProject.Domain.Models.csproj">
