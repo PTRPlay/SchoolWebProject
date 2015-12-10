@@ -59,10 +59,9 @@ namespace SchoolWebProject.Controllers
 
         // DELETE api/announcements/5
         [Authorize(Roles = "Admin, Teacher")]
-        public void Delete([FromBody]ViewAnnouncement value)
+        public void Delete(int id)
         {
-            Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
-            this.announcementService.RemoveAnnouncement(announcement);
+            this.announcementService.RemoveAnnouncement(id);
  
         }
     }
