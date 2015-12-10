@@ -10,14 +10,15 @@
                         <div class="col-sm-2">
                         </div>
                             <div class="col-sm-6">
-                                <input type="file" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input>
-
-                                <div ng-show="announcement.image">
+                                <input type="file" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="imageSelect">
+                          
+                                <div ng-show="announcement.image && imageIsSelected">
                                     <img ng-src="data:image/jpg;base64,{{announcement.image.base64}}" height="170" alt="зображення" />
                                 </div>
-                                <div ng-show="announcement.Image">
-                                    <img ng-src="data:image/jpg;base64,{{announcement.Image}}" height="170" alt="зображення новини" />
+                                <div ng-show="announcement.image && !imageIsSelected">
+                                    <img ng-src="data:image/jpg;base64,{{announcement.image}}" height="170" alt="зображення" />
                                 </div>
+
                             </div>
                         </div>
                     <div class="form-group">
