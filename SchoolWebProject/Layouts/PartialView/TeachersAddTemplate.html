@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="firstName" class="control-label col-sm-2">Ім'я:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЇЄ]{1}[а-яіЇє]{2,}(-[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*$/" required />
+                            <input type="text" class="form-control" id="firstName" ng-model="teacher.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЇЄ]{1}[а-яіЇє]{2,}((-[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*|(\s[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*)$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.firstName.$dirty && AddTeacherForm.firstName.$invalid">
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЇЄ]{1}[а-яіЇє]{2,}(-[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*$/" required />
+                            <input type="text" class="form-control" id="middleName" ng-model="teacher.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЇЄ]{1}[а-яіЇє]{2,}((-[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*|(\s[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*)$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.middleName.$dirty && AddTeacherForm.middleName.$invalid">
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЇЄ]{1}[а-яіЇє]{2,}(-[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*$/" required />
+                            <input type="text" class="form-control" id="lastName" ng-model="teacher.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІЇЄ]{1}[а-яіЇє]{2,}((-[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*|(\s[А-ЯІЇЄ]{1}[а-яіЇє]{2,})*)$/" required />
 
                             <div class="error" style="color:red"
                                  ng-show="AddTeacherForm.lastName.$dirty && AddTeacherForm.lastName.$invalid">
