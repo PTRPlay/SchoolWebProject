@@ -1,6 +1,10 @@
 ﻿myApp.controller("announcementAddController", ['$scope', '$element', 'title', 'close', 'Announcement', function ($scope, $element, title, close, Announcement) {
     $scope.announcement = null;
     $scope.IsFormValid = true;
+    $scope.imageIsSelected = false
+    $scope.imageSelect = function () {
+        $scope.imageIsSelected = true;
+    }
 
     if (Announcement != null) {
         var dateParsed;
