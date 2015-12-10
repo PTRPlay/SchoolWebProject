@@ -1,6 +1,6 @@
 ﻿myApp.controller('permissionController', ['$scope', '$location', function ($scope, $location) {
 
-    $scope.redirection = '';
+    $scope.redirection = '/permissionerror';
 
     $scope.showAddNews = function () {
         if (window.currentUser.Role == "Admin" || window.currentUser.Role == "Teacher") {
