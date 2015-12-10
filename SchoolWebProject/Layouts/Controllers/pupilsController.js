@@ -146,6 +146,8 @@
         if (sortColumn) {
             sortOpt = sortColumn;
         }
+        //generating error
+        //var x = n + 1;
 
         switch (paginationOptions.sort) {
             case uiGridConstants.ASC:

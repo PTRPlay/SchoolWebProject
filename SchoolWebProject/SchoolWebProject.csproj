@@ -228,6 +228,7 @@
     <Content Include="Layouts\custom.js" />
     <Content Include="Layouts\Directives\ScheduleDirective.js" />
     <Content Include="Layouts\Directives\ScheduleTable.html" />
+    <Content Include="Layouts\ExceptionOverrideModule.js" />
     <Content Include="Layouts\Images\default-profile.png" />
     <Content Include="Layouts\Images\news-placeholder2.jpg" />
     <Content Include="Layouts\Images\edit.png" />
@@ -275,6 +276,7 @@
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
     <Content Include="Layouts\Services\holidaysService.js" />
+    <Content Include="Layouts\Services\errorService.js" />
     <Content Include="Layouts\Styles\ProfilesStyles.css" />
     <Content Include="Layouts\Styles\styles.css" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
@@ -358,10 +360,10 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Settings.StyleCop" />
+    <Content Include="Views\Error\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
