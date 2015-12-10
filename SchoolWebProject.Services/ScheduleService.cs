@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Services.Interfaces;
+using AutoMapper;
 
 namespace SchoolWebProject.Services 
 {
@@ -39,16 +40,16 @@ namespace SchoolWebProject.Services
                 GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
             var teacherSchedule = this.unitOfWork.ScheduleRepository.
                 GetMany(p => p.Teacher.FirstName + p.Teacher.MiddleName + p.Teacher.LastName == teacher);
-            if (teacher == "null")
+            if (teacher == null)
             {
-                if (group != "null")
+                if (group != null)
                 {
                     return groupSchedule;
                 }
             }
             else 
             {
-                if (group == "null") 
+                if (group == null) 
                 {
                     return teacherSchedule;
                 }
@@ -82,7 +83,7 @@ namespace SchoolWebProject.Services
             schedule.ClassRoom = null;
             unitOfWork.ScheduleRepository.Add(schedule);    
         }
-
+        
         public void ModifySchedule(IEnumerable<Schedule> schedules)
         {
             var allSchedules = GetAllSchedules();

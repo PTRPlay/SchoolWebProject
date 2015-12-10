@@ -228,6 +228,7 @@
     <Content Include="Layouts\Controllers\lessondetailController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
+    <Content Include="Layouts\Controllers\ScheduleDirectiveController.js" />
     <Content Include="Layouts\custom.js" />
     <Content Include="Layouts\Directives\ScheduleDirective.js" />
     <Content Include="Layouts\Directives\ScheduleTable.html" />
