@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace SchoolWebProject.Models
+namespace SchoolWebProject.Services.Models
 {
-    public class ViewDiary
+    class ViewDiary
     {
         public int IdPupil { get; set; }
 

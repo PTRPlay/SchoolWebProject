@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using db = SchoolWebProject.Domain.Models;
 
-namespace SchoolWebProject.Models
+namespace SchoolWebProject.Services.Models
 {
     public class ViewTeacher
     {
@@ -30,5 +32,15 @@ namespace SchoolWebProject.Models
         public string WorkStart { get; set; }
 
         public IEnumerable<ViewSubject> Subjects { get; set; }
+
+        static ViewTeacher()
+        {
+            Mapper.CreateMap<db.Teacher, ViewTeacher>().IgnoreAllNonExisting();
+        }
+
+        public static ViewTeacher CreateSimpleTeacher(db.Teacher t)
+        {
+            return Mapper.Map<db.Teacher, ViewTeacher>(t);
+        }
     }
 }

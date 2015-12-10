@@ -52,11 +52,10 @@ namespace SchoolWebProject.Controllers
 
         private void CreateCookie(User currentUser)
         {
-            int minutesToCookiesExpirate = 20;
             LogInData currLogin = this.accountService.GetUserLogInData(currentUser.Id);
             string currentUserRole = this.accountService.GetRoleById(currentUser.RoleId).Name;
             FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currLogin.Login,
-                DateTime.Now, DateTime.Now.AddMinutes(minutesToCookiesExpirate), true, currentUserRole);
+                DateTime.Now, DateTime.Now.AddMinutes(Constants.minutesToCookiesExpirate), true, currentUserRole);
             string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
             HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             HttpContext.Response.Cookies.Add(authorizationCookie);

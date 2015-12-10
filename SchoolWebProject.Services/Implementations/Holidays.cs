@@ -34,6 +34,7 @@ namespace SchoolWebProject.Services
         public void UpdateHolidays(Holidays holidays)
         {
             this.unitOfWork.HolidaysRepository.Update(holidays);
+            this.unitOfWork.SaveChanges();
         }
 
         public void AddHolidays(Holidays holidays)

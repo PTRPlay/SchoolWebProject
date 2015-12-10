@@ -134,6 +134,5 @@
     $scope.toggleFiltering = function(){
         $scope.gridOptions.enableFiltering = !$scope.gridOptions.enableFiltering;
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
-        
     };
 }])

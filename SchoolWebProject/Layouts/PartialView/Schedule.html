@@ -8,7 +8,7 @@
         <button class="btn btn-primary" ng-click="showSchedule()">
             Показати Розклад
         </button>
-        <button class="btn btn-primary" ng-click="Edit(group)">
+        <button class="btn btn-primary" ng-click="Edit(group)" ng-controller="permissionController" ng-show="showEditSchedule()">
             Редагувати Розклад
         </button>
     </div>

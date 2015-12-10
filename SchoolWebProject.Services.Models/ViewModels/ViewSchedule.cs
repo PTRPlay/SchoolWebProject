@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Models
 {

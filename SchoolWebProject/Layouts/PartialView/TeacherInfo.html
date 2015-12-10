@@ -1,9 +1,9 @@
 ﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
-<div ng-app="teacherInfoController">
+<div ng-app="teacherInfoController" ng-controller="permissionController" ng-show="showTeachers()">
     <div class="page-header">
-        <div class="center-block">
+        <div class="center-block" ng-controller="ModalShowController">
             Профіль
-            <a ng-controller="ModalShowController" ng-click="showTeachersEditPage(getTeacher())" class="btn btn-primary pull-right" style="margin:1px">
+            <a ng-click="showTeachersEditPage(getTeacher())" class="btn btn-primary pull-right" style="margin:1px" ng-controller="permissionController" ng-show="showAddEditTeacher()">
                 <span class="glyphicons glyphicons-user-add"></span> Редагувати
             </a>
 
