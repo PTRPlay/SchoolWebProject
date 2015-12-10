@@ -5,13 +5,20 @@
             $scope.daysOff = [];
             if (data != null) {
                 for (i = 0; i < data.length; i++) {
-                    data[i].StartDay = $scope.dateParser(data[i].StartDay);
-                    data[i].EndDay = $scope.dateParser(data[i].EndDay);
-                    if (data[i].StartDay == data[i].EndDay) {
+                    //data[i].StartDay = $scope.dateParser(data[i].StartDay);
+                    //data[i].EndDay = $scope.dateParser(data[i].EndDay);
+                    var equal = false;
+                    if (data[i].StartDay == data[i].EndDay)
+                    {
+                        equal = true;
+                    }
+                    data[i].StartDay = new Date(data[i].StartDay);
+                    data[i].EndDay = new Date(data[i].EndDay);
+                    if (equal) {
                         $scope.daysOff.push(data[i]);
                     }
 
-                    if (data[i].StartDay != data[i].EndDay) {
+                    if (!equal) {
                         $scope.holidays.push(data[i]);
                     }
                 }
@@ -20,7 +27,8 @@
 
     $scope.dateParser = function (date) {
         var dateParseTempValue = date.slice(0, 10).split('/');
-        return (dateParseTempValue[2], dateParseTempValue[1], dateParseTempValue[0]);
+        return new Date(dateParseTempValue[0]);
+
     }
 
     $scope.addNewDayOff = function (dayOff) {

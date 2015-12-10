@@ -54,7 +54,7 @@
                                 <label>Дата</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="date" class="form-control" id="dayOffDate" ng-model="dayOff.StartDay" ng-click="" value="{{dateParser(dayOff.StartDay)}}" />
+                                <input type="date" class="form-control" id="dayOffDate" ng-model="dayOff.StartDay" ng-click="" value="{{dayOff.StartDay}}"  />
                             </div>
                             <div>
                                 <a ng-href="#/holidays" ng-click="addNewDayOff(dayOff)"><span class="col-md-1 glyphicon glyphicon-ok-circle"></span></a>
@@ -151,7 +151,7 @@
                                 <label>Початок:</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="date" class="form-control" id="holidaysStartDay" ng-click=""  ng-model="holiday.StartDay" value="{{dateParser(holiday.StartDay)}}" />
+                                <input type="date" class="form-control" id="holidaysStartDay" ng-click=""  ng-model="holiday.StartDay" value="{{holiday.StartDay}}" />
                             </div>
                             <div class="col-md-2"></div>
                         </div>
@@ -162,7 +162,7 @@
                                 <label>Кінець:</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="date" class="form-control" id="holidaysEndDay" ng-click=""  ng-model="holiday.EndDay" value="{{dateParser(holiday.EndDay)}}" />
+                                <input type="date" class="form-control" id="holidaysEndDay" ng-click=""  ng-model="holiday.EndDay" value="{{holiday.EndDay}}" />
                             </div>
                             <div>
                                 <a href="#/holidays" ng-click="addNewHolidays(holiday)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
