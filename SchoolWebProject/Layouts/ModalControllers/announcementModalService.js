@@ -22,6 +22,28 @@
                 }
             });
         });
+
     };
+
+    $scope.showAnnouncementDeletePage = function (id) {
+        ModalService.showModal({
+            templateUrl: "Layouts/PartialView/AnnouncementDeleteTemplate.html",
+            controller: "announcementDeleteController",
+            inputs: {
+                title: "Delete",
+                AnnouncementId: id
+                
+            }
+        })
+            .then(function (modal) {
+                modal.element.modal();
+                modal.close.then(function (result) {
+                    if (result.id != null) {
+                        $http.delete("api/announcements/" + result.id);
+                        window.location.reload("/home");
+                    }
+                });
+            });
+    }
 
 }]);
