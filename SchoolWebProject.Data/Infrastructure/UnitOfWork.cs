@@ -187,7 +187,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Subject> SubjectRepository
+        public IRepository<Subject> SubjectRepository
         {
             get
             {

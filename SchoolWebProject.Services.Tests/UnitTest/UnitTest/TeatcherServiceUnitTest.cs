@@ -13,56 +13,50 @@ namespace SchoolWebProject.UnitTestProject
     [TestClass]
     public class TeacherServiceUnitTest
     {
-      private List<Teacher> teachers = new List<Teacher> 
+      private List<Subject> subjects = new List<Subject>
       {
-          new Teacher 
-          { 
-              LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна",
-              WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 
-          },
-          new Teacher 
-          {
-              LastName = "Гарланенко", FirstName = "Євгенія", MiddleName = "Сергіївна",
-              WorkBegin = new DateTime(2008, 3, 18), PhoneNumber = "993385320", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2 
-          },
-          new Teacher 
-          {
-              LastName = "Євенко", FirstName = "Вадим", MiddleName = "Олегович",
-              WorkBegin = new DateTime(1990, 7, 18), PhoneNumber = "290849203", RoleId = 2, SchoolId = 1, TeacherCategoryId = 2
-          },
- };
+          new Subject { Name = "хімія", Teachers=new List<Teacher>() },//1
+          new Subject { Name = "фізика", Teachers=new List<Teacher>() },//2
+          new Subject { Name = "математика", Teachers=new List<Teacher>() }//3
+      };
 
       private Teacher teacher = new Teacher 
       {
-          LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна",
+          LastName = "Бойченко", FirstName = "Ярослава", MiddleName = "Станіславівна", Subjects=new List<Subject>(),
           WorkBegin = new DateTime(1998, 6, 21), PhoneNumber = "693984558", RoleId = 2, SchoolId = 1, TeacherCategoryId = 1 
       };
 
         [TestMethod]
         public void GetTeachers_Test_If_Get_All_Teacher_And_Invoke_GetAll_repository_Method()
         {
+            //Arange
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iRepository = new Mock<IRepository<Teacher>>();
+
+            iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-            iUnitOfWork.Setup(inv => inv.TeacherRepository.GetAll());
-
+            //Act
             teacherService.GetAllTeachers();
-
-            iUnitOfWork.Verify(inv => inv.TeacherRepository.GetAll(), Times.Once);
+            //Assert
+            iRepository.Verify(inv => inv.GetAll(), Times.Once);
         }
 
         [TestMethod]
         public void GetProfileById_Test_Is_Invoke_Repo_GetById()
         {
+            //Arrange
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
-            iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(this.teacher);
             var iUnitOfWork = new Mock<IUnitOfWork>();
+
+            iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
+            iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(this.teacher);
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
             int anyIdMoreZero = 3;
-
+            //Act
            teacherService.GetProfileById(anyIdMoreZero);
-            
+            //Assert
            iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
         }
 
@@ -70,57 +64,68 @@ namespace SchoolWebProject.UnitTestProject
         [TestMethod]
         public void GetProfileById_Test_Is_Generete_Exeption_If_Id_less_zero()
         {
+            //Arrange
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
 
-            iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
+            iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-            int anyIdMoreZero = -2;
-
-            var teacher = teacherService.GetProfileById(anyIdMoreZero);
-
-            iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
+            int anyIdLessZero = -2;
+            //Act
+            var teacher = teacherService.GetProfileById(anyIdLessZero);
+            //Assert
+            iRepository.Verify(inv => inv.GetById(anyIdLessZero), Times.Once);
         }
 
         [TestMethod]
         public void UpdateProfileUnitTest()
         {
+            //Arrange
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
+
+            iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-
+            //Act
             teacherService.UpdateProfile(this.teacher);
-
+            //Assert
             iRepository.Verify(inv => inv.Update(this.teacher), Times.Once);
         }
 
         [TestMethod]
         public void AddTeacherUnitTest()
         {
+            //Arrange
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-            var iRepository = new Mock<IRepository<Teacher>>();
+            var iRepositoryTeacher = new Mock<IRepository<Teacher>>();
+            var iRepositorySubject = new Mock<IRepository<Subject>>();
+
+
+            this.teacher.Subjects = this.subjects;
+            iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepositoryTeacher.Object);
+            iUnitOfWork.Setup(st => st.SubjectRepository).Returns(iRepositorySubject.Object);
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
-            iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
-
+            //Act
             teacherService.AddTeacher(this.teacher);
-
-            iUnitOfWork.Verify(inv => inv.TeacherRepository.Add(this.teacher), Times.Once);
+            //Assert
+           iRepositoryTeacher.Verify(inv => inv.Add(this.teacher), Times.Once);
         }
 
         [TestMethod]
         public void RemoveTeacherUnit5Test()
         {
+            //Arrange
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
             iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
-
+            //Act
             teacherService.RemoveTeacher(this.teacher);
-
+            //Assert
             iRepository.Verify(inv => inv.Delete(this.teacher), Times.Once);
         }
     }
