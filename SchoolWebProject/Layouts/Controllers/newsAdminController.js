@@ -48,7 +48,7 @@
                field: "Details",
                width: "60",
                cellTemplate: '<div ng-controller="announcementModalService"><a title="Редагувати" href="" ng-click="showAnnouncementEditPage(row.entity)" ><img src="/Layouts/Images/edit.png"></a> ' +
-                             '<a title="Видалити" href="" ng-click="deleteNews()" ><img src="/Layouts/Images/remove.png"></a></div>',
+                             '<a title="Видалити" href="" ng-click="showAnnouncementDeletePage(row.entity.Id, row.entity.Title)" ><img src="/Layouts/Images/remove.png"></a></div>',
                enableFiltering: false,
                enableSorting: false,
                enableHiding: false,

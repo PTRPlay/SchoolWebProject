@@ -247,6 +247,7 @@
     <Content Include="Layouts\ModalControllers\subjectModalController.js" />
     <Content Include="Layouts\ModalControllers\subjectModalService.js" />
     <Content Include="Layouts\PartialView\AnnouncementAddTemplate.html" />
+    <Content Include="Layouts\PartialView\AnnouncementDeleteTemplate.html" />
     <Content Include="Layouts\PartialView\Contacts.html" />
     <Content Include="Layouts\PartialView\PermissionErrorPage.html" />
     <Content Include="Layouts\PartialView\ErrorPage.html" />
