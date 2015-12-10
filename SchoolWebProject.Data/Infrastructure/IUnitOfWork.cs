@@ -41,6 +41,8 @@ namespace SchoolWebProject.Data.Infrastructure
         GenericRepository<User> UserRepository { get; }
 
         GenericRepository<Role> RoleRepository { get; }
+
+        GenericRepository<Parent> ParentRepository { get; }
         #endregion 
 
         void SaveChanges();
