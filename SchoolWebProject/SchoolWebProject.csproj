@@ -217,6 +217,7 @@
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\app.js" />
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
@@ -332,6 +333,10 @@
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Content\angular-block-ui.css.map" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\Local IIS Website.pubxml" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
