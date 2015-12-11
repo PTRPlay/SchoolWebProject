@@ -69,7 +69,8 @@ namespace SchoolWebProject.Services
 
         public void RemoveParent(int id)
         {
-            this.unitOfWork.ParentRepository.Delete(this.unitOfWork.ParentRepository.GetById(id));
+            var parent = this.unitOfWork.ParentRepository.GetById(id);
+            this.unitOfWork.ParentRepository.Delete(parent);
             this.unitOfWork.SaveChanges();
         }
     }

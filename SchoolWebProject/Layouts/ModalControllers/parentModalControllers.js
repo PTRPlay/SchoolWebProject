@@ -58,3 +58,23 @@
         close(null, 500);
     }
 }]);
+
+myApp.controller("parentDeleteController", ['$scope', '$element', 'title', 'close', 'ParentId', function ($scope, $element, title, close, ParentId) {
+    $scope.parentId = null;
+    $scope.IsFormValid = true;
+    if (ParentId != null) {
+        $scope.parentId = ParentId;
+    }
+
+    $scope.close = function () {
+        $element.modal('hide');
+        close({
+            id: $scope.parentId,
+        }, 500);
+    };
+
+    $scope.cancel = function () {
+        $element.modal('hide');
+        close(null, 500);
+    }
+}]);

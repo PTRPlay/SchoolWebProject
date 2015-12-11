@@ -24,6 +24,26 @@
                     }
                 })
             });
-        }
+        },
+
+        showParentsDeleteModal: function (id) {
+        ModalService.showModal({
+            templateUrl: "Layouts/PartialView/ParentDeleteTemplate.html",
+            controller: "parentDeleteController",
+            inputs: {
+                title: "Delete",
+                ParentId: id
+            }
+        })
+            .then(function (modal) {
+                modal.element.modal();
+                modal.close.then(function (result) {
+                    if (result.id != null) {
+                        $http.delete("api/parents/" + result.id);
+                        window.location.reload("/home");
+                    }
+                });
+            });
+    }
     }
 }]);

@@ -256,6 +256,7 @@
     <Content Include="Layouts\PartialView\AnnouncementDeleteTemplate.html" />
     <Content Include="Layouts\PartialView\Contacts.html" />
     <Content Include="Layouts\PartialView\ParentAddTemplate.html" />
+    <Content Include="Layouts\PartialView\ParentDeleteTemplate.html" />
     <Content Include="Layouts\PartialView\ParentInfo.html" />
     <Content Include="Layouts\PartialView\Parents.html" />
     <Content Include="Layouts\PartialView\PermissionErrorPage.html" />

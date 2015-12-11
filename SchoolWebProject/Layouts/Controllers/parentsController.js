@@ -70,7 +70,7 @@
                 name: "Опції",
                 field: "Profile",
                 cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/parent/{{row.entity.Id}}"><img src="/Layouts/Images/user.png"></a>  ' +
-                    '<a title="Видалити {{row.entity.LastName}} {{row.entity.FirstName}}" href="" ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)"><img src="/Layouts/Images/remove.png"></a></div>',
+                    '<a title="Видалити {{row.entity.LastName}} {{row.entity.FirstName}}" href="" ng-click="grid.appScope.deleteParent(row.entity.Id)"><img src="/Layouts/Images/remove.png"></a></div>',
                 width: "70",
                 enableFiltering: false,
                 enableSorting: false,
@@ -119,11 +119,10 @@
     };
     $scope.addParent = function () {
         ParentsModalService.showParentAddPage();
-    }
-    //$scope.deletePupil = function (id, lastName) {
-    //    var val = { id: id, lastName: lastName };
-    //    ParentsModalService.showPupilsDeleteModal(val);
-    //};
+    };
+    $scope.deleteParent = function (id) {
+        ParentsModalService.showParentsDeleteModal(id);
+    };
     var getPage = function (filter, sortColumn) {
         var pageNumb = paginationOptions.pageNumber;
         var sortOpt = 'LastName';
