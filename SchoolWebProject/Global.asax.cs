@@ -21,6 +21,15 @@ namespace SchoolWebProject
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
+        protected void Application_Error(object sender, EventArgs e)
+        {
+             var exception = Server.GetLastError();
+             if (exception != null)
+             {
+                 Server.TransferRequest("~/Error?Message=" + exception.Message);
+             }
+        }
+
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
             HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];

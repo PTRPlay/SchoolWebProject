@@ -88,6 +88,6 @@ myApp.config(function ($stateProvider) {
 .config(function (blockUIConfig) {
     blockUIConfig.message = 'Loading...';
 
-    blockUIConfig.delay = 200;
+    blockUIConfig.delay = 300;
 });
 
