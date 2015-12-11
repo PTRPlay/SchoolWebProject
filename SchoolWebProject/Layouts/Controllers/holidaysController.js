@@ -5,8 +5,6 @@
             $scope.daysOff = [];
             if (data != null) {
                 for (i = 0; i < data.length; i++) {
-                    //data[i].StartDay = $scope.dateParser(data[i].StartDay);
-                    //data[i].EndDay = $scope.dateParser(data[i].EndDay);
                     var equal = false;
                     if (data[i].StartDay == data[i].EndDay)
                     {
