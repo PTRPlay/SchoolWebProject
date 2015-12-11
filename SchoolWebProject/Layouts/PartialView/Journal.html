@@ -22,13 +22,16 @@
             </div>
             <div ng-controller="lessondetailController" class="details-background pull-right" ng-show="showHomeTask">
                 <button type="button" class="close pull-right" ng-click="close()">&times;</button>
-                <div class=" form-group">
+                <div class=" form-group lessondetails-div">
+                    <label class="control-label">Дата:</label>
                     <label class="control-label">{{lessonDetail.date | date}}</label>
                 </div>
-                <div class="form-group">
+                <div class="form-group lessondetails-div">
+                    <label class="control-label">Тема уроку:</label>
                     <textarea ng-change="isChangedDetail()" ng-model="lessonDetail.theme" class="lessondetails-textarea"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group lessondetails-div">
+                    <label class="control-label">Домашнє завдання:</label>
                     <textarea ng-change="isChangedDetail()" ng-model="lessonDetail.hometask" class="lessondetails-textarea"></textarea>
                 </div>
                 <div class="form-group pull-right change-button" ng-show="changedDetail">

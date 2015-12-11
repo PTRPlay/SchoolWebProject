@@ -66,6 +66,7 @@
     <Compile Include="ViewModels\ViewJournal.cs" />
     <Compile Include="ViewModels\ViewLessonDetail.cs" />
     <Compile Include="ViewModels\ViewMark.cs" />
+    <Compile Include="ViewModels\ViewParent.cs" />
     <Compile Include="ViewModels\ViewPupil.cs" />
     <Compile Include="ViewModels\ViewSchedule.cs" />
     <Compile Include="ViewModels\ViewSchool.cs">

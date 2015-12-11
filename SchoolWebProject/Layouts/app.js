@@ -36,6 +36,11 @@ myApp.config(function ($stateProvider) {
         templateUrl: '/Layouts/PartialView/Pupils.html',
         controller: 'pupilsController'
     })
+    .state('parents', {
+        url: '/parents',
+        templateUrl: '/Layouts/PartialView/Parents.html',
+        controller: 'parentsController'
+    })
     .state('newsService', {
         url: '/news',
         templateUrl: '/Layouts/PartialView/News.html',
@@ -84,6 +89,11 @@ myApp.config(function ($stateProvider) {
          url: '/permissionerror',
          templateUrl: '/Layouts/PartialView/PermissionErrorPage.html'
      })
+    .state('parent', {
+        url: '/parent/{id}',
+        templateUrl: '/Layouts/PartialView/ParentInfo.html',
+        controller: 'parentInfoController'
+    })
 })
 .config(function (blockUIConfig) {
     blockUIConfig.message = 'Loading...';
