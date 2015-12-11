@@ -12,7 +12,7 @@
                 return data;
             })
         },
-        getParents: function () {
+        getParent: function () {
             return $http.get('api/parents/')
             .success(function (data) {
                 return data.get;

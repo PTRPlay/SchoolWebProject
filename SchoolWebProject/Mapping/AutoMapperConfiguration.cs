@@ -6,6 +6,7 @@ using AutoMapper;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services.Models;
+using SchoolWebProject.Services.Models.ViewModels;
 
 namespace SchoolWebProject.Mapper
 {
@@ -40,7 +41,7 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<LessonDetail, ViewLessonDetail>();
             AutoMapper.Mapper.CreateMap<Schedule, ViewSchedule>()
                 .ForMember(g => g.Group, map => map.MapFrom(vm => vm.Group.NameNumber + "-" + vm.Group.NameLetter));
-
+            AutoMapper.Mapper.CreateMap<Parent, ViewParent>();
             AutoMapper.Mapper.CreateMap<Group, ViewGroup>()
                .IgnoreAllNonExisting()
                .ForMember(
@@ -67,7 +68,7 @@ namespace SchoolWebProject.Mapper
         {
             AutoMapper.Mapper.CreateMap<ViewTeacherCategory, TeacherDegree>();
             AutoMapper.Mapper.CreateMap<ViewTeacherDegree, TeacherDegree>();
-
+            AutoMapper.Mapper.CreateMap<ViewParent, Parent>();
             AutoMapper.Mapper.CreateMap<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>()
                 .ForMember(g => g.TeacherCategoryId, map => map.MapFrom(vm => vm.Category.Id))
                 .ForMember(g => g.TeacherDegreeId, map => map.MapFrom(vm => vm.Degree.Id))

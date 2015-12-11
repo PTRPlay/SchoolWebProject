@@ -20,6 +20,7 @@ namespace SchoolWebProject.Infrastructure
             {"Вчителі","teachers"},
             {"Предмети", "subjects"},
             {"Учні", "pupils"},
+            {"Батьки", "parents"},
             {"Класи", "groups"},
             {"Розклад", "schedule"},
             {"Журнал", "journal"},
@@ -30,6 +31,7 @@ namespace SchoolWebProject.Infrastructure
 
         public static readonly Dictionary<string, string> TeacherPermissions = new Dictionary<string, string>() {
             {"Учні", "pupils"},
+            {"Батьки", "parents"},
             {"Класи", "groups"},
             {"Розклад", "schedule"},
             {"Журнал", "journal"},

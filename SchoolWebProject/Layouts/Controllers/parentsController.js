@@ -1,4 +1,4 @@
-﻿myApp.controller("parentsController", ["parentsService", "$scope", "uiGridConstants", function ($scope, parentsService, uiGridConstants) {
+﻿myApp.controller('parentsController', ['$scope', 'parentsService', 'uiGridConstants', 'ParentsModalService', function ($scope, parentsService, uiGridConstants, ParentsModalService) {
     $scope.parentsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -69,7 +69,7 @@
             {
                 name: "Опції",
                 field: "Profile",
-                cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/pupil/{{row.entity.Id}}"><img src="/Layouts/Images/user.png"></a>  ' +
+                cellTemplate: '<div><a title="Профіль {{row.entity.LastName}} {{row.entity.FirstName}}" ng-href="#/parent/{{row.entity.Id}}"><img src="/Layouts/Images/user.png"></a>  ' +
                     '<a title="Видалити {{row.entity.LastName}} {{row.entity.FirstName}}" href="" ng-click="grid.appScope.deletePupil(row.entity.Id, row.entity.LastName)"><img src="/Layouts/Images/remove.png"></a></div>',
                 width: "70",
                 enableFiltering: false,
@@ -114,13 +114,16 @@
         pageSize: 25,
         sort: null
     };
-    /*$scope.editPupil = function (value) {
-        PupilsModalService.showPupilsEditPage(value);
+    $scope.editParents = function (value) {
+        ParentsModalService.showParentAddPage(value);
     };
-    $scope.deletePupil = function (id, lastName) {
-        var val = { id: id, lastName: lastName };
-        PupilsModalService.showPupilsDeleteModal(val);
-    };*/
+    $scope.addParent = function () {
+        ParentsModalService.showParentAddPage();
+    }
+    //$scope.deletePupil = function (id, lastName) {
+    //    var val = { id: id, lastName: lastName };
+    //    ParentsModalService.showPupilsDeleteModal(val);
+    //};
     var getPage = function (filter, sortColumn) {
         var pageNumb = paginationOptions.pageNumber;
         var sortOpt = 'LastName';
@@ -140,6 +143,8 @@
                 sortOpt = sortOpt + ' ASC';
                 break;
         }
+
+
         parentsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
                 $scope.parentsGrid.totalItems = data.PageCount;

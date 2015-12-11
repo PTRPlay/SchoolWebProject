@@ -12,6 +12,8 @@ namespace SchoolWebProject.Services.Interfaces
     {
         IEnumerable<Parent> GetAllParents();
 
+        IEnumerable<Parent> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount);
+
         Parent GetParent(int id);
 
         Parent Get(Expression<Func<Parent, bool>> expression);

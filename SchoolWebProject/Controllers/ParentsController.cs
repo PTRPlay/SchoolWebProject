@@ -8,7 +8,7 @@ using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services.Interfaces;
 using SchoolWebProject.Services;
 using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Models;
+using SchoolWebProject.Services.Models.ViewModels;
 
 namespace SchoolWebProject.Controllers
 {
@@ -40,6 +40,15 @@ namespace SchoolWebProject.Controllers
             return viewModel;
         }
 
+        public object GetPage(int page, int amount, string sorting, string filtering = null)
+         {
+             int pageCount;
+             var parents = this.parentService.GetPage(page, amount, sorting, filtering, out pageCount);
+             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Parent>, IEnumerable<ViewParent>>(parents);
+             var pupilpage = new { Parents = viewModel, PageCount = pageCount };
+             logger.Info("retrieving page with pupils from a server. page # {0}, amount - {1}", page, amount);
+             return pupilpage;
+         }
         // POST api/parrents
         [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewParent value)

@@ -56,6 +56,7 @@
     <Compile Include="Implementations\DiaryService.cs" />
     <Compile Include="Implementations\EmailSenderService.cs" />
     <Compile Include="Implementations\Holidays.cs" />
+    <Compile Include="Implementations\ParentService.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IAnnouncementService.cs" />
     <Compile Include="Interfaces\IDiaryService.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Interfaces\IMarkService.cs" />
     <Compile Include="Implementations\GroupService.cs" />
     <Compile Include="Interfaces\IGroupService.cs" />
+    <Compile Include="Interfaces\IParentService.cs" />
     <Compile Include="Interfaces\ITeacherDegreeService.cs" />
     <Compile Include="Interfaces\IPupilService.cs" />
     <Compile Include="Interfaces\IScheduleService.cs" />
