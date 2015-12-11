@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using AutoMapper;
 using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Models;
 using SchoolWebProject.Services.Models;
+using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Mapper
 {
@@ -39,7 +39,8 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<School, ViewSchool>();
             AutoMapper.Mapper.CreateMap<LessonDetail, ViewLessonDetail>();
             AutoMapper.Mapper.CreateMap<Schedule, ViewSchedule>()
-                .ForMember(g => g.Group, map => map.MapFrom(vm => vm.Group.NameNumber + "-" + vm.Group.NameLetter));
+                .ForMember(g => g.Group, map => map.MapFrom(vm => vm.Group.NameNumber + "-" + vm.Group.NameLetter))
+                .ForMember(g => g.ClassRoom, map => map.MapFrom(vm => vm.ClassRoom.Name));
 
             AutoMapper.Mapper.CreateMap<Group, ViewGroup>()
                .IgnoreAllNonExisting()

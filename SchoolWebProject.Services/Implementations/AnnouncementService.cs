@@ -45,11 +45,12 @@ namespace SchoolWebProject.Services
             this.unitOfWork.SaveChanges();
         }
 
-        public void RemoveAnnouncement(Announcement announcement)
+        public void RemoveAnnouncement(int id)
         {
+            Announcement announcement = this.unitOfWork.AnnouncementRepository.GetById(id);
+            unitOfWork.AnnouncementRepository.Delete(announcement);
+            unitOfWork.SaveChanges();
             logger.Info("Remove annoncement {0}", announcement.Title);
-            this.unitOfWork.AnnouncementRepository.Delete(announcement);
-            this.unitOfWork.SaveChanges();
         }
     }
 }

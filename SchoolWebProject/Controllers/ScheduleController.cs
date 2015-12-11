@@ -30,11 +30,9 @@ namespace SchoolWebProject.Controllers
             return viewSchedules;
         }
 
-       
-        public IEnumerable<ViewSchedule> Get(string filter)
+        public IEnumerable<ViewSchedule> Get(string teacher ,string group)
         {
-            string[] filters = filter.Split(new char[]{' '},StringSplitOptions.RemoveEmptyEntries);
-            var schedules = this.scheduleService.GetByFilter(filters[0], filters[1]);
+            var schedules = this.scheduleService.GetByFilter(teacher,group);
             var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(schedules);
             logger.Info("Get part Schedule");
             return viewSchedules;

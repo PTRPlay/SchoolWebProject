@@ -11,6 +11,8 @@ namespace SchoolWebProject.Services
     {
         IEnumerable<LessonDetail> GetAllLessonDetails();
 
+        void GenereteLessonDeatail(Schedule addedSchedule);
+
         LessonDetail GetLessonDetailById(int id);
 
         void UpdateLessonDetail(LessonDetail lessonDetail);

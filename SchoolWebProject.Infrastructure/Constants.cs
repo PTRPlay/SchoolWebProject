@@ -23,6 +23,7 @@ namespace SchoolWebProject.Infrastructure
             {"Класи", "groups"},
             {"Розклад", "schedule"},
             {"Журнал", "journal"},
+            {"Навчальний рік", "holidays"},
             {"Новини", "newsAdminService"},
             {"Контакти", "schoolService"}
         };

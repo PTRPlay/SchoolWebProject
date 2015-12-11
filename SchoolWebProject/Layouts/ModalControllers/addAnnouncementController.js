@@ -9,7 +9,7 @@
     if (Announcement != null) {
         var dateParsed;
         if (Announcement.DataPublished != null) {
-            var dateParsed = Announcement.DataPublished.split('.');
+            var dateParsed = Announcement.DataPublished.slice(0,10).split('-');
         }
         $scope.announcement = {
             id: Announcement.Id,
@@ -17,8 +17,9 @@
             title: Announcement.Title,
             message: Announcement.Message,
             messageDetails: Announcement.MessageDetails,
-            dataPublished: dateParsed != null ? new Date(dateParsed[2], dateParsed[1], dateParsed[0]) : new Date(),
+            dataPublished: dateParsed != null ? new Date(dateParsed[0], dateParsed[1]-1, dateParsed[2]) : new Date(),
         };
+        
     }
     else {
         $scope.announcement = {
@@ -47,6 +48,20 @@
     $scope.cancel = function () {
         $element.modal('hide');
 
+        close(null, 500);
+    }
+}]);
+
+myApp.controller("announcementDeleteController", ['$scope', '$element', 'title', 'close', 'AnnouncementId', function ($scope, $element, title, close, AnnouncementId) {
+    $scope.close = function () {
+        $element.modal('hide');
+        close({
+            id: AnnouncementId,
+        }, 500);
+    };
+
+    $scope.cancel = function () {
+        $element.modal('hide');
         close(null, 500);
     }
 }]);
