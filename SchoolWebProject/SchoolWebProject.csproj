@@ -276,7 +276,6 @@
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
     <Content Include="Layouts\Services\holidaysService.js" />
-    <Content Include="Layouts\Services\errorService.js" />
     <Content Include="Layouts\Styles\ProfilesStyles.css" />
     <Content Include="Layouts\Styles\styles.css" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
