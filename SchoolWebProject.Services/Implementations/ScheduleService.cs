@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Services.Interfaces;
+using AutoMapper;
 
 namespace SchoolWebProject.Services 
 {
@@ -17,14 +18,16 @@ namespace SchoolWebProject.Services
         private ITeacherService teacherService;
         private ISubjectService subjectService;
         private IGroupService groupService;
+        private ILessonDetailService lessonDetailService;
 
-        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork,ITeacherService teacherService ,ISubjectService subjectService,IGroupService groupService)
+        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork, ITeacherService teacherService, ISubjectService subjectService, IGroupService groupService, ILessonDetailService lessonDetail)
             : base(logger)
         {
             this.unitOfWork = unitOfWork;
             this.teacherService = teacherService;
             this.subjectService = subjectService;
             this.groupService = groupService;
+            this.lessonDetailService = lessonDetail;
         }
 
         public IEnumerable<Schedule> GetAllSchedules()
@@ -39,16 +42,16 @@ namespace SchoolWebProject.Services
                 GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
             var teacherSchedule = this.unitOfWork.ScheduleRepository.
                 GetMany(p => p.Teacher.FirstName + p.Teacher.MiddleName + p.Teacher.LastName == teacher);
-            if (teacher == "null")
+            if (teacher == null)
             {
-                if (group != "null")
+                if (group != null)
                 {
                     return groupSchedule;
                 }
             }
             else 
             {
-                if (group == "null") 
+                if (group == null) 
                 {
                     return teacherSchedule;
                 }
@@ -87,9 +90,12 @@ namespace SchoolWebProject.Services
             schedule.Subject = null;
             schedule.Group = null;
             schedule.ClassRoom = null;
-            unitOfWork.ScheduleRepository.Add(schedule);    
+            unitOfWork.ScheduleRepository.Add(schedule); 
+            SaveSchedule();
+            Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s=>s.TeacherId==schedule.TeacherId&&s.SubjectId==schedule.SubjectId&&s.GroupId==schedule.GroupId).First();
+            this.lessonDetailService.GenereteLessonDeatail(getedSchedule);
         }
-
+        
         public void ModifySchedule(IEnumerable<Schedule> schedules)
         {
             var allSchedules = GetAllSchedules();
@@ -108,11 +114,19 @@ namespace SchoolWebProject.Services
                     else
                     {
                         updateSchedule(findedSchedule, schedule);
+                        SaveSchedule();
+                        findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek
+                                                            && s.OrderNumber == schedule.OrderNumber
+                                                            && s.Group.NameLetter == schedule.Group.NameLetter
+                                                            && s.Group.NameNumber == schedule.Group.NameNumber);
+                        this.lessonDetailService.GenereteLessonDeatail(findedSchedule);
                     }
                 }
                 else if (schedule.Teacher.FirstName!="")
                 {
                     addSchedule(schedule);
+                    Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s => s.TeacherId == schedule.TeacherId && s.SubjectId == schedule.SubjectId && s.GroupId == schedule.GroupId).First();
+                    this.lessonDetailService.GenereteLessonDeatail(getedSchedule);
                 }
             }
             unitOfWork.SaveChanges();

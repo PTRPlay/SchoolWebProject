@@ -18,7 +18,6 @@ namespace SchoolWebProject.Controllers
 
         }
 
-
     [HttpPost]
         public void Post(ErrorObject value)
         {

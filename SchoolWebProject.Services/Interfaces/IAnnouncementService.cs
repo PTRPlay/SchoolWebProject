@@ -17,6 +17,6 @@ namespace SchoolWebProject.Services
 
         void AddAnnouncement(Announcement announcement);
 
-        void RemoveAnnouncement(Announcement announcement);
+        void RemoveAnnouncement(int id);
     }
 }

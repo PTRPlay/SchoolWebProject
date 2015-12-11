@@ -16,13 +16,10 @@
                         if (result != null) {
                             if (result.id == null) {
                                 $http.post("api/pupils", result);
-                                window.location.reload("/home");
                             }
                             else {
                                 $http.post("api/pupils/" + result.id, result);
-                                window.location.reload("/home");
                             }
-                            window.location.assign("#/pupils")
                         }
 
                     });

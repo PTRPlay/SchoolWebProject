@@ -229,6 +229,7 @@
     <Content Include="Layouts\Controllers\permissionController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
+    <Content Include="Layouts\Controllers\ScheduleDirectiveController.js" />
     <Content Include="Layouts\custom.js" />
     <Content Include="Layouts\Directives\ScheduleDirective.js" />
     <Content Include="Layouts\Directives\ScheduleTable.html" />
@@ -252,6 +253,7 @@
     <Content Include="Layouts\ModalControllers\subjectModalController.js" />
     <Content Include="Layouts\ModalControllers\subjectModalService.js" />
     <Content Include="Layouts\PartialView\AnnouncementAddTemplate.html" />
+    <Content Include="Layouts\PartialView\AnnouncementDeleteTemplate.html" />
     <Content Include="Layouts\PartialView\Contacts.html" />
     <Content Include="Layouts\PartialView\ParentAddTemplate.html" />
     <Content Include="Layouts\PartialView\ParentInfo.html" />
@@ -286,7 +288,6 @@
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />
     <Content Include="Layouts\PartialView\MyProfile.html" />
     <Content Include="Layouts\Services\holidaysService.js" />
-    <Content Include="Layouts\Services\errorService.js" />
     <Content Include="Layouts\Styles\ProfilesStyles.css" />
     <Content Include="Layouts\Styles\styles.css" />
     <Content Include="Layouts\AnnouncementAddTemplate.html" />
