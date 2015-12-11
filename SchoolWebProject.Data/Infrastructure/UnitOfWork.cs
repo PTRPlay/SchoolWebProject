@@ -47,6 +47,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private GenericRepository<Role> roleRepository;
 
+        private GenericRepository<Parent> parentRepository; 
         #endregion 
 
         public UnitOfWork(IDbFactory dbFactory)
@@ -261,6 +262,19 @@ namespace SchoolWebProject.Data.Infrastructure
                 }
 
                 return this.roleRepository;
+            }
+        }
+
+        public GenericRepository<Parent> ParentRepository
+        {
+            get
+            {
+                if (this.parentRepository == null)
+                {
+                    this.parentRepository = new GenericRepository<Parent>(this.dbFactory);
+                }
+
+                return parentRepository;
             }
         }
 

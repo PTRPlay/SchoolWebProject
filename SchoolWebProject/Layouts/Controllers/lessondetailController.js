@@ -7,7 +7,8 @@
                 id: data.Id,
                 date: data.Date,
                 hometask: data.HomeTask,
-                theme: data.Theme
+                theme: data.Theme,
+                schoolId: data.SchoolId
             };
         });
     }

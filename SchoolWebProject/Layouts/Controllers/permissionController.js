@@ -26,6 +26,14 @@
         }
     }
 
+    $scope.showParents = function () {
+        if (window.currentUser.Role == "Parent") {
+            $location.path($scope.redirection);
+        } else {
+            return true;
+        }
+    }
+
     $scope.showTeachers = function () {
         if (window.currentUser.Role == "Pupil") {
             $location.path($scope.redirection);
