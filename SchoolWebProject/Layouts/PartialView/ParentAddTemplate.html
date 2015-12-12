@@ -148,7 +148,17 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="pupil" class="control-label col-sm-2">Діти:</label>
+                        <div class="col-sm-4">
+                            <div id="pupils" ng-repeat="pupil in parent.pupils">
+                                <label class="control-label">{{pupil.firstName}} {{pupil.lastName}}<br /></label>
+                            </div>
+                            <div angucomplete-alt placeholder="Дитина" maxlength="10" minlength="1" pause="100" selected-object="SelectedPupil" local-data="pupils" search-fields="FirstName,LastName" title-field="FirstName,LastName" input-class="form-control">
+                            </div>
+                            <a href="" class="btn btn-primary" ng-click="AddPupil()">Додати</a>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

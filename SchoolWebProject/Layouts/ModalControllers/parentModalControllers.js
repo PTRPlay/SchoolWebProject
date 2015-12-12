@@ -1,4 +1,4 @@
-﻿myApp.controller('parentAddController', ['$scope', '$element', 'title', 'close', 'Parent', function ($scope, $element, title, close, Parent) {
+﻿myApp.controller('parentAddController', ['$scope', '$element', 'title', 'close', 'Parent', 'pupilsService', function ($scope, $element, title, close, Parent, pupilsService) {
     $scope.parent = null;
     var getPupils = function (parent) {
         var pupils = [];
@@ -11,6 +11,7 @@
             };
             pupils.push(pupil);
         }
+        return pupils;
     }
     if (Parent != null) {
         $scope.parent = {
@@ -35,10 +36,34 @@
             phoneNumber: null,
             address: null,
             email: null,
-            pupils: null
+            pupils: []
         };
-    } 
-
+    }
+    pupilsService.getPupil().success(function (data) {
+        $scope.pupils = data;
+        for (var i = 0; i < $scope.pupils.length; ++i) {
+            for (var j = 0; j < $scope.parent.pupils.length; ++j) {
+                if ($scope.pupils[i].Id == $scope.parent.pupils[j].id) {
+                    $scope.pupils.splice(i, 1);
+                }
+            }
+        }
+    });
+    $scope.SelectedPupil;
+    $scope.AddPupil = function () {
+        var pupil = {
+            id: $scope.SelectedPupil.originalObject.Id,
+            firstName: $scope.SelectedPupil.originalObject.FirstName,
+            middleName: $scope.SelectedPupil.originalObject.MiddleName,
+            lastName: $scope.SelectedPupil.originalObject.LastName
+        }
+        $scope.parent.pupils.push(pupil);
+        for (var i = 0; i < $scope.pupils.length; ++i) {
+            if ($scope.pupils[i].Id == pupil.id) {
+                $scope.pupils.splice(i, 1);
+            }
+        }
+    }
     $scope.close = function () {
         $element.modal('hide');
         close({
