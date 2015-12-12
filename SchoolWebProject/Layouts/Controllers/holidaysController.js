@@ -3,6 +3,8 @@
         .success(function (data) {
             $scope.holidays = [];
             $scope.daysOff = [];
+            $scope.semestr1 = [];
+            $scope.semestr2 = [];
             if (data != null) {
                 for (i = 0; i < data.length; i++) {
                     var equal = false;
@@ -17,7 +19,13 @@
                     }
 
                     if (!equal) {
-                        $scope.holidays.push(data[i]);
+                        if (data[i].Name == "Semestr1") {
+                            $scope.semestr1.push(data[i]);
+                        }
+                        else if (data[i].Name == "Semestr2") {
+                            $scope.semestr2.push(data[i]);
+                        }
+                        else $scope.holidays.push(data[i]);
                     }
                 }
             }
