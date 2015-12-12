@@ -138,7 +138,17 @@ TD.jewel {
     border-right: 0px;
     border-top: 1px solid whitesmoke;
 }
- #groupsGrid.grid .ui-grid-row .ui-grid-cell {
+#groupsGrid.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
+
+#parentsGrid.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
+
+#announcementsGrid.grid .ui-grid-row .ui-grid-cell {
     border-right: 0px;
     border-top: 1px solid whitesmoke;
 }
