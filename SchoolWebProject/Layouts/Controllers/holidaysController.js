@@ -3,10 +3,10 @@
         .success(function (data) {
             $scope.holidays = [];
             $scope.daysOff = [];
+            $scope.semestr1 = [];
+            $scope.semestr2 = [];
             if (data != null) {
                 for (i = 0; i < data.length; i++) {
-                    //data[i].StartDay = $scope.dateParser(data[i].StartDay);
-                    //data[i].EndDay = $scope.dateParser(data[i].EndDay);
                     var equal = false;
                     if (data[i].StartDay == data[i].EndDay)
                     {
@@ -19,7 +19,13 @@
                     }
 
                     if (!equal) {
-                        $scope.holidays.push(data[i]);
+                        if (data[i].Name == "Semestr1") {
+                            $scope.semestr1.push(data[i]);
+                        }
+                        else if (data[i].Name == "Semestr2") {
+                            $scope.semestr2.push(data[i]);
+                        }
+                        else $scope.holidays.push(data[i]);
                     }
                 }
             }
