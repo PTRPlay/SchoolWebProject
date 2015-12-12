@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
      background-color: #495054; 
      color: white;
      position:fixed;
+     z-index:1;
  }
 
 #main-content {
