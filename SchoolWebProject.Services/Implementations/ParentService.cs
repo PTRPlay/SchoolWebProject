@@ -70,6 +70,7 @@ namespace SchoolWebProject.Services
         public void RemoveParent(int id)
         {
             var parent = this.unitOfWork.ParentRepository.GetById(id);
+            parent.Pupils.RemoveAll(prnt => prnt.Id == id);
             this.unitOfWork.ParentRepository.Delete(parent);
             this.unitOfWork.SaveChanges();
         }

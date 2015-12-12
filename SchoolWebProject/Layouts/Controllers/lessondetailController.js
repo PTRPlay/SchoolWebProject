@@ -8,7 +8,9 @@
                 date: data.Date,
                 hometask: data.HomeTask,
                 theme: data.Theme,
-                schoolId: data.SchoolId
+                schoolId: data.SchoolId,
+                scheduleId: data.ScheduleId,
+                teacherId: data.TeacherId
             };
         });
     }
