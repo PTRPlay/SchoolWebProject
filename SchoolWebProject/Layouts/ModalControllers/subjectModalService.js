@@ -1,4 +1,4 @@
-﻿myApp.factory('SubjectModalService', ['$http', 'ModalService', function ($http, ModalService) {
+﻿myApp.factory('SubjectModalService', ['$http', 'ModalService', '$state', '$stateParams', function ($http, ModalService, $state, $stateParams) {
 
     return {
         showSubjectEditPage: function (subject) {
@@ -17,12 +17,16 @@
                     modal.close.then(function (result) {
                         if (result != null) {
                             if (result.id == null) {
-                                $http.post("api/subjects", result);
-                                window.location.reload("/home");
+                                $http.post("api/subjects", result)
+                                    .success(function () {
+                                        $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                                });
                             }
                             else {
-                                $http.post("api/subjects/", result);
-                                window.location.reload("/home");
+                                $http.post("api/subjects/", result)
+                                    .success(function () {
+                                        $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                                    });
                             }
                         }
 

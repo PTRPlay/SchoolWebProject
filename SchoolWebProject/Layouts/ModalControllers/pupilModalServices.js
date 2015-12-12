@@ -1,4 +1,4 @@
-﻿myApp.factory('PupilsModalService', ['$http', 'ModalService', function ($http, ModalService) {
+﻿myApp.factory('PupilsModalService', ['$http', 'ModalService', '$state', '$stateParams', function ($http, ModalService, $state, $stateParams) {
  
     return {
         showPupilsEditPage: function (user) {
@@ -15,10 +15,16 @@
                     modal.close.then(function (result) {
                         if (result != null) {
                             if (result.id == null) {
-                                $http.post("api/pupils", result);
+                                $http.post("api/pupils", result)
+                                .success(function () {
+                                    $state.go('pupils', { start: $stateParams.start }, { reload: true });
+                                });
                             }
                             else {
-                                $http.post("api/pupils/" + result.id, result);
+                                $http.post("api/pupils/" + result.id, result)
+                                .success(function () {
+                                    $state.go('pupils', { start: $stateParams.start }, { reload: true });
+                                });
                             }
                         }
 
@@ -39,8 +45,10 @@
                     modal.element.modal();
                     modal.close.then(function (result) {
                         if (result.id != null) {
-                                $http.delete("api/pupils/" + result.id);
-                                window.location.reload("/home");
+                                $http.delete("api/pupils/" + result.id)
+                                .success(function () {
+                                    $state.go('pupils', { start: $stateParams.start }, { reload: true });
+                                });
                             }
                     });
                 });

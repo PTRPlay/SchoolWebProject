@@ -1,4 +1,4 @@
-﻿myApp.controller("announcementAddController", ['$scope', '$element', 'title', 'close', 'Announcement', function ($scope, $element, title, close, Announcement) {
+﻿myApp.controller("announcementAddController", ['$scope', '$element', '$state', '$stateParams', 'title', 'close', 'Announcement', function ($scope, $element, $state, $stateParams, title, close, Announcement) {
     $scope.announcement = null;
     $scope.IsFormValid = true;
     $scope.imageIsSelected = false
@@ -43,7 +43,7 @@
             messageDetails: $scope.announcement.messageDetails,
             dataPublished: $scope.announcement.dataPublished,
         }, 500);
-    };
+     };
 
     $scope.cancel = function () {
         $element.modal('hide');

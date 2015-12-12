@@ -1,4 +1,4 @@
-﻿myApp.controller("categoryAddController", ['$scope', '$element', '$http', 'title', 'close', 'Category', function ($scope, $element, $http, title, close, Category) {
+﻿myApp.controller("categoryAddController", ['$scope', '$element', '$http', '$state', '$stateParams', 'title', 'close', 'Category', function ($scope, $element, $http, $state, $stateParams, title, close, Category) {
     $scope.category = null;
     $scope.IsFormValid = true;
     if (Category != null) {
@@ -75,15 +75,19 @@
 
     $scope.deleteTeacherCategory = function (id) {
         if (id != null) {
-            $http.delete("api/teachercategory/" + id);
-        window.location.reload("/");
+            $http.delete("api/teachercategory/" + id)
+            .success(function () {
+                $state.go('teachers', { start: $stateParams.start }, { reload: true });
+            });
         }
     };
 
     $scope.editTeacherCategory = function (id, result) {
         var editedTeacherCategory ={id : id, name : result}
-        $http.post("api/teachercategory/" + id, editedTeacherCategory);
-        window.location.reload("/");
+        $http.post("api/teachercategory/" + id, editedTeacherCategory)
+            .success(function () {
+                $state.go('teachers', { start: $stateParams.start }, { reload: true });
+            });
         }
 
 }]);
