@@ -228,10 +228,13 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<Holidays>
      {
+         new Holidays{ Name="Semestr1", StartDay=new DateTime(2015, 09, 01), EndDay=new DateTime(2015, 12, 29)},
+         new Holidays{ Name="Semestr2", StartDay=new DateTime(2016, 01, 11), EndDay=new DateTime(2016, 05, 31)},
          new Holidays{ Name="День захисника Батьківщини", StartDay=new DateTime(2015, 10, 14), EndDay=new DateTime(2015, 10, 14)},
+         new Holidays{ Name="Великдень", StartDay=new DateTime(2016, 05, 01), EndDay=new DateTime(2016, 05, 01)},
          new Holidays{ Name="Осінні канікули", StartDay=new DateTime(2015, 10, 31), EndDay=new DateTime(2015, 11, 8)},
          new Holidays{ Name="Зимові канікули", StartDay=new DateTime(2015, 12, 30), EndDay=new DateTime(2016, 1, 10)},
-         new Holidays{ Name="Весняні канікули", StartDay=new DateTime(2016, 3, 26), EndDay=new DateTime(2015, 4, 3)}
+         new Holidays{ Name="Весняні канікули", StartDay=new DateTime(2016, 3, 26), EndDay=new DateTime(2016, 4, 3)}
      };
         }
 
