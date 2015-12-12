@@ -23,6 +23,7 @@ namespace SchoolWebProject.Services
         public void AddTeacherDegree(TeacherDegree teacherDegree)
         {
             this.unitOfWork.TeacherDegreeRepository.Add(teacherDegree);
+            this.SaveTeacherDegree();
         }
 
         public IEnumerable<TeacherDegree> GetAllTeacherCategories()
@@ -35,6 +36,7 @@ namespace SchoolWebProject.Services
             TeacherDegree teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
             teacherDegree.Teachers.RemoveAll(degree => teacherDegree.Id == id);
             this.unitOfWork.TeacherDegreeRepository.Delete(teacherDegree);
+            this.SaveTeacherDegree();
         }
 
         public TeacherDegree GetTeacherDegreeById(int id)
@@ -45,6 +47,7 @@ namespace SchoolWebProject.Services
         public void UpdateTeacherDegree(TeacherDegree teacherDegree)
         {
             this.unitOfWork.TeacherDegreeRepository.Update(teacherDegree);
+            this.SaveTeacherDegree();
         }
 
         public void SaveTeacherDegree()

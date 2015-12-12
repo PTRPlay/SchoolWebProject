@@ -46,7 +46,6 @@ namespace SchoolWebProject.Controllers
         {
             var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
             this.teacherCategoryService.AddTeacherCategory(teacherCategory);
-            this.teacherCategoryService.SaveTeacherCategory();
             logger.Info("Added new teacher category");
         }
 
@@ -58,7 +57,6 @@ namespace SchoolWebProject.Controllers
             var teacherCategory = this.teacherCategoryService.GetTeacherCategoryById(id);
             AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value, teacherCategory);
             this.teacherCategoryService.UpdateTeacherCategory(teacherCategory);
-            this.teacherCategoryService.SaveTeacherCategory();
             logger.Info("Edited teacher category");
         }
 
@@ -68,7 +66,6 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             this.teacherCategoryService.DeleteTeacherCategory(id);
-            this.teacherCategoryService.SaveTeacherCategory();
             logger.Info("Delete teacher category");
         }
     }

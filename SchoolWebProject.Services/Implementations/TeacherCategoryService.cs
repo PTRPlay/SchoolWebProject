@@ -23,6 +23,7 @@ namespace SchoolWebProject.Services
         public void AddTeacherCategory (TeacherCategory teacherCategory)
         {
             this.unitOfWork.TeacherCategoryRepository.Add(teacherCategory);
+            this.SaveTeacherCategory();
         }
 
         public IEnumerable<TeacherCategory> GetAllTeacherCategories()
@@ -35,6 +36,7 @@ namespace SchoolWebProject.Services
             TeacherCategory teacherCategory = this.unitOfWork.TeacherCategoryRepository.GetById(id);
             teacherCategory.Teachers.RemoveAll(category => teacherCategory.Id == id);
             this.unitOfWork.TeacherCategoryRepository.Delete(teacherCategory);
+            this.SaveTeacherCategory();
         }
 
         public TeacherCategory GetTeacherCategoryById(int id)
@@ -45,6 +47,7 @@ namespace SchoolWebProject.Services
         public void UpdateTeacherCategory(TeacherCategory teacherCategory)
         {
             this.unitOfWork.TeacherCategoryRepository.Update(teacherCategory);
+            this.SaveTeacherCategory();
         }
 
         public void SaveTeacherCategory()
