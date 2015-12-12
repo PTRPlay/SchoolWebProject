@@ -1,34 +1,34 @@
-﻿using System;
+﻿using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using SchoolWebProject.Services.Interfaces;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Data.Infrastructure;
-
+using System.Linq.Expressions;
+using System.Runtime.Serialization.Json;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace SchoolWebProject.Controllers
 {
-    public class ErrorController : BaseApiController
+    public class ErrorController : Controller
     {
-        public ErrorController(ILogger logger): base(logger)
+        public readonly ILogger logger;
+
+        public ErrorController(ILogger tmpLogger)
         {
+            this.logger = tmpLogger;
 
         }
 
-    [HttpPost]
-        public void Post(ErrorObject value)
+        public ActionResult Index(string message)
         {
-            logger.Error("Unhandled exception in Angular application occured. Message: {0} caused by: {1}", value.Exception, value.Cause); 
-
-        }
-
-    [HttpPut]
-        public void Put([FromBody]object value)
-        {
-            logger.Error("Error occured. Message: {0}", value);
+            ViewBag.Message = message;
+            logger.Error("Following error occured: {0}", message);
+            return View();
         }
     }
 }
