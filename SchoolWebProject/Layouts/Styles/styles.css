@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
 
 #Schedule {
     float:initial;
-    width: 1000px;
+    width: 930px;
     background: black;
 }
 
@@ -277,3 +277,11 @@ li.groups a.active { color: #e3387c; }
 input[type='file'] {
   color: transparent;
 }
+
+.grid 
+{
+    min-width:800px;
+    width:100%;
+    height: 470px;
+}
+
