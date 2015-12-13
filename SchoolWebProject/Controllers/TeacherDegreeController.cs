@@ -27,26 +27,23 @@ namespace SchoolWebProject.Controllers
         // GET api/teacherDegree
         public IEnumerable<ViewTeacherDegree> Get()
         {
-            var teacherCategories = this.teacherDegreeService.GetAllTeacherCategories();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(teacherCategories);
             logger.Info("Gets Teacher Degree");
-            return viewModel;
+            return this.teacherDegreeService.GetAllTeacherDegrees();
         }
 
         // GET api/teacherDegree/5
         public ViewTeacherDegree Get(int id)
         {
             var teacherDegree = this.teacherDegreeService.GetTeacherDegreeById(id);
-            var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
-            return viewModel;
+            logger.Info("Getted teacher category {0}", teacherDegree.Name);
+            return teacherDegree;
         }
 
         // POST api/teacherDegree
         [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacherDegree value)
         {
-            var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
-            this.teacherDegreeService.AddTeacherDegree(teacherDegree);
+            this.teacherDegreeService.AddTeacherDegree(value);
             logger.Info("Added new teacher degree");
         }
 
@@ -55,9 +52,7 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherDegree value)
         {
-            var teacherDegree = this.teacherDegreeService.GetTeacherDegreeById(id);
-            AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value, teacherDegree);
-            this.teacherDegreeService.UpdateTeacherDegree(teacherDegree);
+            this.teacherDegreeService.UpdateTeacherDegree(id, value);
             logger.Info("Edited teacher degree");
         }
 

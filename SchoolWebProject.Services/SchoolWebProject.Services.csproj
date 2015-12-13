@@ -59,7 +59,7 @@
     <Compile Include="Implementations\BaseService.cs" />
     <Compile Include="Implementations\DiaryService.cs" />
     <Compile Include="Implementations\EmailSenderService.cs" />
-    <Compile Include="Implementations\Holidays.cs" />
+    <Compile Include="Implementations\HolidaysService.cs" />
     <Compile Include="Implementations\ParentService.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IAnnouncementService.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Implementations\JournalService.cs" />
     <Compile Include="Implementations\LessonDetailService.cs" />
     <Compile Include="Implementations\MarkService.cs" />
+    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementations\PupilService.cs" />
     <Compile Include="Implementations\ScheduleService.cs" />
