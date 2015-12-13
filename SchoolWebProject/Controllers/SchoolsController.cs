@@ -17,43 +17,22 @@ namespace SchoolWebProject.Controllers
     {
         private ISchoolService schoolService;
 
-        public SchoolsController(ILogger logger, ISchoolService pupilService) : base(logger) 
+        public SchoolsController(ILogger logger, ISchoolService schoolService) : base(logger) 
         {
-            this.schoolService = pupilService;
+            this.schoolService = schoolService;
         }
 
         // GET api/schools
         public IEnumerable<ViewSchool> Get()
         {
-            var schools = this.schoolService.GetAllSchools();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<School>, IEnumerable<ViewSchool>>(schools);
-            return viewModel;
+            var view = this.schoolService.GetAllSchools();
+            return view;
         }
 
         // GET api/schools/5
         public ViewSchool Get(int id)
         {
-            var school = this.schoolService.GetSchoolById(id);
-            var viewModel = AutoMapper.Mapper.Map<School, ViewSchool>(school);
-            return viewModel;
-        }
-
-        // POST api/schools
-        [Authorize(Roles = "Admin")]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/schools/5
-        [Authorize(Roles = "Admin")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/schools/5
-        [Authorize(Roles = "Admin")]
-        public void Delete(int id)
-        {
+            return this.schoolService.GetSchoolById(id);
         }
     }
 }

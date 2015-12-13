@@ -4,20 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface ISchoolService
     {
-        IEnumerable<School> GetAllSchools();
+        IEnumerable<ViewSchool> GetAllSchools();
 
-        School GetSchoolById(int id);
-
-        void UpdateSchool(School school);
-
-        void AddSchool(School school);
-
-        void RemoveSchool(School school);
+        ViewSchool GetSchoolById(int id);
 
         void SaveSchool();
     }

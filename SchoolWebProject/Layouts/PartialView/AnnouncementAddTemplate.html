@@ -7,8 +7,7 @@
             <div class="modal-body">
                 <form class="form-horizontal" name="AddAnnouncementForm">
                     <div class="form-group">
-                        <div class="col-sm-2">
-                        </div>
+                        <label for="image" class="col-sm-2 control-label">Зображення:</label>
                             <div class="col-sm-8">
                                 <input type="file" id="image" ng-model="announcement.image" name="image" accept="image/*" base-sixty-four-input onload="imageSelect">
                           
@@ -38,7 +37,7 @@
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.title.$error.maxlength">
-                                    Назва не може містити більше 100 символів
+                                    Заголовок не може містити більше 100 символів
                                 </small>
                             </div>
                         </div>
@@ -52,15 +51,15 @@
                                  ng-show="AddAnnouncementForm.message.$dirty && AddAnnouncementForm.message.$invalid">
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.required">
-                                    Повідомлення не може бути пустим.
+                                    Короткий опис не може бути пустим.
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.minlength">
-                                    Повідомлення повиненно містити як мінімум 3 символи
+                                    Короткий опис повиненно містити як мінімум 3 символи
                                 </small>
                                 <small class="error"
                                        ng-show="AddAnnouncementForm.message.$error.maxlength">
-                                    Повідомлення не може містити більше 300 символів
+                                    Короткий опис не може містити більше 300 символів
                                 </small>
                             </div>
                         </div>

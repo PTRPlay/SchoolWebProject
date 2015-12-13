@@ -126,6 +126,19 @@ namespace SchoolWebProject.Domain.Models
                 new Mark{ SchoolId=1, MarkTypeId=1, LessonDetailId=4, Value=10,
                 Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
 
+                new Mark{ SchoolId=1, MarkTypeId=1, LessonDetailId=9, Value=8,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=11, Value=11,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=12, Value=10,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=16, Value=10,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=1, LessonDetailId=18, Value=10,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
+                new Mark{ SchoolId=1, MarkTypeId=3, LessonDetailId=20, Value=11,
+                Pupil=context.Users.FirstOrDefault(u=>u.Id==37)as Pupil},
+
             };
         }
 

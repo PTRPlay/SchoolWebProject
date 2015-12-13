@@ -1,4 +1,4 @@
-﻿myApp.controller('pupilInfoController', ['$scope', 'pupilsService', function ($scope, pupilsService) {
+﻿myApp.controller('pupilInfoController', ['$scope', 'pupilsService', 'permissionService', function ($scope, pupilsService, permissionService) {
     pupilsService.getPupil().success(function (data) {
         $scope.getPupil = function () {
             var id = document.URL.split("pupil/")[1];
@@ -8,4 +8,7 @@
             }
         }
     });
+    $scope.showPupilInfo = function () {
+        return permissionService.showPupils();
+    };
 }]);

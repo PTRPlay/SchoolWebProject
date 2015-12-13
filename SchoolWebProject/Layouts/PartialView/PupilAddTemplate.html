@@ -42,7 +42,7 @@
                                  ng-show="AddPupilForm.middleName.$dirty && AddPupilForm.middleName.$invalid">
                                 <small class="error"
                                        ng-show="AddPupilForm.middleName.$error.required">
-                                    Поле не можу бути пустим!
+                                    Поле не може бути пустим!
                                 </small>
                                 <small class="error"
                                        ng-show="AddPupilForm.middleName.$error.minlength">
@@ -67,7 +67,7 @@
                                  ng-show="AddPupilForm.lastName.$dirty && AddPupilForm.lastName.$invalid">
                                 <small class="error"
                                        ng-show="AddPupilForm.lastName.$error.required">
-                                    Поле не можу бути пустим!
+                                    Поле не може бути пустим!
                                 </small>
                                 <small class="error"
                                        ng-show="AddPupilForm.lastName.$error.minlength">
@@ -85,7 +85,7 @@
                         </div>
                     </div>
 
-                    <!--<div class="form-group">
+                    <div class="form-group">
                         <label for="Group" class="col-sm-2 control-label">Клас:</label>
                         <div class="col-sm-4">
                             <select name="NameNumber" class="form-control" id="NameNumber" ng-model="pupil.group.nameNumber">
@@ -95,7 +95,7 @@
                                 <option ng-repeat="n in ['А','Б','В','Г']" ng-selected="pupil.group.nameLetter == n" ng-click="pupil.group.nameLetter = {{$index}}" value="{{n}}"> {{n}} </option>
                             </select>
                         </div>
-                    </div>-->
+                    </div>
 
                     <div class="form-group">
                         <label for="phoneNumber" class="col-sm-2 control-label">Телефон:</label>
@@ -105,7 +105,7 @@
                                  ng-show="AddPupilForm.phoneNumber.$dirty && AddPupilForm.phoneNumber.$invalid">
                                 <small class="error"
                                        ng-show="AddPupilForm.phoneNumber.$error.required">
-                                    Поле не можу бути пустим!
+                                    Поле не може бути пустим!
                                 </small>
                                 <small class="error"
                                        ng-show="AddPupilForm.phoneNumber.$error.minlength">
@@ -138,7 +138,8 @@
                                 </small>
                                 <small class="error"
                                        ng-show="AddPupilForm.email.$error.pattern">
-                                    Не вірний паттерн!
+                                    <!--Не вірний паттерн! вірний може бути друг-->
+                                    Неправильно введені дані
                                 </small>
                             </div>
                         </div>
@@ -146,12 +147,12 @@
                     <div class="form-group">
                         <label for="address" class="col-sm-2 control-label">Адреса:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="address" ng-model="pupil.address" name="address" ng-minlength="3" ng-maxlength="30" required />
+                            <input type="text" class="form-control" id="address" ng-model="pupil.address" name="address" ng-minlength="3" ng-maxlength="50" required />
                             <div class="error" style="color:red"
                                  ng-show="AddPupilForm.address.$dirty && AddPupilForm.address.$invalid">
                                 <small class="error"
                                        ng-show="AddPupilForm.address.$error.required">
-                                    Поле не можу бути пустим!
+                                    Поле не може бути пустим!
                                 </small>
                                 <small class="error"
                                        ng-show="AddPupilForm.address.$error.minlength">
@@ -159,16 +160,17 @@
                                 </small>
                                 <small class="error"
                                        ng-show="AddPupilForm.address.$error.maxlength">
-                                    Поле не може містити більш ніж 30 символів!
+                                    Поле не може містити більш ніж 50 символів!
                                 </small>
                             </div>
                         </div>
+                        <p ng-show="IsFormValid=AddPupilForm.$valid"></p>
                     </div>
 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-click="close()">Гаразд</button>
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-disabled="!IsFormValid" ng-click="close()">Гаразд</button>
                 <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Відмінити</button>
             </div>
         </div>

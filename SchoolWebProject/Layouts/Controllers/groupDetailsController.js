@@ -1,4 +1,4 @@
-﻿myApp.controller('groupDetailsController', ['$scope', 'groupsService', function ($scope, groupsService) {
+﻿myApp.controller('groupDetailsController', ['$scope', 'groupsService', 'permissionService', function ($scope, groupsService, permissionService) {
     groupsService.getGroups()
         .success(function (data) {
         $scope.getGroup = function () {
@@ -9,5 +9,8 @@
                 }
             }
         }
-    });
+        });
+    $scope.showGroups = function () {
+        return permissionService.showGroups();
+    };
 }]);

@@ -1,5 +1,5 @@
-﻿myApp.controller('groupsController', ['$scope', 'groupsService', 'uiGridConstants', 'GroupModalService',
-    function ($scope, groupsService, uiGridConstants, GroupModalService) {
+﻿myApp.controller('groupsController', ['$scope', 'groupsService', 'uiGridConstants', 'GroupModalService', 'permissionService',
+    function ($scope, groupsService, uiGridConstants, GroupModalService, permissionService) {
         $scope.text = "Список класів";
 
         $scope.groupsGrid =
@@ -61,6 +61,10 @@
                     $scope.grid2Api = gridApi;
                 }
             };
+
+        $scope.showGroups = function () {
+            return permissionService.showGroups();
+        }
 
         $scope.addGroup = function () {
             GroupModalService.showGroupEditPage();
