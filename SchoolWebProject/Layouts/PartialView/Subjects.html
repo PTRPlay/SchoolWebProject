@@ -1,12 +1,15 @@
 ﻿<div style="width:1000px">
     <div class="page-header">
-        <h2>Предмети</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Предмети</h2>
+            </div>
+            <div class="col-md-6" style="padding-top:20px;">
+                <a class=" btn btn-primary pull-right" ng-click="addSubject()"> Додати предмет </a>
+            </div>
+        </div>
     </div>
-
-    <!--<div ng-controller="subjectsController">
-        <button role="button" class="btn-info" style="left:100px" ng-click="addSubject()">Add Subject</button>
-    </div>-->
-
+    
     <div class="panel panel-default" ng-repeat="(subjectIndex,subject) in listSubjects">
         <div class="panel-body">
             <div class="container-fluid">

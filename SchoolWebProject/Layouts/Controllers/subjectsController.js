@@ -1,4 +1,4 @@
-﻿myApp.controller('subjectsController', function ($scope, subjectsService) {
+﻿myApp.controller('subjectsController', ['$scope','subjectsService', 'SubjectModalService', function ($scope, subjectsService, SubjectModalService) {
     subjectsService.getSubjects()
         .success(function (data) {
         $scope.listSubjects = data;
@@ -21,4 +21,4 @@
     $scope.editSubject = function (value) {
         SubjectModalService.showSubjectEditPage(value);
     };
-});
+}]);
