@@ -78,7 +78,14 @@ namespace SchoolWebProject.Controllers
             var teacherSubjects = new List<Subject>();
             foreach (var subject in subjects)
             {
-                teacherSubjects.Add(subject);
+                if (teacher.Subjects.FirstOrDefault(p => p.Id == subject.Id) == null)
+                {
+                    teacherSubjects.Add(subject);
+                }
+                else
+                {
+                    teacherSubjects.Add(teacher.Subjects.First(p => p.Id == subject.Id));
+                }
             }
             //teacherSubjects.AddRange(teacher.Subjects);
             AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
