@@ -87,7 +87,9 @@
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementations\PupilService.cs" />
-    <Compile Include="Implementations\ScheduleService.cs" />
+    <Compile Include="Implementations\ScheduleService.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Implementations\SchoolService.cs" />
     <Compile Include="Implementations\SubjectService.cs" />
     <Compile Include="Implementations\TeacherDegreeService.cs" />

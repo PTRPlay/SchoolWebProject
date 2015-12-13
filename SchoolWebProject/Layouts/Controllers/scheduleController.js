@@ -30,6 +30,7 @@
             for (var order = 1; order < LESSON_NUMBER; order++) {
                 var teacher = document.getElementById(day + 'teacher' + order).textContent.split(" ");
                 var subject = document.getElementById(day + 'subject' + order).textContent;
+                var room = document.getElementById(day + 'room' + order).textContent
                 schedules.push(
                     {
                         OrderNumber: order,
@@ -42,11 +43,13 @@
                         subject: {
                             Name: subject
                         },
-                        groupId: group.Id
+                        groupId: group.Id,
+                        classRoom:room
                     }
                     )
             }
-        $http.post('api/schedule', schedules);
+        scheduleService.sendSchedule(schedules);
+        $scope.showSchedule();
     }
 
     $scope.GetScheduleFromJson = function (evt) {

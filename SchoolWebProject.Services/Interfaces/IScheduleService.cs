@@ -15,9 +15,7 @@ namespace SchoolWebProject.Services
 
         IEnumerable<Subject> GetSubjectForGroupByGroupId(int GroupId);
 
-        IEnumerable<Schedule> GetByFilter(int teacherFK ,int groupFK);
-
-        //void UpdateSchedule(Schedule mark);
+        IEnumerable<Schedule> GetByFilter(int teacherFK, int groupFK);
 
         void ModifySchedule(IEnumerable<Schedule> mark);
 
