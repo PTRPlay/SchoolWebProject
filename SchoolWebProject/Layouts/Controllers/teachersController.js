@@ -1,4 +1,4 @@
-﻿myApp.controller('teachersController', ['$scope', '$http', 'teachersService', 'categories', 'uiGridConstants', function ($scope, $http, teachersService, categories, uiGridConstants) {
+﻿myApp.controller('teachersController', ['$scope', '$http', 'teachersService', 'categories', 'uiGridConstants', 'permissionService', function ($scope, $http, teachersService, categories, uiGridConstants, permissionService) {
 
     var id, value,label;
     var categoriesOptions = [];
@@ -28,6 +28,14 @@
         return categoriesOptions2
     };
 
+
+    $scope.showAddEditTeacher = function () {
+        return permissionService.showAddEditTeacher();
+    }
+
+    $scope.showTeachers = function () {
+        return permissionService.showTeachers();
+    }
 
     $scope.getCurrentFocus = function () {
         var rowCol = $scope.gridApi.cellNav.getFocusedCell();

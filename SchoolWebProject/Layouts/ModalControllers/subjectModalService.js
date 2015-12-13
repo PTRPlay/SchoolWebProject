@@ -23,7 +23,7 @@
                                 });
                             }
                             else {
-                                $http.post("api/subjects/", result)
+                                $http.post("api/subjects/"+result.id, result)
                                     .success(function () {
                                         $state.go('subjects', { start: $stateParams.start }, { reload: true });
                                     });

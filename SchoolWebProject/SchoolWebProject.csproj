@@ -230,7 +230,6 @@
     <Content Include="Layouts\Controllers\newsAdminController.js" />
     <Content Include="Layouts\Controllers\parentInfoController.js" />
     <Content Include="Layouts\Controllers\parentsController.js" />
-    <Content Include="Layouts\Controllers\permissionController.js" />
     <Content Include="Layouts\Controllers\scheduleController.js" />
     <Content Include="Layouts\Controllers\holidaysController.js" />
     <Content Include="Layouts\Controllers\ScheduleDirectiveController.js" />
@@ -288,6 +287,7 @@
     <Content Include="Layouts\Services\GroupDetailsService.js" />
     <Content Include="Layouts\Services\lessondetailService.js" />
     <Content Include="Layouts\Services\parentsService.js" />
+    <Content Include="Layouts\Services\permissionService.js" />
     <Content Include="Layouts\Services\scheduleService.js" />
     <Content Include="Layouts\PartialView\TeacherCategoryTemplate.html" />
     <Content Include="Layouts\PartialView\TeacherDegreeTemplate.html" />

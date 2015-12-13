@@ -1,4 +1,4 @@
-﻿myApp.controller('parentsController', ['$scope', 'parentsService', 'uiGridConstants', 'ParentsModalService', function ($scope, parentsService, uiGridConstants, ParentsModalService) {
+﻿myApp.controller('parentsController', ['$scope', 'parentsService', 'uiGridConstants', 'ParentsModalService', 'permissionService', function ($scope, parentsService, uiGridConstants, ParentsModalService, permissionService) {
     $scope.parentsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -120,6 +120,11 @@
     $scope.addParent = function () {
         ParentsModalService.showParentAddPage();
     };
+
+    $scope.showParentsGrid = function () {
+        return permissionService.showParentsGrid();
+    };
+
     $scope.deleteParent = function (id) {
         ParentsModalService.showParentsDeleteModal(id);
     };
