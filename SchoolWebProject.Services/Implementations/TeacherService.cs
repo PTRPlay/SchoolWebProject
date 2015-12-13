@@ -58,6 +58,10 @@ namespace SchoolWebProject.Services
         
         public void AddTeacher(Teacher teacher)
         {
+            foreach (var subject in teacher.Subjects)
+            {
+                this.unitOfWork.SubjectRepository.Update(subject);
+            }
             this.unitOfWork.TeacherRepository.Add(teacher);
             this.SaveTeacher();
         }
