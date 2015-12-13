@@ -13,15 +13,19 @@
                 })
                 .then(function (modal) {
                     modal.element.modal();
-                    modal.close.then(function (result) {
-                        if (result != null) {
-                            if (result.id == null) {
+                    modal.close.then(function (result)
+                    {
+                        if (result != null)
+                        {
+                            if (result.id == null)
+                            {
                                 $http.post("api/groups", result)
                                     .success(function () {
                                         $state.go('groups', { start: $stateParams.start }, { reload: true });
                                     });
                             }
-                            else {
+                            else
+                            {
                                 $http.post("api/groups", result)
                                     .success(function () {
                                         $state.go('groups', { start: $stateParams.start }, { reload: true });

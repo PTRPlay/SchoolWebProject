@@ -1,10 +1,10 @@
-﻿<div ng-controller="scheduleController">
+﻿<div class="container-fluid" ng-controller="scheduleController">
     <div class="page-header">
-    <h2>Розклад</h2>
+        <h2>Розклад</h2>
     </div>
     <div>
-        <input id="TeacherFilter" ng-model="teacherFilter" type="text" autocomplete="on"/>
-        <input  type="text" ng-model="group"/>
+        <input id="TeacherFilter" ng-model="teacherFilter" type="text" autocomplete="on" />
+        <input type="text" ng-model="group" />
         <button class="btn btn-primary" ng-click="showSchedule()">
             Показати Розклад
         </button>
@@ -13,7 +13,7 @@
         </button>
     </div>
     <div class="navbar-left">
-        <div my-Table></div>
+        <div my-table></div>
     </div>
 
 </div>

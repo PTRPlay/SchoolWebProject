@@ -44,8 +44,15 @@ namespace SchoolWebProject.Controllers
         // POST api/groups
         public void Post([FromBody]ViewGroup value)
         {
-            Group group = AutoMapper.Mapper.Map<ViewGroup, Group>(value);
-            this.groupService.AddGroup(group);
+            if (value.Id > 0)
+            {
+                Put(value.Id, value);
+            }
+            else
+            {
+                Group group = AutoMapper.Mapper.Map<ViewGroup, Group>(value);
+                this.groupService.AddGroup(group);
+            }
         }
 
         // PUT api/groups/5
