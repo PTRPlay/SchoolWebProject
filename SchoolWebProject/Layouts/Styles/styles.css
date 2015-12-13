@@ -144,6 +144,15 @@ TD.jewel {
     border-top: 1px solid whitesmoke;
 }
 
+#journalGrid  .ui-grid-header-cell .ui-grid-row .ui-grid-cell {
+   border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
+
+#journalGrid  .ui-grid-header-cell {
+   height: 40px;
+}
+
 #parentsGrid.grid .ui-grid-row .ui-grid-cell {
     border-right: 0px;
     border-top: 1px solid whitesmoke;
