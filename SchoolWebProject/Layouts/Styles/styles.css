@@ -273,3 +273,7 @@ li.groups a.active { color: #e3387c; }
 [type=radio]:checked ~ label ~ .content {
   z-index: 1;
 }
+
+input[type='file'] {
+  color: transparent;
+}
