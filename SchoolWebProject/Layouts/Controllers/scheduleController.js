@@ -1,4 +1,4 @@
-﻿myApp.controller('scheduleController',['$scope','$http','scheduleService',function ($scope,$http,scheduleService) {
+﻿myApp.controller('scheduleController', ['$scope', '$http', 'scheduleService', 'permissionService', function ($scope, $http, scheduleService, permissionService) {
 
     $scope.teacherFilter = "Введіть прізвище"
     $scope.group = {};
@@ -63,6 +63,14 @@
             };
         })(file[0]);
         reader.readAsText(file[0]);
+    }
+
+    $scope.fileSchedule = function () {
+        return permissionService.fileSchedule();
+    }
+
+    $scope.showEditSchedule = function () {
+        return permissionService.showEditSchedule();
     }
 
 

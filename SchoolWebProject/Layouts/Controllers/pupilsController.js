@@ -1,4 +1,4 @@
-﻿myApp.controller('pupilsController', ['$scope','pupilsService', 'uiGridConstants', 'PupilsModalService', function ($scope, pupilsService, uiGridConstants, PupilsModalService) {
+﻿myApp.controller('pupilsController', ['$scope', 'pupilsService', 'uiGridConstants', 'PupilsModalService', 'permissionService', function ($scope, pupilsService, uiGridConstants, PupilsModalService, permissionService) {
     $scope.pupilsGrid = {
         enableSorting: true,
         enableFiltering: true,
@@ -125,6 +125,10 @@
         pageNumber: 1,
         pageSize: 25,
         sort: null
+    };
+
+    $scope.showPupils = function () {
+        return permissionService.showPupils();
     };
 
     $scope.addPupil = function () {

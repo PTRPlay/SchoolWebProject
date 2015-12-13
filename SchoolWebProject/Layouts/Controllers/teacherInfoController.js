@@ -1,4 +1,4 @@
-﻿myApp.controller('teacherInfoController', ['$scope', 'teachersService', function ($scope, teachersService) {
+﻿myApp.controller('teacherInfoController', ['$scope', 'teachersService', 'permissionService', function ($scope, teachersService, permissionService) {
     teachersService.getTeachers()
         .success(function (data) {
         $scope.getTeacher = function () {
@@ -8,7 +8,14 @@
                     return data[i];
             }
         }
-    });
+        });
+    $scope.showTeacherInfo = function () {
+        return permissionService.showTeachers();
+    };
+
+    $scope.showTeacherEditDelete = function () {
+        return permissionService.showAddEditTeacher();
+    };
 }]);
 
 myApp.controller('categoriesController', function ($scope, categories) {
