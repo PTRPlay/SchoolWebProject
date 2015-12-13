@@ -72,8 +72,9 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            SchoolWebProject.Domain.Models.Teacher teacher = teacherService.GetProfileById(value.Id);
+            var teacher = teacherService.GetProfileById(value.Id);
             var subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            value.Subjects = null;
             var teacherSubjects = new List<Subject>();
             foreach (var subject in subjects)
             {
@@ -82,8 +83,9 @@ namespace SchoolWebProject.Controllers
                     teacherSubjects.Add(subject);
                 }
             }
+            teacherSubjects.AddRange(teacher.Subjects);
             AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
-            teacher.Subjects = teacherSubjects;
+            teacher.Subjects.AddRange(teacherSubjects);
             teacherService.UpdateProfile(teacher);
        }
 
