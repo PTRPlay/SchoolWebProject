@@ -1,0 +1,33 @@
+﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
+<div ng-app="parentInfoController" ng-controller="permissionController" ng-show="showParents()">
+    <div class="page-header">
+        <div class="center-block">
+            Профіль
+            <a ng-controller="parentsController" ng-click="editParents(getParent())" class="btn btn-primary pull-right" style="margin:1px">Редагувати</a>
+            <a onclick="location.href = '#/parents'" ng-href="#/parents" class="btn btn-primary pull-right" style="margin:1px"> До списку </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div ng-show="getParent().Img">
+            <img id="UserImage" ng-src="{{getParent().Img}}" alt="Image" width="170" height="170" />
+        </div>
+        <div ng-show="!getParent().Img">
+            <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2 id="UserName">{{getParent().LastName}} {{getParent().FirstName}} {{getParent().MiddleName}}</h2>
+        <div id="info">
+            <h4 id="infoBlock">Телефон: {{getParent().PhoneNumber}} </h4>
+            <h4 id="infoBlock">Адреса:  {{getParent().Address}} </h4>
+            <h4 id="infoBlock">Email:   {{getParent().Email}} </h4>
+            <h4 id="infoBlock">Діти:</h4>
+            <div>
+                <h4 ng-repeat="pupil in getParent().Pupils" id="infoBlock"><a title="Профіль {{pupil.LastName}} {{pupil.FirstName}}" ng-href="#/pupil/{{pupil.Id}}">{{pupil.FirstName + " " + pupil.LastName}}</a></h4>
+            </div>
+        </div>
+    </div>
+</div>
+

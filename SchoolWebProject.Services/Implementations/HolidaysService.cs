@@ -34,18 +34,24 @@ namespace SchoolWebProject.Services
         public void UpdateHolidays(Holidays holidays)
         {
             this.unitOfWork.HolidaysRepository.Update(holidays);
-            this.unitOfWork.SaveChanges();
+            this.SaveHolidays();
         }
 
         public void AddHolidays(Holidays holidays)
         {
             this.unitOfWork.HolidaysRepository.Add(holidays);
-            this.unitOfWork.SaveChanges();
+            this.SaveHolidays();
         }
 
         public void RemoveHolidays(Holidays holidays)
         {
             this.unitOfWork.HolidaysRepository.Delete(holidays);
+            this.SaveHolidays();
+        }
+
+        public void SaveHolidays()
+        {
+            this.unitOfWork.SaveChanges();
         }
     }
 }

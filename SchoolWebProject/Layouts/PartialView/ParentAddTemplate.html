@@ -1,0 +1,170 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()" data-dissmiss="modal" aria-hidden="true">&times;</button><br>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="AddParentForm">
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-2 control-label">Ім'я:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="firstName" ng-model="parent.firstName" name="firstName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddParentForm.firstName.$dirty && AddParentForm.firstName.$invalid">
+                                <small class="error"
+                                       ng-show="AddParentForm.firstName.$error.required">
+                                    Поле не може бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.firstName.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.firstName.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.firstName.$error.pattern">
+                                    Перша буква велика! Лише кирилиця!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName" class="col-sm-2 control-label">По-батькові:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="middleName" ng-model="parent.middleName" name="middleName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddParentForm.middleName.$dirty && AddParentForm.middleName.$invalid">
+                                <small class="error"
+                                       ng-show="AddParentForm.middleName.$error.required">
+                                    Поле не можу бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.middleName.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.middleName.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.middleName.$error.pattern">
+                                    Перша буква велика! Лише кирилиця!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Прізвище:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="lastName" ng-model="parent.lastName" name="lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddParentForm.lastName.$dirty && AddParentForm.lastName.$invalid">
+                                <small class="error"
+                                       ng-show="AddParentForm.lastName.$error.required">
+                                    Поле не можу бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.lastName.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.lastName.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.lastName.$error.pattern">
+                                    Перша буква велика! Лише кирилиця!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber" class="col-sm-2 control-label">Телефон:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="phoneNumber" ng-model="parent.phoneNumber" name="phoneNumber" ng-minlength="3" ng-maxlength="30" ng-pattern="/^\d+$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddParentForm.phoneNumber.$dirty && AddParentForm.phoneNumber.$invalid">
+                                <small class="error"
+                                       ng-show="AddParentForm.phoneNumber.$error.required">
+                                    Поле не можу бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.phoneNumber.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.phoneNumber.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.phoneNumber.$error.pattern">
+                                    Лише цифри!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">E-mail:</label>
+                        <div class="col-sm-4">
+                            <input type="email" class="form-control" id="email" name="email" ng-minlength="10" ng-model="parent.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddParentForm.email.$dirty && AddParentForm.email.$invalid">
+                                <small class="error"
+                                       ng-show="AddParentForm.email.$error.required">
+                                    Your email is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.email.$error.minlength">
+                                    Поле повинне містити не менш як 10 символів!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.email.$error.pattern">
+                                    Не вірний паттерн!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-2 control-label">Адреса:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="address" ng-model="parent.address" name="address" ng-minlength="3" ng-maxlength="30" required />
+                            <div class="error" style="color:red"
+                                 ng-show="AddParentForm.address.$dirty && AddParentForm.address.$invalid">
+                                <small class="error"
+                                       ng-show="AddParentForm.address.$error.required">
+                                    Поле не можу бути пустим!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.address.$error.minlength">
+                                    Поле повинне містити не менш як 3 символи!
+                                </small>
+                                <small class="error"
+                                       ng-show="AddParentForm.address.$error.maxlength">
+                                    Поле не може містити більш ніж 30 символів!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pupil" class="control-label col-sm-2">Діти:</label>
+                        <div class="col-sm-4">
+                            <div id="pupils" ng-repeat="pupil in parent.pupils">
+                                <label class="control-label">{{pupil.firstName}} {{pupil.lastName}}<br /></label>
+                            </div>
+                            <div angucomplete-alt placeholder="Дитина" maxlength="10" minlength="1" pause="100" selected-object="SelectedPupil" local-data="pupils" search-fields="FirstName,LastName" title-field="FirstName,LastName" input-class="form-control">
+                            </div>
+                            <a href="" class="btn btn-primary" ng-click="AddPupil()">Додати</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="OK" class="btn btn-primary" data-dissmiss="modal" ng-click="close()">ОК</button>
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" ng-click="cancel()">Скасувати</button>
+            </div>
+        </div>
+    </div>
+</div>

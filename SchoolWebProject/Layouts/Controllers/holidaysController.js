@@ -1,18 +1,31 @@
-﻿myApp.controller('holidaysController', function ($scope, $http, holidaysService) {
+﻿myApp.controller('holidaysController', function ($scope, $state, $stateParams, $http, holidaysService) {
     holidaysService.getHolidays()
         .success(function (data) {
             $scope.holidays = [];
             $scope.daysOff = [];
+            $scope.semestr1 = [];
+            $scope.semestr2 = [];
             if (data != null) {
                 for (i = 0; i < data.length; i++) {
-                    data[i].StartDay = $scope.dateParser(data[i].StartDay);
-                    data[i].EndDay = $scope.dateParser(data[i].EndDay);
-                    if (data[i].StartDay == data[i].EndDay) {
+                    var equal = false;
+                    if (data[i].StartDay == data[i].EndDay)
+                    {
+                        equal = true;
+                    }
+                    data[i].StartDay = new Date(data[i].StartDay);
+                    data[i].EndDay = new Date(data[i].EndDay);
+                    if (equal) {
                         $scope.daysOff.push(data[i]);
                     }
 
-                    if (data[i].StartDay != data[i].EndDay) {
-                        $scope.holidays.push(data[i]);
+                    if (!equal) {
+                        if (data[i].Name == "Semestr1") {
+                            $scope.semestr1.push(data[i]);
+                        }
+                        else if (data[i].Name == "Semestr2") {
+                            $scope.semestr2.push(data[i]);
+                        }
+                        else $scope.holidays.push(data[i]);
                     }
                 }
             }
@@ -20,7 +33,8 @@
 
     $scope.dateParser = function (date) {
         var dateParseTempValue = date.slice(0, 10).split('/');
-        return (dateParseTempValue[2], dateParseTempValue[1], dateParseTempValue[0]);
+        return new Date(dateParseTempValue[0]);
+
     }
 
     $scope.addNewDayOff = function (dayOff) {
@@ -29,15 +43,20 @@
             dayOff.StartDay.setHours(dayOff.StartDay.getHours() + 3);
             dayOff.EndDay = dayOff.StartDay;
             if (dayOff.Id != null) {
-                $http.post("api/holidays/" + dayOff.Id, dayOff);
-                window.location.reload("/#/holidays");
+                $http.post("api/holidays/" + dayOff.Id, dayOff)
+                            .success(function () {
+                                $state.go('holidays', { start: $stateParams.start }, { reload: true });
+                            });
             }
             else {
                 var newDayOff = { Id: null, Name: dayOff.Name, StartDay: dayOff.StartDay, EndDay: dayOff.StartDay }
-                $http.post("api/holidays/", newDayOff);
-                window.location.reload("/#/holidays")
+                $http.post("api/holidays/", newDayOff)
+                            .success(function () {
+                                $state.go('holidays', { start: $stateParams.start }, { reload: true });
+                            });
             }
         }
+        $state.go('holidays', { start: $stateParams.start }, { reload: true });
     }
 
     $scope.addNewHolidays = function (holidays) {
@@ -47,13 +66,17 @@
             holidays.StartDay.setHours(holidays.StartDay.getHours() + 3);
             holidays.EndDay.setHours(holidays.EndDay.getHours() + 3);
             if (holidays.Id != null) {
-                $http.post("api/holidays/" + holidays.Id, holidays);
-                window.location.reload("/#/holidays");
+                $http.post("api/holidays/" + holidays.Id, holidays)
+                            .success(function () {
+                                $state.go('holidays', { start: $stateParams.start }, { reload: true });
+                            });
             }
             else {
                 var newHolidays = { Id: null, Name: holidays.Name, StartDay: holidays.StartDay, EndDay: holidays.EndDay }
-                $http.post("api/holidays/", newHolidays);
-                window.location.reload("/#/holidays")
+                $http.post("api/holidays/", newHolidays)
+                            .success(function () {
+                                $state.go('holidays', { start: $stateParams.start }, { reload: true });
+                            });
             }
         }
     }

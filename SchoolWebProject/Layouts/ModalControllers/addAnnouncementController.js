@@ -1,4 +1,4 @@
-﻿myApp.controller("announcementAddController", ['$scope', '$element', 'title', 'close', 'Announcement', function ($scope, $element, title, close, Announcement) {
+﻿myApp.controller("announcementAddController", ['$scope', '$element', '$state', '$stateParams', 'title', 'close', 'Announcement', function ($scope, $element, $state, $stateParams, title, close, Announcement) {
     $scope.announcement = null;
     $scope.IsFormValid = true;
     $scope.imageIsSelected = false
@@ -7,17 +7,13 @@
     }
 
     if (Announcement != null) {
-        var dateParsed;
-        if (Announcement.DataPublished != null) {
-            var dateParsed = Announcement.DataPublished.slice(0,10).split('-');
-        }
         $scope.announcement = {
             id: Announcement.Id,
             image: Announcement.Image,
             title: Announcement.Title,
             message: Announcement.Message,
             messageDetails: Announcement.MessageDetails,
-            dataPublished: dateParsed != null ? new Date(dateParsed[0], dateParsed[1]-1, dateParsed[2]) : new Date(),
+            dataPublished: Announcement.DataPublished != null ? new Date(Announcement.DataPublished) : new Date(),
         };
         
     }
@@ -37,13 +33,14 @@
         close({
             cancelled: false,
             id: $scope.announcement.id,
-            image: $scope.announcement.image != null ? $scope.announcement.image.base64 : null,
+            image: $scope.announcement.image !=null ?($scope.announcement.image.base64 != null ? $scope.announcement.image.base64 : $scope.announcement.image): null,
+
             title: $scope.announcement.title,
             message: $scope.announcement.message,
             messageDetails: $scope.announcement.messageDetails,
             dataPublished: $scope.announcement.dataPublished,
         }, 500);
-    };
+     };
 
     $scope.cancel = function () {
         $element.modal('hide');

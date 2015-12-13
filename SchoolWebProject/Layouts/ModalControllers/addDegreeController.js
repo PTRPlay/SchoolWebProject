@@ -1,4 +1,4 @@
-﻿myApp.controller("degreeAddController", ['$scope', '$element', '$http', 'title', 'close', 'Degree', function ($scope, $element, $http, title, close, Degree) {
+﻿myApp.controller("degreeAddController", ['$scope', '$element', '$http', '$state','$stateParams','title', 'close', 'Degree', function ($scope, $element, $http, $state, $stateParams, title, close, Degree) {
     $scope.degree = null;
     $scope.IsFormValid = true;
     if (Degree != null) {
@@ -75,8 +75,10 @@
 
     $scope.deleteTeacherDegree = function (id) {
         if (id != null) {
-            $http.delete("api/teacherdegree/" + id);
-            window.location.reload("/");
+            $http.delete("api/teacherdegree/" + id)
+                .success(function () {
+                $state.go('teachers', { start: $stateParams.start }, { reload: true });
+            });
             $scope.gridApi.core.refresh();
 
         }
@@ -84,8 +86,10 @@
 
     $scope.editTeacherDegree = function (id, result) {
         var editedTeacherDegree ={id : id, name : result}
-        $http.post("api/teacherdegree/" + id, editedTeacherDegree);
-        window.location.reload("/");
+        $http.post("api/teacherdegree/" + id, editedTeacherDegree)
+                .success(function () {
+                    $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                });
         $scope.gridApi.core.refresh();
         }
 

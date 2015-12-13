@@ -1,4 +1,4 @@
-﻿myApp.controller('announcementModalService', ['$scope', 'ModalService', '$http', function ($scope, ModalService, $http) {
+﻿myApp.controller('announcementModalService', ['$scope', 'ModalService', '$http', '$state', '$stateParams',  function ($scope, ModalService, $http, $state, $stateParams) {
     $scope.showAnnouncementEditPage = function (announcement) {
         ModalService.showModal({
             templateUrl: "Layouts/PartialView/AnnouncementAddTemplate.html",
@@ -12,12 +12,16 @@
             modal.close.then(function (result) {
                 if (result != null) {
                     if (result.id == null) {
-                        $http.post("api/announcements", result);
-                        window.location.reload("/home");
+                        $http.post("api/announcements", result)
+                            .success(function () {
+                                $state.go('newsAdminService', { start: $stateParams.start }, { reload: true });
+                            });
                     }
                     else {
-                        $http.post("api/announcements/" + result.id, result);
-                        window.location.reload("/home");
+                        $http.post("api/announcements/" + result.id, result)
+                            .success(function () {
+                                $state.go('newsAdminService', { start: $stateParams.start }, { reload: true });
+                            });
                     }
                 }
             });
@@ -39,8 +43,10 @@
                 modal.element.modal();
                 modal.close.then(function (result) {
                     if (result.id != null) {
-                        $http.delete("api/announcements/" + result.id);
-                        window.location.reload("/home");
+                        $http.delete("api/announcements/" + result.id)
+                            .success(function () {
+                                $state.go('newsAdminService', { start: $stateParams.start }, { reload: true });
+                            });
                     }
                 });
             });

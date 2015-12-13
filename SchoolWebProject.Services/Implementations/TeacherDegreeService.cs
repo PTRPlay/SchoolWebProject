@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
@@ -20,31 +21,41 @@ namespace SchoolWebProject.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddTeacherDegree(TeacherDegree teacherDegree)
+        public void AddTeacherDegree(ViewTeacherDegree value)
         {
+            var teacherDegree = AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value);
             this.unitOfWork.TeacherDegreeRepository.Add(teacherDegree);
+            this.SaveTeacherDegree();
         }
 
-        public IEnumerable<TeacherDegree> GetAllTeacherCategories()
+        public IEnumerable<ViewTeacherDegree> GetAllTeacherDegrees()
         {
-            return this.unitOfWork.TeacherDegreeRepository.GetAll();
+            var teacherDegrees = this.unitOfWork.TeacherDegreeRepository.GetAll();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherDegree>, IEnumerable<ViewTeacherDegree>>(teacherDegrees);
+            return viewModel;
         }
 
         public void DeleteTeacherDegree(int id)
         {
-            TeacherDegree teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
+            var teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
             teacherDegree.Teachers.RemoveAll(degree => teacherDegree.Id == id);
             this.unitOfWork.TeacherDegreeRepository.Delete(teacherDegree);
+            this.SaveTeacherDegree();
         }
 
-        public TeacherDegree GetTeacherDegreeById(int id)
+        public ViewTeacherDegree GetTeacherDegreeById(int id)
         {
-            return this.unitOfWork.TeacherDegreeRepository.GetById(id);
+            var teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
+            var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
+            return viewModel;
         }
 
-        public void UpdateTeacherDegree(TeacherDegree teacherDegree)
+        public void UpdateTeacherDegree(int id, ViewTeacherDegree value)
         {
+            var teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
+            AutoMapper.Mapper.Map<ViewTeacherDegree, TeacherDegree>(value, teacherDegree);
             this.unitOfWork.TeacherDegreeRepository.Update(teacherDegree);
+            this.SaveTeacherDegree();
         }
 
         public void SaveTeacherDegree()

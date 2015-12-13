@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface ITeacherDegreeService
     {
-        IEnumerable<TeacherDegree> GetAllTeacherCategories();
+        IEnumerable<ViewTeacherDegree> GetAllTeacherDegrees();
 
-        TeacherDegree GetTeacherDegreeById(int id);
+        ViewTeacherDegree GetTeacherDegreeById(int id);
 
-        void UpdateTeacherDegree(TeacherDegree teacherDegree);
+        void UpdateTeacherDegree(int id, ViewTeacherDegree teacherDegree);
 
-        void AddTeacherDegree(TeacherDegree teacherDegree);
+        void AddTeacherDegree(ViewTeacherDegree teacherDegree);
 
         void SaveTeacherDegree();
     }

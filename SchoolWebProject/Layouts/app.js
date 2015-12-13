@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnimate', 'ngTouch',
     'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination',
-    'ui.grid.cellNav', 'ui.bootstrap', 'naif.base64', 'blockUI', 'exceptionOverride']);
+    'ui.grid.cellNav', 'ui.bootstrap', 'naif.base64', 'blockUI', 'exceptionOverride', 'angucomplete-alt']);
 
 myApp.config(function ($stateProvider) {
     $stateProvider.state('home', {
@@ -35,6 +35,11 @@ myApp.config(function ($stateProvider) {
         url: '/pupils',
         templateUrl: '/Layouts/PartialView/Pupils.html',
         controller: 'pupilsController'
+    })
+    .state('parents', {
+        url: '/parents',
+        templateUrl: '/Layouts/PartialView/Parents.html',
+        controller: 'parentsController'
     })
     .state('newsService', {
         url: '/news',
@@ -84,10 +89,15 @@ myApp.config(function ($stateProvider) {
          url: '/permissionerror',
          templateUrl: '/Layouts/PartialView/PermissionErrorPage.html'
      })
+    .state('parent', {
+        url: '/parent/{id}',
+        templateUrl: '/Layouts/PartialView/ParentInfo.html',
+        controller: 'parentInfoController'
+    })
 })
 .config(function (blockUIConfig) {
     blockUIConfig.message = 'Loading...';
 
-    blockUIConfig.delay = 200;
+    blockUIConfig.delay = 300;
 });
 

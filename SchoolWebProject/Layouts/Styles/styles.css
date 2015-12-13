@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
      background-color: #495054; 
      color: white;
      position:fixed;
+     z-index:1;
  }
 
 #main-content {
@@ -113,6 +114,9 @@ TD.jewel {
     margin-left: 5%;
     resize: none;
 }
+.lessondetails-div{
+    margin-left: 3%;
+}
 
 .change-button {
     margin-right: 5%;
@@ -135,7 +139,17 @@ TD.jewel {
     border-right: 0px;
     border-top: 1px solid whitesmoke;
 }
- #groupsGrid.grid .ui-grid-row .ui-grid-cell {
+#groupsGrid.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
+
+#parentsGrid.grid .ui-grid-row .ui-grid-cell {
+    border-right: 0px;
+    border-top: 1px solid whitesmoke;
+}
+
+#announcementsGrid.grid .ui-grid-row .ui-grid-cell {
     border-right: 0px;
     border-top: 1px solid whitesmoke;
 }
@@ -218,6 +232,50 @@ li.groups a.active { color: #e3387c; }
 .content {
     float:initial;
     width:100%;
+    height: 650px;
+}
+
+.tabs {
+  position: relative;   
+  min-height: 200px; /* This part sucks */
+  clear: both;
+  margin: 25px 0;
+}
+.tab {
+  float: left;
+}
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+}
+.tab [type=radio] {
+  display: none;   
+}
+.content {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+
+input[type='file'] {
+  color: transparent;
 }
 
 #searchclear {

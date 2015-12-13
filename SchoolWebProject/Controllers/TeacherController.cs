@@ -67,7 +67,6 @@ namespace SchoolWebProject.Controllers
             if (teacher.Email != null)
                 teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
             this.teacherService.AddTeacher(teacher);
-            this.teacherService.SaveTeacher();
             this.logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
         }
 

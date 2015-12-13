@@ -1,4 +1,4 @@
-﻿myApp.factory('GroupModalService', ['$http', 'ModalService', function ($http, ModalService) {
+﻿myApp.factory('GroupModalService', ['$http', 'ModalService', '$state', '$stateParams', function ($http, ModalService, $state, $stateParams) {
     return {
         showGroupEditPage: function (group) {
             ModalService.showModal(
@@ -16,12 +16,16 @@
                     modal.close.then(function (result) {
                         if (result != null) {
                             if (result.id == null) {
-                                $http.post("api/groups", result);
-                                window.location.reload("/home");
+                                $http.post("api/groups", result)
+                                    .success(function () {
+                                        $state.go('groups', { start: $stateParams.start }, { reload: true });
+                                    });
                             }
                             else {
-                                $http.post("api/groups/", result);
-                                window.location.reload("/home");
+                                $http.post("api/groups", result)
+                                    .success(function () {
+                                        $state.go('groups', { start: $stateParams.start }, { reload: true });
+                                    });
                             }
                         }
 
@@ -44,8 +48,10 @@
                     modal.element.modal();
                     modal.close.then(function (result) {
                         if (result.id != null) {
-                            $http.delete("api/groups/" + result.id);
-                            window.location.reload("/home");
+                            $http.delete("api/groups/" + result.id)
+                                .success(function () {
+                                    $state.go('groups', { start: $stateParams.start }, { reload: true });
+                                });
                         }
                     });
                 });

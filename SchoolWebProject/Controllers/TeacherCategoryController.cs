@@ -26,27 +26,23 @@ namespace SchoolWebProject.Controllers
         // GET api/teachercategory
         public IEnumerable<ViewTeacherCategory> Get()
         {
-            var teacherCategories = this.teacherCategoryService.GetAllTeacherCategories();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<TeacherCategory>, IEnumerable<ViewTeacherCategory>>(teacherCategories);
-            return viewModel;
+            logger.Info("Get all teacher categories");
+            return this.teacherCategoryService.GetAllTeacherCategories();
         }
 
         // GET api/teachercategory/5
         public ViewTeacherCategory Get(int id)
         {
             var teacherCategory = this.teacherCategoryService.GetTeacherCategoryById(id);
-            var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
             logger.Info("Getted teacher category {0}", teacherCategory.Name);
-            return viewModel;
+            return teacherCategory;
         }
 
         // POST api/teachercategory
         [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacherCategory value)
         {
-            var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value);
-            this.teacherCategoryService.AddTeacherCategory(teacherCategory);
-            this.teacherCategoryService.SaveTeacherCategory();
+            this.teacherCategoryService.AddTeacherCategory(value);
             logger.Info("Added new teacher category");
         }
 
@@ -55,10 +51,7 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacherCategory value)
         {
-            var teacherCategory = this.teacherCategoryService.GetTeacherCategoryById(id);
-            AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(value, teacherCategory);
-            this.teacherCategoryService.UpdateTeacherCategory(teacherCategory);
-            this.teacherCategoryService.SaveTeacherCategory();
+            this.teacherCategoryService.UpdateTeacherCategory(id, value);
             logger.Info("Edited teacher category");
         }
 
@@ -68,7 +61,6 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             this.teacherCategoryService.DeleteTeacherCategory(id);
-            this.teacherCategoryService.SaveTeacherCategory();
             logger.Info("Delete teacher category");
         }
     }

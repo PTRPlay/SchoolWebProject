@@ -18,14 +18,16 @@ namespace SchoolWebProject.Services
         private ITeacherService teacherService;
         private ISubjectService subjectService;
         private IGroupService groupService;
+        private ILessonDetailService lessonDetailService;
 
-        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork,ITeacherService teacherService ,ISubjectService subjectService,IGroupService groupService)
+        public ScheduleService(ILogger logger, IUnitOfWork unitOfWork, ITeacherService teacherService, ISubjectService subjectService, IGroupService groupService, ILessonDetailService lessonDetail)
             : base(logger)
         {
             this.unitOfWork = unitOfWork;
             this.teacherService = teacherService;
             this.subjectService = subjectService;
             this.groupService = groupService;
+            this.lessonDetailService = lessonDetail;
         }
 
         public IEnumerable<Schedule> GetAllSchedules()
@@ -33,18 +35,23 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.ScheduleRepository.GetAll();
         }
 
-        public IEnumerable<Schedule> GetByFilter(int teacherFK, int groupFK)
+        public IEnumerable<Schedule> GetByFilter(string teacher, string group)
         {
-
-            var groupSchedule = this.unitOfWork.ScheduleRepository.GetMany(g=>g.GroupId==groupFK);
-            var teacherSchedule = this.unitOfWork.ScheduleRepository.GetMany(g => g.TeacherId == teacherFK);
-            if (teacherSchedule.Count() == 0)
+            
+            var groupSchedule = this.unitOfWork.ScheduleRepository.
+                GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
+            var teacherSchedule = this.unitOfWork.ScheduleRepository.
+                GetMany(p => p.Teacher.FirstName + p.Teacher.MiddleName + p.Teacher.LastName == teacher);
+            if (teacher == null)
             {
-                return groupSchedule;
+                if (group != null)
+                {
+                    return groupSchedule;
+                }
             }
-            else
+            else 
             {
-                if (groupSchedule.Count() == 0)
+                if (group == null) 
                 {
                     return teacherSchedule;
                 }
@@ -76,11 +83,17 @@ namespace SchoolWebProject.Services
         {
             schedule.TeacherId = teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
             schedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
-
+            schedule.ClassRoomId = 1;
+            schedule.GroupId = groupService.GetAllGroups().FirstOrDefault(g => g.NameLetter == schedule.Group.NameLetter 
+                                                                            && g.NameNumber == schedule.Group.NameNumber).Id;
             schedule.Teacher = null;
             schedule.Subject = null;
-
-            unitOfWork.ScheduleRepository.Add(schedule);    
+            schedule.Group = null;
+            schedule.ClassRoom = null;
+            unitOfWork.ScheduleRepository.Add(schedule); 
+            SaveSchedule();
+            Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s=>s.TeacherId==schedule.TeacherId&&s.SubjectId==schedule.SubjectId&&s.GroupId==schedule.GroupId).First();
+            this.lessonDetailService.GenereteLessonDeatail(getedSchedule);
         }
         
         public void ModifySchedule(IEnumerable<Schedule> schedules)
@@ -90,7 +103,8 @@ namespace SchoolWebProject.Services
             {
                 var findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek 
                                                             && s.OrderNumber == schedule.OrderNumber 
-                                                            && s.GroupId == schedule.GroupId);
+                                                            && s.Group.NameLetter == schedule.Group.NameLetter
+                                                            && s.Group.NameNumber == schedule.Group.NameNumber);
                 if (findedSchedule != null)
                 {
                     if (schedule.Teacher.FirstName == "")
@@ -100,11 +114,19 @@ namespace SchoolWebProject.Services
                     else
                     {
                         updateSchedule(findedSchedule, schedule);
+                        SaveSchedule();
+                        findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek
+                                                            && s.OrderNumber == schedule.OrderNumber
+                                                            && s.Group.NameLetter == schedule.Group.NameLetter
+                                                            && s.Group.NameNumber == schedule.Group.NameNumber);
+                        this.lessonDetailService.GenereteLessonDeatail(findedSchedule);
                     }
                 }
                 else if (schedule.Teacher.FirstName!="")
                 {
                     addSchedule(schedule);
+                    Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s => s.TeacherId == schedule.TeacherId && s.SubjectId == schedule.SubjectId && s.GroupId == schedule.GroupId).First();
+                    this.lessonDetailService.GenereteLessonDeatail(getedSchedule);
                 }
             }
             unitOfWork.SaveChanges();

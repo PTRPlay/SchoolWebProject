@@ -172,7 +172,47 @@ namespace SchoolWebProject.Domain.Models
 
                     new LessonDetail{ HomeTask="Ex. 3, p. 24-25",
                     Theme="Друзі пізнаються в біді", 
-                    Date=new DateTime(2015, 11,25 ), ScheduleId=5, SchoolId =1}
+                    Date=new DateTime(2015, 11,25 ), ScheduleId=9, SchoolId =1},
+
+                    
+                    new LessonDetail{ HomeTask="вивчити параграф 18",
+                    Theme="Будова рослинної клітини", 
+                    Date=new DateTime(2015, 12,15 ), ScheduleId=6, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграф 17, лаб. робота №4",
+                    Theme="Загальний план будови рослинної клітини", 
+                    Date=new DateTime(2015, 12,8 ), ScheduleId=6, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграф 16",
+                    Theme="Різноманітність клітин, збільшувальні прилади", 
+                    Date=new DateTime(2015, 12,1 ), ScheduleId=6, SchoolId =1},
+                    new LessonDetail{ HomeTask="повторити параграфи 16-19",
+                    Theme="Загальна характеристика царства тварин", 
+                    Date=new DateTime(2015, 12,22 ), ScheduleId=6, SchoolId =1},
+
+                    new LessonDetail{ HomeTask="повторити параграфи 18 та 19",
+                    Theme="Галицьке і Волинське князівства в другій половині ХІІ ст. Ярослав Осмомисл.", 
+                    Date=new DateTime(2015, 11,26 ), ScheduleId=13, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграф 20",
+                    Theme="Культура Русі–України в другій половині ХІ – першій половині ХІІІ ст", 
+                    Date=new DateTime(2015, 12,3 ), ScheduleId=13, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграф 22, контурна карта ст.4",
+                    Theme="Утворення Галицько-Волинського князівства. Роман Мстиславович. Боротьба за владу. Данило Романович.", 
+                    Date=new DateTime(2015, 12,10 ), ScheduleId=13, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграф 23",
+                    Theme="Культура Галицько-Волинської держави у другій половині ХІ – ХІІІ ст.", 
+                    Date=new DateTime(2015, 12,17 ), ScheduleId=13, SchoolId =1},
+
+                    new LessonDetail{ HomeTask="Написати твір-мініатюру «Подорож від екватора до полюса». Повторити параграфи 24-31.",
+                    Theme="Будова атмосфери, властивості повітря в тропосфері.", 
+                    Date=new DateTime(2015, 11,30 ), ScheduleId=3, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграфи 31,32",
+                    Theme="Добовий і річний хід температури повітря, причини їхнього коливання.", 
+                    Date=new DateTime(2015, 12,9 ), ScheduleId=3, SchoolId =1},
+                    new LessonDetail{ HomeTask="вивчити параграф 34, завдання з робочого зошита - ст.16",
+                    Theme="Вітер: причини виникнення, напрям, сила, швидкість", 
+                    Date=new DateTime(2015, 12,14 ), ScheduleId=3, SchoolId =1},
+                    new LessonDetail{ HomeTask="Параграф 35. Користуючись календарем погоди, скласти розу вітрів одного з місяців.",
+                    Theme="Вода в атмосфері: випаровування, абсолютна і відносна вологість повітря", 
+                    Date=new DateTime(2015, 12,21 ), ScheduleId=3, SchoolId =1}
             };
         }
 
@@ -228,10 +268,13 @@ namespace SchoolWebProject.Domain.Models
         {
             return new List<Holidays>
      {
+         new Holidays{ Name="Semestr1", StartDay=new DateTime(2015, 09, 01), EndDay=new DateTime(2015, 12, 29)},
+         new Holidays{ Name="Semestr2", StartDay=new DateTime(2016, 01, 11), EndDay=new DateTime(2016, 05, 31)},
          new Holidays{ Name="День захисника Батьківщини", StartDay=new DateTime(2015, 10, 14), EndDay=new DateTime(2015, 10, 14)},
+         new Holidays{ Name="Великдень", StartDay=new DateTime(2016, 05, 01), EndDay=new DateTime(2016, 05, 01)},
          new Holidays{ Name="Осінні канікули", StartDay=new DateTime(2015, 10, 31), EndDay=new DateTime(2015, 11, 8)},
          new Holidays{ Name="Зимові канікули", StartDay=new DateTime(2015, 12, 30), EndDay=new DateTime(2016, 1, 10)},
-         new Holidays{ Name="Весняні канікули", StartDay=new DateTime(2016, 3, 26), EndDay=new DateTime(2015, 4, 3)}
+         new Holidays{ Name="Весняні канікули", StartDay=new DateTime(2016, 3, 26), EndDay=new DateTime(2016, 4, 3)}
      };
         }
 

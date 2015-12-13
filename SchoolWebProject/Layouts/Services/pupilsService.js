@@ -20,6 +20,15 @@
             .error(function (data) {
                 return data;
             })
+        },
+        getPupilById: function (userId) {
+            return $http.get('api/pupils/' + userId)
+            .success(function (data) {
+                return data.get;
+            })
+            .error(function (data) {
+                return data;
+            })
         }
     }
 }]);

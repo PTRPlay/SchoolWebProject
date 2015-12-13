@@ -3,7 +3,7 @@
         return function (exception, cause) {
             console.log(exception.message);
             var $http = $injector.get('$http');
-            $http.post("api/error",
+            $http.post("api/errorlog",
                 {
                     exception: exception.message,
                     cause: cause

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface ITeacherCategoryService
     {
-        IEnumerable<TeacherCategory> GetAllTeacherCategories();
+        IEnumerable<ViewTeacherCategory> GetAllTeacherCategories();
 
-        TeacherCategory GetTeacherCategoryById(int id);
+        ViewTeacherCategory GetTeacherCategoryById(int id);
 
-        void UpdateTeacherCategory(TeacherCategory teacherCategory);
+        void UpdateTeacherCategory(int id, ViewTeacherCategory teacherCategory);
 
-        void AddTeacherCategory(TeacherCategory teacherCategory);
+        void AddTeacherCategory(ViewTeacherCategory teacherCategory);
 
         void SaveTeacherCategory();
     }

@@ -1,19 +1,20 @@
-﻿<div style="width:1000px" ng-controller="permissionController" ng-show="showPupils()">
-    <div class="page-header">
-        <div class="row">
-            <div class="col-md-6">
-                <h2> Список учнів</h2>
+﻿            <div style="width:1000px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2> Список учнів</h2>
+                        </div>
+                        <div class="col-md-6" style="padding-top:20px;">
+                            <a href="#addPupil" class=" btn btn-primary pull-right" ng-click="addPupil()">
+                                Додати учня
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>             
+                <br />
             </div>
-            <div class="col-md-6" style="padding-top:20px;">
-                <a href="#addPupil" class=" btn btn-primary pull-right" ng-click="addPupil()">
-                    <span class="glyphicons glyphicons-user-add"></span> Додати учня
-                </a>
-            </div>
-        </div>
-    </div>
-        <div id="pupilsGrid" ui-grid-pagination class="grid" ui-grid="pupilsGrid" style="width:1000px; height: 470px;"></div>
-        <br />
-    </div>
+
 
 
 

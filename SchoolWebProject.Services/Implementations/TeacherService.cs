@@ -46,7 +46,7 @@ namespace SchoolWebProject.Services
         public void UpdateProfile(Teacher teacher)
         {
             this.unitOfWork.TeacherRepository.Update(teacher);
-            this.unitOfWork.SaveChanges();
+            this.SaveTeacher();
         }
 
         public void AddTeacher(Teacher teacher)
@@ -57,6 +57,7 @@ namespace SchoolWebProject.Services
             }
 
             this.unitOfWork.TeacherRepository.Add(teacher);
+            this.SaveTeacher();
         }
 
         public int GetIdByName(string FirstName , string LastName , string MiddleName)
@@ -68,6 +69,7 @@ namespace SchoolWebProject.Services
         public void RemoveTeacher(Teacher teacher)
         {
             this.unitOfWork.TeacherRepository.Delete(teacher);
+            this.SaveTeacher();
         }
 
         public void SaveTeacher()
