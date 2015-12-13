@@ -285,3 +285,9 @@ input[type='file'] {
     height: 470px;
 }
 
+.grid-modal 
+{
+    width: 100%;
+    height: auto;
+}
+
