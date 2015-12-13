@@ -1,11 +1,12 @@
-﻿using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Models;
 
 namespace SchoolWebProject.Services
 {
@@ -19,29 +20,18 @@ namespace SchoolWebProject.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<School> GetAllSchools()
+        public IEnumerable<ViewSchool> GetAllSchools()
         {
-            return this.unitOfWork.SchoolRepository.GetAll();
+            var schools = this.unitOfWork.SchoolRepository.GetAll();
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<School>, IEnumerable<ViewSchool>>(schools);
+            return viewModel;
         }
 
-        public School GetSchoolById(int id)
+        public ViewSchool GetSchoolById(int id)
         {
-            return this.unitOfWork.SchoolRepository.GetById(id);
-        }
-
-        public void UpdateSchool(School school)
-        {
-            this.unitOfWork.SchoolRepository.Update(school);
-        }
-
-        public void AddSchool(School school)
-        {
-            this.unitOfWork.SchoolRepository.Add(school);
-        }
-
-        public void RemoveSchool(School school)
-        {
-            this.unitOfWork.SchoolRepository.Delete(school);
+            var school = this.unitOfWork.SchoolRepository.GetById(id);
+            var viewModel = AutoMapper.Mapper.Map<School, ViewSchool>(school);
+            return viewModel;
         }
 
         public void SaveSchool()

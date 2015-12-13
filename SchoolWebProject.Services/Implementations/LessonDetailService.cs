@@ -1,11 +1,12 @@
-﻿using SchoolWebProject.Data.Infrastructure;
-using SchoolWebProject.Domain.Models;
-using SchoolWebProject.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Data.Infrastructure;
+using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
@@ -19,20 +20,24 @@ namespace SchoolWebProject.Services
             this.unitOfWork = lessonDetailUnitOfWork;
         }
 
-        public IEnumerable<LessonDetail> GetAllLessonDetails()
+        public IEnumerable<ViewLessonDetail> GetAllLessonDetails()
         {
-            return this.unitOfWork.LessonDetailRepository.GetAll();
+            var  lessonDetails =  this.unitOfWork.LessonDetailRepository.GetAll();
+            var viewModel  = AutoMapper.Mapper.Map<IEnumerable<LessonDetail>, IEnumerable<ViewLessonDetail>>(lessonDetails);
+            return viewModel;
         }
 
-        public LessonDetail GetLessonDetailById(int id)
+        public ViewLessonDetail GetLessonDetailById(int id)
         {
-            return this.unitOfWork.LessonDetailRepository.GetById(id);
+            var lessonDetail = this.unitOfWork.LessonDetailRepository.GetById(id);
+            var viewModel = AutoMapper.Mapper.Map<LessonDetail, ViewLessonDetail>(lessonDetail);
+            return viewModel;
         }
 
-        public void UpdateLessonDetail(LessonDetail lessonDetail)
+        public void UpdateLessonDetail(LessonDetail value)
         {
-            this.unitOfWork.LessonDetailRepository.Update(lessonDetail);
-            SaveLessonDetail();
+            this.unitOfWork.LessonDetailRepository.Update(value);
+            this.SaveLessonDetail();
         }
 
         public void GenereteLessonDeatail(Schedule addedSchedule)
@@ -97,14 +102,11 @@ namespace SchoolWebProject.Services
             }
         }
 
-        public void AddLessonDetail(LessonDetail lessonDetail)
+        public void AddLessonDetail(ViewLessonDetail value)
         {
+            var lessonDetail = AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value);
             this.unitOfWork.LessonDetailRepository.Add(lessonDetail);
-        }
-
-        public void RemoveLessonDetail(LessonDetail lessonDetail)
-        {
-            this.unitOfWork.LessonDetailRepository.Delete(lessonDetail);
+            this.SaveLessonDetail();
         }
 
         public void SaveLessonDetail()

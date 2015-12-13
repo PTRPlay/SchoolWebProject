@@ -29,26 +29,21 @@ namespace SchoolWebProject.Controllers
         // GET api/lessonDetail
         public IEnumerable<ViewLessonDetail> Get()
         {
-            var lessonDetail = this.lessonDetailService.GetAllLessonDetails();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<LessonDetail>, IEnumerable<ViewLessonDetail>>(lessonDetail);
-            return viewModel;
+            return this.lessonDetailService.GetAllLessonDetails();
         }
 
         // GET api/lessonDetail/5
         public ViewLessonDetail Get(int id)
         {
-            var viewModel = AutoMapper.Mapper.Map<LessonDetail, ViewLessonDetail>(this.lessonDetailService.GetLessonDetailById(id));
-            return viewModel;
+            return this.lessonDetailService.GetLessonDetailById(id); ;
         }
 
         // PUT api/lessonDetail/5
         [HttpPost]
         [Authorize(Roles = "Admin, Teacher")]
-        public void Put(int id, [FromBody]ViewLessonDetail value)
+        public void Put(int id, [FromBody]LessonDetail value)
         {
-            var lessonDetail = this.lessonDetailService.GetLessonDetailById(id);
-            AutoMapper.Mapper.Map<ViewLessonDetail, LessonDetail>(value, lessonDetail);
-            this.lessonDetailService.UpdateLessonDetail(lessonDetail);
+            this.lessonDetailService.UpdateLessonDetail(value);
         }
 
         // POST api/lessonDetail
@@ -57,12 +52,6 @@ namespace SchoolWebProject.Controllers
         {
             var schedule = this.scheduleServise.GetScheduleById(value.Id);
             this.lessonDetailService.GenereteLessonDeatail(schedule);
-        }
-
-        // DELETE api/lessonDetail/5
-        [Authorize(Roles = "Admin, Teacher")]
-        public void Delete(int id)
-        {
         }
     }
 }

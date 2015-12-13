@@ -106,7 +106,7 @@ namespace SchoolWebProject.Services
                         RemoveSchedule(findedSchedule);
                         var current = this.lessonDetailService.GetAllLessonDetails().Where(g => g.ScheduleId == findedSchedule.Id);
                         foreach (var lessondetaile in current)
-                            lessondetaile.Schedule = null;
+                            lessondetaile.ScheduleId = 0;
                     }
                     else
                     {

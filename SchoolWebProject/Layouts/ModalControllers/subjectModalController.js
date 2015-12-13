@@ -6,7 +6,7 @@
             $scope.subject =
             {
                 id: Subject.Id,
-                name: Subject.name
+                name: Subject.Name
             };
         }
         else {
@@ -22,7 +22,7 @@
             close(
             {
                 id: $scope.subject.id,
-                nameNumber: $scope.subject.name
+                name: $scope.subject.name
             }, 500);
 
         };

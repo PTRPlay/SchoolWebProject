@@ -119,11 +119,12 @@
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
                     $scope.journalGrid.columnDefs.push({
                         name: parseDate($scope.data.LessonDetails[i].Date),
-                        headerCellTemplate: '<div ng-controller="lessondetailController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
+                        headerCellTemplate: '<div style=" transform: rotate(270deg);" ng-controller="lessondetailController" class="ui-grid-header-cell" ng-click="getLessonDetails(col.field)">{{col.name}}</div>',
                         field: $scope.data.LessonDetails[i].Id.toString(),
                         pinnedLeft: false,
                         enableCellEdit: isValidRoleForEditMark,
                         enableFiltering: false,
+                        width: "60",
                         cellFilter: 'mapGender',
                         enableSorting: false,
                         editableCellTemplate: 'ui-grid/dropdownEditor', width: '*',

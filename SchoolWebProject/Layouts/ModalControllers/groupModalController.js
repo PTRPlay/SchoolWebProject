@@ -6,8 +6,8 @@
             $scope.group =
             {
                 id: Group.Id,
-                nameNumber: Group.nameNumber,
-                nameLetter: Group.nameLetter
+                nameNumber: Group.NameNumber,
+                nameLetter: Group.NameLetter
             };
         }
         else {
