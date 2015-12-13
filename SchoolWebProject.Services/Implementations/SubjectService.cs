@@ -37,9 +37,9 @@ namespace SchoolWebProject.Services
 
         public void AddSubject(Subject subject)
         {
-            var copies = this.unitOfWork.SubjectRepository.Get(s => s.Name == subject.Name);
+            var copy = this.unitOfWork.SubjectRepository.Get(s => s.Name == subject.Name);
 
-            if (copies==null)
+            if (copy==null)
             {
                 unitOfWork.SubjectRepository.Add(subject);
                 unitOfWork.SaveChanges();

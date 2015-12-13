@@ -8,12 +8,12 @@
                 <form class="form-horizontal" name="AddSubjectForm">
 
                     <div class="form-group">
-
-                        <label for="Name" class="col-sm-2 control-label">Назва:</label>
+                       
+                        <label for="name" class="col-sm-2 control-label">Назва:</label>
                         <div class="col-sm-4">
 
-                            <input type="text" class="form-control" id="Name" ng-model="subject.name" name="name" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[А-ЯІ]{1}[а-яі]{2,}$/" required />
-
+                            <input type="text" class="form-control" id="name" ng-model="subject.name" name="name" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[а-яіїє]{3,30}$/" required />
+                            
                             <div class="error" style="color:red"
                                  ng-show="AddSubjectForm.name.$dirty && AddSubjectForm.name.$invalid">
                                 <small class="error"
@@ -26,11 +26,11 @@
                                 </small>
                                 <small class="error"
                                        ng-show="AddSubjectForm.name.$error.maxlength">
-                                    Поле не може містити більш ніж 30 символів!
+                                    Поле не може містити більше 30 символів!
                                 </small>
                                 <small class="error"
                                        ng-show="AddSubjectForm.name.$error.pattern">
-                                    Перша буква велика! Лише кирилиця!
+                                    Лише кирилиця!
                                 </small>
                             </div>
                         </div>
