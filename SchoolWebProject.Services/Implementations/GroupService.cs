@@ -32,14 +32,26 @@ namespace SchoolWebProject.Services.Implementations
 
         public void UpdateGroup(Group group)
         {
-            this.unitOfWork.GroupRepository.Update(group);
-            this.unitOfWork.SaveChanges();
+            var copies = this.unitOfWork.GroupRepository.GetMany(
+                g => ((g.NameNumber == group.NameNumber) && (g.NameLetter == group.NameLetter)));
+
+            if (copies.ToList().Count == 0)
+            {
+                this.unitOfWork.GroupRepository.Update(group);
+                this.unitOfWork.SaveChanges();
+            }
         }
 
         public void AddGroup(Group group)
         {
-            this.unitOfWork.GroupRepository.Add(group);
-            this.unitOfWork.SaveChanges();
+            var copies = this.unitOfWork.GroupRepository.GetMany(
+                g => ((g.NameNumber == group.NameNumber) && (g.NameLetter == group.NameLetter)));
+
+            if (copies.ToList().Count == 0)
+            {
+                this.unitOfWork.GroupRepository.Add(group);
+                this.unitOfWork.SaveChanges();
+            }
         }
 
         public void RemoveGroup(int id)

@@ -20,7 +20,7 @@
                enableColumnMenu: false
            },
            {
-               name: 'Літера',
+               name: ' ',
                field: 'NameLetter',
                width: "50",
                enableHiding: false,

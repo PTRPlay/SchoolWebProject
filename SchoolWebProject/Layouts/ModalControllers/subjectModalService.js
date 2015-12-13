@@ -19,13 +19,13 @@
                             if (result.id == null) {
                                 $http.post("api/subjects", result)
                                     .success(function () {
-                                        $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                                        $state.go('subjects', { start: $stateParams.start }, { reload: true });
                                 });
                             }
                             else {
                                 $http.post("api/subjects/", result)
                                     .success(function () {
-                                        $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                                        $state.go('subjects', { start: $stateParams.start }, { reload: true });
                                     });
                             }
                         }
