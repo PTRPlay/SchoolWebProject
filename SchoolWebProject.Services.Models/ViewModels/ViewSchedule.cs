@@ -20,7 +20,9 @@ namespace SchoolWebProject.Models
         public int DayOfTheWeek { get; set; }
 
         public string Group { get; set; }
-        
+
+        public int GroupId { get; set; }
+
         public string ClassRoom { get; set; }
 
         //public virtual IEnumerable<LessonDetail> LessonsDetails { get; set; }

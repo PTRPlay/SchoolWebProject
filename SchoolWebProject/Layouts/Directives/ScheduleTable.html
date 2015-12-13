@@ -1,5 +1,4 @@
-﻿{{InitializeAutocomplate()}}
-<table id="Schedule" class="editableTable">
+﻿<table id="Schedule" class="editableTable">
     <thead>
         <tr>
             <th>День</th>
@@ -9,56 +8,8 @@
             <th>Кабінет</th>
         </tr>
     </thead>
-    <tbody ng-repeat="enty in [{day:'Понелілок',color: '#E9E9E9'},{day:'Вівторок',color:'#F7F5F3'},{day:'Середа',color:'#E9E9E9'},{day:'Четвер',color:'#F7F5F3'},{day:'Пятниця',color:'#E9E9E9'}]" style="background:{{enty.color}}">
-        <tr>
-            <td rowspan="7">{{enty.day}}</td>
-            <td>1</td>
-            <td id="{{$index+1}}teacher1" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}subject1" style="background-color:#F7F5F3"></td>
-            <td id="{{$index+1}}room1" style="background-color:#E9E9E9" ></td>
-        </tr>
-
-        <tr>
-            <td>2</td>
-            <td id="{{$index+1}}teacher2" style="background-color:#F7F5F3"></td>
-            <td id="{{$index+1}}subject2" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}room2" style="background-color:#F7F5F3"></td>
-        </tr>
-
-        <tr>
-            <td>3</td>
-            <td id="{{$index+1}}teacher3" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}subject3" style="background-color:#F7F5F3"></td>
-            <td id="{{$index+1}}room3" style="background-color:#E9E9E9"></td>
-        </tr>
-
-        <tr>
-            <td>4</td>
-            <td id="{{$index+1}}teacher4" style="background-color:#F7F5F3"></td>
-            <td id="{{$index+1}}subject4" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}room4" style="background-color:#F7F5F3"></td>
-        </tr>
-
-        <tr>
-            <td>5</td>
-            <td id="{{$index+1}}teacher5" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}subject5" style="background-color:#F7F5F3"></td>
-            <td id="{{$index+1}}room5" style="background-color:#E9E9E9"></td>
-        </tr>
-
-        <tr>
-            <td>6</td>
-            <td id="{{$index+1}}teacher6" style="background-color:#F7F5F3"></td>
-            <td id="{{$index+1}}subject6" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}room6" style="background-color:#F7F5F3"></td>
-        </tr>
-
-        <tr>
-            <td>7</td>
-            <td id="{{$index+1}}teacher7" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}subject7" style="background-color:#E9E9E9"></td>
-            <td id="{{$index+1}}room7" style="background-color:#F7F5F3"></td>
-        </tr>
-    </tbody>
+   
 </table>
-{{AddEvent()}}
+<div ng-init="CreateSchedule()"></div>
+<div ng-init="AddEvent()"></div>
+<div ng-init="InitializeAutocomplate()"></div> 

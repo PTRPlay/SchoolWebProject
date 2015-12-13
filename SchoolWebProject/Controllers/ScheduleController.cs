@@ -16,7 +16,7 @@ namespace SchoolWebProject.Controllers
         private ILogger logger;
         private IScheduleService scheduleService;
 
-        public ScheduleController(ILogger logger , IScheduleService scheduleService) 
+        public ScheduleController(ILogger logger,ScheduleService scheduleService) 
         {
             this.logger = logger;
             this.scheduleService = scheduleService;
@@ -25,14 +25,14 @@ namespace SchoolWebProject.Controllers
         public IEnumerable<ViewSchedule> Get()
         {
             var schedules = scheduleService.GetAllSchedules();
-            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>,IEnumerable<ViewSchedule>>(schedules);
+            var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule> , IEnumerable<ViewSchedule>>(schedules);
             logger.Info("Get All Schedule");
             return viewSchedules;
         }
 
-        public IEnumerable<ViewSchedule> Get(string teacher ,string group)
+        public IEnumerable<ViewSchedule> Get(int teacher,int group)
         {
-            var schedules = this.scheduleService.GetByFilter(teacher,group);
+            var schedules = this.scheduleService.GetByFilter(teacher , group);
             var viewSchedules = AutoMapper.Mapper.Map<IEnumerable<Schedule>, IEnumerable<ViewSchedule>>(schedules);
             logger.Info("Get part Schedule");
             return viewSchedules;
@@ -40,7 +40,7 @@ namespace SchoolWebProject.Controllers
         
         // POST api/schedule
         [Authorize(Roles = "Admin, Teacher")]
-        public void Post([FromBody]IEnumerable<ViewSchedule> modificationsViewSchedules)
+        public void Post(IEnumerable<ViewSchedule> modificationsViewSchedules)
         {
             var schedules = AutoMapper.Mapper.Map<IEnumerable<ViewSchedule>, IEnumerable<Schedule>>(modificationsViewSchedules);
             this.scheduleService.ModifySchedule(schedules);
