@@ -4,21 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface ILessonDetailService
     {
-        IEnumerable<LessonDetail> GetAllLessonDetails();
+        IEnumerable<ViewLessonDetail> GetAllLessonDetails();
 
         void GenereteLessonDeatail(Schedule addedSchedule);
 
-        LessonDetail GetLessonDetailById(int id);
+        ViewLessonDetail GetLessonDetailById(int id);
 
         void UpdateLessonDetail(LessonDetail lessonDetail);
 
-        void AddLessonDetail(LessonDetail lessonDetail);
-
-        void RemoveLessonDetail(LessonDetail lessonDetail);
+        void AddLessonDetail(ViewLessonDetail lessonDetail);
     }
 }

@@ -42,13 +42,17 @@
        enableSorting: false,
        enableFiltering: false,
        enableCellEdit: false,
+       enableHiding: false,
+       enableColumnMenu: false
    },
 
    {
        enableFiltering: false,
        enableCellEdit: true,
        field: 'Name',
-       displayName: 'Категорія'
+       displayName: 'Категорія',
+       enableHiding: false,
+       enableColumnMenu: false
 
    },
 
@@ -59,7 +63,9 @@
        width: "80",
        enableFiltering: false,
        enableCellEdit: false,
-       enableSorting: false
+       enableSorting: false,
+       enableHiding: false,
+       enableColumnMenu: false
    }
 
    ],

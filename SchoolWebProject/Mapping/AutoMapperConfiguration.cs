@@ -93,21 +93,21 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<ViewSubject, Subject>();
             AutoMapper.Mapper.CreateMap<ViewSchool, School>();
             AutoMapper.Mapper.CreateMap<ViewSchedule, Schedule>()
-                .ForMember(g => g.Group, map => map.MapFrom(vm => ParseStringIntoGroup(vm.Group)))
-                .ForMember(g => g.SchoolId, map => map.MapFrom(vm => 1));
+                .ForMember(g => g.SchoolId, map => map.MapFrom(vm => 1))
+                .ForMember(g => g.ClassRoom, map => map.MapFrom(vm =>MapClassRoom(vm.ClassRoom)));
 
             AutoMapper.Mapper.CreateMap<ViewGroup, Group>()
                 .IgnoreAllNonExisting()
                 .ForMember(dest => dest.SchoolId, opts => opts.MapFrom(src => 1));
         }
-        public Group ParseStringIntoGroup(string info)
-        {
-            if (info == "") return null;
-            Group group = new Group();
-            group.NameLetter = info.Split('-')[1];
-            group.NameNumber = Convert.ToInt32(info.Split('-')[0]);
-            return group;
+
+        public ClassRoom MapClassRoom(string classRoomName)
+        { 
+            var room = new ClassRoom(); 
+            room.Name = classRoomName;
+            return room;
         }
+    
     }
 
 }

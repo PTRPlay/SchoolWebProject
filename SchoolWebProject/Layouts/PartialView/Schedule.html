@@ -1,19 +1,27 @@
 ﻿<div ng-controller="scheduleController">
     <div class="page-header">
-    <h2>Розклад</h2>
+        <h2>Розклад</h2>
     </div>
     <div>
-        <input id="TeacherFilter" ng-model="teacherFilter" type="text" autocomplete="on"/>
-        <input  type="text" ng-model="group"/>
-        <button class="btn btn-primary" ng-click="showSchedule()">
-            Показати Розклад
-        </button>
+    <div>
+        <div class="btn-group">
+            <input id="TeacherFilter" type="text" ng-model="teacherFilter" autocomplete="on" />
+            <span id="searchclear" class="glyphicon glyphicon-remove-circle" onclick="$('#TeacherFilter').val(''); $('#hidden_id').val('')"></span>
+        </div>
+
+        <select ng-controller="groupsController" ng-model="group.Id" ng-change="showSchedule()" class="select">
+            <option value=""></option>
+            <option ng-repeat="enty in GetAllGroups" value={{enty.Id}}>{{enty.NameNumber}}-{{enty.NameLetter}}</option>
+        </select>
+
         <button class="btn btn-primary" ng-click="Edit(group)" ng-controller="permissionController" ng-show="showEditSchedule()">
             Редагувати Розклад
         </button>
     </div>
-    <div class="navbar-left">
-        <div my-Table></div>
+    <div class="navbar-left panel-body">
+        <div my-table></div>
     </div>
-
+    <input id="hidden_id" hidden />
+</div>
+<input type="file" id="file" onchange="angular.element(this).scope().GetScheduleFromJson(this)" ng-controller="permissionController" ng-show="FileSchedule()"/>
 </div>

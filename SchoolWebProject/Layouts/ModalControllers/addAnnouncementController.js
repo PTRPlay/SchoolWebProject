@@ -31,7 +31,6 @@
      $scope.close = function () {
         $element.modal('hide');
         close({
-            cancelled: false,
             id: $scope.announcement.id,
             image: $scope.announcement.image !=null ?($scope.announcement.image.base64 != null ? $scope.announcement.image.base64 : $scope.announcement.image): null,
 

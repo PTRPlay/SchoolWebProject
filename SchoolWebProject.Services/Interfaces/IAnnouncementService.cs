@@ -1,21 +1,21 @@
-﻿using SchoolWebProject.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface IAnnouncementService
     {
-        IEnumerable<Announcement> GetAllAnnouncements();
+        IEnumerable<ViewAnnouncement> GetAllAnnouncements();
 
-        Announcement GetAnnouncementById(int id);
+        ViewAnnouncement GetAnnouncementById(int id);
 
-        void UpdateAnnouncement(Announcement announcement);
+        void UpdateAnnouncement(int id, ViewAnnouncement announcement);
 
-        void AddAnnouncement(Announcement announcement);
+        void AddAnnouncement(ViewAnnouncement announcement);
 
         void RemoveAnnouncement(int id);
     }

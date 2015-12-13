@@ -7,7 +7,7 @@ using System.Text;
 namespace SchoolWebProject.Domain.Models
 {
     public class ClassRoom
-    {
+    {   
         public int Id { get; set; }
 
         [Required]
