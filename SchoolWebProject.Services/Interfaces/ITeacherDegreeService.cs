@@ -13,7 +13,7 @@ namespace SchoolWebProject.Services
 
         ViewTeacherDegree GetTeacherDegreeById(int id);
 
-        void UpdateTeacherDegree(ViewTeacherDegree teacherDegree);
+        void UpdateTeacherDegree(int id, ViewTeacherDegree teacherDegree);
 
         void AddTeacherDegree(ViewTeacherDegree teacherDegree);
 
