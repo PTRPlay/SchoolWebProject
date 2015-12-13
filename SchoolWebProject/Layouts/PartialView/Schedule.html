@@ -10,7 +10,7 @@
         </div>
 
         <select ng-controller="groupsController" ng-model="group.Id" ng-change="showSchedule()" class="select">
-            <option value=""></option>
+            <option value="0"></option>
             <option ng-repeat="enty in GetAllGroups" value={{enty.Id}}>{{enty.NameNumber}}-{{enty.NameLetter}}</option>
         </select>
 

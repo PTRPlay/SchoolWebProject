@@ -21,6 +21,8 @@ namespace SchoolWebProject.Services
 
         int GetIdByName(string FirstName, string LastName, string MiddleName);
 
+        IEnumerable<Teacher> GetByName(string filter);
+
         void SaveTeacher();
     }
 }

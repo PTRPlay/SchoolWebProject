@@ -22,17 +22,14 @@ namespace SchoolWebProject.Controllers
     {
         private ILogger logger;
 
-        private TeacherService teacherService;
-
-        private SubjectService subjectService;
+        private ITeacherService teacherService;
 
         private IAccountService accountService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService, SubjectService subjectService, IAccountService accService) 
+        public TeacherController(ILogger logger, TeacherService teacherService , IAccountService accService) 
         {
             this.logger = logger;
             this.teacherService = teacherService;
-            this.subjectService = subjectService;
             this.accountService = accService;
         }
 
@@ -75,19 +72,16 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            SchoolWebProject.Domain.Models.Teacher teacher = teacherService.GetProfileById(value.Id);     
-            AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
-            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
-            foreach (Subject subject in teacher.Subjects)
+            SchoolWebProject.Domain.Models.Teacher teacher = teacherService.GetProfileById(value.Id);
+            var subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            foreach (var subject in subjects)
             {
-                if (subjectService.GetSubjectById(subject.Id)!=null)
+                if (teacher.Subjects.FirstOrDefault(p => p.Id == subject.Id) == null)
                 {
-                    subjectService.AddSubject(subject);
+                    teacher.Subjects.Add(subject);
                 }
             }
-            teacher.Subjects = null;
             teacherService.UpdateProfile(teacher);
-
        }
 
         // DELETE api/teacher/5

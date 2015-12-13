@@ -14,10 +14,12 @@ namespace SchoolWebProject.Services
     public class TeacherService : BaseService, ITeacherService
     {
         private IUnitOfWork unitOfWork;
+        private ISubjectService subjectService;
 
-        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork) : base(logger)
+        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork,ISubjectService subjectService) : base(logger)
         {
             this.unitOfWork = teacherUnitOfWork;
+            this.subjectService = subjectService;
         }
 
         public IEnumerable<Teacher> GetAllTeachers()
@@ -45,17 +47,17 @@ namespace SchoolWebProject.Services
 
         public void UpdateProfile(Teacher teacher)
         {
+            foreach (var subject in teacher.Subjects)
+            {
+                var temp = this.unitOfWork.SubjectRepository.GetById(subject.Id);
+                this.unitOfWork.SubjectRepository.Attach(temp);
+            }
             this.unitOfWork.TeacherRepository.Update(teacher);
-            this.SaveTeacher();
+            this.unitOfWork.SaveChanges();
         }
-
+        
         public void AddTeacher(Teacher teacher)
         {
-            foreach (var subject in teacher.Subjects) 
-            { 
-                this.unitOfWork.SubjectRepository.Update(subject); 
-            }
-
             this.unitOfWork.TeacherRepository.Add(teacher);
             this.SaveTeacher();
         }

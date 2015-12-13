@@ -47,7 +47,7 @@ namespace SchoolWebProject.Services
             }
             else
             {
-                if (groupSchedule.Count() == 0)
+                if (groupFK == 0)
                 {
                     return teacherSchedule;
                 }

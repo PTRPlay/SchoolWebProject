@@ -33,9 +33,10 @@ namespace SchoolWebProject.UnitTestProject
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iRepository = new Mock<IRepository<Teacher>>();
+            var iSubjectServic = new Mock<ISubjectService>();
 
             iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
-            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object, iSubjectServic.Object);
             //Act
             teacherService.GetAllTeachers();
             //Assert
@@ -49,10 +50,11 @@ namespace SchoolWebProject.UnitTestProject
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iSubjectServic = new Mock<ISubjectService>();
 
             iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
             iRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(this.teacher);
-            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object, iSubjectServic.Object);
             int anyIdMoreZero = 3;
             //Act
            teacherService.GetProfileById(anyIdMoreZero);
@@ -68,9 +70,9 @@ namespace SchoolWebProject.UnitTestProject
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-
+            var iSubjectServic= new Mock<ISubjectService>();
             iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
-            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object,iSubjectServic.Object);
             int anyIdLessZero = -2;
             //Act
             var teacher = teacherService.GetProfileById(anyIdLessZero);
@@ -85,9 +87,10 @@ namespace SchoolWebProject.UnitTestProject
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iSubjectServic = new Mock<ISubjectService>();
 
             iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepository.Object);
-            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object, iSubjectServic.Object);
             //Act
             teacherService.UpdateProfile(this.teacher);
             //Assert
@@ -102,12 +105,12 @@ namespace SchoolWebProject.UnitTestProject
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iRepositoryTeacher = new Mock<IRepository<Teacher>>();
             var iRepositorySubject = new Mock<IRepository<Subject>>();
-
+            var iSubjectServic = new Mock<ISubjectService>();
 
             this.teacher.Subjects = this.subjects;
             iUnitOfWork.Setup(st => st.TeacherRepository).Returns(iRepositoryTeacher.Object);
             iUnitOfWork.Setup(st => st.SubjectRepository).Returns(iRepositorySubject.Object);
-            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object,iSubjectServic.Object);
             //Act
             teacherService.AddTeacher(this.teacher);
             //Assert
@@ -121,7 +124,9 @@ namespace SchoolWebProject.UnitTestProject
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Teacher>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object);
+            var iSubjectServic = new Mock<ISubjectService>();
+
+            var teacherService = new TeacherService(logger.Object, iUnitOfWork.Object,iSubjectServic.Object);
             iUnitOfWork.SetupGet(u => u.TeacherRepository).Returns(iRepository.Object);
             //Act
             teacherService.RemoveTeacher(this.teacher);

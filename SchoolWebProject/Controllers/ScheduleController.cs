@@ -45,17 +45,5 @@ namespace SchoolWebProject.Controllers
             var schedules = AutoMapper.Mapper.Map<IEnumerable<ViewSchedule>, IEnumerable<Schedule>>(modificationsViewSchedules);
             this.scheduleService.ModifySchedule(schedules);
         }
-
-        // PUT api/schedule/5
-        [Authorize(Roles = "Admin, Teacher")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/schedule/5
-        [Authorize(Roles = "Admin, Teacher")]
-        public void Delete(int id)
-        {
-        }
     }
 }
