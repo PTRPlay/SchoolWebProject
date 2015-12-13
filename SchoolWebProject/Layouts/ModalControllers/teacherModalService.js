@@ -12,10 +12,16 @@
             modal.close.then(function (result) {
                 if (result != null) {
                     if (result.id == null) {
-                        $http.post("api/teacher", result);
+                        $http.post("api/teacher", result)
+                                .success(function () {
+                                    $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                                });
                     }
                     else{
-                        $http.post("api/teacher/" + result.id, result);
+                        $http.post("api/teacher/" + result.id, result)
+                                .success(function () {
+                                    $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                                });
                     }
                 }
             });
