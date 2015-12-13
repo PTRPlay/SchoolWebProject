@@ -1,10 +1,14 @@
 ﻿myApp.controller('scheduleController',['$scope','$http','scheduleService',function ($scope,$http,scheduleService) {
-    $scope.teacherFilter = "Kolia";
-    $scope.group = "7-А";
+
+    $scope.teacherFilter = "Введіть прізвище"
+    $scope.group = {};
+
+    var DAY_NUMBER = 6;
+    var LESSON_NUMBER = 8;
 
     $scope.showSchedule = function () {
         clearSchedule();
-        scheduleService.getSchedule($scope.teacherFilter,$scope.group).success(function (data) {
+        scheduleService.getSchedule(Number($('#hidden_id').val()),$scope.group.Id).success(function (data) {
             clearSchedule();
             for (var i = 0; i < data.length; ++i) {
                 var idTeacher = data[i].DayOfTheWeek + "teacher" + data[i].OrderNumber;
@@ -22,10 +26,11 @@
 
     $scope.Edit = function (group) {
         var schedules = [];
-        for (var day = 1; day < 6; day++)
-            for (var order = 1; order < 8; order++) {
+        for (var day = 1; day < DAY_NUMBER; day++)
+            for (var order = 1; order < LESSON_NUMBER; order++) {
                 var teacher = document.getElementById(day + 'teacher' + order).textContent.split(" ");
                 var subject = document.getElementById(day + 'subject' + order).textContent;
+                var room = document.getElementById(day + 'room' + order).textContent
                 schedules.push(
                     {
                         OrderNumber: order,
@@ -38,17 +43,32 @@
                         subject: {
                             Name: subject
                         },
-                        group: group
+                        groupId: group.Id,
+                        classRoom:room
                     }
                     )
             }
-        $http.post('api/schedule', schedules);
+        scheduleService.sendSchedule(schedules);
+        $scope.showSchedule();
+    }
+
+    $scope.GetScheduleFromJson = function (evt) {
+        var file = evt.files;
+        var reader = new FileReader();
+
+        reader.onload = (function (theFile) {
+            return function (e) {
+                var schedule = JSON.parse(e.target.result);
+                $http.post('api/schedule', schedule);
+            };
+        })(file[0]);
+        reader.readAsText(file[0]);
     }
 
 
     function clearSchedule() {
-        for (var i = 1; i < 6; ++i) {
-            for (var j = 1; j < 7; j++) {
+        for (var i = 1; i < DAY_NUMBER; ++i) {
+            for (var j = 1; j < LESSON_NUMBER; j++) {
                 var TeacherId = i + 'teacher' + j;
                 var SubjectId = i + 'subject' + j;
                 var RoomId = i + 'room' + j;

@@ -17,6 +17,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private GenericRepository<Announcement> announcementRepository;
 
+        private GenericRepository<ClassRoom> classRoomRepository;
+
         private GenericRepository<Group> groupRepository;
 
         private GenericRepository<Holidays> holidaysRepository;
@@ -47,8 +49,8 @@ namespace SchoolWebProject.Data.Infrastructure
 
         private GenericRepository<Role> roleRepository;
 
-        private GenericRepository<Parent> parentRepository; 
-        #endregion 
+        private GenericRepository<Parent> parentRepository;
+        #endregion
 
         public UnitOfWork(IDbFactory dbFactory)
         {
@@ -65,7 +67,7 @@ namespace SchoolWebProject.Data.Infrastructure
                 {
                     this.announcementRepository = new GenericRepository<Announcement>(this.dbFactory);
                 }
-                
+
                 return this.announcementRepository;
             }
         }
@@ -275,6 +277,19 @@ namespace SchoolWebProject.Data.Infrastructure
                 }
 
                 return parentRepository;
+            }
+        }
+
+        public GenericRepository<ClassRoom> ClassRoomRepository
+        {
+            get
+            {
+                if (this.classRoomRepository == null)
+                {
+                    this.classRoomRepository = new GenericRepository<ClassRoom>(this.dbFactory);
+                }
+
+                return classRoomRepository;
             }
         }
 

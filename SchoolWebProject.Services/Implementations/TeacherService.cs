@@ -45,11 +45,6 @@ namespace SchoolWebProject.Services
 
         public void UpdateProfile(Teacher teacher)
         {
-            foreach (var subject in teacher.Subjects)
-            {
-                var temp = this.unitOfWork.SubjectRepository.GetById(subject.Id);
-                this.unitOfWork.SubjectRepository.Update(temp);
-            }
             this.unitOfWork.TeacherRepository.Update(teacher);
             this.SaveTeacher();
         }

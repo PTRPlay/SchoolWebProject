@@ -35,23 +35,19 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.ScheduleRepository.GetAll();
         }
 
-        public IEnumerable<Schedule> GetByFilter(string teacher, string group)
+        public IEnumerable<Schedule> GetByFilter(int teacherFK, int groupFK)
         {
-            
-            var groupSchedule = this.unitOfWork.ScheduleRepository.
-                GetMany(p => p.Group.NameNumber + "-" + p.Group.NameLetter == group );
-            var teacherSchedule = this.unitOfWork.ScheduleRepository.
-                GetMany(p => p.Teacher.FirstName + p.Teacher.MiddleName + p.Teacher.LastName == teacher);
-            if (teacher == null)
+
+            var groupSchedule = this.unitOfWork.ScheduleRepository.GetMany(g => g.GroupId == groupFK);
+            var teacherSchedule = this.unitOfWork.ScheduleRepository.GetMany(g => g.TeacherId == teacherFK);
+            if (teacherSchedule.Count() == 0)
             {
-                if (group != null)
-                {
-                    return groupSchedule;
-                }
+
+                return groupSchedule;
             }
-            else 
+            else
             {
-                if (group == null) 
+                if (groupSchedule.Count() == 0)
                 {
                     return teacherSchedule;
                 }
@@ -72,7 +68,7 @@ namespace SchoolWebProject.Services
             return unicSubject;
         }
         
-        private void updateSchedule(Schedule findedSchedule , Schedule schedule)
+        private void updateSchedule( Schedule findedSchedule , Schedule schedule )
         {
             findedSchedule.TeacherId = teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
             findedSchedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
@@ -83,13 +79,12 @@ namespace SchoolWebProject.Services
         {
             schedule.TeacherId = teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
             schedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
-            schedule.ClassRoomId = 1;
-            schedule.GroupId = groupService.GetAllGroups().FirstOrDefault(g => g.NameLetter == schedule.Group.NameLetter 
-                                                                            && g.NameNumber == schedule.Group.NameNumber).Id;
+            schedule.ClassRoomId = unitOfWork.ClassRoomRepository.GetMany(c => c.Name == schedule.ClassRoom.Name).First().Id;
+
             schedule.Teacher = null;
             schedule.Subject = null;
-            schedule.Group = null;
             schedule.ClassRoom = null;
+
             unitOfWork.ScheduleRepository.Add(schedule); 
             SaveSchedule();
             Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s=>s.TeacherId==schedule.TeacherId&&s.SubjectId==schedule.SubjectId&&s.GroupId==schedule.GroupId).First();
@@ -102,23 +97,23 @@ namespace SchoolWebProject.Services
             foreach (var schedule in schedules)
             {
                 var findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek 
-                                                            && s.OrderNumber == schedule.OrderNumber 
-                                                            && s.Group.NameLetter == schedule.Group.NameLetter
-                                                            && s.Group.NameNumber == schedule.Group.NameNumber);
+                                                            && s.OrderNumber == schedule.OrderNumber
+                                                            && s.GroupId==schedule.GroupId);
                 if (findedSchedule != null)
                 {
                     if (schedule.Teacher.FirstName == "")
                     {
                         RemoveSchedule(findedSchedule);
+                        var current = this.lessonDetailService.GetAllLessonDetails().Where(g => g.ScheduleId == findedSchedule.Id);
+                        foreach (var lessondetaile in current)
+                            lessondetaile.Schedule = null;
                     }
                     else
                     {
                         updateSchedule(findedSchedule, schedule);
                         SaveSchedule();
                         findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek
-                                                            && s.OrderNumber == schedule.OrderNumber
-                                                            && s.Group.NameLetter == schedule.Group.NameLetter
-                                                            && s.Group.NameNumber == schedule.Group.NameNumber);
+                                                            && s.OrderNumber == schedule.OrderNumber);
                         this.lessonDetailService.GenereteLessonDeatail(findedSchedule);
                     }
                 }

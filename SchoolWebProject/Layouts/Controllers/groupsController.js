@@ -77,8 +77,10 @@
 
         groupsService.getGroups()
             .success(function (data) {
-            $scope.groupsGrid.data = data;
-        });
+                $scope.groupsGrid.data = data;
+                $scope.GetAllGroups = data;
+            });
+        
     }
 
 ]);
