@@ -37,6 +37,7 @@ namespace SchoolWebProject.Services
 
         public void GenereteLessonDeatail(Schedule addedSchedule)
         {
+            bool IsLessonDateInHolidays = false;
             var holidays = unitOfWork.HolidaysRepository.GetAll();
             var IsExistLessonDetalis = this.unitOfWork.LessonDetailRepository.GetMany(p => p.ScheduleId == addedSchedule.Id);
             DateTime DataOfLesson;
@@ -62,14 +63,17 @@ namespace SchoolWebProject.Services
                 DataOfLesson = FirstDateOfLesson;
                 do
                 {
-                    bool IsLessonDateInHolidays = false;
+                    IsLessonDateInHolidays = false;
                     
                     foreach (var holiday in holidays)
                     {
-                        if (DataOfLesson > holiday.StartDay && DataOfLesson < holiday.EndDay)
+                        if (holiday.Name.Contains("Semestr")==false)
                         {
-                            IsLessonDateInHolidays = true;
-                            break;
+                            if (DataOfLesson > holiday.StartDay && DataOfLesson < holiday.EndDay)
+                            {
+                                IsLessonDateInHolidays = true;
+                                break;
+                            }
                         }
                     }
                     if(!IsLessonDateInHolidays)
