@@ -37,42 +37,46 @@ namespace SchoolWebProject.Services
 
         public void GenereteLessonDeatail(Schedule addedSchedule)
         {
+            bool IsLessonDateInHolidays = false;
             var holidays = unitOfWork.HolidaysRepository.GetAll();
             var IsExistLessonDetalis = this.unitOfWork.LessonDetailRepository.GetMany(p => p.ScheduleId == addedSchedule.Id);
             DateTime DataOfLesson;
             DateTime StartTerm = new DateTime(2015, 09, 1);
             DateTime EndTerm = new DateTime(2015, 12, 30);
-            DateTime FirstDateOfLesson = StartTerm;
+            DateTime FirstDateOfLesson=StartTerm;
             LessonDetail NewLessonDetail;
-            do
-            {
-                if ((int)StartTerm.DayOfWeek == addedSchedule.DayOfTheWeek)
+                do
                 {
-                    FirstDateOfLesson = StartTerm;
-                    break;
-                }
-                else
-                {
-                    StartTerm = StartTerm.AddDays(1);
-                }
-            } while (StartTerm < EndTerm);
-
+                    if ((int)StartTerm.DayOfWeek == addedSchedule.DayOfTheWeek)
+                    {
+                        FirstDateOfLesson = StartTerm;
+                        break;
+                    }
+                    else
+                    {
+                        StartTerm = StartTerm.AddDays(1);
+                    }
+                } while (StartTerm < EndTerm);
+               
             if (IsExistLessonDetalis.Count() == 0)
             {
                 DataOfLesson = FirstDateOfLesson;
                 do
                 {
-                    bool IsLessonDateInHolidays = false;
-
+                    IsLessonDateInHolidays = false;
+                    
                     foreach (var holiday in holidays)
                     {
-                        if (DataOfLesson > holiday.StartDay && DataOfLesson < holiday.EndDay)
+                        if (holiday.Name.Contains("Semestr")==false)
                         {
-                            IsLessonDateInHolidays = true;
-                            break;
+                            if (DataOfLesson > holiday.StartDay && DataOfLesson < holiday.EndDay)
+                            {
+                                IsLessonDateInHolidays = true;
+                                break;
+                            }
                         }
                     }
-                    if (!IsLessonDateInHolidays)
+                    if(!IsLessonDateInHolidays)
                     {
                         NewLessonDetail = new LessonDetail { ScheduleId = addedSchedule.Id, Date = DataOfLesson, SchoolId = 1 };
                         this.unitOfWork.LessonDetailRepository.Add(NewLessonDetail);
@@ -89,7 +93,7 @@ namespace SchoolWebProject.Services
                     UpdateLessonDetail(lessonDetail);
                     SaveLessonDetail();
                 }
-
+                
             }
         }
 

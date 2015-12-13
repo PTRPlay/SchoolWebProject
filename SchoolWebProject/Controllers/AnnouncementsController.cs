@@ -26,35 +26,30 @@ namespace SchoolWebProject.Controllers
         // GET api/announcements
         public IEnumerable<ViewAnnouncement> Get()
         {
-            var announcements = this.announcementService.GetAllAnnouncements();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Announcement>, IEnumerable<ViewAnnouncement>>(announcements);
-            return viewModel;
+            logger.Info("Get all announcements");
+            return this.announcementService.GetAllAnnouncements();
         }
 
         // GET api/announcements/5
         public ViewAnnouncement Get(int id)
         {
             var announcement = this.announcementService.GetAnnouncementById(id);
-            var viewModel = AutoMapper.Mapper.Map<Announcement, ViewAnnouncement>(announcement);
-            return viewModel;
+            return announcement;
         }
 
         // POST api/announcements
         [Authorize(Roles = "Admin, Teacher")]
-        public void Post([FromBody]ViewAnnouncement value)
+        public void Post([FromBody]ViewAnnouncement announcement)
         {
-            Announcement announcement = AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value);
-            this.announcementService.AddAnnouncement(announcement);
+			this.announcementService.AddAnnouncement(announcement);
         }
 
         // PUT api/announcements/5
         [HttpPost]
         [Authorize(Roles = "Admin, Teacher")]
-        public void Put(int id, [FromBody]ViewAnnouncement value)
+        public void Put(int id, [FromBody]ViewAnnouncement announcement)
         {
-            var announcement = this.announcementService.GetAnnouncementById(value.Id);
-            AutoMapper.Mapper.Map<ViewAnnouncement, Announcement>(value, announcement);
-            this.announcementService.UpdateAnnouncement(announcement);
+            this.announcementService.UpdateAnnouncement(id, announcement);
         }
 
         // DELETE api/announcements/5
@@ -62,7 +57,6 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             this.announcementService.RemoveAnnouncement(id);
- 
-        }
+ 		}
     }
 }
