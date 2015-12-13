@@ -12,7 +12,6 @@
             address: Pupil.Address,
             email: Pupil.Email,
             group: {
-                id: Pupil.Group.Id,
                 nameNumber: Pupil.Group.NameNumber,
                 nameLetter: Pupil.Group.NameLetter
             }
