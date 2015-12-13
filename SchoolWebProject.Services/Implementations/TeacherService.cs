@@ -50,7 +50,7 @@ namespace SchoolWebProject.Services
             foreach (var subject in teacher.Subjects)
             {
                 var temp = this.unitOfWork.SubjectRepository.GetById(subject.Id);
-                this.unitOfWork.SubjectRepository.Attach(temp);
+                this.unitOfWork.SubjectRepository.Update(temp);
             }
             this.unitOfWork.TeacherRepository.Update(teacher);
             this.unitOfWork.SaveChanges();
