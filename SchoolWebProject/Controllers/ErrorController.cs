@@ -13,7 +13,7 @@ namespace SchoolWebProject.Controllers
 {
     public class ErrorController : BaseApiController
     {
-        public ErrorController(ILogger logger): base(logger)
+        public ErrorController(ILogger logger):base(logger)
         {
 
         }

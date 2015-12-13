@@ -50,4 +50,11 @@
         }
     }
 
+    $scope.FileSchedule = function () {
+        if (window.currentUser.Role == "Admin") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }])

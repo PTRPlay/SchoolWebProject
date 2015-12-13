@@ -53,7 +53,7 @@ namespace SchoolWebProject.Controllers
             return viewModel;
         }
 
-        public IEnumerable<ViewTeacher> Get(string filter)
+        public IEnumerable<ViewTeacher> GetByFilter(string filter)
         {
             return AutoMapper.Mapper.Map<IEnumerable<SchoolWebProject.Domain.Models.Teacher>, IEnumerable<ViewTeacher>>(this.teacherService.GetByName(filter));
         }
@@ -76,20 +76,19 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            SchoolContext bin = new SchoolContext();
-            SchoolWebProject.Domain.Models.Teacher teacher = (SchoolWebProject.Domain.Models.Teacher)bin.Users.First(p => p.Id == value.Id);
-            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
-            value.Subjects = null;
+            SchoolWebProject.Domain.Models.Teacher teacher = teacherService.GetProfileById(value.Id);     
             AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
-            foreach (Subject subject in subjects)
-            { 
-                if (bin.Subjects.First((p) => p.Id == subject.Id) != null)
+            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            foreach (Subject subject in teacher.Subjects)
+            {
+                if (subjectService.GetSubjectById(subject.Id)!=null)
                 {
-                    teacher.Subjects.Add(bin.Subjects.First((p) => p.Id==subject.Id));
+                    subjectService.AddSubject(subject);
                 }
             }
+            teacher.Subjects = null;
+            teacherService.UpdateProfile(teacher);
 
-            bin.SaveChanges();
        }
 
         // DELETE api/teacher/5
