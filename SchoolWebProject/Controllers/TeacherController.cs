@@ -74,13 +74,16 @@ namespace SchoolWebProject.Controllers
         {
             SchoolWebProject.Domain.Models.Teacher teacher = teacherService.GetProfileById(value.Id);
             var subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            var teacherSubjects = new List<Subject>();
             foreach (var subject in subjects)
             {
                 if (teacher.Subjects.FirstOrDefault(p => p.Id == subject.Id) == null)
                 {
-                    teacher.Subjects.Add(subject);
+                    teacherSubjects.Add(subject);
                 }
             }
+            AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
+            teacher.Subjects = teacherSubjects;
             teacherService.UpdateProfile(teacher);
        }
 
