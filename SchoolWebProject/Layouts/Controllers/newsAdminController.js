@@ -26,7 +26,7 @@
                enableColumnMenu: false
            },
            {
-               name: 'Повідомлення',
+               name: 'Короткий опис',
                field: 'Message',
                enableFiltering: true,
                enableSorting: false,
@@ -35,7 +35,7 @@
            },
 
            {
-               name: "Дата публікації",
+               name: "Дата",
                field: "DataPublished",
                width: "100",
                enableHiding: false,

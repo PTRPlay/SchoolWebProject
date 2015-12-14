@@ -22,17 +22,14 @@ namespace SchoolWebProject.Controllers
     {
         private ILogger logger;
 
-        private TeacherService teacherService;
-
-        private SubjectService subjectService;
+        private ITeacherService teacherService;
 
         private IAccountService accountService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService, SubjectService subjectService, IAccountService accService) 
+        public TeacherController(ILogger logger, TeacherService teacherService , IAccountService accService) 
         {
             this.logger = logger;
             this.teacherService = teacherService;
-            this.subjectService = subjectService;
             this.accountService = accService;
         }
 
@@ -75,19 +72,24 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            SchoolWebProject.Domain.Models.Teacher teacher = teacherService.GetProfileById(value.Id);     
-            AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
-            IEnumerable<Subject> subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
-            foreach (Subject subject in teacher.Subjects)
+            var teacher = teacherService.GetProfileById(value.Id);
+            var subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
+            value.Subjects = null;
+            var teacherSubjects = new List<Subject>();
+            foreach (var subject in subjects)
             {
-                if (subjectService.GetSubjectById(subject.Id)!=null)
+                if (teacher.Subjects.FirstOrDefault(p => p.Id == subject.Id) == null)
                 {
-                    subjectService.AddSubject(subject);
+                    teacherSubjects.Add(subject);
+                }
+                else
+                {
+                    teacherSubjects.Add(teacher.Subjects.First(p => p.Id == subject.Id));
                 }
             }
-            teacher.Subjects = null;
+            AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
+            teacher.Subjects.AddRange(teacherSubjects);
             teacherService.UpdateProfile(teacher);
-
        }
 
         // DELETE api/teacher/5

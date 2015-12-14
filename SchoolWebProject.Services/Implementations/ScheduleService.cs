@@ -47,7 +47,7 @@ namespace SchoolWebProject.Services
             }
             else
             {
-                if (groupSchedule.Count() == 0)
+                if (groupFK == 0)
                 {
                     return teacherSchedule;
                 }
@@ -104,9 +104,9 @@ namespace SchoolWebProject.Services
                     if (schedule.Teacher.FirstName == "")
                     {
                         RemoveSchedule(findedSchedule);
-                        var current = this.lessonDetailService.GetAllLessonDetails().Where(g => g.ScheduleId == findedSchedule.Id);
-                        foreach (var lessondetaile in current)
-                            lessondetaile.ScheduleId = 0;
+                        //var current = this.lessonDetailService.GetAllLessonDetails().Where(g => g.ScheduleId == findedSchedule.Id);
+                        //foreach (var lessondetaile in current)
+                           // lessondetaile.ScheduleId = 0;
                     }
                     else
                     {

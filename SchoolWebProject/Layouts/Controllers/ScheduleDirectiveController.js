@@ -51,6 +51,10 @@
                 $('#hidden_id').val('' + ui.item.id);
             },
         });
+
+        $('#TeacherFilter').click(function () {
+            $(this).val('');
+        })
     }
 
     $scope.CreateSchedule = function () {

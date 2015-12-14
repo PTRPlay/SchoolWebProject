@@ -1,4 +1,4 @@
-﻿myApp.factory('ParentsModalService', ['$http', 'ModalService', function ($http, ModalService) {
+﻿myApp.factory('ParentsModalService', ['$http', '$state','$stateParams', 'ModalService', function ($http, $state, $stateParams, ModalService) {
     return {
         showParentAddPage: function (user) {
             ModalService.showModal({
@@ -13,12 +13,14 @@
                 modal.close.then(function (result) {
                     if (result != null) {
                         if (result.id == null) {
-                            $http.post("api/parents", result);
-                            window.location.reload("/home");
+                            $http.post("api/parents", result).success(function () {
+                                $state.go('parents', { start: $stateParams.start }, { reload: true });
+                            });
                         }
                         else {
-                            $http.post("api/parents/" + result.id, result);
-                            window.location.reload("/home");
+                            $http.post("api/parents/" + result.id, result).success(function () {
+                                $state.go('parents', { start: $stateParams.start }, { reload: true });
+                            });
                         }
                         window.location.assign("#/parents")
                     }
@@ -39,8 +41,10 @@
                 modal.element.modal();
                 modal.close.then(function (result) {
                     if (result.id != null) {
-                        $http.delete("api/parents/" + result.id);
-                        window.location.reload("/home");
+                        $http.delete("api/parents/" + result.id)
+                            .success(function () {
+                            $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                        });
                     }
                 });
             });

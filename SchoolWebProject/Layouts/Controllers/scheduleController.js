@@ -1,6 +1,6 @@
 ﻿myApp.controller('scheduleController', ['$scope', '$http', 'scheduleService', 'permissionService', function ($scope, $http, scheduleService, permissionService) {
 
-    $scope.teacherFilter = "Введіть прізвище"
+    $scope.teacherFilter = "Введіть Прізвище для пошуку";
     $scope.group = {};
 
     var DAY_NUMBER = 6;
