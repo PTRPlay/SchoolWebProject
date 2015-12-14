@@ -2,8 +2,7 @@
     <div class="page-header">
         <h2>Розклад</h2>
     </div>
-    <div>
-    <div>
+    <div class="panel-body">
         <div class="btn-group">
             <input id="TeacherFilter" type="text" ng-model="teacherFilter" autocomplete="on" />
             <span id="searchclear" class="glyphicon glyphicon-remove-circle" onclick="$('#TeacherFilter').val(''); $('#hidden_id').val('')"></span>
@@ -13,15 +12,11 @@
             <option value="0"></option>
             <option ng-repeat="enty in GetAllGroups" value={{enty.Id}}>{{enty.NameNumber}}-{{enty.NameLetter}}</option>
         </select>
-
-        <button class="btn btn-primary" ng-click="Edit(group)" ng-show="showEditSchedule()">
+        <button class="btn btn-default modification-schedule-button" ng-click="Edit(group)" ng-show="showEditSchedule()">
             Редагувати Розклад
         </button>
-    </div>
-    <div class="navbar-left panel-body">
         <div my-table></div>
-    </div>
-    <input id="hidden_id" hidden />
 </div>
 <input type="file" id="file" onchange="angular.element(this).scope().GetScheduleFromJson(this)" ng-show="fileSchedule()"/>
 </div>
+<input id="hidden_id" hidden />

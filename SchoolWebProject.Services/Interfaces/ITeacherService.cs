@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface ITeacherService
     {
-        IEnumerable<Teacher> GetAllTeachers();
+        IEnumerable<SchoolWebProject.Domain.Models.Teacher> GetAllTeachers();
 
-        Teacher GetProfileById(int id);
+        SchoolWebProject.Domain.Models.Teacher GetProfileById(int id);
 
-        void UpdateProfile(Teacher teacher);
+        void UpdateProfile(SchoolWebProject.Domain.Models.Teacher teacher);
 
-        void AddTeacher(Teacher teacher);
+        void AddTeacher(SchoolWebProject.Domain.Models.Teacher teacher);
 
-        void RemoveTeacher(Teacher teacher);
+        void RemoveTeacher(SchoolWebProject.Domain.Models.Teacher teacher);
 
         int GetIdByName(string FirstName, string LastName, string MiddleName);
 
-        IEnumerable<Teacher> GetByName(string filter);
+        IEnumerable<SchoolWebProject.Domain.Models.Teacher> GetByName(string filter);
 
         void SaveTeacher();
     }

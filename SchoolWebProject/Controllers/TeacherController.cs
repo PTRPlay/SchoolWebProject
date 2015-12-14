@@ -87,7 +87,6 @@ namespace SchoolWebProject.Controllers
                     teacherSubjects.Add(teacher.Subjects.First(p => p.Id == subject.Id));
                 }
             }
-            //teacherSubjects.AddRange(teacher.Subjects);
             AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
             teacher.Subjects.AddRange(teacherSubjects);
             teacherService.UpdateProfile(teacher);

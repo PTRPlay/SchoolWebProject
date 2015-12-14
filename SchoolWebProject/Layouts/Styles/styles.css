@@ -13,6 +13,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
 
 *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+
  #main-sidebar { 
      float: left; 
      width: 23%; 
@@ -57,6 +58,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
 #TeacherFilter {
     width:400px;
     margin-bottom:10px;
+    border-radius:5px;
+    border-width:1px,1px,1px,1px;
 }
 
 TD.jewel {
@@ -190,7 +193,7 @@ li.home a {
 }
 
 .logo { 
-    margin: 100px 0; 
+    margin: 50px 0; 
     background-color: #38a9e3; 
     padding: 25px 40px; 
 
@@ -214,6 +217,7 @@ li.home a {
 .navigation {
     position:relative;
     bottom:10%;
+
 }
 
 .responsive-navigation { 
@@ -227,16 +231,33 @@ li.home a { border-color: #38a9e3; }
 li.home a.active { color: #38a9e3; }
 
 li.teachers a { border-color: #e9b144; }
-li.teachers a.teachers { color: #e9b144; }
+li.teachers a:focus{
+    background:  #e9b144;
+}
 
 li.subjects a { border-color: #974dea; }
 li.subjects a.active { color: #974dea; }
+li.subjects a:focus{
+    background:  #974dea;
+}
 
 li.pupils a { border-color: #38e395; }
 li.pupils a.active { color: #38e395; }
+li.pupils a:focus{
+    background:  #38e395;
+}
 
 li.groups a { border-color: #e3387c; }
 li.groups a.active { color: #e3387c; }
+li.groups a:focus{
+    background:  #38e395;
+}
+
+li.schedule a { border-color: #38a9e3; }
+li.schedule a.active { color: #38a9e3; }
+li.schedule a:focus{
+    background:  #38a9e3;
+}
 
 .content {
     float:initial;
@@ -315,6 +336,8 @@ input[type='file'] {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+
+  margin-left:20px;
 }
 
 .select .arr {
@@ -362,3 +385,10 @@ input[type='file'] {
     width: 100%;
     height: auto;
 }
+
+.modification-schedule-button {
+    margin-top:-8px;
+    padding-top:3px;
+    margin-left:20px;
+}
+
