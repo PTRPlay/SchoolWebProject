@@ -263,13 +263,18 @@ li.journal a:focus{
     background: #38e395;
 }
 
+li.diaryService a { border-color: #e9b144; }
+li.diaryService a:focus{
+    background: #e9b144;
+}
+
 li.parents a { border-color: #b6ff00; }
 li.parents a:focus{
     background:  #b6ff00;
 }
 
-li.news a { border-color: #3470ea; }
-li.news a:focus{
+li.newsAdminService a { border-color: #3470ea; }
+li.newsAdminService a:focus{
     background:  #3470ea;;
 }
 
