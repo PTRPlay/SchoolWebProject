@@ -171,7 +171,8 @@ a {
 }
 
 li.home a.active {
-    color: #38A9E3;
+    color: #333;
+    background:#38e395;
 }
 li.home a {
     border-color: #38A9E3;
@@ -193,8 +194,9 @@ li.home a {
 }
 
 .logo { 
-    margin: 50px 0; 
-    background-color: #38a9e3; 
+    margin: 100px 0; 
+    margin-top:10px;
+    background-color: #; 
     padding: 25px 40px; 
 
 }

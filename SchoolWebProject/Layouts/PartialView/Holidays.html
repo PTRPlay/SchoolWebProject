@@ -1,216 +1,204 @@
-﻿<div id="container">
-    <div id="dates" class="row" style="text-align:center;align-content:center">
-        <div class="col-md-5" style="display:table">
-
-            <div class="page-header" id="semestrN1" ng-repeat="semestr in semestr1">
-                <h3 class="text-primary">Семестр #1</h3>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Початок</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="semestr1" ng-model="semestr.StartDay" value="{{semestr.StartDay}}" />
-                    </div>
-                    <div class="col-md-1"></div>
-                    <br><br>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Кінець</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="semestr1" ng-model="semestr.EndDay" value="{{semestr.EndDay}}" />
-                    </div>
-                    <div>
-                        <a href="#/holidays" title="Зберегти" ng-click="addNewHolidays(semestr)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
-                    </div>
-                    <br>
-                </div>
+﻿<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h2> Навчальний рік</h2>
             </div>
-            <div class="page-header" id="daysOffTitle">
-                <h3 class="text-primary">Вихідні</h3>
-                <div id="allDaysOff">
-                    <div ng-repeat="dayOff in daysOff">
-                        <h4>{{dayOff.Name}}</h4>
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <label>Назва</label>
-                            </div>
-                            <div class="col-md-5">
-                                <input class="form-control" id="newDayOffName" placeholder="Введіть назву" ng-click=""  ng-model="dayOff.Name" value="{{dayOff.Name}}" />
-                            </div>
-                            <div class="col-md-1"></div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <label>Дата</label>
-                            </div>
-                            <div class="col-md-5">
-                                <input type="date" class="form-control" id="dayOffDate" ng-model="dayOff.StartDay" ng-click="" value="{{dayOff.StartDay}}"  />
-                            </div>
-                            <div>
-                                <a ng-href="#/holidays" title="Зберегти" ng-click="addNewDayOff(dayOff)"><span class="col-md-1 glyphicon glyphicon-ok-circle" style="height:30px"></span></a>
-                            </div>
-                            <br><br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="addDayOff">
-                <h4>Додати вихідний день</h4>
-                <div class="row" id="dayOffName">
-                    <label id="dayOffName"></label>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Назва</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input class="form-control" id="newDayOffName" placeholder="Введіть назву" ng-click="" ng-model="dayOff.Name" />
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row">
-                    <label id="dayOffName"></label>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Дата</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="dayOffDate" ng-model="dayOff.StartDay" />
-                    </div>
-                    <div>
-                        <a ng-href="#/holidays" ng-click="addNewDayOff(dayOff)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span></a>
-                    </div>
-                    <br><br>
-                </div>
-            </div>
-
-            
-        </div>
-        <div class="col-md-5">
-
-            <div class="page-header" id="semestrN2" ng-repeat="semestr in semestr2">
-                <h3 class="text-primary">Семестр #2</h3>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Початок</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="semestr2" ng-model="semestr.StartDay" value="{{semestr.StartDay}}" />
-                    </div>
-                    <div class="col-md-1"></div>
-                    <br><br>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Кінець</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="semestr2" ng-model="semestr.EndDay" value="{{semestr.EndDay}}" />
-                    </div>
-                    <div>
-                        <a href="#/holidays" title="Зберегти" ng-click="addNewHolidays(semestr)" ><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
-                    </div>
-                    <br>
-                </div>
-            </div>
-            <div class="page-header" id="daysOffTitle">
-                <h3 class="text-primary">Канікули</h3>
-                <div id="allHolidays">
-                    <div ng-repeat="holiday in holidays">
-
-                        <h4>{{holiday.Name}}</h4>
-                        <div class="row" id="HolidaysName">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <label>Назва:</label>
-                            </div>
-                            <div class="col-md-5">
-                                <input id="newHolidaysName" class="form-control" placeholder="Введіть назву" ng-model="holiday.Name" value="{{holiday.Name}}" />
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <label>Початок:</label>
-                            </div>
-                            <div class="col-md-5">
-                                <input type="date" class="form-control" id="holidaysStartDay" ng-click=""  ng-model="holiday.StartDay" value="{{holiday.StartDay}}" />
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <label>Кінець:</label>
-                            </div>
-                            <div class="col-md-5">
-                                <input type="date" class="form-control" id="holidaysEndDay" ng-click=""  ng-model="holiday.EndDay" value="{{holiday.EndDay}}" />
-                            </div>
-                            <div>
-                                <a href="#/holidays" ng-click="addNewHolidays(holiday)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
-                            </div>
-                            </div>
-
-                        <br><br>
-
-                    </div>
-                </div>
-            </div>
-            <div id="addHolidays">
-                <h4>Додати позачергові канікули</h4>
-                <div class="row" id="HolidaysName">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Назва:</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input id="newHolidaysName" class="form-control" placeholder="Введіть назву" ng-model="holidays.Name" />
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Початок:</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="holidaysStartDay" ng-click="" ng-model="holidays.StartDay" />
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <label>Кінець:</label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="date" class="form-control" id="holidaysEndDay" ng-click="" ng-model="holidays.EndDay" />
-                    </div>
-                    <div>
-                        <a href="#/holidays" title="Зберегти" ng-click="addNewHolidays(holidays)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
-                    </div>
-                    </div>
-
-                <br><br>
-
-            </div>
-
         </div>
     </div>
-</div>
+        <div id="dates" class="row" style="text-align:center;align-content:center">
+            <div class="col-md-5" style="display:table">
+
+                <div class="page-header" id="semestrN1" ng-repeat="semestr in semestr1">
+                    <h3 class="text-primary">Семестр #1</h3>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Початок</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="semestr1" ng-model="semestr.StartDay" value="{{semestr.StartDay}}" />
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Кінець</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="semestr1" ng-model="semestr.EndDay" value="{{semestr.EndDay}}" />
+                        </div>
+                        <div>
+                            <a href="#/holidays" title="Зберегти" ng-click="addNewHolidays(semestr)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header" id="daysOffTitle">
+                    <h3 class="text-primary">Вихідні</h3>
+                    <div id="allDaysOff">
+                        <div ng-repeat="dayOff in daysOff">
+                            <h4>{{dayOff.Name}}</h4>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <label>Назва</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input class="form-control" id="newDayOffName" placeholder="Введіть назву" ng-click="" ng-model="dayOff.Name" value="{{dayOff.Name}}" />
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <label>Дата</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" id="dayOffDate" ng-model="dayOff.StartDay" ng-click="" value="{{dayOff.StartDay}}" />
+                                </div>
+                                <div>
+                                    <a ng-href="#/holidays" title="Зберегти" ng-click="addNewDayOff(dayOff)"><span class="col-md-1 glyphicon glyphicon-ok-circle" style="height:30px"></span></a>
+                                </div>
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="addDayOff">
+                    <h4>Додати вихідний день</h4>
+                    <div class="row" id="dayOffName">
+                        <label id="dayOffName"></label>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Назва</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input class="form-control" id="newDayOffName" placeholder="Введіть назву" ng-click="" ng-model="dayOff.Name" />
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <label id="dayOffName"></label>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Дата</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="dayOffDate" ng-model="dayOff.StartDay" />
+                        </div>
+                        <div>
+                            <a ng-href="#/holidays" ng-click="addNewDayOff(dayOff)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span></a>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="page-header" id="semestrN2" ng-repeat="semestr in semestr2">
+                    <h3 class="text-primary">Семестр #2</h3>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Початок</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="semestr2" ng-model="semestr.StartDay" value="{{semestr.StartDay}}" />
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Кінець</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="semestr2" ng-model="semestr.EndDay" value="{{semestr.EndDay}}" />
+                        </div>
+                        <div>
+                            <a href="#/holidays" title="Зберегти" ng-click="addNewHolidays(semestr)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
+                        </div>
+                        </div>
+                </div>
+                <div class="page-header" id="daysOffTitle">
+                    <h3 class="text-primary">Канікули</h3>
+                    <div id="allHolidays">
+                        <div ng-repeat="holiday in holidays">
+
+                            <h4>{{holiday.Name}}</h4>
+                            <div class="row" id="HolidaysName">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <label>Назва:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input id="newHolidaysName" class="form-control" placeholder="Введіть назву" ng-model="holiday.Name" value="{{holiday.Name}}" />
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <label>Початок:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" id="holidaysStartDay" ng-click="" ng-model="holiday.StartDay" value="{{holiday.StartDay}}" />
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <label>Кінець:</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="date" class="form-control" id="holidaysEndDay" ng-click="" ng-model="holiday.EndDay" value="{{holiday.EndDay}}" />
+                                </div>
+                                <div>
+                                    <a href="#/holidays" ng-click="addNewHolidays(holiday)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="addHolidays">
+                    <h4>Додати позачергові канікули</h4>
+                    <div class="row" id="HolidaysName">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Назва:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input id="newHolidaysName" class="form-control" placeholder="Введіть назву" ng-model="holidays.Name" />
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Початок:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="holidaysStartDay" ng-click="" ng-model="holidays.StartDay" />
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <label>Кінець:</label>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control" id="holidaysEndDay" ng-click="" ng-model="holidays.EndDay" />
+                        </div>
+                        <div>
+                            <a href="#/holidays" title="Зберегти" ng-click="addNewHolidays(holidays)"><span title="Зберегти" class="col-md-1 glyphicon glyphicon-ok-circle"></span> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

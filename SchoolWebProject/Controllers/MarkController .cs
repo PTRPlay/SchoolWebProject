@@ -12,7 +12,6 @@ using SchoolWebProject.Models;
 using SchoolWebProject.Services;
 using SchoolWebProject.Services.Models;
 
-
 namespace SchoolWebProject.Controllers
 {
     public class MarkController : BaseApiController
