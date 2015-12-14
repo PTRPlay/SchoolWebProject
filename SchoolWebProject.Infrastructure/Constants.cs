@@ -17,7 +17,7 @@ namespace SchoolWebProject.Infrastructure
         public static readonly int minutesToCookiesExpirate = 20;
 
         public static readonly Dictionary<string, string> AdminPermissions = new Dictionary<string, string>() {
-            {"Вчителі","teachers"},
+            {"Вчителі", "teachers"},
             {"Предмети", "subjects"},
             {"Учні", "pupils"},
             {"Батьки", "parents"},

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SchoolWebProject.Infrastructure;
-using SchoolWebProject.Services.Interfaces;
-using SchoolWebProject.Services;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services;
+using SchoolWebProject.Services.Interfaces;
 using SchoolWebProject.Services.Models.ViewModels;
 
 namespace SchoolWebProject.Controllers
@@ -59,6 +59,7 @@ namespace SchoolWebProject.Controllers
             {
                 parent.LogInData = this.accountService.GenerateUserLoginData(parent);
             }
+
             this.parentService.AddParent(parent);
             logger.Info("Added parent {0} {1}", parent.FirstName, parent.LastName);
         }

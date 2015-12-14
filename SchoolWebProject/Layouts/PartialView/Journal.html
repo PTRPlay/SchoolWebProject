@@ -1,41 +1,49 @@
-﻿
-<div>
-    <h2>{{text}}</h2>
-
-    <div class="row container-fluid">
-        <div class="form-group">
-            <div class="col-sm-3" ng-show="isValidRoleForChooseJournalForGroup">
-                <label for="group" class="col-sm-2 control-label">Клас:</label>
-                <select class="form-control" id="group" ng-model="chosenGroup" ng-change="GetSubjectByGroupId(chosenGroup);GetJournalPage(chosenSubject, chosenGroup);" ng-options="group.Id as (group.NameNumber+'-'+group.NameLetter) for group in groupsOptions"></select>
-            </div>
-            <div class="col-sm-3">
-                <label  for="subject" class="col-sm-2 control-label">Урок:</label>
-                <select class="form-control" id="subject" ng-model="chosenSubject" ng-change="GetJournalPage(chosenSubject, chosenGroup)" ng-options="subject.Id as subject.Name for subject in parsedSubjectsOptions"></select>
+﻿<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Журнал</h2>
             </div>
         </div>
     </div>
-    <br />
-    <div class="row">
-        <div>
-            <div class="col-sm-8">
-                <div id="journalGrid" ui-grid-pinning ui-grid-edit class="grid" ui-grid="journalGrid"></div>
+    <div>
+        <h2>{{text}}</h2>
+
+        <div class="row container-fluid">
+            <div class="form-group">
+                <div class="col-sm-3" ng-show="isValidRoleForChooseJournalForGroup">
+                    <label for="group" class="col-sm-2 control-label">Клас:</label>
+                    <select class="form-control" id="group" ng-model="chosenGroup" ng-change="GetSubjectByGroupId(chosenGroup);GetJournalPage(chosenSubject, chosenGroup);" ng-options="group.Id as (group.NameNumber+'-'+group.NameLetter) for group in groupsOptions"></select>
+                </div>
+                <div class="col-sm-3">
+                    <label for="subject" class="col-sm-2 control-label">Урок:</label>
+                    <select class="form-control" id="subject" ng-model="chosenSubject" ng-change="GetJournalPage(chosenSubject, chosenGroup)" ng-options="subject.Id as subject.Name for subject in parsedSubjectsOptions"></select>
+                </div>
             </div>
-            <div ng-controller="lessondetailController" class="details-background pull-right" ng-show="showHomeTask">
-                <button type="button" class="close pull-right" ng-click="close()">&times;</button>
-                <div class=" form-group lessondetails-div">
-                    <label class="control-label">Дата:</label>
-                    <label class="control-label">{{lessonDetail.date | date}}</label>
+        </div>
+        <br />
+        <div class="row">
+            <div>
+                <div class="col-sm-8">
+                    <div id="journalGrid" ui-grid-pinning ui-grid-edit class="grid" ui-grid="journalGrid"></div>
                 </div>
-                <div class="form-group lessondetails-div">
-                    <label class="control-label">Тема уроку:</label>
-                    <textarea ng-change="isChangedDetail()" ng-model="lessonDetail.theme" class="lessondetails-textarea"></textarea>
-                </div>
-                <div class="form-group lessondetails-div">
-                    <label class="control-label">Домашнє завдання:</label>
-                    <textarea ng-change="isChangedDetail()" ng-model="lessonDetail.hometask" class="lessondetails-textarea"></textarea>
-                </div>
-                <div class="form-group pull-right change-button" ng-show="changedDetail">
-                    <a href="#" class="btn btn-primary" ng-click="change()">Змінити</a>
+                <div ng-controller="lessondetailController" class="details-background pull-right" ng-show="showHomeTask">
+                    <button type="button" class="close pull-right" ng-click="close()">&times;</button>
+                    <div class=" form-group lessondetails-div">
+                        <label class="control-label">Дата:</label>
+                        <label class="control-label">{{lessonDetail.date | date}}</label>
+                    </div>
+                    <div class="form-group lessondetails-div">
+                        <label class="control-label">Тема уроку:</label>
+                        <textarea ng-change="isChangedDetail()" ng-model="lessonDetail.theme" class="lessondetails-textarea"></textarea>
+                    </div>
+                    <div class="form-group lessondetails-div">
+                        <label class="control-label">Домашнє завдання:</label>
+                        <textarea ng-change="isChangedDetail()" ng-model="lessonDetail.hometask" class="lessondetails-textarea"></textarea>
+                    </div>
+                    <div class="form-group pull-right change-button" ng-show="changedDetail">
+                        <a href="#" class="btn btn-primary" ng-click="change()">Змінити</a>
+                    </div>
                 </div>
             </div>
         </div>

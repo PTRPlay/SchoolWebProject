@@ -1,34 +1,38 @@
 ﻿<div class="container-fluid">
     <div class="page-header">
-            <h2> Новини </h2>
-<!--           <button style="margin-top:22px" class="btn btn-primary pull-right" ng-click="showAnnouncementEditPage()" ng-controller="permissionController" ng-show="showAddNews()">Додати новину</button> --> 
-    </div>
-    <div class="panel panel-default" ng-repeat="(announcementIndex,announcement) in listAnnouncements">
-        <div class="panel-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center">
-                        <div ng-show="announcement.Image">
-                            <img ng-src="data:image/jpg;base64,{{announcement.Image}}" alt=" image" height="170">
-                        </div>
-                        <div ng-show="!announcement.Image">
-                            <img src="../Layouts/Images/news-placeholder2.jpg" id="image-plaseholder" height="170">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h4>{{announcement.Title}}</h4>
-                        <br>
-                        <h5>{{announcement.Message}}</h5>
-                        <br>
-                        <h5><small>{{announcement.DataPublished | date: "longDate"}}</small></h5>
-                        <div ng-show="announcement.MessageDetails">
-                            <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)" style="cursor: pointer"> детальніше </a>
-                            <br>
-                            <h5 ng-show="isShowing(announcementIndex)">{{announcement.MessageDetails}}</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <h2> Новини </h2>
+                </div>
+            </div>
+                <!--           <button style="margin-top:22px" class="btn btn-primary pull-right" ng-click="showAnnouncementEditPage()" ng-controller="permissionController" ng-show="showAddNews()">Додати новину</button> -->
+            </div>
+            <div class="panel panel-default" ng-repeat="(announcementIndex,announcement) in listAnnouncements">
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4" style="text-align:center">
+                                <div ng-show="announcement.Image">
+                                    <img ng-src="data:image/jpg;base64,{{announcement.Image}}" alt=" image" height="170">
+                                </div>
+                                <div ng-show="!announcement.Image">
+                                    <img src="../Layouts/Images/news-placeholder2.jpg" id="image-plaseholder" height="170">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h4>{{announcement.Title}}</h4>
+                                <br>
+                                <h5>{{announcement.Message}}</h5>
+                                <br>
+                                <h5><small>{{announcement.DataPublished | date: "longDate"}}</small></h5>
+                                <div ng-show="announcement.MessageDetails">
+                                    <a ng-click="showDetail(announcementIndex)" ng-hide="isShowing(announcementIndex)" style="cursor: pointer"> детальніше </a>
+                                    <br>
+                                    <h5 ng-show="isShowing(announcementIndex)">{{announcement.MessageDetails}}</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>

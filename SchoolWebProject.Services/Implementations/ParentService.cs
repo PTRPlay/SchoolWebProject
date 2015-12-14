@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Dynamic;
+using System.Linq.Expressions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,8 +9,7 @@ using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services.Interfaces;
-using System.Linq.Expressions;
-using System.Linq.Dynamic;
+
 
 namespace SchoolWebProject.Services
 {
@@ -76,4 +77,5 @@ namespace SchoolWebProject.Services
         }
 
     }
+
 }

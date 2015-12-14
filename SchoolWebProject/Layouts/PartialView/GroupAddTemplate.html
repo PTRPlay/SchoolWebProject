@@ -11,7 +11,7 @@
                         <label for="NameNumber" class="col-sm-2 control-label">Число:</label>
                         <div class="col-sm-4">
                             <select name="NameNumber" class="form-control" id="NameNumber" ng-model="group.nameNumber">
-                                <option ng-repeat="n in ['1','2','3','4','5','6','7','8','9','10','11']" ng-selected="group.nameNumber == n" ng-click="group.nameNumber = {{$index}}" value="{{n}}"> {{n}} </option>
+                                <option ng-repeat="n in ['1','2','3','4','5','6','7','8','9','10','11']" ng-selected="group.nameNumber == n" ng-click="group.nameNumber = {{$index}}" value="" value="{{n}}" selected> {{n}} </option>
                             </select>
                         </div>
                     </div>

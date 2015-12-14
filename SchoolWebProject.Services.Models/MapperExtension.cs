@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AutoMapper;
 
 namespace SchoolWebProject.Services.Models
 {
@@ -17,6 +17,7 @@ namespace SchoolWebProject.Services.Models
             {
                 expression.ForMember(property, opt => opt.Ignore());
             }
+
             return expression;
         }
     }

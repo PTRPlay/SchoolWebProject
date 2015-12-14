@@ -193,14 +193,13 @@ li.home a {
 }
 
 .logo { 
-    margin: 50px 0; 
+    margin: 100px 0; 
     background-color: #38a9e3; 
     padding: 25px 40px; 
-
+    margin-top: 10px;
 }
 .logo a { 
     color: white; 
-
 }
 .logo a h1 { 
     text-transform: uppercase; 
@@ -390,5 +389,8 @@ input[type='file'] {
     margin-top:-8px;
     padding-top:3px;
     margin-left:20px;
+}
+.page-header{
+    margin-top: 20px;
 }
 
