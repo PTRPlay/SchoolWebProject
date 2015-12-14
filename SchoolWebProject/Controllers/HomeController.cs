@@ -16,13 +16,13 @@ namespace SchoolWebProject.Controllers
 {
     public class HomeController : Controller
     {
-        public readonly ILogger logger = null;
+        public readonly ILogger Logger = null;
         private IUnitOfWork unitOfWork;
         private AccountService accountService;
 
         public HomeController(ILogger tmplogger, AccountService input, IUnitOfWork unit)
         {
-            this.logger = tmplogger;
+            this.Logger = tmplogger;
             this.accountService = input;
             this.unitOfWork = unit;
         }

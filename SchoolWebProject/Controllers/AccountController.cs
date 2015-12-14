@@ -12,12 +12,12 @@ namespace SchoolWebProject.Controllers
 {
     public class AccountController : Controller
     {
-        public readonly ILogger logger = null;
+        public readonly ILogger Logger = null;
         private IAccountService accountService;
 
         public AccountController(ILogger tmplogger, IAccountService accService)
         {
-            this.logger = tmplogger;
+            this.Logger = tmplogger;
             this.accountService = accService;
         }
 
@@ -55,7 +55,7 @@ namespace SchoolWebProject.Controllers
             LogInData currLogin = this.accountService.GetUserLogInData(currentUser.Id);
             string currentUserRole = this.accountService.GetRoleById(currentUser.RoleId).Name;
             FormsAuthenticationTicket authorizationTicket = new FormsAuthenticationTicket(1, currLogin.Login,
-                DateTime.Now, DateTime.Now.AddMinutes(Constants.minutesToCookiesExpirate), true, currentUserRole);
+                DateTime.Now, DateTime.Now.AddMinutes(Constants.MinutesToCookiesExpirate), true, currentUserRole);
             string encryptedTicket = FormsAuthentication.Encrypt(authorizationTicket);
             HttpCookie authorizationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             HttpContext.Response.Cookies.Add(authorizationCookie);
