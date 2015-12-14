@@ -43,15 +43,24 @@
        enableHiding: false,
        enableColumnMenu: false
    },
-    {
-        name: "Клас",
-        field: "GroupName",
-        width: "*",
-        enableSorting: false,
-        enableFiltering: false,
-        enableHiding: false,
-        enableColumnMenu: false
-    },
+   {
+       name: "По-батькові",
+       field: "MiddleName",
+       width: "*",
+       enableSorting: true,
+       enableFiltering: false,
+       enableHiding: false,
+       enableColumnMenu: false
+   },
+    //{
+    //    name: "Клас",
+    //    field: "GroupName",
+    //    width: "*",
+    //    enableSorting: false,
+    //    enableFiltering: false,
+    //    enableHiding: false,
+    //    enableColumnMenu: false
+    //},
    {
        name: "Телефон",
        field: "PhoneNumber",
@@ -108,7 +117,10 @@
 
             $scope.gridApi.core.on.filterChanged($scope, function () {
                 var filter = gridApi.grid.columns[1].filters[0].term;
-                getPage(filter);
+                setTimeout(function () {
+                    getPage(filter);
+                }, 2000);
+                
             });
 
             $scope.gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
@@ -167,17 +179,17 @@
                 break;
         }
 
-        function GetGroupData() {
-            for (i = 0; i < $scope.pupilsGrid.data.length; i++) {
-                $scope.pupilsGrid.data[i]["GroupName"] = $scope.pupilsGrid.data[i].Group.NameNumber + "-" + $scope.pupilsGrid.data[i].Group.NameLetter;
-            }
-        }
+        //function GetGroupData() {
+        //    for (i = 0; i < $scope.pupilsGrid.data.length; i++) {
+        //        $scope.pupilsGrid.data[i]["GroupName"] = $scope.pupilsGrid.data[i].Group.NameNumber + "-" + $scope.pupilsGrid.data[i].Group.NameLetter;
+        //    }
+        //}
 
         pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
                 $scope.pupilsGrid.totalItems = data.PageCount;
                 $scope.pupilsGrid.data = data.Pupils;
-                GetGroupData();
+                //GetGroupData();
             });
     }
     getPage();
