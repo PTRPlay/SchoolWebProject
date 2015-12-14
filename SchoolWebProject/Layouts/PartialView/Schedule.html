@@ -1,4 +1,5 @@
-﻿<div ng-controller="scheduleController">
+﻿<div class="container-fluid">
+<div ng-controller="scheduleController">
     <div class="page-header">
         <h2>Розклад</h2>
     </div>
@@ -9,8 +10,8 @@
         </div>
 
         <select ng-controller="groupsController" ng-model="group.Id" ng-change="showSchedule()" class="select">
-            <option value="0"></option>
-            <option ng-repeat="enty in GetAllGroups" value={{enty.Id}}>{{enty.NameNumber}}-{{enty.NameLetter}}</option>
+            <option value="0"></option> 
+            <option ng-repeat="enty in GetAllGroups" value={{enty.Id}} >{{enty.NameNumber}}-{{enty.NameLetter}}</option>
         </select>
         <button class="btn btn-default modification-schedule-button" ng-click="Edit(group)" ng-show="showEditSchedule()">
             Редагувати Розклад
@@ -20,3 +21,4 @@
 <input type="file" id="file" onchange="angular.element(this).scope().GetScheduleFromJson(this)" ng-show="fileSchedule()"/>
 </div>
 <input id="hidden_id" hidden />
+</div>

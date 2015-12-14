@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', Arial, Helvetice Neue, sans-s
 
 #Schedule {
     float:initial;
-    width: 930px;
+    width: 900px;
     background: black;
 }
 
@@ -231,7 +231,7 @@ li.home a { border-color: #38a9e3; }
 li.home a.active { color: #38a9e3; }
 
 li.teachers a { border-color: #e9b144; }
-li.teachers a:focus{
+li.teachers a::selection{
     background:  #e9b144;
 }
 
