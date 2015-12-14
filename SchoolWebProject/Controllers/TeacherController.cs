@@ -72,7 +72,7 @@ namespace SchoolWebProject.Controllers
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
         {
-            var teacher = teacherService.GetProfileById(value.Id);
+            var teacher = this.teacherService.GetProfileById(value.Id);
             var subjects = AutoMapper.Mapper.Map<IEnumerable<ViewSubject>, IEnumerable<Subject>>(value.Subjects);
             value.Subjects = null;
             var teacherSubjects = new List<Subject>();

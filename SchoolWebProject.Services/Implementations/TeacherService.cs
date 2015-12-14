@@ -16,7 +16,8 @@ namespace SchoolWebProject.Services
         private IUnitOfWork unitOfWork;
         private ISubjectService subjectService;
 
-        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork,ISubjectService subjectService) : base(logger)
+        public TeacherService(ILogger logger, IUnitOfWork teacherUnitOfWork,ISubjectService subjectService)
+            : base(logger)
         {
             this.unitOfWork = teacherUnitOfWork;
             this.subjectService = subjectService;
@@ -36,8 +37,8 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<Teacher> GetByName(string filter)
         {
-            return this.unitOfWork.TeacherRepository.GetAll().
-                Where((enty) => (enty.LastName).Contains(filter));
+            return this.unitOfWork.TeacherRepository.GetAll()
+                .Where((enty) => (enty.LastName).Contains(filter));
         }
 
         public Teacher Get(Expression<Func<Teacher, bool>> expression)
@@ -55,7 +56,7 @@ namespace SchoolWebProject.Services
             this.unitOfWork.TeacherRepository.Update(teacher);
             this.unitOfWork.SaveChanges();
         }
-        
+
         public void AddTeacher(Teacher teacher)
         {
             foreach (var subject in teacher.Subjects)
@@ -66,7 +67,7 @@ namespace SchoolWebProject.Services
             this.SaveTeacher();
         }
 
-        public int GetIdByName(string FirstName , string LastName , string MiddleName)
+        public int GetIdByName(string FirstName, string LastName, string MiddleName)
         {
             var teachers = this.unitOfWork.TeacherRepository.GetAll();
             return teachers.FirstOrDefault(t => t.FirstName == FirstName && t.MiddleName == MiddleName && t.LastName == LastName).Id;
