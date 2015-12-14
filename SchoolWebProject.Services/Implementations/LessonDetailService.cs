@@ -22,7 +22,7 @@ namespace SchoolWebProject.Services
 
         public IEnumerable<ViewLessonDetail> GetAllLessonDetails()
         {
-            var  lessonDetails =  this.unitOfWork.LessonDetailRepository.GetAll();
+            var lessonDetails = this.unitOfWork.LessonDetailRepository.GetAll();
             var viewModel  = AutoMapper.Mapper.Map<IEnumerable<LessonDetail>, IEnumerable<ViewLessonDetail>>(lessonDetails);
             return viewModel;
         }
@@ -43,12 +43,12 @@ namespace SchoolWebProject.Services
         public void GenereteLessonDeatail(Schedule addedSchedule)
         {
             bool IsLessonDateInHolidays = false;
-            var holidays = unitOfWork.HolidaysRepository.GetAll();
+            var holidays = this.unitOfWork.HolidaysRepository.GetAll();
             var IsExistLessonDetalis = this.unitOfWork.LessonDetailRepository.GetMany(p => p.ScheduleId == addedSchedule.Id);
             DateTime DataOfLesson;
             DateTime StartTerm = new DateTime(2015, 09, 1);
             DateTime EndTerm = new DateTime(2015, 12, 30);
-            DateTime FirstDateOfLesson=StartTerm;
+            DateTime FirstDateOfLesson = StartTerm;
             LessonDetail NewLessonDetail;
                 do
                 {
@@ -72,7 +72,7 @@ namespace SchoolWebProject.Services
                     
                     foreach (var holiday in holidays)
                     {
-                        if (holiday.Name.Contains("Semestr")==false)
+                        if (holiday.Name.Contains("Semestr") == false)
                         {
                             if (DataOfLesson > holiday.StartDay && DataOfLesson < holiday.EndDay)
                             {
@@ -81,11 +81,11 @@ namespace SchoolWebProject.Services
                             }
                         }
                     }
-                    if(!IsLessonDateInHolidays)
+                    if (!IsLessonDateInHolidays)
                     {
                         NewLessonDetail = new LessonDetail { ScheduleId = addedSchedule.Id, Date = DataOfLesson, SchoolId = 1 };
                         this.unitOfWork.LessonDetailRepository.Add(NewLessonDetail);
-                        SaveLessonDetail();
+                        this.SaveLessonDetail();
                     }
                     DataOfLesson = DataOfLesson.AddDays(7);
                 } while (DataOfLesson <= EndTerm);
@@ -96,7 +96,7 @@ namespace SchoolWebProject.Services
                 {
                     lessonDetail.ScheduleId = addedSchedule.Id;
                     UpdateLessonDetail(lessonDetail);
-                    SaveLessonDetail();
+                    this.SaveLessonDetail();
                 }
                 
             }

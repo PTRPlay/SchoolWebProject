@@ -1,14 +1,15 @@
 ﻿<div class="container-fluid">
     <div class="page-header">
-        <h2>Новини</h2>
-    </div>
-    <div ng-controller="announcementModalService">
-        <a class=" btn btn-primary" ng-click="showAnnouncementEditPage()">
-            <span class="glyphicons glyphicons-user-add"></span> Додати новину
-        </a>
-        <a class=" btn btn-primary" ng-href="#/news">
-            <span class="glyphicons glyphicons-user-add"></span> Попередній перегляд
-        </a>
+        <div class="row">
+            <div class="col-md-6">
+                <h2> Новини </h2>
+            </div>
+            <div class="col-md-6" style="padding-top:20px; ; text-align:right";" ng-controller="announcementModalService">
+                <a class=" btn btn-primary" ng-click="showAnnouncementEditPage()"> Додати новину </a>
+
+                <a class=" btn btn-primary" ng-href="#/news"> Попередній перегляд </a>
+            </div>
+        </div>
     </div>
     <br>
 
