@@ -1,8 +1,13 @@
 ﻿<div class="container-fluid">
 <div ng-controller="scheduleController">
     <div class="page-header">
+        <div class="row">
+            <div class="col-md-6">
+
         <h2>Розклад</h2>
     </div>
+            </div>
+        </div>
     <div class="panel-body">
         <div class="btn-group">
             <input id="TeacherFilter" type="text" ng-model="teacherFilter" autocomplete="on" />
@@ -13,7 +18,7 @@
             <option value="0"></option> 
             <option ng-repeat="enty in GetAllGroups" value={{enty.Id}} >{{enty.NameNumber}}-{{enty.NameLetter}}</option>
         </select>
-        <button class="btn btn-default modification-schedule-button" ng-click="Edit(group)" ng-show="showEditSchedule()">
+        <button class="btn btn-primary modification-schedule-button" ng-click="Edit(group)" ng-show="showEditSchedule()">
             Редагувати Розклад
         </button>
         <div my-table></div>

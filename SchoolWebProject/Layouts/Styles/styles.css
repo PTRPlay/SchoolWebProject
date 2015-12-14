@@ -230,12 +230,12 @@ li.home a { border-color: #38a9e3; }
 li.home a.active { color: #38a9e3; }
 
 li.teachers a { border-color: #e9b144; }
-li.teachers a::selection{
+li.teachers a:focus{
     background:  #e9b144;
 }
 
 li.subjects a { border-color: #974dea; }
-li.subjects a.active { color: #974dea; }
+li.subjects a.active { background: #974dea; }
 li.subjects a:focus{
     background:  #974dea;
 }
@@ -256,6 +256,26 @@ li.schedule a { border-color: #38a9e3; }
 li.schedule a.active { color: #38a9e3; }
 li.schedule a:focus{
     background:  #38a9e3;
+}
+
+li.journal a { border-color: #38e395; }
+li.journal a:focus{
+    background: #38e395;
+}
+
+li.parents a { border-color: #b6ff00; }
+li.parents a:focus{
+    background:  #b6ff00;
+}
+
+li.news a { border-color: #3470ea; }
+li.news a:focus{
+    background:  #3470ea;;
+}
+
+li.holidays a { border-color: #e9b144; }
+li.holidays a:focus{
+    background:  #e9b144;
 }
 
 .content {

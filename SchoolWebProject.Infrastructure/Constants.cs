@@ -14,7 +14,7 @@ namespace SchoolWebProject.Infrastructure
 
         public static readonly string EmailMessage = "Ваш логін і пароль для входу на сайт SchoolWebProject такі : ";
 
-        public static readonly int minutesToCookiesExpirate = 20;
+        public static readonly int MinutesToCookiesExpirate = 20;
 
         public static readonly Dictionary<string, string> AdminPermissions = new Dictionary<string, string>() {
             {"Вчителі", "teachers"},
