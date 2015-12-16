@@ -50,25 +50,12 @@ namespace SchoolWebProject.Controllers
             else return this.RedirectToAction("login", "account");
             User currUser = this.accountService.GetCurrentUserProfile(HttpContext.User.Identity.Name);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var userData = new
-            {
-                Id = currUser.Id,
-                Role = role.ToString(),
-                FirstName = currUser.FirstName,
-                MiddleName = currUser.MiddleName,
-                LastName = currUser.LastName,
-                Address = currUser.Address,
-                Email = currUser.Email,
-                Image = currUser.Image,
-                PhoneNumber = currUser.PhoneNumber
-            };
             var mainUserData = new
             {
                 Id = currUser.Id,
                 Role = role.ToString()
             };
             ViewBag.Links = this.accountService.GetUserRaws(role);
-            ViewBag.user = serializer.Serialize(userData);
             ViewBag.mainUserData = serializer.Serialize(mainUserData); 
             return this.View();
         }

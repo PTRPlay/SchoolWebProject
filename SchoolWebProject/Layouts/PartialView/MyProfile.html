@@ -1,28 +1,21 @@
 ﻿<link href="../Layouts/Styles/ProfilesStyles.css" rel="stylesheet" type="text/css" />
-<div>
-    <script type="text/javascript">
-        document.getElementById("UserName").innerHTML = currentUser.LastName + " " + currentUser.FirstName + " " + currentUser.MiddleName;
-        document.getElementById("UserNumber").innerHTML = currentUser.PhoneNumber;
-        document.getElementById("UserAddress").innerHTML = currentUser.Address;
-        document.getElementById("UserEmail").innerHTML = currentUser.Email;
-        document.getElementById("UserImage").innerHTML = currentUser.Image;
-    </script>
+<div ng-controller="myProfileController" ng-init="getUserData()">
     <div class="page-header"><h2>Мій профіль</h2></div>
     <div class="row">
         <div class="col-md-3">
             <div ng-show="UserImage">
-                <img id="UserImage" ng-src="{{UserImage}}" alt="Image" width="170" height="170" />
+                <img id="UserImage" ng-src="{{userData.Image}}" alt="Image" width="170" height="170" />
             </div>
             <div ng-show="!UserImage">
                 <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
             </div>
         </div>
         <div class="col-md-9">
-            <h2 id="UserName"></h2>
+            <h2>{{userData.LastName + " " + userData.FirstName + " " + userData.MiddleName}}</h2>
             <div id="info">
-                <h4 id="infoBlock">Телефон: <span id="UserNumber"></span> </h4>
-                <h4 id="infoBlock">Адреса:  <span id="UserAddress"></span> </h4>
-                <h4 id="infoBlock">Email:   <span id="UserEmail"></span> </h4>
+                <h4 id="infoBlock">Телефон: {{userData.PhoneNumber}}</span> </h4>
+                <h4 id="infoBlock">Адреса:  {{userData.Address}}</span> </h4>
+                <h4 id="infoBlock">Email:   {{userData.Email}}</span> </h4>
             </div>
         </div>
     </div>
