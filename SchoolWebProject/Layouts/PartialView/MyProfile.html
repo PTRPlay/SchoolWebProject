@@ -10,12 +10,26 @@
                 <img src="../Layouts/Images/default-profile.png" id="image-plaseholder" width="170" height="170">
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <h2>{{userData.LastName + " " + userData.FirstName + " " + userData.MiddleName}}</h2>
             <div id="info">
                 <h4 id="infoBlock">Телефон: {{userData.PhoneNumber}} </h4>
                 <h4 id="infoBlock">Адреса:  {{userData.Address}} </h4>
                 <h4 id="infoBlock">Email:   {{userData.Email}} </h4>
+                <h4 id="infoBlock" ng-show="showPupilData()">Клас: <a href="#/group/{{userData.Group.Id}}">{{userData.Group.NameNumber}} - {{userData.Group.NameLetter}} </a></h4>
+                <div ng-show="showTeacherData()">
+                  <!--  <h4 id="infoBlock">Клас: {{//userData.Group.NameNumber}} - {{//userData.Group.NameLetter}}</h4> -->
+                    <h4 id="infoBlock">Категорія: {{userData.Category.Name}}</h4>
+                    <h4 id="infoBlock">Звання: {{userData.Degree.Name}}</h4>
+                    <h4 id="infoBlock">Початок роботи: {{userData.WorkStart}}</h4>
+                    <h4 id="infoBlock">Предмети: <span ng-repeat="subject in userData.Subjects">  {{subject.Name}}</span></h4>
+                </div>   
+                <div ng-show="showParentData()">
+                    <h4 id="infoBlock">Діти:</h4>
+                    <div>
+                        <h4 ng-repeat="pupil in userData.Pupils" id="infoBlock"><a title="Профіль {{pupil.LastName}} {{pupil.FirstName}}" ng-href="#/pupil/{{pupil.Id}}">{{pupil.FirstName + " " + pupil.LastName}}</a></h4>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>
