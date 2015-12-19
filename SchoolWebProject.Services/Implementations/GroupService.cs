@@ -57,6 +57,11 @@ namespace SchoolWebProject.Services.Implementations
         public void RemoveGroup(int id)
         {
             Group group = this.unitOfWork.GroupRepository.GetById(id);
+            group.Pupils.RemoveAll(p => p.GroupId == group.Id);
+            group.Schedules.RemoveAll(p => p.GroupId == group.Id);
+            group.Teacher.RemoveAll(p => p.GroupId == group.Id);
+            this.unitOfWork.SaveChanges();
+
             this.unitOfWork.GroupRepository.Delete(group);
             this.unitOfWork.SaveChanges();
         }

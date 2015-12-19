@@ -59,6 +59,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<IScheduleService, ScheduleService>();
             container.RegisterType<ILessonDetailService, LessonDetailService>();
             container.RegisterType<IParentService, ParentService>();
+            container.RegisterType<IUserService, UserService>();
         }
     }
 }

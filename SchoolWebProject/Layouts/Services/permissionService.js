@@ -1,79 +1,81 @@
-﻿myApp.factory('permissionService', ['$location', function ($location) {
+﻿myApp.factory('permissionService', ['$location', 'currentUser', function ($location, currentUser) {
 
     return {
-     redirection : '/permissionerror',
+        redirection: '/permissionerror',
 
-     showAddNews : function () {
-            if (window.currentUser.Role == "Admin" || window.currentUser.Role == "Teacher") {
+        user: JSON.parse(currentUser),
+
+        showAddNews: function () {
+            if (this.user.Role == "Admin" || this.user.Role == "Teacher") {
                 return true;
             } else {
                 return false;
             }
         },
 
-    showGroups : function () {
-        if (window.currentUser.Role == "Pupil" || window.currentUser.Role == "Parent") {
-            $location.path(this.redirection);
-        } else {
-            return true;
-        }
-    },
+        showGroups: function () {
+            if (this.user.Role == "Pupil" || this.user.Role == "Parent") {
+                $location.path(this.redirection);
+            } else {
+                return true;
+            }
+        },
 
-    showPupils : function () { 
-        if (window.currentUser.Role == "Pupil" || window.currentUser.Role == "Parent") {
-            $location.path(this.redirection);
-        } else {
-            return true;
-        }
-    },
+        showPupils: function () {
+            if (this.user.Role == "Pupil" || this.user.Role == "Parent") {
+                $location.path(this.redirection);
+            } else {
+                return true;
+            }
+        },
 
-    showParents : function () { 
-        if (window.currentUser.Role == "Parent") {
-            $location.path(this.redirection);
-        } else {
-            return true;
-        }
-    },
+        showParents: function () {
+            if (this.user.Role == "Parent") {
+                $location.path(this.redirection);
+            } else {
+                return true;
+            }
+        },
 
-    showParentsGrid: function () { 
-        if (window.currentUser.Role == "Parent" || window.currentUser.Role == "Pupil") {
-            $location.path(this.redirection);
-        } else {
-            return true;
-        }
-    },
+        showParentsGrid: function () {
+            if (this.user.Role == "Parent" || this.user.Role == "Pupil") {
+                $location.path(this.redirection);
+            } else {
+                return true;
+            }
+        },
 
 
-    showTeachers : function () { 
-        if (window.currentUser.Role == "Pupil") {
-            $location.path(this.redirection);
-        } else {
-            return true;
-        }
-    },
+        showTeachers: function () {
+            if (this.user.Role == "Pupil") {
+                $location.path(this.redirection);
+            } else {
+                return true;
+            }
+        },
 
-    showAddEditTeacher : function () { 
-        if (window.currentUser.Role == "Admin") {
-            return true;
-        } else {
-            return false;
-        }
-    },
+        showAddEditTeacher: function () {
+            if (this.user.Role == "Admin") {
+                return true;
+            } else {
+                return false;
+            }
+        },
 
-    showEditSchedule : function () { 
-        if (window.currentUser.Role == "Admin" || window.currentUser.Role == "Teacher") {
-            return true;
-        } else {
-            return false;
-        }
-    },
+        showEditSchedule: function () {
+            if (this.user.Role == "Admin" || this.user.Role == "Teacher") {
+                return true;
+            } else {
+                return false;
+            }
+        },
 
-    fileSchedule : function () { 
-        if (window.currentUser.Role == "Admin") {
-            return true;
-        } else {
-            return false;
+        fileSchedule: function () {
+            if (this.user.Role == "Admin") {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
-}
 }])

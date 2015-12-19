@@ -196,6 +196,7 @@
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherCategoryController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +228,7 @@
     <Content Include="Layouts\app.js" />
     <Content Include="Layouts\Controllers\groupDetailsController.js" />
     <Content Include="Layouts\Controllers\lessondetailController.js" />
+    <Content Include="Layouts\Controllers\myProfileController.js" />
     <Content Include="Layouts\Controllers\newsAdminController.js" />
     <Content Include="Layouts\Controllers\parentInfoController.js" />
     <Content Include="Layouts\Controllers\parentsController.js" />
@@ -286,6 +288,7 @@
     <Content Include="Layouts\PartialView\Holidays.html" />
     <Content Include="Layouts\Services\GroupDetailsService.js" />
     <Content Include="Layouts\Services\lessondetailService.js" />
+    <Content Include="Layouts\Services\myProfileService.js" />
     <Content Include="Layouts\Services\parentsService.js" />
     <Content Include="Layouts\Services\permissionService.js" />
     <Content Include="Layouts\Services\scheduleService.js" />
