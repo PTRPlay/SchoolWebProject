@@ -1,10 +1,11 @@
-﻿using SchoolWebProject.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Domain.Models;
+using sModels = SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
@@ -16,9 +17,9 @@ namespace SchoolWebProject.Services
 
         Pupil GetProfileById(int id);
 
-        void UpdateProfile(Pupil pupil);
+        void UpdateProfile(sModels.ViewPupil pupil);
 
-        void AddPupil(Pupil pupil);
+        void AddPupil(sModels.ViewPupil pupil);
 
         void RemovePupil(int id);
 

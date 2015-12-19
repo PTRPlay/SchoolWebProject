@@ -38,7 +38,7 @@
        name: "Ім'я",
        field: "FirstName",
        width: "*",
-       //enableSorting:false,
+       enableFiltering: true,
        enableFiltering: false,
        enableHiding: false,
        enableColumnMenu: false
@@ -52,15 +52,15 @@
        enableHiding: false,
        enableColumnMenu: false
    },
-    //{
-    //    name: "Клас",
-    //    field: "GroupName",
-    //    width: "*",
-    //    enableSorting: false,
-    //    enableFiltering: false,
-    //    enableHiding: false,
-    //    enableColumnMenu: false
-    //},
+    {
+        name: "Клас",
+        field: "GroupName",
+        width: "*",
+        enableSorting: false,
+        enableFiltering: false,
+        enableHiding: false,
+        enableColumnMenu: false
+    },
    {
        name: "Телефон",
        field: "PhoneNumber",
@@ -179,17 +179,17 @@
                 break;
         }
 
-        //function GetGroupData() {
-        //    for (i = 0; i < $scope.pupilsGrid.data.length; i++) {
-        //        $scope.pupilsGrid.data[i]["GroupName"] = $scope.pupilsGrid.data[i].Group.NameNumber + "-" + $scope.pupilsGrid.data[i].Group.NameLetter;
-        //    }
-        //}
+        function GetGroupData() {
+            for (i = 0; i < $scope.pupilsGrid.data.length; i++) {
+                $scope.pupilsGrid.data[i]["GroupName"] = $scope.pupilsGrid.data[i].GroupNumber + "-" + $scope.pupilsGrid.data[i].GroupLetter;
+            }
+        }
 
         pupilsService.getPage(pageNumb, paginationOptions.pageSize, sortOpt, filter)
             .success(function (data) {
                 $scope.pupilsGrid.totalItems = data.PageCount;
                 $scope.pupilsGrid.data = data.Pupils;
-                //GetGroupData();
+                GetGroupData();
             });
     }
     getPage();
