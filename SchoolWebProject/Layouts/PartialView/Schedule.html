@@ -10,8 +10,8 @@
         </div>
     <div class="panel-body">
         <div class="btn-group">
-            <input id="TeacherFilter" type="text" ng-model="teacherFilter" autocomplete="on" />
-            <span id="searchclear" class="glyphicon glyphicon-remove-circle" onclick="$('#TeacherFilter').val(''); $('#hidden_id').val('')"></span>
+            <input id="TeacherFilter" type="text" ng-model="teacherFilter.name" autocomplete="on" />
+            <span id="searchclear" class="glyphicon glyphicon-remove-circle" onclick="$('#TeacherFilter').val('')"></span>
         </div>
 
         <select ng-controller="groupsController" ng-model="group.Id" ng-change="showSchedule()" class="select">

@@ -28,34 +28,7 @@
         }
     };
 
-    $scope.InitializeAutocomplate = function () {
-        $('#TeacherFilter').autocomplete({
-            source: function (request, response) {
-                var filter = request.term;
-                $.ajax(
-                {
-                    url: 'api/teacher?filter=' + filter,
-                    dataType: "json",
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return {
-                                label: item.FirstName + " " + item.MiddleName + " " + item.LastName,
-                                value: item.FirstName + " " + item.MiddleName + " " + item.LastName,
-                                id: item.Id
-                            }
-                        }));
-                    }
-                });
-            },
-            select: function (e, ui) {
-                $('#hidden_id').val('' + ui.item.id);
-            },
-        });
-
-        $('#TeacherFilter').click(function () {
-            $(this).val('');
-        })
-    }
+   
 
     $scope.CreateSchedule = function () {
         var dom = document.getElementById('Schedule');
