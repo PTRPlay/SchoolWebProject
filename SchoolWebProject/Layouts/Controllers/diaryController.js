@@ -1,7 +1,6 @@
-﻿myApp.controller('diaryController', function ($scope, diaryService) {
+﻿myApp.controller('diaryController', function ($scope, diaryService, permissionService) {
     $scope.weeks = 0;
-        $scope.IdUser = window.currentUser.Id;
- //   $scope.IdUser = 56;
+    $scope.IdUser = permissionService.user.Id;
     $scope.millisInDay = 1000 * 60 * 60 * 24;
 
     $scope.fillHtml = function (week) {

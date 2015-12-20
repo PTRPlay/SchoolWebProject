@@ -20,6 +20,15 @@
             .error(function (data) {
                 return data;
             })
+        },
+        getParentById: function (id) {
+            return $http.get('api/parents/' + id)
+            .success(function (data) {
+                return data.get;
+            })
+            .error(function (data) {
+                return data;
+            })
         }
     }
 }])

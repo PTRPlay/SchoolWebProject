@@ -23,7 +23,11 @@ namespace SchoolWebProject.Services.Models
 
         public string Email { get; set; }
 
-        public ViewGroup Group { get; set; }
+        public string GroupNumber { get; set; }
+
+        public string GroupLetter { get; set; }
+
+        public int GroupId { get; set; }
 
         static ViewPupil()
         {

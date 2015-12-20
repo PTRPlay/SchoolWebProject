@@ -1,24 +1,25 @@
-﻿using SchoolWebProject.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SchoolWebProject.Domain.Models;
+using sModels = SchoolWebProject.Services.Models;
 
 namespace SchoolWebProject.Services
 {
     public interface IPupilService
     {
-        IEnumerable<Pupil> GetAllPupils();
+        IEnumerable<sModels.ViewPupil> GetAllPupils();
 
-        IEnumerable<Pupil> GetPage(int page, int amount, string sorting, string filtering, out int pageCount);
+        IEnumerable<sModels.ViewPupil> GetPage(int page, int amount, string sorting, string filtering, out int pageCount);
 
         Pupil GetProfileById(int id);
 
-        void UpdateProfile(Pupil pupil);
+        void UpdateProfile(sModels.ViewPupil pupil);
 
-        void AddPupil(Pupil pupil);
+        void AddPupil(sModels.ViewPupil pupil);
 
         void RemovePupil(int id);
 

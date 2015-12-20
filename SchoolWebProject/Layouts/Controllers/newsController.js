@@ -1,6 +1,5 @@
-﻿myApp.controller('newsController', function ($scope, newsService, testFromIndex, permissionService) {
+﻿myApp.controller('newsController', function ($scope, newsService, permissionService) {
     $scope.listAnnouncements = [];
-    console.log('test value from Index page: ' + testFromIndex); // todo remove afterwards
     newsService.getNews().success(function (data) {
         $scope.listAnnouncements = data;
     });
