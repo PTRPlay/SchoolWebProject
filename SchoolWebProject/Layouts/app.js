@@ -2,7 +2,8 @@ var myApp = angular.module('myApp', ['ui.router', 'angularModalService', 'ngAnim
     'ui.grid', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.edit', 'ui.grid.pagination',
     'ui.grid.cellNav', 'ui.bootstrap', 'naif.base64', 'blockUI', 'exceptionOverride', 'angucomplete-alt']);
 
-myApp.config(function ($stateProvider) {
+myApp.config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/news');
     $stateProvider.state('home', {
         url: '/home'
     })
