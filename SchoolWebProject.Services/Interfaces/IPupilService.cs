@@ -11,9 +11,9 @@ namespace SchoolWebProject.Services
 {
     public interface IPupilService
     {
-        IEnumerable<Pupil> GetAllPupils();
+        IEnumerable<sModels.ViewPupil> GetAllPupils();
 
-        IEnumerable<Pupil> GetPage(int page, int amount, string sorting, string filtering, out int pageCount);
+        IEnumerable<sModels.ViewPupil> GetPage(int page, int amount, string sorting, string filtering, out int pageCount);
 
         Pupil GetProfileById(int id);
 

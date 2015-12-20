@@ -30,9 +30,7 @@ namespace SchoolWebProject.Controllers
         // GET api/pupils
         public IEnumerable<sModels.ViewPupil> Get()
         {
-            var pupils = this.pupilService.GetAllPupils();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sModels.ViewPupil>>(pupils);
-            return viewModel;
+            return this.pupilService.GetAllPupils();
         }
 
         // GET api/pupils/2/25/LastName ASC/Пилипів
@@ -40,8 +38,7 @@ namespace SchoolWebProject.Controllers
         {
             int pageCount;
             var pupils = this.pupilService.GetPage(page, amount, sorting, filtering, out pageCount);
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sModels.ViewPupil>>(pupils);
-            var pupilPage = new  { Pupils = viewModel, PageCount = pageCount };
+            var pupilPage = new  { Pupils = pupils, PageCount = pageCount };
             return pupilPage;
         }
 

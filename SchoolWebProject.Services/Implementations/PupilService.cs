@@ -27,13 +27,15 @@ namespace SchoolWebProject.Services
             this.groupService = groupService;
         }
 
-        public IEnumerable<Pupil> GetAllPupils()
+        public IEnumerable<sModels.ViewPupil> GetAllPupils()
         {
+            var pupils = unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName);
+            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sModels.ViewPupil>>(pupils);
             logger.Info("Retrieving all pupils");
-            return unitOfWork.PupilRepository.GetAll().OrderBy(p => p.LastName);
+            return viewModel;
         }
 
-        public IEnumerable<Pupil> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount)
+        public IEnumerable<sModels.ViewPupil> GetPage(int pageNumb, int amount, string sorting, string filtering, out int pageCount)
         {
             IEnumerable<Pupil> pupils = null;
 
@@ -41,15 +43,15 @@ namespace SchoolWebProject.Services
             {
                 pupils = unitOfWork.PupilRepository.GetMany(p => p.LastName.ToLower().StartsWith(filtering.ToLower()));
                 pageCount = pupils.Count();
-                pupils = pupils.AsQueryable().OrderBy(sorting).Skip((pageNumb - 1) * amount).Take(amount); 
-                return pupils;
+                pupils = pupils.AsQueryable().OrderBy(sorting).Skip((pageNumb - 1) * amount).Take(amount);
+                return AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sModels.ViewPupil>>(pupils); 
             }
 
             pupils = unitOfWork.PupilRepository.GetAll().OrderBy(sorting);
             pageCount = pupils.Count();
             pupils = pupils.Skip((pageNumb - 1) * amount).Take(amount);
-            logger.Info("Retrieving page with pupils from a server. Page # {0}, amount - {1}", page, amount);
-            return pupils;
+            logger.Info("Retrieving page with pupils from a server. Page # {0}, amount - {1}", pageNumb, amount);
+            return AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sModels.ViewPupil>>(pupils); ;
         }
 
         public Pupil GetProfileById(int id)
