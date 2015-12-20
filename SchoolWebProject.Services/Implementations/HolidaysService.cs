@@ -43,8 +43,9 @@ namespace SchoolWebProject.Services
             this.SaveHolidays();
         }
 
-        public void RemoveHolidays(Holidays holidays)
+        public void RemoveHolidays(int id)
         {
+            var holidays = this.unitOfWork.HolidaysRepository.GetById(id);
             this.unitOfWork.HolidaysRepository.Delete(holidays);
             this.SaveHolidays();
         }

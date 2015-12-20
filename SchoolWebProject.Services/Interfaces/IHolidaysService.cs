@@ -17,6 +17,6 @@ namespace SchoolWebProject.Services
 
         void AddHolidays(Holidays holidays);
 
-        void RemoveHolidays(Holidays holidays);
+        void RemoveHolidays(int id);
     }
 }

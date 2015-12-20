@@ -47,5 +47,12 @@ namespace SchoolWebProject.Controllers
         {
             this.holidaysService.UpdateHolidays(value);
         }
+
+        // DELETE: api/holidays/5
+        [Authorize(Roles = "Admin")]
+        public void Delete(int id)
+        {
+            this.holidaysService.RemoveHolidays(id);
+        }
     }
 }
