@@ -95,7 +95,7 @@ namespace SchoolWebProject.Services
             //assigning group to pupil
             if (value.GroupLetter != null && value.GroupNumber != null)
             {
-                Group group = groupService.GetAllGroups().Where(g => g.NameNumber.ToString() == value.GroupNumber).First(g => g.NameLetter == value.GroupLetter);
+                Group group = groupService.Get(g => g.NameNumber.ToString() == value.GroupNumber && g.NameLetter == value.GroupLetter);
                 pupil.GroupId = group.Id;
             }
             unitOfWork.PupilRepository.Add(pupil);
