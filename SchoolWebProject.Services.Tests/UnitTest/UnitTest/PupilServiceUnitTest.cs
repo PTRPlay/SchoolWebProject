@@ -16,6 +16,7 @@ namespace UnitTest
     {
         private Pupil pupil = new Pupil
               {
+                  Id = 30,
                   LastName = "Поттер",
                   FirstName = "Гаррі",
                   MiddleName = "Джеймс",
@@ -34,19 +35,77 @@ namespace UnitTest
             //Arange
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-            var iRepository = new Mock<IRepository<Pupil>>();
+            var iPupilRepository = new Mock<IRepository<Pupil>>();
             var iAccountService = new Mock<IAccountService>();
             var iGroupService = new Mock<IGroupService>();
 
-            iUnitOfWork.Setup(st => st.PupilRepository).Returns(iRepository.Object);
+            iUnitOfWork.Setup(st => st.PupilRepository).Returns(iPupilRepository.Object);
             var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
             //Act
             pupilService.GetAllPupils();
             //Assert
-            iRepository.Verify(inv => inv.GetAll(), Times.Once);
+            iPupilRepository.Verify(inv => inv.GetAll(), Times.Once);
         }
 
-        
+        [TestMethod]
+        public void GetProfileById_Test_Is_Invoke_Repo_GetById()
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iPupilRepository = new Mock<IRepository<Pupil>>();
+            var iAccountService = new Mock<IAccountService>();
+            var iGroupService = new Mock<IGroupService>();
+
+            iUnitOfWork.Setup(st => st.PupilRepository).Returns(iPupilRepository.Object);
+            iPupilRepository.Setup(inv => inv.GetById(It.Is<int>(i => i > 0))).Returns(this.pupil);
+            var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
+
+            int anyIdMoreZero = 3;
+            //Act
+            pupilService.GetProfileById(anyIdMoreZero);
+            //Assert
+            iPupilRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
+        }
+
+        [ExpectedException(typeof(ArgumentException))]
+        [TestMethod]
+        public void GetProfileById_Test_Is_Generete_Exeption_If_Id_less_zero()
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iPupilRepository = new Mock<IRepository<Pupil>>();
+            var iAccountService = new Mock<IAccountService>();
+            var iGroupService = new Mock<IGroupService>();
+
+            iUnitOfWork.Setup(st => st.PupilRepository).Returns(iPupilRepository.Object);
+            var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
+            int anyIdLessZero = -2;
+            //Act
+            var teacher = pupilService.GetProfileById(anyIdLessZero);
+            //Assert
+            iPupilRepository.Verify(inv => inv.GetById(anyIdLessZero), Times.Once);
+        }
+
+        [TestMethod]
+        public void RemovePupilUnit5Test()
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var iRepository = new Mock<IRepository<Pupil>>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iAccountService = new Mock<IAccountService>();
+            var iGroupService = new Mock<IGroupService>();
+
+            var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
+            iUnitOfWork.SetupGet(u => u.PupilRepository).Returns(iRepository.Object);
+            //Act
+            pupilService.RemovePupil(this.pupil.Id);
+            //Assert
+            iRepository.Verify(inv => inv.Delete(this.pupil), Times.Once);
+            
+        }
     }
 }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Domain.Models;
+using SchoolWebProject.Services.Models.ViewModels;
 
 namespace SchoolWebProject.Services
 {
@@ -12,6 +13,8 @@ namespace SchoolWebProject.Services
         IEnumerable<Holidays> GetAllHolidays();
 
         Holidays GetHolidaysById(int id);
+
+        IEnumerable<ViewHolidays> GetHolidaysByDate(string date);
 
         void UpdateHolidays(Holidays holidays);
 
