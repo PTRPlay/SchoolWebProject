@@ -59,7 +59,7 @@ namespace SchoolWebProject.Data.Infrastructure
 
         #region Init Repositories
 
-        public GenericRepository<Announcement> AnnouncementRepository
+        public IRepository<Announcement> AnnouncementRepository
         {
             get
             {
@@ -72,7 +72,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Group> GroupRepository
+        public IRepository<Group> GroupRepository
         {
             get
             {
@@ -85,7 +85,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Holidays> HolidaysRepository
+        public IRepository<Holidays> HolidaysRepository
         {
             get
             {
@@ -98,7 +98,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<LessonDetail> LessonDetailRepository
+        public IRepository<LessonDetail> LessonDetailRepository
         {
             get
             {
@@ -111,7 +111,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<LogInData> LogInDataRepository
+        public IRepository<LogInData> LogInDataRepository
         {
             get
             {
@@ -124,7 +124,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Mark> MarkRepository
+        public IRepository<Mark> MarkRepository
         {
             get
             {
@@ -137,7 +137,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<MarkType> MarkTypeRepository
+        public IRepository<MarkType> MarkTypeRepository
         {
             get
             {
@@ -150,7 +150,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Pupil> PupilRepository
+        public IRepository<Pupil> PupilRepository
         {
             get
             {
@@ -163,7 +163,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Schedule> ScheduleRepository
+        public IRepository<Schedule> ScheduleRepository
         {
             get
             {
@@ -176,7 +176,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<School> SchoolRepository
+        public IRepository<School> SchoolRepository
         {
             get
             {
@@ -215,7 +215,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<TeacherCategory> TeacherCategoryRepository
+        public IRepository<TeacherCategory> TeacherCategoryRepository
         {
             get
             {
@@ -228,7 +228,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<TeacherDegree> TeacherDegreeRepository
+        public IRepository<TeacherDegree> TeacherDegreeRepository
         {
             get
             {
@@ -241,7 +241,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<User> UserRepository
+        public IRepository<User> UserRepository
         {
             get
             {
@@ -254,7 +254,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Role> RoleRepository
+        public IRepository<Role> RoleRepository
         {
             get
             {
@@ -267,7 +267,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<Parent> ParentRepository
+        public IRepository<Parent> ParentRepository
         {
             get
             {
@@ -280,7 +280,7 @@ namespace SchoolWebProject.Data.Infrastructure
             }
         }
 
-        public GenericRepository<ClassRoom> ClassRoomRepository
+        public IRepository<ClassRoom> ClassRoomRepository
         {
             get
             {

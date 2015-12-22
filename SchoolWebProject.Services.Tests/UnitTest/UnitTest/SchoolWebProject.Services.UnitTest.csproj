@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="TeatcherServiceUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HolidaysUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\SchoolWebProject.Data\SchoolWebProject.Data.csproj">
