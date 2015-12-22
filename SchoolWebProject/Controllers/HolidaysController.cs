@@ -9,6 +9,7 @@ using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
+using SchoolWebProject.Services.Models.ViewModels;
 
 namespace SchoolWebProject.Controllers
 {
@@ -29,10 +30,11 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/holidays/5
-        public string Get(int id)
+        public IEnumerable<ViewHolidays> Get(string date)
         {
-            return "value";
+            return this.holidaysService.GetHolidaysByDate(date);
         }
+
 
         [Authorize(Roles = "Admin")]
         // POST api/holidays

@@ -64,6 +64,7 @@
     <Compile Include="ViewModels\ViewAnnouncement.cs" />
     <Compile Include="ViewModels\ViewDiary.cs" />
     <Compile Include="ViewModels\ViewGroup.cs" />
+    <Compile Include="ViewModels\ViewHolidays.cs" />
     <Compile Include="ViewModels\ViewJournal.cs" />
     <Compile Include="ViewModels\ViewLessonDetail.cs" />
     <Compile Include="ViewModels\ViewMark.cs" />
