@@ -15,7 +15,7 @@ namespace SchoolWebProject.Services
 
         IEnumerable<sModels.ViewPupil> GetPage(int page, int amount, string sorting, string filtering, out int pageCount);
 
-        Pupil GetProfileById(int id);
+        sModels.ViewPupil GetProfileById(int id);
 
         void UpdateProfile(sModels.ViewPupil pupil);
 
@@ -23,6 +23,6 @@ namespace SchoolWebProject.Services
 
         void RemovePupil(int id);
 
-        Pupil Get(Expression<Func<Pupil, bool>> expression);
+        sModels.ViewPupil Get(Expression<Func<Pupil, bool>> expression);
     }
 }
