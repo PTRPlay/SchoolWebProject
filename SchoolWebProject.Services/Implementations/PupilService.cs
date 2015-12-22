@@ -54,23 +54,26 @@ namespace SchoolWebProject.Services
             return AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sModels.ViewPupil>>(pupils); ;
         }
 
-        public Pupil GetProfileById(int id)
+        public sModels.ViewPupil GetProfileById(int id)
         {
             logger.Info("Retrieving pupil with id {0}", id);
+            var pupil = this.unitOfWork.PupilRepository.GetById(id);
+            var viewModel = AutoMapper.Mapper.Map<Pupil, sModels.ViewPupil>(pupil);
 
-            return this.unitOfWork.PupilRepository.GetById(id);
+            return viewModel;
         }
 
-        public Pupil Get(Expression<Func<Pupil, bool>> expression)
+        public sModels.ViewPupil Get(Expression<Func<Pupil, bool>> expression)
         {
-            return unitOfWork.PupilRepository.Get(expression);
+            var pupil = unitOfWork.PupilRepository.Get(expression);
+            var viewModel = AutoMapper.Mapper.Map<Pupil, sModels.ViewPupil>(pupil);
+            return viewModel;
         }
 
         public void UpdateProfile(sModels.ViewPupil value)
         {
-            var pupil = this.GetProfileById(value.Id);
-            AutoMapper.Mapper.Map<sModels.ViewPupil, Pupil>(value, (Pupil)pupil);
-
+            var pupil = AutoMapper.Mapper.Map<sModels.ViewPupil, Pupil>(value);
+           
             if (value.GroupLetter != null && value.GroupNumber != null)
             {
                 Group group = groupService.GetAllGroups().Where(g => g.NameNumber.ToString() == value.GroupNumber).First(g => g.NameLetter == value.GroupLetter);

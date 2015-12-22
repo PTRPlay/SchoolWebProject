@@ -5,51 +5,52 @@
             <div class="col-md-6">
                 <h2>Щоденник</h2>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <button href="#a" type="button" class="btn btn-primary" ng-click="showPrevious()">Минулий тиждень</button>
+        </div>
+        <div class="col-md-4" style="text-align:center">
+            <h4 ng-show="weeks == 0">Поточний тиждень</h4>
+            <button ng-show="weeks != 0" href="#a" type="button" class="btn btn-primary" ng-click="showCurrent()">Поточний тиждень</button>
+        </div>
+        <div class="col-md-4" style="text-align:right">
+            <button href="#a" type="button" class="btn btn-primary" ng-click="showNext()">Наступний тиждень</button><br><br>
+        </div>
+    </div>
+
+    <div ng-init="fillHtml(weeks)">
+        <div ng-repeat="i in [1,2,3,4,5]">
+            <div ng-class="isCurrentDate(i)  ? 'panel panel-success' : holidays[i-1].HolidaysName != 0 ? 'panel panel-danger' : 'panel panel-default'">
+                <div class="panel-heading"><h4> {{getDayByIndex(i) | date:"fullDate"}} </h4></div>
+                <div class="panel-body">
+                    <table ng-show="holidays[i-1].HolidaysName == 0" class="table table-bordered" id="diary-table">
+                        <thead>
+                            <tr>
+                                <td width="2%">№</td>
+                                <td width="15%">Предмет</td>
+                                <td width="25%">Тема уроку</td>
+                                <td width="40%">Домашнє завдання</td>
+                                <td width="18%" colspan="2">Оцінка</td>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="entry in diary" ng-show="isShowing(entry.DayOfTheWeek,i)">
+                            <tr>
+                                <td>{{entry.OrderNumber}}</td>
+                                <td>{{entry.SubjectName}}</td>
+                                <td>{{entry.LessonTheme}}</td>
+                                <td>{{entry.HomeTask}}</td>
+                                <td width="13%">{{entry.MarkTypeName}}</td>
+                                <td width="5%">{{entry.MarkValue}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 style="text-align:center">{{holidays[i-1].HolidaysName}}</h3>
+                </div>
             </div>
         </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <button href="#a" type="button" class="btn btn-primary" ng-click="showPrevious()">Минулий тиждень</button>
-                </div>
-                <div class="col-md-4" style="text-align:center">
-                    <h4 ng-show="weeks == 0">Поточний тиждень</h4>
-                    <button ng-show="weeks != 0" href="#a" type="button" class="btn btn-primary" ng-click="showCurrent()">Поточний тиждень</button>
-                </div>
-                <div class="col-md-4" style="text-align:right">
-                    <button href="#a" type="button" class="btn btn-primary" ng-click="showNext()">Наступний тиждень</button><br><br>
-                </div>
-            </div>
-
-            <div ng-init="fillHtml(weeks)">
-                <div ng-repeat="i in [1,2,3,4,5]">
-                    <div ng-class="isCurrentDate(i) ? 'panel panel-success' : 'panel panel-default'">
-                        <div class="panel-heading"><h4> {{getDayByIndex(i) | date:"fullDate"}} </h4></div>
-                        <div class="panel-body">
-                            <table class="table table-bordered" id="diary-table">
-                                <thead>
-                                    <tr>
-                                        <td width="2%">№</td>
-                                        <td width="15%">Предмет</td>
-                                        <td width="25%">Тема уроку</td>
-                                        <td width="40%">Домашнє завдання</td>
-                                        <td width="18%" colspan="2">Оцінка</td>
-                                    </tr>
-                                </thead>
-                                <tbody ng-repeat="entry in diary" ng-show="isShowing(entry.DayOfTheWeek,i)">
-                                    <tr>
-                                        <td>{{entry.OrderNumber}}</td>
-                                        <td>{{entry.SubjectName}}</td>
-                                        <td>{{entry.LessonTheme}}</td>
-                                        <td>{{entry.HomeTask}}</td>
-                                        <td width="13%">{{entry.MarkTypeName}}</td>
-                                        <td width="5%">{{entry.MarkValue}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
 
