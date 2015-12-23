@@ -17,11 +17,11 @@ namespace SchoolWebProject.Services
         private IUnitOfWork unitOfWork;
         private IEmailSenderService emailService;
 
-        public AccountService(ILogger logger, IUnitOfWork unit)
+        public AccountService(ILogger logger, IUnitOfWork unit, IEmailSenderService inputEmailService)
             : base(logger)
         {
             this.unitOfWork = unit;
-            this.emailService = new EmailSenderService(logger, this);
+            this.emailService = inputEmailService;
         }
 
         public LogInData GenerateUserLoginData(User user)
@@ -49,8 +49,8 @@ namespace SchoolWebProject.Services
 
             if (this.CheckUser(loginData, password) && loginData != null)
             {
-                Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
-                return this.unitOfWork.UserRepository.Get(getUser);
+             //   Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
+                return this.unitOfWork.UserRepository.GetById(loginData.UserId);
             }
             else
             {
@@ -95,8 +95,8 @@ namespace SchoolWebProject.Services
         public string CreateHashPassword(string inputPassword, string salt)
         {
             string fullPassword = string.Format(inputPassword + salt);
-            byte[] hash = SHA256.Create().ComputeHash(this.StringToByteArray(fullPassword));
-            return this.ByteArrayToString(hash);
+            byte[] hash = SHA256.Create().ComputeHash(Constants.StringToByteArray(fullPassword));
+            return Constants.ByteArrayToString(hash);
         }
 
         private string GenerateLogin(User user)
@@ -117,13 +117,13 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.UserRepository.Get(getUser);
         }
 
-        private string CreateSalt()
+        public string CreateSalt()
         {
             RNGCryptoServiceProvider cryptographer = new RNGCryptoServiceProvider();
             int saltLength = 24;
             byte[] salt = new byte[saltLength];
             cryptographer.GetBytes(salt);
-            return this.ByteArrayToString(salt);
+            return Constants.ByteArrayToString(salt);
         }
 
         private bool CheckUser(LogInData currUser, string password)
@@ -136,20 +136,6 @@ namespace SchoolWebProject.Services
             {
                 return false;
             }
-        }
-
-        private string ByteArrayToString(byte[] input)
-        {
-            char[] output = new char[input.Length / sizeof(char)];
-            System.Buffer.BlockCopy(input, 0, output, 0, input.Length);
-            return new string(output);
-        }
-
-        private byte[] StringToByteArray(string input)
-        {
-            byte[] output = new byte[input.Length * sizeof(char)];
-            System.Buffer.BlockCopy(input.ToCharArray(), 0, output, 0, output.Length);
-            return output;
         }
     }
 }

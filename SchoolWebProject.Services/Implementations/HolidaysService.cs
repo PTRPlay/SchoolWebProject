@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Data.Infrastructure;
@@ -26,6 +27,11 @@ namespace SchoolWebProject.Services
         {
             return this.unitOfWork.HolidaysRepository.GetAll();
         }
+
+        public Holidays GetHolidaysByStartDay(Holidays holidays)
+        {
+            return this.unitOfWork.HolidaysRepository.Get(h => h.StartDay == holidays.StartDay);
+        } 
 
         public Holidays GetHolidaysById(int id)
         {
