@@ -32,6 +32,10 @@ namespace SchoolWebProject.Services
 
         public Teacher GetProfileById(int id)
         {
+            if (id < 0)
+            {
+                throw new ArgumentException("id should be greater than zero!");
+            }
             return this.unitOfWork.TeacherRepository.GetById(id);
         }
 
