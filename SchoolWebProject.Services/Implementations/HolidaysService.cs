@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolWebProject.Data.Infrastructure;
 using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
+using SchoolWebProject.Services.Models.ViewModels;
 
 namespace SchoolWebProject.Services
 {
@@ -26,9 +28,38 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.HolidaysRepository.GetAll();
         }
 
+        public Holidays GetHolidaysByStartDay(Holidays holidays)
+        {
+            return this.unitOfWork.HolidaysRepository.Get(h => h.StartDay == holidays.StartDay);
+        } 
+
         public Holidays GetHolidaysById(int id)
         {
             return this.unitOfWork.HolidaysRepository.GetById(id);
+        }
+
+        public IEnumerable<ViewHolidays> GetHolidaysByDate(string date)
+        {
+            string[] split = date.Split('-');
+            DateTime monday = new DateTime(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]));
+            DateTime friday = monday.AddDays(4);
+            var holidays = this.unitOfWork.HolidaysRepository.GetMany(d => (d.StartDay <= friday && d.EndDay >= monday && d.Name != "Semestr1" && d.Name != "Semestr2"));
+            List<ViewHolidays> holidaysList = new List<ViewHolidays>(5);
+            for (int i = 0; i <= 4; i++)
+            {
+                var s = holidays.Where(d => (d.StartDay <= monday.AddDays(i) && d.EndDay >= monday.AddDays(i))).FirstOrDefault();
+                if (s != null)
+                {
+                    holidaysList.Add(new ViewHolidays { HolidaysName = s.Name });
+                }
+                else
+                {
+                    holidaysList.Add(new ViewHolidays { HolidaysName = string.Empty });
+                }
+
+
+            }
+            return holidaysList;
         }
 
         public void UpdateHolidays(Holidays holidays)

@@ -45,9 +45,7 @@ namespace SchoolWebProject.Controllers
         // GET api/pupils/5
         public sModels.ViewPupil Get(int id)
         {
-            var pupil = this.pupilService.GetProfileById(id);
-            var viewModel = AutoMapper.Mapper.Map<Pupil, sModels.ViewPupil>(pupil);
-            return viewModel;
+            return this.pupilService.GetProfileById(id); 
         }
 
         // POST api/pupils
