@@ -49,7 +49,6 @@ namespace SchoolWebProject.Services
 
             if (this.CheckUser(loginData, password) && loginData != null)
             {
-             //   Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
                 return this.unitOfWork.UserRepository.GetById(loginData.UserId);
             }
             else
@@ -60,14 +59,12 @@ namespace SchoolWebProject.Services
 
         public LogInData GetUserLogInData(int id)
         {
-            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == id;
-            return this.unitOfWork.LogInDataRepository.Get(getLoginData);
+            return this.unitOfWork.LogInDataRepository.Get(login => login.UserId == id);
         }
 
         public Role GetRoleById(int? id)
         {
-            Expression<Func<Role, bool>> getRole = role => role.Id == id;
-            return this.unitOfWork.RoleRepository.Get(getRole);
+            return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
         }
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
@@ -99,6 +96,20 @@ namespace SchoolWebProject.Services
             return Constants.ByteArrayToString(hash);
         }
 
+        public User GetCurrentUserProfile(string userLogin)
+        {
+            return this.unitOfWork.UserRepository.Get(user => user.LogInData.Login == userLogin);
+        }
+
+        public string CreateSalt()
+        {
+            RNGCryptoServiceProvider cryptographer = new RNGCryptoServiceProvider();
+            int saltLength = 24;
+            byte[] salt = new byte[saltLength];
+            cryptographer.GetBytes(salt);
+            return Constants.ByteArrayToString(salt);
+        }
+
         private string GenerateLogin(User user)
         {
             string convertionString = string.Format(user.LastName + user.FirstName.Substring(0, 1) + user.RoleId);
@@ -109,21 +120,6 @@ namespace SchoolWebProject.Services
         {
             int numberOfSpecialSymbols = 2;
             return Membership.GeneratePassword(passwordLength, numberOfSpecialSymbols);
-        }
-
-        public User GetCurrentUserProfile(string userLogin)
-        {
-            Expression<Func<User, bool>> getUser = user => user.LogInData.Login == userLogin;
-            return this.unitOfWork.UserRepository.Get(getUser);
-        }
-
-        public string CreateSalt()
-        {
-            RNGCryptoServiceProvider cryptographer = new RNGCryptoServiceProvider();
-            int saltLength = 24;
-            byte[] salt = new byte[saltLength];
-            cryptographer.GetBytes(salt);
-            return Constants.ByteArrayToString(salt);
         }
 
         private bool CheckUser(LogInData currUser, string password)
