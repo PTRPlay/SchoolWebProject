@@ -47,14 +47,12 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void GetRoleById_Is_Invoke_RoleRepository()
+        public void GetRoleById_Invoke_RoleRepository()
         {
             // Arrange
-            var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-            var iemailSender = new Mock<IEmailSenderService>();
             var iRoleRepository = new Mock<IRepository<Role>>();
-            var accountService = new AccountService(logger.Object, iUnitOfWork.Object, iemailSender.Object);
+            var accountService = new AccountService(new Mock<ILogger>().Object, iUnitOfWork.Object, new Mock<IEmailSenderService>().Object);
             iUnitOfWork.Setup(g => g.RoleRepository).Returns(iRoleRepository.Object);
             int testId = 2;
 
@@ -63,6 +61,25 @@ namespace UnitTest
 
             // Assert
             iUnitOfWork.Verify(g => g.RoleRepository, Times.Once);
+        }
+
+        [TestMethod]
+        public void GetRoleById_Not_Invoke_Repository_If_Null_Id()
+        {
+            // Arrange
+            var logger = new Mock<ILogger>();
+            var iemailSender = new Mock<IEmailSenderService>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iRoleRepository = new Mock<IRepository<Role>>();
+            var accountService = new AccountService(logger.Object, iUnitOfWork.Object, iemailSender.Object);
+            iUnitOfWork.Setup(g => g.RoleRepository).Returns(iRoleRepository.Object);
+            int? testId = null;
+
+            // Act
+            Role result = accountService.GetRoleById(testId);
+
+            // Assert
+            iUnitOfWork.Verify(g => g.RoleRepository, Times.Never);
         }
 
         [TestMethod]
@@ -111,8 +128,9 @@ namespace UnitTest
             Assert.IsNull(raws);
         }
 
+        // sometimes falls with FormatException(dont know why)
         [TestMethod]
-        public void GenerateUserLoginData_Do_Send_Mail()
+        public void GenerateUserLoginData_Do_Send_Mail() 
         {
             // Arrange
             var logger = new Mock<ILogger>();

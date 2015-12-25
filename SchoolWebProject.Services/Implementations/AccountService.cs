@@ -26,9 +26,10 @@ namespace SchoolWebProject.Services
 
         public LogInData GenerateUserLoginData(User user)
         {
-            string userLogin = this.GenerateLogin(user), userPassword = this.GeneratePassword(), salt = this.CreateSalt();
+            string userLogin = this.GenerateLogin(user), userPassword = this.GeneratePassword();
             string message = string.Format(Constants.EmailMessage + "\nЛогін: " + userLogin + "\nПароль: " + userPassword);
             this.emailService.SendMail(user.Email, message);
+            string salt = this.CreateSalt();
             return new LogInData
                 {
                     Login = userLogin,
@@ -64,7 +65,13 @@ namespace SchoolWebProject.Services
 
         public Role GetRoleById(int? id)
         {
-            return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
+            if (id == null)
+            {
+                logger.Warning("Tryed to get Role by null value id");
+                return null;
+            }
+            else
+                return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
         }
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
