@@ -11,7 +11,7 @@ using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Models;
 using SchoolWebProject.Services;
-using sm = SchoolWebProject.Services.Models;
+using sModels = SchoolWebProject.Services.Models;
 
 
 namespace SchoolWebProject.Controllers
@@ -28,12 +28,9 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/pupils
-        public IEnumerable<sm.ViewPupil> Get()
+        public IEnumerable<sModels.ViewPupil> Get()
         {
-            var pupils = this.pupilService.GetAllPupils();
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sm.ViewPupil>>(pupils);
-            logger.Info("Retrieving all pupils");
-            return viewModel;
+            return this.pupilService.GetAllPupils();
         }
 
         // GET api/pupils/2/25/LastName ASC/Пилипів
@@ -41,45 +38,29 @@ namespace SchoolWebProject.Controllers
         {
             int pageCount;
             var pupils = this.pupilService.GetPage(page, amount, sorting, filtering, out pageCount);
-            var viewModel = AutoMapper.Mapper.Map<IEnumerable<Pupil>, IEnumerable<sm.ViewPupil>>(pupils);
-            var pupilPage = new  { Pupils = viewModel, PageCount = pageCount };
-            logger.Info("Retrieving page with pupils from a server. Page # {0}, amount - {1}", page, amount);
+            var pupilPage = new  { Pupils = pupils, PageCount = pageCount };
             return pupilPage;
         }
 
         // GET api/pupils/5
-        public sm.ViewPupil Get(int id)
+        public sModels.ViewPupil Get(int id)
         {
-            var pupil = this.pupilService.GetProfileById(id);
-            var viewModel = AutoMapper.Mapper.Map<Pupil, sm.ViewPupil>(pupil);
-            logger.Info("Retrieving pupil with id {0}", id);
-            return viewModel;
+            return this.pupilService.GetProfileById(id); 
         }
 
         // POST api/pupils
         [Authorize(Roles = "Admin, Teacher")]
-        public void Post([FromBody]sm.ViewPupil value)
+        public void Post([FromBody]sModels.ViewPupil value)
         {
-            Pupil pupil = AutoMapper.Mapper.Map<sm.ViewPupil, Pupil>(value);
-            pupil.RoleId = 3;
-            if (pupil.Email != null)
-            {
-                pupil.LogInData = this.accountService.GenerateUserLoginData(pupil);
-            }
-
-            this.pupilService.AddPupil(pupil);
-            logger.Info("Added pupil {0} {1}", value.FirstName, value.LastName);
+            this.pupilService.AddPupil(value);
         }
 
         // PUT api/pupils/5
          [HttpPost]
          [Authorize(Roles = "Admin, Teacher")]
-        public void Put(int id, [FromBody]sm.ViewPupil value)
+        public void Put(int id, [FromBody]sModels.ViewPupil value)
         {
-            var pupil = this.pupilService.GetProfileById(value.Id);
-            AutoMapper.Mapper.Map<sm.ViewPupil, Pupil>(value, (Pupil)pupil);
-            this.pupilService.UpdateProfile(pupil);
-            logger.Info("Edited pupil {0} {1}", value.FirstName, value.LastName);
+            this.pupilService.UpdateProfile(value);
         }
 
         // DELETE api/pupils/5
@@ -88,7 +69,6 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             this.pupilService.RemovePupil(id);
-            logger.Info("Deleted pupil with id {0}", id);
         }
     }
 }

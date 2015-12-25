@@ -81,10 +81,29 @@
         }
     }
 
+    $scope.ChangeEndDay = function (event) {
+        event = event || window.event;
+        var el = (event.srcElement || event.target).parentNode.parentNode.parentNode;
+        var startDate = el.querySelector("#startDay");
+        var endDate = el.querySelector("#endDay");
+        startDate.max = endDate.value;
+        endDate.min = startDate.value;
+        }
+
+    $scope.deleteHolidays = function (id) {
+        if (id != null) {
+            $http.delete("api/holidays/"+id)
+            .success(function () {
+                $state.go('holidays', { start: $stateParams.start }, { reload: true });
+            });
+        }
+    };
+
+
     $scope.dateChanged = function (e) {
         e = e || window.event;
-        var el = (e.srcElement || e.target).parentNode.parentNode;
-        el.style.background = "red";
+        var el = (e.srcElement || e.target).parentNode.parentNode.parentNode;
+        el.style.background = "#E6F6FF";
     }
 
 });

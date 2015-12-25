@@ -10,41 +10,41 @@ namespace SchoolWebProject.Data.Infrastructure
     public interface IUnitOfWork
     {
         #region Repositories
-        GenericRepository<Announcement> AnnouncementRepository { get; }
+        IRepository<Announcement> AnnouncementRepository { get; }
 
-        GenericRepository<Group> GroupRepository { get; }
+        IRepository<Group> GroupRepository { get; }
 
-        GenericRepository<Holidays> HolidaysRepository { get; }
+        IRepository<Holidays> HolidaysRepository { get; }
 
-        GenericRepository<LessonDetail> LessonDetailRepository { get; }
+        IRepository<LessonDetail> LessonDetailRepository { get; }
 
-        GenericRepository<LogInData> LogInDataRepository { get; }
+        IRepository<LogInData> LogInDataRepository { get; }
 
-        GenericRepository<Mark> MarkRepository { get; }
+        IRepository<Mark> MarkRepository { get; }
 
-        GenericRepository<MarkType> MarkTypeRepository { get; }
+        IRepository<MarkType> MarkTypeRepository { get; }
 
         IRepository<Teacher> TeacherRepository { get; }
 
-        GenericRepository<TeacherCategory> TeacherCategoryRepository { get; }
+        IRepository<TeacherCategory> TeacherCategoryRepository { get; }
 
-        GenericRepository<TeacherDegree> TeacherDegreeRepository { get; }
+        IRepository<TeacherDegree> TeacherDegreeRepository { get; }
         
-        GenericRepository<Pupil> PupilRepository { get; }
+        IRepository<Pupil> PupilRepository { get; }
 
-        GenericRepository<Schedule> ScheduleRepository { get; }
+        IRepository<Schedule> ScheduleRepository { get; }
 
-        GenericRepository<School> SchoolRepository { get; }
+        IRepository<School> SchoolRepository { get; }
         
         IRepository<Subject> SubjectRepository { get; }
 
-        GenericRepository<User> UserRepository { get; }
+        IRepository<User> UserRepository { get; }
 
-        GenericRepository<Role> RoleRepository { get; }
+        IRepository<Role> RoleRepository { get; }
 
-        GenericRepository<Parent> ParentRepository { get; }
+        IRepository<Parent> ParentRepository { get; }
 
-        GenericRepository<ClassRoom> ClassRoomRepository { get; }
+        IRepository<ClassRoom> ClassRoomRepository { get; }
         #endregion 
 
         void SaveChanges();

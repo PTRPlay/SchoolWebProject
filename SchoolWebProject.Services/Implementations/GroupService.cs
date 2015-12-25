@@ -70,5 +70,10 @@ namespace SchoolWebProject.Services.Implementations
         {
             this.unitOfWork.SaveChanges();
         }
+
+        public Group Get(System.Linq.Expressions.Expression<Func<Group, bool>> expression)
+        {
+            return unitOfWork.GroupRepository.Get(expression);
+        }
     }
 }

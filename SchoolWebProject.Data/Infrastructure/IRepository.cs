@@ -22,5 +22,7 @@ namespace SchoolWebProject.Data.Infrastructure
         IEnumerable<T> GetAll();
 
         T Get(Expression<Func<T, bool>> where);
+
+        IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
     }
 }

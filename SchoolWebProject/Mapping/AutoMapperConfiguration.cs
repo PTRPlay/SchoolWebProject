@@ -28,7 +28,10 @@ namespace SchoolWebProject.Mapper
         protected override void Configure()
         {
             AutoMapper.Mapper.CreateMap<Announcement, ViewAnnouncement>();
-            AutoMapper.Mapper.CreateMap<SchoolWebProject.Domain.Models.Pupil, ViewPupil>();
+            AutoMapper.Mapper.CreateMap<SchoolWebProject.Domain.Models.Pupil, ViewPupil>()
+                .ForMember(g => g.GroupLetter, map => map.MapFrom(vm => vm.Group.NameLetter))
+                .ForMember(g=>g.GroupId, map => map.MapFrom(vm=>vm.Group.Id))
+            .ForMember(g=>g.GroupNumber, map => map.MapFrom(vm=>vm.Group.NameNumber));
             AutoMapper.Mapper.CreateMap<SchoolWebProject.Domain.Models.Teacher, ViewTeacher>()
                 .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory))
                 .ForMember(g => g.WorkStart, map => map.MapFrom(vm => Convert.ToString(vm.WorkBegin)));

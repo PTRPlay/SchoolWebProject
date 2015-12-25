@@ -1,8 +1,8 @@
-﻿myApp.controller('diaryController', function ($scope, diaryService) {
+﻿myApp.controller('diaryController', function ($scope, diaryService, permissionService, holidaysService) {
     $scope.weeks = 0;
-        $scope.IdUser = window.currentUser.Id;
- //   $scope.IdUser = 56;
+    $scope.IdUser = permissionService.user.Id;
     $scope.millisInDay = 1000 * 60 * 60 * 24;
+    $scope.holidays = [];
 
     $scope.fillHtml = function (week) {
         $scope.currentdate = new Date(+new Date + 7 * week * $scope.millisInDay);
@@ -15,6 +15,11 @@
         diaryService.getDiary($scope.IdUser, $scope.stringdate).success(function (data) {
             $scope.diary = data;
         });
+
+        holidaysService.getHolidaysByDate($scope.stringdate).success(function (data) {
+            $scope.holidays = data;
+        });
+
 
     }
 
@@ -30,6 +35,10 @@
     $scope.getDayByIndex = function (index) {
         $scope.date = new Date(+$scope.mondayDate + (index - 1) * $scope.millisInDay);
         return $scope.date;
+    };
+
+    $scope.isWorkingDay = function (index) {
+        return $scope.holidays[index].HolidaysName.length == 0;
     };
 
     $scope.showPrevious = function () {
