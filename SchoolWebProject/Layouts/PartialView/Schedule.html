@@ -11,7 +11,7 @@
     <div class="panel-body">
         <div class="btn-group">
             <input id="TeacherFilter" type="text" ng-model="teacherFilter.name" autocomplete="on" />
-            <span id="searchclear" class="glyphicon glyphicon-remove-circle" onclick="$('#TeacherFilter').val('')"></span>
+            <span id="searchclear" class="glyphicon glyphicon-remove-circle" ng-click="Clear()"></span>
         </div>
 
         <select ng-controller="groupsController" ng-model="group.Id" ng-change="showSchedule()" class="select">

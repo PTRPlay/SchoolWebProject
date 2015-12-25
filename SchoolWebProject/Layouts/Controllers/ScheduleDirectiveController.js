@@ -1,29 +1,38 @@
-﻿myApp.controller('ScheduleDirectiveController', ['$scope',function ($scope) {
+﻿myApp.controller('ScheduleDirectiveController', ['$scope', 'teachersService', function ($scope, teachersService) {
 
     var days = [{ day: 'Понелілок', color: '#E9E9E9' }, { day: 'Вівторок', color: '#F7F5F3' }, { day: 'Середа', color: '#E9E9E9' }, { day: 'Четвер', color: '#F7F5F3' }, { day: 'Пятниця', color: '#E9E9E9' }];
     var DAY_NUMBER = 6;
     var LESSON_NUMBER = 8;
+    var FULL_NAME_SPACES = 3;
 
     $scope.AddEvent = function () {
         if (window.currentUser.Role == "Admin") {
             $(".editableTD").dblclick(function () {
-                var OriginalContent = $(this).text();
-                $(this).addClass("cellEditing");
-                $(this).html("<input type='text' value='" + OriginalContent + "'/>");
-                $(this).children().first().focus();
+                var cell = $(this);
+                var OriginalContent = cell.text();
+                if (OriginalContent.split(" ").length > FULL_NAME_SPACES) {
+                    OriginalContent = "";
+                }
+                cell.text("");
+                cell.addClass("cellEditing");
+                var select = document.createElement("SELECT");
+                var HtmlElement = ModifieTeacher(cell,select);
 
-                $(this).children().first().keypress(function (e) {
-                    if (e.which == 13) {
-                        var newContent = $(this).val();
-                        $(this).parent().text(newContent);
-                        $(this).parent().removeClass("cellEditing");
-                    }
-                });
+                HtmlElement.onchange = function () {
+                    var index = this.selectedIndex;
+                    var text = this.options[index].text;
+                    cell[0].removeChild(cell[0].childNodes[0]);
+                    cell[0].textContent = text;
+                    cell[0].classList.remove("cellEditing");
+                };
 
-                $(this).children().first().blur(function () {
-                    $(this).parent().text(OriginalContent);
-                    $(this).parent().removeClass("cellEditing");
-                });
+                HtmlElement.onmouseleave = function () {
+                    cell[0].removeChild(cell[0].childNodes[0]);
+                    cell[0].textContent = OriginalContent;
+                    cell[0].classList.remove("cellEditing");
+                }
+
+                cell.children().first().focus();
             });
         }
     };
@@ -49,6 +58,24 @@
             }
             dom.appendChild(day);
         };
+    }
+
+    function ModifieTeacher(cell,select) {
+        select.classList.add("cellEditing")
+
+        teachersService.getTeachers().success(function (data) {
+            var teachers = "";
+            for (var element in data) {
+                teachers += "<option>" + data[element].FirstName + " " + data[element].MiddleName + " " + data[element].LastName + "</option>";
+            }
+            select.innerHTML = teachers;
+            cell.append(select);
+        })
+        return select;
+    }
+
+    function ModifieGroup(cell,select){
+
     }
 
 }])

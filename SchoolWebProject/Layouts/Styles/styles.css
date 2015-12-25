@@ -81,8 +81,8 @@ TD.jewel {
     padding: 0;
 }
  
-.editableTable .cellEditing input[type=text]{
-    width:100%;
+.editableTable .cellEditing {
+    width:350px;
     border:0;
     background-color:rgb(255,253,210);  
 }

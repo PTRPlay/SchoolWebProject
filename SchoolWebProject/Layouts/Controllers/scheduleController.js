@@ -113,7 +113,13 @@
                 $scope.teacherFilter.id = ui.item.id;
             },
         });
-    }
+     }
+
+     $scope.Clear = function(){
+         $scope.teacherFilter.name="";
+         $scope.teacherFilter.id = 0;
+         $scope.showSchedule();
+     }
 
 }]);
 
