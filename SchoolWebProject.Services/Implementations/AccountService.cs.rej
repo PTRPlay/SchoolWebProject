@@ -1,0 +1,24 @@
+diff a/SchoolWebProject.Services/Implementations/AccountService.cs b/SchoolWebProject.Services/Implementations/AccountService.cs	(rejected hunks)
+@@ -60,14 +60,18 @@
+ 
+         public LogInData GetUserLogInData(int id)
+         {
+-            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == id;
+-            return this.unitOfWork.LogInDataRepository.Get(getLoginData);
++            return this.unitOfWork.LogInDataRepository.Get(login => login.UserId == id);
+         }
+ 
+         public Role GetRoleById(int? id)
+         {
+-            Expression<Func<Role, bool>> getRole = role => role.Id == id;
+-            return this.unitOfWork.RoleRepository.Get(getRole);
++            if (id == null)
++            {
++                logger.Warning("Tryed to get Role by null value id");
++                return null;
++            }
++            else
++                return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
+         }
+ 
+         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)

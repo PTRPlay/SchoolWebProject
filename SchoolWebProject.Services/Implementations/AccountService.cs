@@ -17,19 +17,18 @@ namespace SchoolWebProject.Services
         private IUnitOfWork unitOfWork;
         private IEmailSenderService emailService;
 
-        public AccountService(ILogger logger, IUnitOfWork unit, IEmailSenderService inputEmailService)
+        public AccountService(ILogger logger, IUnitOfWork unit)
             : base(logger)
         {
             this.unitOfWork = unit;
-            this.emailService = inputEmailService;
+            this.emailService = new EmailSenderService(logger, this);
         }
 
         public LogInData GenerateUserLoginData(User user)
         {
-            string userLogin = this.GenerateLogin(user), userPassword = this.GeneratePassword();
+            string userLogin = this.GenerateLogin(user), userPassword = this.GeneratePassword(), salt = this.CreateSalt();
             string message = string.Format(Constants.EmailMessage + "\nЛогін: " + userLogin + "\nПароль: " + userPassword);
             this.emailService.SendMail(user.Email, message);
-            string salt = this.CreateSalt();
             return new LogInData
                 {
                     Login = userLogin,
@@ -50,7 +49,8 @@ namespace SchoolWebProject.Services
 
             if (this.CheckUser(loginData, password) && loginData != null)
             {
-                return this.unitOfWork.UserRepository.GetById(loginData.UserId);
+                Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
+                return this.unitOfWork.UserRepository.Get(getUser);
             }
             else
             {
@@ -60,18 +60,14 @@ namespace SchoolWebProject.Services
 
         public LogInData GetUserLogInData(int id)
         {
-            return this.unitOfWork.LogInDataRepository.Get(login => login.UserId == id);
+            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == id;
+            return this.unitOfWork.LogInDataRepository.Get(getLoginData);
         }
 
         public Role GetRoleById(int? id)
         {
-            if (id == null)
-            {
-                logger.Warning("Tryed to get Role by null value id");
-                return null;
-            }
-            else
-                return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
+            Expression<Func<Role, bool>> getRole = role => role.Id == id;
+            return this.unitOfWork.RoleRepository.Get(getRole);
         }
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)

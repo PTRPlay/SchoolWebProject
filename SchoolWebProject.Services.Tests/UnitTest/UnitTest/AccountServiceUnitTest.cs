@@ -52,7 +52,7 @@ namespace UnitTest
             // Arrange
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iRoleRepository = new Mock<IRepository<Role>>();
-            var accountService = new AccountService(new Mock<ILogger>().Object, iUnitOfWork.Object, new Mock<IEmailSenderService>().Object);
+            var accountService = new AccountService(new Mock<ILogger>().Object, iUnitOfWork.Object);
             iUnitOfWork.Setup(g => g.RoleRepository).Returns(iRoleRepository.Object);
             int testId = 2;
 
@@ -71,7 +71,7 @@ namespace UnitTest
             var iemailSender = new Mock<IEmailSenderService>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iRoleRepository = new Mock<IRepository<Role>>();
-            var accountService = new AccountService(logger.Object, iUnitOfWork.Object, iemailSender.Object);
+            var accountService = new AccountService(logger.Object, iUnitOfWork.Object);
             iUnitOfWork.Setup(g => g.RoleRepository).Returns(iRoleRepository.Object);
             int? testId = null;
 
@@ -136,7 +136,7 @@ namespace UnitTest
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iemailSender = new Mock<IEmailSenderService>();
-            var accountService = new AccountService(logger.Object, iUnitOfWork.Object, iemailSender.Object);
+            var accountService = new AccountService(logger.Object, iUnitOfWork.Object);
 
             // Act
             var result = accountService.GenerateUserLoginData(testUser);
@@ -156,7 +156,7 @@ namespace UnitTest
             iUnitOfWork.Setup(st => st.UserRepository).Returns(iUserRepository.Object);
             iLogRepository.Setup(i => i.Get(It.IsAny<Expression<Func<LogInData, bool>>>())).Returns(testLogin);
             iUserRepository.Setup(i => i.GetById(It.Is<int>(y => y == testLogin.UserId))).Returns(testUser);
-            return new AccountService(logger.Object, iUnitOfWork.Object, iemailSender.Object);
+            return new AccountService(logger.Object, iUnitOfWork.Object);
         }
     }
 }
