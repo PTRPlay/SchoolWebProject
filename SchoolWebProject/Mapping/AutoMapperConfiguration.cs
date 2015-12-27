@@ -30,8 +30,8 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<Announcement, ViewAnnouncement>();
             AutoMapper.Mapper.CreateMap<SchoolWebProject.Domain.Models.Pupil, ViewPupil>()
                 .ForMember(g => g.GroupLetter, map => map.MapFrom(vm => vm.Group.NameLetter))
-                .ForMember(g=>g.GroupId, map => map.MapFrom(vm=>vm.Group.Id))
-            .ForMember(g=>g.GroupNumber, map => map.MapFrom(vm=>vm.Group.NameNumber));
+                .ForMember(g => g.GroupId, map => map.MapFrom(vm => vm.Group.Id))
+            .ForMember(g=>g.GroupNumber, map => map.MapFrom(vm => vm.Group.NameNumber));
             AutoMapper.Mapper.CreateMap<SchoolWebProject.Domain.Models.Teacher, ViewTeacher>()
                 .ForMember(g => g.Category, map => map.MapFrom(vm => vm.TeacherCategory))
                 .ForMember(g => g.WorkStart, map => map.MapFrom(vm => Convert.ToString(vm.WorkBegin)));
@@ -97,7 +97,7 @@ namespace SchoolWebProject.Mapper
             AutoMapper.Mapper.CreateMap<ViewSchool, School>();
             AutoMapper.Mapper.CreateMap<ViewSchedule, Schedule>()
                 .ForMember(g => g.SchoolId, map => map.MapFrom(vm => 1))
-                .ForMember(g => g.ClassRoom, map => map.MapFrom(vm =>MapClassRoom(vm.ClassRoom)));
+                .ForMember(g => g.ClassRoom, map => map.MapFrom(vm => MapClassRoom(vm.ClassRoom)));
 
             AutoMapper.Mapper.CreateMap<ViewGroup, Group>()
                 .IgnoreAllNonExisting()

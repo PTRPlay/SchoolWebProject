@@ -42,25 +42,23 @@ namespace SchoolWebProject.Services
             return this.unitOfWork.HolidaysRepository.GetById(id);
         }
 
-        public IEnumerable<ViewHolidays> GetHolidaysByDate(string date)
+        public IEnumerable<ViewHolidays> GetHolidaysByDate(DateTime date)
         {
-            string[] split = date.Split('-');
-            DateTime monday = new DateTime(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]));
-            DateTime friday = monday.AddDays(4);
-            var holidays = this.unitOfWork.HolidaysRepository.GetMany(d => (d.StartDay <= friday && d.EndDay >= monday && d.Name != "Semestr1" && d.Name != "Semestr2"));
-            List<ViewHolidays> holidaysList = new List<ViewHolidays>(5);
-            for (int i = 0; i <= 4; i++)
+            DateTime monday = date;
+            DateTime friday = monday.AddDays(Constants.CountOfWorkingDaysInWeek - 1);
+            var holidays = this.unitOfWork.HolidaysRepository.GetMany(d => (d.StartDay <= friday && d.EndDay >= monday && d.Name != Constants.FirstSemestrNameInDB  && d.Name != Constants.SecondSemestrNameInDB));
+            List<ViewHolidays> holidaysList = new List<ViewHolidays>(Constants.CountOfWorkingDaysInWeek);
+            for (int i = 0; i < Constants.CountOfWorkingDaysInWeek; i++)
             {
-                var s = holidays.Where(d => (d.StartDay <= monday.AddDays(i) && d.EndDay >= monday.AddDays(i))).FirstOrDefault();
-                if (s != null)
+                var holidayInCurrentDay = holidays.Where(d => (d.StartDay <= monday.AddDays(i) && d.EndDay >= monday.AddDays(i))).FirstOrDefault();
+                if (holidayInCurrentDay != null)
                 {
-                    holidaysList.Add(new ViewHolidays { HolidaysName = s.Name });
+                    holidaysList.Add(new ViewHolidays { HolidaysName = holidayInCurrentDay.Name });
                 }
                 else
                 {
                     holidaysList.Add(new ViewHolidays { HolidaysName = string.Empty });
                 }
-
 
             }
             return holidaysList;

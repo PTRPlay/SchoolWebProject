@@ -1,6 +1,9 @@
 ﻿myApp.controller('scheduleController', ['$scope', '$http', 'scheduleService', 'permissionService', function ($scope, $http, scheduleService, permissionService) {
 
-    $scope.teacherFilter = "Введіть Прізвище для пошуку";
+    $scope.teacherFilter = {
+        name: "Введіть Прізвище для пошуку",
+        id: 0
+    };
     $scope.group = {};
 
     var DAY_NUMBER = 6;
@@ -8,7 +11,7 @@
 
     $scope.showSchedule = function () {
         clearSchedule();
-        scheduleService.getSchedule(Number($('#hidden_id').val()),$scope.group.Id).success(function (data) {
+        scheduleService.getSchedule($scope.teacherFilter.id,$scope.group.Id).success(function (data) {
             clearSchedule();
             for (var i = 0; i < data.length; ++i) {
                 var idTeacher = data[i].DayOfTheWeek + "teacher" + data[i].OrderNumber;
@@ -86,6 +89,37 @@
             }
         }
     }
+
+     $scope.InitializeAutocomplate = function () {
+        $('#TeacherFilter').autocomplete({
+            source: function (request, response) {
+                var filter = request.term;
+                $.ajax(
+                {
+                    url: 'api/teacher?filter=' + filter,
+                    dataType: "json",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.FirstName + " " + item.MiddleName + " " + item.LastName,
+                                value: item.FirstName + " " + item.MiddleName + " " + item.LastName,
+                                id:item.Id
+                            }
+                        }));
+                    }
+                });
+            },
+            select: function (e, ui) {
+                $scope.teacherFilter.id = ui.item.id;
+            },
+        });
+     }
+
+     $scope.Clear = function(){
+         $scope.teacherFilter.name="";
+         $scope.teacherFilter.id = 0;
+         $scope.showSchedule();
+     }
 
 }]);
 

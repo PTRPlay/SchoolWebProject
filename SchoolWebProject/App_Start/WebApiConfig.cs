@@ -15,10 +15,6 @@ namespace SchoolWebProject
                 defaults: new { id = RouteParameter.Optional });
 
             config.Routes.MapHttpRoute(
-                name: "DiaryApi",
-                routeTemplate: "api/{controller}/diary/{id}/{date}");
-
-            config.Routes.MapHttpRoute(
                 name: "MarksApi",
                 routeTemplate: "api/{controller}/{subjectId}/{groupId}");
 

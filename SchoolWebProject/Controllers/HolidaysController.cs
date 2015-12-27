@@ -30,7 +30,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/holidays/5
-        public IEnumerable<ViewHolidays> Get(string date)
+        public IEnumerable<ViewHolidays> Get(DateTime date)
         {
             return this.holidaysService.GetHolidaysByDate(date);
         }

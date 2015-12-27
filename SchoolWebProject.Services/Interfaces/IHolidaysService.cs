@@ -14,7 +14,7 @@ namespace SchoolWebProject.Services
 
         Holidays GetHolidaysById(int id);
 
-        IEnumerable<ViewHolidays> GetHolidaysByDate(string date);
+        IEnumerable<ViewHolidays> GetHolidaysByDate(DateTime date);
 
         void UpdateHolidays(Holidays holidays);
 
