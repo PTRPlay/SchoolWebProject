@@ -8,6 +8,7 @@ using SchoolWebProject.Domain.Models;
 using SchoolWebProject.Infrastructure;
 using SchoolWebProject.Services;
 using SchoolWebProject.Services.Interfaces;
+using sModels = SchoolWebProject.Services.Models;
 
 namespace UnitTest
 {
@@ -28,6 +29,19 @@ namespace UnitTest
                   GroupId = 3,
                   Group = new Group { Id = 3 }
               };
+
+        private sModels.ViewPupil viewPupil = new sModels.ViewPupil
+            {
+                Id = 3,
+                FirstName = "Jack",
+                LastName = "Berton",
+                MiddleName = "Jaimes",
+                PhoneNumber = "98787655",
+                Email = "somemail@mail.com",
+                GroupId = 1,
+                GroupLetter = "А",
+                GroupNumber = "1"
+            };
 
         [TestMethod]
         public void GetPupil_Test_If_Get_All_Pupil_And_Invoke_GetAll_repository_Method()

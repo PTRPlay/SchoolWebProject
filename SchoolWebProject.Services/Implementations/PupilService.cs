@@ -57,6 +57,10 @@ namespace SchoolWebProject.Services
         public sModels.ViewPupil GetProfileById(int id)
         {
             logger.Info("Retrieving pupil with id {0}", id);
+            if(id < 0)
+            {
+                throw new ArgumentException("id should be greater than zero!");
+            }
             var pupil = this.unitOfWork.PupilRepository.GetById(id);
             var viewModel = AutoMapper.Mapper.Map<Pupil, sModels.ViewPupil>(pupil);
 

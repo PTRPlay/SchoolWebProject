@@ -63,5 +63,19 @@ namespace SchoolWebProject.Infrastructure
             Pupil, 
             Parent 
         };
+
+        public static byte[] StringToByteArray(string input)
+        {
+            byte[] output = new byte[input.Length * sizeof(char)];
+            System.Buffer.BlockCopy(input.ToCharArray(), 0, output, 0, output.Length);
+            return output;
+        }
+
+        public static string ByteArrayToString(byte[] input)
+        {
+            char[] output = new char[input.Length / sizeof(char)];
+            System.Buffer.BlockCopy(input, 0, output, 0, input.Length);
+            return new string(output);
+        }
     }
 }
