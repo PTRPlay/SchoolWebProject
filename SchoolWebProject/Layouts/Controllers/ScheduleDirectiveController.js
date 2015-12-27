@@ -6,7 +6,7 @@
     var FULL_NAME_SPACES = 3;
 
     $scope.AddEvent = function () {
-        if (window.currentUser.Role == "Admin") {
+        //if (window.currentUser.Role == "Admin") {
             $(".editableTD").dblclick(function () {
                 var cell = $(this);
                 var OriginalContent = cell.text();
@@ -34,7 +34,7 @@
 
                 cell.children().first().focus();
             });
-        }
+        //}
     };
 
    
