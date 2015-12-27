@@ -119,7 +119,7 @@
                 <ul class="main-menu">
                     @foreach(var link in ViewBag.Links)
                     {
-                        <li class=@link.Value><a ui-sref=@link.Value>@link.Key</a></li>
+                        <li class=@link.Value><a ui-sref=@link.Value ui-sref-active="active">@link.Key</a></li>
                     }
                 </ul>
             </div>
