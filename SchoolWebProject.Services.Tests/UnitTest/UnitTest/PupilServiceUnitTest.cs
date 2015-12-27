@@ -16,32 +16,32 @@ namespace UnitTest
     public class PupilServiceUnitTest
     {
         private Pupil pupil = new Pupil
-              {
-                  Id = 30,
-                  LastName = "Поттер",
-                  FirstName = "Гаррі",
-                  MiddleName = "Джеймс",
-                  PhoneNumber = "693984558",
-                  Address = "London",
-                  Email = "hp@gmail.com",
-                  RoleId = 3,
-                  SchoolId = 1,
-                  GroupId = 3,
-                  Group = new Group { Id = 3 }
-              };
+        {
+            Id = 30,
+            LastName = "Поттер",
+            FirstName = "Гаррі",
+            MiddleName = "Джеймс",
+            PhoneNumber = "693984558",
+            Address = "London",
+            Email = "hp@gmail.com",
+            RoleId = 3,
+            SchoolId = 1,
+            GroupId = 3,
+            Group = new Group { Id = 3 }
+        };
 
         private sModels.ViewPupil viewPupil = new sModels.ViewPupil
-            {
-                Id = 3,
-                FirstName = "Jack",
-                LastName = "Berton",
-                MiddleName = "Jaimes",
-                PhoneNumber = "98787655",
-                Email = "somemail@mail.com",
-                GroupId = 1,
-                GroupLetter = "А",
-                GroupNumber = "1"
-            };
+        {
+            Id = 3,
+            FirstName = "Jack",
+            LastName = "Berton",
+            MiddleName = "Jaimes",
+            PhoneNumber = "98787655",
+            Email = "somemail@mail.com",
+            GroupId = 1,
+            GroupLetter = "А",
+            GroupNumber = "1"
+        };
 
         [TestMethod]
         public void GetPupil_Test_If_Get_All_Pupil_And_Invoke_GetAll_repository_Method()
@@ -62,7 +62,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void GetProfileById_Test_Is_Invoke_Repo_GetById()
+        public void GetPupilProfileById_Test_Is_Invoke_Repo_GetById()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -84,7 +84,7 @@ namespace UnitTest
 
         [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
-        public void GetProfileById_Test_Is_Generete_Exeption_If_Id_less_zero()
+        public void GetPupilProfileById_Test_Is_Generete_Exeption_If_Id_less_zero()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -103,7 +103,43 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void RemovePupilUnit5Test()
+        public void UpdatePupilProfileUnitTest()
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iPupilRepository = new Mock<IRepository<Pupil>>();
+            var iAccountService = new Mock<IAccountService>();
+            var iGroupService = new Mock<IGroupService>();
+
+            iUnitOfWork.Setup(st => st.PupilRepository).Returns(iPupilRepository.Object);
+            var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
+            //Act
+            pupilService.UpdateProfile(this.viewPupil);
+            //Assert
+            iPupilRepository.Verify(inv => inv.Update(It.IsAny<Pupil>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void AddPupilUnitTest()
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iPupilRepository = new Mock<IRepository<Pupil>>();
+            var iAccountService = new Mock<IAccountService>();
+            var iGroupService = new Mock<IGroupService>();
+
+            iUnitOfWork.Setup(st => st.PupilRepository).Returns(iPupilRepository.Object);
+            var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
+            //Act
+            pupilService.AddPupil(this.viewPupil);
+            //Assert
+            iPupilRepository.Verify(inv => inv.Add(It.IsAny<Pupil>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void RemovePupilUnitTest()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -118,7 +154,7 @@ namespace UnitTest
             pupilService.RemovePupil(this.pupil.Id);
             //Assert
             iRepository.Verify(inv => inv.Delete(this.pupil), Times.Once);
-            
+
         }
     }
 }
