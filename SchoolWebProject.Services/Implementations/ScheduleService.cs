@@ -68,14 +68,14 @@ namespace SchoolWebProject.Services
             return unicSubject;
         }
 
-        private void updateSchedule(Schedule findedSchedule, Schedule schedule)
+        private void UpdateSchedule(Schedule findedSchedule, Schedule schedule)
         {
             findedSchedule.TeacherId = teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
             findedSchedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
             this.unitOfWork.ScheduleRepository.Update(findedSchedule);
         }
 
-        private void addSchedule(Schedule schedule)
+        private void AddSchedule(Schedule schedule)
         {
             schedule.TeacherId = this.teacherService.GetIdByName(schedule.Teacher.FirstName, schedule.Teacher.LastName, schedule.Teacher.MiddleName);
             schedule.SubjectId = subjectService.GetAllSubjects().FirstOrDefault(s => s.Name == schedule.Subject.Name).Id;
@@ -110,7 +110,7 @@ namespace SchoolWebProject.Services
                     }
                     else
                     {
-                        updateSchedule(findedSchedule, schedule);
+                        UpdateSchedule(findedSchedule, schedule);
                         SaveSchedule();
                         findedSchedule = allSchedules.FirstOrDefault(s => s.DayOfTheWeek == schedule.DayOfTheWeek
                                                             && s.OrderNumber == schedule.OrderNumber);
@@ -119,7 +119,7 @@ namespace SchoolWebProject.Services
                 }
                 else if (schedule.Teacher.FirstName != "")
                 {
-                    addSchedule(schedule);
+                    AddSchedule(schedule);
                     Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s => s.TeacherId == schedule.TeacherId && s.SubjectId == schedule.SubjectId && s.GroupId == schedule.GroupId).First();
                     this.lessonDetailService.GenereteLessonDeatail(getedSchedule);
                 }
