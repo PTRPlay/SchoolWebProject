@@ -35,6 +35,10 @@ namespace SchoolWebProject.Services
 
         public Holidays GetHolidaysById(int id)
         {
+            if (id < 0) 
+            {
+                throw new ArgumentException();
+            }
             return this.unitOfWork.HolidaysRepository.GetById(id);
         }
 
@@ -81,7 +85,7 @@ namespace SchoolWebProject.Services
             this.SaveHolidays();
         }
 
-        public void SaveHolidays()
+        private void SaveHolidays()
         {
             this.unitOfWork.SaveChanges();
         }

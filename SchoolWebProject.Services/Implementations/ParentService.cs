@@ -39,7 +39,7 @@ namespace SchoolWebProject.Services
                 parents = parents.AsQueryable().OrderBy(sorting).Skip((pageNumb - 1) * amount).Take(amount);
                 return parents;
             }
-
+             
             parents = this.unitOfWork.ParentRepository.GetAll().OrderBy(sorting);
             pageCount = parents.Count();
             parents = parents.Skip((pageNumb - 1) * amount).Take(amount);
@@ -71,7 +71,10 @@ namespace SchoolWebProject.Services
         public void RemoveParent(int id)
         {
             Parent parent = this.unitOfWork.ParentRepository.GetById(id);
-            parent.Pupils.RemoveAll(prnt => parent.Id == id);
+            if (parent !=null)
+            {
+                parent.Pupils.RemoveAll(prnt => parent.Id == id);
+            }
             this.unitOfWork.ParentRepository.Delete(parent);
             this.unitOfWork.SaveChanges();
         }

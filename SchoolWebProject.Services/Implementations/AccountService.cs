@@ -17,11 +17,11 @@ namespace SchoolWebProject.Services
         private IUnitOfWork unitOfWork;
         private IEmailSenderService emailService;
 
-        public AccountService(ILogger logger, IUnitOfWork unit, IEmailSenderService inputEmailService)
+        public AccountService(ILogger logger, IUnitOfWork unit)
             : base(logger)
         {
             this.unitOfWork = unit;
-            this.emailService = inputEmailService;
+            this.emailService = new EmailSenderService(logger, this);
         }
 
         public LogInData GenerateUserLoginData(User user)
@@ -49,7 +49,8 @@ namespace SchoolWebProject.Services
 
             if (this.CheckUser(loginData, password) && loginData != null)
             {
-                return this.unitOfWork.UserRepository.GetById(loginData.UserId);
+                Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
+                return this.unitOfWork.UserRepository.Get(getUser);
             }
             else
             {
@@ -59,12 +60,14 @@ namespace SchoolWebProject.Services
 
         public LogInData GetUserLogInData(int id)
         {
-            return this.unitOfWork.LogInDataRepository.Get(login => login.UserId == id);
+            Expression<Func<LogInData, bool>> getLoginData = login => login.UserId == id;
+            return this.unitOfWork.LogInDataRepository.Get(getLoginData);
         }
 
         public Role GetRoleById(int? id)
         {
-            return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
+            Expression<Func<Role, bool>> getRole = role => role.Id == id;
+            return this.unitOfWork.RoleRepository.Get(getRole);
         }
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
