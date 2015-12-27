@@ -66,6 +66,7 @@
     <script src="~/Layouts/Services/lessondetailService.js"></script>
     <script src="~/Layouts/Services/permissionService.js"></script>
     <script src="~/Layouts/Services/myProfileService.js"></script>
+    <script src="~/Layouts/Services/modifieCellService.js"></script>
 
     <script src="~/Layouts/ModalControllers/parentModalControllers.js"></script>
     <script src="~/Layouts/ModalControllers/parentModalService.js"></script>
@@ -119,7 +120,7 @@
                 <ul class="main-menu">
                     @foreach(var link in ViewBag.Links)
                     {
-                        <li class=@link.Value><a ui-sref=@link.Value>@link.Key</a></li>
+                        <li class=@link.Value><a ui-sref=@link.Value ui-sref-active="active">@link.Key</a></li>
                     }
                 </ul>
             </div>

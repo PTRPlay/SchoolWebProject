@@ -60,6 +60,7 @@ namespace SchoolWebProject.App_Start
             container.RegisterType<ILessonDetailService, LessonDetailService>();
             container.RegisterType<IParentService, ParentService>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IRoomService, RoomService>();
         }
     }
 }

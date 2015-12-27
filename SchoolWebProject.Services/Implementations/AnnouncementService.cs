@@ -56,8 +56,8 @@ namespace SchoolWebProject.Services
         public void RemoveAnnouncement(int id)
         {
             var announcement = this.unitOfWork.AnnouncementRepository.GetById(id);
-            unitOfWork.AnnouncementRepository.Delete(announcement);
-            unitOfWork.SaveChanges();
+            this.unitOfWork.AnnouncementRepository.Delete(announcement);
+            this.unitOfWork.SaveChanges();
             logger.Info("Remove annoncement {0}", announcement.Title);
         }
     }

@@ -11,18 +11,17 @@ using SchoolWebProject.Services;
 namespace UnitTest
 {
     [TestClass]
-    public class HolidaysUnitTest
+    public class HolidaysServiceUnitTest
     {
         private Holidays holidays = new Holidays 
         { 
-            Id = 2,
             StartDay = new DateTime (1999, 10, 29),
             EndDay = new DateTime(1999, 11, 11),
             Name = "Осінні канікули",
         };
         
         [TestMethod]
-        public void GetHolidays_Test_If_Get_All_Holidays_And_Invoke_GetAll_repository_Method()
+        public void Holidays_Get_Test_If_Get_All_Holidays_And_Invoke_GetAll_repository_Method()
         {
             //Arange
             var logger = new Mock<ILogger>();
@@ -37,7 +36,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void GetHolidaysById_Test_Is_Invoke_Repo_GetById()
+        public void HolidaysGetById_Test_Is_Invoke_Repo_GetById()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -54,9 +53,9 @@ namespace UnitTest
             iRepository.Verify(inv => inv.GetById(anyIdMoreZero), Times.Once);
         }
 
-//        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
-        public void GetHolidaysById_Test_Is_Generete_Exeption_If_Id_less_zero()
+        public void Holidays_GetById_Test_Is_Generete_Exeption_If_Id_less_zero()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -64,7 +63,7 @@ namespace UnitTest
             var iUnitOfWork = new Mock<IUnitOfWork>();
             iUnitOfWork.Setup(st => st.HolidaysRepository).Returns(iRepository.Object);
             var holidaysService = new HolidaysService(logger.Object, iUnitOfWork.Object);
-            int anyIdLessZero =-5;
+            int anyIdLessZero = -5;
             //Act
             var tempholidays = holidaysService.GetHolidaysById(anyIdLessZero);
             //Assert
@@ -72,7 +71,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void UpdateHolidaysUnitTest()
+        public void Holidays_UpdateUnitTest()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -88,7 +87,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void AddHolidaysUnitTest()
+        public void Holidays_AddUnitTest()
         {
             //Arrange
             var logger = new Mock<ILogger>();
@@ -106,23 +105,21 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void RemoveHolidaysUnitTest()
+        public void Holidays_RemoveUnitTest()
         {
             //Arrange
             var logger = new Mock<ILogger>();
             var iRepository = new Mock<IRepository<Holidays>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-
+            
             iUnitOfWork.SetupGet(u => u.HolidaysRepository).Returns(iRepository.Object);
             iRepository.Setup(h => h.Add(this.holidays));
             iRepository.Setup(h => h.GetById(this.holidays.Id));
             var holidaysService = new HolidaysService(logger.Object, iUnitOfWork.Object);
             //Act
-            holidaysService.AddHolidays(this.holidays);
             holidaysService.RemoveHolidays(this.holidays.Id);
             //Assert
-            iRepository.Verify(inv => inv.Delete(this.holidays), Times.Once);
-            //iUnitOfWork.Verify(inv => inv.HolidaysRepository.Delete(this.holidays));
+            iRepository.Verify(inv => inv.Delete(It.IsAny<Holidays>()), Times.Once);
         }
 
     }

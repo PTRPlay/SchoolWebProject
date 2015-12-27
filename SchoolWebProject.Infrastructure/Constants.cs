@@ -16,6 +16,12 @@ namespace SchoolWebProject.Infrastructure
 
         public static readonly int MinutesToCookiesExpirate = 20;
 
+        public static readonly int CountOfWorkingDaysInWeek = 5;
+
+        public static readonly string FirstSemestrNameInDB = "Semestr1";
+
+        public static readonly string SecondSemestrNameInDB = "Semestr2";
+
         public static readonly Dictionary<string, string> AdminPermissions = new Dictionary<string, string>() {
             {"Вчителі", "teachers"},
             {"Предмети", "subjects"},

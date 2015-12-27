@@ -58,7 +58,7 @@ namespace SchoolWebProject.Services
             this.SaveTeacherDegree();
         }
 
-        public void SaveTeacherDegree()
+        private void SaveTeacherDegree()
         {
             this.unitOfWork.SaveChanges();
         }

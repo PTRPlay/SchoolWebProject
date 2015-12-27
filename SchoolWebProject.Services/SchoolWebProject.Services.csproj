@@ -62,6 +62,7 @@
     <Compile Include="Implementations\EmailSenderService.cs" />
     <Compile Include="Implementations\HolidaysService.cs" />
     <Compile Include="Implementations\ParentService.cs" />
+    <Compile Include="Implementations\RoomService.cs" />
     <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IAnnouncementService.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Implementations\GroupService.cs" />
     <Compile Include="Interfaces\IGroupService.cs" />
     <Compile Include="Interfaces\IParentService.cs" />
+    <Compile Include="Interfaces\IRoomService.cs" />
     <Compile Include="Interfaces\ITeacherDegreeService.cs" />
     <Compile Include="Interfaces\IPupilService.cs" />
     <Compile Include="Interfaces\IScheduleService.cs" />

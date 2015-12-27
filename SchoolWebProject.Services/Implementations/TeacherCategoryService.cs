@@ -41,11 +41,15 @@ namespace SchoolWebProject.Services
             teacherCategory.Teachers.RemoveAll(category => teacherCategory.Id == id);
             this.unitOfWork.TeacherCategoryRepository.Delete(teacherCategory);
             this.SaveTeacherCategory();
+
+            
         }
 
         public ViewTeacherCategory GetTeacherCategoryById(int id)
         {
+            if (id < 0) throw new ArgumentException();
             var teacherCategory = this.unitOfWork.TeacherCategoryRepository.GetById(id);
+            AutoMapper.Mapper.CreateMap<TeacherCategory, ViewTeacherCategory>();
             var viewModel = AutoMapper.Mapper.Map<TeacherCategory, ViewTeacherCategory>(teacherCategory);
             return viewModel;
         }
@@ -58,7 +62,7 @@ namespace SchoolWebProject.Services
             this.SaveTeacherCategory();
         }
 
-        public void SaveTeacherCategory()
+        private void SaveTeacherCategory()
         {
             this.unitOfWork.SaveChanges();
         }
