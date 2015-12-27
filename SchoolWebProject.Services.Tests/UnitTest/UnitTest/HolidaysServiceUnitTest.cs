@@ -63,7 +63,7 @@ namespace UnitTest
             var iUnitOfWork = new Mock<IUnitOfWork>();
             iUnitOfWork.Setup(st => st.HolidaysRepository).Returns(iRepository.Object);
             var holidaysService = new HolidaysService(logger.Object, iUnitOfWork.Object);
-            int anyIdLessZero =-5;
+            int anyIdLessZero = -5;
             //Act
             var tempholidays = holidaysService.GetHolidaysById(anyIdLessZero);
             //Assert

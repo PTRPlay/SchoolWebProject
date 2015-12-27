@@ -57,6 +57,6 @@ namespace SchoolWebProject.Controllers
         public void Delete(int id)
         {
             this.announcementService.RemoveAnnouncement(id);
- 		}
+        }
     }
 }
