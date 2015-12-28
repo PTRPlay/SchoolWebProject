@@ -437,3 +437,7 @@ input[type='file'] {
     margin-top: 20px;
 }
 
+#journalGrid.grid {
+    min-width:655px;
+}
+

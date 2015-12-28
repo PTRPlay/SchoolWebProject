@@ -4,7 +4,7 @@
             select.classList.add("cellEditing")
 
             teachersService.getTeachers().success(function (data) {
-                var teachers = "";
+                var teachers = "<option></option>";
                 for (var element in data) {
                     teachers += "<option>" + data[element].FirstName + " " + data[element].MiddleName + " " + data[element].LastName + "</option>";
                 }
@@ -17,7 +17,7 @@
             select.classList.add("cellEditing")
 
             subjectsService.getSubjects().success(function (data) {
-                var groups = "";
+                var groups = "<option></option>";
                 for (var element in data) {
                     groups += "<option>" + data[element].Name + "</option>";
                 }
@@ -30,7 +30,7 @@
         modifieRoomCell: function (cell, select) {
             select.classList.add("cellEditing");
             $.get("api/Room", function (data) {
-                var rooms = "";
+                var rooms = "<option></option>";
                 for (var element in data) {
                     rooms += "<option>" + data[element] + "</option>";
                 }

@@ -74,6 +74,11 @@ namespace SchoolWebProject.Services
             if (parent !=null)
             {
                 parent.Pupils.RemoveAll(prnt => parent.Id == id);
+                LogInData loginData = parent.LogInData;
+                if (loginData != null)
+                {
+                    unitOfWork.LogInDataRepository.Delete(loginData);
+                }
             }
             this.unitOfWork.ParentRepository.Delete(parent);
             this.unitOfWork.SaveChanges();
