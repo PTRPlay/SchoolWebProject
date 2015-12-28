@@ -115,8 +115,24 @@ namespace UnitTest
             var teacherCategory = AutoMapper.Mapper.Map<ViewTeacherCategory, TeacherCategory>(this.teacherCategory);
             //Act
             teacherCategoryService.DeleteTeacherCategory(this.teacherCategory.Id);
-            //Assert
-            iRepository.Verify(inv=>inv.Delete(It.IsAny<TeacherCategory>()),Times.Once);
         }
+
+        [TestMethod]
+        public void TeacherCategory_AddUnitTest()
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iRepositoryHolidays = new Mock<IRepository<TeacherCategory>>();
+
+            iUnitOfWork.Setup(st => st.TeacherCategoryRepository).Returns(iRepositoryHolidays.Object);
+            var teacherCategoryService = new TeacherCategoryService(logger.Object, iUnitOfWork.Object);
+            AutoMapper.Mapper.CreateMap<ViewTeacherCategory, TeacherCategory>();
+            //Act
+            teacherCategoryService.AddTeacherCategory(this.teacherCategory);
+            //Assert
+            iRepositoryHolidays.Verify(inv => inv.Add(It.IsAny<TeacherCategory>()), Times.Once);
+        }
+
     }
 }

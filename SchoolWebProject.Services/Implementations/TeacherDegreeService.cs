@@ -37,15 +37,26 @@ namespace SchoolWebProject.Services
 
         public void DeleteTeacherDegree(int id)
         {
-            var teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
-            teacherDegree.Teachers.RemoveAll(degree => teacherDegree.Id == id);
+            TeacherDegree teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
+            if (teacherDegree == null)
+            {
+                logger.Error("Trying to delete teacher degree with null");
+                throw new NullReferenceException();
+            }
+
             this.unitOfWork.TeacherDegreeRepository.Delete(teacherDegree);
             this.SaveTeacherDegree();
         }
 
         public ViewTeacherDegree GetTeacherDegreeById(int id)
         {
+            if (id < 0)
+            {
+                this.logger.Error("Trying to get teacher degree with id < 0");
+                throw new ArgumentException();
+            }
             var teacherDegree = this.unitOfWork.TeacherDegreeRepository.GetById(id);
+            AutoMapper.Mapper.CreateMap<TeacherDegree, ViewTeacherDegree>();
             var viewModel = AutoMapper.Mapper.Map<TeacherDegree, ViewTeacherDegree>(teacherDegree);
             return viewModel;
         }
