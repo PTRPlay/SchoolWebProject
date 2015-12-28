@@ -87,7 +87,7 @@ namespace SchoolWebProject.Services
 
             unitOfWork.ScheduleRepository.Add(schedule);
             SaveSchedule();
-            Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s => s.TeacherId == schedule.TeacherId && s.SubjectId == schedule.SubjectId && s.GroupId == schedule.GroupId).First();
+            Schedule getedSchedule = unitOfWork.ScheduleRepository.GetMany(s=>s.GroupId==schedule.GroupId&&s.DayOfTheWeek==schedule.DayOfTheWeek&&s.OrderNumber==schedule.OrderNumber).First();
             this.lessonDetailService.GenereteLessonDeatail(getedSchedule);
         }
 
