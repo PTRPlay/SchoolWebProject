@@ -12,7 +12,7 @@
     function SetGroupInDroupDawnList() {
         if ((permissionService.user.Role == "Pupil" || permissionService.user.Role == "Parent")) {
             pupilsService.getPupilById(permissionService.user.Id).success(function (data) {
-                $scope.chosenGroup = data.Group.Id;
+                $scope.chosenGroup = data.GroupId;
                 $scope.GetSubjectByGroupId($scope.chosenGroup);
             });
         }
