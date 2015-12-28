@@ -34,25 +34,28 @@
                 var teacher = document.getElementById(day + 'teacher' + order).textContent.split(" ");
                 var subject = document.getElementById(day + 'subject' + order).textContent;
                 var room = document.getElementById(day + 'room' + order).textContent
-                schedules.push(
-                    {
-                        OrderNumber: order,
-                        DayOfTheWeek: day,
-                        teacher: {
-                            FirstName: teacher[0],
-                            MiddleName: teacher[1],
-                            LastName: teacher[2]
-                        },
-                        subject: {
-                            Name: subject
-                        },
-                        groupId: group.Id,
-                        classRoom:room
-                    }
-                    )
+                if ((teacher != '') && (subject != '') && (room != '')) {
+                    schedules.push(
+                        {
+                            OrderNumber: order,
+                            DayOfTheWeek: day,
+                            teacher: {
+                                FirstName: teacher[0],
+                                MiddleName: teacher[1],
+                                LastName: teacher[2]
+                            },
+                            subject: {
+                                Name: subject
+                            },
+                            groupId: group.Id,
+                            classRoom: room
+                        }
+                        )
+                }
             }
-        scheduleService.sendSchedule(schedules);
-        $scope.showSchedule();
+        scheduleService.sendSchedule(schedules).success(function () {
+            $scope.showSchedule();
+        });
     }
 
     $scope.GetScheduleFromJson = function (evt) {

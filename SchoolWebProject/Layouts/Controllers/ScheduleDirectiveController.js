@@ -1,4 +1,4 @@
-﻿myApp.controller('ScheduleDirectiveController', ['$scope', 'modifieCellService', function ($scope, modifieCellService) {
+﻿myApp.controller('ScheduleDirectiveController', ['$scope', 'modifieCellService', 'permissionService', function ($scope, modifieCellService, permissionService) {
 
     var days = [{ day: 'Понелілок', color: '#E9E9E9' }, { day: 'Вівторок', color: '#F7F5F3' }, { day: 'Середа', color: '#E9E9E9' }, { day: 'Четвер', color: '#F7F5F3' }, { day: 'Пятниця', color: '#E9E9E9' }];
     var DAY_NUMBER = 6;
@@ -6,42 +6,42 @@
     var FULL_NAME_SPACES = 3;
 
     $scope.AddEvent = function () {
-        //if (window.currentUser.Role == "Admin") {
-        $(".editableTD").dblclick(function () {
-            var cell = $(this);
-            var OriginalContent = cell.text();
-            if (OriginalContent.split(" ").length > FULL_NAME_SPACES) {
-                OriginalContent = "";
-            }
-            cell.text("");
-            cell.addClass("cellEditing");
-            var select = document.createElement("SELECT");
-            var HtmlElement = [];
-            if ($(this).attr('id')[1] == 't') {
-                HtmlElement = modifieCellService.modifieTeacherCell(cell, select);
-            } else if ($(this).attr('id')[1] == 's') {
-                HtmlElement = modifieCellService.modifieGroupCell(cell, select);
-            } else {
-                HtmlElement = modifieCellService.modifieRoomCell(cell, select);
-            }
+        if (permissionService.user.Role == "Admin") {
+            $(".editableTD").dblclick(function () {
+                var cell = $(this);
+                var OriginalContent = cell.text();
+                if (OriginalContent.split(" ").length > FULL_NAME_SPACES) {
+                    OriginalContent = "";
+                }
+                cell.text("");
+                cell.addClass("cellEditing");
+                var select = document.createElement("SELECT");
+                var HtmlElement = [];
+                if ($(this).attr('id')[1] == 't') {
+                    HtmlElement = modifieCellService.modifieTeacherCell(cell, select);
+                } else if ($(this).attr('id')[1] == 's') {
+                    HtmlElement = modifieCellService.modifieGroupCell(cell, select);
+                } else {
+                    HtmlElement = modifieCellService.modifieRoomCell(cell, select);
+                }
+               
+                HtmlElement.onchange = function () {
+                    var index = this.selectedIndex;
+                    var text = this.options[index].text;
+                    cell[0].removeChild(cell[0].childNodes[0]);
+                    cell[0].textContent = text;
+                    cell[0].classList.remove("cellEditing");
+                };
 
-            HtmlElement.onchange = function () {
-                var index = this.selectedIndex;
-                var text = this.options[index].text;
-                cell[0].removeChild(cell[0].childNodes[0]);
-                cell[0].textContent = text;
-                cell[0].classList.remove("cellEditing");
-            };
+                HtmlElement.onmouseleave = function () {
+                    cell[0].removeChild(cell[0].childNodes[0]);
+                    cell[0].textContent = OriginalContent;
+                    cell[0].classList.remove("cellEditing");
+                }
 
-            HtmlElement.onmouseleave = function () {
-                cell[0].removeChild(cell[0].childNodes[0]);
-                cell[0].textContent = OriginalContent;
-                cell[0].classList.remove("cellEditing");
-            }
-
-            cell.children().first().focus();
-        });
-        //}
+                cell.children().first().focus();
+            });
+        }
     };
 
 

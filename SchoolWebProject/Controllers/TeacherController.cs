@@ -15,7 +15,6 @@ using SchoolWebProject.Models;
 using SchoolWebProject.Services;
 using SchoolWebProject.Services.Models;
 
-
 namespace SchoolWebProject.Controllers
 {
     public class TeacherController : ApiController
@@ -26,7 +25,7 @@ namespace SchoolWebProject.Controllers
 
         private IAccountService accountService;
 
-        public TeacherController(ILogger logger, TeacherService teacherService , IAccountService accService) 
+        public TeacherController(ILogger logger , TeacherService teacherService , IAccountService accService) 
         {
             this.logger = logger;
             this.teacherService = teacherService;
@@ -55,7 +54,6 @@ namespace SchoolWebProject.Controllers
             return AutoMapper.Mapper.Map<IEnumerable<SchoolWebProject.Domain.Models.Teacher>, IEnumerable<ViewTeacher>>(this.teacherService.GetByName(filter));
         }
 
-        // POST api/teacher
         [Authorize(Roles = "Admin")]
         public void Post([FromBody]ViewTeacher value)
         {
@@ -67,7 +65,6 @@ namespace SchoolWebProject.Controllers
             this.logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
         }
 
-        // PUT api/teacher/5
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]ViewTeacher value)
@@ -89,7 +86,7 @@ namespace SchoolWebProject.Controllers
             }
             AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value, teacher);
             teacher.Subjects.AddRange(teacherSubjects);
-            teacherService.UpdateProfile(teacher);
+            this.teacherService.UpdateProfile(teacher);
        }
 
         // DELETE api/teacher/5
