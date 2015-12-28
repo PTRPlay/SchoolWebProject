@@ -50,9 +50,11 @@ namespace UnitTest
         public void GetRoleById_Invoke_RoleRepository()
         {
             // Arrange
+            var logger = new Mock<ILogger>();
+            var iemailSender = new Mock<IEmailSenderService>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iRoleRepository = new Mock<IRepository<Role>>();
-            var accountService = new AccountService(new Mock<ILogger>().Object, iUnitOfWork.Object);
+            var accountService = new AccountService(logger.Object, iUnitOfWork.Object);
             iUnitOfWork.Setup(g => g.RoleRepository).Returns(iRoleRepository.Object);
             int testId = 2;
 
@@ -86,6 +88,7 @@ namespace UnitTest
         public void GetUser_Getting_Right_User()
         {
             // Arrange
+            
             var accountService = this.Initialize(testLogInData, testUser);
             string inputPassword = "password";
             testLogInData.PasswordSalt = accountService.CreateSalt();
@@ -139,7 +142,7 @@ namespace UnitTest
             var accountService = new AccountService(logger.Object, iUnitOfWork.Object);
 
             // Act
-            var result = accountService.GenerateUserLoginData(testUser);
+            var result = accountService.GenerateUserLoginData(testUser, iemailSender.Object);
 
             // Assert
             iemailSender.Verify(s => s.SendMail(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
@@ -151,7 +154,6 @@ namespace UnitTest
             var iUserRepository = new Mock<IRepository<User>>();
             var iLogRepository = new Mock<IRepository<LogInData>>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
-            var iemailSender = new Mock<IEmailSenderService>();
             iUnitOfWork.Setup(st => st.LogInDataRepository).Returns(iLogRepository.Object);
             iUnitOfWork.Setup(st => st.UserRepository).Returns(iUserRepository.Object);
             iLogRepository.Setup(i => i.Get(It.IsAny<Expression<Func<LogInData, bool>>>())).Returns(testLogin);

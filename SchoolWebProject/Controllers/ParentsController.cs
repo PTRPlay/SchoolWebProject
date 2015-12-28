@@ -57,7 +57,7 @@ namespace SchoolWebProject.Controllers
             parent.RoleId = 4;
             if (parent.Email != null)
             {
-                parent.LogInData = this.accountService.GenerateUserLoginData(parent);
+                parent.LogInData = this.accountService.GenerateUserLoginData(parent, new EmailSenderService(new Logger(), this.accountService));
             }
 
             this.parentService.AddParent(parent);
