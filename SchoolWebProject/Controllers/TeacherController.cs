@@ -60,7 +60,7 @@ namespace SchoolWebProject.Controllers
             SchoolWebProject.Domain.Models.Teacher teacher = AutoMapper.Mapper.Map<ViewTeacher, SchoolWebProject.Domain.Models.Teacher>(value);
             teacher.RoleId = 2;
             if (teacher.Email != null)
-                teacher.LogInData = this.accountService.GenerateUserLoginData(teacher);
+                teacher.LogInData = this.accountService.GenerateUserLoginData(teacher, new EmailSenderService(new Logger(), this.accountService));
             this.teacherService.AddTeacher(teacher);
             this.logger.Info("Added teacher {0}, {1}", teacher.LastName, teacher.FirstName);
         }

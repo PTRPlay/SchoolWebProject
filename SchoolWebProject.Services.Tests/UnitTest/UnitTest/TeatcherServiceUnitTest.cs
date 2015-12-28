@@ -76,8 +76,6 @@ namespace SchoolWebProject.UnitTestProject
             int anyIdLessZero = -2;
             //Act
             var teacher = teacherService.GetProfileById(anyIdLessZero);
-            //Assert
-            iRepository.Verify(inv => inv.GetById(anyIdLessZero), Times.Once);
         }
 
         [TestMethod]

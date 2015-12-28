@@ -98,7 +98,7 @@ namespace SchoolWebProject.Services
             pupil.RoleId = 3;
             if (pupil.Email != null)
             {
-                pupil.LogInData = this.accountService.GenerateUserLoginData(pupil);
+                pupil.LogInData = this.accountService.GenerateUserLoginData(pupil, new EmailSenderService(new Logger(), this.accountService));
             }
 
             //assigning group to pupil

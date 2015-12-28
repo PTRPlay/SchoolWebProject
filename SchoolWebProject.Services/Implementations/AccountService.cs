@@ -15,20 +15,18 @@ namespace SchoolWebProject.Services
     public class AccountService : BaseService, IAccountService
     {
         private IUnitOfWork unitOfWork;
-        private IEmailSenderService emailService;
 
         public AccountService(ILogger logger, IUnitOfWork unit)
             : base(logger)
         {
             this.unitOfWork = unit;
-            this.emailService = new EmailSenderService(logger, this);
         }
 
-        public LogInData GenerateUserLoginData(User user)
+        public LogInData GenerateUserLoginData(User user, IEmailSenderService emailSender)
         {
             string userLogin = this.GenerateLogin(user), userPassword = this.GeneratePassword(), salt = this.CreateSalt();
             string message = string.Format(Constants.EmailMessage + "\nЛогін: " + userLogin + "\nПароль: " + userPassword);
-            this.emailService.SendMail(user.Email, message);
+            emailSender.SendMail(user.Email, message);
             return new LogInData
                 {
                     Login = userLogin,
@@ -49,8 +47,7 @@ namespace SchoolWebProject.Services
 
             if (this.CheckUser(loginData, password) && loginData != null)
             {
-                Expression<Func<User, bool>> getUser = user => user.Id == loginData.UserId;
-                return this.unitOfWork.UserRepository.Get(getUser);
+                return this.unitOfWork.UserRepository.GetById(loginData.UserId);
             }
             else
             {
@@ -66,8 +63,13 @@ namespace SchoolWebProject.Services
 
         public Role GetRoleById(int? id)
         {
-            Expression<Func<Role, bool>> getRole = role => role.Id == id;
-            return this.unitOfWork.RoleRepository.Get(getRole);
+            if (id == null)
+            {
+                logger.Warning("Tryed to get Role by null value id");
+                return null;
+            }
+            else
+                return this.unitOfWork.RoleRepository.Get(role => role.Id == id);
         }
 
         public Dictionary<string, string> GetUserRaws(Constants.UserRoles role)
