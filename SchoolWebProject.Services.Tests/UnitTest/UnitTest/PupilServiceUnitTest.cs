@@ -17,7 +17,6 @@ namespace UnitTest
     {
         private Pupil pupil = new Pupil
         {
-            Id = 30,
             LastName = "Поттер",
             FirstName = "Гаррі",
             MiddleName = "Джеймс",
@@ -132,8 +131,9 @@ namespace UnitTest
 
             iUnitOfWork.Setup(st => st.PupilRepository).Returns(iPupilRepository.Object);
             var pupilService = new PupilService(logger.Object, iUnitOfWork.Object, iAccountService.Object, iGroupService.Object);
+            var viewPupil = AutoMapper.Mapper.Map<Pupil, sModels.ViewPupil>(this.pupil);
             //Act
-            pupilService.AddPupil(this.viewPupil);
+            pupilService.AddPupil(viewPupil);
             //Assert
             iPupilRepository.Verify(inv => inv.Add(It.IsAny<Pupil>()), Times.Once);
         }
@@ -153,7 +153,7 @@ namespace UnitTest
             //Act
             pupilService.RemovePupil(this.pupil.Id);
             //Assert
-            iRepository.Verify(inv => inv.Delete(this.pupil), Times.Once);
+            iRepository.Verify(inv => inv.Delete(It.IsAny<Pupil>()), Times.Once);
 
         }
     }
