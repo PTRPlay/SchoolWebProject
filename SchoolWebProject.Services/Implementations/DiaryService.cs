@@ -20,12 +20,11 @@ namespace SchoolWebProject.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Diary> GetDiaryByUserId(int idUser, string date)
+        public IEnumerable<Diary> GetDiaryByUserId(int idUser, DateTime date)
         {
             logger.Info("Get diary for user. Id = {0}", idUser);
-            string[] split = date.Split('-');
-            DateTime monday = new DateTime(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]));
-            DateTime friday = monday.AddDays(4);
+            DateTime monday = date;
+            DateTime friday = monday.AddDays(Constants.CountOfWorkingDaysInWeek-1);
             var pupil = this.unitOfWork.PupilRepository.GetById(idUser);
             var schedule = this.unitOfWork.ScheduleRepository.GetMany(s => s.GroupId == pupil.GroupId);
             var lessons = this.unitOfWork.LessonDetailRepository.GetMany(l => l.Date >= monday && l.Date <= friday);
@@ -43,7 +42,7 @@ namespace SchoolWebProject.Services
                                 SubjectName = this.unitOfWork.SubjectRepository.GetById(s.SubjectId).Name,
                                 HomeTask = l == null ? string.Empty : l.HomeTask,
                                 LessonTheme = l == null ? string.Empty : l.Theme,
-                                Date = l == null ? string.Empty : l.Date.ToString(),
+                                Date = l == null ? default(DateTime) : l.Date,
                                 LessonDetailId = l == null ? 0 : l.Id
                             };
 

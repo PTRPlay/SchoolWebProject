@@ -19,7 +19,7 @@ namespace SchoolWebProject.Services.Models
 
         public string LessonTheme { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string MarkValue { get; set; }
 

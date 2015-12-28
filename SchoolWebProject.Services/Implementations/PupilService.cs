@@ -76,6 +76,7 @@ namespace SchoolWebProject.Services
 
         public void UpdateProfile(sModels.ViewPupil value)
         {
+            AutoMapper.Mapper.CreateMap<sModels.ViewPupil, Pupil>();
             var pupil = AutoMapper.Mapper.Map<sModels.ViewPupil, Pupil>(value);
            
             if (value.GroupLetter != null && value.GroupNumber != null)
@@ -92,6 +93,7 @@ namespace SchoolWebProject.Services
 
         public void AddPupil(sModels.ViewPupil value)
         {
+            AutoMapper.Mapper.CreateMap<sModels.ViewPupil, Pupil>();
             Pupil pupil = AutoMapper.Mapper.Map<sModels.ViewPupil, Pupil>(value);
             pupil.RoleId = 3;
             if (pupil.Email != null)
@@ -114,14 +116,18 @@ namespace SchoolWebProject.Services
         {
             Pupil pupil = this.unitOfWork.PupilRepository.GetById(id);
             //removing pupil's login data
-            LogInData loginData = pupil.LogInData;
-            if (loginData != null)
-            {
-                unitOfWork.LogInDataRepository.Delete(loginData);
-            }
-            unitOfWork.PupilRepository.Delete(pupil);
-            unitOfWork.SaveChanges();
-            logger.Info("Deleted pupil with id {0}", id);
+           if (pupil!=null)
+           {
+               LogInData loginData = pupil.LogInData;
+                if (loginData != null)
+                {
+                    unitOfWork.LogInDataRepository.Delete(loginData);
+                }
+           }
+           
+           unitOfWork.PupilRepository.Delete(pupil);
+           unitOfWork.SaveChanges();
+           logger.Info("Deleted pupil with id {0}", id);
         }
     }
 }

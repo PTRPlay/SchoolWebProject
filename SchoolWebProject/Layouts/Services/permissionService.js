@@ -13,6 +13,20 @@
             }
         },
 
+        isValidRoleForChooseGroupsForJournal: function(){
+            if (this.user.Role == 'Admin' || this.user.Role == 'Teacher'){
+                return true;
+            }
+            else return false;
+        },
+
+        isValidRoleForEditMark: function (LessonDetailTeacherId) {
+            if (this.user.Role == "Admin" || this.user.Id == LessonDetailTeacherId) {
+                return true;
+            }
+            else return false;
+        },
+
         showGroups: function () {
             if (this.user.Role == "Pupil" || this.user.Role == "Parent") {
                 $location.path(this.redirection);

@@ -1,4 +1,4 @@
-﻿myApp.controller('degreeModelService', ['$scope', 'ModalService',  '$http', function ($scope, ModalService, $http) {
+﻿myApp.controller('degreeModelService', ['$scope', 'ModalService',  '$http', '$state', '$stateParams',  function ($scope, ModalService, $http, $state, $stateParams ) {
     $scope.showDegreeEditPage = function (degree) {
         ModalService.showModal({
             templateUrl: "Layouts/PartialView/TeacherDegreeTemplate.html",

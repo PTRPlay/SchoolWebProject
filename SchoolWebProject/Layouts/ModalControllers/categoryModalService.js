@@ -1,4 +1,4 @@
-﻿myApp.controller('categoryModelService', ['$scope', 'ModalService',  '$http', function ($scope, ModalService, $http) {
+﻿myApp.controller('categoryModelService', ['$scope', 'ModalService',  '$http','$state', '$stateParams', function ($scope, ModalService, $http, $state, $stateParams) {
     $scope.showCategoryEditPage = function (category) {
         ModalService.showModal({
             templateUrl: "Layouts/PartialView/TeacherCategoryTemplate.html",

@@ -21,7 +21,7 @@ namespace SchoolWebProject.Controllers
         }
 
         // GET api/diary/id/date
-        public IEnumerable<Diary> Get(int id, string date)
+        public IEnumerable<Diary> Get(int id, DateTime date)
         {
             var viewModel = this.diaryService.GetDiaryByUserId(id, date);
             return viewModel;

@@ -1,19 +1,18 @@
-﻿myApp.controller('journalController', ['$scope', 'journalService', 'subjectsService', 'groupsService', 'pupilsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService, subjectsService, groupsService, pupilsService, uiGridConstants, lessonDetailService, $rootScope) {
+﻿myApp.controller('journalController', ['$scope', 'journalService','permissionService', 'subjectsService', 'groupsService', 'pupilsService', 'lessonDetailService', 'uiGridConstants', '$rootScope', function ($scope, journalService,permissionService, subjectsService, groupsService, pupilsService, uiGridConstants, lessonDetailService, $rootScope) {
 
     $scope.chosenSubject = false;
     $scope.chosenGroup = false;
     isValidRoleForEditMark = false;
-    $scope.UserInfo = window.currentUser;
-    $scope.isValidRoleForChooseJournalForGroup = window.currentUser.Role == "Admin" || window.currentUser.Role == "Teacher";
+    $scope.isValidRoleForChooseGroupsForJournal = permissionService.isValidRoleForChooseGroupsForJournal();
 
     $("#group").ready(function () {
         SetGroupInDroupDawnList();
     });
 
     function SetGroupInDroupDawnList() {
-        if (($scope.UserInfo.Role == "Pupil" || $scope.UserInfo.Role == "Parent")) {
-            pupilsService.getPupilById($scope.UserInfo.Id).success(function (data) {
-                $scope.chosenGroup = data.Group.Id;
+        if ((permissionService.user.Role == "Pupil" || permissionService.user.Role == "Parent")) {
+            pupilsService.getPupilById(permissionService.user.Id).success(function (data) {
+                $scope.chosenGroup = data.GroupId;
                 $scope.GetSubjectByGroupId($scope.chosenGroup);
             });
         }
@@ -114,7 +113,9 @@
         }];
                 pupilsMarks = [];
                 $scope.data = data;
-               isValidRoleForEditMark = window.currentUser.Role == "Admin" || window.currentUser.Id == data.LessonDetails[0].TeacherId;
+                if (data.LessonDetails.length>0) {
+                    isValidRoleForEditMark = permissionService.isValidRoleForEditMark(data.LessonDetails[0].TeacherId);
+                } else isValidRoleForEditMark = (permissionService.user.Role=="Admin");
                 fillMarks();
                 for (var i = 0; i < $scope.data.LessonDetails.length; ++i) {
                     $scope.journalGrid.columnDefs.push({
