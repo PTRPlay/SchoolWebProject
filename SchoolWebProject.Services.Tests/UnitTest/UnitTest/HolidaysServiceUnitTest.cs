@@ -66,8 +66,7 @@ namespace UnitTest
             int anyIdLessZero = -5;
             //Act
             var tempholidays = holidaysService.GetHolidaysById(anyIdLessZero);
-            //Assert
-            iRepository.Verify(inv => inv.GetById(anyIdLessZero), Times.Once);
+            
         }
 
         [TestMethod]
@@ -93,15 +92,35 @@ namespace UnitTest
             var logger = new Mock<ILogger>();
             var iUnitOfWork = new Mock<IUnitOfWork>();
             var iRepositoryHolidays = new Mock<IRepository<Holidays>>();
-            
             iUnitOfWork.Setup(st => st.HolidaysRepository).Returns(iRepositoryHolidays.Object);
-
             var holidaysService = new HolidaysService(logger.Object, iUnitOfWork.Object);
+            var tmp = holidaysService.GetAllHolidays();
             //Act
             holidaysService.AddHolidays(this.holidays);
-            var tmp = holidaysService.GetAllHolidays();
             //Assert
             iRepositoryHolidays.Verify(inv => inv.Add(this.holidays), Times.Once);
+        }
+
+        [TestMethod]
+        public void Holidays_GetHolidaysByDate() 
+        {
+            //Arrange
+            var logger = new Mock<ILogger>();
+            var date = new DateTime(2015, 05, 06);
+            DateTime monday = date;
+            DateTime friday = monday.AddDays(Constants.CountOfWorkingDaysInWeek - 1);
+            var iUnitOfWork = new Mock<IUnitOfWork>();
+            var iRepositoryHolidays = new Mock<IRepository<Holidays>>();
+            iUnitOfWork.Setup(st => st.HolidaysRepository).Returns(iRepositoryHolidays.Object);
+            
+            var holidaysService = new HolidaysService(logger.Object, iUnitOfWork.Object);
+            
+            //Act
+            holidaysService.GetHolidaysByDate(date);
+            //Assert
+            iRepositoryHolidays.Verify(inv => inv.GetMany(d => (d.StartDay <= friday && d.EndDay >= monday && d.Name != Constants.FirstSemestrNameInDB && d.Name != Constants.SecondSemestrNameInDB)),Times.Once);
+            
+
         }
 
         [TestMethod]
