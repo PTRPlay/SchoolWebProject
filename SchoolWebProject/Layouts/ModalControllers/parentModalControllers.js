@@ -8,6 +8,12 @@
                 firstName: parent.Pupils[i].FirstName,
                 middleName: parent.Pupils[i].MiddleName,
                 lastName: parent.Pupils[i].LastName,
+                phoneNumber: parent.Pupils[i].PhoneNumber,
+                address: parent.Pupils[i].Address,
+                email: parent.Pupils[i].Email,
+                groupNumber: parent.Pupils[i].GroupNumber,
+                groupLetter: parent.Pupils[i].GroupLetter,
+                groupId: parent.Pupils[i].GroupId
             };
             pupils.push(pupil);
         }
@@ -55,7 +61,13 @@
             id: $scope.SelectedPupil.originalObject.Id,
             firstName: $scope.SelectedPupil.originalObject.FirstName,
             middleName: $scope.SelectedPupil.originalObject.MiddleName,
-            lastName: $scope.SelectedPupil.originalObject.LastName
+            lastName: $scope.SelectedPupil.originalObject.LastName,
+            phoneNumber: $scope.SelectedPupil.originalObject.PhoneNumber,
+            address: $scope.SelectedPupil.originalObject.Address,
+            email: $scope.SelectedPupil.originalObject.Email,
+            groupNumber: $scope.SelectedPupil.originalObject.GroupNumber,
+            groupLetter: $scope.SelectedPupil.originalObject.GroupLetter,
+            groupId: $scope.SelectedPupil.originalObject.GroupId
         }
         $scope.parent.pupils.push(pupil);
         for (var i = 0; i < $scope.pupils.length; ++i) {

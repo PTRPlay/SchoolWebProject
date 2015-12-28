@@ -23,8 +23,6 @@ namespace SchoolWebProject.Services.Models.ViewModels
 
         public string Email { get; set; }
 
-        public ViewGroup Group { get; set; }
-
         public IEnumerable<ViewPupil> Pupils { get; set; }
     }
 }
