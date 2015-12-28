@@ -43,7 +43,7 @@
                     if (result.id != null) {
                         $http.delete("api/parents/" + result.id)
                             .success(function () {
-                            $state.go('teachers', { start: $stateParams.start }, { reload: true });
+                            $state.go('parents', { start: $stateParams.start }, { reload: true });
                         });
                     }
                 });
