@@ -88,7 +88,7 @@ namespace UnitTest
         public void GetUser_Getting_Right_User()
         {
             // Arrange
-            
+
             var accountService = this.Initialize(testLogInData, testUser);
             string inputPassword = "password";
             testLogInData.PasswordSalt = accountService.CreateSalt();
@@ -133,7 +133,7 @@ namespace UnitTest
 
         // sometimes falls with FormatException(dont know why)
         [TestMethod]
-        public void GenerateUserLoginData_Do_Send_Mail() 
+        public void GenerateUserLoginData_Do_Send_Mail()
         {
             // Arrange
             var logger = new Mock<ILogger>();
@@ -146,6 +146,20 @@ namespace UnitTest
 
             // Assert
             iemailSender.Verify(s => s.SendMail(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GenerateLogin_If_Login_Exist()
+        {
+            // Arrange
+            testLogInData.Login = string.Format(testUser.LastName + testUser.FirstName.Substring(0, 1) + testUser.RoleId).ToLower();
+            var accountService = this.Initialize(testLogInData, testUser);
+
+            // Act
+            string result = accountService.GenerateLogin(testUser);
+
+            // Assert
+            Assert.AreNotEqual(testLogInData.Login, result);
         }
 
         private AccountService Initialize(LogInData testLogin, User testUser)

@@ -115,10 +115,19 @@ namespace SchoolWebProject.Services
             return Constants.ByteArrayToString(salt);
         }
 
-        private string GenerateLogin(User user)
+        public string GenerateLogin(User user)
         {
-            string convertionString = string.Format(user.LastName + user.FirstName.Substring(0, 1) + user.RoleId);
-            return Unidecoder.Unidecode(convertionString).ToLower();
+            string convertionString = Unidecoder.Unidecode(string.Format(user.LastName + user.FirstName.Substring(0, 1) + user.RoleId)).ToLower();
+            try
+            {
+                if (this.unitOfWork.LogInDataRepository.Get(exp => exp.Login == convertionString).Login != convertionString)
+                    return convertionString;
+                else throw new Exception("login " + convertionString + " is already exist");
+            }
+            catch
+            {
+                return convertionString + new Random().Next(9);
+            }
         }
 
         private string GeneratePassword(int passwordLength = 8)
