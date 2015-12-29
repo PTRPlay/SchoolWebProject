@@ -37,9 +37,7 @@ namespace UnitTest
             MiddleName = "Jaimes",
             PhoneNumber = "98787655",
             Email = "somemail@mail.com",
-            GroupId = 1,
-            GroupLetter = "А",
-            GroupNumber = "1"
+            GroupId = 1
         };
 
         [TestMethod]
